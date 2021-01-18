@@ -1,0 +1,32 @@
+- Link/Prettier
+
+- Components
+
+  - Cards
+  - Badge
+  - Menu List
+  - Checkbox (+ list)
+  - Radio (+ list)
+  - Chips/Tags
+  - Contacts List (Grouped List)
+  - FAB
+  - Icons
+  - Preloader
+  - Preloader Buttons
+  - Menu
+  - Messages
+  - Notifications
+  - Toast
+  - Progress bar
+  - Stepper
+  - Subnavbar
+  - Tabbar + Tabbar Labels
+  - Timeline???
+
+  - Searchbar???
+  - Toggle
+  - Range???
+  - Inputs
+  - Slider/Carousel
+  - Popover
+  - Actions
