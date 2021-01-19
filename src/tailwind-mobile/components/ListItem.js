@@ -1,6 +1,6 @@
 import React from 'react';
 import { classNames } from '../shared/classnames';
-import Chevron from './Chevron';
+import ChevronIcon from './ChevronIcon';
 
 const ListItem = (props) => {
   const {
@@ -54,12 +54,12 @@ const ListItem = (props) => {
     base: `relative last:no-hairlines`,
     itemContent: 'pl-4 flex items-center',
     link:
-      'active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer',
+      'active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none',
     media: {
       initial: 'mr-4 flex-shrink-0',
       ios: 'py-2.5',
-      material: 'py-3',
-      common: 'ios:py-2.5 material:py-3',
+      material: 'py-3 min-w-10',
+      common: 'ios:py-2.5 material:py-3 material:min-w-10',
     },
     inner: {
       initial: `py-2 pr-4 w-full relative ${hairline ? 'hairline-b' : ''}`,
@@ -68,7 +68,7 @@ const ListItem = (props) => {
       common: 'ios:py-2.5 material:py-3',
     },
     titleWrap: 'flex justify-between items-center',
-    title: 'title flex-shrink',
+    title: 'flex-shrink',
     strongTitle: {
       initial: '',
       ios: 'font-semibold',
@@ -76,10 +76,11 @@ const ListItem = (props) => {
       common: 'ios:font-semibold material:font-medium',
     },
 
-    after: 'after text-black text-opacity-55 flex-shrink-0 ml-auto pl-1',
+    after:
+      'text-black text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1',
     chevron: 'opacity-20 flex-shrink-0 ml-3',
-    subtitle: 'subtitle text-sm',
-    text: 'text text-sm text-black text-opacity-55 line-clamp-2',
+    subtitle: 'text-sm',
+    text: 'text-sm text-black text-opacity-55 line-clamp-2',
     header: 'text-xs mb-0.5',
     footer: 'text-xs text-black text-opacity-55 mt-0.5',
 
@@ -134,7 +135,7 @@ const ListItem = (props) => {
               {after && <div className={c.after}>{after}</div>}
               {isLink &&
                 chevron &&
-                (chevronIcon || <Chevron className={c.chevron} />)}
+                (chevronIcon || <ChevronIcon className={c.chevron} />)}
             </div>
           )}
           {subtitle && <div className={c.subtitle}>{subtitle}</div>}
