@@ -2,7 +2,6 @@
 
 - Components
 
-  - Cards
   - Checkbox (+ list)
   - Radio (+ list)
   - Contacts List (Grouped List)
