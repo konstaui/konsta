@@ -1,11 +1,12 @@
+import Badge from '../tailwind-mobile/components/Badge';
 import Block from '../tailwind-mobile/components/Block';
 import BlockTitle from '../tailwind-mobile/components/BlockTitle';
 import List from '../tailwind-mobile/components/List';
 import ListButton from '../tailwind-mobile/components/ListButton';
 import ListItem from '../tailwind-mobile/components/ListItem';
+import DemoIcon from './DemoIcon';
 
 export default function ListDemo() {
-  const Icon = () => null;
   return (
     <>
       <BlockTitle className="text-4xl">List</BlockTitle>
@@ -26,54 +27,71 @@ export default function ListDemo() {
 
       <BlockTitle>Data list, with icons</BlockTitle>
       <List>
-        <ListItem title="Ivan Petrov" after="CEO">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
-        <ListItem title="John Doe" badge="5">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
-        <ListItem title="Jenna Smith">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
+        <ListItem
+          media={<DemoIcon />}
+          title="Ivan Petrov"
+          after="CEO"
+        ></ListItem>
+        <ListItem
+          title="John Doe"
+          media={<DemoIcon />}
+          after={
+            <>
+              <span>asdasd</span>
+              <Badge>5</Badge>
+            </>
+          }
+        />
+        <ListItem media={<DemoIcon />} title="Jenna Smith"></ListItem>
       </List>
       <BlockTitle>Links</BlockTitle>
       <List>
-        <ListItem href title="Ivan Petrov" after="CEO">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
-        <ListItem href title="John Doe" after="Cleaner">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
-        <ListItem href title="Jenna Smith">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
+        <ListItem
+          media={<DemoIcon />}
+          href
+          title="Ivan Petrov"
+          after="CEO"
+        ></ListItem>
+        <ListItem
+          media={<DemoIcon />}
+          href
+          title="John Doe"
+          after="Cleaner"
+        ></ListItem>
+        <ListItem media={<DemoIcon />} href title="Jenna Smith"></ListItem>
       </List>
       <BlockTitle>Links, Header, Footer</BlockTitle>
       <List>
-        <ListItem href header="Name" title="John Doe" after="Edit">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
-        <ListItem href header="Phone" title="+7 90 111-22-3344" after="Edit">
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
+        <ListItem
+          media={<DemoIcon />}
+          href
+          header="Name"
+          title="John Doe"
+          after="Edit"
+        ></ListItem>
+        <ListItem
+          media={<DemoIcon />}
+          href
+          header="Phone"
+          title="+7 90 111-22-3344"
+          after="Edit"
+        ></ListItem>
         <ListItem
           href
           header="Email"
           title="john@doe"
           footer="Home"
           after="Edit"
-        >
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
+          media={<DemoIcon />}
+        />
         <ListItem
           href
           header="Email"
           title="john@framework7"
           footer="Work"
           after="Edit"
-        >
-          <Icon slot="media" icon="icon-f7" />
-        </ListItem>
+          media={<DemoIcon />}
+        />
       </List>
 
       <BlockTitle>Links, no icons</BlockTitle>
