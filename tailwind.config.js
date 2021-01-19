@@ -1,5 +1,3 @@
-const { red } = require('tailwindcss/colors');
-const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
@@ -7,6 +5,30 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      minWidth: {
+        1: '0.25rem',
+        2: '0.5rem',
+        3: '0.75rem',
+        4: '1rem',
+        5: '1.25rem',
+        6: '1.5rem',
+        7: '1.75rem',
+        8: '2rem',
+        9: '2.25rem',
+        10: '2.5rem',
+      },
+      minHeight: {
+        1: '0.25rem',
+        2: '0.5rem',
+        3: '0.75rem',
+        4: '1rem',
+        5: '1.25rem',
+        6: '1.5rem',
+        7: '1.75rem',
+        8: '2rem',
+        9: '2.25rem',
+        10: '2.5rem',
+      },
       backgroundOpacity: {
         15: '0.15',
         25: '0.25',
@@ -134,7 +156,7 @@ module.exports = {
       minWidth: ['ios', 'material'],
       objectFit: ['ios', 'material'],
       objectPosition: ['ios', 'material'],
-      opacity: ['ios', 'material', 'ios-active', 'material-active'],
+      opacity: ['active', 'ios', 'material', 'ios-active', 'material-active'],
       order: ['ios', 'material'],
       outline: ['ios', 'material'],
       overflow: ['ios', 'material'],
@@ -249,6 +271,11 @@ module.exports = {
             '--hairline-color': 'transparent',
           },
         },
+        '.active-no-hairlines': {
+          '&:active': {
+            '--hairline-color': 'transparent',
+          },
+        },
         '.hairline-t': {
           '&::before': {
             position: 'absolute',
@@ -258,7 +285,7 @@ module.exports = {
             height: '1px',
             backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
             transformOrigin: 'center top',
-            transform: 'scaleY(calc(1 / var(--device-pixel-ratio, 2)))',
+            transform: 'scaleY(calc(1 / var(--device-pixel-ratio, 1)))',
             content: '""',
           },
         },
@@ -276,7 +303,7 @@ module.exports = {
             height: '100%',
             backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
             transformOrigin: 'left center',
-            transform: 'scaleX(calc(1 / var(--device-pixel-ratio, 2)))',
+            transform: 'scaleX(calc(1 / var(--device-pixel-ratio, 1)))',
             content: '""',
           },
         },
@@ -294,7 +321,7 @@ module.exports = {
             height: '1px',
             backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
             transformOrigin: 'center bottom',
-            transform: 'scaleY(calc(1 / var(--device-pixel-ratio, 2)))',
+            transform: 'scaleY(calc(1 / var(--device-pixel-ratio, 1)))',
             content: '""',
           },
         },
@@ -312,7 +339,7 @@ module.exports = {
             height: '100%',
             backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
             transformOrigin: 'right center',
-            transform: 'scaleX(calc(1 / var(--device-pixel-ratio, 2)))',
+            transform: 'scaleX(calc(1 / var(--device-pixel-ratio, 1)))',
             content: '""',
           },
         },
