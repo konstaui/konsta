@@ -66,6 +66,8 @@ module.exports = {
         0: '0ms',
       },
       colors: {
+        'page-ios': '#efeff4',
+        'page-material': '#fff',
         primary: {
           light: '#298fff',
           DEFAULT: '#007aff',
