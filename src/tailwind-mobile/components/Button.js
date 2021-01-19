@@ -67,7 +67,7 @@ const Button = (props) => {
 
   const c = {
     base: {
-      initial: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer`,
+      initial: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none`,
       ios: `duration-100 font-semibold`,
       material: `duration-300 font-medium tracking-wider`,
       common: `ios:duration-100 ios:font-semibold material:duration-300 material:font-medium material:tracking-wider`,

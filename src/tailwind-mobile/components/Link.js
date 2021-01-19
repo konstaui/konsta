@@ -37,7 +37,7 @@ const Link = (props) => {
 
   const c = {
     base: {
-      initial: `${colors.text} inline-flex space-x-1 items-center cursor-pointer`,
+      initial: `${colors.text} inline-flex space-x-1 items-center cursor-pointer select-none`,
       ios: `active:opacity-30 duration-300 active:duration-0`,
       material: `active:opacity-55`,
       common: `ios-active:opacity-30 ios:duration-300 ios-active:duration-0 material-active:opacity-55`,
