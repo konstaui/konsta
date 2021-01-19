@@ -9,6 +9,7 @@ const Block = (props) => {
 
     strong,
     inset,
+    nested,
 
     // Theme
     ios,
@@ -36,14 +37,14 @@ const Block = (props) => {
 
   const c = {
     base: {
-      initial: `px-4 my-8 text-sm relative`,
+      initial: `px-4 ${!nested ? 'my-8' : ''} text-sm relative`,
       ios: ``,
       material: ``,
       common: ``,
     },
     strong: {
       initial: `py-4 ${colors.strongBg} ${
-        !inset ? 'hairline-t hairline-b' : ''
+        !inset && !nested ? 'hairline-t hairline-b' : ''
       }`,
       ios: ``,
       material: ``,

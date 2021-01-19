@@ -8,6 +8,7 @@ const List = (props) => {
     colors: colorsProp,
 
     inset,
+    nested,
 
     // Theme
     ios,
@@ -35,8 +36,8 @@ const List = (props) => {
 
   const c = {
     base: {
-      initial: `my-8 ${colors.bg} ${
-        !inset ? 'hairline-t hairline-b' : ''
+      initial: `${!nested ? 'my-8' : ''} ${colors.bg} ${
+        !inset && !nested ? 'hairline-t hairline-b' : ''
       } relative`,
       ios: ``,
       material: ``,
