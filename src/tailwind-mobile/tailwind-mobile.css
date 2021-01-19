@@ -2,6 +2,20 @@
   /* -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
   /* -webkit-touch-callout: none; */
 }
+:root {
+  --device-pixel-ratio: 1;
+  --hairline-color: rgba(0, 0, 0, 0.2);
+}
+@media (min-resolution: 2dppx) {
+  :root {
+    --device-pixel-ratio: 2;
+  }
+}
+@media (min-resolution: 3dppx) {
+  :root {
+    --device-pixel-ratio: 3;
+  }
+}
 body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-text-size-adjust: 100%;
