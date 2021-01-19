@@ -3,28 +3,25 @@
 - Components
 
   - Cards
-  - Badge
-  - Menu List
   - Checkbox (+ list)
   - Radio (+ list)
-  - Chips/Tags
   - Contacts List (Grouped List)
   - FAB
-  - Icons
+  - Progress bar
   - Preloader
-  - Preloader Buttons
+  - Stepper
+  - Tabbar + Tabbar Labels
+  - Toggle
+  - Side Panels
+  - Menu List
+  - Icons
   - Menu
   - Messages
   - Notifications
   - Toast
-  - Progress bar
-  - Stepper
-  - Subnavbar
-  - Tabbar + Tabbar Labels
   - Timeline???
 
   - Searchbar???
-  - Toggle
   - Range???
   - Inputs
   - Slider/Carousel
