@@ -5,6 +5,7 @@ const Block = (props) => {
   const {
     tag = 'div',
     className,
+    colors: colorsProp,
 
     strong,
     inset,
@@ -28,6 +29,11 @@ const Block = (props) => {
 
   const theme = ios ? 'ios' : material ? 'material' : 'common';
 
+  const colors = {
+    strongBg: 'bg-white',
+    ...colorsProp,
+  };
+
   const c = {
     base: {
       initial: `px-4 my-8 text-sm relative`,
@@ -36,7 +42,9 @@ const Block = (props) => {
       common: ``,
     },
     strong: {
-      initial: `py-4 bg-white ${!inset ? 'hairline-t hairline-b' : ''}`,
+      initial: `py-4 ${colors.strongBg} ${
+        !inset ? 'hairline-t hairline-b' : ''
+      }`,
       ios: ``,
       material: ``,
       common: ``,
