@@ -5,6 +5,7 @@ const List = (props) => {
   const {
     tag = 'ul',
     className,
+    colors: colorsProp,
 
     inset,
 
@@ -27,9 +28,14 @@ const List = (props) => {
 
   const theme = ios ? 'ios' : material ? 'material' : 'common';
 
+  const colors = {
+    bg: 'bg-white',
+    ...colorsProp,
+  };
+
   const c = {
     base: {
-      initial: `my-8 bg-white ${
+      initial: `my-8 ${colors.bg} ${
         !inset ? 'hairline-t hairline-b' : ''
       } relative`,
       ios: ``,
