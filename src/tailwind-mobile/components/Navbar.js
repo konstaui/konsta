@@ -5,6 +5,7 @@ const Navbar = (props) => {
   const {
     tag = 'div',
     className,
+    colors: colorsProp,
     left,
     title,
     right,
@@ -23,6 +24,13 @@ const Navbar = (props) => {
     ...rest,
   };
 
+  const colors = {
+    bg: theme === 'ios' ? 'bg-gray-100' : 'bg-white',
+    iosBg: 'ios:bg-gray-100',
+    materialBg: 'material:bg-white',
+    ...colorsProp,
+  };
+
   const c = {
     base: {
       initial: 'w-full relative z-50',
@@ -32,10 +40,9 @@ const Navbar = (props) => {
     },
     bg: {
       initial: 'absolute w-full h-full left-0 top-0',
-      ios: 'hairline-b bg-gray-100',
-      material: 'shadow-md bg-white',
-      common:
-        'ios:hairline-b ios:bg-gray-100 material:shadow-md material:bg-white',
+      ios: `hairline-b ${colors.bg}`,
+      material: `shadow-md ${colors.bg}`,
+      common: `ios:hairline-b ${colors.iosBg} material:shadow-md ${colors.materialBg}`,
     },
     inner: {
       initial: 'flex relative items-center w-full h-full',

@@ -5,6 +5,8 @@ const Toolbar = (props) => {
   const {
     tag = 'div',
     className,
+    colors: colorsProp,
+
     top,
     // Theme
     ios,
@@ -21,6 +23,13 @@ const Toolbar = (props) => {
     ...rest,
   };
 
+  const colors = {
+    bg: theme === 'ios' ? 'bg-gray-100' : 'bg-white',
+    iosBg: 'ios:bg-gray-100',
+    materialBg: 'material:bg-white',
+    ...colorsProp,
+  };
+
   const c = {
     base: {
       initial: 'w-full relative z-50',
@@ -30,11 +39,11 @@ const Toolbar = (props) => {
     },
     bg: {
       initial: 'absolute w-full h-full left-0 top-0',
-      ios: `hairline-t bg-gray-100 ${top ? 'transform rotate-180' : ''}`,
-      material: `shadow-md bg-white ${!top ? 'transform rotate-180' : ''}`,
-      common: `ios:hairline-t ios:bg-gray-100 ${
-        top ? 'ios:transform ios:rotate-180' : ''
-      } material:shadow-md material:bg-white ${
+      ios: `${top ? 'hairline-b' : 'hairline-t'} ${colors.bg}`,
+      material: `shadow-md ${colors.bg} ${!top ? 'transform rotate-180' : ''}`,
+      common: `${top ? 'ios:hairline-b' : 'ios:hairline-t'} ${
+        colors.iosBg
+      } material:shadow-md ${colors.materialBg} ${
         !top ? 'material:transform material:rotate-180' : ''
       }`,
     },
