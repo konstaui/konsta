@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/classnames';
+import { classNames } from '../shared/class-names';
 import ChevronIcon from './ChevronIcon';
 
 const ListItem = (props) => {
@@ -51,7 +51,7 @@ const ListItem = (props) => {
   const theme = ios ? 'ios' : material ? 'material' : 'common';
 
   const c = {
-    base: `relative last:no-hairlines`,
+    base: `last:no-hairlines`,
     itemContent: 'pl-4 flex items-center',
     link:
       'active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none',

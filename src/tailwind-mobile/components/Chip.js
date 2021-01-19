@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/classnames';
+import { classNames } from '../shared/class-names';
 import DeleteIcon from './DeleteIcon';
 
 const Chip = (props) => {
