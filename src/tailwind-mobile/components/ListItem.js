@@ -27,6 +27,7 @@ const ListItem = (props) => {
 
     // Link props
     chevron = true,
+    chevronIcon,
     href,
     target,
 
@@ -131,7 +132,9 @@ const ListItem = (props) => {
             <div className={c.titleWrap}>
               {title && <div className={titleClasses}>{title}</div>}
               {after && <div className={c.after}>{after}</div>}
-              {isLink && chevron && <Chevron className={c.chevron} />}
+              {isLink &&
+                chevron &&
+                (chevronIcon || <Chevron className={c.chevron} />)}
             </div>
           )}
           {subtitle && <div className={c.subtitle}>{subtitle}</div>}
