@@ -5,6 +5,7 @@ const BlockTitle = (props) => {
   const {
     tag = 'div',
     className,
+    withBlock = true,
 
     // Theme
     ios,
@@ -27,7 +28,7 @@ const BlockTitle = (props) => {
 
   const c = {
     base: {
-      initial: `px-4 mt-8 flex items-center -mb-6`,
+      initial: `px-4 mt-8 flex items-center ${withBlock ? '-mb-6' : 'mb-2'}`,
       ios: `font-semibold`,
       material: `font-medium`,
       common: `ios:font-semibold material:font-medium`,
