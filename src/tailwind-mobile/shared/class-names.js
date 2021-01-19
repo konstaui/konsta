@@ -13,5 +13,5 @@ export function classNames(...args) {
   classes.forEach((c) => {
     if (uniqueClasses.indexOf(c) < 0) uniqueClasses.push(c);
   });
-  return uniqueClasses.join(' ');
+  return uniqueClasses.filter((c) => !!c).join(' ');
 }

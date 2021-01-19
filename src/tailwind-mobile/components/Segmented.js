@@ -1,7 +1,8 @@
 import React from 'react';
 import { classNames } from '../shared/class-names';
+import { useTheme } from '../shared/use-theme';
 
-const Button = (props) => {
+const Segmented = (props) => {
   const {
     tag = 'div',
     className,
@@ -30,7 +31,7 @@ const Button = (props) => {
     ...rest,
   };
 
-  const theme = ios ? 'ios' : material ? 'material' : 'common';
+  const theme = useTheme({ ios, material });
 
   const colors = {
     border: 'border-primary',
@@ -71,4 +72,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default Segmented;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from '../shared/class-names';
+import { useTheme } from '../shared/use-theme';
 
 const Subnavbar = (props) => {
   const {
@@ -16,7 +17,7 @@ const Subnavbar = (props) => {
 
   const Component = tag;
 
-  const theme = ios ? 'ios' : material ? 'material' : 'common';
+  const theme = useTheme({ ios, material });
 
   const attrs = {
     ...rest,

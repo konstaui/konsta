@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from '../shared/class-names';
+import { useTheme } from '../shared/use-theme';
 import DeleteIcon from './DeleteIcon';
 
 const Chip = (props) => {
@@ -31,7 +32,7 @@ const Chip = (props) => {
     ...rest,
   };
 
-  const theme = ios ? 'ios' : material ? 'material' : 'common';
+  const theme = useTheme({ ios, material });
 
   const style = outline ? 'outline' : 'fill';
 

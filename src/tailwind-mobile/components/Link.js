@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from '../shared/class-names';
+import { useTheme } from '../shared/use-theme';
 
 const Link = (props) => {
   const {
@@ -28,7 +29,7 @@ const Link = (props) => {
     ...rest,
   };
 
-  const theme = ios ? 'ios' : material ? 'material' : 'common';
+  const theme = useTheme({ ios, material });
 
   const colors = {
     text: 'text-primary',

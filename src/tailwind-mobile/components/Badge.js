@@ -1,5 +1,6 @@
 import React from 'react';
 import { classNames } from '../shared/class-names';
+import { useTheme } from '../shared/use-theme';
 
 const Badge = (props) => {
   const {
@@ -24,7 +25,7 @@ const Badge = (props) => {
     ...rest,
   };
 
-  const theme = ios ? 'ios' : material ? 'material' : 'common';
+  const theme = useTheme({ ios, material });
 
   const colors = {
     bg: 'bg-primary',
