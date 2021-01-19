@@ -12,6 +12,7 @@ import ButtonsDemo from './ButtonsDemo';
 import SegmentedDemo from './SegmentedDemo';
 import BlockDemo from './BlockDemo';
 import ListDemo from './ListDemo';
+import CardsDemo from './CardsDemo';
 
 function App() {
   const [theme, setTheme] = useState('ios');
@@ -50,6 +51,7 @@ function App() {
         </Segmented>
       </Subnavbar>
       <div>
+        <CardsDemo />
         <ChipsDemo />
         <ButtonsDemo />
         <SegmentedDemo />
