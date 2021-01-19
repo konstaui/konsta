@@ -2,10 +2,12 @@ import { useState } from 'react';
 
 import Navbar from '../tailwind-mobile/components/Navbar';
 import Toolbar from '../tailwind-mobile/components/Toolbar';
+import Subnavbar from '../tailwind-mobile/components/Subnavbar';
 import Segmented from '../tailwind-mobile/components/Segmented';
 import SegmentedButton from '../tailwind-mobile/components/SegmentedButton';
 import Link from '../tailwind-mobile/components/Link';
 
+import ChipsDemo from './ChipsDemo';
 import ButtonsDemo from './ButtonsDemo';
 import SegmentedDemo from './SegmentedDemo';
 import BlockDemo from './BlockDemo';
@@ -25,7 +27,7 @@ function App() {
         title="Tailwind Mobile"
         right={<Link navbar>Right</Link>}
       />
-      <Toolbar top className="sticky ios:top-11 material:top-14">
+      <Subnavbar className="sticky ios:top-11 material:top-14">
         <Segmented strong rounded>
           <SegmentedButton
             strong
@@ -46,8 +48,9 @@ function App() {
             Material Design
           </SegmentedButton>
         </Segmented>
-      </Toolbar>
+      </Subnavbar>
       <div>
+        <ChipsDemo />
         <ButtonsDemo />
         <SegmentedDemo />
         <BlockDemo />
