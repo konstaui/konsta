@@ -1,4 +1,4 @@
-- Link/Prettier
+- Lint/Prettier
 
 - Components
 
