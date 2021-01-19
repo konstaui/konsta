@@ -6,6 +6,7 @@ const Subnavbar = (props) => {
     tag = 'div',
     className,
     colors: colorsProp,
+    position = 'relative',
     // Theme
     ios,
     material,
@@ -30,7 +31,7 @@ const Subnavbar = (props) => {
 
   const c = {
     base: {
-      initial: 'w-full relative z-50',
+      initial: `w-full ${position} z-50`,
       ios: 'h-11',
       material: 'h-12',
       common: 'ios:h-11 material:h-12',
