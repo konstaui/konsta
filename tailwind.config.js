@@ -224,6 +224,7 @@ module.exports = {
   },
   plugins: [
     plugin(function ({ addVariant, addUtilities, e }) {
+      // ios: and material: variants
       addVariant('material', ({ modifySelectors, separator }) => {
         modifySelectors(({ className, selector }) => {
           if (selector.includes(':after')) {
@@ -248,6 +249,7 @@ module.exports = {
           return `.ios .${e(`ios${separator}${className}`)}`;
         });
       });
+      // ios-active: and material-active: variants
       addVariant('material-active', ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => {
           return `.material .${e(
@@ -261,8 +263,9 @@ module.exports = {
         });
       });
 
+      // Line Clamp
       const lineClamp = {};
-      Array.from({ length: 5 }).forEach((_, index) => {
+      Array.from({ length: 10 }).forEach((_, index) => {
         lineClamp[`.line-clamp-${index + 1}`] = {
           overflow: 'hidden',
           display: '-webkit-box',
@@ -271,6 +274,7 @@ module.exports = {
         };
       });
 
+      // Hairlines
       const hairlines = {
         '.no-hairlines': {
           '--hairline-color': 'transparent',
@@ -361,32 +365,19 @@ module.exports = {
           },
         },
       };
-      const safe = {
-        '.pt-safe': {
-          paddingTop: 'env(safe-area-inset-top)',
-        },
-        '.pl-safe': {
-          paddingLeft: 'env(safe-area-inset-left)',
-        },
-        '.pr-safe': {
-          paddingRight: 'env(safe-area-inset-right)',
-        },
-        '.pb-safe': {
-          paddingBottom: 'env(safe-area-inset-bottom)',
-        },
-        '.top-safe': {
-          top: 'env(safe-area-inset-top)',
-        },
-        '.left-safe': {
-          left: 'env(safe-area-inset-left)',
-        },
-        '.right-safe': {
-          right: 'env(safe-area-inset-right)',
-        },
-        '.bottom-safe': {
-          bottom: 'env(safe-area-inset-bottom)',
-        },
-      };
+
+      // Safe Ares
+      const safe = {};
+      ['top', 'right', 'bottom', 'left'].forEach((side) => {
+        const first = side[0];
+        const upper = `${side[0].toUpperCase()}${side.slice(1)}`;
+        safe[`p${first}-safe`] = {
+          [`padding${upper}`]: `env(safe-area-inset-${side})`,
+        };
+        safe[`side-safe`] = {
+          [side]: `env(safe-area-inset-${side})`,
+        };
+      });
 
       addUtilities(hairlines, ['last', 'first', 'ios', 'material']);
       addUtilities(safe);
