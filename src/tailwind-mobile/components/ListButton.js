@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const ListButton = (props) => {
@@ -36,7 +36,7 @@ const ListButton = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const colors = {
     text: 'text-primary',
@@ -58,9 +58,9 @@ const ListButton = (props) => {
     },
   };
 
-  const classes = classNames([c.base, className]);
+  const classes = cls([c.base, className]);
 
-  const buttonClasses = classNames([c.button.initial, c.button[theme]]);
+  const buttonClasses = cls(themeClasses(c.button));
 
   const isLink = !!href || href === '';
   const hrefComputed =

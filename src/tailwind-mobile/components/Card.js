@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Card = (props) => {
@@ -30,7 +30,7 @@ const Card = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const colors = {
     bg: 'bg-white',
@@ -44,11 +44,6 @@ const Card = (props) => {
   const c = {
     base: {
       initial: `m-4 ${colors.bg} rounded overflow-hidden`,
-      ios: ``,
-      material: ``,
-      common: ``,
-    },
-    style: {
       shadow: 'shadow',
       outline: `border ${colors.border}`,
     },
@@ -57,18 +52,16 @@ const Card = (props) => {
     footer: `border-t ${colors.footerText} text-sm text-opacity-55 px-4 py-2`,
   };
 
-  const classes = classNames([
+  const classes = cls(
     // base
-    c.base.initial,
-    c.base[theme],
+    themeClasses(c.base, style),
 
-    c.style[style],
-    className,
-  ]);
+    className
+  );
 
-  const headerClasses = classNames([c.header]);
-  const contentClasses = classNames([c.content]);
-  const footerClasses = classNames([c.footer]);
+  const headerClasses = cls([c.header]);
+  const contentClasses = cls([c.content]);
+  const footerClasses = cls([c.footer]);
 
   return (
     <Component className={classes} {...attrs}>

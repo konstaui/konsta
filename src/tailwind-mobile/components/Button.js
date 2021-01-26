@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Button = (props) => {
@@ -44,7 +44,7 @@ const Button = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
   const size = large ? 'large' : small ? 'small' : 'medium';
   let style = outline
     ? 'outline'
@@ -72,8 +72,7 @@ const Button = (props) => {
       ios: `duration-100 font-semibold`,
       material: `duration-300 font-medium tracking-wider`,
       common: `ios:duration-100 ios:font-semibold material:duration-300 material:font-medium material:tracking-wider`,
-    },
-    shape: {
+
       default:
         segmented && !segmentedStrong
           ? 'first:rounded-l last:rounded-r'
@@ -113,18 +112,16 @@ const Button = (props) => {
     },
   };
 
-  const classes = classNames([
+  const classes = cls([
     // base
-    c.base.initial,
-    c.base[theme],
-    c.base[rounded ? 'rounded' : 'default'],
+    themeClasses(c.base, rounded ? 'rounded' : 'default'),
+
     // style
     c.style[style],
-    style === 'fill' && small && c.smallFill[theme],
-    // shape
-    rounded ? c.shape.rounded : c.shape.default,
+    style === 'fill' && small && themeClasses(c.smallFill),
+
     // size
-    c.size[size][theme],
+    themeClasses(c.size, size),
 
     raised && c.raised,
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Subnavbar = (props) => {
@@ -17,7 +17,7 @@ const Subnavbar = (props) => {
 
   const Component = tag;
 
-  const theme = useTheme({ ios, material });
+  const { theme, themeClasses } = useTheme({ ios, material });
 
   const attrs = {
     ...rest,
@@ -45,15 +45,12 @@ const Subnavbar = (props) => {
     },
     inner: {
       initial: 'flex relative justify-between items-center w-full h-full px-2',
-      ios: '',
-      material: '',
-      common: '',
     },
   };
 
-  const classes = classNames([c.base.initial, c.base[theme], className]);
-  const bgClasses = classNames(c.bg.initial, c.bg[theme]);
-  const innerClasses = classNames(c.inner.initial, c.inner[theme]);
+  const classes = cls(themeClasses(c.base), className);
+  const bgClasses = themeClasses(c.bg);
+  const innerClasses = themeClasses(c.inner);
   return (
     <Component className={classes} {...attrs}>
       <div className={bgClasses} />

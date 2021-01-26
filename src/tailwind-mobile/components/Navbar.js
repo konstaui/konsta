@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Navbar = (props) => {
@@ -21,7 +21,7 @@ const Navbar = (props) => {
 
   const Component = tag;
 
-  const theme = useTheme({ ios, material });
+  const { theme, themeClasses } = useTheme({ ios, material });
 
   const attrs = {
     ...rest,
@@ -75,12 +75,12 @@ const Navbar = (props) => {
     },
   };
 
-  const classes = classNames([c.base.initial, c.base[theme], className]);
-  const bgClasses = classNames(c.bg.initial, c.bg[theme]);
-  const innerClasses = classNames(c.inner.initial, c.inner[theme]);
-  const leftClasses = classNames(c.left.initial, c.left[theme]);
-  const titleClasses = classNames(c.title.initial, c.title[theme]);
-  const rightClasses = classNames(c.right.initial, c.right[theme]);
+  const classes = cls(themeClasses(c.base), className);
+  const bgClasses = themeClasses(c.bg);
+  const innerClasses = themeClasses(c.inner);
+  const leftClasses = themeClasses(c.left);
+  const titleClasses = themeClasses(c.title);
+  const rightClasses = themeClasses(c.right);
   return (
     <Component className={classes} {...attrs}>
       <div className={bgClasses} />

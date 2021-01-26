@@ -1,11 +1,17 @@
 import { useContext } from 'react';
+import { themeCls } from './theme-cls';
 import { ThemeContext } from './theme-context';
 
 const useTheme = ({ ios, material }) => {
   const themeContext = useContext(ThemeContext);
-  if (ios) return 'ios';
-  if (material) return 'material';
-  return themeContext;
+  let theme;
+  if (ios) theme = 'ios';
+  if (material) theme = 'material';
+  theme = themeContext || 'common';
+  return {
+    theme,
+    themeClasses: themeCls(theme),
+  };
 };
 
 export { useTheme };

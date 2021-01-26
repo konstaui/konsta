@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Segmented = (props) => {
@@ -31,7 +31,7 @@ const Segmented = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const colors = {
     border: 'border-primary',
@@ -42,8 +42,6 @@ const Segmented = (props) => {
   const c = {
     base: {
       initial: `flex justify-center items-center overflow-hidden w-full`,
-    },
-    shape: {
       default: 'rounded',
       rounded: 'rounded-full',
     },
@@ -53,17 +51,15 @@ const Segmented = (props) => {
     strong: 'p-1 bg-gray-200 space-x-1',
   };
 
-  const classes = classNames([
+  const classes = cls(
     // base
-    c.base.initial,
-    c.base[theme],
-    rounded ? c.shape.rounded : c.shape.default,
+    themeClasses(c.base, rounded ? 'rounded' : 'default'),
     raised && c.raised,
     outline && c.outline,
     strong && c.strong,
 
-    className,
-  ]);
+    className
+  );
 
   return (
     <Component className={classes} {...attrs}>

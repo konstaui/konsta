@@ -1,7 +1,7 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
-import ChevronIcon from './ChevronIcon';
+import ChevronIcon from './icons/ChevronIcon';
 
 const ListItem = (props) => {
   const {
@@ -26,6 +26,9 @@ const ListItem = (props) => {
     // Title
     strongTitle = 'auto',
 
+    // Label props
+    label,
+
     // Link props
     chevron = true,
     chevronIcon,
@@ -49,7 +52,7 @@ const ListItem = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const c = {
     base: `last:no-hairlines`,
@@ -94,28 +97,28 @@ const ListItem = (props) => {
     },
   };
 
-  const classes = classNames([c.base, className]);
+  const classes = cls([c.base, className]);
 
   const isLink = !!href || href === '';
+  const isLabel = !!label;
+
   const hrefComputed = href === true || href === false ? undefined : href || '';
-  const ItemContentComponent = isLink ? 'a' : 'div';
+  const ItemContentComponent = isLink ? 'a' : isLabel ? 'label' : 'div';
   const linkProps = isLink ? { href: hrefComputed, target } : {};
-  const itemContentClasses = classNames([c.itemContent, isLink && c.link]);
-  const mediaClasses = classNames([c.media.initial, c.media[theme]]);
-  const innerClasses = classNames([c.inner.initial, c.inner[theme]]);
+  const itemContentClasses = cls([
+    c.itemContent,
+    (isLink || isLabel) && c.link,
+  ]);
+  const mediaClasses = themeClasses(c.media);
+  const innerClasses = themeClasses(c.inner);
   const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
-  const titleClasses = classNames([
+  const titleClasses = cls([
     c.title,
-    (strongTitle === true || autoStrongTitle) && c.strongTitle.initial,
-    (strongTitle === true || autoStrongTitle) && c.strongTitle[theme],
+    (strongTitle === true || autoStrongTitle) && themeClasses(c.strongTitle),
   ]);
 
   if (divider) {
-    const dividerClasses = classNames(
-      c.divider.initial,
-      c.divider[theme],
-      className
-    );
+    const dividerClasses = cls(themeClasses(c.divider), className);
     return (
       <Component className={dividerClasses}>
         {title}
@@ -144,6 +147,7 @@ const ListItem = (props) => {
           {footer && <div className={c.footer}>{footer}</div>}
         </div>
       </ItemContentComponent>
+      {children}
     </Component>
   );
 };

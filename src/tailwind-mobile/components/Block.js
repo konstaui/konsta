@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Block = (props) => {
@@ -29,7 +29,7 @@ const Block = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const colors = {
     strongBg: 'bg-white',
@@ -39,17 +39,11 @@ const Block = (props) => {
   const c = {
     base: {
       initial: `px-4 ${!nested ? 'my-8' : ''} text-sm relative`,
-      ios: ``,
-      material: ``,
-      common: ``,
     },
     strong: {
       initial: `py-4 ${colors.strongBg} ${
         !inset && !nested ? 'hairline-t hairline-b' : ''
       }`,
-      ios: ``,
-      material: ``,
-      common: ``,
     },
     inset: {
       initial: `mx-4 overflow-hidden`,
@@ -59,21 +53,18 @@ const Block = (props) => {
     },
   };
 
-  const classes = classNames([
+  const classes = cls(
     // base
-    c.base.initial,
-    c.base[theme],
+    themeClasses(c.base),
 
     // strong
-    strong && c.strong.initial,
-    strong && c.strong[theme],
+    strong && themeClasses(c.strong),
 
-    // strong
-    inset && c.inset.initial,
-    inset && c.inset[theme],
+    // inset
+    inset && themeClasses(c.inset),
 
-    className,
-  ]);
+    className
+  );
 
   return (
     <Component className={classes} {...attrs}>

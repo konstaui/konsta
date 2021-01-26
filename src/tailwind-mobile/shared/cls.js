@@ -1,4 +1,4 @@
-export function classNames(...args) {
+export function cls(...args) {
   const classes = [];
   args.forEach((arg) => {
     if (typeof arg === 'object' && arg.constructor === Object) {

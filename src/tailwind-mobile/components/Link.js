@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Link = (props) => {
@@ -29,7 +29,7 @@ const Link = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const colors = {
     text: 'text-primary',
@@ -55,18 +55,15 @@ const Link = (props) => {
     },
   };
 
-  const classes = classNames([
+  const classes = cls([
     // base
-    c.base.initial,
-    c.base[theme],
+    themeClasses(c.base),
 
     // toolbar
-    toolbar && c.toolbar.initial,
-    toolbar && c.toolbar[theme],
+    toolbar && themeClasses(c.toolbar),
 
     // navbar
-    navbar && c.navbar.initial,
-    navbar && c.navbar[theme],
+    navbar && themeClasses(c.navbar),
 
     className,
   ]);

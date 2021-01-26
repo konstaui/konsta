@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Toolbar = (props) => {
@@ -19,7 +19,7 @@ const Toolbar = (props) => {
 
   const Component = tag;
 
-  const theme = useTheme({ ios, material });
+  const { theme, themeClasses } = useTheme({ ios, material });
 
   const attrs = {
     ...rest,
@@ -57,9 +57,9 @@ const Toolbar = (props) => {
     },
   };
 
-  const classes = classNames([c.base.initial, c.base[theme], className]);
-  const bgClasses = classNames(c.bg.initial, c.bg[theme]);
-  const innerClasses = classNames(c.inner.initial, c.inner[theme]);
+  const classes = cls(themeClasses(c.base), className);
+  const bgClasses = themeClasses(c.bg);
+  const innerClasses = themeClasses(c.inner);
   return (
     <Component className={classes} {...attrs}>
       <div className={bgClasses} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { classNames } from '../shared/class-names';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Badge = (props) => {
@@ -25,7 +25,7 @@ const Badge = (props) => {
     ...rest,
   };
 
-  const theme = useTheme({ ios, material });
+  const { themeClasses } = useTheme({ ios, material });
 
   const colors = {
     bg: 'bg-primary',
@@ -42,13 +42,12 @@ const Badge = (props) => {
     },
   };
 
-  const classes = classNames([
+  const classes = cls(
     // base
-    c.base.initial,
-    c.base[theme],
+    themeClasses(c.base),
 
-    className,
-  ]);
+    className
+  );
 
   return (
     <Component className={classes} {...attrs}>
