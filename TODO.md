@@ -2,8 +2,6 @@
 
 - Components
 
-  - Checkbox (+ list)
-  - Radio (+ list)
   - Contacts List (Grouped List)
   - FAB
   - Progress bar
