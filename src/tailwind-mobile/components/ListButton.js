@@ -47,20 +47,18 @@ const ListButton = (props) => {
   const c = {
     base: `${hairline ? 'last:no-hairlines ' : ''}`,
     button: {
-      initial: `relative ${
+      initial: `relative flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none ${
         hairline ? 'hairline-b active-no-hairline' : ''
-      } flex items-center justify-center px-4 space-x-1 ${colors.text} ${
-        colors.activeBg
-      } active:bg-opacity-15 w-full duration-300 active:duration-0`,
+      } ${colors.text} ${colors.activeBg}`,
       ios: 'h-11',
       material: 'h-12',
       common: 'ios:h-11 material:h-12',
     },
   };
 
-  const classes = cls([c.base, className]);
+  const classes = cls(themeClasses(c.base), className);
 
-  const buttonClasses = cls(themeClasses(c.button));
+  const buttonClasses = themeClasses(c.button);
 
   const isLink = !!href || href === '';
   const hrefComputed =
