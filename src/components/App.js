@@ -15,6 +15,8 @@ import BlockDemo from './BlockDemo';
 import ListDemo from './ListDemo';
 import CardsDemo from './CardsDemo';
 import { ThemeContext } from '../tailwind-mobile/shared/theme-context';
+import CheckboxDemo from './CheckboxDemo';
+import RadioDemo from './RadioDemo';
 
 function App() {
   const [theme, setTheme] = useState('ios');
@@ -55,6 +57,9 @@ function App() {
               </SegmentedButton>
             </Segmented>
           </Subnavbar>
+
+          <RadioDemo />
+          <CheckboxDemo />
 
           <CardsDemo />
           <ChipsDemo />
