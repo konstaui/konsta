@@ -1,9 +1,9 @@
-- Lint/Prettier
+- Tooling
+
+  - Lint/Prettier
 
 - Components
 
-  - Progress bar
-  - Preloader
   - Contacts List (Grouped List)
   - FAB
   - Stepper
@@ -26,5 +26,6 @@
   - Actions
 
 - Common
+  - Icons to use `fill-current`
   - `margin`/`setMargin` prop enabled by default to unset margin
   - `positition`/`posititionClass`/`setPosition` prop to set/unset position
