@@ -8,7 +8,6 @@
   - FAB
   - Stepper
   - Tabbar + Tabbar Labels
-  - Toggle
   - Side Panels
   - Menu List
   - Icons
