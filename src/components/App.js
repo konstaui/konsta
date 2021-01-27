@@ -20,10 +20,10 @@ import CheckboxDemo from './CheckboxDemo';
 import RadioDemo from './RadioDemo';
 import ProgressbarDemo from './ProgressbarDemo';
 import PreloaderDemo from './PreloaderDemo';
+import ToggleDemo from './ToggleDemo';
 
 function App() {
-  const [theme, setTheme] = useState('ios');
-
+  const [theme, setTheme] = useState('material');
   return (
     <ThemeContext.Provider value={theme}>
       <div className={`app ${theme}`}>
@@ -61,8 +61,9 @@ function App() {
             </Segmented>
           </Subnavbar>
 
+          <ToggleDemo />
           <PreloaderDemo />
-          {/* <ProgressbarDemo />
+          <ProgressbarDemo />
           <RadioDemo />
           <CheckboxDemo />
           <CardsDemo />
@@ -70,7 +71,7 @@ function App() {
           <ButtonsDemo />
           <SegmentedDemo />
           <BlockDemo />
-          <ListDemo /> */}
+          <ListDemo />
 
           <Toolbar className="bottom-0" position="sticky">
             <Link toolbar>Link 1</Link>
