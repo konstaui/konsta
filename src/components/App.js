@@ -8,15 +8,18 @@ import Segmented from '../tailwind-mobile/components/Segmented';
 import SegmentedButton from '../tailwind-mobile/components/SegmentedButton';
 import Link from '../tailwind-mobile/components/Link';
 
+import { ThemeContext } from '../tailwind-mobile/shared/theme-context';
+
 import ChipsDemo from './ChipsDemo';
 import ButtonsDemo from './ButtonsDemo';
 import SegmentedDemo from './SegmentedDemo';
 import BlockDemo from './BlockDemo';
 import ListDemo from './ListDemo';
 import CardsDemo from './CardsDemo';
-import { ThemeContext } from '../tailwind-mobile/shared/theme-context';
 import CheckboxDemo from './CheckboxDemo';
 import RadioDemo from './RadioDemo';
+import ProgressbarDemo from './ProgressbarDemo';
+import PreloaderDemo from './PreloaderDemo';
 
 function App() {
   const [theme, setTheme] = useState('ios');
@@ -58,15 +61,16 @@ function App() {
             </Segmented>
           </Subnavbar>
 
+          <PreloaderDemo />
+          {/* <ProgressbarDemo />
           <RadioDemo />
           <CheckboxDemo />
-
           <CardsDemo />
           <ChipsDemo />
           <ButtonsDemo />
           <SegmentedDemo />
           <BlockDemo />
-          <ListDemo />
+          <ListDemo /> */}
 
           <Toolbar className="bottom-0" position="sticky">
             <Link toolbar>Link 1</Link>
