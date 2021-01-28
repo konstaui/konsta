@@ -36,7 +36,7 @@ const Block = (props) => {
     ...colorsProp,
   };
 
-  const c = {
+  const c = themeClasses({
     base: {
       initial: `px-4 ${!nested ? 'my-8' : ''} text-sm relative`,
     },
@@ -49,19 +49,19 @@ const Block = (props) => {
       initial: `mx-4 overflow-hidden`,
       ios: `rounded-lg`,
       material: `rounded`,
-      common: `ios:rounded-md material:rounded`,
+      common: ``,
     },
-  };
+  });
 
   const classes = cls(
     // base
-    themeClasses(c.base),
+    c.base,
 
     // strong
-    strong && themeClasses(c.strong),
+    strong && c.strong,
 
     // inset
-    inset && themeClasses(c.inset),
+    inset && c.inset,
 
     className
   );

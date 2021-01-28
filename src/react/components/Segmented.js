@@ -39,7 +39,7 @@ const Segmented = (props) => {
     ...colorsProp,
   };
 
-  const c = {
+  const c = themeClasses({
     base: {
       initial: `flex justify-center items-center overflow-hidden w-full`,
       default: 'rounded',
@@ -49,11 +49,11 @@ const Segmented = (props) => {
     outline: `border-2 ${colors.border}`,
     outlineInner: `-m-0.5 flex w-full justify-center items-center divide-x-2 ${colors.divide}`,
     strong: 'p-1 bg-gray-200 space-x-1',
-  };
+  });
 
   const classes = cls(
     // base
-    themeClasses(c.base, rounded ? 'rounded' : 'default'),
+    rounded ? c.base_rounded : c.base_default,
     raised && c.raised,
     outline && c.outline,
     strong && c.strong,

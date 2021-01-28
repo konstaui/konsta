@@ -1,5 +1,4 @@
 import React from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Badge = (props) => {
@@ -33,24 +32,20 @@ const Badge = (props) => {
     ...colorsProp,
   };
 
-  const c = {
-    base: {
-      initial: `${colors.bg} ${colors.text} text-xs px-1.5 py-0.5 flex items-center justify-center rounded-full min-w-5`,
-      ios: `font-semibold`,
-      material: `font-medium`,
-      common: `ios:font-semibold material:font-medium`,
+  const c = themeClasses(
+    {
+      base: {
+        initial: `${colors.bg} ${colors.text} text-xs px-1.5 py-0.5 inline-flex items-center justify-center rounded-full min-w-5`,
+        ios: `font-semibold`,
+        material: `font-medium`,
+        common: ``,
+      },
     },
-  };
-
-  const classes = cls(
-    // base
-    themeClasses(c.base),
-
     className
   );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       {children}
     </Component>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const BlockTitle = (props) => {
@@ -27,24 +26,20 @@ const BlockTitle = (props) => {
 
   const { themeClasses } = useTheme({ ios, material });
 
-  const c = {
-    base: {
-      initial: `px-4 mt-8 flex items-center ${withBlock ? '-mb-6' : 'mb-2'}`,
-      ios: `font-semibold`,
-      material: `font-medium`,
-      common: `ios:font-semibold material:font-medium`,
+  const c = themeClasses(
+    {
+      base: {
+        initial: `px-4 mt-8 flex items-center ${withBlock ? '-mb-6' : 'mb-2'}`,
+        ios: `font-semibold`,
+        material: `font-medium`,
+        common: ``,
+      },
     },
-  };
-
-  const classes = cls([
-    // base
-    themeClasses(c.base),
-
-    className,
-  ]);
+    className
+  );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       {children}
     </Component>
   );

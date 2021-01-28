@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import {
-  TailwindMobile,
+  TailwindMobileTheme,
   Page,
   Navbar,
   Toolbar,
@@ -26,7 +26,7 @@ import ToggleDemo from '../demos/ToggleDemo';
 function App() {
   const [theme, setTheme] = useState('material');
   return (
-    <TailwindMobile.Provider value={theme}>
+    <TailwindMobileTheme.Provider value={theme}>
       <div className={`app ${theme}`}>
         <Page className="relative">
           <Navbar
@@ -81,7 +81,7 @@ function App() {
           </Toolbar>
         </Page>
       </div>
-    </TailwindMobile.Provider>
+    </TailwindMobileTheme.Provider>
   );
 }
 

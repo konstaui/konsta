@@ -35,7 +35,7 @@ const List = (props) => {
     ...colorsProp,
   };
 
-  const c = {
+  const c = themeClasses({
     base: {
       initial: `${!nested ? 'my-8' : ''} ${colors.bg} ${
         !inset && !nested ? 'hairline-t hairline-b' : ''
@@ -50,13 +50,12 @@ const List = (props) => {
       material: `rounded`,
       common: `ios:rounded-md material:rounded`,
     },
-  };
+  });
 
   const classes = cls(
-    // base
-    themeClasses(c.base),
+    c.base,
 
-    inset && themeClasses(c.inset),
+    inset && c.inset,
 
     className
   );

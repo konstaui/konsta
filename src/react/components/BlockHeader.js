@@ -1,5 +1,4 @@
 import React from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const BlockHeader = (props) => {
@@ -26,21 +25,17 @@ const BlockHeader = (props) => {
 
   const { themeClasses } = useTheme({ ios, material });
 
-  const c = {
-    base: {
-      initial: `px-4 mt-8 flex items-center -mb-6 text-opacity-55 text-black text-sm`,
+  const c = themeClasses(
+    {
+      base: {
+        initial: `px-4 mt-8 flex items-center -mb-6 text-opacity-55 text-black text-sm`,
+      },
     },
-  };
-
-  const classes = cls(
-    // base
-    themeClasses(c.base),
-
     className
   );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       {children}
     </Component>
   );

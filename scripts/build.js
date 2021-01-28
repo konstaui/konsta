@@ -9,6 +9,7 @@ const formats = ['esm', 'cjs'];
     buildCopy(),
     Promise.all(formats.map((format) => buildReact(format, outputDir))),
   ]).catch((err) => {
+    // eslint-disable-next-line
     console.error(err);
     process.exit(1);
   });

@@ -22,7 +22,7 @@ import Subnavbar from './react/components/Subnavbar.js';
 import Toggle from './react/components/Toggle.js';
 import Toolbar from './react/components/Toolbar.js';
 
-import { TailwindMobile } from './react/shared/context';
+import { TailwindMobileTheme } from './react/shared/context';
 import { useTheme } from './react/shared/use-theme';
 
 export {
@@ -49,6 +49,6 @@ export {
   Subnavbar,
   Toggle,
   Toolbar,
-  TailwindMobile,
+  TailwindMobileTheme,
   useTheme,
 };

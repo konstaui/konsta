@@ -1,5 +1,4 @@
 import React from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 import RadioIcon from './icons/RadioIcon';
 
@@ -47,46 +46,44 @@ const Radio = (props) => {
   const state =
     checked || (defaultChecked && !onChange) ? 'checked' : 'notChecked';
 
-  const c = {
-    base: {
-      initial: `cursor-pointer inline-block align-middle relative`,
-    },
-    iconWrap: {
-      initial: 'flex items-center justify-center rounded-full',
-      ios: 'w-5.5 h-5.5 border',
-      material: 'w-5 h-5 border-2',
-      notChecked: {
-        ios: colors.borderIos,
-        material: colors.borderMaterial,
+  const c = themeClasses(
+    {
+      base: {
+        initial: `cursor-pointer inline-block align-middle relative`,
       },
-      checked: {
-        initial: colors.borderChecked,
+      iconWrap: {
+        initial: 'flex items-center justify-center rounded-full',
+        ios: 'w-5.5 h-5.5 border',
+        material: 'w-5 h-5 border-2',
+        notChecked: {
+          ios: colors.borderIos,
+          material: colors.borderMaterial,
+        },
+        checked: {
+          initial: colors.borderChecked,
+        },
+      },
+      icon: {
+        initial: `w-3/5 h-3/5`,
+        ios: 'text-primary fill-current',
+        material: `rounded-full ${colors.bgChecked}`,
+        notChecked: 'opacity-0',
+        checked: 'opacity-100',
+      },
+      indeterminateIcon: {
+        initial: 'bg-white w-3/4',
+        ios: 'h-0.25',
+        material: 'h-0.5',
+      },
+      input: {
+        initial: 'hidden',
       },
     },
-    icon: {
-      initial: `w-3/5 h-3/5`,
-      ios: 'text-primary fill-current',
-      material: `rounded-full ${colors.bgChecked}`,
-      notChecked: 'opacity-0',
-      checked: 'opacity-100',
-    },
-    indeterminateIcon: {
-      initial: 'bg-white w-3/4',
-      ios: 'h-0.25',
-      material: 'h-0.5',
-    },
-    input: {
-      initial: 'hidden',
-    },
-  };
-
-  const classes = cls(themeClasses(c.base), className);
-  const iconWrapClasses = themeClasses(c.iconWrap, state);
-  const iconClasses = themeClasses(c.icon, state);
-  const inputClasses = themeClasses(c.input);
+    className
+  );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       <input
         type="radio"
         name={name}
@@ -96,14 +93,14 @@ const Radio = (props) => {
         checked={checked}
         defaultChecked={defaultChecked}
         onChange={onChange}
-        className={inputClasses}
+        className={c.input}
       />
 
-      <i className={iconWrapClasses}>
+      <i className={c[`iconWrap_${state}`]}>
         {theme === 'ios' ? (
-          <RadioIcon className={iconClasses} />
+          <RadioIcon className={c[`icon_${state}`]} />
         ) : (
-          <span className={iconClasses} />
+          <span className={c[`icon_${state}`]} />
         )}
       </i>
       {children}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 const Page = (props) => {
@@ -26,24 +25,20 @@ const Page = (props) => {
 
   const { themeClasses } = useTheme({ ios, material });
 
-  const c = {
-    base: {
-      initial: '',
-      ios: 'bg-page-ios',
-      material: 'bg-page-material',
-      common: 'ios:bg-page-ios material:bg-page-material',
+  const c = themeClasses(
+    {
+      base: {
+        initial: '',
+        ios: 'bg-page-ios',
+        material: 'bg-page-material',
+        common: 'ios:bg-page-ios material:bg-page-material',
+      },
     },
-  };
-
-  const classes = cls(
-    // base
-    themeClasses(c.base),
-
     className
   );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       {children}
     </Component>
   );

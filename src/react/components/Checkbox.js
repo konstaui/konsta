@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 import CheckboxIcon from './icons/CheckboxIcon';
 
@@ -52,41 +51,38 @@ const Checkbox = (props) => {
       ? 'checked'
       : 'notChecked';
 
-  const c = {
-    base: {
-      initial: `cursor-pointer inline-block align-middle relative`,
-    },
-    iconWrap: {
-      initial: 'flex items-center justify-center',
-      ios: 'w-5.5 h-5.5 rounded-full border',
-      material: 'w-4.5 h-4.5 rounded-sm border-2',
-      notChecked: {
-        ios: colors.borderIos,
-        material: colors.borderMaterial,
+  const c = themeClasses(
+    {
+      base: {
+        initial: `cursor-pointer inline-block align-middle relative`,
       },
-      checked: {
-        initial: `${colors.bgChecked} ${colors.borderChecked}`,
+      iconWrap: {
+        initial: 'flex items-center justify-center',
+        ios: 'w-5.5 h-5.5 rounded-full border',
+        material: 'w-4.5 h-4.5 rounded-sm border-2',
+        notChecked: {
+          ios: colors.borderIos,
+          material: colors.borderMaterial,
+        },
+        checked: {
+          initial: `${colors.bgChecked} ${colors.borderChecked}`,
+        },
+      },
+      icon: {
+        notChecked: 'opacity-0',
+        checked: 'opacity-100',
+      },
+      indeterminateIcon: {
+        initial: 'bg-white w-3/4',
+        ios: 'h-0.25',
+        material: 'h-0.5',
+      },
+      input: {
+        initial: 'hidden',
       },
     },
-    icon: {
-      notChecked: 'opacity-0',
-      checked: 'opacity-100',
-    },
-    indeterminateIcon: {
-      initial: 'bg-white w-3/4',
-      ios: 'h-0.25',
-      material: 'h-0.5',
-    },
-    input: {
-      initial: 'hidden',
-    },
-  };
-
-  const classes = cls(themeClasses(c.base), className);
-  const iconWrapClasses = themeClasses(c.iconWrap, state);
-  const iconClasses = themeClasses(c.icon, state);
-  const indeterminateIconClasses = themeClasses(c.indeterminateIcon);
-  const inputClasses = themeClasses(c.input);
+    className
+  );
 
   useEffect(() => {
     if (inputElRef.current) {
@@ -95,7 +91,7 @@ const Checkbox = (props) => {
   }, [indeterminate]);
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       <input
         ref={inputElRef}
         type="checkbox"
@@ -106,16 +102,16 @@ const Checkbox = (props) => {
         checked={checked}
         defaultChecked={defaultChecked}
         onChange={onChange}
-        className={inputClasses}
+        className={c.input}
       />
-      <i className={iconWrapClasses}>
+      <i className={c[`iconWrap_${state}`]}>
         {indeterminate ? (
-          <span className={indeterminateIconClasses} />
+          <span className={c.indeterminateIcon} />
         ) : (
           <CheckboxIcon
             ios={ios}
             material={material}
-            className={iconClasses}
+            className={c[`icon_${state}`]}
             fill="#fff"
           />
         )}

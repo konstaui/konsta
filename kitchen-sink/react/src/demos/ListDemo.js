@@ -34,12 +34,7 @@ export default function ListDemo() {
         <ListItem
           title="John Doe"
           media={<DemoIcon />}
-          after={
-            <>
-              <span>asdasd</span>
-              <Badge>5</Badge>
-            </>
-          }
+          after={<Badge>5</Badge>}
         />
         <ListItem media={<DemoIcon />} title="Jenna Smith" />
       </List>

@@ -54,50 +54,52 @@ const ListItem = (props) => {
 
   const { themeClasses } = useTheme({ ios, material });
 
-  const c = {
-    base: `last:no-hairlines`,
-    itemContent: 'pl-4 flex items-center',
-    link:
-      'active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none',
-    media: {
-      initial: 'mr-4 flex-shrink-0',
-      ios: 'py-2.5',
-      material: 'py-3 min-w-10',
-      common: 'ios:py-2.5 material:py-3 material:min-w-10',
-    },
-    inner: {
-      initial: `py-2 pr-4 w-full relative ${hairline ? 'hairline-b' : ''}`,
-      ios: 'py-2.5',
-      material: 'py-3',
-      common: 'ios:py-2.5 material:py-3',
-    },
-    titleWrap: 'flex justify-between items-center',
-    title: 'flex-shrink',
-    strongTitle: {
-      initial: '',
-      ios: 'font-semibold',
-      material: 'font-medium',
-      common: 'ios:font-semibold material:font-medium',
-    },
+  const c = themeClasses(
+    {
+      base: `last:no-hairlines`,
+      itemContent: {
+        initial: 'pl-4 flex items-center',
+        link:
+          'active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none',
+      },
+      media: {
+        initial: 'mr-4 flex-shrink-0',
+        ios: 'py-2.5',
+        material: 'py-3 min-w-10',
+      },
+      inner: {
+        initial: `py-2 pr-4 w-full relative ${hairline ? 'hairline-b' : ''}`,
+        ios: 'py-2.5',
+        material: 'py-3',
+      },
+      titleWrap: 'flex justify-between items-center',
+      title: {
+        initial: 'flex-shrink',
+        strong: {
+          initial: '',
+          ios: 'font-semibold',
+          material: 'font-medium',
+        },
+      },
 
-    after:
-      'text-black text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1',
-    chevron: 'opacity-20 flex-shrink-0 ml-3',
-    subtitle: 'text-sm',
-    text: 'text-sm text-black text-opacity-55 line-clamp-2',
-    header: 'text-xs mb-0.5',
-    footer: 'text-xs text-black text-opacity-55 mt-0.5',
+      after:
+        'text-black text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1',
+      chevron: 'opacity-20 flex-shrink-0 ml-3',
+      subtitle: 'text-sm',
+      text: 'text-sm text-black text-opacity-55 line-clamp-2',
+      header: 'text-xs mb-0.5',
+      footer: 'text-xs text-black text-opacity-55 mt-0.5',
 
-    divider: {
-      initial:
-        'bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 relative',
-      ios: `h-8 ${hairline ? 'hairline-t' : ''}`,
-      material: 'h-12',
-      common: `ios:h-8 material:h-12 ${hairline ? 'ios:hairline-t' : ''}`,
+      divider: {
+        initial:
+          'bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 relative',
+        ios: `h-8 ${hairline ? 'hairline-t' : ''}`,
+        material: 'h-12',
+        common: `ios:h-8 material:h-12 ${hairline ? 'ios:hairline-t' : ''}`,
+      },
     },
-  };
-
-  const classes = cls([c.base, className]);
+    className
+  );
 
   const isLink = !!href || href === '';
   const isLabel = !!label;
@@ -105,22 +107,15 @@ const ListItem = (props) => {
   const hrefComputed = href === true || href === false ? undefined : href || '';
   const ItemContentComponent = isLink ? 'a' : isLabel ? 'label' : 'div';
   const linkProps = isLink ? { href: hrefComputed, target } : {};
-  const itemContentClasses = cls([
-    c.itemContent,
-    (isLink || isLabel) && c.link,
-  ]);
-  const mediaClasses = themeClasses(c.media);
-  const innerClasses = themeClasses(c.inner);
+  const itemContentClasses =
+    isLink || isLabel ? c.itemContent_link : c.itemContent;
   const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
-  const titleClasses = cls([
-    c.title,
-    (strongTitle === true || autoStrongTitle) && themeClasses(c.strongTitle),
-  ]);
+  const titleClasses =
+    strongTitle === true || autoStrongTitle ? c.title_strong : c.title;
 
   if (divider) {
-    const dividerClasses = cls(themeClasses(c.divider), className);
     return (
-      <Component className={dividerClasses}>
+      <Component className={cls(c.divider, className)}>
         {title}
         {children}
       </Component>
@@ -128,10 +123,10 @@ const ListItem = (props) => {
   }
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={c.base} {...attrs}>
       <ItemContentComponent className={itemContentClasses} {...linkProps}>
-        {media && <div className={mediaClasses}>{media}</div>}
-        <div className={innerClasses}>
+        {media && <div className={c.media}>{media}</div>}
+        <div className={c.inner}>
           {header && <div className={c.header}>{header}</div>}
           {(title || after) && (
             <div className={c.titleWrap}>

@@ -66,7 +66,7 @@ const Button = (props) => {
     ...colorsProp,
   };
 
-  const c = {
+  const c = themeClasses({
     base: {
       initial: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none`,
       ios: `duration-100 font-semibold`,
@@ -110,23 +110,23 @@ const Button = (props) => {
       ios: `border-2 ${colors.border} active:bg-opacity-0 ${colors.activeText}`,
       common: `ios:border-2 ${colors.iosBorder} ios-active:bg-opacity-0 ${colors.iosActiveText}`,
     },
-  };
+  });
 
-  const classes = cls([
-    // base
-    themeClasses(c.base, rounded ? 'rounded' : 'default'),
+  const classes = cls(
+    c[rounded ? 'base_rounded' : 'base_default'],
 
     // style
-    c.style[style],
-    style === 'fill' && small && themeClasses(c.smallFill),
+    c[`style_${style}`],
+
+    style === 'fill' && small && c.smallFill,
 
     // size
-    themeClasses(c.size, size),
+    c[`size_${size}`],
 
     raised && c.raised,
 
-    className,
-  ]);
+    className
+  );
 
   return (
     <Component className={classes} {...attrs}>

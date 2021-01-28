@@ -1,5 +1,4 @@
 import React from 'react';
-import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 
 import PreloaderIOS from './icons/PreloaderIOS';
@@ -39,32 +38,27 @@ const Preloader = (props) => {
 
   const SVGComponent = theme === 'ios' ? PreloaderIOS : PreloaderMaterial;
 
-  const c = {
-    base: {
-      initial: `${
-        theme === 'ios' ? 'ios-preloader' : 'material-preloader'
-      } inline-block ${size} ${colors.text}`,
-      ios: `fill-current`,
-      material: `stroke-current stroke-4`,
+  const c = themeClasses(
+    {
+      base: {
+        initial: `${
+          theme === 'ios' ? 'ios-preloader' : 'material-preloader'
+        } inline-block ${size} ${colors.text}`,
+        ios: `fill-current`,
+        material: `stroke-current stroke-4`,
+      },
+      inner: {
+        initial: `block w-full h-full`,
+        ios: '',
+        material: '',
+      },
     },
-    inner: {
-      initial: `block w-full h-full`,
-      ios: '',
-      material: '',
-    },
-  };
-
-  const classes = cls(
-    // base
-    themeClasses(c.base),
-
     className
   );
-  const innerClasses = themeClasses(c.inner);
 
   return (
-    <Component className={classes} {...attrs}>
-      <span className={innerClasses}>
+    <Component className={c.base} {...attrs}>
+      <span className={c.inner}>
         <SVGComponent className="w-full h-full" />
       </span>
       {children}

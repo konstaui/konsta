@@ -36,7 +36,7 @@ const Link = (props) => {
     ...colorsProp,
   };
 
-  const c = {
+  const c = themeClasses({
     base: {
       initial: `${colors.text} inline-flex space-x-1 items-center cursor-pointer select-none`,
       ios: `active:opacity-30 duration-300 active:duration-0`,
@@ -46,27 +46,27 @@ const Link = (props) => {
     toolbar: {
       initial: 'h-full max-h-12',
       material: 'p-x-3',
-      common: 'material:px-2',
+      common: '',
     },
     navbar: {
       initial: 'h-full max-h-12',
       material: 'p-x-3',
-      common: 'material:px-2',
+      common: '',
     },
-  };
+  });
 
-  const classes = cls([
+  const classes = cls(
     // base
-    themeClasses(c.base),
+    c.base,
 
     // toolbar
-    toolbar && themeClasses(c.toolbar),
+    toolbar && c.toolbar,
 
     // navbar
-    navbar && themeClasses(c.navbar),
+    navbar && c.navbar,
 
-    className,
-  ]);
+    className
+  );
 
   return (
     <Component className={classes} {...attrs}>
