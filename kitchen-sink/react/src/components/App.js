@@ -24,7 +24,7 @@ import PreloaderDemo from '../demos/PreloaderDemo';
 import ToggleDemo from '../demos/ToggleDemo';
 
 function App() {
-  const [theme, setTheme] = useState('material');
+  const [theme, setTheme] = useState('ios');
   return (
     <TailwindMobileTheme.Provider value={theme}>
       <div className={`app ${theme}`}>

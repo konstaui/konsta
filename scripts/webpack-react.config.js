@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -15,6 +16,7 @@ const env = process.env.NODE_ENV || 'development';
 
 module.exports = {
   mode: env,
+  target: env !== 'production' ? 'web' : 'browserslist',
   entry: {
     app: './kitchen-sink/react/src/index.js',
   },
@@ -40,9 +42,6 @@ module.exports = {
     contentBase: resolvePath('kitchen-sink/react'),
     disableHostCheck: true,
     historyApiFallback: true,
-    watchOptions: {
-      poll: 1000,
-    },
   },
   optimization: {
     concatenateModules: true,
@@ -52,25 +51,27 @@ module.exports = {
     rules: [
       {
         test: /\.(mjs|js|jsx)$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            configFile: false,
-            presets: [
-              '@babel/preset-react',
-              [
-                '@babel/preset-env',
-                {
-                  modules: false,
-                },
+        exclude: /node_modules/,
+        use: [
+          // ... other loaders
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              configFile: false,
+              presets: [
+                '@babel/preset-react',
+                [
+                  '@babel/preset-env',
+                  {
+                    modules: false,
+                  },
+                ],
               ],
-            ],
+              plugins: [
+                env !== 'production' && require.resolve('react-refresh/babel'),
+              ].filter(Boolean),
+            },
           },
-        },
-        include: [
-          resolvePath('src'),
-          resolvePath('build'),
-          resolvePath('kitchen-sink/react'),
         ],
       },
       {
@@ -103,8 +104,12 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env),
     }),
-    ...(env === 'production' ? [new CssMinimizerPlugin()] : []),
-    new webpack.HotModuleReplacementPlugin(),
+    ...(env === 'production'
+      ? [new CssMinimizerPlugin()]
+      : [
+          new webpack.HotModuleReplacementPlugin(),
+          new ReactRefreshWebpackPlugin(),
+        ]),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
