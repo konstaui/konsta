@@ -1,0 +1,7 @@
+{
+  "name": "tailwind-mobile/react",
+  "private": true,
+  "jsnext:main": "../tailwind-mobile-react.js",
+  "module": "../tailwind-mobile-react.js",
+  "sideEffects": false
+}

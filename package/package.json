@@ -1,0 +1,18 @@
+{
+  "name": "tailwind-mobile",
+  "version": "0.1.0",
+  "description": "Mobile UI components made with Tailwind CSS",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nolimits4web/tailwind-mobile.git"
+  },
+  "keywords": [],
+  "author": "Vladimir Kharlampidi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nolimits4web/tailwind-mobile/issues"
+  },
+  "engines": {
+    "node": ">= 4.7.0"
+  }
+}
