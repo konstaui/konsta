@@ -6,12 +6,16 @@ const Toolbar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
+
     position = 'relative',
+    tabbar,
+    tabbarLabels,
 
     top,
-    // Theme
+
     ios,
     material,
+
     children,
     ...rest
   } = props;
@@ -26,8 +30,6 @@ const Toolbar = (props) => {
 
   const colors = {
     bg: theme === 'ios' ? 'bg-gray-100' : 'bg-white',
-    iosBg: 'ios:bg-gray-100',
-    materialBg: 'material:bg-white',
     ...colorsProp,
   };
 
@@ -35,9 +37,14 @@ const Toolbar = (props) => {
     {
       base: {
         initial: `w-full ${position} z-50`,
-        ios: 'h-11',
-        material: 'h-12',
-        common: 'ios:h-11 material:h-12',
+        toolbar: {
+          ios: 'h-11',
+          material: 'h-12',
+        },
+        tabbarLabels: {
+          ios: 'h-12.5',
+          material: 'h-14',
+        },
       },
       bg: {
         initial: 'absolute w-full h-full left-0 top-0',
@@ -45,25 +52,21 @@ const Toolbar = (props) => {
         material: `shadow-md ${colors.bg} ${
           !top ? 'transform rotate-180' : ''
         }`,
-        common: `${top ? 'ios:hairline-b' : 'ios:hairline-t'} ${
-          colors.iosBg
-        } material:shadow-md ${colors.materialBg} ${
-          !top ? 'material:transform material:rotate-180' : ''
-        }`,
       },
       inner: {
-        initial:
-          'flex relative justify-between items-center w-full h-full px-2',
-        ios: '',
-        material: '',
-        common: '',
+        initial: `flex relative justify-between items-center w-full h-full`,
+        ios: 'px-2',
+        material: !tabbar ? 'px-2' : '',
       },
     },
     className
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component
+      className={c.base[tabbar && tabbarLabels ? 'tabbarLabels' : 'toolbar']}
+      {...attrs}
+    >
       <div className={c.bg} />
       <div className={c.inner}>{children}</div>
     </Component>

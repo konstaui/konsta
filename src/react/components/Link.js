@@ -12,6 +12,9 @@ const Link = (props) => {
     navbar,
     toolbar,
 
+    tabbar,
+    tabbarActive,
+
     // Theme
     ios,
     material,
@@ -31,47 +34,68 @@ const Link = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const { theme, themeClasses } = useTheme({ ios, material });
 
   const colors = {
     text: 'text-primary',
+    tabbarInactive: 'text-black',
     ...colorsProp,
   };
 
+  const textColor =
+    tabbar && !tabbarActive ? colors.tabbarInactive : colors.text;
+  const tabbarState = tabbarActive ? 'active' : 'inactive';
+
   const c = themeClasses({
     base: {
-      initial: `${colors.text} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
-      ios: `active:opacity-30 duration-300 active:duration-0`,
-      material: `active:opacity-55`,
-      common: `ios-active:opacity-30 ios:duration-300 ios-active:duration-0 material-active:opacity-55`,
+      initial: `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
+      notTabbar: {
+        ios: `active:opacity-30 duration-300 active:duration-0`,
+        material: `active:opacity-55`,
+      },
+    },
+    tabbar: {
+      initial: 'w-full h-full relative duration-300',
+      material: 'uppercase font-medium text-sm',
+      active: {},
+      inactive: {
+        ios: 'text-opacity-40',
+        material: 'text-opacity-55',
+      },
+    },
+    tabbarHighlight: {
+      material: 'absolute left-0 top-0 w-full h-0.5 bg-primary duration-300',
+      active: 'opacity-100',
+      inactive: 'opacity-0',
     },
     toolbar: {
       initial: 'h-full max-h-12',
       material: 'px-3',
-      common: '',
     },
     navbar: {
       initial: 'h-full max-h-12',
       material: 'px-3',
-      common: '',
     },
   });
 
   const classes = cls(
     // base
-    c.base,
+    c.base[tabbar ? 'default' : 'notTabbar'],
 
-    // toolbar
     toolbar && c.toolbar,
 
-    // navbar
     navbar && c.navbar,
+
+    tabbar && c.tabbar[tabbarState],
 
     className
   );
 
   return (
     <Component className={classes} {...attrs} onClick={onClick}>
+      {theme == 'material' && tabbar && (
+        <span className={c.tabbarHighlight[tabbarState]} />
+      )}
       {children}
     </Component>
   );
