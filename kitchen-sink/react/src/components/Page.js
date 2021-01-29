@@ -11,7 +11,7 @@ export default function Page(props) {
     history.back();
   };
   return (
-    <PageComponent className="min-h-screen relative pb-0.5">
+    <PageComponent className="min-h-screen absolute left-0 top-0 w-full h-full overflow-auto">
       {title && (
         <Navbar
           title={title}
@@ -20,7 +20,7 @@ export default function Page(props) {
           left={backLink && <NavbarBackLink onClick={goBack} />}
         />
       )}
-      {children}
+      <div className="relative">{children}</div>
     </PageComponent>
   );
 }

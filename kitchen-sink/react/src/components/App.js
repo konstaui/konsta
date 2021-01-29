@@ -10,7 +10,9 @@ function App() {
   const [theme, setTheme] = useState('ios');
   return (
     <TailwindMobileTheme.Provider value={theme}>
-      <div className={`relative min-h-screen ${theme}`}>
+      <div
+        className={`absolute left-0 top-0 w-full h-full min-h-screen ${theme}`}
+      >
         <Router>
           <Switch>
             {routes.map((route) => (
