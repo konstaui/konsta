@@ -11,9 +11,9 @@ const date = {
 module.exports = (name = null) =>
   `${`
 /**
- * Swiper ${name ? `${name} ` : ''}${pkg.version}
+ * Tailwind Mobile ${name ? `${name} ` : ''}${pkg.version}
  * ${pkg.description}
- * ${pkg.homepage}
+ * ${pkg.homepage || ''}
  *
  * Copyright 2014-${date.year} ${pkg.author}
  *

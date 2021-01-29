@@ -3,6 +3,8 @@
   "description": "Mobile UI components made with Tailwind CSS",
   "version": "0.1.2",
   "private": true,
+  "license": "MIT",
+  "author": "Vladimir Kharlampidi",
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

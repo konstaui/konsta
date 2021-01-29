@@ -1,9 +1,8 @@
 {
   "name": "tailwind-mobile/react",
   "private": true,
-  "main": "../tailwind-mobile-react.cjs.js",
-  "jsnext:main": "../tailwind-mobile-react.esm.js",
-  "module": "../tailwind-mobile-react.esm.js",
-  "typings": "../tailwind-mobile-react.d.ts",
+  "main": "../cjs/react/tailwind-mobile-react.js",
+  "jsnext:main": "../esm/react/tailwind-mobile-react.js",
+  "module": "../esm/react/tailwind-mobile-react.js",
   "sideEffects": false
 }
