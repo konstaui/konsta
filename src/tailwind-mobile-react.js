@@ -22,6 +22,8 @@ import Radio from './react/components/Radio.js';
 import Segmented from './react/components/Segmented.js';
 import SegmentedButton from './react/components/SegmentedButton.js';
 import Subnavbar from './react/components/Subnavbar.js';
+import Tabbar from './react/components/Tabbar.js';
+import TabbarLink from './react/components/TabbarLink.js';
 import Toggle from './react/components/Toggle.js';
 import Toolbar from './react/components/Toolbar.js';
 
@@ -53,6 +55,8 @@ export {
   Segmented,
   SegmentedButton,
   Subnavbar,
+  Tabbar,
+  TabbarLink,
   Toggle,
   Toolbar,
   TailwindMobileTheme,

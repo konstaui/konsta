@@ -10,6 +10,8 @@ import ProgressbarPage from './pages/ProgressbarPage';
 import PreloaderPage from './pages/PreloaderPage';
 import TogglePage from './pages/TogglePage';
 import MenuListPage from './pages/MenuListPage';
+import ToolbarPage from './pages/ToolbarPage';
+import TabbarPage from './pages/TabbarPage';
 
 const routes = [
   ChipsPage,
@@ -24,6 +26,8 @@ const routes = [
   PreloaderPage,
   TogglePage,
   MenuListPage,
+  ToolbarPage,
+  TabbarPage,
 ].map((component) => {
   const name = component.name;
   return {
