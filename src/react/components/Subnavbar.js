@@ -24,8 +24,6 @@ const Subnavbar = (props) => {
 
   const colors = {
     bg: theme === 'ios' ? 'bg-gray-100' : 'bg-white',
-    iosBg: 'ios:bg-gray-100',
-    materialBg: 'material:bg-white',
     ...colorsProp,
   };
 
@@ -35,13 +33,11 @@ const Subnavbar = (props) => {
         initial: `w-full ${position} z-50`,
         ios: 'h-11',
         material: 'h-12',
-        common: 'ios:h-11 material:h-12',
       },
       bg: {
         initial: 'absolute w-full h-full left-0 top-0',
         ios: `hairline-b ${colors.bg}`,
         material: `shadow-md ${colors.bg}`,
-        common: `ios:hairline-b ${colors.iosBg} material:shadow-md ${colors.materialBg}`,
       },
       inner: {
         initial:
