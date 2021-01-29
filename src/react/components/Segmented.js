@@ -4,7 +4,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Segmented = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
 
@@ -25,7 +25,7 @@ const Segmented = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -42,7 +42,7 @@ const Segmented = (props) => {
   const c = themeClasses({
     base: {
       initial: `flex justify-center items-center overflow-hidden w-full`,
-      default: 'rounded',
+      square: 'rounded',
       rounded: 'rounded-full',
     },
     raised: outline ? 'shadow' : `shadow divide-x`,
@@ -53,7 +53,7 @@ const Segmented = (props) => {
 
   const classes = cls(
     // base
-    rounded ? c.base_rounded : c.base_default,
+    rounded ? c.base.rounded : c.base.square,
     raised && c.raised,
     outline && c.outline,
     strong && c.strong,

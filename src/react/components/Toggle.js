@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Toggle = (props) => {
   const {
-    tag = 'label',
+    component = 'label',
     className,
     colors: colorsProp,
 
@@ -26,7 +26,7 @@ const Toggle = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -83,7 +83,7 @@ const Toggle = (props) => {
   );
 
   return (
-    <Component className={c[`base_${state}`]} {...attrs}>
+    <Component className={c.base[state]} {...attrs}>
       <input
         type="checkbox"
         name={name}
@@ -95,8 +95,8 @@ const Toggle = (props) => {
         onChange={onChange}
         className={c.input}
       />
-      <span className={c[`inner_${state}`]} />
-      <span className={c[`knob_${state}`]} />
+      <span className={c.inner[state]} />
+      <span className={c.knob[state]} />
       {children}
     </Component>
   );

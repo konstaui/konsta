@@ -1,11 +1,10 @@
 import React from 'react';
 import { Block, BlockTitle, Preloader } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function PreloaderDemo() {
+export default function PreloaderPage() {
   return (
-    <>
-      <BlockTitle className="text-4xl">Preloader</BlockTitle>
-
+    <Page title="Preloader">
       <BlockTitle>Default</BlockTitle>
       <Block strong className="text-center">
         <Preloader />
@@ -42,6 +41,6 @@ export default function PreloaderDemo() {
           <Preloader size="w-16 h-16" />
         </div>
       </Block>
-    </>
+    </Page>
   );
 }

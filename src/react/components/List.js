@@ -4,12 +4,13 @@ import { useTheme } from '../shared/use-theme';
 
 const List = (props) => {
   const {
-    tag = 'ul',
+    component = 'ul',
     className,
     colors: colorsProp,
 
     inset,
     nested,
+    menuList,
 
     // Theme
     ios,
@@ -22,7 +23,7 @@ const List = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -50,12 +51,17 @@ const List = (props) => {
       material: `rounded`,
       common: `ios:rounded-md material:rounded`,
     },
+    menuList: {
+      initial: 'py-1',
+    },
   });
 
   const classes = cls(
     c.base,
 
     inset && c.inset,
+
+    menuList && c.menuList,
 
     className
   );

@@ -8,12 +8,11 @@ import {
   ListItem,
 } from 'tailwind-mobile/react';
 import DemoIcon from '../components/DemoIcon';
+import Page from '../components/Page';
 
-export default function ListDemo() {
+export default function ListPage() {
   return (
-    <>
-      <BlockTitle className="text-4xl">List</BlockTitle>
-
+    <Page title="List">
       <BlockTitle>Simple List</BlockTitle>
       <List>
         <ListItem title="Item 1" />
@@ -199,6 +198,6 @@ export default function ListDemo() {
           Red Button
         </ListButton>
       </List>
-    </>
+    </Page>
   );
 }

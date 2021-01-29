@@ -4,7 +4,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Link = (props) => {
   const {
-    tag = 'a',
+    component = 'a',
     className,
     colors: colorsProp,
 
@@ -16,6 +16,8 @@ const Link = (props) => {
     ios,
     material,
 
+    onClick,
+
     // Children
     children,
 
@@ -23,7 +25,7 @@ const Link = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -38,19 +40,19 @@ const Link = (props) => {
 
   const c = themeClasses({
     base: {
-      initial: `${colors.text} inline-flex space-x-1 items-center cursor-pointer select-none`,
+      initial: `${colors.text} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
       ios: `active:opacity-30 duration-300 active:duration-0`,
       material: `active:opacity-55`,
       common: `ios-active:opacity-30 ios:duration-300 ios-active:duration-0 material-active:opacity-55`,
     },
     toolbar: {
       initial: 'h-full max-h-12',
-      material: 'p-x-3',
+      material: 'px-3',
       common: '',
     },
     navbar: {
       initial: 'h-full max-h-12',
-      material: 'p-x-3',
+      material: 'px-3',
       common: '',
     },
   });
@@ -69,7 +71,7 @@ const Link = (props) => {
   );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component className={classes} {...attrs} onClick={onClick}>
       {children}
     </Component>
   );

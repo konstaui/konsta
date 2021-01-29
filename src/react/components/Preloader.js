@@ -6,7 +6,7 @@ import PreloaderMaterial from './icons/PreloaderMaterial';
 
 const Preloader = (props) => {
   const {
-    tag = 'span',
+    component = 'span',
     className,
     colors: colorsProp,
 
@@ -23,7 +23,7 @@ const Preloader = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,

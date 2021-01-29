@@ -4,7 +4,7 @@ import RadioIcon from './icons/RadioIcon';
 
 const Radio = (props) => {
   const {
-    tag = 'label',
+    component = 'label',
     className,
     colors: colorsProp,
 
@@ -27,7 +27,7 @@ const Radio = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -96,11 +96,11 @@ const Radio = (props) => {
         className={c.input}
       />
 
-      <i className={c[`iconWrap_${state}`]}>
+      <i className={c.iconWrap[state]}>
         {theme === 'ios' ? (
-          <RadioIcon className={c[`icon_${state}`]} />
+          <RadioIcon className={c.icon[state]} />
         ) : (
-          <span className={c[`icon_${state}`]} />
+          <span className={c.icon[state]} />
         )}
       </i>
       {children}

@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const BlockTitle = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     withBlock = true,
 
@@ -18,7 +18,7 @@ const BlockTitle = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,

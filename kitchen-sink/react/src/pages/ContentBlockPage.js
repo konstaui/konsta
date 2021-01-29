@@ -5,11 +5,11 @@ import {
   BlockHeader,
   BlockTitle,
 } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function BlockDemo() {
+export default function ContentBlockPage() {
   return (
-    <>
-      <BlockTitle className="text-4xl">Content Block</BlockTitle>
+    <Page title="Content Block">
       <Block>
         <p>
           Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
@@ -60,6 +60,6 @@ export default function BlockDemo() {
           mollis, vulputate turpis vel, sagittis felis.
         </p>
       </Block>
-    </>
+    </Page>
   );
 }

@@ -4,7 +4,7 @@ import DeleteIcon from './icons/DeleteIcon';
 
 const Chip = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
     media,
@@ -25,7 +25,7 @@ const Chip = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -58,7 +58,7 @@ const Chip = (props) => {
   );
 
   return (
-    <Component className={c[`base_${style}`]} {...attrs}>
+    <Component className={c.base[style]} {...attrs}>
       {media && <div className={c.media}>{media}</div>}
       {children}
       {deleteButton && (

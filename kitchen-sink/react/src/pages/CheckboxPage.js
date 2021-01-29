@@ -7,8 +7,9 @@ import {
   List,
   ListItem,
 } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function CheckboxDemo() {
+export default function CheckboxPage() {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(true);
 
@@ -48,8 +49,7 @@ export default function CheckboxDemo() {
   };
 
   return (
-    <>
-      <BlockTitle className="text-4xl">Checkbox</BlockTitle>
+    <Page title="Checkbox">
       <BlockTitle>Inline</BlockTitle>
       <Block strong>
         <p>
@@ -78,7 +78,7 @@ export default function CheckboxDemo() {
           title="Books"
           media={
             <Checkbox
-              tag="div"
+              component="div"
               name="demo-checkbox"
               checked={group.includes('Books')}
               onChange={() => toggleGroupValue('Books')}
@@ -90,7 +90,7 @@ export default function CheckboxDemo() {
           title="Movies"
           media={
             <Checkbox
-              tag="div"
+              component="div"
               name="demo-checkbox"
               checked={group.includes('Movies')}
               onChange={() => toggleGroupValue('Movies')}
@@ -102,7 +102,7 @@ export default function CheckboxDemo() {
           title="Food"
           media={
             <Checkbox
-              tag="div"
+              component="div"
               name="demo-checkbox"
               checked={group.includes('Food')}
               onChange={() => toggleGroupValue('Food')}
@@ -114,7 +114,7 @@ export default function CheckboxDemo() {
           title="Drinks"
           media={
             <Checkbox
-              tag="div"
+              component="div"
               name="demo-checkbox"
               checked={group.includes('Drinks')}
               onChange={() => toggleGroupValue('Drinks')}
@@ -176,7 +176,7 @@ export default function CheckboxDemo() {
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
           media={
             <Checkbox
-              tag="div"
+              component="div"
               name="demo-media-checkbox"
               checked={media.includes('Item 1')}
               onChange={() => toggleMediaValue('Item 1')}
@@ -191,7 +191,7 @@ export default function CheckboxDemo() {
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
           media={
             <Checkbox
-              tag="div"
+              component="div"
               name="demo-media-checkbox"
               checked={media.includes('Item 2')}
               onChange={() => toggleMediaValue('Item 2')}
@@ -199,6 +199,6 @@ export default function CheckboxDemo() {
           }
         />
       </List>
-    </>
+    </Page>
   );
 }

@@ -6,13 +6,12 @@ import {
   Segmented,
   SegmentedButton,
 } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function ProgressbarDemo() {
+export default function ProgressbarPage() {
   const [progress, setProgress] = useState(0.1);
   return (
-    <>
-      <BlockTitle className="text-4xl">Progressbar</BlockTitle>
-
+    <Page title="Progressbar">
       <BlockTitle>Determinate Progress Bar</BlockTitle>
       <Block strong>
         <div className="my-4">
@@ -53,6 +52,6 @@ export default function ProgressbarDemo() {
         <Progressbar colors={{ bg: 'bg-blue-500' }} progress={0.75} />
         <Progressbar colors={{ bg: 'bg-yellow-500' }} progress={1} />
       </Block>
-    </>
+    </Page>
   );
 }

@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Badge = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
 
@@ -18,7 +18,7 @@ const Badge = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,

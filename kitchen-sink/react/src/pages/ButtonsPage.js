@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button, Block, BlockTitle } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function ButtonsDemo() {
+export default function ButtonsPage() {
   return (
-    <>
-      <BlockTitle className="text-4xl">Buttons</BlockTitle>
-
+    <Page title="Buttons">
       <BlockTitle>Default Buttons</BlockTitle>
       <Block strong className="space-y-2">
         <div className="grid grid-cols-3 gap-x-4">
@@ -195,6 +194,6 @@ export default function ButtonsDemo() {
           </Button>
         </div>
       </Block>
-    </>
+    </Page>
   );
 }

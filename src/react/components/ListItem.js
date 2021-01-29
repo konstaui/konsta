@@ -5,7 +5,8 @@ import ChevronIcon from './icons/ChevronIcon';
 
 const ListItem = (props) => {
   const {
-    tag = 'li',
+    component = 'li',
+    colors: colorsProp,
     className,
 
     // Content props
@@ -16,6 +17,9 @@ const ListItem = (props) => {
     media,
     header,
     footer,
+
+    menuListItem,
+    menuListItemActive,
 
     // Hairlines
     hairline = true,
@@ -35,6 +39,9 @@ const ListItem = (props) => {
     href,
     target,
 
+    linkComponent = 'a',
+    linkProps = {},
+
     // Theme
     ios,
     material,
@@ -46,72 +53,99 @@ const ListItem = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
   };
 
+  const colors = {
+    text: 'text-black',
+    menuListItemText: 'text-primary',
+    menuListItemBg: 'bg-primary',
+    ...colorsProp,
+  };
+
+  const isMenuListItemActive = menuListItem && menuListItemActive;
+
+  const textColor = isMenuListItemActive
+    ? colors.menuListItemText
+    : colors.text;
+
   const { themeClasses } = useTheme({ ios, material });
 
   const c = themeClasses(
     {
-      base: `last:no-hairlines`,
+      base: !menuListItem ? `last:no-hairlines` : `${textColor} py-1`,
       itemContent: {
-        initial: 'pl-4 flex items-center',
-        link:
-          'active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none',
+        initial: `${
+          menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4'
+        } flex items-center`,
+        link: `active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none${
+          isMenuListItemActive ? ' bg-primary bg-opacity-15' : ''
+        }`,
       },
       media: {
         initial: 'mr-4 flex-shrink-0',
-        ios: 'py-2.5',
+        ios: 'py-2',
         material: 'py-3 min-w-10',
       },
       inner: {
-        initial: `py-2 pr-4 w-full relative ${hairline ? 'hairline-b' : ''}`,
+        initial: `py-2 pr-4 w-full relative ${
+          hairline && !menuListItem ? 'hairline-b' : ''
+        }`,
         ios: 'py-2.5',
         material: 'py-3',
       },
       titleWrap: 'flex justify-between items-center',
       title: {
-        initial: 'flex-shrink',
+        initial: `flex-shrink`,
+        menuListItem: {
+          initial: 'text-sm font-medium',
+        },
         strong: {
           initial: '',
           ios: 'font-semibold',
           material: 'font-medium',
         },
       },
-
-      after:
-        'text-black text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1',
+      after: `${textColor} text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
       chevron: 'opacity-20 flex-shrink-0 ml-3',
       subtitle: 'text-sm',
-      text: 'text-sm text-black text-opacity-55 line-clamp-2',
+      text: `text-sm ${textColor} text-opacity-55 line-clamp-2`,
       header: 'text-xs mb-0.5',
-      footer: 'text-xs text-black text-opacity-55 mt-0.5',
+      footer: `text-xs ${textColor} text-opacity-55 mt-0.5`,
 
       divider: {
         initial:
           'bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 relative',
         ios: `h-8 ${hairline ? 'hairline-t' : ''}`,
         material: 'h-12',
-        common: `ios:h-8 material:h-12 ${hairline ? 'ios:hairline-t' : ''}`,
       },
     },
     className
   );
 
-  const isLink = !!href || href === '';
+  const isLink = !!href || href === '' || menuListItem;
   const isLabel = !!label;
 
   const hrefComputed = href === true || href === false ? undefined : href || '';
-  const ItemContentComponent = isLink ? 'a' : isLabel ? 'label' : 'div';
-  const linkProps = isLink ? { href: hrefComputed, target } : {};
+  const ItemContentComponent = isLink
+    ? linkComponent
+    : isLabel
+    ? 'label'
+    : 'div';
+  const linkPropsComputed = isLink
+    ? { href: hrefComputed, target, ...linkProps }
+    : {};
   const itemContentClasses =
-    isLink || isLabel ? c.itemContent_link : c.itemContent;
+    isLink || isLabel ? c.itemContent.link : c.itemContent.default;
   const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
-  const titleClasses =
-    strongTitle === true || autoStrongTitle ? c.title_strong : c.title;
+  const titleClasses = menuListItem
+    ? c.title.menuListItem
+    : strongTitle === true || autoStrongTitle
+    ? c.title.strong
+    : c.title.default;
 
   if (divider) {
     return (
@@ -124,7 +158,10 @@ const ListItem = (props) => {
 
   return (
     <Component className={c.base} {...attrs}>
-      <ItemContentComponent className={itemContentClasses} {...linkProps}>
+      <ItemContentComponent
+        className={itemContentClasses}
+        {...linkPropsComputed}
+      >
         {media && <div className={c.media}>{media}</div>}
         <div className={c.inner}>
           {header && <div className={c.header}>{header}</div>}
@@ -134,6 +171,7 @@ const ListItem = (props) => {
               {after && <div className={c.after}>{after}</div>}
               {isLink &&
                 chevron &&
+                !menuListItem &&
                 (chevronIcon || <ChevronIcon className={c.chevron} />)}
             </div>
           )}

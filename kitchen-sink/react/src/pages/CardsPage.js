@@ -1,11 +1,10 @@
 import React from 'react';
 import { Card, BlockTitle, List, ListItem, Link } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function CardsDemo() {
+export default function CardsPage() {
   return (
-    <>
-      <BlockTitle className="text-4xl">Cards</BlockTitle>
-
+    <Page title="Cards">
       <BlockTitle withBlock={false}>Simple Cards</BlockTitle>
       <Card>
         This is a simple card with plain text, but cards can also contain their
@@ -102,6 +101,6 @@ export default function CardsDemo() {
           </p>
         </Card>
       </div>
-    </>
+    </Page>
   );
 }

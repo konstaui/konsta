@@ -19,22 +19,32 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
   Object.keys(classesObj).forEach((key) => {
     const addBaseClass = key === 'base' ? addBaseClassName : '';
     c[key] = cls(propClasses(classesObj[key], theme), addBaseClass);
-    if (typeof classesObj[key] !== 'string') {
-      Object.keys(classesObj[key])
-        .filter((state) => !themeSubKeys.includes(state))
-        .forEach((state) => {
-          c[`${key}_${state}`] = cls(
-            propClasses(classesObj[key], theme),
-            propClasses(classesObj[key], theme, state),
-            addBaseClass
-          );
-        });
+    const hasStates =
+      typeof classesObj[key] !== 'string' &&
+      Object.keys(classesObj[key]).filter(
+        (state) => !themeSubKeys.includes(state)
+      ).length > 0;
+    if (!hasStates) {
+      c[key] = cls(propClasses(classesObj[key], theme), addBaseClass);
+      return;
     }
+    c[key] = {};
+    const defaultStateClasses = propClasses(classesObj[key], theme);
+    c[key].default = cls(defaultStateClasses, addBaseClass);
+    Object.keys(classesObj[key])
+      .filter((state) => !themeSubKeys.includes(state))
+      .forEach((state) => {
+        c[key][state] = cls(
+          defaultStateClasses,
+          propClasses(classesObj[key], theme, state),
+          addBaseClass
+        );
+      });
   });
   return c;
 };
 
-const useTheme = ({ ios, material }) => {
+const useTheme = ({ ios, material } = {}) => {
   const themeContext = useContext(TailwindMobileTheme);
   let theme = themeContext || 'common';
   if (ios) theme = 'ios';

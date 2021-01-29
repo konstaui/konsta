@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Toolbar = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
     position = 'relative',
@@ -16,7 +16,7 @@ const Toolbar = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const { theme, themeClasses } = useTheme({ ios, material });
 

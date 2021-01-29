@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Page = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
 
     // Theme
@@ -17,7 +17,7 @@ const Page = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -31,7 +31,6 @@ const Page = (props) => {
         initial: '',
         ios: 'bg-page-ios',
         material: 'bg-page-material',
-        common: 'ios:bg-page-ios material:bg-page-material',
       },
     },
     className

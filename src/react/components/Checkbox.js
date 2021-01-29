@@ -4,7 +4,7 @@ import CheckboxIcon from './icons/CheckboxIcon';
 
 const Checkbox = (props) => {
   const {
-    tag = 'label',
+    component = 'label',
     className,
     colors: colorsProp,
 
@@ -30,7 +30,7 @@ const Checkbox = (props) => {
 
   const inputElRef = useRef(null);
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -104,14 +104,14 @@ const Checkbox = (props) => {
         onChange={onChange}
         className={c.input}
       />
-      <i className={c[`iconWrap_${state}`]}>
+      <i className={c.iconWrap[state]}>
         {indeterminate ? (
           <span className={c.indeterminateIcon} />
         ) : (
           <CheckboxIcon
             ios={ios}
             material={material}
-            className={c[`icon_${state}`]}
+            className={c.icon[state]}
             fill="#fff"
           />
         )}

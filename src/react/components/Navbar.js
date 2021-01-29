@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Navbar = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
     position = 'relative',
@@ -18,7 +18,7 @@ const Navbar = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const { theme, themeClasses } = useTheme({ ios, material });
 

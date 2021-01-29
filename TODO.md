@@ -9,7 +9,6 @@
   - Stepper
   - Tabbar + Tabbar Labels
   - Side Panels
-  - Menu List
   - Icons
   - Menu
   - Messages

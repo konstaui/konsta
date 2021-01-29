@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const BlockHeader = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
 
     // Theme
@@ -17,7 +17,7 @@ const BlockHeader = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,

@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { BlockTitle, List, ListItem, Toggle } from 'tailwind-mobile/react';
+import { List, ListItem, Toggle } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function ToggleDemo() {
+export default function TogglePage() {
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(true);
   const [checked3, setChecked3] = useState(true);
   const [checked4, setChecked4] = useState(true);
   return (
-    <>
-      <BlockTitle className="text-4xl">Toggle</BlockTitle>
-
+    <Page title="Toggle">
       <List>
         <ListItem
           title="Item 1"
@@ -55,6 +54,6 @@ export default function ToggleDemo() {
           }
         />
       </List>
-    </>
+    </Page>
   );
 }

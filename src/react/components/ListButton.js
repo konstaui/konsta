@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const ListButton = (props) => {
   const {
-    tag = 'li',
+    component = 'li',
     className,
     colors: colorsProp,
 
@@ -18,6 +18,9 @@ const ListButton = (props) => {
     type,
     value,
 
+    linkComponent = 'a',
+    linkProps = {},
+
     // Theme
     ios,
     material,
@@ -29,7 +32,7 @@ const ListButton = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -61,9 +64,9 @@ const ListButton = (props) => {
   const isLink = !!href || href === '';
   const hrefComputed =
     !isLink || href === true || href === false ? undefined : href || '';
-  const buttonAttrs = { href: hrefComputed, target, type, value };
+  const buttonAttrs = { href: hrefComputed, target, type, value, ...linkProps };
 
-  const ButtonComponent = isLink ? 'a' : 'button';
+  const ButtonComponent = isLink ? linkComponent : 'button';
 
   return (
     <Component className={c.base} {...attrs}>

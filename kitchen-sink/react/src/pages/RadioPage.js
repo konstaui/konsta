@@ -6,15 +6,15 @@ import {
   List,
   ListItem,
 } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function RadioDemo() {
+export default function RadioPage() {
   const [inlineValue, setInlineValue] = useState('inline-1');
   const [groupValue, setGroupValue] = useState('Books');
   const [mediaValue, setMediaValue] = useState('Item 1');
 
   return (
-    <>
-      <BlockTitle className="text-4xl">Radio</BlockTitle>
+    <Page title="Radio">
       <BlockTitle>Inline</BlockTitle>
       <Block strong>
         <p>
@@ -45,7 +45,7 @@ export default function RadioDemo() {
           title="Books"
           media={
             <Radio
-              tag="div"
+              component="div"
               value="Books"
               checked={groupValue === 'Books'}
               onChange={() => setGroupValue('Books')}
@@ -57,7 +57,7 @@ export default function RadioDemo() {
           title="Movies"
           media={
             <Radio
-              tag="div"
+              component="div"
               value="Movies"
               checked={groupValue === 'Movies'}
               onChange={() => setGroupValue('Movies')}
@@ -69,7 +69,7 @@ export default function RadioDemo() {
           title="Food"
           media={
             <Radio
-              tag="div"
+              component="div"
               value="Food"
               checked={groupValue === 'Food'}
               onChange={() => setGroupValue('Food')}
@@ -81,7 +81,7 @@ export default function RadioDemo() {
           title="Drinks"
           media={
             <Radio
-              tag="div"
+              component="div"
               value="Drinks"
               checked={groupValue === 'Drinks'}
               onChange={() => setGroupValue('Drinks')}
@@ -96,7 +96,7 @@ export default function RadioDemo() {
           title="Books"
           after={
             <Radio
-              tag="div"
+              component="div"
               value="Books"
               checked={groupValue === 'Books'}
               onChange={() => setGroupValue('Books')}
@@ -108,7 +108,7 @@ export default function RadioDemo() {
           title="Movies"
           after={
             <Radio
-              tag="div"
+              component="div"
               value="Movies"
               checked={groupValue === 'Movies'}
               onChange={() => setGroupValue('Movies')}
@@ -120,7 +120,7 @@ export default function RadioDemo() {
           title="Food"
           after={
             <Radio
-              tag="div"
+              component="div"
               value="Food"
               checked={groupValue === 'Food'}
               onChange={() => setGroupValue('Food')}
@@ -132,7 +132,7 @@ export default function RadioDemo() {
           title="Drinks"
           after={
             <Radio
-              tag="div"
+              component="div"
               value="Drinks"
               checked={groupValue === 'Drinks'}
               onChange={() => setGroupValue('Drinks')}
@@ -151,7 +151,7 @@ export default function RadioDemo() {
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
           media={
             <Radio
-              tag="div"
+              component="div"
               checked={mediaValue === 'Item 1'}
               onChange={() => setMediaValue('Item 1')}
             />
@@ -165,13 +165,13 @@ export default function RadioDemo() {
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
           media={
             <Radio
-              tag="div"
+              component="div"
               checked={mediaValue === 'Item 2'}
               onChange={() => setMediaValue('Item 2')}
             />
           }
         />
       </List>
-    </>
+    </Page>
   );
 }

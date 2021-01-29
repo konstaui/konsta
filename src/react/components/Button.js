@@ -4,7 +4,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Button = (props) => {
   const {
-    tag = 'button',
+    component = 'button',
     className,
     colors: colorsProp,
 
@@ -35,8 +35,8 @@ const Button = (props) => {
     ...rest
   } = props;
 
-  let Component = tag;
-  if (typeof props.tag === 'undefined' && (href || href === ''))
+  let Component = component;
+  if (typeof props.component === 'undefined' && (href || href === ''))
     Component = 'a';
 
   const attrs = {
@@ -73,7 +73,7 @@ const Button = (props) => {
       material: `duration-300 font-medium tracking-wider`,
       common: `ios:duration-100 ios:font-semibold material:duration-300 material:font-medium material:tracking-wider`,
 
-      default:
+      square:
         segmented && !segmentedStrong
           ? 'first:rounded-l last:rounded-r'
           : 'rounded',
@@ -113,15 +113,15 @@ const Button = (props) => {
   });
 
   const classes = cls(
-    c[rounded ? 'base_rounded' : 'base_default'],
+    c.base[rounded ? 'rounded' : 'square'],
 
     // style
-    c[`style_${style}`],
+    c.style[style],
 
     style === 'fill' && small && c.smallFill,
 
     // size
-    c[`size_${size}`],
+    c.size[size],
 
     raised && c.raised,
 

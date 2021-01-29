@@ -6,13 +6,12 @@ import {
   Block,
   BlockTitle,
 } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function SegmentedDemo() {
+export default function SegmentedControlPage() {
   const [activeSegmented, setActiveSegmented] = useState(1);
   return (
-    <>
-      <BlockTitle className="text-4xl">Segmented Control</BlockTitle>
-
+    <Page title="Segmented Control">
       <BlockTitle>Default Segmented</BlockTitle>
       <Block strong className="space-y-4">
         <Segmented>
@@ -199,6 +198,6 @@ export default function SegmentedDemo() {
           </SegmentedButton>
         </Segmented>
       </Block>
-    </>
+    </Page>
   );
 }

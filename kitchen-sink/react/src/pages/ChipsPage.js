@@ -1,11 +1,10 @@
 import React from 'react';
 import { Chip, Block, BlockTitle } from 'tailwind-mobile/react';
+import Page from '../components/Page';
 
-export default function ChipsDemo() {
+export default function ChipsPage() {
   return (
-    <>
-      <BlockTitle className="text-4xl">Chips</BlockTitle>
-
+    <Page title="Chips">
       <BlockTitle>Chips With Text</BlockTitle>
       <Block strong>
         <Chip className="m-0.5">Example Chip</Chip>
@@ -166,6 +165,6 @@ export default function ChipsDemo() {
           Pink Chip
         </Chip>
       </Block>
-    </>
+    </Page>
   );
 }

@@ -4,7 +4,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Block = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
 
@@ -23,7 +23,7 @@ const Block = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,

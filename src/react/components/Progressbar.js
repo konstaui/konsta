@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Progressbar = (props) => {
   const {
-    tag = 'span',
+    component = 'span',
     className,
     colors: colorsProp,
 
@@ -12,7 +12,6 @@ const Progressbar = (props) => {
     material,
 
     progress = 0,
-    indeterminate,
 
     // Children
     children,
@@ -21,7 +20,7 @@ const Progressbar = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,

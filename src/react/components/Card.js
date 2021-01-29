@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Card = (props) => {
   const {
-    tag = 'div',
+    component = 'div',
     className,
     colors: colorsProp,
     header,
@@ -23,7 +23,7 @@ const Card = (props) => {
     ...rest
   } = props;
 
-  const Component = tag;
+  const Component = component;
 
   const attrs = {
     ...rest,
@@ -55,7 +55,7 @@ const Card = (props) => {
   );
 
   return (
-    <Component className={c[`base_${style}`]} {...attrs}>
+    <Component className={c.base[style]} {...attrs}>
       {header && <div className={c.header}>{header}</div>}
       <div className={c.content}>{children}</div>
       {footer && <div className={c.footer}>{footer}</div>}
