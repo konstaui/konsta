@@ -7,7 +7,6 @@
   - Contacts List (Grouped List)
   - FAB
   - Stepper
-  - Tabbar + Tabbar Labels
   - Side Panels
   - Icons
   - Menu
