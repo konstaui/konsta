@@ -22,9 +22,9 @@ export default function ListPage() {
 
       <BlockTitle>Simple Links List</BlockTitle>
       <List>
-        <ListItem title="Link 1" href />
-        <ListItem title="Link 2" href />
-        <ListItem title="Link 3" href />
+        <ListItem title="Link 1" link />
+        <ListItem title="Link 2" link />
+        <ListItem title="Link 3" link />
       </List>
 
       <BlockTitle>Data list, with icons</BlockTitle>
@@ -39,28 +39,28 @@ export default function ListPage() {
       </List>
       <BlockTitle>Links</BlockTitle>
       <List>
-        <ListItem media={<DemoIcon />} href title="Ivan Petrov" after="CEO" />
-        <ListItem media={<DemoIcon />} href title="John Doe" after="Cleaner" />
-        <ListItem media={<DemoIcon />} href title="Jenna Smith" />
+        <ListItem media={<DemoIcon />} link title="Ivan Petrov" after="CEO" />
+        <ListItem media={<DemoIcon />} link title="John Doe" after="Cleaner" />
+        <ListItem media={<DemoIcon />} link title="Jenna Smith" />
       </List>
       <BlockTitle>Links, Header, Footer</BlockTitle>
       <List>
         <ListItem
           media={<DemoIcon />}
-          href
+          link
           header="Name"
           title="John Doe"
           after="Edit"
         />
         <ListItem
           media={<DemoIcon />}
-          href
+          link
           header="Phone"
           title="+7 90 111-22-3344"
           after="Edit"
         />
         <ListItem
-          href
+          link
           header="Email"
           title="john@doe"
           footer="Home"
@@ -68,7 +68,7 @@ export default function ListPage() {
           media={<DemoIcon />}
         />
         <ListItem
-          href
+          link
           header="Email"
           title="john@framework7"
           footer="Work"
@@ -79,11 +79,11 @@ export default function ListPage() {
 
       <BlockTitle>Links, no icons</BlockTitle>
       <List>
-        <ListItem href title="Ivan Petrov" />
-        <ListItem href title="John Doe" />
+        <ListItem link title="Ivan Petrov" />
+        <ListItem link title="John Doe" />
         <ListItem divider title="Divider Here" />
-        <ListItem href title="Ivan Petrov" />
-        <ListItem href title="Jenna Smith" />
+        <ListItem link title="Ivan Petrov" />
+        <ListItem link title="Jenna Smith" />
       </List>
 
       <BlockTitle>Inset List</BlockTitle>
@@ -105,7 +105,7 @@ export default function ListPage() {
       <BlockTitle>Songs</BlockTitle>
       <List>
         <ListItem
-          href
+          link
           title="Yellow Submarine"
           after="$15"
           subtitle="Beatles"
@@ -119,7 +119,7 @@ export default function ListPage() {
           }
         />
         <ListItem
-          href
+          link
           title="Don't Stop Me Now"
           after="$22"
           subtitle="Queen"
@@ -133,7 +133,7 @@ export default function ListPage() {
           }
         />
         <ListItem
-          href
+          link
           title="Billie Jean"
           after="$16"
           subtitle="Michael Jackson"
@@ -150,28 +150,28 @@ export default function ListPage() {
       <BlockTitle>Mail App</BlockTitle>
       <List>
         <ListItem
-          href
+          link
           title="Facebook"
           after="17:14"
           subtitle="New messages from John Doe"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
         />
         <ListItem
-          href
+          link
           title="John Doe (via Twitter)"
           after="17:11"
           subtitle="John Doe (@_johndoe) mentioned you on Twitter!"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
         />
         <ListItem
-          href
+          link
           title="Facebook"
           after="16:48"
           subtitle="New messages from John Doe"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
         />
         <ListItem
-          href
+          link
           title="John Doe (via Twitter)"
           after="15:32"
           subtitle="John Doe (@_johndoe) mentioned you on Twitter!"

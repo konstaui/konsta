@@ -39,7 +39,7 @@ export default function HomePage({ theme, setTheme }) {
         {routes.map((route) => (
           <ListItem
             key={route.path}
-            href
+            link
             title={route.title}
             linkComponent={Link}
             linkProps={{ to: route.path }}

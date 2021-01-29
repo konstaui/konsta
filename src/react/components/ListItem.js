@@ -39,6 +39,7 @@ const ListItem = (props) => {
     href,
     target,
 
+    link,
     linkComponent = 'a',
     linkProps = {},
 
@@ -126,10 +127,13 @@ const ListItem = (props) => {
     className
   );
 
-  const isLink = !!href || href === '' || menuListItem;
+  const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;
 
-  const hrefComputed = href === true || href === false ? undefined : href || '';
+  const hrefComputed =
+    href === true || href === false || typeof href === 'undefined'
+      ? undefined
+      : href || '';
   const ItemContentComponent = isLink
     ? linkComponent
     : isLabel
