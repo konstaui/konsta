@@ -4,7 +4,6 @@
 
 - Components
 
-  - Contacts List (Grouped List)
   - FAB
   - Stepper
   - Side Panels
