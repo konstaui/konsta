@@ -40,7 +40,7 @@ const List = (props) => {
     base: {
       initial: `${!nested ? 'my-8' : ''} ${colors.bg} ${
         !inset && !nested ? 'hairline-t hairline-b' : ''
-      } relative`,
+      } relative last-child:no-hairlines`,
       ios: ``,
       material: ``,
       common: ``,

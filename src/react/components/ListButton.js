@@ -48,7 +48,7 @@ const ListButton = (props) => {
 
   const c = themeClasses(
     {
-      base: `${hairline ? 'last:no-hairlines ' : ''}`,
+      base: `${!hairline ? 'no-hairlines ' : ''}`,
       button: {
         initial: `relative flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none ${
           hairline ? 'hairline-b active-no-hairline' : ''
