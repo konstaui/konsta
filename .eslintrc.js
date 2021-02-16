@@ -5,24 +5,6 @@ const rules = {
       props: false,
     },
   ],
-  'no-mixed-operators': [
-    'error',
-    {
-      // the list of arthmetic groups disallows mixing `%` and `**`
-      // with other arithmetic operators.
-      groups: [
-        ['%', '**'],
-        ['%', '+'],
-        ['%', '-'],
-        ['%', '*'],
-        ['%', '/'],
-        ['&', '|', '<<', '>>', '>>>'],
-        ['==', '!=', '===', '!=='],
-        ['&&', '||'],
-      ],
-      allowSamePrecedence: false,
-    },
-  ],
   'prefer-destructuring': ['off'],
   'prefer-object-spread': ['off'],
   'prefer-ob': ['off'],
