@@ -8,7 +8,6 @@
   - FAB
   - Stepper
   - Side Panels
-  - Icons
   - Menu
   - Messages
   - Notifications
