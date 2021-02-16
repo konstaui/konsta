@@ -92,5 +92,12 @@ module.exports = () =>
         },
       },
     };
-    addUtilities(hairlines, ['last', 'first', 'ios', 'material']);
+    addUtilities(hairlines, [
+      'last',
+      'first',
+      'ios',
+      'material',
+      'last-child',
+      'first-child',
+    ]);
   });

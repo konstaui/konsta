@@ -6,6 +6,7 @@ const pluginHairlines = require('./config/plugin-hairlines');
 const pluginIosMaterial = require('./config/plugin-ios-material');
 const pluginLineClamp = require('./config/plugin-line-clamp');
 const pluginSafeAreas = require('./config/plugin-safe-areas');
+const pluginChildren = require('./config/plugin-children');
 
 const config = (userConfig = {}) => {
   return configExtend(
@@ -18,8 +19,9 @@ const config = (userConfig = {}) => {
         extend: extendVariants(),
       },
       plugins: [
-        pluginHairlines(),
+        pluginChildren(),
         pluginIosMaterial(),
+        pluginHairlines(),
         pluginLineClamp(),
         pluginSafeAreas(),
       ],
