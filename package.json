@@ -1,7 +1,7 @@
 {
   "name": "tailwind-mobile",
   "description": "Mobile UI components made with Tailwind CSS",
-  "version": "0.1.2",
+  "version": "0.0.1",
   "private": true,
   "license": "MIT",
   "author": "Vladimir Kharlampidi",
@@ -14,8 +14,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production node scripts/build",
     "/*============ Kitchen Sink ============*/": "============",
-    "react:webpack": "cross-env NODE_ENV=development webpack serve --config ./scripts/webpack-react.config.js",
-    "react": "npm run react:webpack",
+    "react": "cross-env NODE_ENV=development webpack serve --config ./scripts/webpack-react.config.js",
     "/*============ Dev tools ============*/": "============",
     "prettier": "prettier \"**/*.+(js|json|scss|css|less|ts|vue)\"",
     "format": "npm run prettier -- --write",

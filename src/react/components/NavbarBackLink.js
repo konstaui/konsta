@@ -25,8 +25,6 @@ const NavbarBackLink = (props) => {
     ...rest
   } = props;
 
-  const Component = component;
-
   const attrs = {
     ...rest,
   };

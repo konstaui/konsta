@@ -93,7 +93,7 @@ const Link = (props) => {
 
   return (
     <Component className={classes} {...attrs} onClick={onClick}>
-      {theme == 'material' && tabbar && (
+      {theme === 'material' && tabbar && (
         <span className={c.tabbarHighlight[tabbarState]} />
       )}
       {children}
