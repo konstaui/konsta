@@ -1,6 +1,6 @@
 - Tooling
 
-  - Lint/Prettier
+  - Lint - check rules
 
 - Components
 
@@ -23,6 +23,5 @@
   - Actions
 
 - Common
-  - Icons to use `fill-current`
   - `margin`/`setMargin` prop enabled by default to unset margin
   - `positition`/`posititionClass`/`setPosition` prop to set/unset position

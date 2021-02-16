@@ -44,8 +44,8 @@ const Preloader = (props) => {
         initial: `${
           theme === 'ios' ? 'ios-preloader' : 'material-preloader'
         } inline-block ${size} ${colors.text}`,
-        ios: `fill-current`,
-        material: `stroke-current stroke-4`,
+        ios: ``,
+        material: `stroke-4`,
       },
       inner: {
         initial: `block w-full h-full`,

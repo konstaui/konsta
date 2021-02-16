@@ -41,7 +41,7 @@ const NavbarBackLink = (props) => {
         material: 'min-w-12',
       },
       icon: {
-        initial: 'fill-current',
+        initial: '',
       },
     },
     className

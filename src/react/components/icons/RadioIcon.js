@@ -9,6 +9,7 @@ const RadioIcon = (props) => {
       width="13"
       height="10"
       viewBox="0 0 13 10"
+      fill="currentcolor"
       {...rest}
     >
       <polygon

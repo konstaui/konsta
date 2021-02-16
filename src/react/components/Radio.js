@@ -65,7 +65,7 @@ const Radio = (props) => {
       },
       icon: {
         initial: `w-3/5 h-3/5`,
-        ios: 'text-primary fill-current',
+        ios: 'text-primary',
         material: `rounded-full ${colors.bgChecked}`,
         notChecked: 'opacity-0',
         checked: 'opacity-100',
