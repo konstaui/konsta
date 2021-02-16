@@ -9,6 +9,7 @@ import Checkbox from './components/Checkbox.js';
 import Chip from './components/Chip.js';
 import Link from './components/Link.js';
 import List from './components/List.js';
+import ListGroup from './components/ListGroup.js';
 import ListButton from './components/ListButton.js';
 import ListItem from './components/ListItem.js';
 import MenuList from './components/MenuList.js';
@@ -42,6 +43,7 @@ export {
   Chip,
   Link,
   List,
+  ListGroup,
   ListButton,
   ListItem,
   MenuList,

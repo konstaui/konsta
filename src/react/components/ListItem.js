@@ -25,7 +25,8 @@ const ListItem = (props) => {
     hairline = true,
 
     // Enable divider
-    divider = false,
+    divider,
+    groupTitle,
 
     // Title
     strongTitle = 'auto',
@@ -77,7 +78,7 @@ const ListItem = (props) => {
 
   const c = themeClasses(
     {
-      base: !menuListItem ? `last:no-hairlines` : `${textColor} py-1`,
+      base: menuListItem ? `${textColor} py-1` : '',
       itemContent: {
         initial: `${
           menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4'
@@ -118,8 +119,9 @@ const ListItem = (props) => {
       footer: `text-xs ${textColor} text-opacity-55 mt-0.5`,
 
       divider: {
-        initial:
-          'bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 relative',
+        initial: `bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 ${
+          divider ? 'relative' : 'sticky top-0 z-10'
+        }`,
         ios: `h-8 ${hairline ? 'hairline-t' : ''}`,
         material: 'h-12',
       },
@@ -151,7 +153,7 @@ const ListItem = (props) => {
     ? c.title.strong
     : c.title.default;
 
-  if (divider) {
+  if (divider || groupTitle) {
     return (
       <Component className={cls(c.divider, className)}>
         {title}

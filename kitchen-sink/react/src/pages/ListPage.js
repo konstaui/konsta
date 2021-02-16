@@ -4,6 +4,7 @@ import {
   Block,
   BlockTitle,
   List,
+  ListGroup,
   ListButton,
   ListItem,
 } from 'tailwind-mobile/react';
@@ -84,6 +85,28 @@ export default function ListPage() {
         <ListItem divider title="Divider Here" />
         <ListItem link title="Ivan Petrov" />
         <ListItem link title="Jenna Smith" />
+      </List>
+
+      <BlockTitle>Grouped with sticky titles</BlockTitle>
+      <List>
+        <ListGroup>
+          <ListItem title="A" groupTitle />
+          <ListItem title="Aaron " />
+          <ListItem title="Abbie" />
+          <ListItem title="Adam" />
+        </ListGroup>
+        <ListGroup>
+          <ListItem title="B" groupTitle />
+          <ListItem title="Bailey" />
+          <ListItem title="Barclay" />
+          <ListItem title="Bartolo" />
+        </ListGroup>
+        <ListGroup>
+          <ListItem title="C" groupTitle />
+          <ListItem title="Caiden" />
+          <ListItem title="Calvin" />
+          <ListItem title="Candy" />
+        </ListGroup>
       </List>
 
       <BlockTitle>Inset List</BlockTitle>
