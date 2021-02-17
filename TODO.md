@@ -4,7 +4,6 @@
 
 - Components
 
-  - FAB
   - Stepper
   - Inputs
   - Menu
@@ -24,3 +23,4 @@
   - `positition`/`posititionClass`/`setPosition` prop to set/unset position
   - do not enable custom variants for everything
   - touch ripple
+  - dark theme
