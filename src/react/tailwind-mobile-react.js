@@ -7,6 +7,7 @@ import Button from './components/Button.js';
 import Card from './components/Card.js';
 import Checkbox from './components/Checkbox.js';
 import Chip from './components/Chip.js';
+import Fab from './components/Fab.js';
 import Link from './components/Link.js';
 import List from './components/List.js';
 import ListGroup from './components/ListGroup.js';
@@ -41,6 +42,7 @@ export {
   Card,
   Checkbox,
   Chip,
+  Fab,
   Link,
   List,
   ListGroup,
