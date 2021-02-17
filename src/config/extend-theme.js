@@ -5,8 +5,12 @@ const extendTheme = () => {
     (el, index) => index + 1
   );
 
-  const width = {};
-  const height = {};
+  const width = {
+    '1em': '1em',
+  };
+  const height = {
+    '1em': '1em',
+  };
   sizesValues.forEach((size) => {
     width[size] = `${size / 4}rem`;
     height[size] = `${size / 4}rem`;
@@ -41,7 +45,19 @@ const extendTheme = () => {
     transitionDuration[value] = `${value}ms`;
   });
 
+  const fontSize = {
+    'icon-ios': '28px',
+    'icon-material': '24px',
+  };
+
+  const inset = {
+    15: `${15 / 4}rem`,
+    18: `${18 / 4}rem`,
+  };
+
   return {
+    fontSize,
+    inset,
     width,
     height,
     minWidth,
