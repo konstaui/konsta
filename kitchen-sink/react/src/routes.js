@@ -12,6 +12,7 @@ import TogglePage from './pages/TogglePage';
 import MenuListPage from './pages/MenuListPage';
 import ToolbarPage from './pages/ToolbarPage';
 import TabbarPage from './pages/TabbarPage';
+import FabPage from './pages/FabPage';
 
 const routes = [
   ChipsPage,
@@ -28,25 +29,30 @@ const routes = [
   MenuListPage,
   ToolbarPage,
   TabbarPage,
+  FabPage,
 ].map((component) => {
   const name = component.name;
-  return {
-    component,
-    path: `/${name
-      .split('Page')[0]
-      .split('')
-      .map((char, index) =>
-        char.match(/[A-Z]/) && index !== 0 ? `-${char}` : char
-      )
-      .join('')
-      .toLowerCase()}`,
-    title: name
+  const path = `/${name
+    .split('Page')[0]
+    .split('')
+    .map((char, index) =>
+      char.match(/[A-Z]/) && index !== 0 ? `-${char}` : char
+    )
+    .join('')
+    .toLowerCase()}`;
+  const title =
+    component.title ||
+    name
       .split('Page')[0]
       .split('')
       .map((char, index) =>
         char.match(/[A-Z]/) && index !== 0 ? ` ${char}` : char
       )
-      .join(''),
+      .join('');
+  return {
+    component,
+    path,
+    title,
   };
 });
 routes.sort((a, b) => (a.title > b.title ? 1 : -1));
