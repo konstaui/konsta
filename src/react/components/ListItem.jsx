@@ -8,6 +8,12 @@ const ListItem = (props) => {
     component = 'li',
     colors: colorsProp,
     className,
+    mediaClassName = '',
+    innerClassName = '',
+    innerChildren,
+    contentClassName = '',
+    contentChildren,
+    titleWrapClassName = '',
 
     // Content props
     title,
@@ -20,9 +26,6 @@ const ListItem = (props) => {
 
     menuListItem,
     menuListItemActive,
-
-    // Hairlines
-    hairline = true,
 
     // Enable divider
     divider,
@@ -81,24 +84,24 @@ const ListItem = (props) => {
       itemContent: {
         common: `${
           menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4'
-        } flex items-center`,
-        link: `active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active-no-hairline cursor-pointer select-none${
+        } flex items-center ${contentClassName}`,
+        link: `active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none${
           isMenuListItemActive ? ' bg-primary bg-opacity-15' : ''
         }`,
       },
       media: {
-        common: 'mr-4 flex-shrink-0',
+        common: `mr-4 flex-shrink-0 ${mediaClassName}`,
         ios: 'py-2',
         material: 'py-3 min-w-10',
       },
       inner: {
-        common: `py-2 pr-4 w-full relative ${
-          hairline && !menuListItem ? 'hairline-b' : ''
-        }`,
+        common: `pr-4 w-full relative ${
+          !menuListItem ? 'hairline-b' : ''
+        } ${innerClassName}`,
         ios: 'py-2.5',
         material: 'py-3',
       },
-      titleWrap: 'flex justify-between items-center',
+      titleWrap: `flex justify-between items-center ${titleWrapClassName}`,
       title: {
         common: `flex-shrink`,
         menuListItem: {
@@ -121,7 +124,7 @@ const ListItem = (props) => {
         common: `bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 ${
           divider ? 'relative' : 'sticky top-0 z-10'
         }`,
-        ios: `h-8 ${hairline ? 'hairline-t' : ''}`,
+        ios: `h-8 hairline-t`,
         material: 'h-12',
       },
     },
@@ -183,7 +186,9 @@ const ListItem = (props) => {
           {subtitle && <div className={c.subtitle}>{subtitle}</div>}
           {text && <div className={c.text}>{text}</div>}
           {footer && <div className={c.footer}>{footer}</div>}
+          {innerChildren}
         </div>
+        {contentChildren}
       </ItemContentComponent>
       {children}
     </Component>
