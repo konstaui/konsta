@@ -7,9 +7,6 @@ const ListButton = (props) => {
     className,
     colors: colorsProp,
 
-    // Hairlines
-    hairline = true,
-
     // Link props
     href,
     target,
@@ -47,11 +44,9 @@ const ListButton = (props) => {
 
   const c = themeClasses(
     {
-      base: `${!hairline ? 'no-hairlines ' : ''}`,
+      base: ``,
       button: {
-        common: `relative flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none ${
-          hairline ? 'hairline-b active-no-hairline' : ''
-        } ${colors.text} ${colors.activeBg}`,
+        common: `relative flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none hairline-b active:hairline-transparent ${colors.text} ${colors.activeBg}`,
         ios: 'h-11',
         material: 'h-12',
       },
