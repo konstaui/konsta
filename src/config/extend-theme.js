@@ -1,19 +1,15 @@
 const extendTheme = () => {
   // SIZES
-  const sizesValues = [0.25, 4.5, 5.5, 12.5, 13];
+  const sizesValues = [0.25, 4.5, 5.5, 5.75, 7.5, 12.5, 13, 15, 18];
   const minSizesValues = Array.from({ length: 12 }).map(
     (el, index) => index + 1
   );
 
-  const width = {
-    '1em': '1em',
-  };
-  const height = {
+  const spacing = {
     '1em': '1em',
   };
   sizesValues.forEach((size) => {
-    width[size] = `${size / 4}rem`;
-    height[size] = `${size / 4}rem`;
+    spacing[size] = `${size / 4}rem`;
   });
 
   const minWidth = {};
@@ -50,22 +46,20 @@ const extendTheme = () => {
     'icon-material': '24px',
   };
 
-  const inset = {
-    15: `${15 / 4}rem`,
-    18: `${18 / 4}rem`,
+  const scale = {
+    133: `${16 / 12}`,
   };
 
   return {
     fontSize,
-    inset,
-    width,
-    height,
+    spacing,
     minWidth,
     minHeight,
     backgroundOpacity,
     opacity,
     textOpacity,
     transitionDuration,
+    scale,
     colors: {
       'page-ios': '#efeff4',
       'page-material': '#fff',
