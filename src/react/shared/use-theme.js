@@ -4,18 +4,18 @@ import { cls } from './cls';
 
 const propClasses = (classesObj, theme, state) => {
   if (typeof classesObj === 'string') return classesObj;
-  const arr = [classesObj.initial, classesObj[theme]];
+  const arr = [classesObj.common, classesObj[theme]];
   if (state && classesObj[state]) {
     if (typeof classesObj[state] === 'string') arr.push(classesObj[state]);
     else {
-      arr.push(classesObj[state].initial, classesObj[state][theme]);
+      arr.push(classesObj[state].common, classesObj[state][theme]);
     }
   }
   return arr;
 };
 const themeClasses = (classesObj, theme, addBaseClassName) => {
   const c = {};
-  const themeSubKeys = ['initial', 'ios', 'material', 'common'];
+  const themeSubKeys = ['common', 'ios', 'material', 'both'];
   Object.keys(classesObj).forEach((key) => {
     const addBaseClass = key === 'base' ? addBaseClassName : '';
     c[key] = cls(propClasses(classesObj[key], theme), addBaseClass);
@@ -46,7 +46,7 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
 
 const useTheme = ({ ios, material } = {}) => {
   const themeContext = useContext(TailwindMobileTheme);
-  let theme = themeContext || 'common';
+  let theme = themeContext || 'both';
   if (ios) theme = 'ios';
   if (material) theme = 'material';
   return {

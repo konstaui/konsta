@@ -4,7 +4,6 @@
 
 - Components
 
-  - Stepper
   - Inputs
   - Menu
   - Slider/Carousel
@@ -19,6 +18,7 @@
   - Range???
 
 - Common
+  - icon
   - `margin`/`setMargin` prop enabled by default to unset margin
   - `positition`/`posititionClass`/`setPosition` prop to set/unset position
   - do not enable custom variants for everything

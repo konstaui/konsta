@@ -1,33 +1,34 @@
-import Badge from './components/Badge.js';
-import Block from './components/Block.js';
-import BlockFooter from './components/BlockFooter.js';
-import BlockHeader from './components/BlockHeader.js';
-import BlockTitle from './components/BlockTitle.js';
-import Button from './components/Button.js';
-import Card from './components/Card.js';
-import Checkbox from './components/Checkbox.js';
-import Chip from './components/Chip.js';
-import Fab from './components/Fab.js';
-import Link from './components/Link.js';
-import List from './components/List.js';
-import ListGroup from './components/ListGroup.js';
-import ListButton from './components/ListButton.js';
-import ListItem from './components/ListItem.js';
-import MenuList from './components/MenuList.js';
-import MenuListItem from './components/MenuListItem.js';
-import Navbar from './components/Navbar.js';
-import NavbarBackLink from './components/NavbarBackLink.js';
-import Page from './components/Page.js';
-import Preloader from './components/Preloader.js';
-import Progressbar from './components/Progressbar.js';
-import Radio from './components/Radio.js';
-import Segmented from './components/Segmented.js';
-import SegmentedButton from './components/SegmentedButton.js';
-import Subnavbar from './components/Subnavbar.js';
-import Tabbar from './components/Tabbar.js';
-import TabbarLink from './components/TabbarLink.js';
-import Toggle from './components/Toggle.js';
-import Toolbar from './components/Toolbar.js';
+import Badge from './components/Badge.jsx';
+import Block from './components/Block.jsx';
+import BlockFooter from './components/BlockFooter.jsx';
+import BlockHeader from './components/BlockHeader.jsx';
+import BlockTitle from './components/BlockTitle.jsx';
+import Button from './components/Button.jsx';
+import Card from './components/Card.jsx';
+import Checkbox from './components/Checkbox.jsx';
+import Chip from './components/Chip.jsx';
+import Fab from './components/Fab.jsx';
+import Link from './components/Link.jsx';
+import List from './components/List.jsx';
+import ListGroup from './components/ListGroup.jsx';
+import ListButton from './components/ListButton.jsx';
+import ListItem from './components/ListItem.jsx';
+import MenuList from './components/MenuList.jsx';
+import MenuListItem from './components/MenuListItem.jsx';
+import Navbar from './components/Navbar.jsx';
+import NavbarBackLink from './components/NavbarBackLink.jsx';
+import Page from './components/Page.jsx';
+import Preloader from './components/Preloader.jsx';
+import Progressbar from './components/Progressbar.jsx';
+import Radio from './components/Radio.jsx';
+import Segmented from './components/Segmented.jsx';
+import SegmentedButton from './components/SegmentedButton.jsx';
+import Stepper from './components/Stepper.jsx';
+import Subnavbar from './components/Subnavbar.jsx';
+import Tabbar from './components/Tabbar.jsx';
+import TabbarLink from './components/TabbarLink.jsx';
+import Toggle from './components/Toggle.jsx';
+import Toolbar from './components/Toolbar.jsx';
 
 import { TailwindMobileTheme } from './shared/context';
 import { useTheme } from './shared/use-theme';
@@ -58,6 +59,7 @@ export {
   Radio,
   Segmented,
   SegmentedButton,
+  Stepper,
   Subnavbar,
   Tabbar,
   TabbarLink,

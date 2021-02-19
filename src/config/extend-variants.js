@@ -126,11 +126,16 @@ const extendVariants = () => {
     'textColor',
   ];
 
+  const firstLastKeys = ['borderWidth'];
+
   const variants = {};
   variantsKeys.forEach((key) => {
-    let addVariants = ['ios', 'material'];
+    const addVariants = [];
     if (activeKeys.includes(key)) {
-      addVariants = ['active', ...addVariants, 'ios-active', 'material-active'];
+      addVariants.push(...['active']);
+    }
+    if (firstLastKeys.includes(key)) {
+      addVariants.push(...['first', 'last']);
     }
     variants[key] = addVariants;
   });
