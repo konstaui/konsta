@@ -12,6 +12,8 @@ const Block = (props) => {
     inset,
     nested,
 
+    hairlines = true,
+
     ios,
     material,
 
@@ -41,7 +43,7 @@ const Block = (props) => {
     },
     strong: {
       common: `py-4 ${colors.strongBg} ${
-        !inset && !nested ? 'hairline-t hairline-b' : ''
+        !inset && !nested && hairlines ? 'hairline-t hairline-b' : ''
       }`,
     },
     inset: {

@@ -12,6 +12,8 @@ const List = (props) => {
     nested,
     menuList,
 
+    hairlines = true,
+
     ios,
     material,
 
@@ -38,8 +40,8 @@ const List = (props) => {
   const c = themeClasses({
     base: {
       common: `${!nested ? 'my-8' : ''} ${colors.bg} ${
-        !inset && !nested ? 'hairline-t hairline-b' : ''
-      } relative last-child:no-hairlines`,
+        !inset && !nested && hairlines ? 'hairline-t hairline-b' : ''
+      } relative last-child:hairline-b-none`,
       ios: ``,
       material: ``,
     },
