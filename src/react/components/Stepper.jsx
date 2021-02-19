@@ -4,7 +4,7 @@ import { useTheme } from '../shared/use-theme';
 
 const Stepper = (props) => {
   const {
-    component = 'div',
+    component = 'span',
     className,
     colors: colorsProp,
 
