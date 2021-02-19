@@ -13,6 +13,7 @@ import List from './components/List.jsx';
 import ListGroup from './components/ListGroup.jsx';
 import ListButton from './components/ListButton.jsx';
 import ListItem from './components/ListItem.jsx';
+import ListInput from './components/ListInput.jsx';
 import MenuList from './components/MenuList.jsx';
 import MenuListItem from './components/MenuListItem.jsx';
 import Navbar from './components/Navbar.jsx';
@@ -34,6 +35,10 @@ import { TailwindMobileTheme } from './shared/context';
 import { useTheme } from './shared/use-theme';
 
 export {
+  // utils
+  TailwindMobileTheme,
+  useTheme,
+  // components
   Badge,
   Block,
   BlockFooter,
@@ -49,6 +54,7 @@ export {
   ListGroup,
   ListButton,
   ListItem,
+  ListInput,
   MenuList,
   MenuListItem,
   Navbar,
@@ -65,6 +71,4 @@ export {
   TabbarLink,
   Toggle,
   Toolbar,
-  TailwindMobileTheme,
-  useTheme,
 };
