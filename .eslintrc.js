@@ -66,10 +66,7 @@ module.exports = {
 
     // REACT KITCHEN_SINK
     {
-      files: [
-        'kitchen-sink/react/src/**/*.jsx',
-        'kitchen-sink/react/src/**/*.js',
-      ],
+      files: ['kitchen-sink/react/**/*.jsx', 'kitchen-sink/react/**/*.js'],
       rules: {
         ...rules,
         'react/display-name': ['off'],
