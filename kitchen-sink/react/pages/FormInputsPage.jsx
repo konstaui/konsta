@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { BlockTitle, List, ListInput } from 'tailwind-mobile/react';
+import { BlockTitle, List, ListInput, useTheme } from 'tailwind-mobile/react';
 import Page from '../components/Page';
 import DemoIcon from '../components/DemoIcon';
 
 export default function FormInputsPage() {
   const [name, setName] = useState({ value: '', changed: false });
   const [email, setEmail] = useState('');
+  const { theme } = useTheme();
+  const hairlines = theme !== 'material';
+
   const onNameChange = (e) => {
     setName({ value: e.target.value, changed: true });
   };
@@ -18,7 +21,7 @@ export default function FormInputsPage() {
   return (
     <Page title="Form Inputs">
       <BlockTitle>Full Layout / Inline Labels</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput
           label="Name"
           inlineLabel
@@ -100,7 +103,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Full Layout / Stacked Labels</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput
           label="Name"
           type="text"
@@ -173,7 +176,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Floating Labels</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput
           label="Name"
           floatingLabel
@@ -216,7 +219,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Validation + Additional Info</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput
           label="Name"
           type="text"
@@ -232,7 +235,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Clear Button</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput
           label="TV Show"
           type="text"
@@ -247,7 +250,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Icon + Input</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput type="text" placeholder="Your name" media={<DemoIcon />} />
 
         <ListInput
@@ -266,7 +269,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Label + Input</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput label="Name" type="text" placeholder="Your name" />
 
         <ListInput
@@ -281,7 +284,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Only Inputs</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput type="text" placeholder="Your name" />
 
         <ListInput type="password" placeholder="Your password" />
@@ -292,7 +295,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Inputs + Additional Info</BlockTitle>
-      <List>
+      <List hairlines={hairlines}>
         <ListInput
           type="text"
           placeholder="Your name"
