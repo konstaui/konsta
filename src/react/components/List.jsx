@@ -41,7 +41,7 @@ const List = (props) => {
     base: {
       common: `${!nested ? 'my-8' : ''} ${colors.bg} ${
         !inset && !nested && hairlines ? 'hairline-t hairline-b' : ''
-      } relative last-child:hairline-b-none`,
+      } relative last-child:hairline-b-none z-10`,
       ios: ``,
       material: ``,
     },
