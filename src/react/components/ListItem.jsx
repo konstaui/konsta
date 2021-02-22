@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
+import { useTouchRipple } from '../shared/use-touch-ripple';
 import ChevronIcon from './icons/ChevronIcon';
 
 const ListItem = (props) => {
+  const rippleElRef = useRef(null);
+
   const {
     component = 'li',
     colors: colorsProp,
@@ -76,7 +79,14 @@ const ListItem = (props) => {
     ? colors.menuListItemText
     : colors.text;
 
-  const { themeClasses } = useTheme({ ios, material });
+  const { theme, themeClasses } = useTheme({ ios, material });
+
+  const isLink = !!href || href === '' || menuListItem || link;
+  const isLabel = !!label;
+
+  const needsTouchRipple = theme === 'material' && (isLabel || isLink);
+
+  useTouchRipple(rippleElRef, needsTouchRipple);
 
   const c = themeClasses(
     {
@@ -85,9 +95,9 @@ const ListItem = (props) => {
         common: `${
           menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4'
         } flex items-center ${contentClassName}`,
-        link: `active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none${
-          isMenuListItemActive ? ' bg-primary bg-opacity-15' : ''
-        }`,
+        link: `active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none ${
+          needsTouchRipple ? 'relative overflow-hidden' : ''
+        } ${isMenuListItemActive ? ' bg-primary bg-opacity-15' : ''}`,
       },
       media: {
         common: `mr-4 flex-shrink-0 ${mediaClassName}`,
@@ -121,18 +131,15 @@ const ListItem = (props) => {
       footer: `text-xs ${textColor} text-opacity-55 mt-0.5`,
 
       divider: {
-        common: `bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center -m-0.5 ${
+        common: `bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center ${
           divider ? 'relative' : 'sticky top-0 z-10'
         }`,
-        ios: `h-8 hairline-t`,
+        ios: `h-8 hairline-t -m-0.5`,
         material: 'h-12',
       },
     },
     className
   );
-
-  const isLink = !!href || href === '' || menuListItem || link;
-  const isLabel = !!label;
 
   const hrefComputed =
     href === true || href === false || typeof href === 'undefined'
@@ -167,6 +174,7 @@ const ListItem = (props) => {
   return (
     <Component className={c.base} {...attrs}>
       <ItemContentComponent
+        ref={rippleElRef}
         className={itemContentClasses}
         {...linkPropsComputed}
       >
