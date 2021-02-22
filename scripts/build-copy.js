@@ -8,7 +8,6 @@ async function buildCopy(cb) {
 
   await exec.promise(`cp -r ./src/config/ ./${outputDir}/config`);
   await exec.promise(`cp ./src/config.js ./${outputDir}/config.js`);
-  await exec.promise(`cp ./src/*.css ./${outputDir}/`);
   if (cb) cb();
 }
 

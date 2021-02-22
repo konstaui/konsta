@@ -2,6 +2,7 @@ const configExtend = require('./config/config-extend');
 const extendTheme = require('./config/extend-theme');
 const extendVariants = require('./config/extend-variants');
 
+const pluginBase = require('./config/plugin-base');
 const pluginHairlines = require('./config/plugin-hairlines');
 const pluginIosMaterial = require('./config/plugin-ios-material');
 const pluginLineClamp = require('./config/plugin-line-clamp');
@@ -19,6 +20,7 @@ const config = (userConfig = {}) => {
         extend: extendVariants(),
       },
       plugins: [
+        pluginBase(),
         pluginChildren(),
         pluginIosMaterial(),
         pluginHairlines(),
