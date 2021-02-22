@@ -4,30 +4,20 @@ module.exports = () =>
   plugin(({ addVariant, e }) => {
     addVariant('last-child', ({ modifySelectors, separator }) => {
       modifySelectors(({ className, selector }) => {
-        if (selector.includes(':after')) {
+        if (selector.includes(':after') || selector.includes(':before')) {
           return `.${e(
             `last-child${separator}${className}`
-          )} > *:first-child::after`;
-        }
-        if (selector.includes(':before')) {
-          return `.${e(
-            `last-child${separator}${className}`
-          )} > *:last-child::before`;
+          )} > ${selector.replace(`.${className}`, '*:last-child')}`;
         }
         return `.${e(`last-child${separator}${className}`)} > *:last-child`;
       });
     });
     addVariant('first-child', ({ modifySelectors, separator }) => {
       modifySelectors(({ className, selector }) => {
-        if (selector.includes(':after')) {
+        if (selector.includes(':after') || selector.includes(':before')) {
           return `.${e(
             `first-child${separator}${className}`
-          )} > *:first-child::after`;
-        }
-        if (selector.includes(':before')) {
-          return `.${e(
-            `first-child${separator}${className}`
-          )} > *:first-child::before`;
+          )} > ${selector.replace(`.${className}`, '*:first-child')}`;
         }
         return `.${e(`first-child${separator}${className}`)} > *:first-child`;
       });

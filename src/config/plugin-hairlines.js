@@ -118,6 +118,9 @@ module.exports = () =>
         ':not(.hairline-b):after': {
           display: 'none',
         },
+        '> * > *:after': {
+          display: 'none',
+        },
       },
       '.hairline-r': {
         '&::after': {
@@ -148,22 +151,9 @@ module.exports = () =>
       },
     };
 
-    addUtilities(hairlineColors, [
-      'focus',
-      'focus-within',
-      'active',
-      'last-child',
-      'first-child',
-    ]);
+    addUtilities(hairlineColors, ['active']);
 
     addUtilities(hairlineDurations);
 
-    addUtilities(hairlines, [
-      'last',
-      'first',
-      'ios',
-      'material',
-      'last-child',
-      'first-child',
-    ]);
+    addUtilities(hairlines, ['last-child']);
   });
