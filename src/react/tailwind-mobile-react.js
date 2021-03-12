@@ -31,12 +31,12 @@ import TabbarLink from './components/TabbarLink.jsx';
 import Toggle from './components/Toggle.jsx';
 import Toolbar from './components/Toolbar.jsx';
 
-import { TailwindMobileTheme } from './shared/context';
+import { TailwindMobileProvider } from './shared/TailwindMobileProvider';
 import { useTheme } from './shared/use-theme';
 
 export {
   // utils
-  TailwindMobileTheme,
+  TailwindMobileProvider,
   useTheme,
   // components
   Badge,

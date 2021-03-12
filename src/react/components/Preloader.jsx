@@ -41,7 +41,7 @@ const Preloader = (props) => {
     {
       base: {
         common: `${
-          theme === 'ios' ? 'ios-preloader' : 'material-preloader'
+          theme === 'ios' ? 'twm-ios-preloader' : 'twm-material-preloader'
         } inline-block ${size} ${colors.text}`,
         material: `stroke-4`,
       },

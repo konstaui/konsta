@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { TailwindMobileTheme } from 'tailwind-mobile/react';
+import { TailwindMobileProvider } from 'tailwind-mobile/react';
 
 import routes from '../routes';
 import HomePage from '../pages/HomePage';
@@ -9,9 +9,9 @@ import HomePage from '../pages/HomePage';
 function App() {
   const [theme, setTheme] = useState('ios');
   return (
-    <TailwindMobileTheme.Provider value={theme}>
+    <TailwindMobileProvider theme={theme}>
       <div
-        className={`absolute left-0 top-0 w-full h-full min-h-screen ${theme}`}
+        className={`absolute left-0 top-0 w-full h-full min-h-screen twm-${theme}`}
       >
         <Router>
           <Switch>
@@ -26,7 +26,7 @@ function App() {
           </Switch>
         </Router>
       </div>
-    </TailwindMobileTheme.Provider>
+    </TailwindMobileProvider>
   );
 }
 

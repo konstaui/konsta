@@ -5,36 +5,40 @@ module.exports = () =>
     addVariant('material', ({ modifySelectors, separator }) => {
       modifySelectors(({ className, selector }) => {
         if (selector.includes(':after')) {
-          return `.material .${e(`material${separator}${className}`)}::after`;
+          return `.twm-material .${e(
+            `material${separator}${className}`
+          )}::after`;
         }
         if (selector.includes(':before')) {
-          return `.material .${e(`material${separator}${className}`)}::before`;
+          return `.twm-material .${e(
+            `material${separator}${className}`
+          )}::before`;
         }
-        return `.material .${e(`material${separator}${className}`)}`;
+        return `.twm-material .${e(`material${separator}${className}`)}`;
       });
     });
     addVariant('ios', ({ modifySelectors, separator }) => {
       modifySelectors(({ className, selector }) => {
         if (selector.includes(':after')) {
-          return `.ios .${e(`ios${separator}${className}`)}::after`;
+          return `.twm-ios .${e(`ios${separator}${className}`)}::after`;
         }
         if (selector.includes(':before')) {
-          return `.ios .${e(`ios${separator}${className}`)}::before`;
+          return `.twm-ios .${e(`ios${separator}${className}`)}::before`;
         }
-        return `.ios .${e(`ios${separator}${className}`)}`;
+        return `.twm-ios .${e(`ios${separator}${className}`)}`;
       });
     });
     // ios-active: and material-active: variants
     addVariant('material-active', ({ modifySelectors, separator }) => {
       modifySelectors(({ className }) => {
-        return `.material .${e(
+        return `.twm-material .${e(
           `material-active${separator}${className}`
         )}:active`;
       });
     });
     addVariant('ios-active', ({ modifySelectors, separator }) => {
       modifySelectors(({ className }) => {
-        return `.ios .${e(`ios-active${separator}${className}`)}:active`;
+        return `.twm-ios .${e(`ios-active${separator}${className}`)}:active`;
       });
     });
   });

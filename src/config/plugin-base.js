@@ -4,57 +4,58 @@ module.exports = () =>
   plugin(({ addBase }) => {
     addBase({
       ':root': {
-        '--device-pixel-ratio': '1',
-        '--hairline-color': 'rgba(0, 0, 0, 0.2)',
-        '--touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
-        '--touch-ripple-white': 'rgba(255, 255, 255, 0.3)',
-        '--touch-ripple-color': 'var(--touch-ripple-black)',
+        '--twm-device-pixel-ratio': '1',
+        '--twm-hairline-color': 'rgba(0, 0, 0, 0.2)',
+        '--twm-touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
+        '--twm-touch-ripple-white': 'rgba(255, 255, 255, 0.3)',
+        '--twm-touch-ripple-color': 'var(--twm-touch-ripple-black)',
       },
       '@media (min-resolution: 2dppx)': {
         ':root': {
-          '--device-pixel-ratio': '2',
+          '--twm-device-pixel-ratio': '2',
         },
       },
       '@media (min-resolution: 3dppx)': {
         ':root': {
-          '--device-pixel-ratio': '3',
+          '--twm-device-pixel-ratio': '3',
         },
       },
       '*': {
         '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
         '-webkit-text-size-adjust': '100%',
       },
-      '.ios': {
+      '.twm-ios': {
         'font-family':
           '-apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif',
       },
-      '.material': {
+      '.twm-material': {
         'font-family': 'Roboto, system-ui, Noto, Helvetica, Arial, sans-serif',
       },
-      '.ios-preloader > span': {
-        animation: 'ios-preloader-spin 1s steps(8, end) infinite',
+      '.twm-ios-preloader > span': {
+        animation: 'twm-ios-preloader-spin 1s steps(8, end) infinite',
       },
 
-      '.material-preloader > span': {
-        animation: 'material-preloader-rotate 1.4s linear infinite',
+      '.twm-material-preloader > span': {
+        animation: 'twm-material-preloader-rotate 1.4s linear infinite',
       },
 
-      '.material-preloader circle': {
+      '.twm-material-preloader circle': {
         'stroke-dasharray': '100px',
         'stroke-dashoffset': '80px',
         'stroke-width': '4',
         transform: 'rotate(-90deg)',
         'transform-origin': '18px 18px',
-        animation: 'material-preloader-circle-rotate 5.6s ease-in-out infinite',
+        animation:
+          'twm-material-preloader-circle-rotate 5.6s ease-in-out infinite',
       },
 
-      '@keyframes ios-preloader-spin': {
+      '@keyframes twm-ios-preloader-spin': {
         '100%': {
           transform: 'rotate(360deg)',
         },
       },
 
-      '@keyframes material-preloader-rotate': {
+      '@keyframes twm-material-preloader-rotate': {
         '0%': {
           transform: 'rotate(0deg)',
         },
@@ -63,7 +64,7 @@ module.exports = () =>
         },
       },
 
-      '@keyframes material-preloader-circle-rotate': {
+      '@keyframes twm-material-preloader-circle-rotate': {
         '0%': {
           transform: 'rotate(-90deg)',
           'stroke-dashoffset': '100px',
@@ -124,7 +125,7 @@ module.exports = () =>
           transform: 'rotate(270deg)',
         },
       },
-      '.ripple-wave': {
+      '.twm-ripple-wave': {
         left: '0',
         top: '0',
         position: 'absolute !important',
@@ -135,22 +136,22 @@ module.exports = () =>
         margin: '0',
         'font-size': '0',
         transform: 'translate3d(0px, 0px, 0) scale(0)',
-        'background-color': 'var(--touch-ripple-color)',
-        animation: 'touch-ripple-in 200ms forwards',
-        '&.ripple-wave-out': {
-          transform: 'var(--ripple-transform)',
-          animation: 'touch-ripple-out 300ms forwards',
+        'background-color': 'var(--twm-touch-ripple-color)',
+        animation: 'twm-touch-ripple-in 200ms forwards',
+        '&.twm-ripple-wave-out': {
+          transform: 'var(--twm-ripple-transform)',
+          animation: 'twm-touch-ripple-out 300ms forwards',
         },
       },
-      '@keyframes touch-ripple-in': {
+      '@keyframes twm-touch-ripple-in': {
         from: {
           transform: 'translate3d(0px, 0px, 0) scale(0)',
         },
         to: {
-          transform: 'var(--ripple-transform)',
+          transform: 'var(--twm-ripple-transform)',
         },
       },
-      '@keyframes touch-ripple-out': {
+      '@keyframes twm-touch-ripple-out': {
         from: {
           opacity: '1',
         },

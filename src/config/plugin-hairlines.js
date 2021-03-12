@@ -12,18 +12,18 @@ module.exports = () =>
       const value = themeColors[key];
       if (typeof value === 'string') {
         hairlineColors[`.hairline-${key}`] = {
-          '--hairline-color': value,
+          '--twm-hairline-color': value,
         };
       } else {
         Object.keys(value).forEach((subKey) => {
           const subValue = value[subKey];
           if (subKey === 'DEFAULT') {
             hairlineColors[`.hairline-${key}`] = {
-              '--hairline-color': subValue,
+              '--twm-hairline-color': subValue,
             };
           } else {
             hairlineColors[`.hairline-${key}-${subKey}`] = {
-              '--hairline-color': subValue,
+              '--twm-hairline-color': subValue,
             };
           }
         });
@@ -32,7 +32,7 @@ module.exports = () =>
     Object.keys(themeDurations).forEach((key) => {
       if (key === 'DEFAULT') return;
       hairlineDurations[`.hairline-duration-${key}`] = {
-        '--hairline-transition-duration': themeDurations[key],
+        '--twm-hairline-transition-duration': themeDurations[key],
       };
     });
 
@@ -44,10 +44,10 @@ module.exports = () =>
           top: '0',
           width: '100%',
           height: '1px',
-          backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
+          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'center top',
-          transform: 'scaleY(calc(1 / var(--device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--hairline-transition-duration)',
+          transform: 'scaleY(calc(1 / var(--twm-device-pixel-ratio, 1)))',
+          transitionDuration: 'var(--twm-hairline-transition-duration)',
           content: '""',
         },
       },
@@ -71,10 +71,10 @@ module.exports = () =>
           top: '0',
           width: '1px',
           height: '100%',
-          backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
+          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'left center',
-          transform: 'scaleX(calc(1 / var(--device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--hairline-transition-duration)',
+          transform: 'scaleX(calc(1 / var(--twm-device-pixel-ratio, 1)))',
+          transitionDuration: 'var(--twm-hairline-transition-duration)',
           content: '""',
         },
       },
@@ -99,10 +99,10 @@ module.exports = () =>
           bottom: '0',
           width: '100%',
           height: '1px',
-          backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
+          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'center bottom',
-          transform: 'scaleY(calc(1 / var(--device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--hairline-transition-duration)',
+          transform: 'scaleY(calc(1 / var(--twm-device-pixel-ratio, 1)))',
+          transitionDuration: 'var(--twm-hairline-transition-duration)',
           content: '""',
         },
       },
@@ -129,10 +129,10 @@ module.exports = () =>
           right: '0',
           width: '1px',
           height: '100%',
-          backgroundColor: 'var(--hairline-color, rgba(0,0,0,0.2))',
+          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'right center',
-          transform: 'scaleX(calc(1 / var(--device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--hairline-transition-duration)',
+          transform: 'scaleX(calc(1 / var(--twm-device-pixel-ratio, 1)))',
+          transitionDuration: 'var(--twm-hairline-transition-duration)',
           content: '""',
         },
       },
