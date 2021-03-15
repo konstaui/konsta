@@ -1,5 +1,6 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+
 import Link from './Link';
 
 const TabbarLink = (props) => {
@@ -21,7 +22,7 @@ const TabbarLink = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses({
     content: {

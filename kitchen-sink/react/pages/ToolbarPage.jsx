@@ -25,7 +25,6 @@ export default function ToolbarPage() {
         </p>
         <p>
           <Button
-            fill
             onClick={() => {
               setIsTop(!isTop);
             }}

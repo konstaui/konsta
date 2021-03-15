@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Page = (props) => {
   const {
@@ -22,13 +22,13 @@ const Page = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(
     {
       base: {
-        ios: 'bg-page-ios',
-        material: 'bg-page-material',
+        ios: 'bg-page-ios-light dark:bg-page-ios-dark',
+        material: 'bg-page-material-light dark:bg-page-material-dark',
       },
     },
     className

@@ -36,19 +36,24 @@ module.exports = () =>
       };
     });
 
+    const common = {
+      position: 'absolute',
+      backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
+      transitionDuration: 'var(--twm-hairline-transition-duration)',
+      content: '""',
+      zIndex: '10',
+    };
+
     const hairlines = {
       '.hairline-t': {
         '&::before': {
-          position: 'absolute',
+          ...common,
           left: '0',
           top: '0',
           width: '100%',
           height: '1px',
-          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'center top',
           transform: 'scaleY(calc(1 / var(--twm-device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--twm-hairline-transition-duration)',
-          content: '""',
         },
       },
       '.hairline-t-none': {
@@ -66,16 +71,13 @@ module.exports = () =>
       },
       '.hairline-l': {
         '&::before': {
-          position: 'absolute',
+          ...common,
           left: '0',
           top: '0',
           width: '1px',
           height: '100%',
-          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'left center',
           transform: 'scaleX(calc(1 / var(--twm-device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--twm-hairline-transition-duration)',
-          content: '""',
         },
       },
       '.hairline-l-none': {
@@ -94,16 +96,13 @@ module.exports = () =>
       },
       '.hairline-b': {
         '&::after': {
-          position: 'absolute',
+          ...common,
           left: '0',
           bottom: '0',
           width: '100%',
           height: '1px',
-          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'center bottom',
           transform: 'scaleY(calc(1 / var(--twm-device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--twm-hairline-transition-duration)',
-          content: '""',
         },
       },
       '.hairline-b-scale': {
@@ -122,18 +121,31 @@ module.exports = () =>
           display: 'none',
         },
       },
+      '.last-child-hairline-b-none': {
+        '> *:last-child': {
+          '&::after': {
+            display: 'none',
+          },
+          ':not(.hairline-b):after': {
+            display: 'none',
+          },
+          '> * > *:after': {
+            display: 'none',
+          },
+          '> *:after': {
+            display: 'none',
+          },
+        },
+      },
       '.hairline-r': {
         '&::after': {
-          position: 'absolute',
+          ...common,
           top: '0',
           right: '0',
           width: '1px',
           height: '100%',
-          backgroundColor: 'var(--twm-hairline-color, rgba(0,0,0,0.2))',
           transformOrigin: 'right center',
           transform: 'scaleX(calc(1 / var(--twm-device-pixel-ratio, 1)))',
-          transitionDuration: 'var(--twm-hairline-transition-duration)',
-          content: '""',
         },
       },
       '.hairline-r-none': {
@@ -152,8 +164,6 @@ module.exports = () =>
     };
 
     addUtilities(hairlineColors, ['active']);
-
     addUtilities(hairlineDurations);
-
-    addUtilities(hairlines, ['last-child']);
+    addUtilities(hairlines);
   });

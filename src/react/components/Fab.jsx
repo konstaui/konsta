@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+import { useTouchRipple } from '../shared/use-touch-ripple';
 
 const Fab = (props) => {
+  const rippleElRef = useRef(null);
+
   const {
     component = 'a',
     className,
@@ -28,7 +32,10 @@ const Fab = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
+
+  useTouchRipple(rippleElRef, theme === 'material');
 
   const colors = {
     bg: 'bg-primary',
@@ -40,9 +47,9 @@ const Fab = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `${colors.bg} ${colors.activeBg} ${colors.text} flex items-center justify-center space-x-2 rounded-full shadow-lg cursor-pointer`,
+        common: `${colors.bg} ${colors.activeBg} ${colors.text} flex items-center justify-center space-x-2 rounded-full shadow-lg cursor-pointer overflow-hidden`,
         ios: `h-12 duration-100`,
-        material: `duration-300`,
+        material: `duration-300 touch-ripple-white`,
         iconOnly: {
           ios: 'w-12',
           material: 'w-14 h-14',
@@ -70,6 +77,7 @@ const Fab = (props) => {
     <Component
       className={text ? c.base.withText : c.base.iconOnly}
       href={href}
+      ref={rippleElRef}
       {...attrs}
     >
       {text && textPosition === 'before' && (

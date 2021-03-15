@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 import BackIcon from './icons/BackIcon';
 import Link from './Link';
 
@@ -28,7 +29,8 @@ const NavbarBackLink = (props) => {
     ...rest,
   };
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const shouldShowText =
     (showText === 'auto' && theme === 'ios') || showText === true;
@@ -36,7 +38,7 @@ const NavbarBackLink = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: 'cursor-pointer',
+        common: 'cursor-pointer touch-ripple-inset',
         material: 'min-w-12',
       },
       icon: '',

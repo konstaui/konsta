@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+
 import DeleteIcon from './icons/DeleteIcon';
 import DropdownIcon from './icons/DropdownIcon';
 import ListItem from './ListItem';
@@ -68,7 +70,8 @@ const ListInput = (props) => {
   const inputElRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
     labelFocus: 'text-primary',
@@ -84,7 +87,9 @@ const ListInput = (props) => {
       : label && floatingLabel
       ? 'floating'
       : 'stacked';
-  const labelStyleMerged = labelStyle === 'inline' ? 'inline' : 'notInline';
+  const labelStyleIsInline = labelStyle === 'inline' ? 'inline' : 'notInline';
+  const labelStyleIsFloating =
+    labelStyle === 'floating' ? 'floating' : 'notFloating';
 
   const getDomValue = () => {
     if (!inputElRef.current) return undefined;
@@ -183,12 +188,17 @@ const ListInput = (props) => {
       notInline: '',
     },
     input: {
-      common: `text-base appearance-none w-full focus:outline-none bg-transparent ${inputClassName}`,
+      common: `block text-base appearance-none w-full focus:outline-none bg-transparent ${inputClassName}`,
       ios: 'h-11',
       material: 'h-9',
-      inline: '',
-      stacked: '',
-      floating: `${isFloatingTransformed ? 'placeholder-transparent' : ''}`,
+      notFloating: `placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30${
+        type === 'textarea' ? ' py-3' : ''
+      }`,
+      floating: `${
+        isFloatingTransformed
+          ? 'placeholder-transparent'
+          : 'placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30'
+      }`,
     },
     errorInfo: {
       common: 'text-xs relative z-10',
@@ -223,7 +233,7 @@ const ListInput = (props) => {
       <InputComponent
         id={inputId}
         ref={inputElRef}
-        className={c.input[labelStyle]}
+        className={c.input[labelStyleIsFloating]}
         style={inputStyle}
         name={name}
         type={needsType ? type : undefined}
@@ -262,12 +272,14 @@ const ListInput = (props) => {
   const errorInfoContent = (
     <>
       {error && error !== true && (
-        <div className={cls(c.errorInfo[labelStyleMerged], c.error)}>
+        <div className={cls(c.errorInfo[labelStyleIsInline], c.error)}>
           {error}
         </div>
       )}
       {info && !error && (
-        <div className={cls(c.errorInfo[labelStyleMerged], c.info)}>{info}</div>
+        <div className={cls(c.errorInfo[labelStyleIsInline], c.info)}>
+          {info}
+        </div>
       )}
     </>
   );
@@ -295,10 +307,10 @@ const ListInput = (props) => {
       media={media}
       className={c.base}
       title={labelStyle === 'inline' ? label : null}
-      mediaClassName={c.media[labelStyleMerged]}
+      mediaClassName={c.media[labelStyleIsInline]}
       innerClassName={c.inner[labelStyle]}
       contentClassName={c.itemContent}
-      titleWrapClassName={c.titleWrap[labelStyleMerged]}
+      titleWrapClassName={c.titleWrap[labelStyleIsInline]}
       innerChildren={innerChildren}
       {...attrs}
     >

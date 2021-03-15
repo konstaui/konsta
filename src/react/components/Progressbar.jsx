@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Progressbar = (props) => {
   const {
@@ -25,7 +25,7 @@ const Progressbar = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
     bg: 'bg-primary',

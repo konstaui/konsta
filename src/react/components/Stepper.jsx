@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+import { useTouchRipple } from '../shared/use-touch-ripple';
 
 const Stepper = (props) => {
+  const buttonLeftElRef = useRef(null);
+  const buttonRightElRef = useRef(null);
+
   const {
     component = 'span',
     className,
@@ -39,7 +44,11 @@ const Stepper = (props) => {
 
   const Component = component;
 
-  const { themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
+
+  useTouchRipple(buttonLeftElRef, theme === 'material');
+  useTouchRipple(buttonRightElRef, theme === 'material');
 
   const colors = {
     text: 'text-primary',
@@ -47,6 +56,7 @@ const Stepper = (props) => {
     bg: 'bg-primary',
     activeBg: 'active:bg-primary',
     activeBgDark: 'active:bg-primary-dark',
+    touchRipple: 'touch-ripple-primary',
     ...colorsProp,
   };
 
@@ -73,7 +83,8 @@ const Stepper = (props) => {
       rounded: 'rounded-full',
     },
     button: {
-      common: 'relative flex items-center justify-center w-10 cursor-pointer',
+      common:
+        'relative flex items-center justify-center w-10 cursor-pointer overflow-hidden z-10',
     },
     buttonLeftShape: {
       square: 'rounded-l',
@@ -84,16 +95,20 @@ const Stepper = (props) => {
       rounded: 'rounded-r-full',
     },
     buttonStyle: {
-      fill: `text-white ${colors.bg} ${colors.activeBgDark} ${
+      fill: `text-white ${colors.bg} ${
+        colors.activeBgDark
+      } touch-ripple-white ${
         buttonsOnly ? 'first:border-r border-black border-opacity-10' : ''
       }`,
       outline: `border-2 ${colors.border} ${colors.text} ${
-        colors.activeBg
-      } active:bg-opacity-15 ${buttonsOnly ? 'first:border-r-0' : ''}`,
-      clear: `${colors.text} ${colors.activeBg} active:bg-opacity-15 last:border-l border-black border-opacity-10`,
+        colors.touchRipple
+      } ${colors.activeBg} active:bg-opacity-15 ${
+        buttonsOnly ? 'first:border-r-0' : ''
+      }`,
+      clear: `${colors.text} ${colors.activeBg} ${colors.touchRipple} active:bg-opacity-15 last:border-l border-black border-opacity-10`,
     },
     input: {
-      common: 'focus:outline-none text-center appearance-none',
+      common: 'focus:outline-none text-center appearance-none bg-transparent',
     },
     value: {
       common: `w-11 flex items-center justify-center ${colors.text} font-medium`,
@@ -134,7 +149,11 @@ const Stepper = (props) => {
 
   return (
     <Component className={classes} {...attrs}>
-      <span className={buttonLeftClasses} onClick={onMinus}>
+      <span
+        ref={buttonLeftElRef}
+        className={buttonLeftClasses}
+        onClick={onMinus}
+      >
         <span className={c.hBar} />
       </span>
       {input && !buttonsOnly && (
@@ -153,7 +172,11 @@ const Stepper = (props) => {
       )}
       {!input && !buttonsOnly && <span className={valueClasses}>{value}</span>}
 
-      <span className={buttonRightClasses} onClick={onPlus}>
+      <span
+        ref={buttonRightElRef}
+        className={buttonRightClasses}
+        onClick={onPlus}
+      >
         <span className={c.hBar} />
         <span className={c.vBar} />
       </span>

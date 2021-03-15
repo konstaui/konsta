@@ -6,7 +6,7 @@ import DemoIcon from '../components/DemoIcon';
 export default function FormInputsPage() {
   const [name, setName] = useState({ value: '', changed: false });
   const [email, setEmail] = useState('');
-  const { theme } = useTheme();
+  const theme = useTheme();
   const hairlines = theme !== 'material';
 
   const onNameChange = (e) => {

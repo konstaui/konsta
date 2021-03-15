@@ -1,6 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Block = (props) => {
   const {
@@ -30,16 +30,16 @@ const Block = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
-    strongBg: 'bg-white',
+    strongBg: 'bg-block-strong-light dark:bg-block-strong-dark',
     ...colorsProp,
   };
 
   const c = themeClasses({
     base: {
-      common: `px-4 ${!nested ? 'my-8' : ''} text-sm relative`,
+      common: `px-4 ${!nested ? 'my-8' : ''} text-sm relative z-10`,
     },
     strong: {
       common: `py-4 ${colors.strongBg} ${

@@ -132,7 +132,7 @@ const extendVariants = () => {
   variantsKeys.forEach((key) => {
     const addVariants = [];
     if (activeKeys.includes(key)) {
-      addVariants.push(...['active']);
+      addVariants.push(...['active', 'dark-active']);
     }
     if (firstLastKeys.includes(key)) {
       addVariants.push(...['first', 'last']);

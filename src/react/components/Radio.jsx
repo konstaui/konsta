@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 import RadioIcon from './icons/RadioIcon';
 
 const Radio = (props) => {
@@ -32,11 +33,14 @@ const Radio = (props) => {
     ...rest,
   };
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
-    borderIos: 'border-gray-300',
-    borderMaterial: 'border-gray-500',
+    borderIos:
+      'border-black border-opacity-30 dark:border-white dark:border-opacity-30',
+    borderMaterial:
+      'border-black border-opacity-40 dark:border-white dark:border-opacity-40',
     bgChecked: 'bg-primary',
     borderChecked: 'border-primary',
     ...colorsProp,

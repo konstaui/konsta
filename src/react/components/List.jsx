@@ -1,6 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const List = (props) => {
   const {
@@ -30,10 +30,10 @@ const List = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
-    bg: 'bg-white',
+    bg: 'bg-block-strong-light dark:bg-block-strong-dark',
     ...colorsProp,
   };
 
@@ -41,7 +41,7 @@ const List = (props) => {
     base: {
       common: `${!nested ? 'my-8' : ''} ${colors.bg} ${
         !inset && !nested && hairlines ? 'hairline-t hairline-b' : ''
-      } relative last-child:hairline-b-none z-10`,
+      } relative last-child-hairline-b-none z-10`,
       ios: ``,
       material: ``,
     },

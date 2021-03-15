@@ -6,9 +6,9 @@ module.exports = () =>
       ':root': {
         '--twm-device-pixel-ratio': '1',
         '--twm-hairline-color': 'rgba(0, 0, 0, 0.2)',
-        '--twm-touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
-        '--twm-touch-ripple-white': 'rgba(255, 255, 255, 0.3)',
-        '--twm-touch-ripple-color': 'var(--twm-touch-ripple-black)',
+      },
+      '.dark': {
+        '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
       },
       '@media (min-resolution: 2dppx)': {
         ':root': {
@@ -23,6 +23,18 @@ module.exports = () =>
       '*': {
         '-webkit-tap-highlight-color': 'rgba(0, 0, 0, 0)',
         '-webkit-text-size-adjust': '100%',
+      },
+      body: {
+        margin: 0,
+        '-webkit-font-smoothing': 'antialiased',
+        '-moz-osx-font-smoothing': 'grayscale',
+        color: '#000',
+        '&.dark': {
+          color: '#fff',
+        },
+        '.dark &': {
+          color: '#fff',
+        },
       },
       '.twm-ios': {
         'font-family':
@@ -123,40 +135,6 @@ module.exports = () =>
         '100%': {
           'stroke-dashoffset': '100px',
           transform: 'rotate(270deg)',
-        },
-      },
-      '.twm-ripple-wave': {
-        left: '0',
-        top: '0',
-        position: 'absolute !important',
-        'border-radius': '50%',
-        'pointer-events': 'none',
-        'z-index': '-1',
-        padding: '0',
-        margin: '0',
-        'font-size': '0',
-        transform: 'translate3d(0px, 0px, 0) scale(0)',
-        'background-color': 'var(--twm-touch-ripple-color)',
-        animation: 'twm-touch-ripple-in 200ms forwards',
-        '&.twm-ripple-wave-out': {
-          transform: 'var(--twm-ripple-transform)',
-          animation: 'twm-touch-ripple-out 300ms forwards',
-        },
-      },
-      '@keyframes twm-touch-ripple-in': {
-        from: {
-          transform: 'translate3d(0px, 0px, 0) scale(0)',
-        },
-        to: {
-          transform: 'var(--twm-ripple-transform)',
-        },
-      },
-      '@keyframes twm-touch-ripple-out': {
-        from: {
-          opacity: '1',
-        },
-        to: {
-          opacity: '0',
         },
       },
     });

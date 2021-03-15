@@ -1,6 +1,6 @@
 const extendTheme = () => {
   // SIZES
-  const sizesValues = [0.25, 4.5, 5.5, 5.75, 7.5, 12.5, 13, 15, 18];
+  const sizesValues = [0.25, 0.75, 4.5, 5.5, 5.75, 7.5, 12.5, 13, 15, 18];
   const minSizesValues = Array.from({ length: 12 }).map(
     (el, index) => index + 1
   );
@@ -29,6 +29,8 @@ const extendTheme = () => {
   const textOpacity = {};
 
   opacityValues.forEach((value) => {
+    // eslint-disable-next-line
+    if (value < 10) value = `0${value}`;
     opacity[value] = `0.${value}`;
     backgroundOpacity[value] = `0.${value}`;
     textOpacity[value] = `0.${value}`;
@@ -50,6 +52,30 @@ const extendTheme = () => {
     133: `${16 / 12}`,
   };
 
+  const boxShadow = {
+    'ios-toggle': '0 2px 4px rgba(0,0,0,.3)',
+  };
+
+  const colors = {
+    'page-ios-light': '#efeff4',
+    'page-ios-dark': '#000',
+    'page-material-light': '#fff',
+    'page-material-dark': '#121212',
+    'block-strong-light': '#fff',
+    'block-strong-dark': '#1c1c1d',
+    'list-divider-light': '#f4f4f4',
+    'list-divider-dark': '#232323',
+    'bars-ios-light': '#f7f7f8',
+    'bars-ios-dark': '#121212',
+    'bars-material-light': '#fff',
+    'bars-material-dark': '#202020',
+    primary: {
+      light: '#298fff',
+      DEFAULT: '#007aff',
+      dark: '#0066d6',
+    },
+  };
+
   return {
     fontSize,
     spacing,
@@ -60,15 +86,8 @@ const extendTheme = () => {
     textOpacity,
     transitionDuration,
     scale,
-    colors: {
-      'page-ios': '#efeff4',
-      'page-material': '#fff',
-      primary: {
-        light: '#298fff',
-        DEFAULT: '#007aff',
-        dark: '#0066d6',
-      },
-    },
+    boxShadow,
+    colors,
   };
 };
 

@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+import { useTouchRipple } from '../shared/use-touch-ripple';
 
 const Link = (props) => {
+  const rippleElRef = useRef(null);
+
   const {
     component = 'a',
     className,
@@ -33,11 +37,17 @@ const Link = (props) => {
     ...rest,
   };
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
+
+  const needsTouchRipple =
+    theme === 'material' && (toolbar || tabbar || navbar);
+
+  useTouchRipple(rippleElRef, needsTouchRipple);
 
   const colors = {
     text: 'text-primary',
-    tabbarInactive: 'text-black',
+    tabbarInactive: 'text-black dark:text-white dark:text-opacity-55',
     ...colorsProp,
   };
 
@@ -47,15 +57,17 @@ const Link = (props) => {
 
   const c = themeClasses({
     base: {
-      common: `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
+      common: `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none${
+        needsTouchRipple ? ' touch-ripple-primary relative z-10' : ''
+      }`,
       notTabbar: {
         ios: `active:opacity-30 duration-300 active:duration-0`,
-        material: `active:opacity-55`,
+        material: needsTouchRipple ? '' : `active:opacity-55`,
       },
     },
     tabbar: {
       common: 'w-full h-full relative duration-300',
-      material: 'uppercase font-medium text-sm',
+      material: 'uppercase font-medium text-sm overflow-hidden z-10',
       active: {},
       inactive: {
         ios: 'text-opacity-40',
@@ -91,7 +103,12 @@ const Link = (props) => {
   );
 
   return (
-    <Component className={classes} {...attrs} onClick={onClick}>
+    <Component
+      ref={rippleElRef}
+      className={classes}
+      {...attrs}
+      onClick={onClick}
+    >
       {theme === 'material' && tabbar && (
         <span className={c.tabbarHighlight[tabbarState]} />
       )}

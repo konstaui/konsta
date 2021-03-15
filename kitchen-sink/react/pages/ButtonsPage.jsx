@@ -31,6 +31,7 @@ export default function ButtonsPage() {
               bg: 'bg-red-500',
               activeBg: 'active:bg-red-500',
               activeBgDark: 'active:bg-red-600',
+              touchRipple: 'touch-ripple-red-500',
             }}
             outline
           >
@@ -47,6 +48,7 @@ export default function ButtonsPage() {
               bg: 'bg-red-500',
               activeBg: 'active:bg-red-500',
               activeBgDark: 'active:bg-red-600',
+              touchRipple: 'touch-ripple-red-500',
             }}
             clear
           >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Card = (props) => {
   const {
@@ -28,12 +28,11 @@ const Card = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
-    bg: 'bg-white',
-    border: 'border-gray-200',
-    footerText: 'text-black',
+    bg: 'bg-block-strong-light dark:bg-block-strong-dark',
+    footerText: 'text-black dark:text-white',
     ...colorsProp,
   };
 
@@ -44,11 +43,12 @@ const Card = (props) => {
       base: {
         common: `m-4 ${colors.bg} rounded overflow-hidden`,
         shadow: 'shadow',
-        outline: `border ${colors.border}`,
+        outline: `border border-black dark:border-white border-opacity-10 dark:border-opacity-10`,
       },
-      header: 'border-b px-4 py-2',
+      header:
+        'border-b border-black dark:border-white border-opacity-10 dark:border-opacity-10 px-4 py-2',
       content: 'p-4 text-sm',
-      footer: `border-t ${colors.footerText} text-sm text-opacity-55 px-4 py-2`,
+      footer: `border-t border-black dark:border-white border-opacity-10 dark:border-opacity-10 ${colors.footerText} text-sm text-opacity-55 dark:text-opacity-55 px-4 py-2`,
     },
     className
   );

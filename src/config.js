@@ -4,10 +4,11 @@ const extendVariants = require('./config/extend-variants');
 
 const pluginBase = require('./config/plugin-base');
 const pluginHairlines = require('./config/plugin-hairlines');
+const pluginTouchRipple = require('./config/plugin-touch-ripple');
 const pluginIosMaterial = require('./config/plugin-ios-material');
 const pluginLineClamp = require('./config/plugin-line-clamp');
 const pluginSafeAreas = require('./config/plugin-safe-areas');
-const pluginChildren = require('./config/plugin-children');
+const pluginDarkMode = require('./config/plugin-dark-mode');
 
 const config = (userConfig = {}) => {
   return configExtend(
@@ -21,11 +22,12 @@ const config = (userConfig = {}) => {
       },
       plugins: [
         pluginBase(),
-        pluginChildren(),
         pluginIosMaterial(),
         pluginHairlines(),
+        pluginTouchRipple(),
         pluginLineClamp(),
         pluginSafeAreas(),
+        pluginDarkMode(),
       ],
     },
     userConfig

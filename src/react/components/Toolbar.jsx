@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Toolbar = (props) => {
   const {
@@ -22,14 +23,18 @@ const Toolbar = (props) => {
 
   const Component = component;
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const attrs = {
     ...rest,
   };
 
   const colors = {
-    bg: theme === 'ios' ? 'bg-gray-100' : 'bg-white',
+    bg:
+      theme === 'ios'
+        ? 'bg-bars-ios-light dark:bg-bars-ios-dark'
+        : 'bg-bars-material-light dark:bg-bars-material-dark',
     ...colorsProp,
   };
 
@@ -54,7 +59,7 @@ const Toolbar = (props) => {
         }`,
       },
       inner: {
-        common: `flex relative justify-between items-center w-full h-full`,
+        common: `flex relative justify-between items-center w-full h-full overflow-hidden`,
         ios: 'px-2',
         material: !tabbar ? 'px-2' : '',
       },

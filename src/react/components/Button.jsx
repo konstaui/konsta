@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
+import { useTouchRipple } from '../shared/use-touch-ripple';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Button = (props) => {
+  const rippleElRef = useRef(null);
+
   const {
     component = 'button',
     className,
@@ -43,7 +47,11 @@ const Button = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
+
+  useTouchRipple(rippleElRef, theme === 'material');
+
   const size = large ? 'large' : small ? 'small' : 'medium';
   let style = outline
     ? 'outline'
@@ -59,12 +67,13 @@ const Button = (props) => {
     bg: 'bg-primary',
     activeBg: 'active:bg-primary',
     activeBgDark: 'active:bg-primary-dark',
+    touchRipple: 'touch-ripple-primary',
     ...colorsProp,
   };
 
   const c = themeClasses({
     base: {
-      common: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none`,
+      common: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none relative overflow-hidden z-10`,
       ios: `duration-100 font-semibold`,
       material: `duration-300 font-medium tracking-wider`,
 
@@ -75,13 +84,15 @@ const Button = (props) => {
       rounded: segmented && !segmentedStrong ? '' : 'rounded-full',
     },
     style: {
-      fill: `text-white ${colors.bg} ${colors.activeBgDark}`,
+      fill: `text-white ${colors.bg} ${colors.activeBgDark} touch-ripple-white`,
       outline: `${segmented ? '' : `border-2 ${colors.border}`} ${
         colors.text
-      } ${colors.activeBg} active:bg-opacity-15`,
-      clear: `${colors.text} ${colors.activeBg} active:bg-opacity-15`,
-      segmentedStrong: 'active:bg-black active:bg-opacity-10',
-      segmentedStrongActive: 'bg-white shadow',
+      } ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`,
+      clear: `${colors.text} ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`,
+      segmentedStrong:
+        'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-5 dark:touch-ripple-white',
+      segmentedStrongActive:
+        'bg-white shadow dark:bg-opacity-15  dark:touch-ripple-white',
     },
     size: {
       small: {
@@ -116,7 +127,7 @@ const Button = (props) => {
   );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component ref={rippleElRef} className={classes} {...attrs}>
       {children}
     </Component>
   );

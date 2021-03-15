@@ -1,11 +1,28 @@
-import React from 'react';
-import { BlockTitle, List, ListItem, Radio } from 'tailwind-mobile/react';
+import React, { useLayoutEffect, useState } from 'react';
+import {
+  BlockTitle,
+  List,
+  ListItem,
+  Radio,
+  Toggle,
+} from 'tailwind-mobile/react';
 import { Link } from 'react-router-dom';
 import routes from '../routes';
 import DemoIcon from '../components/DemoIcon';
 import Page from '../components/Page';
 
 export default function HomePage({ theme, setTheme }) {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.documentElement.classList.toggle('dark');
+  };
+
+  useLayoutEffect(() => {
+    setDarkMode(document.documentElement.classList.contains('dark'));
+  });
+
   return (
     <Page title="Tailwind Mobile" backLink={false}>
       <BlockTitle>Theme</BlockTitle>
@@ -30,6 +47,15 @@ export default function HomePage({ theme, setTheme }) {
               component="div"
               checked={theme === 'material'}
             />
+          }
+        />
+      </List>
+
+      <List>
+        <ListItem
+          title="Dark Mode"
+          after={
+            <Toggle onChange={() => toggleDarkMode()} checked={darkMode} />
           }
         />
       </List>

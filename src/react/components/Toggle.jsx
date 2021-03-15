@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Toggle = (props) => {
   const {
@@ -31,7 +31,7 @@ const Toggle = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
     bg: 'bg-primary',
@@ -46,10 +46,10 @@ const Toggle = (props) => {
       base: {
         common: `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full`,
         ios: 'h-8 w-13 p-0.5',
-        material: 'w-9 h-3',
+        material: 'w-9 h-3.5',
         notChecked: {
-          ios: 'bg-gray-200',
-          material: 'bg-gray-300',
+          ios: 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-20',
+          material: 'bg-black bg-opacity-30 dark:bg-white dark:bg-opacity-30',
         },
         checked: {
           ios: `${colors.bg}`,
@@ -57,15 +57,17 @@ const Toggle = (props) => {
         },
       },
       inner: {
-        ios: 'w-full h-full bg-white rounded-full block duration-300 transform',
+        ios:
+          'w-full h-full bg-white dark:bg-opacity-0 rounded-full block duration-300 transform',
+        notChecked: {},
         checked: {
           ios: 'scale-0',
         },
       },
       knob: {
         common: 'rounded-full absolute duration-300 transform',
-        ios: 'w-7 h-7 shadow left-0.5 top-0.5 bg-white',
-        material: 'w-5 h-5 shadow-md left-0 -top-1',
+        ios: 'w-7 h-7 shadow-ios-toggle left-0.5 top-0.5 bg-white',
+        material: 'w-5 h-5 shadow-md left-0 -top-0.75',
         checked: {
           ios: 'translate-x-5',
           material: `${colors.bg} translate-x-4`,

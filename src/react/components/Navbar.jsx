@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Navbar = (props) => {
   const {
@@ -19,14 +20,18 @@ const Navbar = (props) => {
 
   const Component = component;
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const attrs = {
     ...rest,
   };
 
   const colors = {
-    bg: theme === 'ios' ? 'bg-gray-100' : 'bg-white',
+    bg:
+      theme === 'ios'
+        ? 'bg-bars-ios-light dark:bg-bars-ios-dark'
+        : 'bg-bars-material-light dark:bg-bars-material-dark',
     ...colorsProp,
   };
 
@@ -43,7 +48,7 @@ const Navbar = (props) => {
         material: `shadow-md ${colors.bg}`,
       },
       inner: {
-        common: 'flex relative items-center w-full h-full',
+        common: 'flex relative items-center w-full h-full overflow-hidden',
         ios: 'px-2 justify-between',
         material: 'justify-start ',
       },
@@ -53,7 +58,7 @@ const Navbar = (props) => {
         material: 'mx-1',
       },
       title: {
-        common: 'text-black whitespace-nowrap',
+        common: 'text-black dark:text-white whitespace-nowrap',
         ios:
           'font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
         material: 'font-medium mx-4',

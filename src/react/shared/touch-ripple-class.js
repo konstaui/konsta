@@ -12,12 +12,8 @@ export class TouchRipple {
     };
     let diameter = Math.max((height ** 2 + width ** 2) ** 0.5, 48);
 
-    // TODO: inset elements
-    let isInset = false;
-    // const insetElements = app.params.touch.touchRippleInsetElements || '';
-    // if (insetElements && $el.is(insetElements)) {
-    //   isInset = true;
-    // }
+    const isInset = el.classList.contains('touch-ripple-inset');
+
     if (isInset) {
       diameter = Math.max(Math.min(width, height), 48);
     }
@@ -25,7 +21,8 @@ export class TouchRipple {
     /* eslint-disable no-restricted-globals */
     const isOverflowHidden =
       typeof window !== 'undefined' &&
-      window.getComputedStyle(el, null).getPropertyValue('overflow');
+      window.getComputedStyle(el, null).getPropertyValue('overflow') ===
+        'hidden';
 
     /* eslint-enable no-restricted-globals */
     if (!isInset && isOverflowHidden) {
@@ -37,13 +34,12 @@ export class TouchRipple {
       // prettier-ignore
       ripple.rippleTransform = `translate3d(${-center.x + width / 2}px, ${-center.y + height / 2}px, 0) scale(1)`;
     }
-    if (isInset) {
-      el.classList.add('ripple-inset');
-    }
 
     // eslint-disable-next-line
-    ripple.rippleWaveEl = document.createElement('div');
-    ripple.rippleWaveEl.classList.add('twm-ripple-wave');
+    ripple.rippleWaveEl = document.createElement('span');
+    ripple.rippleWaveEl.classList.add('twm-touch-ripple-wave');
+    ripple.rippleWaveEl.setAttribute('hidden', '');
+
     ripple.rippleWaveEl.style = `
       width: ${diameter}px;
       height: ${diameter}px;
@@ -57,8 +53,9 @@ export class TouchRipple {
     const animationEnd = () => {
       ripple.rippleWaveEl.removeEventListener('animationend', animationEnd);
       if (!ripple.rippleWaveEl) return;
-      if (ripple.rippleWaveEl.classList.contains('twm-ripple-wave-out')) return;
-      ripple.rippleWaveEl.classList.add('twm-ripple-wave-in');
+      if (ripple.rippleWaveEl.classList.contains('twm-touch-ripple-wave-out'))
+        return;
+      ripple.rippleWaveEl.classList.add('twm-touch-ripple-wave-in');
       if (ripple.shouldBeRemoved) {
         ripple.out();
       }
@@ -84,7 +81,7 @@ export class TouchRipple {
     const ripple = this;
     const { rippleWaveEl } = this;
     clearTimeout(ripple.removeTimeout);
-    rippleWaveEl.classList.add('twm-ripple-wave-out');
+    rippleWaveEl.classList.add('twm-touch-ripple-wave-out');
 
     ripple.removeTimeout = setTimeout(() => {
       ripple.destroy();
@@ -104,7 +101,7 @@ export class TouchRipple {
       ripple.destroy();
     }, 400);
     ripple.shouldBeRemoved = true;
-    if (ripple.rippleWaveEl.classList.contains('twm-ripple-wave-in')) {
+    if (ripple.rippleWaveEl.classList.contains('twm-touch-ripple-wave-in')) {
       ripple.out();
     }
   }

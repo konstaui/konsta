@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+
 import CheckboxIcon from './icons/CheckboxIcon';
 
 const Checkbox = (props) => {
@@ -35,11 +36,13 @@ const Checkbox = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
-    borderIos: 'border-gray-300',
-    borderMaterial: 'border-gray-500',
+    borderIos:
+      'border-black border-opacity-30 dark:border-white dark:border-opacity-30',
+    borderMaterial:
+      'border-black border-opacity-40 dark:border-white dark:border-opacity-40',
     bgChecked: 'bg-primary',
     borderChecked: 'border-primary',
     ...colorsProp,

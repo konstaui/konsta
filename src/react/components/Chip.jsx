@@ -1,5 +1,6 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
+
 import DeleteIcon from './icons/DeleteIcon';
 
 const Chip = (props) => {
@@ -30,14 +31,15 @@ const Chip = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const style = outline ? 'outline' : 'fill';
 
   const colors = {
-    bg: 'bg-gray-200',
+    bg: 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10',
     text: 'text-current',
-    border: 'border-gray-200',
+    border:
+      'border-black border-opacity-10 dark:border-white dark:border-opacity-10',
     ...colorsProp,
   };
 
@@ -45,7 +47,6 @@ const Chip = (props) => {
     {
       base: {
         common: `${colors.text} text-sm inline-flex items-center justify-center align-middle rounded-full px-3 py-1`,
-
         fill: `${colors.bg}`,
         outline: `border ${colors.border}`,
       },

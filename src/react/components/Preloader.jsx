@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 import PreloaderIOS from './icons/PreloaderIOS';
 import PreloaderMaterial from './icons/PreloaderMaterial';
@@ -28,7 +29,8 @@ const Preloader = (props) => {
     ...rest,
   };
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
     text: 'text-primary',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Segmented = (props) => {
   const {
@@ -30,7 +30,7 @@ const Segmented = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
     border: 'border-primary',
@@ -44,10 +44,13 @@ const Segmented = (props) => {
       square: 'rounded',
       rounded: 'rounded-full',
     },
-    raised: outline ? 'shadow' : `shadow divide-x`,
+    raised: outline
+      ? 'shadow'
+      : `shadow divide-x divide-black divide-opacity-10`,
     outline: `border-2 ${colors.border}`,
     outlineInner: `-m-0.5 flex w-full justify-center items-center divide-x-2 ${colors.divide}`,
-    strong: 'p-1 bg-gray-200 space-x-1',
+    strong:
+      'p-1 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-10 space-x-1',
   });
 
   const classes = cls(

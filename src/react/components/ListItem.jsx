@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 import { useTouchRipple } from '../shared/use-touch-ripple';
 import ChevronIcon from './icons/ChevronIcon';
 
@@ -67,8 +68,8 @@ const ListItem = (props) => {
   };
 
   const colors = {
-    text: 'text-black',
-    menuListItemText: 'text-primary',
+    text: 'text-black dark:text-white',
+    menuListItemText: 'text-primary dark:text-white',
     menuListItemBg: 'bg-primary',
     ...colorsProp,
   };
@@ -79,7 +80,8 @@ const ListItem = (props) => {
     ? colors.menuListItemText
     : colors.text;
 
-  const { theme, themeClasses } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;
@@ -95,9 +97,19 @@ const ListItem = (props) => {
         common: `${
           menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4'
         } flex items-center ${contentClassName}`,
-        link: `active:bg-black active:bg-opacity-10 duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none ${
-          needsTouchRipple ? 'relative overflow-hidden' : ''
-        } ${isMenuListItemActive ? ' bg-primary bg-opacity-15' : ''}`,
+        link: `${
+          !isMenuListItemActive
+            ? 'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-10'
+            : ''
+        } duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none ${
+          needsTouchRipple
+            ? 'relative overflow-hidden dark:touch-ripple-white z-10'
+            : ''
+        } ${
+          isMenuListItemActive
+            ? ' bg-primary bg-opacity-15 dark:bg-primary'
+            : ''
+        }`,
       },
       media: {
         common: `mr-4 flex-shrink-0 ${mediaClassName}`,
@@ -123,16 +135,16 @@ const ListItem = (props) => {
           material: 'font-medium',
         },
       },
-      after: `${textColor} text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
+      after: `${textColor} text-opacity-55 dark:text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
       chevron: 'opacity-20 flex-shrink-0 ml-3',
       subtitle: 'text-sm',
-      text: `text-sm ${textColor} text-opacity-55 line-clamp-2`,
+      text: `text-sm ${textColor} text-opacity-55 dark:text-opacity-55 line-clamp-2`,
       header: 'text-xs mb-0.5',
-      footer: `text-xs ${textColor} text-opacity-55 mt-0.5`,
+      footer: `text-xs ${textColor} text-opacity-55 dark:text-opacity-55 mt-0.5`,
 
       divider: {
-        common: `bg-gray-100 text-black text-opacity-55 px-4 py-1 flex items-center ${
-          divider ? 'relative' : 'sticky top-0 z-10'
+        common: `bg-list-divider-light dark:bg-list-divider-dark text-black dark:text-white text-opacity-55 dark:text-opacity-55 px-4 py-1 flex items-center z-10 ${
+          divider ? 'relative' : 'sticky top-0'
         }`,
         ios: `h-8 hairline-t -m-0.5`,
         material: 'h-12',

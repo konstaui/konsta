@@ -30,14 +30,16 @@ import Tabbar from './components/Tabbar.jsx';
 import TabbarLink from './components/TabbarLink.jsx';
 import Toggle from './components/Toggle.jsx';
 import Toolbar from './components/Toolbar.jsx';
-
+// eslint-disable-next-line
 import { TailwindMobileProvider } from './shared/TailwindMobileProvider';
 import { useTheme } from './shared/use-theme';
+import { useThemeClasses } from './shared/use-theme-classes';
 
 export {
   // utils
   TailwindMobileProvider,
   useTheme,
+  useThemeClasses,
   // components
   Badge,
   Block,

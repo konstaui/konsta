@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
+import { useThemeClasses } from '../shared/use-theme-classes';
 
 const BlockTitle = (props) => {
   const {
@@ -23,7 +23,7 @@ const BlockTitle = (props) => {
     ...rest,
   };
 
-  const { themeClasses } = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(
     {
