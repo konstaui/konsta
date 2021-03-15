@@ -151,10 +151,11 @@ const ListInput = (props) => {
         material: '-mt-1',
       },
       floating: {
-        common: `pointer-events-none duration-200 transform origin-left ${
-          isFloatingTransformed ? 'scale-133' : ''
-        }`,
-        ios: `${isFloatingTransformed ? 'translate-y-7.5' : ''}`,
+        common: cls(
+          `pointer-events-none duration-200 transform origin-left`,
+          isFloatingTransformed && 'scale-133'
+        ),
+        ios: isFloatingTransformed ? 'translate-y-7.5' : '',
         material: `-mt-1 ${isFloatingTransformed ? 'translate-y-5' : ''}`,
       },
     },
@@ -191,14 +192,14 @@ const ListInput = (props) => {
       common: `block text-base appearance-none w-full focus:outline-none bg-transparent ${inputClassName}`,
       ios: 'h-11',
       material: 'h-9',
-      notFloating: `placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30${
-        type === 'textarea' ? ' py-3' : ''
-      }`,
-      floating: `${
-        isFloatingTransformed
-          ? 'placeholder-transparent'
-          : 'placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30'
-      }`,
+      notFloating: cls(
+        'placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30',
+        type === 'textarea' && 'py-3'
+      ),
+
+      floating: isFloatingTransformed
+        ? 'placeholder-transparent'
+        : 'placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30',
     },
     errorInfo: {
       common: 'text-xs relative z-10',

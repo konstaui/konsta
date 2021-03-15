@@ -39,12 +39,13 @@ const Block = (props) => {
 
   const c = themeClasses({
     base: {
-      common: `px-4 ${!nested ? 'my-8' : ''} text-sm relative z-10`,
+      common: cls(`px-4 text-sm relative z-10`, !nested && 'my-8'),
     },
     strong: {
-      common: `py-4 ${colors.strongBg} ${
-        !inset && !nested && hairlines ? 'hairline-t hairline-b' : ''
-      }`,
+      common: cls(
+        `py-4 ${colors.strongBg}`,
+        !inset && !nested && hairlines && 'hairline-t hairline-b'
+      ),
     },
     inset: {
       common: `mx-4 overflow-hidden`,

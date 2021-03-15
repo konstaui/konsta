@@ -94,32 +94,31 @@ const ListItem = (props) => {
     {
       base: menuListItem ? `${textColor} py-1` : '',
       itemContent: {
-        common: `${
-          menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4'
-        } flex items-center ${contentClassName}`,
-        link: `${
-          !isMenuListItemActive
-            ? 'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-10'
-            : ''
-        } duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none ${
-          needsTouchRipple
-            ? 'relative overflow-hidden dark:touch-ripple-white z-10'
-            : ''
-        } ${
+        common: cls(
+          menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4',
+          `flex items-center ${contentClassName}`
+        ),
+        link: cls(
+          'duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none',
+          needsTouchRipple &&
+            'relative overflow-hidden dark:touch-ripple-white z-10',
           isMenuListItemActive
-            ? ' bg-primary bg-opacity-15 dark:bg-primary'
-            : ''
-        }`,
+            ? 'bg-primary bg-opacity-15 dark:bg-primary'
+            : 'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-10'
+        ),
       },
+
       media: {
         common: `mr-4 flex-shrink-0 ${mediaClassName}`,
         ios: 'py-2',
         material: 'py-3 min-w-10',
       },
       inner: {
-        common: `pr-4 w-full relative ${
-          !menuListItem ? 'hairline-b' : ''
-        } ${innerClassName}`,
+        common: cls(
+          'pr-4 w-full relative',
+          !menuListItem && 'hairline-b',
+          innerClassName
+        ),
         ios: 'py-2.5',
         material: 'py-3',
       },

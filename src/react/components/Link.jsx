@@ -57,9 +57,10 @@ const Link = (props) => {
 
   const c = themeClasses({
     base: {
-      common: `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none${
-        needsTouchRipple ? ' touch-ripple-primary relative z-10' : ''
-      }`,
+      common: cls(
+        `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
+        needsTouchRipple && ' touch-ripple-primary relative z-10'
+      ),
       notTabbar: {
         ios: `active:opacity-30 duration-300 active:duration-0`,
         material: needsTouchRipple ? '' : `active:opacity-55`,

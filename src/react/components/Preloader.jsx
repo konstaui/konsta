@@ -1,4 +1,5 @@
 import React from 'react';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
@@ -42,9 +43,10 @@ const Preloader = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `${
-          theme === 'ios' ? 'twm-ios-preloader' : 'twm-material-preloader'
-        } inline-block ${size} ${colors.text}`,
+        common: cls(
+          theme === 'ios' ? 'twm-ios-preloader' : 'twm-material-preloader',
+          `inline-block ${size} ${colors.text}`
+        ),
         material: `stroke-4`,
       },
       inner: {

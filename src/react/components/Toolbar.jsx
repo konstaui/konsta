@@ -1,4 +1,5 @@
 import React from 'react';
+import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
@@ -54,9 +55,7 @@ const Toolbar = (props) => {
       bg: {
         common: 'absolute w-full h-full left-0 top-0',
         ios: `${top ? 'hairline-b' : 'hairline-t'} ${colors.bg}`,
-        material: `shadow-md ${colors.bg} ${
-          !top ? 'transform rotate-180' : ''
-        }`,
+        material: cls(`shadow-md ${colors.bg}`, !top && 'transform rotate-180'),
       },
       inner: {
         common: `flex relative justify-between items-center w-full h-full overflow-hidden`,

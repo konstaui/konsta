@@ -39,11 +39,12 @@ const List = (props) => {
 
   const c = themeClasses({
     base: {
-      common: `${!nested ? 'my-8' : ''} ${colors.bg} ${
-        !inset && !nested && hairlines ? 'hairline-t hairline-b' : ''
-      } relative last-child-hairline-b-none z-10`,
-      ios: ``,
-      material: ``,
+      common: cls(
+        !nested && 'my-8',
+        colors.bg,
+        !inset && !nested && hairlines && 'hairline-t hairline-b',
+        'relative last-child-hairline-b-none z-10'
+      ),
     },
     inset: {
       common: `mx-4 overflow-hidden`,

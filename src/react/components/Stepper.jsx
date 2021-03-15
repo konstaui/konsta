@@ -95,16 +95,23 @@ const Stepper = (props) => {
       rounded: 'rounded-r-full',
     },
     buttonStyle: {
-      fill: `text-white ${colors.bg} ${
-        colors.activeBgDark
-      } touch-ripple-white ${
-        buttonsOnly ? 'first:border-r border-black border-opacity-10' : ''
-      }`,
-      outline: `border-2 ${colors.border} ${colors.text} ${
-        colors.touchRipple
-      } ${colors.activeBg} active:bg-opacity-15 ${
-        buttonsOnly ? 'first:border-r-0' : ''
-      }`,
+      fill: cls(
+        'text-white',
+        colors.bg,
+        colors.activeBgDark,
+        'touch-ripple-white',
+        buttonsOnly && 'first:border-r border-black border-opacity-10'
+      ),
+      outline: cls(
+        'border-2',
+        colors.border,
+        colors.text,
+        colors.touchRipple,
+        colors.activeBg,
+        'active:bg-opacity-15',
+        buttonsOnly && 'first:border-r-0'
+      ),
+
       clear: `${colors.text} ${colors.activeBg} ${colors.touchRipple} active:bg-opacity-15 last:border-l border-black border-opacity-10`,
     },
     input: {

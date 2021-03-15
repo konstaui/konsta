@@ -85,9 +85,13 @@ const Button = (props) => {
     },
     style: {
       fill: `text-white ${colors.bg} ${colors.activeBgDark} touch-ripple-white`,
-      outline: `${segmented ? '' : `border-2 ${colors.border}`} ${
-        colors.text
-      } ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`,
+      outline: cls(
+        !segmented && `border-2 ${colors.border}`,
+        colors.text,
+        colors.activeBg,
+        'active:bg-opacity-15',
+        colors.touchRipple
+      ),
       clear: `${colors.text} ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`,
       segmentedStrong:
         'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-5 dark:touch-ripple-white',
