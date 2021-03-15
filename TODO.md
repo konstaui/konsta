@@ -14,8 +14,8 @@
   - Toast
   - Menu
   - Messages
-  - Searchbar???
-  - Range???
+  - Searchbar
+  - Range
 
   - Notifications
   - Side Panels

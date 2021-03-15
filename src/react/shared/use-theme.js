@@ -3,7 +3,7 @@ import { TailwindMobileContext } from './TailwindMobileContext';
 
 const useTheme = ({ ios, material } = {}) => {
   const context = useContext(TailwindMobileContext);
-  let theme = context.theme || 'both';
+  let theme = context.theme || 'ios';
   if (ios) theme = 'ios';
   if (material) theme = 'material';
   return theme;

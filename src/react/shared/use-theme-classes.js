@@ -15,10 +15,9 @@ const propClasses = (classesObj, theme, state) => {
 };
 const themeClasses = (classesObj, theme, addBaseClassName) => {
   const c = {};
-  const themeSubKeys = ['common', 'ios', 'material', 'both'];
+  const themeSubKeys = ['common', 'ios', 'material'];
   Object.keys(classesObj).forEach((key) => {
     const addBaseClass = key === 'base' ? addBaseClassName : '';
-    c[key] = cls(propClasses(classesObj[key], theme), addBaseClass);
     const hasStates =
       typeof classesObj[key] !== 'string' &&
       Object.keys(classesObj[key]).filter(
@@ -46,7 +45,7 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
 
 const useThemeClasses = ({ ios, material } = {}) => {
   const context = useContext(TailwindMobileContext);
-  let theme = context.theme || 'both';
+  let theme = context.theme || 'ios';
   if (ios) theme = 'ios';
   if (material) theme = 'material';
   return (classesObj, addBaseClassName) =>
