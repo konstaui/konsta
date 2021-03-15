@@ -12,12 +12,12 @@
   - Popover
   - Actions
   - Toast
-  - Notifications
   - Menu
-
   - Messages
   - Searchbar???
   - Range???
+
+  - Notifications
   - Side Panels
 
 - Common
