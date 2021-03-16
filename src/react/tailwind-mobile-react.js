@@ -26,7 +26,6 @@ import Radio from './components/Radio.jsx';
 import Segmented from './components/Segmented.jsx';
 import SegmentedButton from './components/SegmentedButton.jsx';
 import Stepper from './components/Stepper.jsx';
-import Subnavbar from './components/Subnavbar.jsx';
 import Tabbar from './components/Tabbar.jsx';
 import TabbarLink from './components/TabbarLink.jsx';
 import Toggle from './components/Toggle.jsx';
@@ -70,7 +69,6 @@ export {
   Segmented,
   SegmentedButton,
   Stepper,
-  Subnavbar,
   Tabbar,
   TabbarLink,
   Toggle,
