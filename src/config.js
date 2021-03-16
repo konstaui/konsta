@@ -9,6 +9,7 @@ const pluginIosMaterial = require('./config/plugin-ios-material');
 const pluginLineClamp = require('./config/plugin-line-clamp');
 const pluginSafeAreas = require('./config/plugin-safe-areas');
 const pluginDarkMode = require('./config/plugin-dark-mode');
+const pluginTranslucent = require('./config/plugin-translucent');
 
 const config = (userConfig = {}) => {
   return configExtend(
@@ -28,6 +29,7 @@ const config = (userConfig = {}) => {
         pluginLineClamp(),
         pluginSafeAreas(),
         pluginDarkMode(),
+        pluginTranslucent(),
       ],
     },
     userConfig

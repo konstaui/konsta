@@ -9,6 +9,7 @@ const Toolbar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
+    translucent = true,
 
     tabbar,
     tabbarLabels,
@@ -54,7 +55,11 @@ const Toolbar = (props) => {
       },
       bg: {
         common: 'absolute w-full h-full left-0 top-0',
-        ios: `${top ? 'hairline-b' : 'hairline-t'} ${colors.bg}`,
+        ios: cls(
+          top ? 'hairline-b' : 'hairline-t',
+          colors.bg,
+          translucent && 'translucent'
+        ),
         material: cls(`shadow-md ${colors.bg}`, !top && 'transform rotate-180'),
       },
       inner: {

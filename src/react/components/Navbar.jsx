@@ -1,4 +1,5 @@
 import React from 'react';
+import { cls } from '../shared/cls';
 import { positionClass } from '../shared/position-class';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
@@ -8,6 +9,7 @@ const Navbar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
+    translucent = true,
 
     left,
     title,
@@ -46,7 +48,7 @@ const Navbar = (props) => {
       },
       bg: {
         common: 'absolute w-full h-full left-0 top-0',
-        ios: `hairline-b ${colors.bg}`,
+        ios: cls(`hairline-b ${colors.bg}`, translucent && 'translucent'),
         material: `shadow-md ${colors.bg}`,
       },
       subnavbar: {
@@ -57,7 +59,7 @@ const Navbar = (props) => {
       inner: {
         common: 'flex relative items-center w-full overflow-hidden',
         ios: 'px-2 justify-between h-11',
-        material: 'justify-start h-14 text-xl',
+        material: 'justify-start h-14 lg:h-16 text-xl',
       },
       left: {
         common: 'flex justify-center items-center h-full',
