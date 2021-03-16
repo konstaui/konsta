@@ -1,5 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 const List = (props) => {
@@ -43,7 +44,8 @@ const List = (props) => {
         !nested && 'my-8',
         colors.bg,
         !inset && !nested && hairlines && 'hairline-t hairline-b',
-        'relative last-child-hairline-b-none z-10'
+        positionClass('relative', className),
+        'last-child-hairline-b-none z-10'
       ),
     },
     inset: {

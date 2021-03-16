@@ -1,4 +1,6 @@
 import React from 'react';
+import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Toggle = (props) => {
@@ -44,7 +46,10 @@ const Toggle = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full`,
+        common: cls(
+          positionClass('relative', className),
+          `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full`
+        ),
         ios: 'h-8 w-13 p-0.5',
         material: 'w-9 h-3.5',
         notChecked: {

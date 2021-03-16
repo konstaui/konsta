@@ -4,7 +4,7 @@ import { useTheme } from '../../shared/use-theme';
 const CheckboxIcon = (props) => {
   const { ios, material, fill, ...rest } = props;
 
-  const { theme } = useTheme({ ios, material });
+  const theme = useTheme({ ios, material });
   return theme === 'ios' ? (
     <svg
       xmlns="http://www.w3.org/2000/svg"

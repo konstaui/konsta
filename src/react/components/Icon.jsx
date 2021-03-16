@@ -1,4 +1,5 @@
 import React from 'react';
+import { positionClass } from '../shared/position-class';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 import Badge from './Badge';
@@ -32,7 +33,7 @@ const Icon = (props) => {
 
   const c = themeClasses(
     {
-      base: 'relative inline-block not-italic',
+      base: `${positionClass('relative', className)} inline-block not-italic`,
       badge: 'absolute -right-1.5 -top-0.5',
     },
     className

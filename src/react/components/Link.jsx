@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 import { useTouchRipple } from '../shared/use-touch-ripple';
@@ -61,7 +62,8 @@ const Link = (props) => {
     base: {
       common: cls(
         `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
-        needsTouchRipple && ' touch-ripple-primary relative z-10'
+        needsTouchRipple &&
+          ` touch-ripple-primary ${positionClass('relative', className)} z-10`
       ),
       notTabbar: {
         ios: `active:opacity-30 duration-300 active:duration-0`,
@@ -69,7 +71,10 @@ const Link = (props) => {
       },
     },
     tabbar: {
-      common: 'w-full h-full relative duration-300',
+      common: `w-full h-full ${positionClass(
+        'relative',
+        className
+      )} duration-300`,
       material: 'uppercase font-medium text-sm overflow-hidden z-10',
       active: {},
       inactive: {

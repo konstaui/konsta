@@ -26,7 +26,6 @@
   - rename themeClasses helpers to `c` `i` and `m`
   - extend z-indexes
   - add `position` and `margin` classes
-  - link to have iconOnly to set touch-ripple-inset
 
 - Demos
   - Badge

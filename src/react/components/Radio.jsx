@@ -1,4 +1,6 @@
 import React from 'react';
+import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 import RadioIcon from './icons/RadioIcon';
@@ -51,7 +53,10 @@ const Radio = (props) => {
 
   const c = themeClasses(
     {
-      base: `cursor-pointer inline-block align-middle relative`,
+      base: cls(
+        `cursor-pointer inline-block align-middle`,
+        positionClass('relative', className)
+      ),
       iconWrap: {
         common: 'flex items-center justify-center rounded-full',
         ios: 'w-5.5 h-5.5 border',

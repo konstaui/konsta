@@ -1,4 +1,5 @@
 import React from 'react';
+import { positionClass } from '../shared/position-class';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
@@ -7,7 +8,6 @@ const Subnavbar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    position = 'relative',
     ios,
     material,
     children,
@@ -31,7 +31,7 @@ const Subnavbar = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${position} z-50`,
+        common: `w-full ${positionClass('relative', className)} z-50`,
         ios: 'h-11',
         material: 'h-12',
       },

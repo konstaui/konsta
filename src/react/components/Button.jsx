@@ -3,6 +3,7 @@ import { cls } from '../shared/cls';
 import { useTheme } from '../shared/use-theme';
 import { useTouchRipple } from '../shared/use-touch-ripple';
 import { useThemeClasses } from '../shared/use-theme-classes';
+import { positionClass } from '../shared/position-class';
 
 const Button = (props) => {
   const rippleElRef = useRef(null);
@@ -73,7 +74,10 @@ const Button = (props) => {
 
   const c = themeClasses({
     base: {
-      common: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none relative overflow-hidden z-10`,
+      common: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none ${positionClass(
+        'relative',
+        className
+      )} overflow-hidden z-10`,
       ios: `duration-100 font-semibold`,
       material: `duration-300 font-medium tracking-wider`,
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { positionClass } from '../shared/position-class';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 import CheckboxIcon from './icons/CheckboxIcon';
@@ -55,7 +56,10 @@ const Checkbox = (props) => {
 
   const c = themeClasses(
     {
-      base: `cursor-pointer inline-block align-middle relative`,
+      base: `cursor-pointer inline-block align-middle ${positionClass(
+        'relative',
+        className
+      )}`,
       iconWrap: {
         common: 'flex items-center justify-center',
         ios: 'w-5.5 h-5.5 rounded-full border',

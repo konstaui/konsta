@@ -68,7 +68,7 @@ export default function BadgePage() {
         </Link>
       }
     >
-      <Tabbar labels position="fixed" className="left-0 bottom-0">
+      <Tabbar labels className="left-0 bottom-0 fixed">
         <TabbarLink active icon={<InboxIcon />} label="Inbox" />
         <TabbarLink icon={<CalendarIcon />} label="Calendar" />
         <TabbarLink icon={<UploadIcon />} label="Upload" />

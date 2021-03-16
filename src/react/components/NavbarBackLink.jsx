@@ -38,8 +38,8 @@ const NavbarBackLink = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: 'cursor-pointer touch-ripple-inset',
-        material: 'min-w-12',
+        common: 'cursor-pointer',
+        material: 'min-w-12 touch-ripple-inset',
       },
       icon: '',
     },

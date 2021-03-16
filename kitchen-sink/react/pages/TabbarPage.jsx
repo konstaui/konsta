@@ -3,11 +3,18 @@ import {
   Tabbar,
   TabbarLink,
   Block,
+  Icon,
   List,
   ListItem,
   Toggle,
 } from 'tailwind-mobile/react';
-import DemoIcon from '../components/DemoIcon';
+import {
+  EnvelopeFill,
+  Calendar,
+  CloudUploadFill,
+} from 'framework7-icons/react';
+import { MdEmail, MdToday, MdFileUpload } from 'react-icons/md';
+
 import Page from '../components/Page';
 
 export default function TabbarPage() {
@@ -15,27 +22,44 @@ export default function TabbarPage() {
   const [isTabbarLabels, setIsTabbarLabels] = useState(false);
   return (
     <Page title="Tabbar">
-      <Tabbar
-        labels={isTabbarLabels}
-        position="fixed"
-        className="left-0 bottom-0"
-      >
+      <Tabbar labels={isTabbarLabels} className="left-0 bottom-0 fixed">
         <TabbarLink
           active={activeTab === 'tab-1'}
           onClick={() => setActiveTab('tab-1')}
-          icon={isTabbarLabels && <DemoIcon />}
+          icon={
+            isTabbarLabels && (
+              <Icon
+                ios={<EnvelopeFill className="w-7 h-7" />}
+                material={<MdEmail className="w-6 h-6" />}
+              />
+            )
+          }
           label="Tab 1"
         />
         <TabbarLink
           active={activeTab === 'tab-2'}
           onClick={() => setActiveTab('tab-2')}
-          icon={isTabbarLabels && <DemoIcon />}
+          icon={
+            isTabbarLabels && (
+              <Icon
+                ios={<Calendar className="w-7 h-7" />}
+                material={<MdToday className="w-6 h-6" />}
+              />
+            )
+          }
           label="Tab 2"
         />
         <TabbarLink
           active={activeTab === 'tab-3'}
           onClick={() => setActiveTab('tab-3')}
-          icon={isTabbarLabels && <DemoIcon />}
+          icon={
+            isTabbarLabels && (
+              <Icon
+                ios={<CloudUploadFill className="w-7 h-7" />}
+                material={<MdFileUpload className="w-6 h-6" />}
+              />
+            )
+          }
           label="Tab 3"
         />
       </Tabbar>

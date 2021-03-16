@@ -1,4 +1,6 @@
 import React from 'react';
+import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 const ListButton = (props) => {
@@ -46,7 +48,10 @@ const ListButton = (props) => {
     {
       base: ``,
       button: {
-        common: `relative flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none hairline-b active:hairline-transparent ${colors.text} ${colors.activeBg}`,
+        common: cls(
+          positionClass('relative', className),
+          `flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none hairline-b active:hairline-transparent ${colors.text} ${colors.activeBg}`
+        ),
         ios: 'h-11',
         material: 'h-12',
       },

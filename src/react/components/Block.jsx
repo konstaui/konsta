@@ -1,5 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Block = (props) => {
@@ -39,7 +40,10 @@ const Block = (props) => {
 
   const c = themeClasses({
     base: {
-      common: cls(`px-4 text-sm relative z-10`, !nested && 'my-8'),
+      common: cls(
+        `px-4 text-sm ${positionClass('relative', className)} z-10`,
+        !nested && 'my-8'
+      ),
     },
     strong: {
       common: cls(

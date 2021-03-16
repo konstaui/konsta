@@ -15,8 +15,7 @@ export default function Page(props) {
       {title && (
         <Navbar
           title={title}
-          className="top-0"
-          position="sticky"
+          className="top-0 sticky"
           left={backLink && <NavbarBackLink onClick={goBack} />}
           right={navRight}
         />

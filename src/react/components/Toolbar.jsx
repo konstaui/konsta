@@ -1,5 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useTheme } from '../shared/use-theme';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
@@ -9,7 +10,6 @@ const Toolbar = (props) => {
     className,
     colors: colorsProp,
 
-    position = 'relative',
     tabbar,
     tabbarLabels,
 
@@ -42,7 +42,7 @@ const Toolbar = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${position} z-50`,
+        common: `w-full ${positionClass('relative', className)} z-50`,
         toolbar: {
           ios: 'h-11',
           material: 'h-12',
