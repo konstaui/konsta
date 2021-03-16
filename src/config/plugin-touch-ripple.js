@@ -6,7 +6,7 @@ module.exports = () =>
     addBase({
       ':root': {
         '--twm-touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
-        '--twm-touch-ripple-white': 'rgba(255, 255, 255, 0.3)',
+        '--twm-touch-ripple-white': 'rgba(255, 255, 255, 0.15)',
         '--twm-touch-ripple-color': 'var(--twm-touch-ripple-black)',
       },
       '.twm-touch-ripple-wave': {
