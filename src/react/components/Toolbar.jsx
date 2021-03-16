@@ -11,6 +11,9 @@ const Toolbar = (props) => {
     colors: colorsProp,
     translucent = true,
 
+    bgClassName = '',
+    innerClassName = '',
+
     tabbar,
     tabbarLabels,
 
@@ -54,7 +57,7 @@ const Toolbar = (props) => {
         },
       },
       bg: {
-        common: 'absolute w-full h-full left-0 top-0',
+        common: cls('absolute w-full h-full left-0 top-0', bgClassName),
         ios: cls(
           top ? 'hairline-b' : 'hairline-t',
           colors.bg,
@@ -63,7 +66,10 @@ const Toolbar = (props) => {
         material: cls(`shadow-md ${colors.bg}`, !top && 'transform rotate-180'),
       },
       inner: {
-        common: `flex relative justify-between items-center w-full h-full overflow-hidden`,
+        common: cls(
+          `flex relative justify-between items-center w-full h-full overflow-hidden`,
+          innerClassName
+        ),
         ios: 'px-2',
         material: !tabbar ? 'px-2' : '',
       },

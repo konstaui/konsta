@@ -8,6 +8,15 @@ const Navbar = (props) => {
   const {
     component = 'div',
     className,
+
+    bgClassName = '',
+    innerClassName = '',
+    leftClassName = '',
+    titleClassName = '',
+    subtitleClassName = '',
+    rightClassName = '',
+    subnavbarClassName = '',
+
     colors: colorsProp,
     translucent = true,
 
@@ -47,38 +56,44 @@ const Navbar = (props) => {
         material: '',
       },
       bg: {
-        common: 'absolute w-full h-full left-0 top-0',
+        common: cls('absolute w-full h-full left-0 top-0', bgClassName),
         ios: cls(`hairline-b ${colors.bg}`, translucent && 'translucent'),
         material: `shadow-md ${colors.bg}`,
       },
       subnavbar: {
-        common: 'relative flex items-center',
+        common: cls('relative flex items-center', subnavbarClassName),
         ios: 'h-11 px-2',
         material: 'h-12 px-4',
       },
       inner: {
-        common: 'flex relative items-center w-full overflow-hidden',
+        common: cls(
+          'flex relative items-center w-full overflow-hidden',
+          innerClassName
+        ),
         ios: 'px-2 justify-between h-11',
         material: 'justify-start h-14 lg:h-16 text-xl',
       },
       left: {
-        common: 'flex justify-center items-center h-full',
+        common: cls('flex justify-center items-center h-full', leftClassName),
         ios: 'mr-2',
         material: 'mx-1',
       },
       title: {
-        common: 'text-black dark:text-white whitespace-nowrap leading-tight',
+        common: cls(
+          'text-black dark:text-white whitespace-nowrap leading-tight',
+          titleClassName
+        ),
         ios:
           'font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center',
         material: 'font-medium mx-4 text-left',
       },
       subtitle: {
-        common: 'font-normal leading-none',
+        common: cls('font-normal leading-none', subtitleClassName),
         ios: 'text-2xs opacity-55',
         material: 'text-sm opacity-85',
       },
       right: {
-        common: 'flex justify-center items-center h-full',
+        common: cls('flex justify-center items-center h-full', rightClassName),
         ios: 'ml-2',
         material: 'ml-auto mr-1',
       },
