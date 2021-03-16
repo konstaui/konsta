@@ -18,6 +18,7 @@ import StepperPage from './pages/StepperPage';
 import FormInputsPage from './pages/FormInputsPage';
 import NavbarPage from './pages/NavbarPage';
 import SubnavbarPage from './pages/SubnavbarPage';
+import PopupPage from './pages/PopupPage';
 
 const routes = [
   ChipsPage,
@@ -40,6 +41,7 @@ const routes = [
   FormInputsPage,
   NavbarPage,
   SubnavbarPage,
+  PopupPage,
 ].map((component) => {
   const name = component.name;
   const path = `/${name
