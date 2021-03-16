@@ -31,6 +31,7 @@ const TabbarLink = (props) => {
       material: 'py-2',
     },
     icon: {
+      common: 'flex items-center justify-center',
       ios: 'w-7 h-7',
       material: 'w-6 h-6',
     },

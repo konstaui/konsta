@@ -23,10 +23,10 @@
 - Common
 
   - add darktheme to provider context
-  - `margin`/`setMargin` prop enabled by default to unset margin
-  - `positition`/`posititionClass`/`setPosition` prop to set/unset position
   - rename themeClasses helpers to `c` `i` and `m`
   - extend z-indexes
+  - add `position` and `margin` classes
+  - link to have iconOnly to set touch-ripple-inset
 
 - Demos
   - Badge

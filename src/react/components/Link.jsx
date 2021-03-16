@@ -16,6 +16,8 @@ const Link = (props) => {
     navbar,
     toolbar,
 
+    iconOnly,
+
     tabbar,
     tabbarActive,
 
@@ -81,11 +83,11 @@ const Link = (props) => {
       inactive: 'opacity-0',
     },
     toolbar: {
-      common: 'h-full max-h-12',
+      common: cls(`h-full max-h-12`, iconOnly && 'touch-ripple-inset'),
       material: 'px-3',
     },
     navbar: {
-      common: 'h-full max-h-12',
+      common: cls(`h-full max-h-12`, iconOnly && 'touch-ripple-inset'),
       material: 'px-3',
     },
   });

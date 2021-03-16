@@ -44,6 +44,7 @@ const extendTheme = () => {
   });
 
   const fontSize = {
+    '2xs': '0.625rem',
     'icon-ios': '28px',
     'icon-material': '24px',
   };

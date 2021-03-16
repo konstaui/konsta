@@ -8,6 +8,7 @@ import Card from './components/Card.jsx';
 import Checkbox from './components/Checkbox.jsx';
 import Chip from './components/Chip.jsx';
 import Fab from './components/Fab.jsx';
+import Icon from './components/Icon.jsx';
 import Link from './components/Link.jsx';
 import List from './components/List.jsx';
 import ListGroup from './components/ListGroup.jsx';
@@ -51,6 +52,7 @@ export {
   Checkbox,
   Chip,
   Fab,
+  Icon,
   Link,
   List,
   ListGroup,

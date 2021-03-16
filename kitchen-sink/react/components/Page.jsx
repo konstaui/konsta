@@ -6,7 +6,7 @@ import {
 } from 'tailwind-mobile/react';
 
 export default function Page(props) {
-  const { title, backLink = true, children } = props;
+  const { title, backLink = true, navRight, children } = props;
   const goBack = () => {
     history.back();
   };
@@ -18,6 +18,7 @@ export default function Page(props) {
           className="top-0"
           position="sticky"
           left={backLink && <NavbarBackLink onClick={goBack} />}
+          right={navRight}
         />
       )}
       <div className="relative">{children}</div>

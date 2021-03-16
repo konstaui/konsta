@@ -1,4 +1,5 @@
 import ChipsPage from './pages/ChipsPage';
+import BadgePage from './pages/BadgePage';
 import ButtonsPage from './pages/ButtonsPage';
 import SegmentedPage from './pages/SegmentedPage';
 import ContentBlockPage from './pages/ContentBlockPage';
@@ -18,6 +19,7 @@ import FormInputsPage from './pages/FormInputsPage';
 
 const routes = [
   ChipsPage,
+  BadgePage,
   ButtonsPage,
   SegmentedPage,
   ContentBlockPage,
