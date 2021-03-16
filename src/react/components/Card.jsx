@@ -1,10 +1,12 @@
 import React from 'react';
+import { cls } from '../shared/cls';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Card = (props) => {
   const {
     component = 'div',
     className,
+    margin = 'm-4',
     colors: colorsProp,
     header,
     footer,
@@ -41,7 +43,7 @@ const Card = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `m-4 ${colors.bg} rounded overflow-hidden`,
+        common: cls(margin, `${colors.bg} rounded overflow-hidden`),
         shadow: 'shadow',
         outline: `border border-black dark:border-white border-opacity-10 dark:border-opacity-10`,
       },

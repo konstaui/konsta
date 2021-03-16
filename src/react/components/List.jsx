@@ -9,6 +9,7 @@ const List = (props) => {
     className,
     colors: colorsProp,
 
+    margin = 'my-8',
     inset,
     nested,
     menuList,
@@ -41,7 +42,7 @@ const List = (props) => {
   const c = themeClasses({
     base: {
       common: cls(
-        !nested && 'my-8',
+        !nested && margin,
         colors.bg,
         !inset && !nested && hairlines && 'hairline-t hairline-b',
         positionClass('relative', className),

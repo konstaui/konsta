@@ -9,6 +9,7 @@ const Block = (props) => {
     className,
     colors: colorsProp,
 
+    margin = 'my-8',
     strong,
     inset,
     nested,
@@ -42,7 +43,7 @@ const Block = (props) => {
     base: {
       common: cls(
         `px-4 text-sm ${positionClass('relative', className)} z-10`,
-        !nested && 'my-8'
+        !nested && margin
       ),
     },
     strong: {
