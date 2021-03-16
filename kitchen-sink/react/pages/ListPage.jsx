@@ -216,7 +216,11 @@ export default function ListPage() {
       </List>
       <List inset>
         <ListButton
-          colors={{ text: 'text-red-500', activeBg: 'active:bg-red-500' }}
+          colors={{
+            text: 'text-red-500',
+            activeBg: 'active:bg-red-500',
+            touchRipple: 'touch-ripple-red-500',
+          }}
         >
           Red Button
         </ListButton>
