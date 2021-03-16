@@ -51,7 +51,7 @@ const Navbar = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${positionClass('relative', className)} z-50`,
+        common: `w-full ${positionClass('relative', className)} z-20`,
         ios: '',
         material: '',
       },
@@ -70,7 +70,10 @@ const Navbar = (props) => {
           'flex relative items-center w-full overflow-hidden',
           innerClassName
         ),
-        ios: 'px-2 justify-between h-11',
+        ios: cls(
+          'px-2 h-11',
+          !left && right ? 'justify-end' : 'justify-between'
+        ),
         material: 'justify-start h-14 lg:h-16 text-xl',
       },
       left: {

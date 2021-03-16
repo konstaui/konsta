@@ -46,7 +46,7 @@ const Toolbar = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${positionClass('relative', className)} z-50`,
+        common: `w-full ${positionClass('relative', className)} z-20`,
         toolbar: {
           ios: 'h-11',
           material: 'h-12',
