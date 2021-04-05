@@ -7,7 +7,6 @@
   - Slider/Carousel
   - Popover
   - Actions
-  - Toast
   - Menu
   - Messages
   - Searchbar
@@ -20,8 +19,3 @@
 
   - add darktheme to provider context
   - rename themeClasses helpers to `c` `i` and `m`
-
-- Demos
-  - Badge
-  - Navbar
-  - Subnavbar

@@ -26,6 +26,7 @@ const Button = (props) => {
     small,
     large,
     raised,
+    inline,
 
     // Segmented
     segmented,
@@ -74,10 +75,11 @@ const Button = (props) => {
 
   const c = themeClasses({
     base: {
-      common: `w-full uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none ${positionClass(
-        'relative',
-        className
-      )} overflow-hidden z-10`,
+      common: cls(
+        'uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10',
+        inline ? 'inline-flex' : 'w-full flex',
+        positionClass('relative', className)
+      ),
       ios: `duration-100 font-semibold`,
       material: `duration-300 font-medium tracking-wider`,
 

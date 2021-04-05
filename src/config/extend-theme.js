@@ -44,6 +44,10 @@ const extendTheme = () => {
     transitionDuration[value] = `${value}ms`;
   });
 
+  const transitionProperty = {
+    'transform-opacity': 'transform, opacity',
+  };
+
   // FONT SIZE
   const fontSize = {
     '2xs': '0.625rem',
@@ -75,6 +79,8 @@ const extendTheme = () => {
     'bars-ios-dark': '#121212',
     'bars-material-light': '#fff',
     'bars-material-dark': '#202020',
+    'toast-ios': '#000000',
+    'toast-material': '#323232',
     primary: {
       light: '#298fff',
       DEFAULT: '#007aff',
@@ -91,6 +97,7 @@ const extendTheme = () => {
     opacity,
     textOpacity,
     transitionDuration,
+    transitionProperty,
     scale,
     boxShadow,
     colors,

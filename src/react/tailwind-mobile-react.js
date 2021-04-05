@@ -29,6 +29,7 @@ import SegmentedButton from './components/SegmentedButton.jsx';
 import Stepper from './components/Stepper.jsx';
 import Tabbar from './components/Tabbar.jsx';
 import TabbarLink from './components/TabbarLink.jsx';
+import Toast from './components/Toast.jsx';
 import Toggle from './components/Toggle.jsx';
 import Toolbar from './components/Toolbar.jsx';
 // eslint-disable-next-line
@@ -73,6 +74,7 @@ export {
   Stepper,
   Tabbar,
   TabbarLink,
+  Toast,
   Toggle,
   Toolbar,
 };
