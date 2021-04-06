@@ -20,6 +20,7 @@ import NavbarPage from './pages/NavbarPage';
 import SubnavbarPage from './pages/SubnavbarPage';
 import PopupPage from './pages/PopupPage';
 import ToastPage from './pages/ToastPage';
+import RangeSliderPage from './pages/RangeSliderPage';
 
 const routes = [
   ChipsPage,
@@ -44,6 +45,7 @@ const routes = [
   SubnavbarPage,
   PopupPage,
   ToastPage,
+  RangeSliderPage,
 ].map((component) => {
   const name = component.name;
   const path = `/${name

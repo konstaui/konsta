@@ -24,6 +24,7 @@ import Popup from './components/Popup.jsx';
 import Preloader from './components/Preloader.jsx';
 import Progressbar from './components/Progressbar.jsx';
 import Radio from './components/Radio.jsx';
+import Range from './components/Range.jsx';
 import Segmented from './components/Segmented.jsx';
 import SegmentedButton from './components/SegmentedButton.jsx';
 import Stepper from './components/Stepper.jsx';
@@ -69,6 +70,7 @@ export {
   Preloader,
   Progressbar,
   Radio,
+  Range,
   Segmented,
   SegmentedButton,
   Stepper,
