@@ -28,7 +28,9 @@ const BlockTitle = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: `px-4 mt-8 flex items-center ${withBlock ? '-mb-6' : 'mb-2'}`,
+        common: `px-4 mt-8 flex justify-between items-center ${
+          withBlock ? '-mb-6' : 'mb-2'
+        }`,
         ios: `font-semibold`,
         material: `font-medium`,
       },
