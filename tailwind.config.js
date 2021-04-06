@@ -1,7 +1,12 @@
 const tailwindMobile = require('./src/config');
 
 module.exports = tailwindMobile({
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  mode: 'jit',
+  purge: [
+    './src/**/*.{js,jsx,ts,tsx}',
+    './kitchen-sink/react/**/*.{js,jsx,ts,tsx}',
+    './public/index.html',
+  ],
   darkMode: 'class',
   variants: {
     extend: {
