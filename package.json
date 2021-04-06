@@ -57,7 +57,7 @@
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
-    "tailwindcss": "^2.0.3",
+    "tailwindcss": "^2.1.1",
     "vite": "^2.0.1"
   }
 }
