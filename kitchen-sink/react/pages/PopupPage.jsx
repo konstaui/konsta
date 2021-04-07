@@ -63,3 +63,4 @@ export default function PopupPage() {
     </Page>
   );
 }
+PopupPage.displayName = 'PopupPage';

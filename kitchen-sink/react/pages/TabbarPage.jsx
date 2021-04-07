@@ -179,3 +179,4 @@ export default function TabbarPage() {
     </Page>
   );
 }
+TabbarPage.displayName = 'TabbarPage';

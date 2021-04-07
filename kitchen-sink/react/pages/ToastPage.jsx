@@ -74,3 +74,4 @@ export default function ToastPage() {
     </Page>
   );
 }
+ToastPage.displayName = 'ToastPage';

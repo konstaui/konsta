@@ -55,3 +55,4 @@ export default function ProgressbarPage() {
     </Page>
   );
 }
+ProgressbarPage.displayName = 'ProgressbarPage';

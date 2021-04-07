@@ -330,3 +330,4 @@ export default function FormInputsPage() {
     </Page>
   );
 }
+FormInputsPage.displayName = 'FormInputsPage';

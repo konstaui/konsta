@@ -101,3 +101,4 @@ export default function BadgePage() {
     </Page>
   );
 }
+BadgePage.displayName = 'BadgePage';

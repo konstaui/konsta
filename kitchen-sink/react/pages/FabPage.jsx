@@ -130,3 +130,4 @@ export default function FabPage() {
 }
 
 FabPage.title = 'FAB (Floating Action Button)';
+FabPage.displayName = 'FabPage';

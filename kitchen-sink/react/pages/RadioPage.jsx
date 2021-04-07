@@ -175,3 +175,4 @@ export default function RadioPage() {
     </Page>
   );
 }
+RadioPage.displayName = 'RadioPage';

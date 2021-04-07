@@ -44,3 +44,4 @@ export default function SubnavbarPage() {
     </Page>
   );
 }
+SubnavbarPage.displayName = 'SubnavbarPage';

@@ -57,3 +57,4 @@ export default function TogglePage() {
     </Page>
   );
 }
+TogglePage.displayName = 'TogglePage';

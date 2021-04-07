@@ -440,3 +440,4 @@ export default function StepperPage() {
     </Page>
   );
 }
+StepperPage.displayName = 'StepperPage';

@@ -110,3 +110,4 @@ export default function RangeSliderPage() {
     </Page>
   );
 }
+RangeSliderPage.displayName = 'RangeSliderPage';

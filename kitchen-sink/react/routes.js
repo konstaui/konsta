@@ -47,7 +47,7 @@ const routes = [
   ToastPage,
   RangeSliderPage,
 ].map((component) => {
-  const name = component.name;
+  const name = component.displayName || component.name;
   const path = `/${name
     .split('Page')[0]
     .split('')

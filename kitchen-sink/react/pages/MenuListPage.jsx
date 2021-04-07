@@ -63,3 +63,4 @@ export default function MenuListPage() {
     </Page>
   );
 }
+MenuListPage.displayName = 'MenuListPage';

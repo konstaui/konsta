@@ -228,3 +228,4 @@ export default function ListPage() {
     </Page>
   );
 }
+ListPage.displayName = 'ListPage';

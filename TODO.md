@@ -4,14 +4,11 @@
 
 - Components
 
-  - Slider/Carousel
   - Popover
+  - Searchbar
   - Actions
   - Menu
   - Messages
-  - Searchbar
-  - Range
-
   - Notifications
   - Side Panels
 

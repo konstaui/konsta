@@ -31,3 +31,4 @@ export default function NavbarPage() {
     </Page>
   );
 }
+NavbarPage.displayName = 'NavbarPage';

@@ -201,3 +201,4 @@ export default function SegmentedControlPage() {
     </Page>
   );
 }
+SegmentedControlPage.displayName = 'SegmentedControlPage';

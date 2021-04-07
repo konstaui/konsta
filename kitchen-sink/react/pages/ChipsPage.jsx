@@ -168,3 +168,4 @@ export default function ChipsPage() {
     </Page>
   );
 }
+ChipsPage.displayName = 'ChipsPage';

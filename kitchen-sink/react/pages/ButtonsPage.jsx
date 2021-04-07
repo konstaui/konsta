@@ -190,3 +190,4 @@ export default function ButtonsPage() {
     </Page>
   );
 }
+ButtonsPage.displayName = 'ButtonsPage';

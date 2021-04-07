@@ -104,3 +104,4 @@ export default function CardsPage() {
     </Page>
   );
 }
+CardsPage.displayName = 'CardsPage';

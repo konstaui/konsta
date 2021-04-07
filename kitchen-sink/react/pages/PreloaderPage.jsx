@@ -44,3 +44,4 @@ export default function PreloaderPage() {
     </Page>
   );
 }
+PreloaderPage.displayName = 'PreloaderPage';

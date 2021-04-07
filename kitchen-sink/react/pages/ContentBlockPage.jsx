@@ -63,3 +63,4 @@ export default function ContentBlockPage() {
     </Page>
   );
 }
+ContentBlockPage.displayName = 'ContentBlockPage';

@@ -202,3 +202,4 @@ export default function CheckboxPage() {
     </Page>
   );
 }
+CheckboxPage.displayName = 'CheckboxPage';

@@ -76,3 +76,4 @@ export default function HomePage({ theme, setTheme }) {
     </Page>
   );
 }
+HomePage.displayName = 'HomePage';

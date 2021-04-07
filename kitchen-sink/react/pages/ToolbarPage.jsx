@@ -35,3 +35,4 @@ export default function ToolbarPage() {
     </Page>
   );
 }
+ToolbarPage.displayName = 'ToolbarPage';
