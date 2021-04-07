@@ -42,59 +42,59 @@ module.exports = () =>
           'stroke-dashoffset': '100px',
         },
 
-        '12.5%': {
+        '12.50%': {
           transform: 'rotate(-90deg)',
           'stroke-dashoffset': '25px',
         },
 
         '25%': {
-          'stroke-dashoffset': '100px',
           transform: 'rotate(180deg)',
+          'stroke-dashoffset': '100px',
         },
 
-        '25.1%': {
+        '25.10%': {
           transform: 'rotate(-180deg)',
           'stroke-dashoffset': '100px',
         },
 
-        '37.5%': {
+        '37.50%': {
           transform: 'rotate(-180deg)',
           'stroke-dashoffset': '25px',
         },
 
         '50%': {
-          'stroke-dashoffset': '100px',
-          transform: 'rotate(90deg)',
-        },
-
-        '50.1%': {
           transform: 'rotate(90deg)',
           'stroke-dashoffset': '100px',
         },
 
-        '62.5%': {
+        '50.10%': {
+          transform: 'rotate(90deg)',
+          'stroke-dashoffset': '100px',
+        },
+
+        '62.50%': {
           transform: 'rotate(90deg)',
           'stroke-dashoffset': '25px',
         },
 
         '75%': {
-          'stroke-dashoffset': '100px',
           transform: 'rotate(360deg)',
+          'stroke-dashoffset': '100px',
         },
 
-        '75.1%': {
+        '75.10%': {
           transform: 'rotate(0deg)',
           'stroke-dashoffset': '100px',
         },
 
-        '87.5%': {
+        '87.50%': {
           transform: 'rotate(0deg)',
           'stroke-dashoffset': '25px',
         },
 
         '100%': {
-          'stroke-dashoffset': '100px',
           transform: 'rotate(270deg)',
+          'stroke-dashoffset': '100px',
         },
       },
     });
