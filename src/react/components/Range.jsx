@@ -73,7 +73,7 @@ const Range = (props) => {
 
       inputThumb: {
         common:
-          'range-thumb:relative range-thumb:appearance-none range-thumb:rounded-full',
+          'range-thumb:relative range-thumb:appearance-none range-thumb:rounded-full range-thumb:border-none',
         ios: `range-thumb:w-7 range-thumb:h-7 range-thumb:-mt-3.5 ${colors.thumbBgIos} range-thumb:shadow-ios-toggle`,
         material: `range-thumb:w-3 range-thumb:h-3 ${colors.thumbBgMaterial} range-thumb:-mt-1.5 range-thumb:transform range-thumb:duration-200 active:range-thumb:scale-150`,
       },
