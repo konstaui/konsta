@@ -4,15 +4,15 @@
 
 - Components
 
+  - fill bars
   - Popover
-  - Searchbar
   - Actions
-  - Menu
-  - Messages
+  - Searchbar
+  - Messages (simplified version)
   - Notifications
   - Side Panels
 
 - Common
 
-  - add darktheme to provider context
+  - add darktheme to provider (to exclude `dark:` classes from output)
   - rename themeClasses helpers to `c` `i` and `m`
