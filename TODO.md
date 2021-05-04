@@ -5,7 +5,6 @@
 - Components
 
   - fill bars
-  - Popover
   - Actions
   - Searchbar
   - Messages (simplified version)
