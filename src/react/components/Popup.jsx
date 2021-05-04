@@ -1,13 +1,17 @@
 import React from 'react';
 import { cls } from '../shared/cls';
+import { positionClass } from '../shared/position-class';
 import { useThemeClasses } from '../shared/use-theme-classes';
 
 const Popup = (props) => {
   const {
     component = 'div',
     className,
+    colors: colorsProp,
+
     size = 'w-screen h-screen md:w-160 md:h-160',
     opened,
+    backdrop = true,
     onBackdropClick,
 
     ios,
@@ -28,13 +32,20 @@ const Popup = (props) => {
     ...rest,
   };
 
+  const colors = {
+    bg: 'bg-white dark:bg-black',
+    ...colorsProp,
+  };
+
   const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(
     {
       base: {
         common: cls(
-          'bg-white dark:bg-black left-1/2 top-1/2 fixed transition-transform transform -translate-x-1/2 duration-400 z-40 md:rounded max-w-full max-h-full overflow-hidden',
+          'left-1/2 top-1/2 transition-transform transform -translate-x-1/2 duration-400 z-40 md:rounded max-w-full max-h-full overflow-hidden',
+          colors.bg,
+          positionClass('fixed', className),
           size
         ),
         ios: '',
@@ -54,7 +65,9 @@ const Popup = (props) => {
 
   return (
     <>
-      <div className={c.backdrop[state]} onClick={onBackdropClick} />
+      {backdrop && (
+        <div className={c.backdrop[state]} onClick={onBackdropClick} />
+      )}
       <Component className={c.base[state]} {...attrs}>
         {children}
       </Component>
