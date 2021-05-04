@@ -1,6 +1,20 @@
 const extendTheme = () => {
   // SIZES
-  const sizesValues = [0.25, 0.75, 4.5, 5.5, 5.75, 7.5, 12.5, 13, 15, 18, 160];
+  const sizesValues = [
+    0.25,
+    0.75,
+    4.5,
+    4.75,
+    5.5,
+    5.75,
+    6.5,
+    7.5,
+    12.5,
+    13,
+    15,
+    18,
+    160,
+  ];
   const minSizesValues = Array.from({ length: 12 }).map(
     (el, index) => index + 1
   );
@@ -81,6 +95,8 @@ const extendTheme = () => {
     'bars-material-dark': '#202020',
     'toast-ios': '#000000',
     'toast-material': '#323232',
+    'popover-light': '#ffffff',
+    'popover-dark': '#1c1c1d',
     primary: {
       light: '#298fff',
       DEFAULT: '#007aff',
