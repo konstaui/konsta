@@ -4,6 +4,11 @@
 
 - Components
 
+  - `hairline` prop everywhere it is used
+  - navbar/toolbar
+
+    - add text colors customization
+
   - fill bars
   - Actions
   - Searchbar
