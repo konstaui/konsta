@@ -20,6 +20,7 @@ import MenuListItem from './components/MenuListItem.jsx';
 import Navbar from './components/Navbar.jsx';
 import NavbarBackLink from './components/NavbarBackLink.jsx';
 import Page from './components/Page.jsx';
+import Popover from './components/Popover.jsx';
 import Popup from './components/Popup.jsx';
 import Preloader from './components/Preloader.jsx';
 import Progressbar from './components/Progressbar.jsx';
@@ -66,6 +67,7 @@ export {
   Navbar,
   NavbarBackLink,
   Page,
+  Popover,
   Popup,
   Preloader,
   Progressbar,
