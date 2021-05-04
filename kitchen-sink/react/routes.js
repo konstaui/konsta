@@ -1,51 +1,53 @@
-import ChipsPage from './pages/ChipsPage';
 import BadgePage from './pages/BadgePage';
 import ButtonsPage from './pages/ButtonsPage';
-import SegmentedPage from './pages/SegmentedPage';
-import ContentBlockPage from './pages/ContentBlockPage';
-import ListPage from './pages/ListPage';
 import CardsPage from './pages/CardsPage';
 import CheckboxPage from './pages/CheckboxPage';
-import RadioPage from './pages/RadioPage';
-import ProgressbarPage from './pages/ProgressbarPage';
-import PreloaderPage from './pages/PreloaderPage';
-import TogglePage from './pages/TogglePage';
-import MenuListPage from './pages/MenuListPage';
-import ToolbarPage from './pages/ToolbarPage';
-import TabbarPage from './pages/TabbarPage';
+import ChipsPage from './pages/ChipsPage';
+import ContentBlockPage from './pages/ContentBlockPage';
 import FabPage from './pages/FabPage';
-import StepperPage from './pages/StepperPage';
 import FormInputsPage from './pages/FormInputsPage';
+import ListPage from './pages/ListPage';
+import MenuListPage from './pages/MenuListPage';
 import NavbarPage from './pages/NavbarPage';
-import SubnavbarPage from './pages/SubnavbarPage';
+import PopoverPage from './pages/PopoverPage';
 import PopupPage from './pages/PopupPage';
-import ToastPage from './pages/ToastPage';
+import PreloaderPage from './pages/PreloaderPage';
+import ProgressbarPage from './pages/ProgressbarPage';
+import RadioPage from './pages/RadioPage';
 import RangeSliderPage from './pages/RangeSliderPage';
+import SegmentedPage from './pages/SegmentedPage';
+import StepperPage from './pages/StepperPage';
+import SubnavbarPage from './pages/SubnavbarPage';
+import TabbarPage from './pages/TabbarPage';
+import ToastPage from './pages/ToastPage';
+import TogglePage from './pages/TogglePage';
+import ToolbarPage from './pages/ToolbarPage';
 
 const routes = [
-  ChipsPage,
   BadgePage,
   ButtonsPage,
-  SegmentedPage,
-  ContentBlockPage,
-  ListPage,
   CardsPage,
   CheckboxPage,
-  RadioPage,
-  ProgressbarPage,
-  PreloaderPage,
-  TogglePage,
-  MenuListPage,
-  ToolbarPage,
-  TabbarPage,
+  ChipsPage,
+  ContentBlockPage,
   FabPage,
-  StepperPage,
   FormInputsPage,
+  ListPage,
+  MenuListPage,
   NavbarPage,
-  SubnavbarPage,
+  PopoverPage,
   PopupPage,
-  ToastPage,
+  PreloaderPage,
+  ProgressbarPage,
+  RadioPage,
   RangeSliderPage,
+  SegmentedPage,
+  StepperPage,
+  SubnavbarPage,
+  TabbarPage,
+  ToastPage,
+  TogglePage,
+  ToolbarPage,
 ].map((component) => {
   const name = component.displayName || component.name;
   const path = `/${name
