@@ -17,7 +17,7 @@ export default function PopupPage() {
         </p>
       </Block>
 
-      <Popup opened={popupOpened} close={() => setPopupOpened(false)}>
+      <Popup opened={popupOpened} onBackdropClick={() => setPopupOpened(false)}>
         <Page
           title="Popup"
           backLink={false}

@@ -8,8 +8,7 @@ const Popup = (props) => {
     className,
     size = 'w-screen h-screen md:w-160 md:h-160',
     opened,
-    close,
-    closeOnBackdropClick = true,
+    onBackdropClick,
 
     ios,
     material,
@@ -53,13 +52,9 @@ const Popup = (props) => {
     className
   );
 
-  const closePopup = () => {
-    if (close && closeOnBackdropClick) close(false);
-  };
-
   return (
     <>
-      <div className={c.backdrop[state]} onClick={closePopup} />
+      <div className={c.backdrop[state]} onClick={onBackdropClick} />
       <Component className={c.base[state]} {...attrs}>
         {children}
       </Component>
