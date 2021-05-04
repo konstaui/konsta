@@ -1,10 +1,5 @@
 const rules = {
-  'no-param-reassign': [
-    'error',
-    {
-      props: false,
-    },
-  ],
+  'no-param-reassign': ['off'],
   'prefer-destructuring': ['off'],
   'prefer-object-spread': ['off'],
   'prefer-ob': ['off'],
