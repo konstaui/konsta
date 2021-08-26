@@ -1,4 +1,4 @@
-const tailwindMobile = require('./src/config');
+const tailwindMobile = require('tailwind-mobile/config.js');
 
 module.exports = tailwindMobile({
   mode: 'jit',

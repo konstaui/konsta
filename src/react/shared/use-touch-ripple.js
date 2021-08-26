@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { TouchRipple } from './touch-ripple-class';
+import { TouchRipple } from './touch-ripple-class.js';
 
 export const useTouchRipple = (elRef, needsTouchRipple) => {
   const ripple = useRef(null);
@@ -11,10 +11,10 @@ export const useTouchRipple = (elRef, needsTouchRipple) => {
   const onPointerDown = (e) => {
     ripple.current = new TouchRipple(elRef.current, e.pageX, e.pageY);
   };
-  const onPointerMove = (e) => {
+  const onPointerMove = () => {
     removeRipple();
   };
-  const onPointerUp = (e) => {
+  const onPointerUp = () => {
     removeRipple();
   };
 

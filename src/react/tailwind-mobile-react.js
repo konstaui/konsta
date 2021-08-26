@@ -35,9 +35,9 @@ import Toast from './components/Toast.jsx';
 import Toggle from './components/Toggle.jsx';
 import Toolbar from './components/Toolbar.jsx';
 // eslint-disable-next-line
-import { TailwindMobileProvider } from './shared/TailwindMobileProvider';
-import { useTheme } from './shared/use-theme';
-import { useThemeClasses } from './shared/use-theme-classes';
+import { TailwindMobileProvider } from './shared/TailwindMobileProvider.jsx';
+import { useTheme } from './shared/use-theme.js';
+import { useThemeClasses } from './shared/use-theme-classes.js';
 
 export {
   // utils

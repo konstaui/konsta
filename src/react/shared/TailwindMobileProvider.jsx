@@ -1,5 +1,5 @@
 import React from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext';
+import { TailwindMobileContext } from './TailwindMobileContext.js';
 
 const TailwindMobileProvider = (props) => {
   const { theme, children } = props;

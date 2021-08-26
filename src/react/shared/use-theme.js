@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext';
+import { TailwindMobileContext } from './TailwindMobileContext.js';
 
 const useTheme = ({ ios, material } = {}) => {
   const context = useContext(TailwindMobileContext);

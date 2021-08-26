@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext';
-import { cls } from './cls';
+import { TailwindMobileContext } from './TailwindMobileContext.js';
+import { cls } from './cls.js';
 
 const propClasses = (classesObj, theme, state) => {
   if (typeof classesObj === 'string') return classesObj;
