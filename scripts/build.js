@@ -7,7 +7,7 @@ const formats = ['esm', 'cjs'];
   const outputDir = env === 'development' ? 'build' : 'package';
   return Promise.all([
     buildCopy(),
-    Promise.all(formats.map((format) => buildReact(format, outputDir))),
+    ...formats.map((format) => buildReact(format, outputDir)),
   ]).catch((err) => {
     // eslint-disable-next-line
     console.error(err);
