@@ -107,7 +107,7 @@ const ListItem = (props) => {
             'relative overflow-hidden dark:touch-ripple-white z-10',
           isMenuListItemActive
             ? 'bg-primary bg-opacity-15 dark:bg-primary'
-            : 'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-10'
+            : 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
         ),
       },
 

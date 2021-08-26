@@ -100,7 +100,7 @@ const Button = (props) => {
       ),
       clear: `${colors.text} ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`,
       segmentedStrong:
-        'active:bg-black active:bg-opacity-10 dark-active:bg-white dark-active:bg-opacity-5 dark:touch-ripple-white',
+        'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-5 dark:touch-ripple-white',
       segmentedStrongActive:
         'bg-white shadow dark:bg-opacity-15  dark:touch-ripple-white',
     },
