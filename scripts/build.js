@@ -1,5 +1,5 @@
-const buildCopy = require('./build-copy');
-const buildReact = require('./build-react');
+const buildCopy = require('./build-copy.js');
+const buildReact = require('./build-react.js');
 
 const formats = ['esm', 'cjs'];
 (async () => {
