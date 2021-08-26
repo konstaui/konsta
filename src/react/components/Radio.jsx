@@ -1,9 +1,9 @@
 import React from 'react';
-import { cls } from '../shared/cls';
-import { positionClass } from '../shared/position-class';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import RadioIcon from './icons/RadioIcon';
+import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import RadioIcon from './icons/RadioIcon.jsx';
 
 const Radio = (props) => {
   const {

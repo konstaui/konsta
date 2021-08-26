@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import { useTouchRipple } from '../shared/use-touch-ripple';
-import ChevronIcon from './icons/ChevronIcon';
+import { cls } from '../shared/cls.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTouchRipple } from '../shared/use-touch-ripple.js';
+import ChevronIcon from './icons/ChevronIcon.jsx';
 
 const ListItem = (props) => {
   const rippleElRef = useRef(null);

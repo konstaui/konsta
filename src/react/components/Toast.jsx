@@ -1,7 +1,7 @@
 import React from 'react';
-import { cls } from '../shared/cls';
-import { positionClass } from '../shared/position-class';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Toast = (props) => {
   const {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './Button';
+import Button from './Button.jsx';
 
 const SegmentedButton = (props) => {
   const { active, children, outline, strong, clear, rounded, ...rest } = props;

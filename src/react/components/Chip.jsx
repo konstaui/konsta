@@ -1,7 +1,7 @@
 import React from 'react';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-import DeleteIcon from './icons/DeleteIcon';
+import DeleteIcon from './icons/DeleteIcon.jsx';
 
 const Chip = (props) => {
   const {

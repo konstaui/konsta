@@ -1,5 +1,5 @@
 import React from 'react';
-import Toolbar from './Toolbar';
+import Toolbar from './Toolbar.jsx';
 
 const Tabbar = (props) => {
   const {

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { positionClass } from '../shared/position-class';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { positionClass } from '../shared/position-class.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-import CheckboxIcon from './icons/CheckboxIcon';
+import CheckboxIcon from './icons/CheckboxIcon.jsx';
 
 const Checkbox = (props) => {
   const {

@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
-import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
-import { useTouchRipple } from '../shared/use-touch-ripple';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import { positionClass } from '../shared/position-class';
+import { cls } from '../shared/cls.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useTouchRipple } from '../shared/use-touch-ripple.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { positionClass } from '../shared/position-class.js';
 
 const Button = (props) => {
   const rippleElRef = useRef(null);

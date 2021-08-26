@@ -1,7 +1,7 @@
 import React from 'react';
-import { cls } from '../shared/cls';
-import { positionClass } from '../shared/position-class';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Toggle = (props) => {
   const {
@@ -62,8 +62,7 @@ const Toggle = (props) => {
         },
       },
       inner: {
-        ios:
-          'w-full h-full bg-white dark:bg-opacity-0 rounded-full block duration-300 transform',
+        ios: 'w-full h-full bg-white dark:bg-opacity-0 rounded-full block duration-300 transform',
         notChecked: {},
         checked: {
           ios: 'scale-0',

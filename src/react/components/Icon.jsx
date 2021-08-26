@@ -1,8 +1,8 @@
 import React from 'react';
-import { positionClass } from '../shared/position-class';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import Badge from './Badge';
+import { positionClass } from '../shared/position-class.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import Badge from './Badge.jsx';
 
 const Icon = (props) => {
   const {

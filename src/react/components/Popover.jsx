@@ -1,11 +1,11 @@
 /* eslint-disable no-restricted-globals */
 
 import React, { useEffect, useRef, useState } from 'react';
-import { cls } from '../shared/cls';
-import { positionClass } from '../shared/position-class';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import { useTheme } from '../shared/use-theme';
-import { calcPopoverPosition } from '../shared/calc-popover-position';
+import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTheme } from '../shared/use-theme.js';
+import { calcPopoverPosition } from '../shared/calc-popover-position.js';
 
 const Popover = (props) => {
   const elRef = useRef(null);

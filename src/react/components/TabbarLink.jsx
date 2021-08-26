@@ -1,7 +1,7 @@
 import React from 'react';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-import Link from './Link';
+import Link from './Link.jsx';
 
 const TabbarLink = (props) => {
   const {

@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin.js');
+const plugin = require('tailwindcss/plugin');
 const hexToRgb = require('./hex-to-rgb.js');
 
 module.exports = () =>

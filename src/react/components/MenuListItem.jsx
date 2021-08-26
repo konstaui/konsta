@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from './ListItem';
+import ListItem from './ListItem.jsx';
 
 const MenuListItem = (props) => {
   const {

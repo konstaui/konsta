@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { cls } from '../shared/cls.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-import DeleteIcon from './icons/DeleteIcon';
-import DropdownIcon from './icons/DropdownIcon';
-import ListItem from './ListItem';
+import DeleteIcon from './icons/DeleteIcon.jsx';
+import DropdownIcon from './icons/DropdownIcon.jsx';
+import ListItem from './ListItem.jsx';
 
 const ListInput = (props) => {
   const {

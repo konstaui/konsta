@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import { useTouchRipple } from '../shared/use-touch-ripple';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
 const Fab = (props) => {
   const rippleElRef = useRef(null);

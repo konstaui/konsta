@@ -1,8 +1,8 @@
 import React from 'react';
-import { cls } from '../shared/cls';
-import { positionClass } from '../shared/position-class';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Navbar = (props) => {
   const {
@@ -86,8 +86,7 @@ const Navbar = (props) => {
           'text-black dark:text-white whitespace-nowrap leading-tight',
           titleClassName
         ),
-        ios:
-          'font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center',
+        ios: 'font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center',
         material: 'font-medium mx-4 text-left',
       },
       subtitle: {

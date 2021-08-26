@@ -1,6 +1,6 @@
 import React from 'react';
-import { cls } from '../shared/cls';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { cls } from '../shared/cls.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Segmented = (props) => {
   const {

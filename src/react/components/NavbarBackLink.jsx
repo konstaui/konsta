@@ -1,8 +1,8 @@
 import React from 'react';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import BackIcon from './icons/BackIcon';
-import Link from './Link';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import BackIcon from './icons/BackIcon.jsx';
+import Link from './Link.jsx';
 
 const NavbarBackLink = (props) => {
   const {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Page = (props) => {
   const {

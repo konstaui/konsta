@@ -1,10 +1,10 @@
 import React from 'react';
-import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
+import { cls } from '../shared/cls.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-import PreloaderIOS from './icons/PreloaderIOS';
-import PreloaderMaterial from './icons/PreloaderMaterial';
+import PreloaderIOS from './icons/PreloaderIOS.jsx';
+import PreloaderMaterial from './icons/PreloaderMaterial.jsx';
 
 const Preloader = (props) => {
   const {

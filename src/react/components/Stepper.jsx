@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { cls } from '../shared/cls';
-import { useTheme } from '../shared/use-theme';
-import { useThemeClasses } from '../shared/use-theme-classes';
-import { useTouchRipple } from '../shared/use-touch-ripple';
+import { cls } from '../shared/cls.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
 const Stepper = (props) => {
   const buttonLeftElRef = useRef(null);
@@ -126,8 +126,7 @@ const Stepper = (props) => {
       clear: 'border-l border-black border-opacity-10',
     },
     hBar: 'w-4 h-0.5 bg-current block',
-    vBar:
-      'w-0.5 h-4 bg-current block absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2',
+    vBar: 'w-0.5 h-4 bg-current block absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2',
   });
 
   const attrs = {

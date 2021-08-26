@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../../shared/use-theme';
+import { useTheme } from '../../shared/use-theme.js';
 
 const CheckboxIcon = (props) => {
   const { ios, material, fill, ...rest } = props;
