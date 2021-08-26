@@ -1,3 +1,4 @@
+const path = require('path');
 const configExtend = require('./config/config-extend.js');
 const extendTheme = require('./config/extend-theme.js');
 const extendVariants = require('./config/extend-variants.js');
@@ -13,8 +14,10 @@ const pluginDarkMode = require('./config/plugin-dark-mode.js');
 const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
 
+const purge = `${path.resolve(__dirname)}/**/*.{js,ts,jsx,tsx,vue,svelte}`;
+
 const config = (userConfig = {}) => {
-  return configExtend(
+  const newConfig = configExtend(
     {},
     {
       theme: {
@@ -38,5 +41,9 @@ const config = (userConfig = {}) => {
     },
     userConfig
   );
+  if (!newConfig.purge) newConfig.purge = [purge];
+  else newConfig.purge = [...newConfig.purge, purge];
+
+  return newConfig;
 };
 module.exports = config;
