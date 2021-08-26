@@ -7,7 +7,7 @@ import {
   Toggle,
 } from 'tailwind-mobile/react';
 import { Link } from 'react-router-dom';
-import routes from '../routes';
+import routes from '../routes.js';
 import DemoIcon from '../components/DemoIcon';
 import Page from '../components/Page';
 

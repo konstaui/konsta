@@ -14,9 +14,14 @@ const rules = {
   'import/no-extraneous-dependencies': ['off'],
   'import/extensions': [
     'error',
+    'never',
     {
-      js: 'always',
-      jsx: 'always',
+      ignorePackages: true,
+      pattern: {
+        js: 'always',
+        jsx: 'always',
+        json: 'always',
+      },
     },
   ],
   'no-nested-ternary': ['off'],
