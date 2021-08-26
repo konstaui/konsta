@@ -1,19 +1,7 @@
 const extendTheme = () => {
   // SIZES
   const sizesValues = [
-    0.25,
-    0.75,
-    4.5,
-    4.75,
-    5.5,
-    5.75,
-    6.5,
-    7.5,
-    12.5,
-    13,
-    15,
-    18,
-    160,
+    0.25, 0.75, 4.5, 4.75, 5.5, 5.75, 6.5, 7.5, 12.5, 13, 15, 18, 160,
   ];
   const minSizesValues = Array.from({ length: 12 }).map(
     (el, index) => index + 1

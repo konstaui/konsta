@@ -1,5 +1,5 @@
-const plugin = require('tailwindcss/plugin');
-const hexToRgb = require('./hex-to-rgb');
+const plugin = require('tailwindcss/plugin.js');
+const hexToRgb = require('./hex-to-rgb.js');
 
 module.exports = () =>
   plugin(({ addUtilities, addBase, theme }) => {
