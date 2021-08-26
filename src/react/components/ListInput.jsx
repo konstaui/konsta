@@ -23,6 +23,8 @@ const ListInput = (props) => {
     clearButton,
     dropdown,
 
+    hairlines = true,
+
     // input props
     inputId,
     inputStyle,
@@ -162,9 +164,11 @@ const ListInput = (props) => {
     inputWrap: {
       common: 'relative',
       ios: '-mb-2.5',
-      material: `hairline-b hairline-duration-200 ${getHairlineColor()} ${
-        isFocused || error ? 'hairline-b-scale' : ''
-      }`,
+      material: hairlines
+        ? `hairline-b hairline-duration-200 ${getHairlineColor()} ${
+            isFocused || error ? 'hairline-b-scale' : ''
+          }`
+        : '',
       inline: {
         common: `flex-shrink-10 w-full`,
         ios: '-mt-2.5',

@@ -14,6 +14,8 @@ const Toolbar = (props) => {
     bgClassName = '',
     innerClassName = '',
 
+    hairlines = true,
+
     tabbar,
     tabbarLabels,
 
@@ -59,7 +61,7 @@ const Toolbar = (props) => {
       bg: {
         common: cls('absolute w-full h-full left-0 top-0', bgClassName),
         ios: cls(
-          top ? 'hairline-b' : 'hairline-t',
+          hairlines && (top ? 'hairline-b' : 'hairline-t'),
           colors.bg,
           translucent && 'translucent'
         ),

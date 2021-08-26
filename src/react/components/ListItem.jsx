@@ -31,6 +31,8 @@ const ListItem = (props) => {
     menuListItem,
     menuListItemActive,
 
+    hairlines = true,
+
     // Enable divider
     divider,
     groupTitle,
@@ -99,7 +101,8 @@ const ListItem = (props) => {
           `flex items-center ${contentClassName}`
         ),
         link: cls(
-          'duration-300 active:duration-0 active:hairline-transparent cursor-pointer select-none',
+          'duration-300 active:duration-0 cursor-pointer select-none',
+          hairlines && 'active:hairline-transparent',
           needsTouchRipple &&
             'relative overflow-hidden dark:touch-ripple-white z-10',
           isMenuListItemActive
@@ -116,7 +119,7 @@ const ListItem = (props) => {
       inner: {
         common: cls(
           'pr-4 w-full relative',
-          !menuListItem && 'hairline-b',
+          !menuListItem && hairlines && 'hairline-b',
           innerClassName
         ),
         ios: 'py-2.5',
@@ -145,7 +148,7 @@ const ListItem = (props) => {
         common: `bg-list-divider-light dark:bg-list-divider-dark text-black dark:text-white text-opacity-55 dark:text-opacity-55 px-4 py-1 flex items-center z-10 ${
           divider ? 'relative' : 'sticky top-0'
         }`,
-        ios: `h-8 hairline-t -m-0.5`,
+        ios: `h-8${hairlines ? ' hairline-t' : ''} -m-0.5`,
         material: 'h-12',
       },
     },

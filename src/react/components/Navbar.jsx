@@ -19,6 +19,7 @@ const Navbar = (props) => {
 
     colors: colorsProp,
     translucent = true,
+    hairlines = true,
 
     left,
     title,
@@ -57,7 +58,11 @@ const Navbar = (props) => {
       },
       bg: {
         common: cls('absolute w-full h-full left-0 top-0', bgClassName),
-        ios: cls(`hairline-b ${colors.bg}`, translucent && 'translucent'),
+        ios: cls(
+          colors.bg,
+          hairlines && 'hairline-b',
+          translucent && 'translucent'
+        ),
         material: `shadow-md ${colors.bg}`,
       },
       subnavbar: {

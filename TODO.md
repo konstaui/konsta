@@ -1,10 +1,5 @@
-- Tooling
-
-  - Lint - double check rules
-
 - Components
 
-  - `hairline` prop everywhere it is used
   - navbar/toolbar
 
     - add text colors customization
@@ -20,3 +15,6 @@
 
   - add darktheme to provider (to exclude `dark:` classes from output)
   - rename themeClasses helpers to `c` `i` and `m`
+
+- React
+  - DTS
