@@ -46,6 +46,7 @@ const Navbar = (props) => {
       theme === 'ios'
         ? 'bg-bars-ios-light dark:bg-bars-ios-dark'
         : 'bg-bars-material-light dark:bg-bars-material-dark',
+    title: 'text-black dark:text-white',
     ...colorsProp,
   };
 
@@ -88,7 +89,7 @@ const Navbar = (props) => {
       },
       title: {
         common: cls(
-          'text-black dark:text-white whitespace-nowrap leading-tight',
+          `${colors.title} whitespace-nowrap leading-tight`,
           titleClassName
         ),
         ios: 'font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center',
