@@ -1,9 +1,5 @@
 - Components
 
-  - navbar/toolbar
-
-    - add text colors customization
-
   - fill bars
   - Actions
   - Searchbar
