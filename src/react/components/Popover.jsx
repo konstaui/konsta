@@ -76,7 +76,7 @@ const Popover = (props) => {
         closed: {
           common: 'opacity-0 pointer-events-none',
           ios: '',
-          material: 'transform scale-x-90 scale-y-50',
+          material: 'scale-x-90 scale-y-75',
         },
       },
       inner: {
