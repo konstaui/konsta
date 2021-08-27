@@ -11,6 +11,7 @@ const pluginLineClamp = require('./config/plugin-line-clamp.js');
 const pluginSafeAreas = require('./config/plugin-safe-areas.js');
 const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
+const pluginTouch = require('./config/plugin-touch.js');
 
 const purge = `${path.resolve(__dirname)}/**/*.{js,ts,jsx,tsx,vue,svelte}`;
 
@@ -31,6 +32,7 @@ const config = (userConfig = {}) => {
         pluginSafeAreas(),
         pluginTranslucent(),
         pluginRange(),
+        pluginTouch(),
       ],
     },
     userConfig
