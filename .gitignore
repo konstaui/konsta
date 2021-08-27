@@ -25,6 +25,7 @@ yarn-error.log*
 .eslintcache
 
 package/**/*.js
+package/**/*.d.ts
 package/**/*.css
 
 kitchen-sink/react/dist

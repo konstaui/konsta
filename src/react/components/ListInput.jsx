@@ -40,27 +40,27 @@ const ListInput = forwardRef((props, ref) => {
     value,
     defaultValue,
     type = 'text',
-    inputmode,
-    readonly,
+    inputMode,
+    readOnly,
     required,
     disabled,
     placeholder,
     size,
     accept,
-    autocomplete,
-    autocorrect,
-    autocapitalize,
-    spellcheck,
-    autofocus,
-    autosave,
+    autoComplete,
+    autoCorrect,
+    autoCapitalize,
+    spellCheck,
+    autoFocus,
+    autoSave,
     max,
     min,
     step,
-    maxlength,
-    minlength,
+    maxLength,
+    minLength,
     multiple,
     pattern,
-    tabindex,
+    tabIndex,
 
     onInput,
     onChange,
@@ -261,26 +261,26 @@ const ListInput = forwardRef((props, ref) => {
         name={name}
         type={needsType ? type : undefined}
         placeholder={placeholder}
-        inputMode={inputmode}
+        inputMode={inputMode}
         size={size}
         accept={accept}
-        autoComplete={autocomplete}
-        autoCorrect={autocorrect}
-        autoCapitalize={autocapitalize}
-        spellCheck={spellcheck}
-        autoFocus={autofocus}
-        autoSave={autosave}
+        autoComplete={autoComplete}
+        autoCorrect={autoCorrect}
+        autoCapitalize={autoCapitalize}
+        spellCheck={spellCheck}
+        autoFocus={autoFocus}
+        autoSave={autoSave}
         disabled={disabled}
         max={max}
-        maxLength={maxlength}
+        maxLength={maxLength}
         min={min}
-        minLength={minlength}
+        minLength={minLength}
         step={step}
         multiple={multiple}
-        readOnly={readonly}
+        readOnly={readOnly}
         required={required}
         pattern={pattern}
-        tabIndex={tabindex}
+        tabIndex={tabIndex}
         value={value}
         defaultValue={defaultValue}
         onInput={onInput}

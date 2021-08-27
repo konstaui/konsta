@@ -19,7 +19,7 @@ const Range = forwardRef((props, ref) => {
     name,
     value = undefined,
     defaultValue,
-    readonly,
+    readOnly,
     disabled,
     step,
     min = 0,
@@ -110,7 +110,7 @@ const Range = forwardRef((props, ref) => {
         step={step}
         value={value}
         defaultValue={defaultValue}
-        readOnly={readonly}
+        readOnly={readOnly}
         disabled={disabled}
         onChange={onChange}
         onFocus={onFocus}

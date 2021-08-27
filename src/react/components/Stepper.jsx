@@ -16,7 +16,7 @@ const Stepper = forwardRef((props, ref) => {
     inputType = 'text',
     inputPlaceholder,
     inputDisabled,
-    inputReadonly,
+    inputReadOnly,
 
     buttonsOnly,
 
@@ -175,7 +175,7 @@ const Stepper = forwardRef((props, ref) => {
           value={value}
           defaultValue={defaultValue}
           disabled={inputDisabled}
-          readOnly={inputReadonly}
+          readOnly={inputReadOnly}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
