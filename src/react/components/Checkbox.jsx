@@ -61,7 +61,7 @@ const Checkbox = (props) => {
         className
       )}`,
       iconWrap: {
-        common: 'flex items-center justify-center',
+        common: 'flex items-center justify-center text-white dark:text-black',
         ios: 'w-5.5 h-5.5 rounded-full border',
         material: 'w-4.5 h-4.5 rounded-sm border-2',
         notChecked: {
@@ -75,7 +75,7 @@ const Checkbox = (props) => {
         checked: 'opacity-100',
       },
       indeterminateIcon: {
-        common: 'bg-white w-3/4',
+        common: 'bg-white w-3/4 dark:bg-black',
         ios: 'h-0.5 rounded-full',
         material: 'h-0.5',
       },
@@ -112,7 +112,6 @@ const Checkbox = (props) => {
             ios={ios}
             material={material}
             className={c.icon[state]}
-            fill="#fff"
           />
         )}
       </i>
