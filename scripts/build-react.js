@@ -78,7 +78,7 @@ module.exports = async (format, outputDir = 'package') => {
   const importComponents = components
     .map(
       (componentName) =>
-        `import ${componentName} from './types/${componentName}.d.ts';`
+        `import ${componentName} from './types/${componentName}';`
     )
     .join('\n');
   const exportComponents = `export { ${components.join(', ')} }`;
