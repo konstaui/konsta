@@ -1,15 +1,8 @@
 interface Props {
-  component?: string;
-  colors?: object;
-
-  translucent?: boolean;
-
-  bgClassName?: string;
-  innerClassName?: string;
-
-  hairlines?: boolean;
-
+  /**
+   * Enables Tabbar with labels
+   *
+   * @default false
+   */
   labels?: boolean;
-
-  top?: boolean;
 }

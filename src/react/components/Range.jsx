@@ -21,7 +21,7 @@ const Range = forwardRef((props, ref) => {
     defaultValue,
     readOnly,
     disabled,
-    step,
+    step = 1,
     min = 0,
     max = 100,
     onChange,

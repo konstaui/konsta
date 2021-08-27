@@ -40,7 +40,7 @@ const Preloader = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
 
   const colors = {
-    text: 'text-primary',
+    icon: 'text-primary',
     ...colorsProp,
   };
 
@@ -51,7 +51,7 @@ const Preloader = forwardRef((props, ref) => {
       base: {
         common: cls(
           theme === 'ios' ? 'twm-ios-preloader' : 'twm-material-preloader',
-          `inline-block ${size} ${colors.text}`
+          `inline-block ${size} ${colors.icon}`
         ),
         material: `stroke-4`,
       },

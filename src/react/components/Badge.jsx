@@ -6,7 +6,7 @@ const Badge = forwardRef((props, ref) => {
     component = 'span',
     className,
     colors: colorsProp,
-    sm,
+    small,
 
     ios,
     material,
@@ -38,7 +38,7 @@ const Badge = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const size = sm ? 'sm' : 'md';
+  const size = small ? 'sm' : 'md';
 
   const c = themeClasses(
     {

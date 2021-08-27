@@ -1,7 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
-import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
@@ -37,7 +36,6 @@ const Toolbar = forwardRef((props, ref) => {
 
   const Component = component;
 
-  const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
@@ -46,10 +44,11 @@ const Toolbar = forwardRef((props, ref) => {
   };
 
   const colors = {
-    bg:
-      theme === 'ios'
-        ? cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark'))
-        : cls('bg-bars-material-light', dark('dark:bg-bars-material-dark')),
+    bgIos: cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark')),
+    bgMaterial: cls(
+      'bg-bars-material-light',
+      dark('dark:bg-bars-material-dark')
+    ),
     ...colorsProp,
   };
 
@@ -70,10 +69,13 @@ const Toolbar = forwardRef((props, ref) => {
         common: cls('absolute w-full h-full left-0 top-0', bgClassName),
         ios: cls(
           hairlines && (top ? 'hairline-b' : 'hairline-t'),
-          colors.bg,
+          colors.bgIos,
           translucent && 'translucent'
         ),
-        material: cls(`shadow-md ${colors.bg}`, !top && 'transform rotate-180'),
+        material: cls(
+          `shadow-md ${colors.bgMaterial}`,
+          !top && 'transform rotate-180'
+        ),
       },
       inner: {
         common: cls(

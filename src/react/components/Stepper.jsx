@@ -10,7 +10,7 @@ const Stepper = forwardRef((props, ref) => {
     className,
     colors: colorsProp,
 
-    value,
+    value = 0,
     defaultValue,
     input = false,
     inputType = 'text',

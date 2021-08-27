@@ -1,7 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
-import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
@@ -41,7 +40,6 @@ const Navbar = forwardRef((props, ref) => {
 
   const Component = component;
 
-  const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
@@ -50,10 +48,11 @@ const Navbar = forwardRef((props, ref) => {
   };
 
   const colors = {
-    bg:
-      theme === 'ios'
-        ? cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark'))
-        : cls('bg-bars-material-light', dark('dark:bg-bars-material-dark')),
+    bgIos: cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark')),
+    bgMaterial: cls(
+      'bg-bars-material-light',
+      dark('dark:bg-bars-material-dark')
+    ),
     title: cls('text-black', dark('dark:text-white')),
     ...colorsProp,
   };
@@ -68,11 +67,11 @@ const Navbar = forwardRef((props, ref) => {
       bg: {
         common: cls('absolute w-full h-full left-0 top-0', bgClassName),
         ios: cls(
-          colors.bg,
+          colors.bgIos,
           hairlines && 'hairline-b',
           translucent && 'translucent'
         ),
-        material: `shadow-md ${colors.bg}`,
+        material: `shadow-md ${colors.bgMaterial}`,
       },
       subnavbar: {
         common: cls('relative flex items-center', subnavbarClassName),

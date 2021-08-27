@@ -1,7 +1,24 @@
 interface Props {
+  /**
+   * Component's HTML Element
+   *
+   * @default 'a'
+   */
   component?: string;
-
-  text?: string;
-  showText?: boolean;
+  /**
+   * Text content of the back link
+   *
+   * @default 'Back'
+   */
+  text?: string | React.ReactNode;
+  /**
+   * Defines whether to show the link text. When 'auto', it hides link text for Material theme
+   *
+   * @default 'auto'
+   */
+  showText?: boolean | 'auto';
+  /**
+   * Link click handler
+   */
   onClick?: (e: any) => void;
 }
