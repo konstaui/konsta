@@ -32,7 +32,7 @@ const BlockFooter = forwardRef((props, ref) => {
 
   const c = themeClasses(
     {
-      base: `px-4 mb-8 flex items-center -mt-6 text-opacity-55 text-black text-sm`,
+      base: `pl-4-safe pr-4-safe mb-8 flex items-center -mt-6 text-opacity-55 text-black text-sm`,
     },
     className
   );

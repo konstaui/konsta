@@ -107,7 +107,7 @@ const ListItem = forwardRef((props, ref) => {
       base: menuListItem ? `${textColor} py-1` : '',
       itemContent: {
         common: cls(
-          menuListItem ? 'pl-2 mx-2 rounded-lg' : 'pl-4',
+          menuListItem ? 'pl-2 ml-2-safe mr-2-safe rounded-lg' : 'pl-4-safe',
           `flex items-center ${contentClassName}`
         ),
         link: cls(
@@ -134,7 +134,7 @@ const ListItem = forwardRef((props, ref) => {
       },
       inner: {
         common: cls(
-          'pr-4 w-full relative',
+          'pr-4-safe w-full relative',
           !menuListItem && hairlines && 'hairline-b',
           innerClassName
         ),
@@ -174,7 +174,7 @@ const ListItem = forwardRef((props, ref) => {
 
       divider: {
         common: cls(
-          `bg-list-divider-light text-black text-opacity-55 px-4 py-1 flex items-center z-10`,
+          `bg-list-divider-light text-black text-opacity-55 pl-4-safe pr-4-safe py-1 flex items-center z-20`,
           divider ? 'relative' : 'sticky top-0',
           dark(`dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`)
         ),

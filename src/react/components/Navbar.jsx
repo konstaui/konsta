@@ -60,7 +60,10 @@ const Navbar = forwardRef((props, ref) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${positionClass('sticky', className)} z-20 top-0`,
+        common: cls(
+          `w-full z-20 top-0 pt-safe`,
+          positionClass('sticky', className)
+        ),
         ios: '',
         material: '',
       },
@@ -75,8 +78,8 @@ const Navbar = forwardRef((props, ref) => {
       },
       subnavbar: {
         common: cls('relative flex items-center', subnavbarClassName),
-        ios: 'h-11 px-2',
-        material: 'h-12 px-4',
+        ios: 'h-11 pl-2-safe pr-2-safe',
+        material: 'h-12 pl-4-safe pr-4-safe',
       },
       inner: {
         common: cls(
@@ -84,7 +87,7 @@ const Navbar = forwardRef((props, ref) => {
           innerClassName
         ),
         ios: cls(
-          'px-2 h-11',
+          'pl-2-safe pr-2-safe h-11',
           !left && right ? 'justify-end' : 'justify-between'
         ),
         material: 'justify-start h-14 lg:h-16 text-xl',

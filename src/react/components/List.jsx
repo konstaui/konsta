@@ -58,7 +58,7 @@ const List = forwardRef((props, ref) => {
       ),
     },
     inset: {
-      common: `mx-4 overflow-hidden`,
+      common: `ml-4-safe mr-4-safe overflow-hidden`,
       ios: `rounded-lg`,
       material: `rounded`,
     },

@@ -32,9 +32,8 @@ const App = forwardRef((props, ref) => {
   };
 
   const classes = cls(
-    `twm-app`,
     `twm-${theme}`,
-    'w-full h-full min-h-screen',
+    'twm-app safe-areas w-full h-full min-h-screen',
     positionClass('relative', className),
     className
   );

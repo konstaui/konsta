@@ -50,7 +50,10 @@ const Block = forwardRef((props, ref) => {
   const c = themeClasses({
     base: {
       common: cls(
-        `px-4 text-sm ${positionClass('relative', className)} z-10`,
+        `text-sm z-10`,
+        positionClass('relative', className),
+        inset && 'px-4',
+        !inset && 'pl-4-safe pr-4-safe',
         !nested && margin
       ),
     },
@@ -61,7 +64,7 @@ const Block = forwardRef((props, ref) => {
       ),
     },
     inset: {
-      common: `mx-4 overflow-hidden`,
+      common: `ml-4-safe mr-4-safe overflow-hidden`,
       ios: `rounded-lg`,
       material: `rounded`,
     },

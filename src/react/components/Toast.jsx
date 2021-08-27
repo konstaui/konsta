@@ -60,13 +60,13 @@ const Toast = forwardRef((props, ref) => {
           translucent && 'translucent'
         ),
         material: cls(`sm:rounded duration-200`, colors.bgMaterial),
-        left: 'sm:left-4 sm:bottom-4',
-        right: 'sm:right-4 sm:bottom-4 sm:left-auto',
-        center: 'sm:left-1/2 sm:bottom-4 sm:-translate-x-1/2',
+        left: 'sm:left-4-safe sm:bottom-4-safe',
+        right: 'sm:right-4-safe sm:bottom-4-safe sm:left-auto',
+        center: 'sm:left-1/2 sm:bottom-4-safe sm:-translate-x-1/2',
       },
       content: {
         common: 'flex items-center justify-between',
-        ios: 'px-4 py-3',
+        ios: 'pl-4-safe pr-4-safe pt-3 pb-3-safe sm:px-4 sm:py-3',
         material: 'px-6 py-3.5',
       },
       button: {

@@ -9,7 +9,9 @@ export default function ToolbarPage() {
       <Toolbar
         top={isTop}
         className={`left-0 ${
-          isTop ? 'ios:top-11 material:top-14 sticky' : 'bottom-0 fixed'
+          isTop
+            ? 'ios:top-11-safe material:top-14-safe sticky'
+            : 'bottom-0 fixed'
         } w-full`}
       >
         <Link toolbar>Link 1</Link>

@@ -76,7 +76,7 @@ const Popover = forwardRef((props, ref) => {
     {
       base: {
         common: cls(
-          'transition-transform-opacity duration-300 z-40',
+          'transition-transform-opacity duration-300 z-40 no-safe-areas',
           colors.bg,
           positionClass('fixed', className),
           size

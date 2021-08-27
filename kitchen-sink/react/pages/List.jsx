@@ -90,19 +90,31 @@ export default function ListPage() {
       <BlockTitle>Grouped with sticky titles</BlockTitle>
       <List>
         <ListGroup>
-          <ListItem title="A" groupTitle />
+          <ListItem
+            title="A"
+            groupTitle
+            className="ios:top-11-safe material:top-14-safe"
+          />
           <ListItem title="Aaron " />
           <ListItem title="Abbie" />
           <ListItem title="Adam" />
         </ListGroup>
         <ListGroup>
-          <ListItem title="B" groupTitle />
+          <ListItem
+            title="B"
+            groupTitle
+            className="ios:top-11-safe material:top-14-safe"
+          />
           <ListItem title="Bailey" />
           <ListItem title="Barclay" />
           <ListItem title="Bartolo" />
         </ListGroup>
         <ListGroup>
-          <ListItem title="C" groupTitle />
+          <ListItem
+            title="C"
+            groupTitle
+            className="ios:top-11-safe material:top-14-safe"
+          />
           <ListItem title="Caiden" />
           <ListItem title="Calvin" />
           <ListItem title="Candy" />

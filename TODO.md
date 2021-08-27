@@ -4,3 +4,8 @@
   - Page
     - Set absolute/relative to take whole size
   - Figure out safe areas
+    - inset list items
+    - FAB
+    - reset in modals (Popup and Sheet (reset top))
+    - Popover should consider safe areas
+  - Figure out default toolbar styles

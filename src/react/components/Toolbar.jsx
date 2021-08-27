@@ -55,15 +55,11 @@ const Toolbar = forwardRef((props, ref) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${positionClass('relative', className)} z-20`,
-        toolbar: {
-          ios: 'h-11',
-          material: 'h-12',
-        },
-        tabbarLabels: {
-          ios: 'h-12.5',
-          material: 'h-14',
-        },
+        common: cls(
+          `w-full z-20`,
+          positionClass('relative', className),
+          !top && 'pb-safe'
+        ),
       },
       bg: {
         common: cls('absolute w-full h-full left-0 top-0', bgClassName),
@@ -82,21 +78,29 @@ const Toolbar = forwardRef((props, ref) => {
           `flex relative justify-between items-center w-full h-full overflow-hidden`,
           innerClassName
         ),
-        ios: 'px-2',
-        material: !tabbar ? 'px-2' : '',
+        ios: 'pl-2-safe pr-2-safe',
+        material: !tabbar ? 'pl-2-safe pr-2-safe' : '',
+        toolbar: {
+          ios: 'h-11',
+          material: 'h-12',
+        },
+        tabbarLabels: {
+          ios: 'h-12.5',
+          material: 'h-14',
+        },
       },
     },
     className
   );
 
   return (
-    <Component
-      ref={elRef}
-      className={c.base[tabbar && tabbarLabels ? 'tabbarLabels' : 'toolbar']}
-      {...attrs}
-    >
+    <Component ref={elRef} className={c.base} {...attrs}>
       <div className={c.bg} />
-      <div className={c.inner}>{children}</div>
+      <div
+        className={c.inner[tabbar && tabbarLabels ? 'tabbarLabels' : 'toolbar']}
+      >
+        {children}
+      </div>
     </Component>
   );
 });
