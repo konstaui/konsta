@@ -9,6 +9,7 @@ module.exports = () =>
       },
       '.dark': {
         '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
+        color: '#fff',
       },
       '@media (min-resolution: 2dppx)': {
         ':root': {
@@ -25,16 +26,8 @@ module.exports = () =>
         '-webkit-text-size-adjust': '100%',
       },
       body: {
-        margin: 0,
         '-webkit-font-smoothing': 'antialiased',
         '-moz-osx-font-smoothing': 'grayscale',
-        color: '#000',
-        '&.dark': {
-          color: '#fff',
-        },
-        '.dark &': {
-          color: '#fff',
-        },
       },
       '.twm-ios': {
         'font-family':

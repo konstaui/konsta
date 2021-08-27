@@ -8,10 +8,7 @@ import HomePage from '../pages/Home.jsx';
 function App() {
   const [theme, setTheme] = useState('ios');
   return (
-    <TailwindMobileApp
-      theme={theme}
-      className="absolute left-0 top-0 w-full h-full min-h-screen"
-    >
+    <TailwindMobileApp theme={theme}>
       <Router>
         <Switch>
           {routes.map((route) => (

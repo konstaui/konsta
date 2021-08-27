@@ -60,7 +60,7 @@ const Navbar = forwardRef((props, ref) => {
   const c = themeClasses(
     {
       base: {
-        common: `w-full ${positionClass('relative', className)} z-20`,
+        common: `w-full ${positionClass('sticky', className)} z-20 top-0`,
         ios: '',
         material: '',
       },
@@ -91,7 +91,7 @@ const Navbar = forwardRef((props, ref) => {
       },
       left: {
         common: cls('flex justify-center items-center h-full', leftClassName),
-        ios: 'mr-2',
+        ios: 'mr-2 transform transform-gpu',
         material: 'mx-1',
       },
       title: {
@@ -99,7 +99,7 @@ const Navbar = forwardRef((props, ref) => {
           `${colors.title} whitespace-nowrap leading-tight`,
           titleClassName
         ),
-        ios: 'font-semibold absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center',
+        ios: 'font-semibold absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center',
         material: 'font-medium mx-4 text-left',
       },
       subtitle: {
@@ -109,7 +109,7 @@ const Navbar = forwardRef((props, ref) => {
       },
       right: {
         common: cls('flex justify-center items-center h-full', rightClassName),
-        ios: 'ml-2',
+        ios: 'ml-2 transform transform-gpu',
         material: 'ml-auto mr-1',
       },
     },

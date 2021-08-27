@@ -1,8 +1,6 @@
 - Components
-
-  - fill bars
   - Messages (simplified version)
   - Side Panels
-
-- React
-  - DTS
+  - Page
+    - Set absolute/relative to take whole size
+  - Figure out safe areas

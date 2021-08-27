@@ -11,11 +11,10 @@ export default function Page(props) {
     history.back();
   };
   return (
-    <PageComponent className="min-h-screen absolute left-0 top-0 w-full h-full overflow-auto">
+    <PageComponent>
       {title && (
         <Navbar
           title={title}
-          className="top-0 sticky"
           left={backLink && <NavbarBackLink onClick={goBack} />}
           right={navRight}
         />

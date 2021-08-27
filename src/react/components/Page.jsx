@@ -1,5 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -36,6 +37,10 @@ const Page = forwardRef((props, ref) => {
   const c = themeClasses(
     {
       base: {
+        common: cls(
+          'h-full w-full left-0 top-0 overflow-auto',
+          positionClass('absolute', className)
+        ),
         ios: cls('bg-page-ios-light', dark('dark:bg-page-ios-dark')),
         material: cls(
           'bg-page-material-light',

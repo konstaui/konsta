@@ -1,5 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cls } from '../shared/cls.js';
+import { positionClass } from '../shared/position-class.js';
 import { TailwindMobileProvider } from '../shared/TailwindMobileProvider.jsx';
 
 const App = forwardRef((props, ref) => {
@@ -30,13 +31,17 @@ const App = forwardRef((props, ref) => {
     ...rest,
   };
 
+  const classes = cls(
+    `twm-app`,
+    `twm-${theme}`,
+    'w-full h-full min-h-screen',
+    positionClass('relative', className),
+    className
+  );
+
   return (
     <TailwindMobileProvider theme={theme} dark={dark} touchRipple={touchRipple}>
-      <Component
-        ref={elRef}
-        className={cls(`twm-${theme}`, className)}
-        {...attrs}
-      >
+      <Component ref={elRef} className={classes} {...attrs}>
         {children}
       </Component>
     </TailwindMobileProvider>
