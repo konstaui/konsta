@@ -4,6 +4,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { positionClass } from '../shared/position-class.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const Button = (props) => {
   const rippleElRef = useRef(null);
@@ -51,6 +52,7 @@ const Button = (props) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   useTouchRipple(rippleElRef, theme === 'material');
 
@@ -99,10 +101,16 @@ const Button = (props) => {
         colors.touchRipple
       ),
       clear: `${colors.text} ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`,
-      segmentedStrong:
-        'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-5 dark:touch-ripple-white',
-      segmentedStrongActive:
-        'bg-white shadow dark:bg-opacity-15  dark:touch-ripple-white',
+      segmentedStrong: cls(
+        `active:bg-black active:bg-opacity-10`,
+        dark(
+          'dark:active:bg-white dark:active:bg-opacity-5 dark:touch-ripple-white'
+        )
+      ),
+      segmentedStrongActive: cls(
+        `bg-white shadow`,
+        dark('dark:bg-opacity-15 dark:touch-ripple-white')
+      ),
     },
     size: {
       small: {

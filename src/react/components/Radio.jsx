@@ -4,6 +4,7 @@ import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import CheckboxIcon from './icons/CheckboxIcon.jsx';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const Radio = (props) => {
   const {
@@ -37,12 +38,17 @@ const Radio = (props) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
-    borderIos:
-      'border-black border-opacity-30 dark:border-white dark:border-opacity-30',
-    borderMaterial:
-      'border-black border-opacity-40 dark:border-white dark:border-opacity-40',
+    borderIos: cls(
+      'border-black border-opacity-30',
+      dark('dark:border-white dark:border-opacity-30')
+    ),
+    borderMaterial: cls(
+      'border-black border-opacity-40',
+      dark('dark:border-white dark:border-opacity-40')
+    ),
     bgChecked: 'bg-primary',
     borderChecked: 'border-primary',
     ...colorsProp,

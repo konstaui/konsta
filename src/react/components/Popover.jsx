@@ -6,6 +6,7 @@ import { positionClass } from '../shared/position-class.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { calcPopoverPosition } from '../shared/calc-popover-position.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const Popover = (props) => {
   const elRef = useRef(null);
@@ -53,13 +54,14 @@ const Popover = (props) => {
     ...rest,
   };
 
-  const colors = {
-    bg: 'bg-popover-light dark:bg-popover-dark',
-    ...colorsProp,
-  };
-
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
+
+  const colors = {
+    bg: cls('bg-popover-light', dark('dark:bg-popover-dark')),
+    ...colorsProp,
+  };
 
   const c = themeClasses(
     {

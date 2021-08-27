@@ -3,6 +3,7 @@ import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const Navbar = (props) => {
   const {
@@ -36,6 +37,7 @@ const Navbar = (props) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const attrs = {
     ...rest,
@@ -44,9 +46,9 @@ const Navbar = (props) => {
   const colors = {
     bg:
       theme === 'ios'
-        ? 'bg-bars-ios-light dark:bg-bars-ios-dark'
-        : 'bg-bars-material-light dark:bg-bars-material-dark',
-    title: 'text-black dark:text-white',
+        ? cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark'))
+        : cls('bg-bars-material-light', dark('dark:bg-bars-material-dark')),
+    title: cls('text-black', dark('dark:text-white')),
     ...colorsProp,
   };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Sheet = (props) => {
@@ -31,12 +32,13 @@ const Sheet = (props) => {
     ...rest,
   };
 
+  const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
+
   const colors = {
-    bg: 'bg-white dark:bg-black',
+    bg: cls('bg-white', dark('dark:bg-black')),
     ...colorsProp,
   };
-
-  const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(
     {

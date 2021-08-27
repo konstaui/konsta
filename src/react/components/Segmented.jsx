@@ -1,5 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Segmented = (props) => {
@@ -31,6 +32,7 @@ const Segmented = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
     border: 'border-primary',
@@ -49,8 +51,10 @@ const Segmented = (props) => {
       : `shadow divide-x divide-black divide-opacity-10`,
     outline: `border-2 ${colors.border}`,
     outlineInner: `-m-0.5 flex w-full justify-center items-center divide-x-2 ${colors.divide}`,
-    strong:
-      'p-1 bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-10 space-x-1',
+    strong: cls(
+      'p-1 bg-black bg-opacity-5 space-x-1',
+      dark('dark:bg-white dark:bg-opacity-10')
+    ),
   });
 
   const classes = cls(

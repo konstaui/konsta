@@ -1,5 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Card = (props) => {
@@ -31,10 +32,11 @@ const Card = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
-    bg: 'bg-block-strong-light dark:bg-block-strong-dark',
-    footerText: 'text-black dark:text-white',
+    bg: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
+    footerText: cls(`text-black`, dark('dark:text-white')),
     ...colorsProp,
   };
 
@@ -43,14 +45,25 @@ const Card = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: cls(margin, `${colors.bg} rounded overflow-hidden`),
+        common: cls(margin, colors.bg, `rounded overflow-hidden`),
         shadow: 'shadow',
-        outline: `border border-black dark:border-white border-opacity-10 dark:border-opacity-10`,
+        outline: cls(
+          `border border-black border-opacity-10`,
+          dark('dark:border-white dark:border-opacity-10')
+        ),
       },
-      header:
-        'border-b border-black dark:border-white border-opacity-10 dark:border-opacity-10 px-4 py-2',
+      header: cls(
+        `border-b border-black border-opacity-10 px-4 py-2`,
+        dark('dark:border-white dark:border-opacity-10')
+      ),
       content: 'p-4 text-sm',
-      footer: `border-t border-black dark:border-white border-opacity-10 dark:border-opacity-10 ${colors.footerText} text-sm text-opacity-55 dark:text-opacity-55 px-4 py-2`,
+      footer: cls(
+        `border-t border-black border-opacity-10 text-sm text-opacity-55`,
+        colors.footerText,
+        dark(
+          'dark:border-white  dark:border-opacity-10 dark:text-opacity-55 px-4 py-2'
+        )
+      ),
     },
     className
   );

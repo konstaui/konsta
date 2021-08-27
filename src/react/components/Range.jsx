@@ -1,5 +1,6 @@
 import React from 'react';
 import { cls } from '../shared/cls.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Range = (props) => {
@@ -38,6 +39,7 @@ const Range = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
     valueBg: 'bg-primary',
@@ -54,8 +56,10 @@ const Range = (props) => {
         material: 'h-5',
       },
       trackBg: {
-        common:
-          'absolute top-1/2 left-0 w-full transform -translate-y-1/2 bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-20',
+        common: cls(
+          'absolute top-1/2 left-0 w-full transform -translate-y-1/2 bg-black bg-opacity-20',
+          dark('dark:bg-white dark:bg-opacity-20')
+        ),
         ios: 'h-1 rounded-full',
         material: 'h-0.5',
       },

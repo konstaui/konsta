@@ -1,4 +1,6 @@
 import React from 'react';
+import { cls } from '../shared/cls.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Page = (props) => {
@@ -23,12 +25,16 @@ const Page = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const c = themeClasses(
     {
       base: {
-        ios: 'bg-page-ios-light dark:bg-page-ios-dark',
-        material: 'bg-page-material-light dark:bg-page-material-dark',
+        ios: cls('bg-page-ios-light', dark('dark:bg-page-ios-dark')),
+        material: cls(
+          'bg-page-material-light',
+          dark('dark:bg-page-material-dark')
+        ),
       },
     },
     className

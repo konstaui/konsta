@@ -1,6 +1,7 @@
 import React from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Toggle = (props) => {
@@ -34,6 +35,7 @@ const Toggle = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
     bg: 'bg-primary',
@@ -53,8 +55,14 @@ const Toggle = (props) => {
         ios: 'h-8 w-13 p-0.5',
         material: 'w-9 h-3.5',
         notChecked: {
-          ios: 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-20',
-          material: 'bg-black bg-opacity-30 dark:bg-white dark:bg-opacity-30',
+          ios: cls(
+            'bg-black bg-opacity-10',
+            dark('dark:bg-white dark:bg-opacity-20')
+          ),
+          material: cls(
+            'bg-black bg-opacity-30',
+            dark('dark:bg-white dark:bg-opacity-30')
+          ),
         },
         checked: {
           ios: `${colors.bg}`,
@@ -62,7 +70,10 @@ const Toggle = (props) => {
         },
       },
       inner: {
-        ios: 'w-full h-full bg-white dark:bg-opacity-0 rounded-full block duration-300 transform',
+        ios: cls(
+          'w-full h-full bg-white rounded-full block duration-300 transform',
+          dark('dark:bg-opacity-0')
+        ),
         notChecked: {},
         checked: {
           ios: 'scale-0',

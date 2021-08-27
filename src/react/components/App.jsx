@@ -8,6 +8,7 @@ const App = (props) => {
     className,
 
     theme = 'material',
+    dark = true,
 
     // Children
     children,
@@ -23,7 +24,7 @@ const App = (props) => {
   };
 
   return (
-    <TailwindMobileProvider theme={theme}>
+    <TailwindMobileProvider theme={theme} dark={dark}>
       <Component className={cls(`twm-${theme}`, className)} {...attrs}>
         {children}
       </Component>

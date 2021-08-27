@@ -6,6 +6,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import DeleteIcon from './icons/DeleteIcon.jsx';
 import DropdownIcon from './icons/DropdownIcon.jsx';
 import ListItem from './ListItem.jsx';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const ListInput = (props) => {
   const {
@@ -74,6 +75,7 @@ const ListInput = (props) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
     labelFocus: 'text-primary',
@@ -197,13 +199,17 @@ const ListInput = (props) => {
       ios: 'h-11',
       material: 'h-9',
       notFloating: cls(
-        'placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30',
+        'placeholder-black placeholder-opacity-30',
+        dark('dark:placeholder-white dark:placeholder-opacity-30'),
         type === 'textarea' && 'py-3'
       ),
 
       floating: isFloatingTransformed
         ? 'placeholder-transparent'
-        : 'placeholder-black placeholder-opacity-30 dark:placeholder-white dark:placeholder-opacity-30',
+        : cls(
+            `placeholder-black placeholder-opacity-30`,
+            dark('dark:placeholder-white dark:placeholder-opacity-30')
+          ),
     },
     errorInfo: {
       common: 'text-xs relative z-10',

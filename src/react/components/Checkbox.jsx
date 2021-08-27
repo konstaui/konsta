@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
+import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import CheckboxIcon from './icons/CheckboxIcon.jsx';
@@ -38,12 +40,17 @@ const Checkbox = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const colors = {
-    borderIos:
-      'border-black border-opacity-30 dark:border-white dark:border-opacity-30',
-    borderMaterial:
-      'border-black border-opacity-40 dark:border-white dark:border-opacity-40',
+    borderIos: cls(
+      `border-black border-opacity-30`,
+      dark('dark:border-white dark:border-opacity-30')
+    ),
+    borderMaterial: cls(
+      `border-black border-opacity-40`,
+      dark('dark:border-white dark:border-opacity-40')
+    ),
     bgChecked: 'bg-primary',
     borderChecked: 'border-primary',
     ...colorsProp,
@@ -61,7 +68,10 @@ const Checkbox = (props) => {
         className
       )}`,
       iconWrap: {
-        common: 'flex items-center justify-center text-white dark:text-black',
+        common: cls(
+          `flex items-center justify-center text-white`,
+          dark('dark:text-black')
+        ),
         ios: 'w-5.5 h-5.5 rounded-full border',
         material: 'w-4.5 h-4.5 rounded-sm border-2',
         notChecked: {
@@ -75,7 +85,7 @@ const Checkbox = (props) => {
         checked: 'opacity-100',
       },
       indeterminateIcon: {
-        common: 'bg-white w-3/4 dark:bg-black',
+        common: cls(`bg-white w-3/4`, dark('dark:bg-black')),
         ios: 'h-0.5 rounded-full',
         material: 'h-0.5',
       },

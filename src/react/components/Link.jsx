@@ -4,6 +4,7 @@ import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const Link = (props) => {
   const rippleElRef = useRef(null);
@@ -42,6 +43,7 @@ const Link = (props) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   const needsTouchRipple =
     theme === 'material' && (toolbar || tabbar || navbar);
@@ -50,7 +52,10 @@ const Link = (props) => {
 
   const colors = {
     text: 'text-primary',
-    tabbarInactive: 'text-black dark:text-white dark:text-opacity-55',
+    tabbarInactive: cls(
+      `text-black`,
+      dark('dark:text-white dark:text-opacity-55')
+    ),
     ...colorsProp,
   };
 
@@ -61,9 +66,10 @@ const Link = (props) => {
   const c = themeClasses({
     base: {
       common: cls(
-        `${textColor} inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
+        textColor,
+        `inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
         needsTouchRipple &&
-          ` touch-ripple-primary ${positionClass('relative', className)} z-10`
+          `touch-ripple-primary ${positionClass('relative', className)} z-10`
       ),
       notTabbar: {
         ios: `active:opacity-30 duration-300 active:duration-0`,
@@ -71,10 +77,10 @@ const Link = (props) => {
       },
     },
     tabbar: {
-      common: `w-full h-full ${positionClass(
-        'relative',
-        className
-      )} duration-300`,
+      common: cls(
+        positionClass('relative', className),
+        `w-full h-full duration-300`
+      ),
       material: 'uppercase font-medium text-sm overflow-hidden z-10',
       active: {},
       inactive: {

@@ -4,6 +4,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import ChevronIcon from './icons/ChevronIcon.jsx';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const ListItem = (props) => {
   const rippleElRef = useRef(null);
@@ -69,9 +70,13 @@ const ListItem = (props) => {
     ...rest,
   };
 
+  const theme = useTheme({ ios, material });
+  const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
+
   const colors = {
-    text: 'text-black dark:text-white',
-    menuListItemText: 'text-primary dark:text-white',
+    text: cls(`text-black`, dark('dark:text-white')),
+    menuListItemText: cls(`text-primary`, dark('dark:text-white')),
     menuListItemBg: 'bg-primary',
     ...colorsProp,
   };
@@ -81,9 +86,6 @@ const ListItem = (props) => {
   const textColor = isMenuListItemActive
     ? colors.menuListItemText
     : colors.text;
-
-  const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
 
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;
@@ -104,10 +106,16 @@ const ListItem = (props) => {
           'duration-300 active:duration-0 cursor-pointer select-none',
           hairlines && 'active:hairline-transparent',
           needsTouchRipple &&
-            'relative overflow-hidden dark:touch-ripple-white z-10',
+            cls(
+              `relative overflow-hidden`,
+              dark('dark:touch-ripple-white z-10')
+            ),
           isMenuListItemActive
             ? 'bg-primary bg-opacity-15 dark:bg-primary'
-            : 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
+            : cls(
+                `active:bg-black active:bg-opacity-10`,
+                dark('dark:active:bg-white dark:active:bg-opacity-10')
+              )
         ),
       },
 
@@ -137,17 +145,31 @@ const ListItem = (props) => {
           material: 'font-medium',
         },
       },
-      after: `${textColor} text-opacity-55 dark:text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
+      after: cls(
+        textColor,
+        `text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
+        dark('dark:text-opacity-55')
+      ),
       chevron: 'opacity-20 flex-shrink-0 ml-3',
       subtitle: 'text-sm',
-      text: `text-sm ${textColor} text-opacity-55 dark:text-opacity-55 line-clamp-2`,
+      text: cls(
+        textColor,
+        `text-sm text-opacity-55 line-clamp-2`,
+        dark('dark:text-opacity-55')
+      ),
       header: 'text-xs mb-0.5',
-      footer: `text-xs ${textColor} text-opacity-55 dark:text-opacity-55 mt-0.5`,
+      footer: cls(
+        textColor,
+        `text-xs text-opacity-55 mt-0.5`,
+        dark('dark:text-opacity-55')
+      ),
 
       divider: {
-        common: `bg-list-divider-light dark:bg-list-divider-dark text-black dark:text-white text-opacity-55 dark:text-opacity-55 px-4 py-1 flex items-center z-10 ${
-          divider ? 'relative' : 'sticky top-0'
-        }`,
+        common: cls(
+          `bg-list-divider-light text-black text-opacity-55 px-4 py-1 flex items-center z-10`,
+          divider ? 'relative' : 'sticky top-0',
+          dark(`dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`)
+        ),
         ios: `h-8${hairlines ? ' hairline-t' : ''} -m-0.5`,
         material: 'h-12',
       },
