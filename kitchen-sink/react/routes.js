@@ -1,53 +1,55 @@
-import BadgePage from './pages/BadgePage.jsx';
-import ButtonsPage from './pages/ButtonsPage.jsx';
-import CardsPage from './pages/CardsPage.jsx';
-import CheckboxPage from './pages/CheckboxPage.jsx';
-import ChipsPage from './pages/ChipsPage.jsx';
-import ContentBlockPage from './pages/ContentBlockPage.jsx';
-import FabPage from './pages/FabPage.jsx';
-import FormInputsPage from './pages/FormInputsPage.jsx';
-import ListPage from './pages/ListPage.jsx';
-import MenuListPage from './pages/MenuListPage.jsx';
-import NavbarPage from './pages/NavbarPage.jsx';
-import PopoverPage from './pages/PopoverPage.jsx';
-import PopupPage from './pages/PopupPage.jsx';
-import PreloaderPage from './pages/PreloaderPage.jsx';
-import ProgressbarPage from './pages/ProgressbarPage.jsx';
-import RadioPage from './pages/RadioPage.jsx';
-import RangeSliderPage from './pages/RangeSliderPage.jsx';
-import SegmentedPage from './pages/SegmentedPage.jsx';
-import StepperPage from './pages/StepperPage.jsx';
-import SubnavbarPage from './pages/SubnavbarPage.jsx';
-import TabbarPage from './pages/TabbarPage.jsx';
-import ToastPage from './pages/ToastPage.jsx';
-import TogglePage from './pages/TogglePage.jsx';
-import ToolbarPage from './pages/ToolbarPage.jsx';
+import Badge from './pages/Badge.jsx';
+import Buttons from './pages/Buttons.jsx';
+import Cards from './pages/Cards.jsx';
+import Checkbox from './pages/Checkbox.jsx';
+import Chips from './pages/Chips.jsx';
+import ContentBlock from './pages/ContentBlock.jsx';
+import Fab from './pages/Fab.jsx';
+import FormInputs from './pages/FormInputs.jsx';
+import List from './pages/List.jsx';
+import MenuList from './pages/MenuList.jsx';
+import Navbar from './pages/Navbar.jsx';
+import Popover from './pages/Popover.jsx';
+import Popup from './pages/Popup.jsx';
+import Preloader from './pages/Preloader.jsx';
+import Progressbar from './pages/Progressbar.jsx';
+import Radio from './pages/Radio.jsx';
+import RangeSlider from './pages/RangeSlider.jsx';
+import Segmented from './pages/Segmented.jsx';
+import SheetModal from './pages/SheetModal.jsx';
+import Stepper from './pages/Stepper.jsx';
+import Subnavbar from './pages/Subnavbar.jsx';
+import Tabbar from './pages/Tabbar.jsx';
+import Toast from './pages/Toast.jsx';
+import Toggle from './pages/Toggle.jsx';
+import Toolbar from './pages/Toolbar.jsx';
 
 const routes = [
-  BadgePage,
-  ButtonsPage,
-  CardsPage,
-  CheckboxPage,
-  ChipsPage,
-  ContentBlockPage,
-  FabPage,
-  FormInputsPage,
-  ListPage,
-  MenuListPage,
-  NavbarPage,
-  PopoverPage,
-  PopupPage,
-  PreloaderPage,
-  ProgressbarPage,
-  RadioPage,
-  RangeSliderPage,
-  SegmentedPage,
-  StepperPage,
-  SubnavbarPage,
-  TabbarPage,
-  ToastPage,
-  TogglePage,
-  ToolbarPage,
+  Badge,
+  Buttons,
+  Cards,
+  Checkbox,
+  Chips,
+  ContentBlock,
+  Fab,
+  FormInputs,
+  List,
+  MenuList,
+  Navbar,
+  Popover,
+  Popup,
+  Preloader,
+  Progressbar,
+  Radio,
+  RangeSlider,
+  Segmented,
+  SheetModal,
+  Stepper,
+  Subnavbar,
+  Tabbar,
+  Toast,
+  Toggle,
+  Toolbar,
 ].map((component) => {
   const name = component.displayName || component.name;
   const path = `/${name
