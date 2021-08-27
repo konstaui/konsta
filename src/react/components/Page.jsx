@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Page = (props) => {
+const Page = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -17,6 +17,12 @@ const Page = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -41,10 +47,12 @@ const Page = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       {children}
     </Component>
   );
-};
+});
+
+Page.displayName = 'Page';
 
 export default Page;

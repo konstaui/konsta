@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import BackIcon from './icons/BackIcon.jsx';
 import Link from './Link.jsx';
 
-const NavbarBackLink = (props) => {
+const NavbarBackLink = forwardRef((props, ref) => {
   const {
     component = 'a',
     className,
@@ -24,6 +24,12 @@ const NavbarBackLink = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const attrs = {
     ...rest,
@@ -48,6 +54,7 @@ const NavbarBackLink = (props) => {
 
   return (
     <Link
+      ref={elRef}
       component={component}
       className={c.base}
       navbar
@@ -61,6 +68,8 @@ const NavbarBackLink = (props) => {
       {children}
     </Link>
   );
-};
+});
+
+NavbarBackLink.displayName = 'NavbarBackLink';
 
 export default NavbarBackLink;

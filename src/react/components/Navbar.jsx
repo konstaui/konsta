@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const Navbar = (props) => {
+const Navbar = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -32,6 +32,12 @@ const Navbar = (props) => {
     children,
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -112,7 +118,7 @@ const Navbar = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <div className={c.bg} />
       <div className={c.inner}>
         {left && <div className={c.left}>{left}</div>}
@@ -128,6 +134,8 @@ const Navbar = (props) => {
       {subnavbar && <div className={c.subnavbar}>{subnavbar}</div>}
     </Component>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;

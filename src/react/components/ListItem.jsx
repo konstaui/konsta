@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -6,9 +6,7 @@ import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import ChevronIcon from './icons/ChevronIcon.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const ListItem = (props) => {
-  const rippleElRef = useRef(null);
-
+const ListItem = forwardRef((props, ref) => {
   const {
     component = 'li',
     colors: colorsProp,
@@ -63,6 +61,13 @@ const ListItem = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const rippleElRef = useRef(null);
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -208,7 +213,7 @@ const ListItem = (props) => {
   }
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <ItemContentComponent
         ref={rippleElRef}
         className={itemContentClasses}
@@ -237,6 +242,8 @@ const ListItem = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+ListItem.displayName = 'ListItem';
 
 export default ListItem;

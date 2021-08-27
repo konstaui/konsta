@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-const Fab = (props) => {
-  const rippleElRef = useRef(null);
-
+const Fab = forwardRef((props, ref) => {
   const {
     component = 'a',
     className,
@@ -25,6 +23,12 @@ const Fab = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const rippleElRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: rippleElRef.current,
+  }));
 
   const Component = component;
 
@@ -90,6 +94,8 @@ const Fab = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+Fab.displayName = 'Fab';
 
 export default Fab;

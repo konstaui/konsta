@@ -1,4 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, {
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import { cls } from '../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -8,7 +13,7 @@ import DropdownIcon from './icons/DropdownIcon.jsx';
 import ListItem from './ListItem.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const ListInput = (props) => {
+const ListInput = forwardRef((props, ref) => {
   const {
     component = 'li',
     className,
@@ -71,6 +76,13 @@ const ListInput = (props) => {
   } = props;
 
   const inputElRef = useRef(null);
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+    inputEl: inputElRef.current,
+  }));
+
   const [isFocused, setIsFocused] = useState(false);
 
   const theme = useTheme({ ios, material });
@@ -314,6 +326,7 @@ const ListInput = (props) => {
 
   return (
     <ListItem
+      ref={elRef}
       component={component}
       media={media}
       className={c.base}
@@ -328,6 +341,8 @@ const ListInput = (props) => {
       {type !== 'select' ? children : null}
     </ListItem>
   );
-};
+});
+
+ListInput.displayName = 'ListInput';
 
 export default ListInput;

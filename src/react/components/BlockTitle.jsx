@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const BlockTitle = (props) => {
+const BlockTitle = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -16,6 +16,12 @@ const BlockTitle = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -39,10 +45,12 @@ const BlockTitle = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       {children}
     </Component>
   );
-};
+});
+
+BlockTitle.displayName = 'BlockTitle';
 
 export default BlockTitle;

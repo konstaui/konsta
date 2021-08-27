@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const BlockHeader = (props) => {
+const BlockHeader = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -15,6 +15,12 @@ const BlockHeader = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -32,10 +38,12 @@ const BlockHeader = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       {children}
     </Component>
   );
-};
+});
+
+BlockHeader.displayName = 'BlockHeader';
 
 export default BlockHeader;

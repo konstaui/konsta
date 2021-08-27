@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Popup = (props) => {
+const Popup = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -24,6 +24,12 @@ const Popup = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -70,11 +76,13 @@ const Popup = (props) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component className={c.base[state]} {...attrs}>
+      <Component ref={elRef} className={c.base[state]} {...attrs}>
         {children}
       </Component>
     </>
   );
-};
+});
+
+Popup.displayName = 'Popup';
 
 export default Popup;

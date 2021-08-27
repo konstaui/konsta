@@ -7,4 +7,5 @@ const PreloaderMaterial = (props) => {
     </svg>
   );
 };
+
 export default PreloaderMaterial;

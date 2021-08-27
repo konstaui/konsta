@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Progressbar = (props) => {
+const Progressbar = forwardRef((props, ref) => {
   const {
     component = 'span',
     className,
@@ -18,6 +18,12 @@ const Progressbar = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -45,7 +51,7 @@ const Progressbar = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <span
         className={c.inner}
         style={{ transform: `translateX(-${100 - (progress / 1) * 100}%)` }}
@@ -53,6 +59,8 @@ const Progressbar = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+Progressbar.displayName = 'Progressbar';
 
 export default Progressbar;

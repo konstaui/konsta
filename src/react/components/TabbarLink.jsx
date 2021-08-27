@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import Link from './Link.jsx';
 
-const TabbarLink = (props) => {
+const TabbarLink = forwardRef((props, ref) => {
   const {
     className,
     active,
@@ -17,6 +17,12 @@ const TabbarLink = (props) => {
     children,
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const attrs = {
     ...rest,
@@ -42,7 +48,13 @@ const TabbarLink = (props) => {
   });
 
   return (
-    <Link tabbar tabbarActive={active} className={className} {...attrs}>
+    <Link
+      ref={elRef}
+      tabbar
+      tabbarActive={active}
+      className={className}
+      {...attrs}
+    >
       {icon && label ? (
         <span className={c.content}>
           <span className={c.icon}>{icon}</span>
@@ -56,6 +68,8 @@ const TabbarLink = (props) => {
       )}
     </Link>
   );
-};
+});
+
+TabbarLink.displayName = 'TabbarLink';
 
 export default TabbarLink;

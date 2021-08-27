@@ -1,13 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-const Stepper = (props) => {
-  const buttonLeftElRef = useRef(null);
-  const buttonRightElRef = useRef(null);
-
+const Stepper = forwardRef((props, ref) => {
   const {
     component = 'span',
     className,
@@ -41,6 +38,14 @@ const Stepper = (props) => {
     children,
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+  const buttonLeftElRef = useRef(null);
+  const buttonRightElRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -154,7 +159,7 @@ const Stepper = (props) => {
   const valueClasses = cls(input && c.input, c.value[style]);
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component ref={elRef} className={classes} {...attrs}>
       <span
         ref={buttonLeftElRef}
         className={buttonLeftClasses}
@@ -188,6 +193,8 @@ const Stepper = (props) => {
       </span>
     </Component>
   );
-};
+});
+
+Stepper.displayName = 'Stepper';
 
 export default Stepper;

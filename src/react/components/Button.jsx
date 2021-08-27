@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -6,9 +6,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { positionClass } from '../shared/position-class.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const Button = (props) => {
-  const rippleElRef = useRef(null);
-
+const Button = forwardRef((props, ref) => {
   const {
     component = 'button',
     className,
@@ -40,6 +38,12 @@ const Button = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const rippleElRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: rippleElRef.current,
+  }));
 
   let Component = component;
   if (typeof props.component === 'undefined' && (href || href === ''))
@@ -149,6 +153,8 @@ const Button = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+Button.displayName = 'Button';
 
 export default Button;

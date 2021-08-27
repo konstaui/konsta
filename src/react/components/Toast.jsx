@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Toast = (props) => {
+const Toast = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -23,6 +23,12 @@ const Toast = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -73,13 +79,15 @@ const Toast = (props) => {
   );
 
   return (
-    <Component className={c.base[position]} {...attrs}>
+    <Component ref={elRef} className={c.base[position]} {...attrs}>
       <div className={c.content}>
         {children}
         {button && <div className={c.button}>{button}</div>}
       </div>
     </Component>
   );
-};
+});
+
+Toast.displayName = 'Toast';
 
 export default Toast;

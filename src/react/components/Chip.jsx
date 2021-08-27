@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import DeleteIcon from './icons/DeleteIcon.jsx';
 
-const Chip = (props) => {
+const Chip = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -26,6 +26,12 @@ const Chip = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -63,7 +69,7 @@ const Chip = (props) => {
   );
 
   return (
-    <Component className={c.base[style]} {...attrs}>
+    <Component ref={elRef} className={c.base[style]} {...attrs}>
       {media && <div className={c.media}>{media}</div>}
       {children}
       {deleteButton && (
@@ -73,6 +79,8 @@ const Chip = (props) => {
       )}
     </Component>
   );
-};
+});
+
+Chip.displayName = 'Chip';
 
 export default Chip;

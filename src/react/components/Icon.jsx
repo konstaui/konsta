@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import Badge from './Badge.jsx';
 
-const Icon = (props) => {
+const Icon = forwardRef((props, ref) => {
   const {
     component = 'i',
     className,
@@ -21,6 +21,12 @@ const Icon = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -40,7 +46,7 @@ const Icon = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       {theme === 'ios' ? ios : material}
       {typeof badge !== 'undefined' && badge !== null && (
         <Badge sm className={c.badge} colors={badgeColors}>
@@ -50,6 +56,8 @@ const Icon = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+Icon.displayName = 'Icon';
 
 export default Icon;

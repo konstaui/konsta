@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cls } from '../shared/cls.js';
 import { TailwindMobileProvider } from '../shared/TailwindMobileProvider.jsx';
 
-const App = (props) => {
+const App = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -17,6 +17,12 @@ const App = (props) => {
     ...rest
   } = props;
 
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
+
   const Component = component;
 
   const attrs = {
@@ -25,11 +31,17 @@ const App = (props) => {
 
   return (
     <TailwindMobileProvider theme={theme} dark={dark}>
-      <Component className={cls(`twm-${theme}`, className)} {...attrs}>
+      <Component
+        ref={elRef}
+        className={cls(`twm-${theme}`, className)}
+        {...attrs}
+      >
         {children}
       </Component>
     </TailwindMobileProvider>
   );
-};
+});
+
+App.displayName = 'App';
 
 export default App;

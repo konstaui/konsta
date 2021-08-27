@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Range = (props) => {
+const Range = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -31,6 +31,12 @@ const Range = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -91,7 +97,7 @@ const Range = (props) => {
   const valueWidth = (((value || 0) - min) / (max - min)) * 100;
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <span className={c.trackBg} />
       <span className={c.trackValue} style={{ width: `${valueWidth}%` }} />
       <input
@@ -112,6 +118,8 @@ const Range = (props) => {
       />
     </Component>
   );
-};
+});
+
+Range.displayName = 'Range';
 
 export default Range;

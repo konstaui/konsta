@@ -1,13 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-const ListButton = (props) => {
-  const rippleElRef = useRef(null);
-
+const ListButton = forwardRef((props, ref) => {
   const {
     component = 'li',
     className,
@@ -35,6 +33,13 @@ const ListButton = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+  const rippleElRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -78,12 +83,14 @@ const ListButton = (props) => {
   const ButtonComponent = isLink ? linkComponent : 'button';
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <ButtonComponent ref={rippleElRef} className={c.button} {...buttonAttrs}>
         {children}
       </ButtonComponent>
     </Component>
   );
-};
+});
+
+ListButton.displayName = 'ListButton';
 
 export default ListButton;

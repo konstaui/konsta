@@ -1,6 +1,11 @@
 /* eslint-disable no-restricted-globals */
-
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -8,19 +13,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { calcPopoverPosition } from '../shared/calc-popover-position.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const Popover = (props) => {
-  const elRef = useRef(null);
-  const angleElRef = useRef(null);
-  const [positions, setPositions] = useState({
-    set: false,
-    angleTop: 0,
-    angleLeft: 0,
-    anglePosition: 'bottom',
-    popoverTop: 0,
-    popoverLeft: 0,
-    popoverPosition: 'top-left',
-  });
-
+const Popover = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -45,6 +38,22 @@ const Popover = (props) => {
     style = {},
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+  const angleElRef = useRef(null);
+  const [positions, setPositions] = useState({
+    set: false,
+    angleTop: 0,
+    angleLeft: 0,
+    anglePosition: 'bottom',
+    popoverTop: 0,
+    popoverLeft: 0,
+    popoverPosition: 'top-left',
+  });
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -198,6 +207,8 @@ const Popover = (props) => {
       </Component>
     </>
   );
-};
+});
+
+Popover.displayName = 'Popover';
 
 export default Popover;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
@@ -6,7 +6,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import CheckboxIcon from './icons/CheckboxIcon.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const Radio = (props) => {
+const Radio = forwardRef((props, ref) => {
   const {
     component = 'label',
     className,
@@ -29,6 +29,12 @@ const Radio = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -94,7 +100,7 @@ const Radio = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <input
         type="radio"
         name={name}
@@ -117,6 +123,8 @@ const Radio = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+Radio.displayName = 'Radio';
 
 export default Radio;

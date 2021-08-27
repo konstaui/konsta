@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const BlockFooter = (props) => {
+const BlockFooter = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -15,6 +15,12 @@ const BlockFooter = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -32,10 +38,12 @@ const BlockFooter = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       {children}
     </Component>
   );
-};
+});
+
+BlockFooter.displayName = 'BlockFooter';
 
 export default BlockFooter;

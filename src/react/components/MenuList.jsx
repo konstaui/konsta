@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import List from './List.jsx';
 
-const MenuList = (props) => {
+const MenuList = forwardRef((props, ref) => {
   const {
     // Children
     children,
@@ -10,15 +10,23 @@ const MenuList = (props) => {
     ...rest
   } = props;
 
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
+
   const attrs = {
     ...rest,
   };
 
   return (
-    <List menuList {...attrs}>
+    <List ref={elRef} menuList {...attrs}>
       {children}
     </List>
   );
-};
+});
+
+MenuList.displayName = 'MenuList';
 
 export default MenuList;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Badge = (props) => {
+const Badge = forwardRef((props, ref) => {
   const {
     component = 'span',
     className,
@@ -17,6 +17,12 @@ const Badge = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -48,10 +54,12 @@ const Badge = (props) => {
   );
 
   return (
-    <Component className={c.base[size]} {...attrs}>
+    <Component ref={elRef} className={c.base[size]} {...attrs}>
       {children}
     </Component>
   );
-};
+});
+
+Badge.displayName = 'Badge';
 
 export default Badge;

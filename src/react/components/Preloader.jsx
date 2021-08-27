@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -6,7 +6,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import PreloaderIOS from './icons/PreloaderIOS.jsx';
 import PreloaderMaterial from './icons/PreloaderMaterial.jsx';
 
-const Preloader = (props) => {
+const Preloader = forwardRef((props, ref) => {
   const {
     component = 'span',
     className,
@@ -23,6 +23,12 @@ const Preloader = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -57,13 +63,15 @@ const Preloader = (props) => {
   );
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <span className={c.inner}>
         <SVGComponent className="w-full h-full" />
       </span>
       {children}
     </Component>
   );
-};
+});
+
+Preloader.displayName = 'Preloader';
 
 export default Preloader;

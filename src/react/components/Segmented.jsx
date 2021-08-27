@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Segmented = (props) => {
+const Segmented = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
@@ -24,6 +24,12 @@ const Segmented = (props) => {
     // Rest
     ...rest
   } = props;
+
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+  }));
 
   const Component = component;
 
@@ -68,10 +74,12 @@ const Segmented = (props) => {
   );
 
   return (
-    <Component className={classes} {...attrs}>
+    <Component ref={elRef} className={classes} {...attrs}>
       {outline ? <span className={c.outlineInner}>{children}</span> : children}
     </Component>
   );
-};
+});
+
+Segmented.displayName = 'Segmented';
 
 export default Segmented;

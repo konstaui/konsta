@@ -1,4 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -6,7 +11,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import CheckboxIcon from './icons/CheckboxIcon.jsx';
 
-const Checkbox = (props) => {
+const Checkbox = forwardRef((props, ref) => {
   const {
     component = 'label',
     className,
@@ -32,6 +37,12 @@ const Checkbox = (props) => {
   } = props;
 
   const inputElRef = useRef(null);
+  const elRef = useRef(null);
+
+  useImperativeHandle(ref, () => ({
+    el: elRef.current,
+    inputEl: inputElRef.current,
+  }));
 
   const Component = component;
 
@@ -101,7 +112,7 @@ const Checkbox = (props) => {
   }, [indeterminate]);
 
   return (
-    <Component className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       <input
         ref={inputElRef}
         type="checkbox"
@@ -128,6 +139,8 @@ const Checkbox = (props) => {
       {children}
     </Component>
   );
-};
+});
+
+Checkbox.displayName = 'Checkbox';
 
 export default Checkbox;
