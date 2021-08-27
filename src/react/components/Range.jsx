@@ -49,19 +49,19 @@ const Range = (props) => {
   const c = themeClasses(
     {
       base: {
-        common: 'block relative select-none w-full self-center',
+        common: 'block relative select-none w-full self-center touch-pan-y',
         ios: 'h-7',
         material: 'h-5',
       },
       trackBg: {
         common:
           'absolute top-1/2 left-0 w-full transform -translate-y-1/2 bg-black bg-opacity-20 dark:bg-white dark:bg-opacity-20',
-        ios: 'h-px',
+        ios: 'h-1 rounded-full',
         material: 'h-0.5',
       },
       trackValue: {
         common: `absolute top-1/2 left-0 w-full transform -translate-y-1/2 ${colors.valueBg}`,
-        ios: 'h-px',
+        ios: 'h-1 rounded-full',
         material: 'h-0.5',
       },
       input: {
