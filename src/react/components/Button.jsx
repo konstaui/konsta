@@ -32,6 +32,8 @@ const Button = forwardRef((props, ref) => {
     segmentedStrong,
     segmentedActive,
 
+    touchRipple = true,
+
     // Children
     children,
 
@@ -58,7 +60,7 @@ const Button = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleElRef, theme === 'material');
+  useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
   const size = large ? 'large' : small ? 'small' : 'medium';
   let style = outline

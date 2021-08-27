@@ -62,4 +62,10 @@ interface Props {
    * Object with additional props (attributes) to pass to the Link/Button
    */
   linkProps?: any;
+  /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
 }

@@ -17,4 +17,10 @@ interface Props {
    * @default false
    * */
   dark?: boolean;
+  /**
+   * Enables touch ripple effect in Material theme. Allows to globally disable touch ripple for all components
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
 }

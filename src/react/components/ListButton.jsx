@@ -27,6 +27,8 @@ const ListButton = forwardRef((props, ref) => {
     ios,
     material,
 
+    touchRipple = true,
+
     // Children
     children,
 
@@ -50,7 +52,7 @@ const ListButton = forwardRef((props, ref) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
 
-  useTouchRipple(rippleElRef, theme === 'material');
+  useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
   const colors = {
     text: 'text-primary',

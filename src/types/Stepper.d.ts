@@ -121,6 +121,12 @@ interface Props {
    * @default false
    */
   outline?: boolean;
+  /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
 
   /**
    * Stepper input `change` handler

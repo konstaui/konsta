@@ -6,4 +6,3 @@
 
 - React
   - DTS
-  - enable/disable touch ripple

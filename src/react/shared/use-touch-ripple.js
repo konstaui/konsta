@@ -1,7 +1,10 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
+import { TailwindMobileContext } from './TailwindMobileContext.js';
 import { TouchRipple } from './touch-ripple-class.js';
 
 export const useTouchRipple = (elRef, needsTouchRipple) => {
+  const context = useContext(TailwindMobileContext);
+
   const ripple = useRef(null);
   const removeRipple = () => {
     if (ripple.current) ripple.current.remove();
@@ -19,6 +22,8 @@ export const useTouchRipple = (elRef, needsTouchRipple) => {
   };
 
   const attachEvents = () => {
+    if (!context.touchRipple) return;
+
     const el = elRef.current;
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);

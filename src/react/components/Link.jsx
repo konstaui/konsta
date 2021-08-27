@@ -21,6 +21,7 @@ const Link = forwardRef((props, ref) => {
     tabbar,
     tabbarActive,
 
+    touchRipple = true,
     ios,
     material,
 
@@ -50,7 +51,7 @@ const Link = forwardRef((props, ref) => {
   const dark = useDarkClasses();
 
   const needsTouchRipple =
-    theme === 'material' && (toolbar || tabbar || navbar);
+    theme === 'material' && (toolbar || tabbar || navbar) && touchRipple;
 
   useTouchRipple(rippleElRef, needsTouchRipple);
 

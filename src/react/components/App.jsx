@@ -9,6 +9,7 @@ const App = forwardRef((props, ref) => {
 
     theme = 'material',
     dark = true,
+    touchRipple = true,
 
     // Children
     children,
@@ -30,7 +31,7 @@ const App = forwardRef((props, ref) => {
   };
 
   return (
-    <TailwindMobileProvider theme={theme} dark={dark}>
+    <TailwindMobileProvider theme={theme} dark={dark} touchRipple={touchRipple}>
       <Component
         ref={elRef}
         className={cls(`twm-${theme}`, className)}

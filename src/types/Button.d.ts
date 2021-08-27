@@ -110,4 +110,11 @@ interface Props {
    * @default false
    */
   segmentedActive?: boolean;
+
+  /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
 }

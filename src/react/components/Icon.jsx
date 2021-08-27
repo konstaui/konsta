@@ -49,7 +49,7 @@ const Icon = forwardRef((props, ref) => {
     <Component ref={elRef} className={c.base} {...attrs}>
       {theme === 'ios' ? ios : material}
       {typeof badge !== 'undefined' && badge !== null && (
-        <Badge sm className={c.badge} colors={badgeColors}>
+        <Badge small className={c.badge} colors={badgeColors}>
           {badge}
         </Badge>
       )}

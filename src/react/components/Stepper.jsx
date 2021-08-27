@@ -35,6 +35,8 @@ const Stepper = forwardRef((props, ref) => {
     ios,
     material,
 
+    touchRipple = true,
+
     children,
     ...rest
   } = props;
@@ -52,8 +54,8 @@ const Stepper = forwardRef((props, ref) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
 
-  useTouchRipple(buttonLeftElRef, theme === 'material');
-  useTouchRipple(buttonRightElRef, theme === 'material');
+  useTouchRipple(buttonLeftElRef, theme === 'material' && touchRipple);
+  useTouchRipple(buttonRightElRef, theme === 'material' && touchRipple);
 
   const colors = {
     text: 'text-primary',

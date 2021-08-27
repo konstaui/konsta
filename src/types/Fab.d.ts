@@ -46,4 +46,10 @@ interface Props {
    * Fab's icon
    */
   icon?: React.ReactNode;
+  /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
 }

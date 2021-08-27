@@ -56,4 +56,10 @@ interface Props {
    * Click handler
    */
   onClick?: (e: any) => void;
+  /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
 }

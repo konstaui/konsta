@@ -55,6 +55,8 @@ const ListItem = forwardRef((props, ref) => {
     ios,
     material,
 
+    touchRipple = true,
+
     // Children
     children,
 
@@ -95,7 +97,8 @@ const ListItem = forwardRef((props, ref) => {
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;
 
-  const needsTouchRipple = theme === 'material' && (isLabel || isLink);
+  const needsTouchRipple =
+    theme === 'material' && (isLabel || isLink) && touchRipple;
 
   useTouchRipple(rippleElRef, needsTouchRipple);
 
