@@ -3,7 +3,7 @@ import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
-import RadioIcon from './icons/RadioIcon.jsx';
+import CheckboxIcon from './icons/CheckboxIcon.jsx';
 
 const Radio = (props) => {
   const {
@@ -70,9 +70,8 @@ const Radio = (props) => {
         },
       },
       icon: {
-        common: `w-3/5 h-3/5`,
         ios: 'text-primary',
-        material: `rounded-full ${colors.bgChecked}`,
+        material: `w-3/5 h-3/5 rounded-full ${colors.bgChecked}`,
         notChecked: 'opacity-0',
         checked: 'opacity-100',
       },
@@ -104,7 +103,7 @@ const Radio = (props) => {
 
       <i className={c.iconWrap[state]}>
         {theme === 'ios' ? (
-          <RadioIcon className={c.icon[state]} />
+          <CheckboxIcon className={c.icon[state]} />
         ) : (
           <span className={c.icon[state]} />
         )}
