@@ -1,3 +1,4 @@
+import App from './components/App.jsx';
 import Badge from './components/Badge.jsx';
 import Block from './components/Block.jsx';
 import BlockFooter from './components/BlockFooter.jsx';
@@ -46,6 +47,7 @@ export {
   useTheme,
   useThemeClasses,
   // components
+  App,
   Badge,
   Block,
   BlockFooter,
