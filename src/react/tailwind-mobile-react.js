@@ -28,6 +28,7 @@ import Radio from './components/Radio.jsx';
 import Range from './components/Range.jsx';
 import Segmented from './components/Segmented.jsx';
 import SegmentedButton from './components/SegmentedButton.jsx';
+import Sheet from './components/Sheet.jsx';
 import Stepper from './components/Stepper.jsx';
 import Tabbar from './components/Tabbar.jsx';
 import TabbarLink from './components/TabbarLink.jsx';
@@ -75,6 +76,7 @@ export {
   Range,
   Segmented,
   SegmentedButton,
+  Sheet,
   Stepper,
   Tabbar,
   TabbarLink,
