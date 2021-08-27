@@ -76,7 +76,7 @@ const Checkbox = (props) => {
       },
       indeterminateIcon: {
         common: 'bg-white w-3/4',
-        ios: 'h-0.25',
+        ios: 'h-0.5 rounded-full',
         material: 'h-0.5',
       },
       input: 'hidden',
