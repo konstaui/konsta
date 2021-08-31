@@ -43,9 +43,14 @@ export const calcPopoverPosition = ({
 
   let targetOffsetLeft;
   let targetOffsetTop;
-  let safeAreaTop = 0; // parseInt($('html').css('--f7-safe-area-top'), 10);
-  let safeAreaLeft = 0; // parseInt($('html').css('--f7-safe-area-left'), 10);
-  let safeAreaRight = 0; // parseInt($('html').css('--f7-safe-area-right'), 10);
+  // eslint-disable-next-line
+  const targetElStyles = window.getComputedStyle(targetEl);
+  let safeAreaTop =
+    parseInt(targetElStyles.getPropertyValue('--twm-safe-area-top'), 10) || 0;
+  let safeAreaLeft =
+    parseInt(targetElStyles.getPropertyValue('--twm-safe-area-left'), 10) || 0;
+  let safeAreaRight =
+    parseInt(targetElStyles.getPropertyValue('--twm-safe-area-right'), 10) || 0;
   if (Number.isNaN(safeAreaTop)) safeAreaTop = 0;
   if (Number.isNaN(safeAreaLeft)) safeAreaLeft = 0;
   if (Number.isNaN(safeAreaRight)) safeAreaRight = 0;
