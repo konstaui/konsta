@@ -17,7 +17,11 @@ export default function SheetModalPage() {
         </p>
       </Block>
 
-      <Sheet opened={sheetOpened} onBackdropClick={() => setSheetOpened(false)}>
+      <Sheet
+        className="pb-safe"
+        opened={sheetOpened}
+        onBackdropClick={() => setSheetOpened(false)}
+      >
         <Toolbar top>
           <div className="left" />
           <div className="right">
