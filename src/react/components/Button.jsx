@@ -113,10 +113,7 @@ const Button = forwardRef((props, ref) => {
           'dark:active:bg-white dark:active:bg-opacity-5 dark:touch-ripple-white'
         )
       ),
-      segmentedStrongActive: cls(
-        `bg-white shadow`,
-        dark('dark:bg-opacity-15 dark:touch-ripple-white')
-      ),
+      segmentedStrongActive: 'duration-0',
     },
     size: {
       small: {
