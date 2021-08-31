@@ -11,6 +11,7 @@ const App = forwardRef((props, ref) => {
     theme = 'material',
     dark = true,
     touchRipple = true,
+    safeAreas = true,
 
     // Children
     children,
@@ -33,7 +34,8 @@ const App = forwardRef((props, ref) => {
 
   const classes = cls(
     `twm-${theme}`,
-    'twm-app safe-areas w-full h-full min-h-screen',
+    'twm-app w-full h-full min-h-screen',
+    safeAreas && 'safe-areas',
     positionClass('relative', className),
     className
   );

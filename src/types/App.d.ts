@@ -23,4 +23,11 @@ interface Props {
    * @default true
    */
   touchRipple?: boolean;
+
+  /**
+   * Adds `safe-areas` class to the container. Should be enabled if app container is the full screen element to properly handle screen safe areas
+   *
+   * @default true
+   */
+  safeAreas?: boolean;
 }
