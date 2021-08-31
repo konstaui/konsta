@@ -27,7 +27,7 @@ export default function PopupPage() {
             </Link>
           }
         >
-          <Block>
+          <Block className="space-y-4">
             <p>
               Here comes popup. You can put here anything, even independent view
               with its own navigation. Also not, that by default popup looks a
