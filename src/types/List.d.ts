@@ -2,7 +2,7 @@ interface Props {
   /**
    * Component's HTML Element
    *
-   * @default 'ul'
+   * @default 'div'
    */
   component?: string;
   /**

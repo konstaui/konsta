@@ -6,7 +6,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const List = forwardRef((props, ref) => {
   const {
-    component = 'ul',
+    component = 'div',
     className,
     colors: colorsProp,
 
@@ -54,8 +54,11 @@ const List = forwardRef((props, ref) => {
         colors.bg,
         !inset && !nested && hairlines && 'hairline-t hairline-b',
         positionClass('relative', className),
-        'last-child-hairline-b-none z-10'
+        'z-10'
       ),
+    },
+    ul: {
+      common: cls(inset && 'no-safe-areas', 'last-child-hairline-b-none'),
     },
     inset: {
       common: `ml-4-safe mr-4-safe overflow-hidden`,
@@ -79,7 +82,7 @@ const List = forwardRef((props, ref) => {
 
   return (
     <Component ref={elRef} className={classes} {...attrs}>
-      {children}
+      <ul className={c.ul}>{children}</ul>
     </Component>
   );
 });
