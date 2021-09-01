@@ -91,7 +91,7 @@ const Stepper = forwardRef((props, ref) => {
     },
     button: {
       common:
-        'relative flex items-center justify-center w-10 cursor-pointer overflow-hidden z-10',
+        'relative flex items-center justify-center w-10 cursor-pointer overflow-hidden z-10 select-none',
     },
     buttonLeftShape: {
       square: 'rounded-l',

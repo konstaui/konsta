@@ -178,7 +178,7 @@ const ListItem = forwardRef((props, ref) => {
           divider ? 'relative' : 'sticky top-0',
           dark(`dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`)
         ),
-        ios: `h-8${hairlines ? ' hairline-t' : ''} -m-0.5`,
+        ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px`,
         material: 'h-12',
       },
     },

@@ -53,7 +53,7 @@ const Fab = forwardRef((props, ref) => {
   const c = themeClasses(
     {
       base: {
-        common: `${colors.bg} ${colors.activeBg} ${colors.text} flex items-center justify-center space-x-2 rounded-full shadow-lg cursor-pointer overflow-hidden`,
+        common: `${colors.bg} ${colors.activeBg} ${colors.text} flex items-center justify-center space-x-2 rounded-full shadow-lg cursor-pointer overflow-hidden select-none`,
         ios: `h-12 duration-100`,
         material: `duration-300 touch-ripple-white`,
         iconOnly: {
