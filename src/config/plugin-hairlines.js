@@ -163,7 +163,7 @@ module.exports = () =>
       },
     };
 
-    addUtilities(hairlineColors, ['active']);
+    addUtilities(hairlineColors);
     addUtilities(hairlineDurations);
     addUtilities(hairlines);
   });
