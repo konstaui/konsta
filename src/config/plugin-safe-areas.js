@@ -1,7 +1,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = () =>
-  plugin(({ addUtilities, addBase, theme }) => {
+  plugin(({ addUtilities, addBase, theme, e }) => {
     const base = {
       ':root': {
         '--twm-safe-area-left': '0px',
@@ -55,13 +55,13 @@ module.exports = () =>
 
       Object.keys(spacing).forEach((key) => {
         const value = spacing[key];
-        safe[`.p${first}-${key}-safe`] = {
+        safe[`.p${first}-${e(key)}-safe`] = {
           [`padding${upper}`]: `calc(var(--twm-safe-area-${side}) + ${value})`,
         };
-        safe[`.m${first}-${key}-safe`] = {
+        safe[`.m${first}-${e(key)}-safe`] = {
           [`margin${upper}`]: `calc(var(--twm-safe-area-${side}) + ${value})`,
         };
-        safe[`.${side}-${key}-safe`] = {
+        safe[`.${side}-${e(key)}-safe`] = {
           [side]: `calc(var(--twm-safe-area-${side}) + ${value})`,
         };
       });
