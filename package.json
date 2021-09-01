@@ -9,6 +9,7 @@
     "build": "cross-env NODE_ENV=production node scripts/build",
     "/*============ Kitchen Sink ============*/": "============",
     "react": "cross-env NODE_ENV=development vite ./kitchen-sink/react",
+    "build-react-ks": "cross-env NODE_ENV=production vite build ./kitchen-sink/react",
     "/*============ Dev tools ============*/": "============",
     "prettier": "prettier \"**/*.+(js|json|scss|css|less|ts|vue)\"",
     "format": "npm run prettier -- --write",
