@@ -17,6 +17,17 @@ interface Props {
     bg?: string;
   };
   /**
+   * Makes Popover background translucent (with `backdrop-filter: blur`) in iOS theme
+   *
+   * @default true
+   */
+  translucent?: boolean;
+  /**
+   * Additional css class to add on "angle"/"corner" element
+   *
+   */
+  angleClassName?: string;
+  /**
    * Tailwind CSS size classes
    *
    * @default 'w-64'

@@ -17,6 +17,7 @@ const Popover = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
+    angleClassName = '',
     colors: colorsProp,
     size = 'w-64',
     opened,
@@ -27,6 +28,7 @@ const Popover = forwardRef((props, ref) => {
     targetY,
     targetWidth,
     targetHeight,
+    translucent = true,
 
     ios,
     material,
@@ -77,12 +79,11 @@ const Popover = forwardRef((props, ref) => {
       base: {
         common: cls(
           'transition-transform-opacity duration-300 z-40 no-safe-areas',
-          colors.bg,
           positionClass('fixed', className),
           size
         ),
-        ios: 'rounded-xl',
-        material: 'rounded shadow-lg',
+        ios: '',
+        material: '',
         opened: '',
         closed: {
           common: 'opacity-0 pointer-events-none',
@@ -91,13 +92,16 @@ const Popover = forwardRef((props, ref) => {
         },
       },
       inner: {
-        common: 'overflow-hidden relative',
-        ios: 'rounded-xl',
-        material: 'rounded',
+        common: cls('overflow-hidden relative', colors.bg),
+        ios: cls('rounded-xl', translucent && 'translucent'),
+        material: 'rounded shadow-lg',
       },
       angleWrap: {
-        common: '',
-        ios: 'absolute w-6.5 h-6.5 z-50 overflow-hidden',
+        common: cls(angleClassName || ''),
+        ios: cls(
+          'absolute w-6.5 h-6.5 z-50 overflow-hidden',
+          translucent && 'opacity-80'
+        ),
         bottom: 'top-full',
         top: 'bottom-full',
         left: 'right-full',
