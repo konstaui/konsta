@@ -16,7 +16,7 @@ import Preloader from './pages/Preloader.jsx';
 import Progressbar from './pages/Progressbar.jsx';
 import Radio from './pages/Radio.jsx';
 import RangeSlider from './pages/RangeSlider.jsx';
-import Segmented from './pages/Segmented.jsx';
+import SegmentedControl from './pages/SegmentedControl.jsx';
 import SheetModal from './pages/SheetModal.jsx';
 import Stepper from './pages/Stepper.jsx';
 import Subnavbar from './pages/Subnavbar.jsx';
@@ -44,7 +44,7 @@ const routes = [
   Progressbar,
   Radio,
   RangeSlider,
-  Segmented,
+  SegmentedControl,
   SheetModal,
   Stepper,
   Subnavbar,
