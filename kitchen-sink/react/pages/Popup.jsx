@@ -31,15 +31,15 @@ export default function PopupPage() {
       </Block>
 
       <Popup opened={popupOpened} onBackdropClick={() => setPopupOpened(false)}>
-        <Page
-          title="Popup"
-          backLink={false}
-          navRight={
-            <Link navbar onClick={() => setPopupOpened(false)}>
-              Close
-            </Link>
-          }
-        >
+        <Page>
+          <Navbar
+            title="Popup"
+            right={
+              <Link navbar onClick={() => setPopupOpened(false)}>
+                Close
+              </Link>
+            }
+          />
           <Block className="space-y-4">
             <p>
               Here comes popup. You can put here anything, even independent view
