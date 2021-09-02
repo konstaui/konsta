@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
-import { BlockTitle, List, ListInput, useTheme } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  BlockTitle,
+  List,
+  ListInput,
+  useTheme,
+} from 'tailwind-mobile/react';
+
 import DemoIcon from '../components/DemoIcon';
 
 export default function FormInputsPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [name, setName] = useState({ value: '', changed: false });
   const [demoValue, setDemoValue] = useState('');
   const theme = useTheme();
@@ -19,7 +28,12 @@ export default function FormInputsPage() {
     setDemoValue('');
   };
   return (
-    <Page title="Form Inputs">
+    <Page>
+      <Navbar
+        title="Form Inputs"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Full Layout / Inline Labels</BlockTitle>
       <List hairlines={hairlines}>
         <ListInput

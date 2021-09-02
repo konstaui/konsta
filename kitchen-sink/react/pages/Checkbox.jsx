@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Checkbox,
   BlockTitle,
   Block,
   List,
   ListItem,
 } from 'tailwind-mobile/react';
-import Page from '../components/Page';
 
 export default function CheckboxPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(true);
 
@@ -49,7 +52,12 @@ export default function CheckboxPage() {
   };
 
   return (
-    <Page title="Checkbox">
+    <Page>
+      <Navbar
+        title="Checkbox"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Inline</BlockTitle>
       <Block strong>
         <p>

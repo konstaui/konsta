@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
-import { Sheet, Block, Button, Toolbar, Link } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Sheet,
+  Block,
+  Button,
+  Toolbar,
+  Link,
+} from 'tailwind-mobile/react';
 
 export default function SheetModalPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [sheetOpened, setSheetOpened] = useState(false);
   return (
-    <Page title="Sheet Modal">
+    <Page>
+      <Navbar
+        title="Sheet Modal"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Block strong className="space-y-4">
         <p>
           Sheet Modals slide up from the bottom of the screen to reveal more

@@ -1,15 +1,27 @@
 import React from 'react';
-import { Block, Fab, useTheme } from 'tailwind-mobile/react';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Block,
+  Fab,
+  useTheme,
+} from 'tailwind-mobile/react';
 import { Plus } from 'framework7-icons/react';
 import { MdAdd } from 'react-icons/md';
-import Page from '../components/Page';
 
 export default function FabPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const theme = useTheme();
   const PlusIcon = theme === 'ios' ? Plus : MdAdd;
 
   return (
-    <Page title="FAB">
+    <Page>
+      <Navbar
+        title="FAB"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       {/* Right Top */}
       <Fab
         className="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20"

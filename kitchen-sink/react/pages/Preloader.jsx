@@ -1,10 +1,22 @@
 import React from 'react';
-import { Block, BlockTitle, Preloader } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Block,
+  BlockTitle,
+  Preloader,
+} from 'tailwind-mobile/react';
 
 export default function PreloaderPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="Preloader">
+    <Page>
+      <Navbar
+        title="Preloader"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Default</BlockTitle>
       <Block strong className="text-center">
         <Preloader />

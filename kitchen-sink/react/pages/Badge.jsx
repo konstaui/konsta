@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Badge,
   Icon,
   Link,
@@ -16,23 +19,25 @@ import {
 } from 'framework7-icons/react';
 import { MdPerson, MdEmail, MdToday, MdFileUpload } from 'react-icons/md';
 import DemoIcon from '../components/DemoIcon';
-import Page from '../components/Page';
 
 export default function BadgePage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page
-      title="Badge"
-      navRight={
-        <Link navbar iconOnly>
-          <Icon
-            ios={<PersonCircleFill className="w-7 h-7" />}
-            material={<MdPerson className="w-6 h-6" />}
-            badge="5"
-            badgeColors={{ bg: 'bg-red-500' }}
-          />
-        </Link>
-      }
-    >
+    <Page>
+      <Navbar
+        title="Badge"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+        right={
+          <Link navbar iconOnly>
+            <Icon
+              ios={<PersonCircleFill className="w-7 h-7" />}
+              material={<MdPerson className="w-6 h-6" />}
+              badge="5"
+              badgeColors={{ bg: 'bg-red-500' }}
+            />
+          </Link>
+        }
+      />
       <Tabbar labels className="left-0 bottom-0 fixed">
         <TabbarLink
           active

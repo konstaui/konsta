@@ -1,5 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react';
 import {
+  Page,
+  Navbar,
   BlockTitle,
   List,
   ListItem,
@@ -9,7 +11,6 @@ import {
 import { Link } from 'react-router-dom';
 import routes from '../routes.js';
 import DemoIcon from '../components/DemoIcon';
-import Page from '../components/Page';
 
 export default function HomePage({ theme, setTheme }) {
   const [darkMode, setDarkMode] = useState(false);
@@ -24,7 +25,9 @@ export default function HomePage({ theme, setTheme }) {
   });
 
   return (
-    <Page title="Tailwind Mobile" backLink={false}>
+    <Page>
+      <Navbar title="Tailwind Mobile" />
+
       <BlockTitle>Theme</BlockTitle>
       <List>
         <ListItem

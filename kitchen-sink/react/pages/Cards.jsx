@@ -1,10 +1,24 @@
 import React from 'react';
-import { Card, BlockTitle, List, ListItem, Link } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Card,
+  BlockTitle,
+  List,
+  ListItem,
+  Link,
+} from 'tailwind-mobile/react';
 
 export default function CardsPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="Cards">
+    <Page>
+      <Navbar
+        title="Cards"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle withBlock={false}>Simple Cards</BlockTitle>
       <Card>
         This is a simple card with plain text, but cards can also contain their

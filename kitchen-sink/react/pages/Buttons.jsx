@@ -1,10 +1,22 @@
 import React from 'react';
-import { Button, Block, BlockTitle } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Button,
+  Block,
+  BlockTitle,
+} from 'tailwind-mobile/react';
 
 export default function ButtonsPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="Buttons">
+    <Page>
+      <Navbar
+        title="Buttons"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Default Buttons</BlockTitle>
       <Block strong className="space-y-2">
         <div className="grid grid-cols-3 gap-x-4">

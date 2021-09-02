@@ -1,10 +1,22 @@
 import React from 'react';
-import { Chip, Block, BlockTitle } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Chip,
+  Block,
+  BlockTitle,
+} from 'tailwind-mobile/react';
 
 export default function ChipsPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="Chips">
+    <Page>
+      <Navbar
+        title="Chips"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Chips With Text</BlockTitle>
       <Block strong>
         <Chip className="m-0.5">Example Chip</Chip>

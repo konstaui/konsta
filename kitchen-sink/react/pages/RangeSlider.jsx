@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   BlockTitle,
   BlockHeader,
   List,
@@ -7,16 +10,20 @@ import {
   Range,
 } from 'tailwind-mobile/react';
 
-import Page from '../components/Page';
-
 export default function RangeSliderPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [volume, setVolume] = useState(50);
   const [price, setPrice] = useState(150);
   const [red, setRed] = useState(100);
   const [green, setGreen] = useState(50);
   const [blue, setBlue] = useState(75);
   return (
-    <Page title="Range Slider">
+    <Page>
+      <Navbar
+        title="Range Slider"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Volume: {volume}</BlockTitle>
       <BlockHeader>From 0 to 100 with step 10</BlockHeader>
       <List>

@@ -9,11 +9,12 @@ import {
 } from 'tailwind-mobile/react';
 
 export default function SubnavbarPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
     <Page>
       <Navbar
         title="Subnavbar"
-        left={<NavbarBackLink onClick={() => history.back()} />}
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
         subnavbar={
           <Segmented strong>
             <SegmentedButton small strong active>

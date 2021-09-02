@@ -8,16 +8,14 @@ import {
 } from 'tailwind-mobile/react';
 
 export default function NavbarPage() {
-  const goBack = () => {
-    history.back();
-  };
+  const isPreview = document.location.href.includes('examplePreview');
   return (
     <Page>
       <Navbar
         title="Navbar"
         subtitle="Subtitle"
         className="top-0 sticky"
-        left={<NavbarBackLink onClick={goBack} />}
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
         right={<Link navbar>Right</Link>}
       />
       <div className="relative">

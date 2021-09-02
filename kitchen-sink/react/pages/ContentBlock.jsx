@@ -1,15 +1,23 @@
 import React from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Block,
   BlockFooter,
   BlockHeader,
   BlockTitle,
 } from 'tailwind-mobile/react';
-import Page from '../components/Page';
 
 export default function ContentBlockPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="Content Block">
+    <Page>
+      <Navbar
+        title="Content Block"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Block>
         <p>
           Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.

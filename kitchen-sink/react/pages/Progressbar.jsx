@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Block,
   BlockTitle,
   Progressbar,
   Segmented,
   SegmentedButton,
 } from 'tailwind-mobile/react';
-import Page from '../components/Page';
 
 export default function ProgressbarPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [progress, setProgress] = useState(0.1);
   return (
-    <Page title="Progressbar">
+    <Page>
+      <Navbar
+        title="Progressbar"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Determinate Progress Bar</BlockTitle>
       <Block strong>
         <div className="my-4">

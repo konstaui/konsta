@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { List, ListItem, Toggle } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  List,
+  ListItem,
+  Toggle,
+} from 'tailwind-mobile/react';
 
 export default function TogglePage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(true);
   const [checked3, setChecked3] = useState(true);
   const [checked4, setChecked4] = useState(true);
   return (
-    <Page title="Toggle">
+    <Page>
+      <Navbar
+        title="Toggle"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <List>
         <ListItem
           title="Item 1"

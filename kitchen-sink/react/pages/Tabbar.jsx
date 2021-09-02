@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Tabbar,
   TabbarLink,
   Block,
@@ -15,13 +18,17 @@ import {
 } from 'framework7-icons/react';
 import { MdEmail, MdToday, MdFileUpload } from 'react-icons/md';
 
-import Page from '../components/Page';
-
 export default function TabbarPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [activeTab, setActiveTab] = useState('tab-1');
   const [isTabbarLabels, setIsTabbarLabels] = useState(false);
   return (
-    <Page title="Tabbar">
+    <Page>
+      <Navbar
+        title="Tabbar"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Tabbar labels={isTabbarLabels} className="left-0 bottom-0 fixed">
         <TabbarLink
           active={activeTab === 'tab-1'}

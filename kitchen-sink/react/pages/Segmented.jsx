@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Segmented,
   SegmentedButton,
   Block,
   BlockTitle,
 } from 'tailwind-mobile/react';
-import Page from '../components/Page';
 
 export default function SegmentedControlPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [activeSegmented, setActiveSegmented] = useState(1);
   return (
-    <Page title="Segmented Control">
+    <Page>
+      <Navbar
+        title="Segmented Control"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Default Segmented</BlockTitle>
       <Block strong className="space-y-4">
         <Segmented>

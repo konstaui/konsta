@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Popover,
   Block,
   Link,
@@ -7,9 +10,9 @@ import {
   List,
   ListItem,
 } from 'tailwind-mobile/react';
-import Page from '../components/Page';
 
 export default function PopoverPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [popoverOpened, setPopoverOpened] = useState(false);
   const popoverTargetRef = useRef(null);
 
@@ -19,18 +22,20 @@ export default function PopoverPage() {
   };
 
   return (
-    <Page
-      title="Popover"
-      navRight={
-        <Link
-          className="popover-navbar-link"
-          navbar
-          onClick={() => openPopover('.popover-navbar-link')}
-        >
-          Popover
-        </Link>
-      }
-    >
+    <Page>
+      <Navbar
+        title="Popover"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+        right={
+          <Link
+            className="popover-navbar-link"
+            navbar
+            onClick={() => openPopover('.popover-navbar-link')}
+          >
+            Popover
+          </Link>
+        }
+      />
       <Block strong className="space-y-4">
         <p>
           <Button

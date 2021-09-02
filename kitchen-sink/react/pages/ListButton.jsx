@@ -1,10 +1,21 @@
 import React from 'react';
-import { List, ListButton } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  List,
+  ListButton,
+} from 'tailwind-mobile/react';
 
 export default function ListButtonPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="List Button">
+    <Page>
+      <Navbar
+        title="List Button"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <List>
         <ListButton>Button 1</ListButton>
         <ListButton>Button 2</ListButton>

@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
-import { Popup, Block, Link, Button } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Popup,
+  Block,
+  Link,
+  Button,
+} from 'tailwind-mobile/react';
 
 export default function PopupPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [popupOpened, setPopupOpened] = useState(false);
   return (
-    <Page title="Popup">
+    <Page>
+      <Navbar
+        title="Popup"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Block strong className="space-y-4">
         <p>
           Popup is a modal window with any HTML content that pops up over App's

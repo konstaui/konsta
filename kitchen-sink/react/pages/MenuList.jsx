@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { Block, MenuList, MenuListItem } from 'tailwind-mobile/react';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Block,
+  MenuList,
+  MenuListItem,
+} from 'tailwind-mobile/react';
 import DemoIcon from '../components/DemoIcon';
-import Page from '../components/Page';
 
 export default function MenuListPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [selected, setSelected] = useState('home');
   const [selectedMedia, setSelectedMedia] = useState('home');
 
   return (
-    <Page title="Menu List">
+    <Page>
+      <Navbar
+        title="Menu List"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Block strong>
         <p>
           Menu list unlike usual links list is designed to indicate currently

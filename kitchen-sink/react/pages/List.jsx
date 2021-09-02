@@ -1,5 +1,8 @@
 import React from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Badge,
   Block,
   BlockTitle,
@@ -8,11 +11,16 @@ import {
   ListItem,
 } from 'tailwind-mobile/react';
 import DemoIcon from '../components/DemoIcon';
-import Page from '../components/Page';
 
 export default function ListPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   return (
-    <Page title="List">
+    <Page>
+      <Navbar
+        title="List"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Simple List</BlockTitle>
       <List>
         <ListItem title="Item 1" />

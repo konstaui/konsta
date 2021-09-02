@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Toast, Block } from 'tailwind-mobile/react';
-
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Button,
+  Toast,
+  Block,
+} from 'tailwind-mobile/react';
 
 export default function ToastPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [toastLeftOpened, setToastLeftOpened] = useState(false);
   const [toastCenterOpened, setToastCenterOpened] = useState(false);
   const [toastRightOpened, setToastRightOpened] = useState(false);
@@ -16,7 +22,12 @@ export default function ToastPage() {
     setter(true);
   };
   return (
-    <Page title="Toast">
+    <Page>
+      <Navbar
+        title="Toast"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Block strong className="space-y-4">
         <Toast
           position="left"

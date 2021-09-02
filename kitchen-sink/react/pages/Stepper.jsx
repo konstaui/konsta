@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import {
+  Page,
+  Navbar,
+  NavbarBackLink,
   Stepper,
   Block,
   BlockTitle,
   List,
   ListItem,
 } from 'tailwind-mobile/react';
-import Page from '../components/Page';
 
 export default function StepperPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [value, setValue] = useState(1);
   const increase = () => {
     setValue(value + 1);
@@ -35,7 +38,12 @@ export default function StepperPage() {
     if (isNaN(parseInt(inputValue, 10))) setInputValue(0);
   };
   return (
-    <Page title="Stepper">
+    <Page>
+      <Navbar
+        title="Stepper"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <BlockTitle>Shape and size</BlockTitle>
       <Block strong className="text-center space-y-4">
         <div className="grid grid-cols-2 gap-4">

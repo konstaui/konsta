@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
-import { Toolbar, Link, Block, Button } from 'tailwind-mobile/react';
-import Page from '../components/Page';
+import {
+  Page,
+  Navbar,
+  NavbarBackLink,
+  Toolbar,
+  Link,
+  Block,
+  Button,
+} from 'tailwind-mobile/react';
 
 export default function ToolbarPage() {
+  const isPreview = document.location.href.includes('examplePreview');
   const [isTop, setIsTop] = useState(false);
   return (
-    <Page title="Toolbar">
+    <Page>
+      <Navbar
+        title="Toolbar"
+        left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
+      />
+
       <Toolbar
         top={isTop}
         className={`left-0 ${
