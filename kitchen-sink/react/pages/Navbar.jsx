@@ -12,7 +12,7 @@ export default function NavbarPage() {
     history.back();
   };
   return (
-    <Page className="min-h-screen absolute left-0 top-0 w-full h-full overflow-auto">
+    <Page>
       <Navbar
         title="Navbar"
         subtitle="Subtitle"
