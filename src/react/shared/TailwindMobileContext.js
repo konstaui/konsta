@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TailwindMobileContext = React.createContext({
-  theme: 'ios',
+  theme: 'material',
   dark: true,
   touchRipple: true,
 });
