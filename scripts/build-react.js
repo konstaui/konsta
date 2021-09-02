@@ -6,6 +6,10 @@ const path = require('path');
 const bannerReact = require('./banner.js')('React');
 
 const createComponentTypes = (componentName, propsContent) => {
+  propsContent = propsContent.replace(
+    'interface Props {',
+    'export interface Props {'
+  );
   return `
 import * as React from 'react';
 
