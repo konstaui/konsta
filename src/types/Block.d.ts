@@ -12,7 +12,7 @@ interface Props {
     /**
      * Strong block bg color
      *
-     * Default 'bg-block-strong-light dark:bg-block-strong-dark'
+     * @default 'bg-block-strong-light dark:bg-block-strong-dark'
      */
     strongBg?: string;
   };
