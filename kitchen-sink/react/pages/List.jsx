@@ -5,7 +5,6 @@ import {
   BlockTitle,
   List,
   ListGroup,
-  ListButton,
   ListItem,
 } from 'tailwind-mobile/react';
 import DemoIcon from '../components/DemoIcon';
@@ -212,30 +211,6 @@ export default function ListPage() {
           subtitle="John Doe (@_johndoe) mentioned you on Twitter!"
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
         />
-      </List>
-
-      <BlockTitle>List Button</BlockTitle>
-      <List>
-        <ListButton>Button 1</ListButton>
-        <ListButton>Button 2</ListButton>
-        <ListButton>Button 3</ListButton>
-      </List>
-
-      <List inset>
-        <ListButton>Button 1</ListButton>
-        <ListButton>Button 2</ListButton>
-        <ListButton>Button 3</ListButton>
-      </List>
-      <List inset>
-        <ListButton
-          colors={{
-            text: 'text-red-500',
-            activeBg: 'active:bg-red-500',
-            touchRipple: 'touch-ripple-red-500',
-          }}
-        >
-          Red Button
-        </ListButton>
       </List>
     </Page>
   );

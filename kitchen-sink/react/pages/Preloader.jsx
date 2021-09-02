@@ -13,16 +13,16 @@ export default function PreloaderPage() {
       <BlockTitle>Colors</BlockTitle>
       <Block strong className="grid grid-cols-4">
         <div className="text-center">
-          <Preloader colors={{ text: 'text-red-500' }} />
+          <Preloader colors={{ icon: 'text-red-500' }} />
         </div>
         <div className="text-center">
-          <Preloader colors={{ text: 'text-green-500' }} />
+          <Preloader colors={{ icon: 'text-green-500' }} />
         </div>
         <div className="text-center">
-          <Preloader colors={{ text: 'text-pink-500' }} />
+          <Preloader colors={{ icon: 'text-pink-500' }} />
         </div>
         <div className="text-center">
-          <Preloader colors={{ text: 'text-yellow-500' }} />
+          <Preloader colors={{ icon: 'text-yellow-500' }} />
         </div>
       </Block>
 

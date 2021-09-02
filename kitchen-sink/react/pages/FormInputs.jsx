@@ -5,18 +5,18 @@ import DemoIcon from '../components/DemoIcon';
 
 export default function FormInputsPage() {
   const [name, setName] = useState({ value: '', changed: false });
-  const [email, setEmail] = useState('');
+  const [demoValue, setDemoValue] = useState('');
   const theme = useTheme();
   const hairlines = theme !== 'material';
 
   const onNameChange = (e) => {
     setName({ value: e.target.value, changed: true });
   };
-  const onEmailChange = (e) => {
-    setEmail(e.target.value);
+  const onDemoValueChange = (e) => {
+    setDemoValue(e.target.value);
   };
-  const onEmailClear = () => {
-    setEmail('');
+  const onDemoValueClear = () => {
+    setDemoValue('');
   };
   return (
     <Page title="Form Inputs">
@@ -241,11 +241,11 @@ export default function FormInputsPage() {
           type="text"
           placeholder="Your favorite TV show"
           info="Type something to see clear button"
-          value={email}
-          clearButton={email.length > 0}
+          value={demoValue}
+          clearButton={demoValue.length > 0}
           media={<DemoIcon />}
-          onChange={onEmailChange}
-          onClear={onEmailClear}
+          onChange={onDemoValueChange}
+          onClear={onDemoValueClear}
         />
       </List>
 

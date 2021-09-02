@@ -7,6 +7,7 @@ import ContentBlock from './pages/ContentBlock.jsx';
 import Fab from './pages/Fab.jsx';
 import FormInputs from './pages/FormInputs.jsx';
 import List from './pages/List.jsx';
+import ListButton from './pages/ListButton.jsx';
 import MenuList from './pages/MenuList.jsx';
 import Navbar from './pages/Navbar.jsx';
 import Popover from './pages/Popover.jsx';
@@ -34,6 +35,7 @@ const routes = [
   Fab,
   FormInputs,
   List,
+  ListButton,
   MenuList,
   Navbar,
   Popover,

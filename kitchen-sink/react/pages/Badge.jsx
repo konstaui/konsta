@@ -19,59 +19,55 @@ import DemoIcon from '../components/DemoIcon';
 import Page from '../components/Page';
 
 export default function BadgePage() {
-  const UserIcon = () => {
-    return (
-      <Icon
-        ios={<PersonCircleFill className="w-7 h-7" />}
-        material={<MdPerson className="w-6 h-6" />}
-        badge="5"
-        badgeColors={{ bg: 'bg-red-500' }}
-      />
-    );
-  };
-  const InboxIcon = () => {
-    return (
-      <Icon
-        ios={<EnvelopeFill className="w-7 h-7" />}
-        material={<MdEmail className="w-6 h-6" />}
-        badge="5"
-        badgeColors={{ bg: 'bg-green-500' }}
-      />
-    );
-  };
-  const CalendarIcon = () => {
-    return (
-      <Icon
-        ios={<Calendar className="w-7 h-7" />}
-        material={<MdToday className="w-6 h-6" />}
-        badge="7"
-        badgeColors={{ bg: 'bg-red-500' }}
-      />
-    );
-  };
-  const UploadIcon = () => {
-    return (
-      <Icon
-        ios={<CloudUploadFill className="w-7 h-7" />}
-        material={<MdFileUpload className="w-6 h-6" />}
-        badge="1"
-        badgeColors={{ bg: 'bg-red-500' }}
-      />
-    );
-  };
   return (
     <Page
       title="Badge"
       navRight={
         <Link navbar iconOnly>
-          <UserIcon />
+          <Icon
+            ios={<PersonCircleFill className="w-7 h-7" />}
+            material={<MdPerson className="w-6 h-6" />}
+            badge="5"
+            badgeColors={{ bg: 'bg-red-500' }}
+          />
         </Link>
       }
     >
       <Tabbar labels className="left-0 bottom-0 fixed">
-        <TabbarLink active icon={<InboxIcon />} label="Inbox" />
-        <TabbarLink icon={<CalendarIcon />} label="Calendar" />
-        <TabbarLink icon={<UploadIcon />} label="Upload" />
+        <TabbarLink
+          active
+          icon={
+            <Icon
+              ios={<EnvelopeFill className="w-7 h-7" />}
+              material={<MdEmail className="w-6 h-6" />}
+              badge="5"
+              badgeColors={{ bg: 'bg-green-500' }}
+            />
+          }
+          label="Inbox"
+        />
+        <TabbarLink
+          icon={
+            <Icon
+              ios={<Calendar className="w-7 h-7" />}
+              material={<MdToday className="w-6 h-6" />}
+              badge="7"
+              badgeColors={{ bg: 'bg-red-500' }}
+            />
+          }
+          label="Calendar"
+        />
+        <TabbarLink
+          icon={
+            <Icon
+              ios={<CloudUploadFill className="w-7 h-7" />}
+              material={<MdFileUpload className="w-6 h-6" />}
+              badge="1"
+              badgeColors={{ bg: 'bg-red-500' }}
+            />
+          }
+          label="Upload"
+        />
       </Tabbar>
       <List>
         <ListItem

@@ -10,16 +10,17 @@ export default function Page(props) {
   const goBack = () => {
     history.back();
   };
+  const isPreview = document.location.href.includes('examplePreview');
   return (
     <PageComponent>
       {title && (
         <Navbar
           title={title}
-          left={backLink && <NavbarBackLink onClick={goBack} />}
+          left={backLink && !isPreview && <NavbarBackLink onClick={goBack} />}
           right={navRight}
         />
       )}
-      <div className="relative">{children}</div>
+      {children}
     </PageComponent>
   );
 }

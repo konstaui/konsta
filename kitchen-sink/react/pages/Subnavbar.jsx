@@ -9,15 +9,11 @@ import {
 } from 'tailwind-mobile/react';
 
 export default function SubnavbarPage() {
-  const goBack = () => {
-    history.back();
-  };
   return (
-    <Page className="min-h-screen absolute left-0 top-0 w-full h-full overflow-auto">
+    <Page>
       <Navbar
         title="Subnavbar"
-        className="top-0 sticky"
-        left={<NavbarBackLink onClick={goBack} />}
+        left={<NavbarBackLink onClick={() => history.back()} />}
         subnavbar={
           <Segmented strong>
             <SegmentedButton small strong active>
