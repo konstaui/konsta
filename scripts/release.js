@@ -119,6 +119,7 @@ async function release() {
   } else {
     await exec.promise('cd ./package && npm publish');
   }
+  await exec.promise('npm run build-react-ks');
 }
 
 release();
