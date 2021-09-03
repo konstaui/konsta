@@ -1,4 +1,7 @@
+- Repo
+  - setup issue templates
 - Components
   - Messages (simplified version)
   - Side Panels
+  - Tabs
   - Figure out default toolbar styles
