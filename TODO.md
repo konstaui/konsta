@@ -5,3 +5,5 @@
   - Side Panels
   - Tabs
   - Figure out default toolbar styles
+- General
+  - iOS 17px font size
