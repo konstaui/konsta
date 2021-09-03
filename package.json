@@ -1,7 +1,7 @@
 {
   "name": "tailwind-mobile",
   "description": "Mobile UI components made with Tailwind CSS",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "private": true,
   "license": "MIT",
   "author": "Vladimir Kharlampidi",
