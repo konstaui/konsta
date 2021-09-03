@@ -1,6 +1,6 @@
 interface Props {
   /**
-   * Makes menu list item highlighted (active) (same as `<MenuListItem active>`)
+   * Makes menu list item highlighted (active)
    *
    * @default false
    */
