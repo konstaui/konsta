@@ -14,7 +14,7 @@ function App() {
       else document.documentElement.classList.remove('dark');
     };
   }, []);
-  const inIFrame = !!window.parent;
+  const inIFrame = window.parent !== window;
   return (
     <TailwindMobileApp theme={theme} safeAreas={!inIFrame}>
       <Router>
