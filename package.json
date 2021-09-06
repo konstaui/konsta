@@ -1,7 +1,7 @@
 {
   "name": "tailwind-mobile",
   "description": "Mobile UI components made with Tailwind CSS",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "private": true,
   "license": "MIT",
   "author": "Vladimir Kharlampidi",
@@ -16,7 +16,8 @@
     "check-format": "npm run prettier -- --list-different",
     "lint": "eslint --ext .js,.vue,.jsx,.svelte .",
     "validate": "npm-run-all --parallel check-format lint",
-    "release": "npm run validate && node ./scripts/release"
+    "release": "npm run validate && node ./scripts/release",
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -u -s"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
