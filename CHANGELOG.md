@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.4.2](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.1...v0.4.2) (2021-09-06)
+
+### Bug Fixes
+
+- **config:** fix dark mode extension ([2a89557](https://github.com/tailwind-mobile/tailwind-mobile/commit/2a895579f94de61206cfb369f231c1398f579150))
+
 # [0.4.1](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.0...v0.4.1) (2021-09-06)
 
 ### Bug Fixes
