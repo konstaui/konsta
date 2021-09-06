@@ -93,7 +93,7 @@ const Navbar = forwardRef((props, ref) => {
           'pl-2-safe pr-2-safe h-11',
           !left && right ? 'justify-end' : 'justify-between'
         ),
-        material: 'justify-start h-14 lg:h-16',
+        material: 'justify-start h-14 lg:h-16 pl-safe pr-safe',
       },
       left: {
         common: cls('flex justify-center items-center h-full', leftClassName),
