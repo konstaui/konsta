@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.4.1](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.0...v0.4.1) (2021-09-06)
+
+### Bug Fixes
+
+- **provider:** fix touchRipple defaults ([7989b4a](https://github.com/tailwind-mobile/tailwind-mobile/commit/7989b4ab8e95181f2d491b48d26b738ef66ebc16))
+
 # [0.4.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.3.8...v0.4.0) (2021-09-06)
 
 ### Bug Fixes
