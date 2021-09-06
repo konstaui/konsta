@@ -75,7 +75,7 @@ const Toolbar = forwardRef((props, ref) => {
       },
       inner: {
         common: cls(
-          `flex relative justify-between items-center w-full h-full overflow-hidden`,
+          `flex relative justify-between items-center w-full overflow-hidden`,
           innerClassName
         ),
         ios: 'pl-2-safe pr-2-safe',
