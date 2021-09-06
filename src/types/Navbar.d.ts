@@ -30,6 +30,20 @@ interface Props {
   };
 
   /**
+   * Tailwind CSS class for font size in iOS theme
+   *
+   * @default 'text-navbar-ios'
+   */
+  fontSizeIos?: string;
+
+  /**
+   * Tailwind CSS class for font size in Material theme
+   *
+   * @default 'text-navbar-material'
+   */
+  fontSizeMaterial?: string;
+
+  /**
    * Additional class to add on Navbar's "background" element
    */
   bgClassName?: string;

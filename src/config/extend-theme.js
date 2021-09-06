@@ -55,6 +55,8 @@ const extendTheme = () => {
     '2xs': '0.625rem',
     'icon-ios': '28px',
     'icon-material': '24px',
+    'navbar-ios': '17px',
+    'navbar-material': '17px',
   };
 
   // SCALE

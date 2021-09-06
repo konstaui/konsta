@@ -21,6 +21,9 @@ const Navbar = forwardRef((props, ref) => {
     translucent = true,
     hairlines = true,
 
+    fontSizeIos = 'text-navbar-ios',
+    fontSizeMaterial = 'text-navbar-material',
+
     left,
     title,
     subtitle,
@@ -64,8 +67,8 @@ const Navbar = forwardRef((props, ref) => {
           `w-full z-20 top-0 pt-safe`,
           positionClass('sticky', className)
         ),
-        ios: '',
-        material: '',
+        ios: fontSizeIos,
+        material: fontSizeMaterial,
       },
       bg: {
         common: cls('absolute w-full h-full left-0 top-0', bgClassName),
@@ -90,7 +93,7 @@ const Navbar = forwardRef((props, ref) => {
           'pl-2-safe pr-2-safe h-11',
           !left && right ? 'justify-end' : 'justify-between'
         ),
-        material: 'justify-start h-14 lg:h-16 text-xl',
+        material: 'justify-start h-14 lg:h-16',
       },
       left: {
         common: cls('flex justify-center items-center h-full', leftClassName),
