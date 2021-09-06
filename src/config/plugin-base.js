@@ -46,11 +46,11 @@ module.exports = () =>
         '-webkit-font-smoothing': 'antialiased',
         '-moz-osx-font-smoothing': 'grayscale',
       },
-      '.twm-ios': {
+      '.twm-ios, .ios': {
         'font-family':
           '-apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif',
       },
-      '.twm-material': {
+      '.twm-material, .md': {
         'font-family': 'Roboto, system-ui, Noto, Helvetica, Arial, sans-serif',
       },
     });

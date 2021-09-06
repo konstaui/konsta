@@ -33,7 +33,7 @@ const App = forwardRef((props, ref) => {
   };
 
   const classes = cls(
-    `twm-${theme}`,
+    theme === 'ios' ? `twm-ios` : 'twm-material',
     'twm-app w-full h-full min-h-screen',
     safeAreas && 'safe-areas',
     positionClass('relative', className),
