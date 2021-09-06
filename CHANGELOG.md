@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.4.3](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.2...v0.4.3) (2021-09-06)
+
+### Features
+
+- **config:** support 'ios' and 'md' classes ([2deeb3d](https://github.com/tailwind-mobile/tailwind-mobile/commit/2deeb3d6429abd1a883ad4d6c060d3ffc631d17c))
+
 # [0.4.2](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.1...v0.4.2) (2021-09-06)
 
 ### Bug Fixes
