@@ -37,8 +37,15 @@ const config = (userConfig = {}) => {
     },
     userConfig
   );
-  if (!newConfig.purge) newConfig.purge = [purge];
-  else newConfig.purge = [...newConfig.purge, purge];
+  if (!newConfig.purge) {
+    newConfig.purge = [purge];
+  } else if (Array.isArray(newConfig.purge)) {
+    newConfig.purge = [...newConfig.purge, purge];
+  } else if (newConfig.purge.content) {
+    newConfig.purge.content = [...newConfig.purge.content, purge];
+  } else if (!newConfig.purge.content) {
+    newConfig.purge.content = [purge];
+  }
 
   return newConfig;
 };
