@@ -18,6 +18,9 @@ const ListItem = forwardRef((props, ref) => {
     contentChildren,
     titleWrapClassName = '',
 
+    titleFontSizeIos = 'text-list-title-ios',
+    titleFontSizeMaterial = 'text-list-title-material',
+
     // Content props
     title,
     subtitle,
@@ -156,7 +159,11 @@ const ListItem = forwardRef((props, ref) => {
         ios: 'py-2.5',
         material: 'py-3',
       },
-      titleWrap: `flex justify-between items-center ${titleWrapClassName}`,
+      titleWrap: {
+        common: cls(`flex justify-between items-center ${titleWrapClassName}`),
+        ios: cls(!menuListItem && titleFontSizeIos),
+        material: cls(!menuListItem && titleFontSizeMaterial),
+      },
       title: {
         common: `flex-shrink`,
         menuListItem: cls(
@@ -196,8 +203,8 @@ const ListItem = forwardRef((props, ref) => {
           divider ? 'relative' : 'sticky top-0',
           dark(`dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`)
         ),
-        ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px`,
-        material: 'h-12',
+        ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px text-list-title-ios`,
+        material: 'h-12 text-list-title-material',
       },
     },
     className

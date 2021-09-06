@@ -49,6 +49,19 @@ interface Props {
    * Content of the item-content
    */
   contentChildren?: string | number | React.ReactNode;
+
+  /**
+   * Tailwind CSS class for item title font size in iOS theme
+   *
+   * @default 'text-list-title-ios'
+   */
+  titleFontSizeIos?: string;
+  /**
+   * Tailwind CSS class for item title font size in Material theme
+   *
+   * @default 'text-list-title-material'
+   */
+  titleFontSizeMaterial?: string;
   /**
    * Additional class to add on item "titleWrap" element
    */
