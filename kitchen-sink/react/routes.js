@@ -10,6 +10,7 @@ import List from './pages/List.jsx';
 import ListButton from './pages/ListButton.jsx';
 import MenuList from './pages/MenuList.jsx';
 import Navbar from './pages/Navbar.jsx';
+import Panel from './pages/SidePanels';
 import Popover from './pages/Popover.jsx';
 import Popup from './pages/Popup.jsx';
 import Preloader from './pages/Preloader.jsx';
@@ -38,6 +39,7 @@ const routes = [
   ListButton,
   MenuList,
   Navbar,
+  Panel,
   Popover,
   Popup,
   Preloader,
