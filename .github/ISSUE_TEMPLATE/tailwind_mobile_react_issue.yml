@@ -48,7 +48,7 @@ body:
     attributes:
       label: Tailwind Mobile version
       description: Exact release version or commit hash
-      placeholder: e.g 7.0.0
+      placeholder: e.g 1.0.0
     validations:
       required: true
   - type: input
