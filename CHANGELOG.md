@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.4.4](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.3...v0.4.4) (2021-09-06)
+
+### Features
+
+- parent framework theme detection ([75f5acf](https://github.com/tailwind-mobile/tailwind-mobile/commit/75f5acf474eea10a106338202bc8f421ef98486b))
+
 # [0.4.3](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.2...v0.4.3) (2021-09-06)
 
 ### Features
