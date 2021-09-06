@@ -2,6 +2,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
 import { TailwindMobileProvider } from '../shared/TailwindMobileProvider.jsx';
+import { useAutoTheme } from '../shared/use-auto-theme.js';
 
 const App = forwardRef((props, ref) => {
   const {
@@ -32,8 +33,11 @@ const App = forwardRef((props, ref) => {
     ...rest,
   };
 
+  const currentTheme = useAutoTheme(theme);
+
   const classes = cls(
-    theme === 'ios' ? `twm-ios` : 'twm-material',
+    currentTheme === 'ios' && `twm-ios`,
+    currentTheme === 'material' && 'twm-material',
     'twm-app w-full h-full min-h-screen',
     safeAreas && 'safe-areas',
     positionClass('relative', className),
@@ -41,7 +45,12 @@ const App = forwardRef((props, ref) => {
   );
 
   return (
-    <TailwindMobileProvider theme={theme} dark={dark} touchRipple={touchRipple}>
+    <TailwindMobileProvider
+      theme={currentTheme}
+      dark={dark}
+      touchRipple={touchRipple}
+      autoThemeDetection={false}
+    >
       <Component ref={elRef} className={classes} {...attrs}>
         {children}
       </Component>

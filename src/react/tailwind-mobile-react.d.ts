@@ -4,11 +4,11 @@ import * as React from 'react';
 // PROVIDER
 interface TailwindMobileProviderProps {
   /**
-   * App theme
+   * App theme. If set to `'parent'` it will look for `ios` or `md` class on root `<html>` element, useful to use with parent framework like Framework7 or Ionic
    *
    * @default 'material'
    */
-  theme?: 'ios' | 'material';
+  theme?: 'ios' | 'material' | 'parent';
   /**
    * Include `dark:` variants (if dark theme is in use)
    *
