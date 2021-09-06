@@ -102,6 +102,21 @@ const ListItem = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, needsTouchRipple);
 
+  const hrefComputed =
+    href === true || href === false || typeof href === 'undefined'
+      ? undefined
+      : href || '';
+  const ItemContentComponent = isLink
+    ? linkComponent
+    : isLabel
+    ? 'label'
+    : 'div';
+  const linkPropsComputed = isLink
+    ? { href: hrefComputed, target, ...linkProps }
+    : {};
+
+  const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
+
   const c = themeClasses(
     {
       base: menuListItem ? `${textColor} py-1` : '',
@@ -144,9 +159,12 @@ const ListItem = forwardRef((props, ref) => {
       titleWrap: `flex justify-between items-center ${titleWrapClassName}`,
       title: {
         common: `flex-shrink`,
-        menuListItem: {
-          common: 'text-sm font-medium',
-        },
+        menuListItem: cls(
+          'text-sm',
+          strongTitle === true || autoStrongTitle
+            ? 'font-semibold'
+            : 'font-medium'
+        ),
         strong: {
           common: '',
           ios: 'font-semibold',
@@ -185,21 +203,9 @@ const ListItem = forwardRef((props, ref) => {
     className
   );
 
-  const hrefComputed =
-    href === true || href === false || typeof href === 'undefined'
-      ? undefined
-      : href || '';
-  const ItemContentComponent = isLink
-    ? linkComponent
-    : isLabel
-    ? 'label'
-    : 'div';
-  const linkPropsComputed = isLink
-    ? { href: hrefComputed, target, ...linkProps }
-    : {};
   const itemContentClasses =
     isLink || isLabel ? c.itemContent.link : c.itemContent.default;
-  const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
+
   const titleClasses = menuListItem
     ? c.title.menuListItem
     : strongTitle === true || autoStrongTitle
