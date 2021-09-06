@@ -3,22 +3,25 @@ const plugin = require('tailwindcss/plugin');
 module.exports = () =>
   plugin(({ addBase, config }) => {
     const darkMode = config('darkMode');
-    const darkProps =
-      darkMode === 'class'
-        ? {
-            '.dark': {
-              '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
-              color: '#fff',
-            },
-          }
-        : {
-            '@media (prefers-color-scheme: dark)': {
-              ':root': {
-                '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
-                color: '#fff',
-              },
-            },
-          };
+    let darkProps = {};
+    if (darkMode === 'class') {
+      darkProps = {
+        '.dark': {
+          '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
+          color: '#fff',
+        },
+      };
+    } else if (darkMode === 'media') {
+      darkProps = {
+        '@media (prefers-color-scheme: dark)': {
+          ':root': {
+            '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
+            color: '#fff',
+          },
+        },
+      };
+    }
+
     addBase({
       ':root': {
         '--twm-device-pixel-ratio': '1',
