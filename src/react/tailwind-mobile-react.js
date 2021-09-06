@@ -21,6 +21,7 @@ import MenuListItem from './components/MenuListItem.jsx';
 import Navbar from './components/Navbar.jsx';
 import NavbarBackLink from './components/NavbarBackLink.jsx';
 import Page from './components/Page.jsx';
+import Panel from './components/Panel.jsx';
 import Popover from './components/Popover.jsx';
 import Popup from './components/Popup.jsx';
 import Preloader from './components/Preloader.jsx';
@@ -70,6 +71,7 @@ export {
   Navbar,
   NavbarBackLink,
   Page,
+  Panel,
   Popover,
   Popup,
   Preloader,
