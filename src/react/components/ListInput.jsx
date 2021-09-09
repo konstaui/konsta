@@ -251,7 +251,7 @@ const ListInput = forwardRef((props, ref) => {
     if (input) return input;
     const InputComponent =
       type === 'select' || type === 'textarea' ? type : 'input';
-    const needsType = type === 'input';
+    const needsType = InputComponent === 'input';
     return (
       <InputComponent
         id={inputId}
