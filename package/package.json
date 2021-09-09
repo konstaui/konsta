@@ -1,6 +1,6 @@
 {
   "name": "tailwind-mobile",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
@@ -16,5 +16,5 @@
   "engines": {
     "node": ">= 4.7.0"
   },
-  "releaseDate": "September 6, 2021"
+  "releaseDate": "September 9, 2021"
 }

@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.4.5](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.4...v0.4.5) (2021-09-09)
+
+### Bug Fixes
+
+- **input:** fix missing `type` attribute ([239babd](https://github.com/tailwind-mobile/tailwind-mobile/commit/239babda918809c8c93c636f7b4fd4dd8181eb7e)), closes [#9](https://github.com/tailwind-mobile/tailwind-mobile/issues/9)
+
 # [0.4.4](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.3...v0.4.4) (2021-09-06)
 
 ### Features
