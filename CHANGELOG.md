@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.4.6](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.5...v0.4.6) (2021-09-13)
+
+### Bug Fixes
+
+- **list-input:** fix overflow with floating label ([56f1af7](https://github.com/tailwind-mobile/tailwind-mobile/commit/56f1af708882d5b1fc558458275b82e204b212ff)), closes [#10](https://github.com/tailwind-mobile/tailwind-mobile/issues/10)
+
 # [0.4.5](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.4...v0.4.5) (2021-09-09)
 
 ### Bug Fixes
