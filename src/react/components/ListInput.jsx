@@ -155,7 +155,7 @@ const ListInput = forwardRef((props, ref) => {
         common: 'flex items-center',
       },
       stacked: '',
-      floating: '',
+      floating: 'overflow-hidden',
     },
     label: {
       common: `text-xs ${getLabelColor()}`,
