@@ -1,0 +1,6 @@
+{
+  "name": "tailwind-mobile/vue",
+  "private": true,
+  "jsnext:main": "./tailwind-mobile-vue.js",
+  "module": "./tailwind-mobile-vue.js"
+}
