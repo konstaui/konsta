@@ -1,49 +1,26 @@
 <template>
   <twm-app :theme="theme" :safe-areas="!inIFrame" data-foo="test">
-    <twm-page>
-      <twm-block-title>Block Title</twm-block-title>
-      <twm-block-header>Block header</twm-block-header>
-      <twm-block strong>Hello world <twm-badge>3</twm-badge></twm-block>
-      <twm-block-footer>Block footer</twm-block-footer>
-      <twm-block>
-        <p>
-          <button @click="() => (theme = theme === 'ios' ? 'material' : 'ios')">
-            Toggle Theme
-          </button>
-        </p>
-      </twm-block>
-    </twm-page>
+    <HomePage :theme="theme" :setTheme="setTheme" />
   </twm-app>
 </template>
 <script>
-  import { ref, onMounted } from 'vue';
-  import {
-    twmApp,
-    twmPage,
-    twmBlock,
-    twmBlockFooter,
-    twmBlockHeader,
-    twmBlockTitle,
-    twmBadge,
-    twmCard,
-  } from 'tailwind-mobile/vue';
+  import { ref, onMounted, provide } from 'vue';
+  import HomePage from '../pages/Home.vue';
+  import { twmApp } from 'tailwind-mobile/vue';
   export default {
     components: {
       twmApp,
-      twmPage,
-      twmBlock,
-      twmBlockFooter,
-      twmBlockHeader,
-      twmBlockTitle,
-      twmBadge,
-      twmCard,
+      HomePage,
     },
     setup() {
-      const theme = ref('material');
+      const theme = ref('ios');
       const inIFrame = window.parent !== window;
+      const setTheme = (t) => {
+        theme.value = t;
+      };
 
       onMounted(() => {
-        window.setTheme = (t) => (theme.value = t);
+        window.setTheme = setTheme;
         window.setMode = (mode) => {
           if (mode === 'dark') document.documentElement.classList.add('dark');
           else document.documentElement.classList.remove('dark');
@@ -53,6 +30,7 @@
       return {
         inIFrame,
         theme,
+        setTheme,
       };
     },
   };
