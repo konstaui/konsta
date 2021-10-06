@@ -4,17 +4,17 @@ import twmBlock from './components/Block.vue';
 import twmBlockFooter from './components/BlockFooter.vue';
 import twmBlockHeader from './components/BlockHeader.vue';
 import twmBlockTitle from './components/BlockTitle.vue';
-// import twmButton from './components/Button.vue';
+import twmButton from './components/Button.vue';
 import twmCard from './components/Card.vue';
 // import twmCheckbox from './components/Checkbox.vue';
 // import twmChip from './components/Chip.vue';
 // import twmFab from './components/Fab.vue';
 // import twmIcon from './components/Icon.vue';
 // import twmLink from './components/Link.vue';
-// import twmList from './components/List.vue';
+import twmList from './components/List.vue';
 // import twmListGroup from './components/ListGroup.vue';
-// import twmListButton from './components/ListButton.vue';
-// import twmListItem from './components/ListItem.vue';
+import twmListButton from './components/ListButton.vue';
+import twmListItem from './components/ListItem.vue';
 // import twmListInput from './components/ListInput.vue';
 // import twmMenuList from './components/MenuList.vue';
 // import twmMenuListItem from './components/MenuListItem.vue';
@@ -54,17 +54,17 @@ export {
   twmBlockFooter,
   twmBlockHeader,
   twmBlockTitle,
-  // twmButton,
+  twmButton,
   twmCard,
   // twmCheckbox,
   // twmChip,
   // twmFab,
   // twmIcon,
   // twmLink,
-  // twmList,
+  twmList,
   // twmListGroup,
-  // twmListButton,
-  // twmListItem,
+  twmListButton,
+  twmListItem,
   // twmListInput,
   // twmMenuList,
   // twmMenuListItem,

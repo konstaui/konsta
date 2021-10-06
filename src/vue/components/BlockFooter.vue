@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="classes">
+  <component :is="component" :class="c.base">
     <slot />
   </component>
 </template>
@@ -25,7 +25,7 @@
         base: `pl-4-safe pr-4-safe mb-8 flex items-center -mt-6 text-opacity-55 text-black text-sm`,
       }));
       return {
-        classes: c.value.base,
+        c,
       };
     },
   };

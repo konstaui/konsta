@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="classes">
+  <component :is="component" :class="c.base[size]">
     <slot />
   </component>
 </template>
@@ -47,7 +47,8 @@
         },
       }));
       return {
-        classes: c.value.base[size.value],
+        c,
+        size,
       };
     },
   };

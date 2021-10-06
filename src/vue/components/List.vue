@@ -1,14 +1,17 @@
 <template>
   <component :is="component" :class="classes">
-    <slot />
+    <ul :class="c.ul">
+      <slot />
+    </ul>
   </component>
 </template>
 <script>
   import { computed } from 'vue';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   export default {
     props: {
       component: {
@@ -27,14 +30,15 @@
         default: undefined,
       },
       margin: { type: String, default: 'my-8' },
-      strong: { type: Boolean, default: false },
       inset: { type: Boolean, default: false },
       nested: { type: Boolean, default: false },
+      menuList: { type: Boolean, default: false },
+
       hairlines: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const colors = computed(() => ({
-        strongBg: cls(
+        bg: cls(
           `bg-block-strong-light`,
           useDarkClasses('dark:bg-block-strong-dark')
         ),
@@ -44,20 +48,20 @@
       const c = useThemeClasses(props, () => ({
         base: {
           common: cls(
-            `text-sm z-10`,
-            positionClass('relative', ctx.attrs.class),
-            props.inset && 'px-4',
-            !props.inset && 'pl-4-safe pr-4-safe',
-            !props.nested && props.margin
-          ),
-        },
-        strong: {
-          common: cls(
-            `py-4 ${colors.value.strongBg}`,
+            !props.nested && props.margin,
+            colors.value.bg,
             !props.inset &&
               !props.nested &&
               props.hairlines &&
-              'hairline-t hairline-b'
+              'hairline-t hairline-b',
+            positionClass('relative', ctx.attrs.class),
+            'z-10'
+          ),
+        },
+        ul: {
+          common: cls(
+            props.inset && 'no-safe-areas',
+            'last-child-hairline-b-none'
           ),
         },
         inset: {
@@ -65,21 +69,23 @@
           ios: `rounded-lg`,
           material: `rounded`,
         },
+        menuList: {
+          common: 'py-1',
+        },
       }));
 
       const classes = computed(() =>
         cls(
-          // base
           c.value.base,
 
-          // strong
-          props.strong && c.value.strong,
+          props.inset && c.value.inset,
 
-          // inset
-          props.inset && c.value.inset
+          props.menuList && c.value.menuList
         )
       );
+
       return {
+        c,
         classes,
       };
     },

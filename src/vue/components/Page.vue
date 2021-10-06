@@ -4,7 +4,6 @@
   </component>
 </template>
 <script>
-  import { inject, computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -25,8 +24,6 @@
       },
     },
     setup(props, ctx) {
-      const context = inject('TailwindMobileContext');
-
       const c = useThemeClasses(props, () => ({
         base: {
           common: cls(
@@ -46,7 +43,6 @@
 
       return {
         c,
-        context,
       };
     },
   };
