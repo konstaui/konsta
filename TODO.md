@@ -1,9 +1,5 @@
-- Repo
-  - setup issue templates
-- Components
-  - Messages (simplified version)
-  - Side Panels
-  - Tabs
-  - Figure out default toolbar styles
-- General
-  - iOS 17px font size
+- Vue
+  - Check events
+  - Check clicks in link-like components
+  - Inner components name `twm-`
+  - useTheme(props), not useTheme({ios, material})
