@@ -160,32 +160,47 @@
       }));
 
       const classes = computed(() =>
-        cls(c.value.base, props.raised && c.value.raised, c.value.size[size.value], c.value.shape[shape.value]e)
+        cls(
+          c.value.base,
+          props.raised && c.value.raised,
+          c.value.size[size.value],
+          c.value.shape[shape.value]
+        )
       );
       const buttonLeftClasses = computed(() =>
-        cls(c.value.button, c.value.buttonStyle[style.value], c.value.buttonLeftShape[shape.value])
+        cls(
+          c.value.button,
+          c.value.buttonStyle[style.value],
+          c.value.buttonLeftShape[shape.value]
+        )
       );
       const buttonRightClasses = computed(() =>
-        cls(c.value.button, c.value.buttonStyle[style.value], c.value.buttonRightShape[shape.value])
+        cls(
+          c.value.button,
+          c.value.buttonStyle[style.value],
+          c.value.buttonRightShape[shape.value]
+        )
       );
 
-      const valueClasses = computed(() => cls(props.input && c.value.input, c.value[style.value]));
+      const valueClasses = computed(() =>
+        cls(props.input && c.value.input, c.value[style.value])
+      );
 
       const onMinus = (e) => {
         ctx.emit('minus', e);
-      }
+      };
       const onChange = (e) => {
         ctx.emit('change', e);
-      }
+      };
       const onFocus = (e) => {
         ctx.emit('focus', e);
-      }
+      };
       const onBlur = (e) => {
         ctx.emit('blur', e);
-      }
+      };
       const onPlus = (e) => {
         ctx.emit('plus', e);
-      }
+      };
 
       return {
         buttonLeftElRef,
