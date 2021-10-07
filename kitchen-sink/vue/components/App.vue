@@ -1,23 +1,29 @@
 <template>
   <twm-app :theme="theme" :safe-areas="!inIFrame" data-foo="test">
-    <HomePage :theme="theme" :setTheme="setTheme" />
+    <router-view />
   </twm-app>
 </template>
 <script>
-  import { ref, onMounted, provide } from 'vue';
-  import HomePage from '../pages/Home.vue';
+  import { ref, onMounted, provide, inject, computed } from 'vue';
   import { twmApp } from 'tailwind-mobile/vue';
   export default {
     components: {
       twmApp,
-      HomePage,
     },
     setup() {
       const theme = ref('ios');
       const inIFrame = window.parent !== window;
+
       const setTheme = (t) => {
         theme.value = t;
       };
+
+      const AppContext = computed(() => ({
+        theme: theme.value,
+        setTheme,
+      }));
+
+      provide('AppContext', AppContext);
 
       onMounted(() => {
         window.setTheme = setTheme;
@@ -30,7 +36,6 @@
       return {
         inIFrame,
         theme,
-        setTheme,
       };
     },
   };

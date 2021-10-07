@@ -41,10 +41,10 @@ const Sheet = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
+  const colors = computed(() => ({
     bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+    ...(props.colors || {}),
+  }));
 
   const c = themeClasses(
     {

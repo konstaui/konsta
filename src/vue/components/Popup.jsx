@@ -42,10 +42,10 @@ const Popup = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
+  const colors = computed(() => ({
     bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+    ...(props.colors || {}),
+  }));
 
   const c = themeClasses(
     {
@@ -53,7 +53,7 @@ const Popup = forwardRef((props, ref) => {
         common: cls(
           'left-1/2 top-1/2 transition-transform transform -translate-x-1/2 duration-400 z-40 md:rounded max-w-full max-h-full overflow-hidden md:no-safe-areas',
           colors.bg,
-          positionClass('fixed', className),
+          positionClass('fixed', ctx.attrs.class),
           size
         ),
         ios: '',

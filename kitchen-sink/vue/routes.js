@@ -1,61 +1,63 @@
-import Badge from './pages/Badge.jsx';
-import Buttons from './pages/Buttons.jsx';
-import Cards from './pages/Cards.jsx';
-import Checkbox from './pages/Checkbox.jsx';
-import Chips from './pages/Chips.jsx';
-import ContentBlock from './pages/ContentBlock.jsx';
-import Fab from './pages/Fab.jsx';
-import FormInputs from './pages/FormInputs.jsx';
-import List from './pages/List.jsx';
-import ListButton from './pages/ListButton.jsx';
-import MenuList from './pages/MenuList.jsx';
-import Navbar from './pages/Navbar.jsx';
-import Panel from './pages/SidePanels';
-import Popover from './pages/Popover.jsx';
-import Popup from './pages/Popup.jsx';
-import Preloader from './pages/Preloader.jsx';
-import Progressbar from './pages/Progressbar.jsx';
-import Radio from './pages/Radio.jsx';
-import RangeSlider from './pages/RangeSlider.jsx';
-import SegmentedControl from './pages/SegmentedControl.jsx';
-import SheetModal from './pages/SheetModal.jsx';
-import Stepper from './pages/Stepper.jsx';
-import Subnavbar from './pages/Subnavbar.jsx';
-import Tabbar from './pages/Tabbar.jsx';
-import Toast from './pages/Toast.jsx';
-import Toggle from './pages/Toggle.jsx';
-import Toolbar from './pages/Toolbar.jsx';
+import Home from './pages/Home.vue';
+// import Badge from './pages/Badge.vue';
+// import Buttons from './pages/Buttons.vue';
+// import Cards from './pages/Cards.vue';
+// import Checkbox from './pages/Checkbox.vue';
+// import Chips from './pages/Chips.vue';
+// import ContentBlock from './pages/ContentBlock.vue';
+// import Fab from './pages/Fab.vue';
+// import FormInputs from './pages/FormInputs.vue';
+// import List from './pages/List.vue';
+// import ListButton from './pages/ListButton.vue';
+import MenuList from './pages/MenuList.vue';
+// import Navbar from './pages/Navbar.vue';
+// import Panel from './pages/SidePanels';
+// import Popover from './pages/Popover.vue';
+// import Popup from './pages/Popup.vue';
+// import Preloader from './pages/Preloader.vue';
+// import Progressbar from './pages/Progressbar.vue';
+// import Radio from './pages/Radio.vue';
+// import RangeSlider from './pages/RangeSlider.vue';
+// import SegmentedControl from './pages/SegmentedControl.vue';
+// import SheetModal from './pages/SheetModal.vue';
+// import Stepper from './pages/Stepper.vue';
+// import Subnavbar from './pages/Subnavbar.vue';
+// import Tabbar from './pages/Tabbar.vue';
+// import Toast from './pages/Toast.vue';
+// import Toggle from './pages/Toggle.vue';
+// import Toolbar from './pages/Toolbar.vue';
 
 const routes = [
-  Badge,
-  Buttons,
-  Cards,
-  Checkbox,
-  Chips,
-  ContentBlock,
-  Fab,
-  FormInputs,
-  List,
-  ListButton,
+  Home,
+  // Badge,
+  // Buttons,
+  // Cards,
+  // Checkbox,
+  // Chips,
+  // ContentBlock,
+  // Fab,
+  // FormInputs,
+  // List,
+  // ListButton,
   MenuList,
-  Navbar,
-  Panel,
-  Popover,
-  Popup,
-  Preloader,
-  Progressbar,
-  Radio,
-  RangeSlider,
-  SegmentedControl,
-  SheetModal,
-  Stepper,
-  Subnavbar,
-  Tabbar,
-  Toast,
-  Toggle,
-  Toolbar,
+  // Navbar,
+  // Panel,
+  // Popover,
+  // Popup,
+  // Preloader,
+  // Progressbar,
+  // Radio,
+  // RangeSlider,
+  // SegmentedControl,
+  // SheetModal,
+  // Stepper,
+  // Subnavbar,
+  // Tabbar,
+  // Toast,
+  // Toggle,
+  // Toolbar,
 ].map((component) => {
-  const name = component.displayName || component.name;
+  const name = component.name;
   const path = `/${name
     .split('Page')[0]
     .split('')
@@ -75,7 +77,7 @@ const routes = [
       .join('');
   return {
     component,
-    path,
+    path: name === 'HomePage' ? '/' : path,
     title,
   };
 });

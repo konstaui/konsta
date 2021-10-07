@@ -47,7 +47,7 @@
     },
     setup(props, ctx) {
       const rippleElRef = ref(null);
-      const theme = useTheme({ ios, material });
+      const theme = useTheme(props);
 
       const needsTouchRipple = computed(
         () =>

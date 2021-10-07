@@ -43,11 +43,11 @@ const Segmented = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
+  const colors = computed(() => ({
     border: 'border-primary',
     divide: 'divide-primary',
-    ...colorsProp,
-  };
+    ...(props.colors || {}),
+  }));
 
   const c = themeClasses({
     base: {

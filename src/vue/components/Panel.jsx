@@ -43,10 +43,10 @@ const Panel = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
+  const colors = computed(() => ({
     bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+    ...(props.colors || {}),
+  }));
 
   const c = themeClasses(
     {
@@ -54,7 +54,7 @@ const Panel = forwardRef((props, ref) => {
         common: cls(
           'top-0 transition-transform transform duration-400 z-40 max-w-full max-h-full overflow-hidden',
           colors.bg,
-          positionClass('fixed', className),
+          positionClass('fixed', ctx.attrs.class),
           size
         ),
         ios: '',

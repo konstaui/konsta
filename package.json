@@ -52,7 +52,8 @@
     "react-router-dom": "^5.2.0",
     "tailwindcss": "^2.2.7",
     "vite": "^2.5.1",
-    "vue": "^3.2.19"
+    "vue": "^3.2.19",
+    "vue-router": "^4.0.11"
   },
   "dependencies": {
     "tailwind-mobile": "file:src"

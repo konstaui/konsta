@@ -4,6 +4,8 @@
   </component>
 </template>
 <script>
+  import { ref, computed } from 'vue';
+
   export default {
     props: {
       component: {

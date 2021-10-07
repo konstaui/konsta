@@ -38,19 +38,19 @@ const Toast = forwardRef((props, ref) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const colors = {
+  const colors = computed(() => ({
     bgIos: 'bg-toast-ios',
     bgMaterial: 'bg-toast-material',
     text: 'text-white',
-    ...colorsProp,
-  };
+    ...(props.colors || {}),
+  }));
 
   const c = themeClasses(
     {
       base: {
         common: cls(
           colors.text,
-          positionClass('fixed', className),
+          positionClass('fixed', ctx.attrs.class),
           'z-50 transform transition-transform-opacity w-full sm:w-auto left-0 bottom-0 sm:max-w-lg',
           !opened && 'translate-y-full opacity-0 pointer-events-none'
         ),

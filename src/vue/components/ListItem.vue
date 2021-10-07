@@ -4,7 +4,7 @@
     <slot name="title" />
     <slot />
   </component>
-  <component :is="component" class="c.base">
+  <component v-else :is="component" :class="c.base">
     <component
       :is="ItemContentComponent"
       ref="rippleElRef"

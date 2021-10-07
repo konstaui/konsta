@@ -34,7 +34,14 @@
 
     <twm-block-title>Components</twm-block-title>
     <twm-list>
-      <twm-list-item title="Page">
+      <twm-list-item
+        v-for="route in routes"
+        :title="route.title"
+        :key="route.path"
+        link
+        :link-props="{ to: route.path }"
+        link-component="router-link"
+      >
         <template #media>
           <demo-icon />
         </template>
@@ -53,13 +60,14 @@
     twmToggle,
     useTheme,
   } from 'tailwind-mobile/vue';
-  import { inject, onMounted, ref } from 'vue';
+  import { inject, onMounted, ref, computed } from 'vue';
 
   // import { Link } from 'react-router-dom';
-  // import routes from '../routes.js';
+  import routes from '../routes.js';
   import DemoIcon from '../components/DemoIcon.vue';
 
   export default {
+    name: 'HomePage',
     components: {
       twmPage,
       twmNavbar,
@@ -70,12 +78,10 @@
       twmToggle,
       DemoIcon,
     },
-    props: {
-      theme: String,
-      setTheme: Function,
-    },
+
     setup(props) {
       const darkMode = ref(false);
+      const AppContext = inject('AppContext');
       const toggleDarkMode = () => {
         darkMode.value = !darkMode.value;
         document.documentElement.classList.toggle('dark');
@@ -83,10 +89,19 @@
       onMounted(() => {
         darkMode.value = document.documentElement.classList.contains('dark');
       });
+      const theme = computed(() => {
+        return AppContext.value.theme;
+      });
+      const setTheme = (t) => {
+        AppContext.value.setTheme(t);
+      };
 
       return {
         darkMode,
         toggleDarkMode,
+        theme,
+        setTheme,
+        routes: routes.filter((r) => r.path !== '/'),
       };
     },
   };

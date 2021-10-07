@@ -69,17 +69,17 @@ const Popover = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
+  const colors = computed(() => ({
     bg: cls('bg-popover-light', dark('dark:bg-popover-dark')),
-    ...colorsProp,
-  };
+    ...(props.colors || {}),
+  }));
 
   const c = themeClasses(
     {
       base: {
         common: cls(
           'transition-transform-opacity duration-300 z-40 no-safe-areas',
-          positionClass('fixed', className),
+          positionClass('fixed', ctx.attrs.class),
           size
         ),
         ios: '',

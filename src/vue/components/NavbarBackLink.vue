@@ -1,11 +1,11 @@
 <template>
-  <Link :component="component" :class="c.base" navbar>
+  <twm-link :component="component" :class="c.base" navbar>
     <span :class="c.icon">
       <twm-back-icon :theme="theme" />
     </span>
     <span v-if="shouldShowText">{{ text }}</span>
     <slot />
-  </Link>
+  </twm-link>
 </template>
 <script>
   import { computed } from 'vue';
