@@ -19,19 +19,19 @@ import twmListInput from './components/ListInput.vue';
 import twmNavbar from './components/Navbar.vue';
 import twmNavbarBackLink from './components/NavbarBackLink.vue';
 import twmPage from './components/Page.vue';
-// import twmPanel from './components/Panel.vue';
-// import twmPopover from './components/Popover.vue';
-// import twmPopup from './components/Popup.vue';
+import twmPanel from './components/Panel.vue';
+import twmPopover from './components/Popover.vue';
+import twmPopup from './components/Popup.vue';
 import twmPreloader from './components/Preloader.vue';
 import twmProgressbar from './components/Progressbar.vue';
 import twmRadio from './components/Radio.vue';
 import twmRange from './components/Range.vue';
-// import twmSegmented from './components/Segmented.vue';
-// import twmSegmentedButton from './components/SegmentedButton.vue';
-// import twmSheet from './components/Sheet.vue';
+import twmSegmented from './components/Segmented.vue';
+import twmSegmentedButton from './components/SegmentedButton.vue';
+import twmSheet from './components/Sheet.vue';
 import twmStepper from './components/Stepper.vue';
 import twmTabbarLink from './components/TabbarLink.vue';
-// import twmToast from './components/Toast.vue';
+import twmToast from './components/Toast.vue';
 import twmToggle from './components/Toggle.vue';
 import twmToolbar from './components/Toolbar.vue';
 // eslint-disable-next-line
@@ -66,19 +66,19 @@ export {
   twmNavbar,
   twmNavbarBackLink,
   twmPage,
-  // twmPanel,
-  // twmPopover,
-  // twmPopup,
+  twmPanel,
+  twmPopover,
+  twmPopup,
   twmPreloader,
   twmProgressbar,
   twmRadio,
   twmRange,
-  // twmSegmented,
-  // twmSegmentedButton,
-  // twmSheet,
+  twmSegmented,
+  twmSegmentedButton,
+  twmSheet,
   twmStepper,
   twmTabbarLink,
-  // twmToast,
+  twmToast,
   twmToggle,
   twmToolbar,
 };
