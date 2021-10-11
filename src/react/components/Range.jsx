@@ -24,6 +24,7 @@ const Range = forwardRef((props, ref) => {
     step = 1,
     min = 0,
     max = 100,
+    onInput,
     onChange,
     onFocus,
     onBlur,
@@ -112,6 +113,7 @@ const Range = forwardRef((props, ref) => {
         defaultValue={defaultValue}
         readOnly={readOnly}
         disabled={disabled}
+        onInput={onInput}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}

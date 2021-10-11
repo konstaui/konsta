@@ -76,6 +76,10 @@ interface Props {
    */
   max?: number;
   /**
+   * `input` event handler
+   */
+  onInput?: (e: any) => void;
+  /**
    * `change` event handler
    */
   onChange?: (e: any) => void;
