@@ -5,6 +5,14 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   const context = inject('TailwindMobileContext');
   const ripple = ref(null);
   let eventsAttached = false;
+
+  const getEl = () => {
+    if (!elRef || !elRef.value) return null;
+    let el = elRef.value;
+    if (el.$el) el = el.$el;
+    return el;
+  };
+
   const theme = () => {
     let value = context.value.theme || 'ios';
     if (props.ios) value = 'ios';
@@ -24,7 +32,7 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   };
 
   const onPointerDown = (e) => {
-    ripple.value = new TouchRipple(elRef.value, e.pageX, e.pageY);
+    ripple.value = new TouchRipple(getEl(), e.pageX, e.pageY);
   };
   const onPointerMove = () => {
     removeRipple();
@@ -36,14 +44,14 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   const attachEvents = () => {
     if (!context.value.touchRipple || eventsAttached) return;
     eventsAttached = true;
-    const el = elRef.value;
+    const el = getEl();
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);
     el.addEventListener('pointerup', onPointerUp);
   };
   const detachEvents = () => {
     eventsAttached = false;
-    const el = elRef.value;
+    const el = getEl();
     el.removeEventListener('pointerdown', onPointerDown);
     el.removeEventListener('pointermove', onPointerMove);
     el.removeEventListener('pointerup', onPointerUp);
@@ -58,12 +66,12 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   );
 
   onMounted(() => {
-    if (!elRef || !elRef.value || !needsTouchRipple()) return;
+    if (!getEl() || !needsTouchRipple()) return;
     attachEvents();
   });
 
   onBeforeUnmount(() => {
-    if (!elRef || !elRef.value || !needsTouchRipple()) return;
+    if (!getEl() || !needsTouchRipple()) return;
     detachEvents();
   });
 };

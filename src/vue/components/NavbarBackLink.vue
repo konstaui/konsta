@@ -49,7 +49,7 @@
       const shouldShowText = computed(
         () =>
           (props.showText === 'auto' && theme.value === 'ios') ||
-          showText === true
+          props.showText === true
       );
       const c = useThemeClasses(props, () => ({
         base: {
