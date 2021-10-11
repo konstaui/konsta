@@ -1,14 +1,15 @@
 <template>
   <component :is="component" :class="c.base[position]">
-    <slot />
-    <div v-if="slots.button" :class="c.button"><slot name="button" /></div>
+    <div :class="c.content">
+      <slot />
+      <div v-if="slots.button" :class="c.button"><slot name="button" /></div>
+    </div>
   </component>
 </template>
 <script>
   import { ref, computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {

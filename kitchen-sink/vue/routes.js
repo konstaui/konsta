@@ -23,7 +23,7 @@ import SegmentedControl from './pages/SegmentedControl.vue';
 import Stepper from './pages/Stepper.vue';
 import Subnavbar from './pages/Subnavbar.vue';
 // import Tabbar from './pages/Tabbar.vue';
-// import Toast from './pages/Toast.vue';
+import Toast from './pages/Toast.vue';
 // import Toggle from './pages/Toggle.vue';
 // import Toolbar from './pages/Toolbar.vue';
 
@@ -53,7 +53,7 @@ const routes = [
   Stepper,
   Subnavbar,
   // Tabbar,
-  // Toast,
+  Toast,
   // Toggle,
   // Toolbar,
 ].map((component) => {
