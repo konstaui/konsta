@@ -218,11 +218,10 @@
       twmBlockTitle,
     },
     setup() {
-      const isPreview = document.location.href.includes('examplePreview');
       const activeSegmented = ref(1);
       return {
         activeSegmented,
-        isPreview,
+        isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };
     },

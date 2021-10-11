@@ -7,8 +7,8 @@ import Chips from './pages/Chips.vue';
 import ContentBlock from './pages/ContentBlock.vue';
 // import Fab from './pages/Fab.vue';
 // import FormInputs from './pages/FormInputs.vue';
-// import List from './pages/List.vue';
-// import ListButton from './pages/ListButton.vue';
+import List from './pages/List.vue';
+import ListButton from './pages/ListButton.vue';
 import MenuList from './pages/MenuList.vue';
 // import Navbar from './pages/Navbar.vue';
 // import Panel from './pages/SidePanels';
@@ -37,8 +37,8 @@ const routes = [
   ContentBlock,
   // Fab,
   // FormInputs,
-  // List,
-  // ListButton,
+  List,
+  ListButton,
   MenuList,
   // Navbar,
   // Panel,

@@ -157,10 +157,8 @@
       twmBlockTitle,
     },
     setup() {
-      const isPreview = document.location.href.includes('examplePreview');
-
       return {
-        isPreview,
+        isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };
     },

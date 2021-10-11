@@ -106,13 +106,12 @@
       DemoIcon,
     },
     setup() {
-      const isPreview = document.location.href.includes('examplePreview');
       const selected = ref('home');
       const selectedMedia = ref('home');
       return {
         selected,
         selectedMedia,
-        isPreview,
+        isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };
     },

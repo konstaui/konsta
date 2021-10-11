@@ -78,7 +78,7 @@ export default function ListPage() {
         <ListItem
           link
           header="Email"
-          title="john@framework7"
+          title="john@tailwind-mobile"
           footer="Work"
           after="Edit"
           media={<DemoIcon />}
