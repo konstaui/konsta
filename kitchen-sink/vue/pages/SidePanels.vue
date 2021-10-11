@@ -96,7 +96,8 @@
     twmButton,
   } from 'tailwind-mobile/vue';
   export default {
-    name: 'Panel / Side Panels',
+    name: 'SidePanelsPage',
+    title: 'Panel / Side Panels',
     components: {
       twmPage,
       twmNavbar,

@@ -143,6 +143,7 @@
         )
       );
       return {
+        c,
         classes,
         rippleElRef,
         theme,

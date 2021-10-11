@@ -5,7 +5,7 @@ import Cards from './pages/Cards.vue';
 import Checkbox from './pages/Checkbox.vue';
 import Chips from './pages/Chips.vue';
 import ContentBlock from './pages/ContentBlock.vue';
-// import Fab from './pages/Fab.vue';
+import Fab from './pages/Fab.vue';
 import FormInputs from './pages/FormInputs.vue';
 import List from './pages/List.vue';
 import ListButton from './pages/ListButton.vue';
@@ -22,7 +22,7 @@ import SegmentedControl from './pages/SegmentedControl.vue';
 import SheetModal from './pages/SheetModal.vue';
 import Stepper from './pages/Stepper.vue';
 import Subnavbar from './pages/Subnavbar.vue';
-// import Tabbar from './pages/Tabbar.vue';
+import Tabbar from './pages/Tabbar.vue';
 import Toast from './pages/Toast.vue';
 import Toggle from './pages/Toggle.vue';
 import Toolbar from './pages/Toolbar.vue';
@@ -35,7 +35,7 @@ const routes = [
   Checkbox,
   Chips,
   ContentBlock,
-  // Fab,
+  Fab,
   FormInputs,
   List,
   ListButton,
@@ -52,7 +52,7 @@ const routes = [
   SheetModal,
   Stepper,
   Subnavbar,
-  // Tabbar,
+  Tabbar,
   Toast,
   Toggle,
   Toolbar,
