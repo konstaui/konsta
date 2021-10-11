@@ -30,6 +30,7 @@ import twmSegmented from './components/Segmented.vue';
 import twmSegmentedButton from './components/SegmentedButton.vue';
 import twmSheet from './components/Sheet.vue';
 import twmStepper from './components/Stepper.vue';
+import twmTabbar from './components/Tabbar.vue';
 import twmTabbarLink from './components/TabbarLink.vue';
 import twmToast from './components/Toast.vue';
 import twmToggle from './components/Toggle.vue';
@@ -77,6 +78,7 @@ export {
   twmSegmentedButton,
   twmSheet,
   twmStepper,
+  twmTabbar,
   twmTabbarLink,
   twmToast,
   twmToggle,
