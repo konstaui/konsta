@@ -187,7 +187,8 @@
         cls(
           c.value.base[state.value],
           theme.value === 'material' &&
-            originClasses[positions.value.popoverPosition]
+            originClasses[positions.value.popoverPosition],
+          ctx.attrs.class
         )
       );
 

@@ -116,7 +116,8 @@
       );
 
       onMounted(() => {
-        if (props.indeterminate) inputElRef.value.indeterminate = !!newValue;
+        if (props.indeterminate)
+          inputElRef.value.indeterminate = !!props.indeterminate;
       });
 
       const onChange = (e) => {

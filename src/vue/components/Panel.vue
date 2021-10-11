@@ -71,7 +71,7 @@
       }));
 
       const classes = computed(() =>
-        cls(c.value.base, c.value[props.side][state.value])
+        cls(c.value.base, c.value[props.side][state.value], ctx.attrs.class)
       );
 
       const onBackdropClick = (e) => {

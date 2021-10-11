@@ -1,6 +1,6 @@
 <template>
   <div v-if="backdrop" :class="c.backdrop[state]" @click="onBackdropClick" />
-  <component :is="component" :class="c.base[state]">
+  <component :is="component" :class="classes">
     <slot />
   </component>
 </template>
@@ -62,10 +62,15 @@
         ctx.emit('backdropclick', e);
       };
 
+      const classes = computed(() =>
+        cls(c.value.base[state.value], ctx.attrs.class)
+      );
+
       return {
         onBackdropClick,
         c,
         state,
+        classes,
       };
     },
   };

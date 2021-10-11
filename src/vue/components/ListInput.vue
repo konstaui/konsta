@@ -1,5 +1,5 @@
 <template>
-  <ListItem
+  <twm-list-item
     :component="component"
     :class="c.base"
     :title="labelStyle === 'inline' ? label : null"
@@ -11,7 +11,7 @@
     <template #title v-if="labelStyle === 'inline' ? label : null">
       <slot name="label" />
     </template>
-    <template #media>
+    <template v-if="slots.media" #media>
       <slot name="media" />
     </template>
     <template #inner>
@@ -27,7 +27,6 @@
           :class="c.input[labelStyleIsFloating]"
           :style="inputStyle"
           :name="name"
-          :type="needsType ? type : undefined"
           :placeholder="placeholder"
           :inputmode="inputmode"
           :size="size"
@@ -40,20 +39,20 @@
           :autosave="autosave"
           :disabled="disabled"
           :max="max"
-          :maxLength="maxlength"
+          :maxlength="maxlength"
           :min="min"
-          :minLength="minlength"
+          :minlength="minlength"
           :step="step"
           :multiple="multiple"
           :readOnly="readonly"
           :required="required"
           :pattern="pattern"
           :tabIndex="tabindex"
-          :value="value"
           @input="onInput"
           @change="onChange"
           @focus="onFocusInternal"
           @blur="onBlurInternal"
+          v-bind="inputProps"
         >
           <slot v-if="type === 'select'" />
         </component>
@@ -67,13 +66,13 @@
         <template v-if="labelStyle === 'inline'">
           <!-- error info content -->
           <div
-            v-if="error && error !== true"
+            v-if="(error && error !== true) || slots.error"
             :class="cls(c.errorInfo[labelStyleIsInline], c.error)"
           >
             {{ error }}<slot name="error" />
           </div>
           <div
-            v-if="info && !error"
+            v-if="(info && !error) || slots.info"
             :class="cls(c.errorInfo[labelStyleIsInline], c.info)"
           >
             {{ info }}<slot name="info" />
@@ -83,13 +82,13 @@
       <template v-if="labelStyle !== 'inline'">
         <!-- error info content -->
         <div
-          v-if="error && error !== true"
+          v-if="(error && error !== true) || slots.error"
           :class="cls(c.errorInfo[labelStyleIsInline], c.error)"
         >
           {{ error }}<slot name="error" />
         </div>
         <div
-          v-if="info && !error"
+          v-if="(info && !error) || slots.info"
           :class="cls(c.errorInfo[labelStyleIsInline], c.info)"
         >
           {{ info }}<slot name="info" />
@@ -97,7 +96,7 @@
       </template>
     </template>
     <slot v-if="type !== 'select'" />
-  </ListItem>
+  </twm-list-item>
 </template>
 <script>
   import { ref, computed } from 'vue';
@@ -166,8 +165,8 @@
       max: [String, Number],
       min: [String, Number],
       step: [String, Number],
-      maxLength: [String, Number],
-      minLength: [String, Number],
+      maxlength: [String, Number],
+      minlength: [String, Number],
       multiple: Boolean,
       pattern: String,
       tabindex: [String, Number],
@@ -322,7 +321,7 @@
           notInline: '',
         },
         input: {
-          common: `block text-base appearance-none w-full focus:outline-none bg-transparent ${inputClass}`,
+          common: `block text-base appearance-none w-full focus:outline-none bg-transparent ${props.inputClass}`,
           ios: 'h-11',
           material: 'h-9',
           notFloating: cls(
@@ -363,9 +362,18 @@
       }));
 
       const InputComponent = computed(() =>
-        type === 'select' || type === 'textarea' ? type : 'input'
+        props.type === 'select' || props.type === 'textarea'
+          ? props.type
+          : 'input'
       );
       const needsType = computed(() => InputComponent.value === 'input');
+
+      const inputProps = computed(() => {
+        return {
+          ...(needsType.value ? { type: props.type } : {}),
+          ...(typeof props.value === 'undefined' ? {} : { value: props.value }),
+        };
+      });
 
       return {
         inputElRef,
@@ -381,6 +389,8 @@
         labelStyle,
         labelStyleIsInline,
         labelStyleIsFloating,
+        slots: ctx.slots,
+        inputProps,
       };
     },
   };
