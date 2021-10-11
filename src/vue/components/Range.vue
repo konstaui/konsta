@@ -13,6 +13,7 @@
       :value="value"
       :readonly="readonly"
       :disabled="disabled"
+      @input="onInput"
       @change="onChange"
       @focus="onFocus"
       @blur="onBlur"
@@ -51,7 +52,7 @@
       min: { type: Number, default: 0 },
       max: { type: Number, default: 100 },
     },
-    emits: ['change', 'focus', 'blur'],
+    emits: ['input', 'change', 'focus', 'blur'],
     setup(props, ctx) {
       const colors = computed(() => ({
         valueBg: 'bg-primary',
@@ -100,6 +101,9 @@
       const valueWidth = computed(
         () => (((props.value || 0) - props.min) / (props.max - props.min)) * 100
       );
+      const onInput = (e) => {
+        ctx.emit('input', e);
+      };
       const onChange = (e) => {
         ctx.emit('change', e);
       };
@@ -113,6 +117,7 @@
         c,
         valueWidth,
         cls,
+        onInput,
         onChange,
         onFocus,
         onBlur,
