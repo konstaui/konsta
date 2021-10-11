@@ -14,8 +14,8 @@ import MenuList from './pages/MenuList.vue';
 // import Panel from './pages/SidePanels';
 // import Popover from './pages/Popover.vue';
 // import Popup from './pages/Popup.vue';
-// import Preloader from './pages/Preloader.vue';
-// import Progressbar from './pages/Progressbar.vue';
+import Preloader from './pages/Preloader.vue';
+import Progressbar from './pages/Progressbar.vue';
 // import Radio from './pages/Radio.vue';
 // import RangeSlider from './pages/RangeSlider.vue';
 import SegmentedControl from './pages/SegmentedControl.vue';
@@ -44,8 +44,8 @@ const routes = [
   // Panel,
   // Popover,
   // Popup,
-  // Preloader,
-  // Progressbar,
+  Preloader,
+  Progressbar,
   // Radio,
   // RangeSlider,
   SegmentedControl,

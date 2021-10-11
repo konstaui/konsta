@@ -1,7 +1,7 @@
 <template>
   <component :is="component" :class="c.base">
     <span :class="c.inner">
-      <svg-component class="w-full h-full" />
+      <component :is="svgComponent" class="w-full h-full" />
     </span>
     <slot />
   </component>
