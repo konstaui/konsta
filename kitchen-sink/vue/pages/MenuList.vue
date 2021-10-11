@@ -13,74 +13,68 @@
         in a form of a list.
       </p>
     </twm-block>
-    <twm-list menu-list>
-      <twm-list-item
+    <twm-menu-list>
+      <twm-menu-list-item
         title="Home"
-        menu-list-item
-        :menu-list-item-active="selected === 'home'"
+        :active="selected === 'home'"
         @click="() => (selected = 'home')"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </twm-menu-list-item>
+      <twm-menu-list-item
         title="Profile"
-        menu-list-item
-        :menu-list-item-active="selected === 'profile'"
+        :active="selected === 'profile'"
         @click="() => (selected = 'profile')"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </twm-menu-list-item>
+      <twm-menu-list-item
         title="Settings"
-        menu-list-item
-        :menu-list-item-active="selected === 'settings'"
+        :active="selected === 'settings'"
         @click="() => (selected = 'settings')"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </twm-menu-list-item>
+    </twm-menu-list>
 
-    <twm-list>
-      <twm-list-item
+    <twm-menu-list>
+      <twm-menu-list-item
         title="Home"
         subtitle="Home subtitle"
-        menu-list-item
-        :menu-list-item-active="selectedMedia === 'home'"
+        :active="selectedMedia === 'home'"
         @click="() => (selectedMedia = 'home')"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </twm-menu-list-item>
+      <twm-menu-list-item
         title="Profile"
         subtitle="Profile subtitle"
-        menu-list-item
-        :menu-list-item-active="selectedMedia === 'profile'"
+        :active="selectedMedia === 'profile'"
         @click="() => (selectedMedia = 'profile')"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </twm-menu-list-item>
+      <twm-menu-list-item
         title="Settings"
         subtitle="Settings subtitle"
-        menu-list-item
-        :menu-list-item-active="selectedMedia === 'settings'"
+        :active="selectedMedia === 'settings'"
         @click="() => (selectedMedia = 'settings')"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </twm-menu-list-item>
+    </twm-menu-list>
   </twm-page>
 </template>
 <script>
@@ -90,8 +84,8 @@
     twmNavbar,
     twmNavbarBackLink,
     twmBlock,
-    twmList,
-    twmListItem,
+    twmMenuList,
+    twmMenuListItem,
   } from 'tailwind-mobile/vue';
   import DemoIcon from '../components/DemoIcon.vue';
   export default {
@@ -101,8 +95,8 @@
       twmNavbar,
       twmNavbarBackLink,
       twmBlock,
-      twmList,
-      twmListItem,
+      twmMenuList,
+      twmMenuListItem,
       DemoIcon,
     },
     setup() {

@@ -16,6 +16,8 @@ import twmListGroup from './components/ListGroup.vue';
 import twmListButton from './components/ListButton.vue';
 import twmListItem from './components/ListItem.vue';
 import twmListInput from './components/ListInput.vue';
+import twmMenuList from './components/MenuList.vue';
+import twmMenuListItem from './components/MenuListItem.vue';
 import twmNavbar from './components/Navbar.vue';
 import twmNavbarBackLink from './components/NavbarBackLink.vue';
 import twmPage from './components/Page.vue';
@@ -64,6 +66,8 @@ export {
   twmListButton,
   twmListItem,
   twmListInput,
+  twmMenuList,
+  twmMenuListItem,
   twmNavbar,
   twmNavbarBackLink,
   twmPage,
