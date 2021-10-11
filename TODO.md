@@ -1,6 +1,1 @@
-- Vue
-  - Check events
-  - Check clicks in link-like components
-  - Inner components name `twm-`
-  - useTheme(props), not useTheme({ios, material})
 - Tabbar MD translate highlight
