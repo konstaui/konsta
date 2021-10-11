@@ -5,10 +5,7 @@
     <span
       v-if="strong"
       :class="c.strongHighlight"
-      :style="{
-        width: highlightStyles.width,
-        transform: `translateX(${highlightStyles.translate})`,
-      }"
+      :style="getHighlightStyle()"
     />
   </component>
 </template>
@@ -83,21 +80,35 @@
         )
       );
 
-      const highlightStyles = computed(() => {
-        const buttonsLength = props.childButtonsLength;
-        const activeIndex = props.activeButtonIndex;
+      const getHighlightStyle = () => {
+        let buttonsLength = props.childButtonsLength;
+        let activeIndex = props.activeButtonIndex;
+        const children = ctx.slots && ctx.slots.default && ctx.slots.default();
+        if (typeof activeIndex === 'undefined' && children && children.length) {
+          if (typeof buttonsLength === 'undefined') {
+            buttonsLength = children.length || 0;
+          }
+          const activeButton = children.filter(
+            (child) =>
+              child.props && (child.props.active || child.props.segmentedActive)
+          )[0];
+          activeIndex = children.indexOf(activeButton);
+        }
+
         const between = '4px';
         const padding = '2px';
+        const highlightWidth = `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`;
+        const highlightTranslate = `calc(${activeIndex} * 100% + ${activeIndex} * ${between})`;
         return {
-          width: `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`,
-          translate: `calc(${activeIndex} * 100% + ${activeIndex} * ${between})`,
+          width: highlightWidth,
+          transform: `translateX(${highlightTranslate})`,
         };
-      });
+      };
 
       return {
         c,
         classes,
-        highlightStyles,
+        getHighlightStyle,
       };
     },
   };
