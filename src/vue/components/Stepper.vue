@@ -10,7 +10,8 @@
       :type="inputType"
       :value="value"
       :disabled="inputDisabled"
-      :readonly="inputReadOnly"
+      :readonly="inputReadonly"
+      @input="onInput"
       @change="onChange"
       @focus="onFocus"
       @blur="onBlur"
@@ -64,7 +65,7 @@
 
       touchRipple: { type: Boolean, default: true },
     },
-    emits: ['change', 'focus', 'blur', 'minus', 'plus'],
+    emits: ['input', 'change', 'focus', 'blur', 'minus', 'plus'],
     setup(props, ctx) {
       const buttonLeftElRef = ref(null);
       const buttonRightElRef = ref(null);
@@ -183,11 +184,14 @@
       );
 
       const valueClasses = computed(() =>
-        cls(props.input && c.value.input, c.value[style.value])
+        cls(props.input && c.value.input, c.value.value[style.value])
       );
 
       const onMinus = (e) => {
         ctx.emit('minus', e);
+      };
+      const onInput = (e) => {
+        ctx.emit('input', e);
       };
       const onChange = (e) => {
         ctx.emit('change', e);
@@ -203,6 +207,7 @@
       };
 
       return {
+        c,
         buttonLeftElRef,
         buttonRightElRef,
         classes,
@@ -210,6 +215,7 @@
         buttonRightClasses,
         valueClasses,
         onMinus,
+        onInput,
         onChange,
         onFocus,
         onBlur,
