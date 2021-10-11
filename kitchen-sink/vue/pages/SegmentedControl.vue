@@ -1,8 +1,8 @@
 <template>
   <twm-page>
     <twm-navbar title="Segmented Control">
-      <template #left>
-        <twm-navbar-back-link v-if="!isPreview" @click="() => history.back" />
+      <template #left v-if="!isPreview">
+        <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
 

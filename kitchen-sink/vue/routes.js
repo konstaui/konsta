@@ -1,9 +1,9 @@
 import Home from './pages/Home.vue';
 // import Badge from './pages/Badge.vue';
-// import Buttons from './pages/Buttons.vue';
-// import Cards from './pages/Cards.vue';
+import Buttons from './pages/Buttons.vue';
+import Cards from './pages/Cards.vue';
 // import Checkbox from './pages/Checkbox.vue';
-// import Chips from './pages/Chips.vue';
+import Chips from './pages/Chips.vue';
 // import ContentBlock from './pages/ContentBlock.vue';
 // import Fab from './pages/Fab.vue';
 // import FormInputs from './pages/FormInputs.vue';
@@ -30,10 +30,10 @@ import SegmentedControl from './pages/SegmentedControl.vue';
 const routes = [
   Home,
   // Badge,
-  // Buttons,
-  // Cards,
+  Buttons,
+  Cards,
   // Checkbox,
-  // Chips,
+  Chips,
   // ContentBlock,
   // Fab,
   // FormInputs,

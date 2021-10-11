@@ -21,7 +21,7 @@
         @click="() => (selected = 'home')"
       >
         <template #media>
-          <DemoIcon />
+          <demo-icon />
         </template>
       </twm-list-item>
       <twm-list-item
@@ -31,7 +31,7 @@
         @click="() => (selected = 'profile')"
       >
         <template #media>
-          <DemoIcon />
+          <demo-icon />
         </template>
       </twm-list-item>
       <twm-list-item
@@ -41,7 +41,7 @@
         @click="() => (selected = 'settings')"
       >
         <template #media>
-          <DemoIcon />
+          <demo-icon />
         </template>
       </twm-list-item>
     </twm-list>
@@ -55,7 +55,7 @@
         @click="() => (selectedMedia = 'home')"
       >
         <template #media>
-          <DemoIcon />
+          <demo-icon />
         </template>
       </twm-list-item>
       <twm-list-item
@@ -66,7 +66,7 @@
         @click="() => (selectedMedia = 'profile')"
       >
         <template #media>
-          <DemoIcon />
+          <demo-icon />
         </template>
       </twm-list-item>
       <twm-list-item
@@ -77,7 +77,7 @@
         @click="() => (selectedMedia = 'settings')"
       >
         <template #media>
-          <DemoIcon />
+          <demo-icon />
         </template>
       </twm-list-item>
     </twm-list>
