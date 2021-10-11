@@ -56,7 +56,7 @@
           square: 'rounded',
           rounded: 'rounded-full',
         },
-        raised: outline
+        raised: props.outline
           ? 'shadow'
           : `shadow divide-x divide-black divide-opacity-10`,
         outline: `border-2 ${colors.border}`,
@@ -67,7 +67,7 @@
         ),
         strongHighlight: cls(
           'bg-red-500 absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
-          rounded ? 'rounded-full' : 'rounded',
+          props.rounded ? 'rounded-full' : 'rounded',
           `bg-white shadow`,
           useDarkClasses('dark:bg-opacity-15 dark:touch-ripple-white')
         ),
