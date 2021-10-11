@@ -90,7 +90,11 @@
           }
           const activeButton = children.filter(
             (child) =>
-              child.props && (child.props.active || child.props.segmentedActive)
+              child.props &&
+              (child.props.active ||
+                child.props.active === '' ||
+                child.props.segmentedActive ||
+                child.props.segmentedActive === '')
           )[0];
           activeIndex = children.indexOf(activeButton);
         }

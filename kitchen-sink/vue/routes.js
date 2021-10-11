@@ -21,7 +21,7 @@ import MenuList from './pages/MenuList.vue';
 import SegmentedControl from './pages/SegmentedControl.vue';
 // import SheetModal from './pages/SheetModal.vue';
 import Stepper from './pages/Stepper.vue';
-// import Subnavbar from './pages/Subnavbar.vue';
+import Subnavbar from './pages/Subnavbar.vue';
 // import Tabbar from './pages/Tabbar.vue';
 // import Toast from './pages/Toast.vue';
 // import Toggle from './pages/Toggle.vue';
@@ -51,7 +51,7 @@ const routes = [
   SegmentedControl,
   // SheetModal,
   Stepper,
-  // Subnavbar,
+  Subnavbar,
   // Tabbar,
   // Toast,
   // Toggle,
