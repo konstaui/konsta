@@ -1,5 +1,5 @@
 import Home from './pages/Home.vue';
-// import Badge from './pages/Badge.vue';
+import Badge from './pages/Badge.vue';
 import Buttons from './pages/Buttons.vue';
 import Cards from './pages/Cards.vue';
 import Checkbox from './pages/Checkbox.vue';
@@ -29,7 +29,7 @@ import Toolbar from './pages/Toolbar.vue';
 
 const routes = [
   Home,
-  // Badge,
+  Badge,
   Buttons,
   Cards,
   Checkbox,
