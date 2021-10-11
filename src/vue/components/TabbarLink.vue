@@ -8,7 +8,7 @@
   >
     <span v-if="slots.icon && (label || slots.label)" :class="c.content">
       <span v-if="slots.icon" :class="c.icon"><slot name="icon" /></span>
-      <span v-if="slots.label" :class="c.label"
+      <span v-if="label || slots.label" :class="c.label"
         >{{ label }}<slot name="label"
       /></span>
     </span>

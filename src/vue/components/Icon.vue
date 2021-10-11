@@ -8,7 +8,7 @@
       small
       :class="c.badge"
       :colors="badgeColors || {}"
-      >{badge}<slot name="badge" />
+      >{{ badge }}<slot name="badge" />
     </twm-badge>
   </component>
 </template>
