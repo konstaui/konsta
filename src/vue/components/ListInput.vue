@@ -20,6 +20,7 @@
       </div>
       <div :class="c.inputWrap[labelStyle]">
         <component
+          v-if="!slots.input"
           :is="InputComponent"
           ref="inputElRef"
           :id="inputId"
@@ -56,6 +57,7 @@
         >
           <slot v-if="type === 'select'" />
         </component>
+        <slot v-if="slots.input" name="input" />
         <DeleteIcon
           v-if="clearButton"
           @click="onClear"
@@ -133,7 +135,6 @@
       label: String,
       inlineLabel: Boolean,
       floatingLabel: Boolean,
-      input, // for custom input
       info: String, // string
       error: String, // string or bool
       clearButton: Boolean,
