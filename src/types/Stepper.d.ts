@@ -129,6 +129,10 @@ interface Props {
   touchRipple?: boolean;
 
   /**
+   * Stepper input `input` handler
+   */
+  onInput?: (e: any) => void;
+  /**
    * Stepper input `change` handler
    */
   onChange?: (e: any) => void;

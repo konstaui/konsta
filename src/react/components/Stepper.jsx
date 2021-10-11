@@ -26,6 +26,7 @@ const Stepper = forwardRef((props, ref) => {
     raised,
     outline,
 
+    onInput,
     onChange,
     onFocus,
     onBlur,
@@ -178,6 +179,7 @@ const Stepper = forwardRef((props, ref) => {
           defaultValue={defaultValue}
           disabled={inputDisabled}
           readOnly={inputReadOnly}
+          onInput={onInput}
           onChange={onChange}
           onFocus={onFocus}
           onBlur={onBlur}
