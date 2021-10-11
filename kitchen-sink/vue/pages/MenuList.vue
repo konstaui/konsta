@@ -110,9 +110,9 @@
       const selected = ref('home');
       const selectedMedia = ref('home');
       return {
-        isPreview,
         selected,
         selectedMedia,
+        isPreview,
         history: window.history,
       };
     },
