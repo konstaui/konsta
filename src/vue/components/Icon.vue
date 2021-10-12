@@ -17,6 +17,7 @@
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import twmBadge from './Badge.vue';
+
   export default {
     name: 'twm-icon',
     components: {

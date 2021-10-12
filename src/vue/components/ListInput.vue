@@ -6,9 +6,9 @@
     :media-class="c.media[labelStyleIsInline]"
     :inner-class="c.inner[labelStyle]"
     :content-class="c.itemContent"
-    :titleWrap-class="c.titleWrap[labelStyleIsInline]"
+    :title-wrap-class="c.titleWrap[labelStyleIsInline]"
   >
-    <template #title v-if="labelStyle === 'inline' ? label : null">
+    <template v-if="labelStyle === 'inline' ? label : null" #title>
       <slot name="label" />
     </template>
     <template v-if="slots.media" #media>
@@ -20,10 +20,10 @@
       </div>
       <div :class="c.inputWrap[labelStyle]">
         <component
-          v-if="!slots.input"
           :is="InputComponent"
-          ref="inputElRef"
+          v-if="!slots.input"
           :id="inputId"
+          ref="inputElRef"
           :class="c.input[labelStyleIsFloating]"
           :style="inputStyle"
           :name="name"
@@ -44,23 +44,23 @@
           :minlength="minlength"
           :step="step"
           :multiple="multiple"
-          :readOnly="readonly"
+          :read-only="readonly"
           :required="required"
           :pattern="pattern"
-          :tabIndex="tabindex"
+          :tab-index="tabindex"
+          v-bind="inputProps"
           @input="onInput"
           @change="onChange"
           @focus="onFocusInternal"
           @blur="onBlurInternal"
-          v-bind="inputProps"
         >
           <slot v-if="type === 'select'" />
         </component>
         <slot v-if="slots.input" name="input" />
         <DeleteIcon
           v-if="clearButton"
-          @click="onClear"
           :class="c.clearButton"
+          @click="onClear"
         />
         <DropdownIcon v-if="dropdown" :class="c.dropdown" />
         <template v-if="labelStyle === 'inline'">

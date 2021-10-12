@@ -18,7 +18,7 @@
         type: Boolean,
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const toolbarProps = computed(() => {
         return {
           ...props,

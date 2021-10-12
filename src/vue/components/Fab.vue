@@ -1,9 +1,9 @@
 <template>
   <component
     :is="component"
+    ref="rippleElRef"
     :class="text || slots.text ? c.base.withText : c.base.iconOnly"
     :href="href"
-    ref="rippleElRef"
   >
     <span
       v-if="(text || slots.text) && textPosition === 'before'"

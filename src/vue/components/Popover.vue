@@ -1,6 +1,6 @@
 <template>
   <div v-if="backdrop" :class="c.backdrop[state]" @click="onBackdropClick" />
-  <component ref="elRef" :style="popoverStyle" :is="component" :class="classes">
+  <component :is="component" ref="elRef" :style="popoverStyle" :class="classes">
     <div
       v-if="theme === 'ios'"
       ref="angleElRef"
@@ -13,6 +13,7 @@
   </component>
 </template>
 <script>
+  /* eslint-disable no-restricted-globals */
   import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue';
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';

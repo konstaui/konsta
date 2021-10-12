@@ -3,9 +3,9 @@
     <span :class="c.trackBg" />
     <span :class="c.trackValue" :style="{ width: `${valueWidth}%` }" />
     <input
+      :id="inputId"
       :class="cls(c.input, c.inputThumb, c.inputTrack)"
       type="range"
-      :id="inputId"
       :name="name"
       :min="min"
       :max="max"
@@ -21,7 +21,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';

@@ -1,5 +1,5 @@
 <template>
-  <component ref="rippleElRef" :is="Component" :class="classes">
+  <component :is="Component" ref="rippleElRef" :class="classes">
     <slot />
   </component>
 </template>
@@ -86,12 +86,16 @@
     },
     setup(props, ctx) {
       const rippleElRef = ref(null);
-      let Component = props.component;
-      if (
-        typeof props.component === 'undefined' &&
-        (props.href || props.href === '')
-      )
-        Component = 'a';
+      const Component = computed(() => {
+        let c = props.component;
+        if (
+          typeof props.component === 'undefined' &&
+          (props.href || props.href === '')
+        ) {
+          c = 'a';
+        }
+        return c;
+      });
 
       useTouchRipple(rippleElRef, props);
 

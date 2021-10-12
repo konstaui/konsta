@@ -7,7 +7,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -38,7 +38,7 @@
         default: 'w-8 h-8',
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const theme = useTheme(props);
 
       const colors = computed(() => ({

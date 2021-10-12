@@ -5,6 +5,7 @@
 </template>
 <script>
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   export default {
     name: 'twm-block-footer',
     props: {
@@ -21,7 +22,7 @@
         default: undefined,
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const c = useThemeClasses(props, () => ({
         base: `pl-4-safe pr-4-safe mb-8 flex items-center -mt-6 text-opacity-55 text-black text-sm`,
       }));

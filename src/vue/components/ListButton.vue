@@ -14,7 +14,6 @@
   import { ref, computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';
-  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -53,7 +52,6 @@
     },
     setup(props, ctx) {
       const rippleElRef = ref(null);
-      const theme = useTheme(props);
       useTouchRipple(rippleElRef, props);
 
       const colors = computed(() => ({

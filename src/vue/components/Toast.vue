@@ -7,7 +7,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';

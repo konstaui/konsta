@@ -10,7 +10,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { cls } from '../shared/cls.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -57,8 +57,8 @@
         raised: props.outline
           ? 'shadow'
           : `shadow divide-x divide-black divide-opacity-10`,
-        outline: `border-2 ${colors.border}`,
-        outlineInner: `-m-0.5 flex w-full justify-center items-center divide-x-2 ${colors.divide}`,
+        outline: `border-2 ${colors.value.border}`,
+        outlineInner: `-m-0.5 flex w-full justify-center items-center divide-x-2 ${colors.value.divide}`,
         strong: cls(
           'p-0.5 bg-black bg-opacity-5 space-x-1 relative',
           useDarkClasses('dark:bg-white dark:bg-opacity-10')

@@ -8,6 +8,7 @@
   import { positionClass } from '../shared/position-class.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   export default {
     name: 'twm-page',
     props: {

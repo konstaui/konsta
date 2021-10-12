@@ -3,8 +3,8 @@
     <tailwind-mobile-provider
       :theme="currentTheme"
       :dark="dark"
-      :touchRipple="touchRipple"
-      :autoThemeDetection="false"
+      :touch-ripple="touchRipple"
+      :auto-theme-detection="false"
     >
       <slot />
     </tailwind-mobile-provider>

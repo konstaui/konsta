@@ -19,7 +19,6 @@
   </twm-link>
 </template>
 <script>
-  import { ref, computed } from 'vue';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import twmLink from './Link.vue';
 

@@ -6,6 +6,7 @@
 <script>
   import { computed } from 'vue';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   export default {
     name: 'twm-badge',
     props: {
@@ -29,7 +30,7 @@
         default: undefined,
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const colors = computed(() => ({
         bg: 'bg-primary',
         text: 'text-white',

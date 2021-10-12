@@ -1,31 +1,31 @@
 <template>
   <twm-list-item v-bind="listItemProps">
     <slot />
-    <template #title v-if="slots.title">
+    <template v-if="slots.title" #title>
       <slot name="title" />
     </template>
-    <template #media v-if="slots.media">
+    <template v-if="slots.media" #media>
       <slot name="media" />
     </template>
-    <template #header v-if="slots.header">
+    <template v-if="slots.header" #header>
       <slot name="header" />
     </template>
-    <template #after v-if="slots.after">
+    <template v-if="slots.after" #after>
       <slot name="after" />
     </template>
-    <template #subtitle v-if="slots.subtitle">
+    <template v-if="slots.subtitle" #subtitle>
       <slot name="subtitle" />
     </template>
-    <template #text v-if="slots.text">
+    <template v-if="slots.text" #text>
       <slot name="text" />
     </template>
-    <template #footer v-if="slots.footer">
+    <template v-if="slots.footer" #footer>
       <slot name="footer" />
     </template>
-    <template #inner v-if="slots.inner">
+    <template v-if="slots.inner" #inner>
       <slot name="inner" />
     </template>
-    <template #content v-if="slots.content">
+    <template v-if="slots.content" #content>
       <slot name="content" />
     </template>
   </twm-list-item>

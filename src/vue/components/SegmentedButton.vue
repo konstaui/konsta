@@ -20,7 +20,7 @@
       clear: { type: Boolean, default: false },
       rounded: { type: Boolean, default: false },
     },
-    setup(props, ctx) {
+    setup(props) {
       const buttonProps = computed(() => {
         return {
           ...props,

@@ -54,6 +54,7 @@
       disabled: { type: Boolean, default: false },
       readonly: { type: Boolean, default: false },
     },
+    emits: ['change'],
     setup(props, ctx) {
       const theme = useTheme(props);
 

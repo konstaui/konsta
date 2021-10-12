@@ -8,7 +8,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -34,7 +34,7 @@
         default: 0,
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const colors = computed(() => ({
         bg: 'bg-primary',
         ...(props.colors || {}),

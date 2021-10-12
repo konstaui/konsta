@@ -83,5 +83,28 @@ module.exports = {
         'jsx-a11y/anchor-is-valid': ['off'],
       },
     },
+
+    // Vue
+    {
+      files: ['**/*.vue'],
+      extends: [
+        'airbnb-base',
+        'plugin:vue/vue3-recommended',
+        'plugin:prettier/recommended',
+      ],
+      rules: {
+        ...rules,
+        'vue/component-definition-name-casing': 'off',
+        'vue/require-default-prop': 'off',
+      },
+    },
+    {
+      files: ['**/*.vue', 'src/vue/shared/*.js'],
+      rules: {
+        ...rules,
+        'import/no-extraneous-dependencies': ['off'],
+        'no-dupe-keys': ['off'],
+      },
+    },
   ],
 };

@@ -9,13 +9,13 @@
 
   export default {
     name: 'twm-menu-list',
-    props: {
-      ...twmList.props,
-    },
     components: {
       twmList,
     },
-    setup(props, ctx) {
+    props: {
+      ...twmList.props,
+    },
+    setup(props) {
       const listProps = computed(() => ({
         ...props,
         menuList: true,

@@ -45,7 +45,7 @@
         default: 'auto',
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const theme = useTheme(props);
       const shouldShowText = computed(
         () =>
