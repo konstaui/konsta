@@ -13,7 +13,7 @@ const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
 const pluginTouch = require('./config/plugin-touch.js');
 
-const purge = `${path.resolve(__dirname)}/**/*.{js,ts,jsx,tsx,vue,svelte}`;
+const purge = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
 
 const config = (userConfig = {}) => {
   const newConfig = configExtend(
