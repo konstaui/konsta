@@ -48,11 +48,6 @@ interface Props {
    */
   checked?: boolean;
   /**
-   * Defines whether the radio input is in indeterminate state or not
-   *
-   * @default false
-   */
-  /**
    * Radio input name
    */
   name?: string;

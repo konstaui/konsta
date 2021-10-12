@@ -31,11 +31,11 @@ interface Props {
   /**
    * Content of the Card header
    */
-  header?: React.ReactNode | string;
+  header?: string | React.ReactNode;
   /**
    * Content of the Card footer
    */
-  footer?: React.ReactNode | string;
+  footer?: string | React.ReactNode;
   /**
    * Makes card outline
    */
