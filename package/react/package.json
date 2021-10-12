@@ -4,5 +4,12 @@
   "main": "./cjs/tailwind-mobile-react.js",
   "jsnext:main": "./esm/tailwind-mobile-react.js",
   "module": "./esm/tailwind-mobile-react.js",
-  "types": "./tailwind-mobile-react.d.ts"
+  "types": "./tailwind-mobile-react.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./esm/tailwind-mobile-react.js",
+      "require": "./cjs/tailwind-mobile-react.js"
+    }
+  }
 }

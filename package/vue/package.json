@@ -4,5 +4,12 @@
   "main": "./cjs/tailwind-mobile-vue.js",
   "jsnext:main": "./esm/tailwind-mobile-vue.js",
   "module": "./esm/tailwind-mobile-vue.js",
-  "types": "./tailwind-mobile-vue.d.ts"
+  "types": "./tailwind-mobile-vue.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./esm/tailwind-mobile-vue.js",
+      "require": "./cjs/tailwind-mobile-vue.js"
+    }
+  }
 }
