@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Sheet Modal">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -56,6 +56,7 @@
     twmToolbar,
     twmLink,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'SheetModalPage',
     components: {

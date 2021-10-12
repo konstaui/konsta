@@ -4,6 +4,7 @@
 <script>
   import { computed, provide } from 'vue';
   import { useAutoTheme } from './use-auto-theme.js';
+
   export default {
     props: {
       theme: {

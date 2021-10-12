@@ -1,12 +1,12 @@
 <template>
   <twm-page>
     <twm-navbar title="Cards">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
 
-    <twm-block-title :withBlock="false">Simple Cards</twm-block-title>
+    <twm-block-title :with-block="false">Simple Cards</twm-block-title>
     <twm-card>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
@@ -21,7 +21,7 @@
       Mauris aliquet magna justo.
     </twm-card>
 
-    <twm-block-title :withBlock="false">Outline Cards</twm-block-title>
+    <twm-block-title :with-block="false">Outline Cards</twm-block-title>
     <twm-card outline>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
@@ -36,7 +36,7 @@
       Mauris aliquet magna justo.{' '}
     </twm-card>
 
-    <twm-block-title :withBlock="false">Card With List View</twm-block-title>
+    <twm-block-title :with-block="false">Card With List View</twm-block-title>
     <twm-card>
       <twm-list nested class="-m-4">
         <twm-list-item href title="Link 1" />
@@ -47,7 +47,7 @@
       </twm-list>
     </twm-card>
 
-    <twm-block-title :withBlock="false">Styled Cards</twm-block-title>
+    <twm-block-title :with-block="false">Styled Cards</twm-block-title>
     <div class="lg:grid lg:grid-cols-2">
       <twm-card>
         <template #header>

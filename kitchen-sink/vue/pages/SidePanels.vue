@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Panel / Side Panel">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -95,6 +95,7 @@
     twmLink,
     twmButton,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'SidePanelsPage',
     title: 'Panel / Side Panels',

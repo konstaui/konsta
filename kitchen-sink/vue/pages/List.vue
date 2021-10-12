@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="List">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -109,7 +109,7 @@
       <twm-list-group>
         <twm-list-item
           title="A"
-          groupTitle
+          group-title
           class="ios:top-11-safe material:top-14-safe"
         />
         <twm-list-item title="Aaron " />
@@ -119,7 +119,7 @@
       <twm-list-group>
         <twm-list-item
           title="B"
-          groupTitle
+          group-title
           class="ios:top-11-safe material:top-14-safe"
         />
         <twm-list-item title="Bailey" />
@@ -129,7 +129,7 @@
       <twm-list-group>
         <twm-list-item
           title="C"
-          groupTitle
+          group-title
           class="ios:top-11-safe material:top-14-safe"
         />
         <twm-list-item title="Caiden" />

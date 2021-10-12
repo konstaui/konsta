@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="FAB">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -64,7 +64,7 @@
     <twm-fab
       class="fixed left-1/2 bottom-4-safe transform -translate-x-1/2 z-20"
       text="Create"
-      textPosition="after"
+      text-position="after"
       ><template #icon>
         <component :is="PlusIcon" />
       </template>

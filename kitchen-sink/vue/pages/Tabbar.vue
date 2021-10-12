@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Tabbar">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -9,8 +9,8 @@
     <twm-tabbar :labels="isTabbarLabels" class="left-0 bottom-0 fixed">
       <twm-tabbar-link
         :active="activeTab === 'tab-1'"
-        @click="() => (activeTab = 'tab-1')"
         label="Tab 1"
+        @click="() => (activeTab = 'tab-1')"
       >
         <template v-if="isTabbarLabels" #icon>
           <twm-icon>
@@ -25,8 +25,8 @@
       </twm-tabbar-link>
       <twm-tabbar-link
         :active="activeTab === 'tab-2'"
-        @click="() => (activeTab = 'tab-2')"
         label="Tab 2"
+        @click="() => (activeTab = 'tab-2')"
       >
         <template v-if="isTabbarLabels" #icon>
           <twm-icon>
@@ -41,8 +41,8 @@
       </twm-tabbar-link>
       <twm-tabbar-link
         :active="activeTab === 'tab-3'"
-        @click="() => (activeTab = 'tab-3')"
         label="Tab 3"
+        @click="() => (activeTab = 'tab-3')"
       >
         <template v-if="isTabbarLabels" #icon>
           <twm-icon>

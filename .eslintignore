@@ -4,3 +4,4 @@ package
 node_modules
 kitchen-sink/react/dist
 kitchen-sink/vue/dist
+src/vue-temp

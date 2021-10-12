@@ -27,6 +27,7 @@
     twmLink,
     twmBlock,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'NavbarPage',
     components: {

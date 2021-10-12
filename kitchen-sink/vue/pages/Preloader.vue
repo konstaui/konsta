@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Preloader">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -53,6 +53,7 @@
     twmBlockTitle,
     twmPreloader,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'PreloaderPage',
     components: {

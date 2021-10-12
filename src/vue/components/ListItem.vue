@@ -1,10 +1,10 @@
 <template>
-  <component v-if="divider || groupTitle" :is="component" :class="c.divider">
+  <component :is="component" v-if="divider || groupTitle" :class="c.divider">
     {{ title }}
     <slot name="title" />
     <slot />
   </component>
-  <component v-else :is="component" :class="c.base">
+  <component :is="component" v-else :class="c.base">
     <component
       :is="ItemContentComponent"
       ref="rippleElRef"

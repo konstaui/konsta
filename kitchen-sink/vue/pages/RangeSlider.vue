@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Range Slider">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -9,7 +9,7 @@
     <twm-block-title>Volume: {{ volume }}</twm-block-title>
     <twm-block-header>From 0 to 100 with step 10</twm-block-header>
     <twm-list>
-      <twm-list-item innerClass="flex space-x-4">
+      <twm-list-item inner-class="flex space-x-4">
         <template #inner>
           <span>0</span>
           <twm-range
@@ -25,7 +25,7 @@
     <twm-block-title>Price: ${{ price }}</twm-block-title>
     <twm-block-header>From 0 to 1000 with step 1</twm-block-header>
     <twm-list>
-      <twm-list-item innerClass="flex space-x-4">
+      <twm-list-item inner-class="flex space-x-4">
         <template #inner>
           <span>$0</span>
           <twm-range
@@ -104,6 +104,7 @@
     twmListItem,
     twmRange,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'RangeSliderPage',
     components: {

@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Toast">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -63,6 +63,7 @@
     twmToast,
     twmBlock,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'ToastPage',
     components: {

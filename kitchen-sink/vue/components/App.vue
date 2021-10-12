@@ -4,8 +4,9 @@
   </twm-app>
 </template>
 <script>
-  import { ref, onMounted, provide, inject, computed } from 'vue';
+  import { ref, onMounted, provide, computed } from 'vue';
   import { twmApp } from 'tailwind-mobile/vue';
+
   export default {
     components: {
       twmApp,

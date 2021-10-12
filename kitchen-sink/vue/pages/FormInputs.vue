@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Form Inputs">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -10,7 +10,7 @@
     <twm-list :hairlines="hairlines">
       <twm-list-input
         label="Name"
-        inlineLabel
+        inline-label
         type="text"
         placeholder="Your name"
       >
@@ -21,7 +21,7 @@
 
       <twm-list-input
         label="Password"
-        inlineLabel
+        inline-label
         type="password"
         placeholder="Your password"
       >
@@ -32,7 +32,7 @@
 
       <twm-list-input
         label="E-mail"
-        inlineLabel
+        inline-label
         type="email"
         placeholder="Your e-mail"
       >
@@ -41,7 +41,7 @@
         </template>
       </twm-list-input>
 
-      <twm-list-input label="URL" inlineLabel type="url" placeholder="URL">
+      <twm-list-input label="URL" inline-label type="url" placeholder="URL">
         <template #media>
           <demo-icon />
         </template>
@@ -49,7 +49,7 @@
 
       <twm-list-input
         label="Phone"
-        inlineLabel
+        inline-label
         type="tel"
         placeholder="Your phone number"
       >
@@ -60,10 +60,10 @@
 
       <twm-list-input
         label="Gender"
-        inlineLabel
+        inline-label
         type="select"
         dropdown
-        defaultValue="Male"
+        default-value="Male"
         placeholder="Please choose..."
       >
         <template #media>
@@ -75,9 +75,9 @@
 
       <twm-list-input
         label="Birthday"
-        inlineLabel
+        inline-label
         type="date"
-        defaultValue="2014-04-30"
+        default-value="2014-04-30"
         placeholder="Please choose..."
       >
         <template #media>
@@ -87,7 +87,7 @@
 
       <twm-list-input
         label="Date time"
-        inlineLabel
+        inline-label
         type="datetime-local"
         placeholder="Please choose..."
       >
@@ -98,10 +98,10 @@
 
       <twm-list-input
         label="Textarea"
-        inlineLabel
+        inline-label
         type="textarea"
         placeholder="Bio"
-        inputClass="h-20 resize-none"
+        input-class="h-20 resize-none"
       >
         <template #media>
           <demo-icon />
@@ -149,7 +149,7 @@
         label="Gender"
         type="select"
         dropdown
-        defaultValue="Male"
+        default-value="Male"
         placeholder="Please choose..."
       >
         <template #media>
@@ -162,7 +162,7 @@
       <twm-list-input
         label="Birthday"
         type="date"
-        defaultValue="2014-04-30"
+        default-value="2014-04-30"
         placeholder="Please choose..."
       >
         <template #media>
@@ -184,7 +184,7 @@
         label="Textarea"
         type="textarea"
         placeholder="Bio"
-        inputClass="h-20 resize-none"
+        input-class="h-20 resize-none"
       >
         <template #media>
           <demo-icon />
@@ -196,7 +196,7 @@
     <twm-list :hairlines="hairlines">
       <twm-list-input
         label="Name"
-        floatingLabel
+        floating-label
         type="text"
         placeholder="Your name"
       >
@@ -207,7 +207,7 @@
 
       <twm-list-input
         label="Password"
-        floatingLabel
+        floating-label
         type="password"
         placeholder="Your password"
       >
@@ -218,7 +218,7 @@
 
       <twm-list-input
         label="E-mail"
-        floatingLabel
+        floating-label
         type="email"
         placeholder="Your e-mail"
       >
@@ -227,7 +227,7 @@
         </template>
       </twm-list-input>
 
-      <twm-list-input label="URL" floatingLabel type="url" placeholder="URL">
+      <twm-list-input label="URL" floating-label type="url" placeholder="URL">
         <template #media>
           <demo-icon />
         </template>
@@ -235,7 +235,7 @@
 
       <twm-list-input
         label="Phone"
-        floatingLabel
+        floating-label
         type="tel"
         placeholder="Your phone number"
       >
@@ -272,7 +272,7 @@
         placeholder="Your favorite TV show"
         info="Type something to see clear button"
         :value="demoValue"
-        :clearButton="demoValue.length > 0"
+        :clear-button="demoValue.length > 0"
         @input="onDemoValueChange"
         @clear="onDemoValueClear"
       >

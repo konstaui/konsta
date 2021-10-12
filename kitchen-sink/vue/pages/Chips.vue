@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Chips">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -60,10 +60,10 @@
 
     <twm-block-title>Deletable Chips / Tags</twm-block-title>
     <twm-block strong>
-      <twm-chip class="m-0.5" deleteButton @delete="onDelete">
+      <twm-chip class="m-0.5" delete-button @delete="onDelete">
         Example Chip
       </twm-chip>
-      <twm-chip class="m-0.5" deleteButton @delete="onDelete">
+      <twm-chip class="m-0.5" delete-button @delete="onDelete">
         <template #media>
           <img
             alt="avatar"
@@ -153,6 +153,7 @@
     twmBlock,
     twmBlockTitle,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'ChipsPage',
     components: {

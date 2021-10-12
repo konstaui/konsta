@@ -7,18 +7,18 @@
       <twm-list-item label title="iOS Theme">
         <template #media>
           <twm-radio
-            @change="() => setTheme('ios')"
             component="div"
             :checked="theme === 'ios'"
+            @change="() => setTheme('ios')"
           />
         </template>
       </twm-list-item>
       <twm-list-item label title="Material Theme">
         <template #media>
           <twm-radio
-            @change="() => setTheme('material')"
             component="div"
             :checked="theme === 'material'"
+            @change="() => setTheme('material')"
           />
         </template>
       </twm-list-item>
@@ -27,7 +27,7 @@
     <twm-list>
       <twm-list-item title="Dark Mode">
         <template #after>
-          <twm-toggle @change="() => toggleDarkMode()" :checked="darkMode" />
+          <twm-toggle :checked="darkMode" @change="() => toggleDarkMode()" />
         </template>
       </twm-list-item>
     </twm-list>
@@ -36,8 +36,8 @@
     <twm-list>
       <twm-list-item
         v-for="route in routes"
-        :title="route.title"
         :key="route.path"
+        :title="route.title"
         link
         :link-props="{ to: route.path }"
         link-component="router-link"
@@ -58,11 +58,10 @@
     twmListItem,
     twmRadio,
     twmToggle,
-    useTheme,
   } from 'tailwind-mobile/vue';
   import { inject, onMounted, ref, computed } from 'vue';
 
-  // import { Link } from 'react-router-dom';
+  // eslint-disable-next-line
   import routes from '../routes.js';
   import DemoIcon from '../components/DemoIcon.vue';
 
@@ -79,7 +78,7 @@
       DemoIcon,
     },
 
-    setup(props) {
+    setup() {
       const darkMode = ref(false);
       const AppContext = inject('AppContext');
       const toggleDarkMode = () => {

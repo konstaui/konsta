@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Popover">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>

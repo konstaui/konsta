@@ -106,5 +106,17 @@ module.exports = {
         'no-dupe-keys': ['off'],
       },
     },
+    // VUE KITCHEN_SINK
+    {
+      files: ['kitchen-sink/vue/**/*.vue', 'kitchen-sink/vue/**/*.js'],
+      rules: {
+        ...rules,
+        'no-console': ['off'],
+        'no-restricted-globals': ['off'],
+        'no-nested-ternary': ['off'],
+        'import/no-unresolved': ['off'],
+        'import/no-extraneous-dependencies': ['off'],
+      },
+    },
   ],
 };

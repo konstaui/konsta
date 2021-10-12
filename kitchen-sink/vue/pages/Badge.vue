@@ -5,8 +5,8 @@
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>
-        <twm-link navbar iconOnly>
-          <twm-icon badge="5" :badgeColors="{ bg: 'bg-red-500' }">
+        <twm-link navbar icon-only>
+          <twm-icon badge="5" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios><PersonCircleFill class="w-7 h-7" /></template>
             <template #material><MdPerson class="w-6 h-6" /></template>
           </twm-icon>
@@ -16,7 +16,7 @@
     <twm-tabbar labels class="left-0 bottom-0 fixed">
       <twm-tabbar-link active label="Inbox">
         <template #icon>
-          <twm-icon badge="5" :badgeColors="{ bg: 'bg-green-500' }">
+          <twm-icon badge="5" :badge-colors="{ bg: 'bg-green-500' }">
             <template #ios>
               <EnvelopeFill class="w-7 h-7" />
             </template>
@@ -28,7 +28,7 @@
       </twm-tabbar-link>
       <twm-tabbar-link label="Calendar">
         <template #icon>
-          <twm-icon badge="7" :badgeColors="{ bg: 'bg-red-500' }">
+          <twm-icon badge="7" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios>
               <Calendar class="w-7 h-7" />
             </template>
@@ -40,7 +40,7 @@
       </twm-tabbar-link>
       <twm-tabbar-link label="Upload">
         <template #icon>
-          <twm-icon badge="1" :badgeColors="{ bg: 'bg-red-500' }">
+          <twm-icon badge="1" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios>
               <CloudUploadFill class="w-7 h-7" />
             </template>

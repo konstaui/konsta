@@ -88,6 +88,7 @@
     twmMenuListItem,
   } from 'tailwind-mobile/vue';
   import DemoIcon from '../components/DemoIcon.vue';
+
   export default {
     name: 'MenuListPage',
     components: {

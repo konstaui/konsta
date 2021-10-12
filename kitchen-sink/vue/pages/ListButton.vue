@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="List Button">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -38,6 +38,7 @@
     twmList,
     twmListButton,
   } from 'tailwind-mobile/vue';
+
   export default {
     name: 'ListButtonPage',
     components: {

@@ -1,7 +1,7 @@
 <template>
   <twm-page>
     <twm-navbar title="Stepper">
-      <template #left v-if="!isPreview">
+      <template v-if="!isPreview" #left>
         <twm-navbar-back-link @click="() => history.back()" />
       </template>
     </twm-navbar>
@@ -51,9 +51,9 @@
           <div class="block text-xs mb-1">Small</div>
           <twm-stepper
             :value="value"
+            small
             @plus="increase"
             @minus="decrease"
-            small
           />
         </div>
         <div>
@@ -97,9 +97,9 @@
           <div class="block text-xs mb-1">Large</div>
           <twm-stepper
             :value="value"
+            large
             @plus="increase"
             @minus="decrease"
-            large
           />
         </div>
         <div>
@@ -317,7 +317,7 @@
         <template #after>
           <twm-stepper
             :value="value"
-            buttonsOnly
+            buttons-only
             @plus="increase"
             @minus="decrease"
           />
@@ -328,7 +328,7 @@
           <twm-stepper
             :value="value"
             outline
-            buttonsOnly
+            buttons-only
             @plus="increase"
             @minus="decrease"
           />
@@ -340,7 +340,7 @@
             :value="value"
             raised
             outline
-            buttonsOnly
+            buttons-only
             @plus="increase"
             @minus="decrease"
           />
@@ -428,6 +428,7 @@
     twmListItem,
   } from 'tailwind-mobile/vue';
   import { ref } from '@vue/reactivity';
+
   export default {
     name: 'StepperPage',
     components: {
