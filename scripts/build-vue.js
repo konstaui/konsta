@@ -38,6 +38,14 @@ module.exports = async (format, outputDir = 'package') => {
         `src/vue-temp/components/${f.replace('.vue', '.js')}`
       );
     });
+  fs.readdirSync('./src/vue/shared/')
+    .filter((f) => f.includes('.vue'))
+    .forEach((f) => {
+      transformVueComponent(
+        `src/vue/shared/${f}`,
+        `src/vue-temp/shared/${f.replace('.vue', '.js')}`
+      );
+    });
   fs.readdirSync('./src/vue/components/icons')
     .filter((f) => f.includes('.vue'))
     .forEach((f) => {
@@ -48,7 +56,7 @@ module.exports = async (format, outputDir = 'package') => {
     });
 
   await exec(
-    `MODULES=${format} npx babel --config-file ./babel.config.vue.js src/vue-temp/components --out-dir ${outputDir}/vue/${format}/components`
+    `MODULES=${format} npx babel --config-file ./babel.config.vue.js src/vue-temp --out-dir ${outputDir}/vue/${format}`
   );
 
   // .vue -> .js
