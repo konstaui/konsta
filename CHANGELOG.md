@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.5.0-beta.4](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.3...0.5.0-beta.4) (2021-10-12)
+
+### Features
+
+- set /react and /vue packages as `type: module` ([6d2578a](https://github.com/tailwind-mobile/tailwind-mobile/commit/6d2578af038a04227798810c982877aecb3e49c3))
+
 # [0.5.0-beta.3](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.1...v0.5.0-beta.2) (2021-10-12)
 
 ### Bug Fixes
