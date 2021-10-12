@@ -38,13 +38,13 @@ import twmToast from './components/Toast.vue';
 import twmToggle from './components/Toggle.vue';
 import twmToolbar from './components/Toolbar.vue';
 // eslint-disable-next-line
-import TailwindMobileProvider from './shared/TailwindMobileProvider.vue';
+import twmProvider from './shared/TailwindMobileProvider.vue';
 import { useTheme } from './shared/use-theme.js';
 import { useThemeClasses } from './shared/use-theme-classes.js';
 
 export {
   // utils
-  TailwindMobileProvider as twmProvider,
+  twmProvider,
   useTheme,
   useThemeClasses,
   // components

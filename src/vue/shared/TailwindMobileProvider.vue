@@ -6,6 +6,7 @@
   import { useAutoTheme } from './use-auto-theme.js';
 
   export default {
+    name: 'twm-provider',
     props: {
       theme: {
         type: String,
