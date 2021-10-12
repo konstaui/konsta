@@ -7,6 +7,7 @@
   import { computed } from 'vue';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   export default {
+    name: 'twm-badge',
     props: {
       component: {
         type: String,

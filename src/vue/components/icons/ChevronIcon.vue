@@ -11,3 +11,8 @@
     />
   </svg>
 </template>
+<script>
+  export default {
+    name: 'twm-chevron-icon',
+  };
+</script>

@@ -32,6 +32,7 @@
   import { useTheme } from '../../shared/use-theme.js';
 
   export default {
+    name: 'twm-checkbox-icon',
     props: {
       ios: { type: Boolean, default: undefined },
       material: { type: Boolean, default: undefined },

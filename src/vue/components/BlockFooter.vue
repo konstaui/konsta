@@ -6,6 +6,7 @@
 <script>
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   export default {
+    name: 'twm-block-footer',
     props: {
       component: {
         type: String,

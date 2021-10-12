@@ -18,6 +18,7 @@
   import TailwindMobileProvider from '../shared/TailwindMobileProvider.vue';
 
   export default {
+    name: 'twm-app',
     components: {
       TailwindMobileProvider,
     },

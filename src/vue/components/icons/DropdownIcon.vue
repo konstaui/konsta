@@ -9,3 +9,8 @@
     <polygon fillRule="evenodd" points="0 0 8 0 4 5" />
   </svg>
 </template>
+<script>
+  export default {
+    name: 'twm-dropdown-icon',
+  };
+</script>

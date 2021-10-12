@@ -110,6 +110,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
+    name: 'twm-list-input',
     components: {
       DeleteIcon,
       DropdownIcon,

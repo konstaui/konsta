@@ -8,6 +8,7 @@
   import twmList from './List.vue';
 
   export default {
+    name: 'twm-menu-list',
     props: {
       ...twmList.props,
     },

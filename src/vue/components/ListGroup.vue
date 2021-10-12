@@ -9,6 +9,7 @@
   import twmList from './List.vue';
 
   export default {
+    name: 'twm-list-group',
     components: {
       twmList,
     },

@@ -39,3 +39,8 @@
     />
   </svg>
 </template>
+<script>
+  export default {
+    name: 'twm-preloader-ios',
+  };
+</script>

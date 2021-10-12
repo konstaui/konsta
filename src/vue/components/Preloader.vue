@@ -16,6 +16,7 @@
   import PreloaderMaterial from './icons/PreloaderMaterial.vue';
 
   export default {
+    name: 'twm-preloader',
     props: {
       component: {
         type: String,

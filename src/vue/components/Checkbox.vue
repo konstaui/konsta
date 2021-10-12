@@ -32,6 +32,7 @@
   import CheckboxIcon from './icons/CheckboxIcon.vue';
 
   export default {
+    name: 'twm-checkbox',
     components: { CheckboxIcon },
     props: {
       component: {

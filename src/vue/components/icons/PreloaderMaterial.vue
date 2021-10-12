@@ -3,3 +3,8 @@
     <circle cx="18" cy="18" r="16" />
   </svg>
 </template>
+<script>
+  export default {
+    name: 'twm-preloader-material',
+  };
+</script>

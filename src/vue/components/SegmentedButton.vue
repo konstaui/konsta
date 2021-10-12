@@ -8,6 +8,7 @@
   import twmButton from './Button.vue';
 
   export default {
+    name: 'twm-segmented-button',
     components: {
       twmButton,
     },

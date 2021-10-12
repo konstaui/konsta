@@ -8,6 +8,7 @@
   import twmToolbar from './Toolbar.vue';
 
   export default {
+    name: 'twm-tabbar',
     components: {
       twmToolbar,
     },

@@ -19,6 +19,7 @@
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
+    name: 'twm-list-button',
     props: {
       component: {
         type: String,

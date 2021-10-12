@@ -26,6 +26,7 @@
 </template>
 <script>
   export default {
+    name: 'twm-back-icon',
     props: {
       theme: String,
     },

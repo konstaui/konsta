@@ -35,6 +35,7 @@
   import twmListItem from './ListItem.vue';
 
   export default {
+    name: 'twm-menu-list-item',
     components: {
       twmListItem,
     },

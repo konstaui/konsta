@@ -24,6 +24,7 @@
   import twmLink from './Link.vue';
 
   export default {
+    name: 'twm-tabbar-link',
     components: {
       twmLink,
     },

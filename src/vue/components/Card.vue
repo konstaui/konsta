@@ -20,6 +20,7 @@
   import { cls } from '../shared/cls.js';
 
   export default {
+    name: 'twm-card',
     props: {
       component: {
         type: String,

@@ -15,6 +15,7 @@
   import DeleteIcon from './icons/DeleteIcon.vue';
 
   export default {
+    name: 'twm-chip',
     components: {
       DeleteIcon,
     },

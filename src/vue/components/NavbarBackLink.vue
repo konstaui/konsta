@@ -15,6 +15,7 @@
   import twmLink from './Link.vue';
 
   export default {
+    name: 'twm-navbar-back-link',
     components: {
       twmLink,
       twmBackIcon,
