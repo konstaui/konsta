@@ -1,5 +1,13 @@
 # Changelog
 
+# [0.5.0-beta.1](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.6...v0.5.0-beta.1) (2021-10-12)
+
+### Features
+
+- Vue components
+- add Range `input` event handler` ([a6cdb4d](https://github.com/tailwind-mobile/tailwind-mobile/commit/a6cdb4d3722b7a9cc749855b8a0f23cd80c5c2bc))
+- add Stepper `input` event handler ([99ad13c](https://github.com/tailwind-mobile/tailwind-mobile/commit/99ad13cbda8e64f6a4138436ad6b0c81efaca282))
+
 # [0.4.6](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.5...v0.4.6) (2021-09-13)
 
 ### Bug Fixes
