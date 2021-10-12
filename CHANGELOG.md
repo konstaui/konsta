@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.5.0-beta.2](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.1...v0.5.0-beta.2) (2021-10-12)
+
+### Bug Fixes
+
+- **vue:** add missing TailwindMobuileProvider ([4607e68](https://github.com/tailwind-mobile/tailwind-mobile/commit/4607e6876be19c69d2ab167a3da3a16f3b06c3ef))
+
 # [0.5.0-beta.1](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.6...v0.5.0-beta.1) (2021-10-12)
 
 ### Features
