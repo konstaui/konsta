@@ -16,5 +16,17 @@
   "engines": {
     "node": ">= 4.7.0"
   },
-  "releaseDate": "October 12, 2021"
+  "releaseDate": "October 12, 2021",
+  "exports": {
+    "./react": {
+      "require": "./react/cjs/tailwind-mobile-react.js",
+      "import": "./react/esm/tailwind-mobile-react.js"
+    },
+    "./vue": {
+      "require": "./vue/cjs/tailwind-mobile-vue.js",
+      "import": "./vue/esm/tailwind-mobile-vue.js"
+    },
+    "./config": "./config.js",
+    "./config.js": "./config.js"
+  }
 }
