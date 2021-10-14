@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.5.0-beta.6](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.5...0.5.0-beta.6) (2021-10-14)
+
+### Features
+
+- **vue:** export all components without `twm` prefix ([a8e8350](https://github.com/tailwind-mobile/tailwind-mobile/commit/a8e835041545a7b4473e9bbbd18187dd9c21f760))
+
 # [0.5.0-beta.4](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.3...0.5.0-beta.4) (2021-10-12)
 
 ### Features
