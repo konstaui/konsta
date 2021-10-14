@@ -1,18 +1,24 @@
 # Changelog
 
-# [0.5.0-beta.7](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.6...0.5.0-beta.7) (2021-10-14)
+# [0.5.0-beta.8](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.7...v0.5.0-beta.8) (2021-10-14)
+
+### Bug Fixes
+
+- add package.json to exports ([d1dad2d](https://github.com/tailwind-mobile/tailwind-mobile/commit/d1dad2d8752acaeba069f3e250ed14cf507df752))
+
+# [0.5.0-beta.7](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.6...v0.5.0-beta.7) (2021-10-14)
 
 ### Bug Fixes
 
 - fix Icon and TabbarLink types ([2d91f6d](https://github.com/tailwind-mobile/tailwind-mobile/commit/2d91f6dd4dcf4921d433f1b75b4534b021f63b48))
 
-# [0.5.0-beta.6](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.5...0.5.0-beta.6) (2021-10-14)
+# [0.5.0-beta.6](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.5...v0.5.0-beta.6) (2021-10-14)
 
 ### Features
 
 - **vue:** export all components without `twm` prefix ([a8e8350](https://github.com/tailwind-mobile/tailwind-mobile/commit/a8e835041545a7b4473e9bbbd18187dd9c21f760))
 
-# [0.5.0-beta.4](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.3...0.5.0-beta.4) (2021-10-12)
+# [0.5.0-beta.4](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.3...v0.5.0-beta.4) (2021-10-12)
 
 ### Features
 
