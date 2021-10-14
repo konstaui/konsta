@@ -12,5 +12,5 @@ interface Props {
   /**
    * Link label content
    */
-  label?: React.ReactNode;
+  label?: string | React.ReactNode;
 }

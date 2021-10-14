@@ -6,8 +6,20 @@ interface Props {
    */
   component?: string;
 
-  /** Icon badge */
+  /**
+   * Icon badge
+   * */
   badge?: string | number | React.ReactNode;
+
+  /**
+   * Icon to render in "ios" theme
+   * */
+  ios?: React.ReactNode;
+
+  /**
+   * Icon to render in "material" theme
+   * */
+  material?: React.ReactNode;
 
   /**
    * Badge colors. Object with Tailwind CSS colors classes
