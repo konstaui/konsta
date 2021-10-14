@@ -84,10 +84,8 @@ const createComponentTypes = (componentName, propsContent) => {
   if (propsList) {
     propsList = propsList
       .filter((propWithComment) => {
-        if (propWithComment.includes(': React.ReactNode;')) {
-          console.log(propWithComment);
-        }
         if (
+          propWithComment.includes('defaultValue?:') ||
           propWithComment.includes('colors?:') ||
           propWithComment.includes('badgeColors?:') ||
           propWithComment.includes('media?:') ||
