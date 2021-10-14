@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.5.0-beta.7](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.6...0.5.0-beta.7) (2021-10-14)
+
+### Bug Fixes
+
+- fix Icon and TabbarLink types ([2d91f6d](https://github.com/tailwind-mobile/tailwind-mobile/commit/2d91f6dd4dcf4921d433f1b75b4534b021f63b48))
+
 # [0.5.0-beta.6](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.5...0.5.0-beta.6) (2021-10-14)
 
 ### Features
