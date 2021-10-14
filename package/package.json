@@ -18,6 +18,7 @@
   },
   "releaseDate": "October 14, 2021",
   "exports": {
+    "./package.json": "./package.json",
     "./react": {
       "require": "./react/cjs/tailwind-mobile-react.js",
       "import": "./react/esm/tailwind-mobile-react.js"
