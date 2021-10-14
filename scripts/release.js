@@ -120,6 +120,7 @@ async function release() {
     await exec.promise('cd ./package && npm publish');
   }
   await exec.promise('npm run build-react-ks');
+  await exec.promise('npm run build-vue-ks');
 }
 
 release();
