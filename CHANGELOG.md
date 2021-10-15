@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.5.0-beta.9](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.8...0.5.0-beta.9) (2021-10-15)
+
+### Bug Fixes
+
+- export twmProvider in Vue types ([aab5588](https://github.com/tailwind-mobile/tailwind-mobile/commit/aab5588e1a9d26515f33e4f37b37f893f4b5ddb3))
+
 # [0.5.0-beta.8](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.7...v0.5.0-beta.8) (2021-10-14)
 
 ### Bug Fixes
