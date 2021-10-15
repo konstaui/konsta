@@ -203,7 +203,10 @@ module.exports = async (outputDir = 'package') => {
     )
     .join('\n');
   const exportComponents = `export { ${components
-    .map((componentName) => `twm${componentName}`)
+    .map(
+      (componentName) =>
+        `twm${componentName}, twm${componentName} as ${componentName}`
+    )
     .join(', ')} }`;
   typesContent = typesContent
     .replace('// IMPORT_COMPONENTS', importComponents)

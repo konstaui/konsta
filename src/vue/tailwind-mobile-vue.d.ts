@@ -2,7 +2,7 @@ import { Ref, ComponentOptionsMixin, DefineComponent } from 'vue';
 // IMPORT_COMPONENTS
 
 // PROVIDER
-declare const TailwindMobileProvider: DefineComponent<
+declare const twmProvider: DefineComponent<
   {
     /**
      * App theme. If set to `'parent'` it will look for `ios` or `md` class on root `<html>` element, useful to use with parent framework like Framework7 or Ionic
@@ -45,4 +45,4 @@ declare const TailwindMobileProvider: DefineComponent<
 declare const useTheme: () => Ref<'material' | 'ios'>;
 
 // EXPORT_COMPONENTS
-export { useTheme, TailwindMobileProvider };
+export { useTheme, twmProvider, twmProvider as Provider };
