@@ -1,5 +1,18 @@
 # Changelog
 
+# [0.5.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.6-v0.5.0) (2021-10-18)
+
+### Bug Fixes
+
+- fix Icon and TabbarLink types ([2d91f6d](https://github.com/tailwind-mobile/tailwind-mobile/commit/2d91f6dd4dcf4921d433f1b75b4534b021f63b48))
+
+### Features
+
+- Tailwind Mobile Vue.js components
+- set /react and /vue packages as `type: module` ([6d2578a](https://github.com/tailwind-mobile/tailwind-mobile/commit/6d2578af038a04227798810c982877aecb3e49c3))
+- add Range `input` event handler` ([a6cdb4d](https://github.com/tailwind-mobile/tailwind-mobile/commit/a6cdb4d3722b7a9cc749855b8a0f23cd80c5c2bc))
+- add Stepper `input` event handler ([99ad13c](https://github.com/tailwind-mobile/tailwind-mobile/commit/99ad13cbda8e64f6a4138436ad6b0c81efaca282))
+
 # [0.5.0-beta.9](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0-beta.8...0.5.0-beta.9) (2021-10-15)
 
 ### Bug Fixes
