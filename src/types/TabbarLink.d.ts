@@ -6,6 +6,12 @@ interface Props {
    */
   active?: boolean;
   /**
+   * Component's HTML Element
+   *
+   * @default 'a'
+   */
+   component?: string;
+  /**
    * Link icon content
    */
   icon?: React.ReactNode;
