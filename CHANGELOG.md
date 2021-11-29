@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.5.1](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0...v0.5.1) (2021-11-29)
+
+### Bug Fixes
+
+- added `component` and `media` props types ([#17](https://github.com/tailwind-mobile/tailwind-mobile/issues/17)) ([42c0bf8](https://github.com/tailwind-mobile/tailwind-mobile/commit/42c0bf85d16ab2f8aa1d8c6d99087496e98d4d4d))
+
 # [0.5.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.4.6-v0.5.0) (2021-10-18)
 
 ### Bug Fixes

@@ -10,7 +10,7 @@ interface Props {
    *
    * @default 'a'
    */
-   component?: string;
+  component?: string;
   /**
    * Link icon content
    */
