@@ -4,36 +4,36 @@ module.exports = () =>
   plugin(({ addUtilities, addBase, theme, e }) => {
     const base = {
       ':root': {
-        '--twm-safe-area-left': '0px',
-        '--twm-safe-area-right': '0px',
-        '--twm-safe-area-top': '0px',
-        '--twm-safe-area-bottom': '0px',
+        '--k-safe-area-left': '0px',
+        '--k-safe-area-right': '0px',
+        '--k-safe-area-top': '0px',
+        '--k-safe-area-bottom': '0px',
       },
 
       '@supports (left: env(safe-area-inset-left))': {
         '.safe-areas': {
-          '--twm-safe-area-left': 'env(safe-area-inset-left)',
-          '--twm-safe-area-right': 'env(safe-area-inset-right)',
-          '--twm-safe-area-top': 'env(safe-area-inset-top)',
-          '--twm-safe-area-bottom': 'env(safe-area-inset-bottom)',
+          '--k-safe-area-left': 'env(safe-area-inset-left)',
+          '--k-safe-area-right': 'env(safe-area-inset-right)',
+          '--k-safe-area-top': 'env(safe-area-inset-top)',
+          '--k-safe-area-bottom': 'env(safe-area-inset-bottom)',
         },
         '.no-safe-areas': {
-          '--twm-safe-area-left': '0px',
-          '--twm-safe-area-right': '0px',
-          '--twm-safe-area-top': '0px',
-          '--twm-safe-area-bottom': '0px',
+          '--k-safe-area-left': '0px',
+          '--k-safe-area-right': '0px',
+          '--k-safe-area-top': '0px',
+          '--k-safe-area-bottom': '0px',
         },
         '.no-safe-areas-top': {
-          '--twm-safe-area-top': '0px',
+          '--k-safe-area-top': '0px',
         },
         '.no-safe-areas-right': {
-          '--twm-safe-area-right': '0px',
+          '--k-safe-area-right': '0px',
         },
         '.no-safe-areas-bottom': {
-          '--twm-safe-area-bottom': '0px',
+          '--k-safe-area-bottom': '0px',
         },
         '.no-safe-areas-left': {
-          '--twm-safe-area-left': '0px',
+          '--k-safe-area-left': '0px',
         },
       },
     };
@@ -44,25 +44,25 @@ module.exports = () =>
       const upper = `${side[0].toUpperCase()}${side.slice(1)}`;
 
       safe[`.p${first}-safe`] = {
-        [`padding${upper}`]: `var(--twm-safe-area-${side})`,
+        [`padding${upper}`]: `var(--k-safe-area-${side})`,
       };
       safe[`.m${first}-safe`] = {
-        [`margin${upper}`]: `var(--twm-safe-area-${side})`,
+        [`margin${upper}`]: `var(--k-safe-area-${side})`,
       };
       safe[`.${side}-safe`] = {
-        [side]: `var(--twm-safe-area-${side})`,
+        [side]: `var(--k-safe-area-${side})`,
       };
 
       Object.keys(spacing).forEach((key) => {
         const value = spacing[key];
         safe[`.p${first}-${e(key)}-safe`] = {
-          [`padding${upper}`]: `calc(var(--twm-safe-area-${side}) + ${value})`,
+          [`padding${upper}`]: `calc(var(--k-safe-area-${side}) + ${value})`,
         };
         safe[`.m${first}-${e(key)}-safe`] = {
-          [`margin${upper}`]: `calc(var(--twm-safe-area-${side}) + ${value})`,
+          [`margin${upper}`]: `calc(var(--k-safe-area-${side}) + ${value})`,
         };
         safe[`.${side}-${e(key)}-safe`] = {
-          [side]: `calc(var(--twm-safe-area-${side}) + ${value})`,
+          [side]: `calc(var(--k-safe-area-${side}) + ${value})`,
         };
       });
     });

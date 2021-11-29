@@ -7,7 +7,7 @@ module.exports = () =>
     if (darkMode === 'class') {
       darkProps = {
         '.dark': {
-          '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
+          '--k-hairline-color': 'rgba(255, 255, 255, 0.15)',
           color: '#fff',
         },
       };
@@ -15,7 +15,7 @@ module.exports = () =>
       darkProps = {
         '@media (prefers-color-scheme: dark)': {
           ':root': {
-            '--twm-hairline-color': 'rgba(255, 255, 255, 0.15)',
+            '--k-hairline-color': 'rgba(255, 255, 255, 0.15)',
             color: '#fff',
           },
         },
@@ -24,18 +24,18 @@ module.exports = () =>
 
     addBase({
       ':root': {
-        '--twm-device-pixel-ratio': '1',
-        '--twm-hairline-color': 'rgba(0, 0, 0, 0.2)',
+        '--k-device-pixel-ratio': '1',
+        '--k-hairline-color': 'rgba(0, 0, 0, 0.2)',
       },
       ...darkProps,
       '@media (min-resolution: 2dppx)': {
         ':root': {
-          '--twm-device-pixel-ratio': '2',
+          '--k-device-pixel-ratio': '2',
         },
       },
       '@media (min-resolution: 3dppx)': {
         ':root': {
-          '--twm-device-pixel-ratio': '3',
+          '--k-device-pixel-ratio': '3',
         },
       },
       '*': {
@@ -46,11 +46,11 @@ module.exports = () =>
         '-webkit-font-smoothing': 'antialiased',
         '-moz-osx-font-smoothing': 'grayscale',
       },
-      '.twm-ios, .ios': {
+      '.k-ios, .ios': {
         'font-family':
           '-apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif',
       },
-      '.twm-material, .md': {
+      '.k-material, .md': {
         'font-family': 'Roboto, system-ui, Noto, Helvetica, Arial, sans-serif',
       },
     });

@@ -1,41 +1,35 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Navbar" subtitle="Subtitle" class="top-0 sticky">
+  <k-page>
+    <k-navbar title="Navbar" subtitle="Subtitle" class="top-0 sticky">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>
-        <twm-link navbar>Right</twm-link>
+        <k-link navbar>Right</k-link>
       </template>
-    </twm-navbar>
+    </k-navbar>
     <div class="relative">
-      <twm-block strong>
+      <k-block strong>
         <p>
           Navbar is a fixed area at the top of a screen that contains Page title
           and navigation elements.
         </p>
-      </twm-block>
+      </k-block>
     </div>
-  </twm-page>
+  </k-page>
 </template>
 
 <script>
-  import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmLink,
-    twmBlock,
-  } from 'tailwind-mobile/vue';
+  import { kPage, kNavbar, kNavbarBackLink, kLink, kBlock } from 'konsta/vue';
 
   export default {
     name: 'NavbarPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmLink,
-      twmBlock,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kLink,
+      kBlock,
     },
     setup() {
       return {

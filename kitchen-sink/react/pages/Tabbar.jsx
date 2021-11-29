@@ -10,7 +10,7 @@ import {
   List,
   ListItem,
   Toggle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 import {
   EnvelopeFill,
   Calendar,

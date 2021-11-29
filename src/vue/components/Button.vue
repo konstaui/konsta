@@ -12,7 +12,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
-    name: 'twm-button',
+    name: 'k-button',
     props: {
       component: {
         type: String,

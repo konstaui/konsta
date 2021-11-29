@@ -25,7 +25,7 @@
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
-    name: 'twm-fab',
+    name: 'k-fab',
     props: {
       component: {
         type: String,

@@ -50,7 +50,7 @@ const Preloader = forwardRef((props, ref) => {
     {
       base: {
         common: cls(
-          theme === 'ios' ? 'twm-ios-preloader' : 'twm-material-preloader',
+          theme === 'ios' ? 'k-ios-preloader' : 'k-material-preloader',
           `inline-block ${size} ${colors.icon}`
         ),
         material: `stroke-4`,

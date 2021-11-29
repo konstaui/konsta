@@ -1,5 +1,5 @@
 <template>
-  <twm-link
+  <k-link
     tabbar
     :tabbar-active="active"
     :component="component"
@@ -16,16 +16,16 @@
       {{ label }}<slot name="label" />
       <slot />
     </template>
-  </twm-link>
+  </k-link>
 </template>
 <script>
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import twmLink from './Link.vue';
+  import kLink from './Link.vue';
 
   export default {
-    name: 'twm-tabbar-link',
+    name: 'k-tabbar-link',
     components: {
-      twmLink,
+      kLink,
     },
     props: {
       component: {

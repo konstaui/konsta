@@ -1,15 +1,15 @@
 {
-  "name": "tailwind-mobile/react",
+  "name": "konsta/react",
   "private": true,
-  "main": "./cjs/tailwind-mobile-react.js",
-  "jsnext:main": "./esm/tailwind-mobile-react.js",
-  "module": "./esm/tailwind-mobile-react.js",
-  "types": "./tailwind-mobile-react.d.ts",
+  "main": "./cjs/konsta-react.js",
+  "jsnext:main": "./esm/konsta-react.js",
+  "module": "./esm/konsta-react.js",
+  "types": "./konsta-react.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./esm/tailwind-mobile-react.js",
-      "require": "./cjs/tailwind-mobile-react.js"
+      "import": "./esm/konsta-react.js",
+      "require": "./cjs/konsta-react.js"
     }
   }
 }

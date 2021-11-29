@@ -7,7 +7,7 @@ import {
   List,
   ListInput,
   useTheme,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 import DemoIcon from '../components/DemoIcon';
 

@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
   Range,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function RangeSliderPage() {
   const isPreview = document.location.href.includes('examplePreview');

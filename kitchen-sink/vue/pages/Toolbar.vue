@@ -1,57 +1,57 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Toolbar">
+  <k-page>
+    <k-navbar title="Toolbar">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-toolbar
+    <k-toolbar
       :top="isTop"
       :class="`left-0 ${
         isTop ? 'ios:top-11-safe material:top-14-safe sticky' : 'bottom-0 fixed'
       } w-full`"
     >
-      <twm-link toolbar>Link 1</twm-link>
-      <twm-link toolbar>Link 2</twm-link>
-      <twm-link toolbar>Link 3</twm-link>
-    </twm-toolbar>
+      <k-link toolbar>Link 1</k-link>
+      <k-link toolbar>Link 2</k-link>
+      <k-link toolbar>Link 3</k-link>
+    </k-toolbar>
 
-    <twm-block strong class="space-y-4">
+    <k-block strong class="space-y-4">
       <p>
         Toolbar supports both top and bottom positions. Click the following
         button to change its position.
       </p>
       <p>
-        <twm-button @click="() => (isTop = !isTop)">
+        <k-button @click="() => (isTop = !isTop)">
           Toggle Toolbar Position
-        </twm-button>
+        </k-button>
       </p>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmToolbar,
-    twmLink,
-    twmBlock,
-    twmButton,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kToolbar,
+    kLink,
+    kBlock,
+    kButton,
+  } from 'konsta/vue';
 
   export default {
     name: 'ToolbarPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmToolbar,
-      twmLink,
-      twmBlock,
-      twmButton,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kToolbar,
+      kLink,
+      kBlock,
+      kButton,
     },
     setup() {
       const isTop = ref(false);

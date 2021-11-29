@@ -2,7 +2,7 @@ import { Ref, ComponentOptionsMixin, DefineComponent } from 'vue';
 // IMPORT_COMPONENTS
 
 // PROVIDER
-declare const twmProvider: DefineComponent<
+declare const kProvider: DefineComponent<
   {
     /**
      * App theme. If set to `'parent'` it will look for `ios` or `md` class on root `<html>` element, useful to use with parent framework like Framework7 or Ionic
@@ -45,4 +45,4 @@ declare const twmProvider: DefineComponent<
 declare const useTheme: () => Ref<'material' | 'ios'>;
 
 // EXPORT_COMPONENTS
-export { useTheme, twmProvider, twmProvider as Provider };
+export { useTheme, kProvider, kProvider as Provider };

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TailwindMobileContext = React.createContext({
+const KonstaContext = React.createContext({
   theme: 'material',
   dark: true,
   touchRipple: true,
 });
 
-export { TailwindMobileContext };
+export { KonstaContext };

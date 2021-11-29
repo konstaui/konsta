@@ -41,6 +41,6 @@
 </template>
 <script>
   export default {
-    name: 'twm-preloader-ios',
+    name: 'k-preloader-ios',
   };
 </script>

@@ -7,7 +7,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-block-title',
+    name: 'k-block-title',
     props: {
       component: {
         type: String,

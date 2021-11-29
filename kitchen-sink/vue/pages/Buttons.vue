@@ -1,16 +1,16 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Buttons">
+  <k-page>
+    <k-navbar title="Buttons">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title>Default Buttons</twm-block-title>
-    <twm-block strong class="space-y-2">
+    <k-block-title>Default Buttons</k-block-title>
+    <k-block strong class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button>Button</twm-button>
-        <twm-button
+        <k-button>Button</k-button>
+        <k-button
           :colors="{
             text: 'text-red-500',
             border: 'border-red-500',
@@ -20,12 +20,12 @@
           }"
         >
           Button
-        </twm-button>
-        <twm-button>Button</twm-button>
+        </k-button>
+        <k-button>Button</k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button outline>Outline</twm-button>
-        <twm-button
+        <k-button outline>Outline</k-button>
+        <k-button
           :colors="{
             text: 'text-red-500',
             border: 'border-red-500',
@@ -37,12 +37,12 @@
           outline
         >
           Outline
-        </twm-button>
-        <twm-button outline>Outline</twm-button>
+        </k-button>
+        <k-button outline>Outline</k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button clear>Clear</twm-button>
-        <twm-button
+        <k-button clear>Clear</k-button>
+        <k-button
           :colors="{
             text: 'text-red-500',
             border: 'border-red-500',
@@ -54,107 +54,107 @@
           clear
         >
           Clear
-        </twm-button>
-        <twm-button clear>Clear</twm-button>
+        </k-button>
+        <k-button clear>Clear</k-button>
       </div>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Rounded Buttons</twm-block-title>
-    <twm-block strong class="space-y-2">
+    <k-block-title>Rounded Buttons</k-block-title>
+    <k-block strong class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button rounded>Button</twm-button>
-        <twm-button rounded>Button</twm-button>
-        <twm-button rounded>Button</twm-button>
+        <k-button rounded>Button</k-button>
+        <k-button rounded>Button</k-button>
+        <k-button rounded>Button</k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button rounded outline> Outline </twm-button>
-        <twm-button rounded outline> Outline </twm-button>
-        <twm-button rounded outline> Outline </twm-button>
+        <k-button rounded outline> Outline </k-button>
+        <k-button rounded outline> Outline </k-button>
+        <k-button rounded outline> Outline </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button rounded clear> Clear </twm-button>
-        <twm-button rounded clear> Clear </twm-button>
-        <twm-button rounded clear> Clear </twm-button>
+        <k-button rounded clear> Clear </k-button>
+        <k-button rounded clear> Clear </k-button>
+        <k-button rounded clear> Clear </k-button>
       </div>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Large Buttons</twm-block-title>
-    <twm-block strong class="space-y-2">
+    <k-block-title>Large Buttons</k-block-title>
+    <k-block strong class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button large>Button</twm-button>
-        <twm-button large>Button</twm-button>
-        <twm-button large rounded> Button </twm-button>
+        <k-button large>Button</k-button>
+        <k-button large>Button</k-button>
+        <k-button large rounded> Button </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button large outline> Outline </twm-button>
-        <twm-button large outline> Outline </twm-button>
-        <twm-button large rounded outline> Outline </twm-button>
+        <k-button large outline> Outline </k-button>
+        <k-button large outline> Outline </k-button>
+        <k-button large rounded outline> Outline </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button large clear> Clear </twm-button>
-        <twm-button large clear> Clear </twm-button>
-        <twm-button large rounded clear> Clear </twm-button>
+        <k-button large clear> Clear </k-button>
+        <k-button large clear> Clear </k-button>
+        <k-button large rounded clear> Clear </k-button>
       </div>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Small Buttons</twm-block-title>
-    <twm-block strong class="space-y-2">
+    <k-block-title>Small Buttons</k-block-title>
+    <k-block strong class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button small>Button</twm-button>
-        <twm-button small>Button</twm-button>
-        <twm-button small rounded> Button </twm-button>
+        <k-button small>Button</k-button>
+        <k-button small>Button</k-button>
+        <k-button small rounded> Button </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button small outline> Outline </twm-button>
-        <twm-button small outline> Outline </twm-button>
-        <twm-button small rounded outline> Outline </twm-button>
+        <k-button small outline> Outline </k-button>
+        <k-button small outline> Outline </k-button>
+        <k-button small rounded outline> Outline </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button small clear> Clear </twm-button>
-        <twm-button small clear> Clear </twm-button>
-        <twm-button small rounded clear> Clear </twm-button>
+        <k-button small clear> Clear </k-button>
+        <k-button small clear> Clear </k-button>
+        <k-button small rounded clear> Clear </k-button>
       </div>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Raised Buttons</twm-block-title>
-    <twm-block strong class="space-y-2">
+    <k-block-title>Raised Buttons</k-block-title>
+    <k-block strong class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button raised>Button</twm-button>
-        <twm-button raised>Button</twm-button>
-        <twm-button raised rounded> Button </twm-button>
+        <k-button raised>Button</k-button>
+        <k-button raised>Button</k-button>
+        <k-button raised rounded> Button </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button raised outline> Outline </twm-button>
-        <twm-button raised outline> Outline </twm-button>
-        <twm-button raised rounded outline> Outline </twm-button>
+        <k-button raised outline> Outline </k-button>
+        <k-button raised outline> Outline </k-button>
+        <k-button raised rounded outline> Outline </k-button>
       </div>
       <div class="grid grid-cols-3 gap-x-4">
-        <twm-button raised clear> Clear </twm-button>
-        <twm-button raised clear> Clear </twm-button>
-        <twm-button raised rounded clear> Clear </twm-button>
+        <k-button raised clear> Clear </k-button>
+        <k-button raised clear> Clear </k-button>
+        <k-button raised rounded clear> Clear </k-button>
       </div>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmButton,
-    twmBlock,
-    twmBlockTitle,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kButton,
+    kBlock,
+    kBlockTitle,
+  } from 'konsta/vue';
 
   export default {
     name: 'ButtonsPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmButton,
-      twmBlock,
-      twmBlockTitle,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kButton,
+      kBlock,
+      kBlockTitle,
     },
     setup() {
       return {

@@ -12,7 +12,7 @@ const date = {
 module.exports = (name = null) =>
   `${`
 /**
- * Tailwind Mobile ${name ? `${name} ` : ''}${pkg.version}
+ * Konsta UI ${name ? `${name} ` : ''}${pkg.version}
  * ${pkg.description}
  * ${pkg.homepage || ''}
  *

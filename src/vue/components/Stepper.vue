@@ -31,7 +31,7 @@
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
-    name: 'twm-stepper',
+    name: 'k-stepper',
     props: {
       component: {
         type: String,

@@ -37,7 +37,7 @@ export class TouchRipple {
 
     // eslint-disable-next-line
     ripple.rippleWaveEl = document.createElement('span');
-    ripple.rippleWaveEl.classList.add('twm-touch-ripple-wave');
+    ripple.rippleWaveEl.classList.add('k-touch-ripple-wave');
     ripple.rippleWaveEl.setAttribute('hidden', '');
 
     ripple.rippleWaveEl.style = `
@@ -46,16 +46,16 @@ export class TouchRipple {
       margin-top:-${diameter / 2}px;
       margin-left:-${diameter / 2}px;
       left:${center.x}px;
-      top:${center.y}px; --twm-ripple-transform: ${ripple.rippleTransform}`;
+      top:${center.y}px; --k-ripple-transform: ${ripple.rippleTransform}`;
 
     el.insertAdjacentElement('afterbegin', ripple.rippleWaveEl);
 
     const animationEnd = () => {
       ripple.rippleWaveEl.removeEventListener('animationend', animationEnd);
       if (!ripple.rippleWaveEl) return;
-      if (ripple.rippleWaveEl.classList.contains('twm-touch-ripple-wave-out'))
+      if (ripple.rippleWaveEl.classList.contains('k-touch-ripple-wave-out'))
         return;
-      ripple.rippleWaveEl.classList.add('twm-touch-ripple-wave-in');
+      ripple.rippleWaveEl.classList.add('k-touch-ripple-wave-in');
       if (ripple.shouldBeRemoved) {
         ripple.out();
       }
@@ -81,7 +81,7 @@ export class TouchRipple {
     const ripple = this;
     const { rippleWaveEl } = this;
     clearTimeout(ripple.removeTimeout);
-    rippleWaveEl.classList.add('twm-touch-ripple-wave-out');
+    rippleWaveEl.classList.add('k-touch-ripple-wave-out');
 
     ripple.removeTimeout = setTimeout(() => {
       ripple.destroy();
@@ -101,7 +101,7 @@ export class TouchRipple {
       ripple.destroy();
     }, 400);
     ripple.shouldBeRemoved = true;
-    if (ripple.rippleWaveEl.classList.contains('twm-touch-ripple-wave-in')) {
+    if (ripple.rippleWaveEl.classList.contains('k-touch-ripple-wave-in')) {
       ripple.out();
     }
   }

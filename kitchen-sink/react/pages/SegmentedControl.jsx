@@ -8,7 +8,7 @@ import {
   SegmentedButton,
   Block,
   BlockTitle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function SegmentedControlPage() {
   const isPreview = document.location.href.includes('examplePreview');

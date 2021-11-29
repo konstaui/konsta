@@ -8,7 +8,7 @@ import {
   Block,
   List,
   ListItem,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function RadioPage() {
   const isPreview = document.location.href.includes('examplePreview');

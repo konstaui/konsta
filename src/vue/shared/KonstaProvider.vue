@@ -6,7 +6,7 @@
   import { useAutoTheme } from './use-auto-theme.js';
 
   export default {
-    name: 'twm-provider',
+    name: 'k-provider',
     props: {
       theme: {
         type: String,
@@ -28,13 +28,13 @@
     setup(props) {
       const currentTheme = useAutoTheme(props, props.autoThemeDetection);
 
-      const TailwindMobileContext = computed(() => ({
+      const KonstaContext = computed(() => ({
         theme: currentTheme.value,
         dark: props.dark,
         touchRipple: props.touchRipple,
       }));
 
-      provide('TailwindMobileContext', TailwindMobileContext);
+      provide('KonstaContext', KonstaContext);
 
       return {
         currentTheme,

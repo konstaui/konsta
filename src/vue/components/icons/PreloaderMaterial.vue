@@ -5,6 +5,6 @@
 </template>
 <script>
   export default {
-    name: 'twm-preloader-material',
+    name: 'k-preloader-material',
   };
 </script>

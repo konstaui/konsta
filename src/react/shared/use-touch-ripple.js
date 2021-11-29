@@ -1,9 +1,9 @@
 import { useRef, useEffect, useContext } from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext.js';
+import { KonstaContext } from './KonstaContext.js';
 import { TouchRipple } from './touch-ripple-class.js';
 
 export const useTouchRipple = (elRef, needsTouchRipple) => {
-  const context = useContext(TailwindMobileContext);
+  const context = useContext(KonstaContext);
 
   const ripple = useRef(null);
   const removeRipple = () => {

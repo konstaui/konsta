@@ -2,7 +2,7 @@ import * as React from 'react';
 // IMPORT_COMPONENTS
 
 // PROVIDER
-interface TailwindMobileProviderProps {
+interface KonstaProviderProps {
   /**
    * App theme. If set to `'parent'` it will look for `ios` or `md` class on root `<html>` element, useful to use with parent framework like Framework7 or Ionic
    *
@@ -22,10 +22,10 @@ interface TailwindMobileProviderProps {
    */
   touchRipple?: boolean;
 }
-declare const TailwindMobileProvider: React.FunctionComponent<TailwindMobileProviderProps>;
+declare const KonstaProvider: React.FunctionComponent<KonstaProviderProps>;
 
 // HELPERS
 declare const useTheme: () => 'material' | 'ios';
 
 // EXPORT_COMPONENTS
-export { useTheme, TailwindMobileProvider };
+export { useTheme, KonstaProvider };

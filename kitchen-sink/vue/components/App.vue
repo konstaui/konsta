@@ -1,15 +1,15 @@
 <template>
-  <twm-app :theme="theme" :safe-areas="!inIFrame" data-foo="test">
+  <k-app :theme="theme" :safe-areas="!inIFrame" data-foo="test">
     <router-view />
-  </twm-app>
+  </k-app>
 </template>
 <script>
   import { ref, onMounted, provide, computed } from 'vue';
-  import { twmApp } from 'tailwind-mobile/vue';
+  import { kApp } from 'konsta/vue';
 
   export default {
     components: {
-      twmApp,
+      kApp,
     },
     setup() {
       const theme = ref('ios');

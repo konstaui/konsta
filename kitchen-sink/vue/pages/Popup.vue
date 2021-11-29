@@ -1,35 +1,30 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Popup">
+  <k-page>
+    <k-navbar title="Popup">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block strong class="space-y-4">
+    <k-block strong class="space-y-4">
       <p>
         Popup is a modal window with any HTML content that pops up over App's
         main content. Popup as all other overlays is part of so called
         "Temporary Views".
       </p>
       <p>
-        <twm-button @click="() => (popupOpened = true)">Open Popup</twm-button>
+        <k-button @click="() => (popupOpened = true)">Open Popup</k-button>
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-popup
-      :opened="popupOpened"
-      @backdropclick="() => (popupOpened = false)"
-    >
-      <twm-page>
-        <twm-navbar title="Popup">
+    <k-popup :opened="popupOpened" @backdropclick="() => (popupOpened = false)">
+      <k-page>
+        <k-navbar title="Popup">
           <template #right>
-            <twm-link navbar @click="() => (popupOpened = false)">
-              Close
-            </twm-link>
+            <k-link navbar @click="() => (popupOpened = false)"> Close </k-link>
           </template>
-        </twm-navbar>
-        <twm-block class="space-y-4">
+        </k-navbar>
+        <k-block class="space-y-4">
           <p>
             Here comes popup. You can put here anything, even independent view
             with its own navigation. Also not, that by default popup looks a bit
@@ -58,33 +53,33 @@
             tempor congue massa quis faucibus. Vestibulum nunc eros, convallis
             blandit dui sit amet, gravida adipiscing libero.
           </p>
-        </twm-block>
-      </twm-page>
-    </twm-popup>
-  </twm-page>
+        </k-block>
+      </k-page>
+    </k-popup>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmPopup,
-    twmBlock,
-    twmLink,
-    twmButton,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kPopup,
+    kBlock,
+    kLink,
+    kButton,
+  } from 'konsta/vue';
 
   export default {
     name: 'PopupPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmPopup,
-      twmBlock,
-      twmLink,
-      twmButton,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kPopup,
+      kBlock,
+      kLink,
+      kButton,
     },
     setup() {
       const popupOpened = ref(false);

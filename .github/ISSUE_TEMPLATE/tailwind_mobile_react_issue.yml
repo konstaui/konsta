@@ -1,5 +1,5 @@
-name: '🐞 Tailwind Mobile React Issue'
-description: Create a report for Tailwind Mobile React components
+name: '🐞 Konsta UI React Issue'
+description: Create a report for Konsta UI React components
 labels: 'React'
 body:
   - type: markdown
@@ -10,7 +10,7 @@ body:
     id: qa
     attributes:
       label: Check that this is really a bug
-      description: For Q&A open a [GitHub Discussion](https://github.com/tailwind-mobile/tailwind-mobile/discussions)
+      description: For Q&A open a [GitHub Discussion](https://github.com/konstaui/konstaui/discussions)
       options:
         - label: I confirm
           required: true
@@ -46,7 +46,7 @@ body:
   - type: input
     id: tailwind-mobile
     attributes:
-      label: Tailwind Mobile version
+      label: Konsta UI version
       description: Exact release version or commit hash
       placeholder: e.g 1.0.0
     validations:
@@ -65,13 +65,13 @@ body:
       label: Validations
       description: Before submitting the issue, please make sure you do the following
       options:
-        - label: Follow our [Code of Conduct](https://github.com/tailwind-mobile/tailwind-mobile/blob/master/CODE_OF_CONDUCT.md)
+        - label: Follow our [Code of Conduct](https://github.com/konstaui/konstaui/blob/master/CODE_OF_CONDUCT.md)
           required: true
         - label: Read the [docs](https://tailwind-mobile.com).
           required: true
         - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
           required: true
-        - label: Make sure this is a Tailwind Mobile issue and not a framework-specific issue
+        - label: Make sure this is a Konsta UI issue and not a framework-specific issue
           required: true
   - type: checkboxes
     id: pr

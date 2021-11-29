@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { cls } from '../shared/cls.js';
 import { positionClass } from '../shared/position-class.js';
-import { TailwindMobileProvider } from '../shared/TailwindMobileProvider.jsx';
+import { KonstaProvider } from '../shared/KonstaProvider.jsx';
 import { useAutoTheme } from '../shared/use-auto-theme.js';
 
 const App = forwardRef((props, ref) => {
@@ -36,16 +36,16 @@ const App = forwardRef((props, ref) => {
   const currentTheme = useAutoTheme(theme);
 
   const classes = cls(
-    currentTheme === 'ios' && `twm-ios`,
-    currentTheme === 'material' && 'twm-material',
-    'twm-app w-full h-full min-h-screen',
+    currentTheme === 'ios' && `k-ios`,
+    currentTheme === 'material' && 'k-material',
+    'k-app w-full h-full min-h-screen',
     safeAreas && 'safe-areas',
     positionClass('relative', className),
     className
   );
 
   return (
-    <TailwindMobileProvider
+    <KonstaProvider
       theme={currentTheme}
       dark={dark}
       touchRipple={touchRipple}
@@ -54,7 +54,7 @@ const App = forwardRef((props, ref) => {
       <Component ref={elRef} className={classes} {...attrs}>
         {children}
       </Component>
-    </TailwindMobileProvider>
+    </KonstaProvider>
   );
 });
 

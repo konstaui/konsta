@@ -1,24 +1,24 @@
 <template>
-  <twm-link :component="component" :class="c.base" navbar>
+  <k-link :component="component" :class="c.base" navbar>
     <span :class="c.icon">
-      <twm-back-icon :theme="theme" />
+      <k-back-icon :theme="theme" />
     </span>
     <span v-if="shouldShowText">{{ text }}</span>
     <slot />
-  </twm-link>
+  </k-link>
 </template>
 <script>
   import { computed } from 'vue';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import twmBackIcon from './icons/BackIcon.vue';
-  import twmLink from './Link.vue';
+  import kBackIcon from './icons/BackIcon.vue';
+  import kLink from './Link.vue';
 
   export default {
-    name: 'twm-navbar-back-link',
+    name: 'k-navbar-back-link',
     components: {
-      twmLink,
-      twmBackIcon,
+      kLink,
+      kBackIcon,
     },
     props: {
       component: {

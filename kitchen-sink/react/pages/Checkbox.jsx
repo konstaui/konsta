@@ -9,7 +9,7 @@ import {
   Block,
   List,
   ListItem,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function CheckboxPage() {
   const isPreview = document.location.href.includes('examplePreview');

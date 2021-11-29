@@ -28,7 +28,7 @@
   import CheckboxIcon from './icons/CheckboxIcon.vue';
 
   export default {
-    name: 'twm-radio',
+    name: 'k-radio',
     components: {
       CheckboxIcon,
     },

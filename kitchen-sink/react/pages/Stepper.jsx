@@ -8,7 +8,7 @@ import {
   BlockTitle,
   List,
   ListItem,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function StepperPage() {
   const isPreview = document.location.href.includes('examplePreview');

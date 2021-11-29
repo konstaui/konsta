@@ -6,7 +6,7 @@ import {
   Block,
   Fab,
   useTheme,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 import { Plus } from 'framework7-icons/react';
 import { MdAdd } from 'react-icons/md';
 

@@ -1,49 +1,47 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Subnavbar">
+  <k-page>
+    <k-navbar title="Subnavbar">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #subnavbar>
-        <twm-segmented strong>
-          <twm-segmented-button small strong active>
-            Button
-          </twm-segmented-button>
-          <twm-segmented-button small strong> Button </twm-segmented-button>
-          <twm-segmented-button small strong> Button </twm-segmented-button>
-        </twm-segmented>
+        <k-segmented strong>
+          <k-segmented-button small strong active> Button </k-segmented-button>
+          <k-segmented-button small strong> Button </k-segmented-button>
+          <k-segmented-button small strong> Button </k-segmented-button>
+        </k-segmented>
       </template>
-    </twm-navbar>
+    </k-navbar>
     <div class="relative">
-      <twm-block strong>
+      <k-block strong>
         <p>
           Subnavbar is useful when you need to put any additional elements into
           Navbar, like Tab Links or Search Bar. It also remains visible when
           Navbar hidden.
         </p>
-      </twm-block>
+      </k-block>
     </div>
-  </twm-page>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBlock,
-    twmSegmented,
-    twmSegmentedButton,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBlock,
+    kSegmented,
+    kSegmentedButton,
+  } from 'konsta/vue';
 
   export default {
     name: 'SubnavbarPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBlock,
-      twmSegmented,
-      twmSegmentedButton,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBlock,
+      kSegmented,
+      kSegmentedButton,
     },
     setup() {
       return {

@@ -1,84 +1,84 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Content Block">
+  <k-page>
+    <k-navbar title="Content Block">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block>
+    <k-block>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
         mollis, vulputate turpis vel, sagittis felis.
       </p>
-    </twm-block>
-    <twm-block-title>Block Title</twm-block-title>
-    <twm-block strong>
+    </k-block>
+    <k-block-title>Block Title</k-block-title>
+    <k-block strong>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
         mollis, vulputate turpis vel, sagittis felis.
       </p>
-    </twm-block>
-    <twm-block-title>With Header & Footer</twm-block-title>
-    <twm-block-header>Header</twm-block-header>
-    <twm-block strong>
+    </k-block>
+    <k-block-title>With Header & Footer</k-block-title>
+    <k-block-header>Header</k-block-header>
+    <k-block strong>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
         mollis, vulputate turpis vel, sagittis felis.
       </p>
-    </twm-block>
-    <twm-block-footer>Footer</twm-block-footer>
-    <twm-block-title class="text-2xl">Medium Title</twm-block-title>
-    <twm-block strong>
+    </k-block>
+    <k-block-footer>Footer</k-block-footer>
+    <k-block-title class="text-2xl">Medium Title</k-block-title>
+    <k-block strong>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
         mollis, vulputate turpis vel, sagittis felis.
       </p>
-    </twm-block>
-    <twm-block-title class="text-3xl">Large Title</twm-block-title>
-    <twm-block strong>
+    </k-block>
+    <k-block-title class="text-3xl">Large Title</k-block-title>
+    <k-block strong>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
         mollis, vulputate turpis vel, sagittis felis.
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Inset Block</twm-block-title>
-    <twm-block strong inset>
+    <k-block-title>Inset Block</k-block-title>
+    <k-block strong inset>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
         mollis, vulputate turpis vel, sagittis felis.
       </p>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBlock,
-    twmBlockFooter,
-    twmBlockHeader,
-    twmBlockTitle,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBlock,
+    kBlockFooter,
+    kBlockHeader,
+    kBlockTitle,
+  } from 'konsta/vue';
 
   export default {
     name: 'ContentBlockPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBlock,
-      twmBlockFooter,
-      twmBlockHeader,
-      twmBlockTitle,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBlock,
+      kBlockFooter,
+      kBlockHeader,
+      kBlockTitle,
     },
     setup() {
       return {

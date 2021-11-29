@@ -1,24 +1,24 @@
 <template>
-  <twm-page>
-    <twm-navbar title="List Button">
+  <k-page>
+    <k-navbar title="List Button">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-list>
-      <twm-list-button>Button 1</twm-list-button>
-      <twm-list-button>Button 2</twm-list-button>
-      <twm-list-button>Button 3</twm-list-button>
-    </twm-list>
+    <k-list>
+      <k-list-button>Button 1</k-list-button>
+      <k-list-button>Button 2</k-list-button>
+      <k-list-button>Button 3</k-list-button>
+    </k-list>
 
-    <twm-list inset>
-      <twm-list-button>Button 1</twm-list-button>
-      <twm-list-button>Button 2</twm-list-button>
-      <twm-list-button>Button 3</twm-list-button>
-    </twm-list>
-    <twm-list inset>
-      <twm-list-button
+    <k-list inset>
+      <k-list-button>Button 1</k-list-button>
+      <k-list-button>Button 2</k-list-button>
+      <k-list-button>Button 3</k-list-button>
+    </k-list>
+    <k-list inset>
+      <k-list-button
         :colors="{
           text: 'text-red-500',
           activeBg: 'active:bg-red-500',
@@ -26,27 +26,27 @@
         }"
       >
         Red Button
-      </twm-list-button>
-    </twm-list>
-  </twm-page>
+      </k-list-button>
+    </k-list>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmList,
-    twmListButton,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kList,
+    kListButton,
+  } from 'konsta/vue';
 
   export default {
     name: 'ListButtonPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmList,
-      twmListButton,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kList,
+      kListButton,
     },
     setup() {
       return {

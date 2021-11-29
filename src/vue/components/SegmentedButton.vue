@@ -1,19 +1,19 @@
 <template>
-  <twm-button v-bind="buttonProps">
+  <k-button v-bind="buttonProps">
     <slot />
-  </twm-button>
+  </k-button>
 </template>
 <script>
   import { computed } from 'vue';
-  import twmButton from './Button.vue';
+  import kButton from './Button.vue';
 
   export default {
-    name: 'twm-segmented-button',
+    name: 'k-segmented-button',
     components: {
-      twmButton,
+      kButton,
     },
     props: {
-      ...twmButton.props,
+      ...kButton.props,
       active: { type: Boolean, default: false },
       outline: { type: Boolean, default: false },
       strong: { type: Boolean, default: false },

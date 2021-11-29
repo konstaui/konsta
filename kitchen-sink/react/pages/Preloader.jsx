@@ -6,7 +6,7 @@ import {
   Block,
   BlockTitle,
   Preloader,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function PreloaderPage() {
   const isPreview = document.location.href.includes('examplePreview');

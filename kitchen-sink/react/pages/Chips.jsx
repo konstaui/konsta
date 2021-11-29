@@ -6,7 +6,7 @@ import {
   Chip,
   Block,
   BlockTitle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function ChipsPage() {
   const isPreview = document.location.href.includes('examplePreview');

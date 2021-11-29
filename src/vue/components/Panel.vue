@@ -12,7 +12,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-panel',
+    name: 'k-panel',
     props: {
       component: {
         type: String,

@@ -1,50 +1,50 @@
 <template>
-  <twm-page>
-    <twm-navbar title="FAB">
+  <k-page>
+    <k-navbar title="FAB">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
     <!-- Right Top -->
-    <twm-fab
+    <k-fab
       class="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20"
       :colors="{ bg: 'bg-red-500', activeBg: 'active:bg-red-600' }"
     >
       <template #icon>
         <component :is="PlusIcon" />
       </template>
-    </twm-fab>
+    </k-fab>
 
     <!-- Right Bottom -->
-    <twm-fab class="fixed right-4-safe bottom-4-safe z-20">
+    <k-fab class="fixed right-4-safe bottom-4-safe z-20">
       <template #icon>
         <component :is="PlusIcon" />
       </template>
-    </twm-fab>
+    </k-fab>
 
     <!-- Left Bottom -->
-    <twm-fab
+    <k-fab
       class="fixed left-4-safe bottom-4-safe z-20"
       :colors="{ bg: 'bg-green-500', activeBg: 'active:bg-green-600' }"
     >
       <template #icon>
         <component :is="PlusIcon" />
       </template>
-    </twm-fab>
+    </k-fab>
 
     <!-- Left Top -->
-    <twm-fab
+    <k-fab
       class="fixed left-4-safe ios:top-15-safe material:top-18-safe z-20"
       :colors="{ bg: 'bg-yellow-500', activeBg: 'active:bg-yellow-600' }"
     >
       <template #icon>
         <component :is="PlusIcon" />
       </template>
-    </twm-fab>
+    </k-fab>
 
     <!-- Center Center -->
-    <twm-fab
+    <k-fab
       class="
         fixed
         left-1/2
@@ -58,19 +58,19 @@
       <template #icon>
         <component :is="PlusIcon" />
       </template>
-    </twm-fab>
+    </k-fab>
 
     <!-- Center Bottom -->
-    <twm-fab
+    <k-fab
       class="fixed left-1/2 bottom-4-safe transform -translate-x-1/2 z-20"
       text="Create"
       text-position="after"
       ><template #icon>
         <component :is="PlusIcon" />
       </template>
-    </twm-fab>
+    </k-fab>
 
-    <twm-block class="space-y-4">
+    <k-block class="space-y-4">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quo rem
         beatae, delectus eligendi est saepe molestias perferendis suscipit,
@@ -100,8 +100,8 @@
         labore qui, officiis consectetur. Ipsa obcaecati aspernatur odio
         assumenda veniam, ipsum alias.
       </p>
-    </twm-block>
-    <twm-block class="space-y-4">
+    </k-block>
+    <k-block class="space-y-4">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ipsa
         debitis sed nihil eaque dolore cum iste quibusdam, accusamus doloribus,
@@ -143,19 +143,19 @@
         obcaecati voluptates minima maxime minus qui mollitia facere. Nostrum
         esse recusandae voluptatibus eligendi.
       </p>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import { computed } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBlock,
-    twmFab,
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBlock,
+    kFab,
     useTheme,
-  } from 'tailwind-mobile/vue';
+  } from 'konsta/vue';
   import { Plus } from 'framework7-icons/vue';
   import MdAdd from '../components/MdAdd.vue';
 
@@ -163,11 +163,11 @@
     name: 'FabPage',
     title: 'FAB (Floating Action Button)',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBlock,
-      twmFab,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBlock,
+      kFab,
     },
     setup() {
       const theme = useTheme();

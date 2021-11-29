@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext.js';
+import { KonstaContext } from './KonstaContext.js';
 import { cls } from './cls.js';
 
 const propClasses = (classesObj, theme, state) => {
@@ -44,7 +44,7 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
 };
 
 const useThemeClasses = ({ ios, material } = {}) => {
-  const context = useContext(TailwindMobileContext);
+  const context = useContext(KonstaContext);
   let theme = context.theme || 'ios';
   if (ios) theme = 'ios';
   if (material) theme = 'material';

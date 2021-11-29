@@ -6,7 +6,7 @@ import {
   Block,
   MenuList,
   MenuListItem,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 import DemoIcon from '../components/DemoIcon';
 
 export default function MenuListPage() {

@@ -12,7 +12,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-popup',
+    name: 'k-popup',
     props: {
       component: {
         type: String,

@@ -1,13 +1,13 @@
 <template>
   <component :is="component" :class="classes">
-    <tailwind-mobile-provider
+    <konsta-provider
       :theme="currentTheme"
       :dark="dark"
       :touch-ripple="touchRipple"
       :auto-theme-detection="false"
     >
       <slot />
-    </tailwind-mobile-provider>
+    </konsta-provider>
   </component>
 </template>
 <script>
@@ -15,12 +15,12 @@
   import { cls } from '../shared/cls.js';
   import { positionClass } from '../shared/position-class.js';
   import { useAutoTheme } from '../shared/use-auto-theme.js';
-  import TailwindMobileProvider from '../shared/TailwindMobileProvider.vue';
+  import KonstaProvider from '../shared/KonstaProvider.vue';
 
   export default {
-    name: 'twm-app',
+    name: 'k-app',
     components: {
-      TailwindMobileProvider,
+      KonstaProvider,
     },
     props: {
       component: {
@@ -48,9 +48,9 @@
       const currentTheme = useAutoTheme(props);
       const classes = computed(() =>
         cls(
-          currentTheme.value === 'ios' && `twm-ios`,
-          currentTheme.value === 'material' && 'twm-material',
-          'twm-app w-full h-full min-h-screen',
+          currentTheme.value === 'ios' && `k-ios`,
+          currentTheme.value === 'material' && 'k-material',
+          'k-app w-full h-full min-h-screen',
           props.safeAreas && 'safe-areas',
           positionClass('relative', ctx.attrs.class)
         )

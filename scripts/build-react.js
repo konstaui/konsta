@@ -12,13 +12,13 @@ module.exports = async (format, outputDir = 'package') => {
 
   // Fix import paths
   let fileContent = await fs.readFile(
-    `./${outputDir}/react/${format}/tailwind-mobile-react.js`,
+    `./${outputDir}/react/${format}/konsta-react.js`,
     'utf-8'
   );
   fileContent = fileContent.replace(/\.jsx/g, '.js');
   fileContent = `${bannerReact}\n${fileContent}`;
   await fs.writeFile(
-    `./${outputDir}/react/${format}/tailwind-mobile-react.js`,
+    `./${outputDir}/react/${format}/konsta-react.js`,
     fileContent
   );
 

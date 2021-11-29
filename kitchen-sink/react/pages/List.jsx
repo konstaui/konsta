@@ -9,7 +9,7 @@ import {
   List,
   ListGroup,
   ListItem,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 import DemoIcon from '../components/DemoIcon';
 
 export default function ListPage() {
@@ -78,7 +78,7 @@ export default function ListPage() {
         <ListItem
           link
           header="Email"
-          title="john@tailwind-mobile"
+          title="john@konsta"
           footer="Work"
           after="Edit"
           media={<DemoIcon />}

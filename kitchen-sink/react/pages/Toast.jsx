@@ -6,7 +6,7 @@ import {
   Button,
   Toast,
   Block,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function ToastPage() {
   const isPreview = document.location.href.includes('examplePreview');

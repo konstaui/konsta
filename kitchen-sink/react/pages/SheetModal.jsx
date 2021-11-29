@@ -8,7 +8,7 @@ import {
   Button,
   Toolbar,
   Link,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function SheetModalPage() {
   const isPreview = document.location.href.includes('examplePreview');

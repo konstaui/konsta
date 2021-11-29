@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import { App as TailwindMobileApp } from 'tailwind-mobile/react';
+import { App as KonstaApp } from 'konsta/react';
 
 import routes from '../routes.js';
 import HomePage from '../pages/Home.jsx';
@@ -16,7 +16,7 @@ function App() {
   }, []);
   const inIFrame = window.parent !== window;
   return (
-    <TailwindMobileApp theme={theme} safeAreas={!inIFrame}>
+    <KonstaApp theme={theme} safeAreas={!inIFrame}>
       <Router>
         <Switch>
           {routes.map((route) => (
@@ -29,7 +29,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </TailwindMobileApp>
+    </KonstaApp>
   );
 }
 

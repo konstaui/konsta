@@ -1,8 +1,8 @@
 import React from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext.js';
+import { KonstaContext } from './KonstaContext.js';
 import { useAutoTheme } from './use-auto-theme.js';
 
-const TailwindMobileProvider = (props) => {
+const KonstaProvider = (props) => {
   const {
     theme,
     dark,
@@ -14,12 +14,10 @@ const TailwindMobileProvider = (props) => {
   const currentTheme = useAutoTheme(theme, autoThemeDetection);
 
   return (
-    <TailwindMobileContext.Provider
-      value={{ theme: currentTheme, dark, touchRipple }}
-    >
+    <KonstaContext.Provider value={{ theme: currentTheme, dark, touchRipple }}>
       {children}
-    </TailwindMobileContext.Provider>
+    </KonstaContext.Provider>
   );
 };
 
-export { TailwindMobileProvider };
+export { KonstaProvider };

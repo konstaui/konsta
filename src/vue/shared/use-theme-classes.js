@@ -44,7 +44,7 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
 
 const useThemeClasses = (props, classesObj) =>
   computed(() => {
-    const context = inject('TailwindMobileContext');
+    const context = inject('KonstaContext');
     let theme = context.value.theme || 'ios';
     if (props.ios) theme = 'ios';
     if (props.material) theme = 'material';

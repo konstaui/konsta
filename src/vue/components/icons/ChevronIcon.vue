@@ -13,6 +13,6 @@
 </template>
 <script>
   export default {
-    name: 'twm-chevron-icon',
+    name: 'k-chevron-icon',
   };
 </script>

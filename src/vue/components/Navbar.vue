@@ -31,7 +31,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
-    name: 'twm-navbar',
+    name: 'k-navbar',
     props: {
       component: {
         type: String,

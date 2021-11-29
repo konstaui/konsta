@@ -13,6 +13,6 @@
 </template>
 <script>
   export default {
-    name: 'twm-delete-icon',
+    name: 'k-delete-icon',
   };
 </script>

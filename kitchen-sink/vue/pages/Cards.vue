@@ -1,55 +1,55 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Cards">
+  <k-page>
+    <k-navbar title="Cards">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title :with-block="false">Simple Cards</twm-block-title>
-    <twm-card>
+    <k-block-title :with-block="false">Simple Cards</k-block-title>
+    <k-card>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
-    </twm-card>
-    <twm-card header="Card header" footer="Card footer">
+    </k-card>
+    <k-card header="Card header" footer="Card footer">
       Card with header and footer. Card headers are used to display card titles
       and footers for additional information or just for custom actions.
-    </twm-card>
-    <twm-card>
+    </k-card>
+    <k-card>
       Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Suspendisse feugiat sem est, non tincidunt ligula volutpat sit amet.
       Mauris aliquet magna justo.
-    </twm-card>
+    </k-card>
 
-    <twm-block-title :with-block="false">Outline Cards</twm-block-title>
-    <twm-card outline>
+    <k-block-title :with-block="false">Outline Cards</k-block-title>
+    <k-card outline>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
-    </twm-card>
-    <twm-card outline header="Card header" footer="Card footer">
+    </k-card>
+    <k-card outline header="Card header" footer="Card footer">
       Card with header and footer. Card headers are used to display card titles
       and footers for additional information or just for custom actions.
-    </twm-card>
-    <twm-card outline>
+    </k-card>
+    <k-card outline>
       Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Suspendisse feugiat sem est, non tincidunt ligula volutpat sit amet.
       Mauris aliquet magna justo.{' '}
-    </twm-card>
+    </k-card>
 
-    <twm-block-title :with-block="false">Card With List View</twm-block-title>
-    <twm-card>
-      <twm-list nested class="-m-4">
-        <twm-list-item href title="Link 1" />
-        <twm-list-item href title="Link 2" />
-        <twm-list-item href title="Link 3" />
-        <twm-list-item href title="Link 4" />
-        <twm-list-item href title="Link 5" />
-      </twm-list>
-    </twm-card>
+    <k-block-title :with-block="false">Card With List View</k-block-title>
+    <k-card>
+      <k-list nested class="-m-4">
+        <k-list-item href title="Link 1" />
+        <k-list-item href title="Link 2" />
+        <k-list-item href title="Link 3" />
+        <k-list-item href title="Link 4" />
+        <k-list-item href title="Link 5" />
+      </k-list>
+    </k-card>
 
-    <twm-block-title :with-block="false">Styled Cards</twm-block-title>
+    <k-block-title :with-block="false">Styled Cards</k-block-title>
     <div class="lg:grid lg:grid-cols-2">
-      <twm-card>
+      <k-card>
         <template #header>
           <div
             class="
@@ -73,8 +73,8 @@
         </template>
         <template #footer>
           <div class="flex justify-between">
-            <twm-link>Like</twm-link>
-            <twm-link>Read more</twm-link>
+            <k-link>Like</k-link>
+            <k-link>Read more</k-link>
           </div>
         </template>
         <div class="text-gray-500 mb-3">Posted on January 21, 2021</div>
@@ -82,8 +82,8 @@
           Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
           efficitur vitae non felis. Phasellus quis nibh hendrerit...
         </p>
-      </twm-card>
-      <twm-card>
+      </k-card>
+      <k-card>
         <template #header>
           <div
             class="
@@ -107,8 +107,8 @@
         </template>
         <template #footer>
           <div class="flex justify-between">
-            <twm-link>Like</twm-link>
-            <twm-link>Read more</twm-link>
+            <k-link>Like</k-link>
+            <k-link>Read more</k-link>
           </div>
         </template>
         <div class="text-gray-500 mb-3">Posted on January 21, 2021</div>
@@ -116,33 +116,33 @@
           Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
           efficitur vitae non felis. Phasellus quis nibh hendrerit...
         </p>
-      </twm-card>
+      </k-card>
     </div>
-  </twm-page>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmCard,
-    twmBlockTitle,
-    twmList,
-    twmListItem,
-    twmLink,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kCard,
+    kBlockTitle,
+    kList,
+    kListItem,
+    kLink,
+  } from 'konsta/vue';
 
   export default {
     name: 'CardsPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmCard,
-      twmBlockTitle,
-      twmList,
-      twmListItem,
-      twmLink,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kCard,
+      kBlockTitle,
+      kList,
+      kListItem,
+      kLink,
     },
     setup() {
       return {

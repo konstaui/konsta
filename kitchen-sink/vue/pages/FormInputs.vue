@@ -1,14 +1,14 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Form Inputs">
+  <k-page>
+    <k-navbar title="Form Inputs">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title>Full Layout / Inline Labels</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input
+    <k-block-title>Full Layout / Inline Labels</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input
         label="Name"
         inline-label
         type="text"
@@ -17,9 +17,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Password"
         inline-label
         type="password"
@@ -28,9 +28,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="E-mail"
         inline-label
         type="email"
@@ -39,15 +39,15 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input label="URL" inline-label type="url" placeholder="URL">
+      <k-list-input label="URL" inline-label type="url" placeholder="URL">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Phone"
         inline-label
         type="tel"
@@ -56,9 +56,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Gender"
         inline-label
         type="select"
@@ -71,9 +71,9 @@
         </template>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Birthday"
         inline-label
         type="date"
@@ -83,9 +83,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Date time"
         inline-label
         type="datetime-local"
@@ -94,9 +94,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Textarea"
         inline-label
         type="textarea"
@@ -106,18 +106,18 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
-    </twm-list>
+      </k-list-input>
+    </k-list>
 
-    <twm-block-title>Full Layout / Stacked Labels</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input label="Name" type="text" placeholder="Your name">
+    <k-block-title>Full Layout / Stacked Labels</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input label="Name" type="text" placeholder="Your name">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Password"
         type="password"
         placeholder="Your password"
@@ -125,27 +125,27 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input label="E-mail" type="email" placeholder="Your e-mail">
+      <k-list-input label="E-mail" type="email" placeholder="Your e-mail">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input label="URL" type="url" placeholder="URL">
+      <k-list-input label="URL" type="url" placeholder="URL">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input label="Phone" type="tel" placeholder="Your phone number">
+      <k-list-input label="Phone" type="tel" placeholder="Your phone number">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Gender"
         type="select"
         dropdown
@@ -157,9 +157,9 @@
         </template>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Birthday"
         type="date"
         default-value="2014-04-30"
@@ -168,9 +168,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Date time"
         type="datetime-local"
         placeholder="Please choose..."
@@ -178,9 +178,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Textarea"
         type="textarea"
         placeholder="Bio"
@@ -189,12 +189,12 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
-    </twm-list>
+      </k-list-input>
+    </k-list>
 
-    <twm-block-title>Floating Labels</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input
+    <k-block-title>Floating Labels</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input
         label="Name"
         floating-label
         type="text"
@@ -203,9 +203,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Password"
         floating-label
         type="password"
@@ -214,9 +214,9 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="E-mail"
         floating-label
         type="email"
@@ -225,15 +225,15 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input label="URL" floating-label type="url" placeholder="URL">
+      <k-list-input label="URL" floating-label type="url" placeholder="URL">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input
+      <k-list-input
         label="Phone"
         floating-label
         type="tel"
@@ -242,12 +242,12 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
-    </twm-list>
+      </k-list-input>
+    </k-list>
 
-    <twm-block-title>Validation + Additional Info</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input
+    <k-block-title>Validation + Additional Info</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input
         label="Name"
         type="text"
         placeholder="Your name"
@@ -261,12 +261,12 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
-    </twm-list>
+      </k-list-input>
+    </k-list>
 
-    <twm-block-title>Clear Button</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input
+    <k-block-title>Clear Button</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input
         label="TV Show"
         type="text"
         placeholder="Your favorite TV show"
@@ -279,119 +279,119 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
-    </twm-list>
+      </k-list-input>
+    </k-list>
 
-    <twm-block-title>Icon + Input</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input type="text" placeholder="Your name">
+    <k-block-title>Icon + Input</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input type="text" placeholder="Your name">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input type="password" placeholder="Your password">
+      <k-list-input type="password" placeholder="Your password">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input type="email" placeholder="Your e-mail">
+      <k-list-input type="email" placeholder="Your e-mail">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
+      </k-list-input>
 
-      <twm-list-input type="url" placeholder="URL">
+      <k-list-input type="url" placeholder="URL">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-input>
-    </twm-list>
+      </k-list-input>
+    </k-list>
 
-    <twm-block-title>Label + Input</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input label="Name" type="text" placeholder="Your name" />
+    <k-block-title>Label + Input</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input label="Name" type="text" placeholder="Your name" />
 
-      <twm-list-input
+      <k-list-input
         label="Password"
         type="password"
         placeholder="Your password"
       />
 
-      <twm-list-input label="E-mail" type="email" placeholder="Your e-mail" />
+      <k-list-input label="E-mail" type="email" placeholder="Your e-mail" />
 
-      <twm-list-input label="URL" type="url" placeholder="URL" />
-    </twm-list>
+      <k-list-input label="URL" type="url" placeholder="URL" />
+    </k-list>
 
-    <twm-block-title>Only Inputs</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input type="text" placeholder="Your name" />
+    <k-block-title>Only Inputs</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input type="text" placeholder="Your name" />
 
-      <twm-list-input type="password" placeholder="Your password" />
+      <k-list-input type="password" placeholder="Your password" />
 
-      <twm-list-input type="email" placeholder="Your e-mail" />
+      <k-list-input type="email" placeholder="Your e-mail" />
 
-      <twm-list-input type="url" placeholder="URL" />
-    </twm-list>
+      <k-list-input type="url" placeholder="URL" />
+    </k-list>
 
-    <twm-block-title>Inputs + Additional Info</twm-block-title>
-    <twm-list :hairlines="hairlines">
-      <twm-list-input
+    <k-block-title>Inputs + Additional Info</k-block-title>
+    <k-list :hairlines="hairlines">
+      <k-list-input
         type="text"
         placeholder="Your name"
         info="Full name please"
       />
 
-      <twm-list-input
+      <k-list-input
         type="password"
         placeholder="Your password"
         info="8 characters minimum"
       />
 
-      <twm-list-input
+      <k-list-input
         type="email"
         placeholder="Your e-mail"
         info="Your work e-mail address"
       />
 
-      <twm-list-input type="url" placeholder="URL" info="Your website URL" />
-    </twm-list>
+      <k-list-input type="url" placeholder="URL" info="Your website URL" />
+    </k-list>
 
-    <twm-block-title>Only Inputs Inset</twm-block-title>
-    <twm-list inset>
-      <twm-list-input type="text" placeholder="Your name" />
+    <k-block-title>Only Inputs Inset</k-block-title>
+    <k-list inset>
+      <k-list-input type="text" placeholder="Your name" />
 
-      <twm-list-input type="password" placeholder="Your password" />
+      <k-list-input type="password" placeholder="Your password" />
 
-      <twm-list-input type="email" placeholder="Your e-mail" />
+      <k-list-input type="email" placeholder="Your e-mail" />
 
-      <twm-list-input type="url" placeholder="URL" />
-    </twm-list>
-  </twm-page>
+      <k-list-input type="url" placeholder="URL" />
+    </k-list>
+  </k-page>
 </template>
 <script>
   import { ref, computed } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBlockTitle,
-    twmList,
-    twmListInput,
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBlockTitle,
+    kList,
+    kListInput,
     useTheme,
-  } from 'tailwind-mobile/vue';
+  } from 'konsta/vue';
   import DemoIcon from '../components/DemoIcon.vue';
 
   export default {
     name: 'FormInputsPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBlockTitle,
-      twmList,
-      twmListInput,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBlockTitle,
+      kList,
+      kListInput,
       DemoIcon,
     },
     setup() {

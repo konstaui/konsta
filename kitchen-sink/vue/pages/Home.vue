@@ -1,40 +1,40 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Tailwind Mobile" />
+  <k-page>
+    <k-navbar title="Konsta UI" />
 
-    <twm-block-title>Theme</twm-block-title>
-    <twm-list>
-      <twm-list-item label title="iOS Theme">
+    <k-block-title>Theme</k-block-title>
+    <k-list>
+      <k-list-item label title="iOS Theme">
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             :checked="theme === 'ios'"
             @change="() => setTheme('ios')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Material Theme">
+      </k-list-item>
+      <k-list-item label title="Material Theme">
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             :checked="theme === 'material'"
             @change="() => setTheme('material')"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-list>
-      <twm-list-item title="Dark Mode">
+    <k-list>
+      <k-list-item title="Dark Mode">
         <template #after>
-          <twm-toggle :checked="darkMode" @change="() => toggleDarkMode()" />
+          <k-toggle :checked="darkMode" @change="() => toggleDarkMode()" />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-block-title>Components</twm-block-title>
-    <twm-list>
-      <twm-list-item
+    <k-block-title>Components</k-block-title>
+    <k-list>
+      <k-list-item
         v-for="route in routes"
         :key="route.path"
         :title="route.title"
@@ -45,20 +45,20 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-    </twm-list>
-  </twm-page>
+      </k-list-item>
+    </k-list>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmBlockTitle,
-    twmList,
-    twmListItem,
-    twmRadio,
-    twmToggle,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kBlockTitle,
+    kList,
+    kListItem,
+    kRadio,
+    kToggle,
+  } from 'konsta/vue';
   import { inject, onMounted, ref, computed } from 'vue';
 
   // eslint-disable-next-line
@@ -68,13 +68,13 @@
   export default {
     name: 'HomePage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmBlockTitle,
-      twmList,
-      twmListItem,
-      twmRadio,
-      twmToggle,
+      kPage,
+      kNavbar,
+      kBlockTitle,
+      kList,
+      kListItem,
+      kRadio,
+      kToggle,
       DemoIcon,
     },
 

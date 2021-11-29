@@ -17,7 +17,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
-    name: 'twm-link',
+    name: 'k-link',
     props: {
       component: {
         type: String,

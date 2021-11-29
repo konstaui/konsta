@@ -12,7 +12,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-sheet',
+    name: 'k-sheet',
     props: {
       component: {
         type: String,

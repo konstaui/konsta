@@ -9,7 +9,7 @@ import {
   Button,
   List,
   ListItem,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function PopoverPage() {
   const isPreview = document.location.href.includes('examplePreview');

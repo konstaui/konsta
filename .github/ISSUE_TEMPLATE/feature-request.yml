@@ -1,5 +1,5 @@
 name: "\U0001F680 New feature proposal"
-description: Propose a new feature to be added to Tailwind Mobile
+description: Propose a new feature to be added to Konsta UI
 labels: ['feature request']
 body:
   - type: markdown
@@ -10,7 +10,7 @@ body:
     id: feature-description
     attributes:
       label: Clear and concise description of the problem
-      description: As a developer using Tailwind Mobile I want [goal / wish] so that [benefit]
+      description: As a developer using Konsta UI I want [goal / wish] so that [benefit]
     validations:
       required: true
   - type: textarea

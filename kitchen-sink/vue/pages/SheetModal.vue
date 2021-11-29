@@ -1,36 +1,34 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Sheet Modal">
+  <k-page>
+    <k-navbar title="Sheet Modal">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block strong class="space-y-4">
+    <k-block strong class="space-y-4">
       <p>
         Sheet Modals slide up from the bottom of the screen to reveal more
         content. Such modals allow to create custom overlays with custom
         content.
       </p>
       <p>
-        <twm-button @click="() => (sheetOpened = true)">Open Sheet</twm-button>
+        <k-button @click="() => (sheetOpened = true)">Open Sheet</k-button>
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-sheet
+    <k-sheet
       class="pb-safe"
       :opened="sheetOpened"
       @backdropclick="() => (sheetOpened = false)"
     >
-      <twm-toolbar top>
+      <k-toolbar top>
         <div class="left" />
         <div class="right">
-          <twm-link toolbar @click="() => (sheetOpened = false)">
-            Done
-          </twm-link>
+          <k-link toolbar @click="() => (sheetOpened = false)"> Done </k-link>
         </div>
-      </twm-toolbar>
-      <twm-block>
+      </k-toolbar>
+      <k-block>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ad
           excepturi nesciunt nobis aliquam. Quibusdam ducimus neque
@@ -38,36 +36,36 @@
           excepturi voluptatem dolore itaque sapiente dolores!
         </p>
         <div class="mt-4">
-          <twm-button @click="() => (sheetOpened = false)">Action</twm-button>
+          <k-button @click="() => (sheetOpened = false)">Action</k-button>
         </div>
-      </twm-block>
-    </twm-sheet>
-  </twm-page>
+      </k-block>
+    </k-sheet>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmSheet,
-    twmBlock,
-    twmButton,
-    twmToolbar,
-    twmLink,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kSheet,
+    kBlock,
+    kButton,
+    kToolbar,
+    kLink,
+  } from 'konsta/vue';
 
   export default {
     name: 'SheetModalPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmSheet,
-      twmBlock,
-      twmButton,
-      twmToolbar,
-      twmLink,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kSheet,
+      kBlock,
+      kButton,
+      kToolbar,
+      kLink,
     },
     setup() {
       const sheetOpened = ref(false);

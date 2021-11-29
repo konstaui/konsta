@@ -8,7 +8,7 @@ import {
   Progressbar,
   Segmented,
   SegmentedButton,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function ProgressbarPage() {
   const isPreview = document.location.href.includes('examplePreview');

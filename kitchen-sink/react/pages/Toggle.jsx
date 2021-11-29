@@ -6,7 +6,7 @@ import {
   List,
   ListItem,
   Toggle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function TogglePage() {
   const isPreview = document.location.href.includes('examplePreview');

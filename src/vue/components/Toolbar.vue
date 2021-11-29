@@ -14,7 +14,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
-    name: 'twm-toolbar',
+    name: 'k-toolbar',
     props: {
       component: {
         type: String,

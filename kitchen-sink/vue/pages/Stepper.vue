@@ -1,21 +1,21 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Stepper">
+  <k-page>
+    <k-navbar title="Stepper">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title>Shape and size</twm-block-title>
-    <twm-block strong class="text-center space-y-4">
+    <k-block-title>Shape and size</k-block-title>
+    <k-block strong class="text-center space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
           <div class="block text-xs mb-1">Default</div>
-          <twm-stepper :value="value" @plus="increase" @minus="decrease" />
+          <k-stepper :value="value" @plus="increase" @minus="decrease" />
         </div>
         <div>
           <div class="block text-xs mb-1">Round</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             rounded
             @plus="increase"
@@ -27,7 +27,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             outline
             @plus="increase"
@@ -36,7 +36,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Rounded Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             outline
             rounded
@@ -49,16 +49,11 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Small</div>
-          <twm-stepper
-            :value="value"
-            small
-            @plus="increase"
-            @minus="decrease"
-          />
+          <k-stepper :value="value" small @plus="increase" @minus="decrease" />
         </div>
         <div>
           <div class="block text-xs mb-1">Small Round</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             small
             rounded
@@ -71,7 +66,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Small Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             small
             outline
@@ -81,7 +76,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Small Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             small
             rounded
@@ -95,16 +90,11 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Large</div>
-          <twm-stepper
-            :value="value"
-            large
-            @plus="increase"
-            @minus="decrease"
-          />
+          <k-stepper :value="value" large @plus="increase" @minus="decrease" />
         </div>
         <div>
           <div class="block text-xs mb-1">Large Round</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             large
             rounded
@@ -117,7 +107,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Large Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             large
             outline
@@ -127,7 +117,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Large Rounded Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             large
             rounded
@@ -137,23 +127,18 @@
           />
         </div>
       </div>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Raised</twm-block-title>
-    <twm-block strong class="text-center space-y-4">
+    <k-block-title>Raised</k-block-title>
+    <k-block strong class="text-center space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
           <div class="block text-xs mb-1">Default</div>
-          <twm-stepper
-            :value="value"
-            raised
-            @plus="increase"
-            @minus="decrease"
-          />
+          <k-stepper :value="value" raised @plus="increase" @minus="decrease" />
         </div>
         <div>
           <div class="block text-xs mb-1">Round</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             rounded
@@ -166,7 +151,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             outline
@@ -176,7 +161,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Round Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             outline
@@ -190,7 +175,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Small</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             small
@@ -200,7 +185,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Small Round</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             small
@@ -214,7 +199,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Small Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             small
@@ -225,7 +210,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Small Rounded Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             small
@@ -240,7 +225,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Large</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             large
@@ -250,7 +235,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Large Round</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             large
@@ -264,7 +249,7 @@
       <div class="grid grid-cols-2 gap-4 margin-top">
         <div>
           <div class="block text-xs mb-1">Large Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             large
@@ -275,7 +260,7 @@
         </div>
         <div>
           <div class="block text-xs mb-1">Large Rounded Outline</div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             large
@@ -286,11 +271,11 @@
           />
         </div>
       </div>
-    </twm-block>
-    <twm-block-title>With Text Input</twm-block-title>
-    <twm-block strong class="text-center space-y-4">
+    </k-block>
+    <k-block-title>With Text Input</k-block-title>
+    <k-block strong class="text-center space-y-4">
       <div>
-        <twm-stepper
+        <k-stepper
           :value="inputValue"
           input
           @input="onInputInput"
@@ -300,7 +285,7 @@
         />
       </div>
       <div>
-        <twm-stepper
+        <k-stepper
           :value="inputValue"
           outline
           input
@@ -310,22 +295,22 @@
           @minus="decreaseInput"
         />
       </div>
-    </twm-block>
-    <twm-block-title>Only Buttons</twm-block-title>
-    <twm-list>
-      <twm-list-item :title="`Value is ${value}`">
+    </k-block>
+    <k-block-title>Only Buttons</k-block-title>
+    <k-list>
+      <k-list-item :title="`Value is ${value}`">
         <template #after>
-          <twm-stepper
+          <k-stepper
             :value="value"
             buttons-only
             @plus="increase"
             @minus="decrease"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item :title="`Value is ${value}`">
+      </k-list-item>
+      <k-list-item :title="`Value is ${value}`">
         <template #after>
-          <twm-stepper
+          <k-stepper
             :value="value"
             outline
             buttons-only
@@ -333,10 +318,10 @@
             @minus="decrease"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item :title="`Value is ${value}`">
+      </k-list-item>
+      <k-list-item :title="`Value is ${value}`">
         <template #after>
-          <twm-stepper
+          <k-stepper
             :value="value"
             raised
             outline
@@ -345,14 +330,14 @@
             @minus="decrease"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-block-title>Colors</twm-block-title>
-    <twm-block strong class="text-center space-y-4">
+    <k-block-title>Colors</k-block-title>
+    <k-block strong class="text-center space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             :colors="{
               text: 'text-red-500',
@@ -366,7 +351,7 @@
           />
         </div>
         <div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             rounded
             :colors="{
@@ -384,7 +369,7 @@
 
       <div class="grid grid-cols-2 gap-4">
         <div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             :colors="{
               text: 'text-yellow-500',
@@ -398,7 +383,7 @@
           />
         </div>
         <div>
-          <twm-stepper
+          <k-stepper
             :value="value"
             rounded
             :colors="{
@@ -413,33 +398,33 @@
           />
         </div>
       </div>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmStepper,
-    twmBlock,
-    twmBlockTitle,
-    twmList,
-    twmListItem,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kStepper,
+    kBlock,
+    kBlockTitle,
+    kList,
+    kListItem,
+  } from 'konsta/vue';
   import { ref } from '@vue/reactivity';
 
   export default {
     name: 'StepperPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmStepper,
-      twmBlock,
-      twmBlockTitle,
-      twmList,
-      twmListItem,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kStepper,
+      kBlock,
+      kBlockTitle,
+      kList,
+      kListItem,
     },
     setup() {
       const value = ref(1);

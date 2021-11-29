@@ -1,78 +1,74 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Toast">
+  <k-page>
+    <k-navbar title="Toast">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block strong class="space-y-4">
-      <twm-toast position="left" :opened="opened.left">
+    <k-block strong class="space-y-4">
+      <k-toast position="left" :opened="opened.left">
         <template #button>
-          <twm-button clear inline @click="() => (opened.left = false)">
+          <k-button clear inline @click="() => (opened.left = false)">
             Close
-          </twm-button>
+          </k-button>
         </template>
         <div class="flex-shrink">Hello this is left toast!</div>
-      </twm-toast>
-      <twm-toast position="center" :opened="opened.center">
+      </k-toast>
+      <k-toast position="center" :opened="opened.center">
         <template #button>
-          <twm-button clear inline @click="() => (opened.center = false)">
+          <k-button clear inline @click="() => (opened.center = false)">
             Close
-          </twm-button>
+          </k-button>
         </template>
         <div class="flex-shrink">Hello this is center toast!</div>
-      </twm-toast>
-      <twm-toast position="right" :opened="opened.right">
+      </k-toast>
+      <k-toast position="right" :opened="opened.right">
         <template #button>
-          <twm-button clear inline @click="() => (opened.right = false)">
+          <k-button clear inline @click="() => (opened.right = false)">
             Close
-          </twm-button>
+          </k-button>
         </template>
         <div class="flex-shrink">Hello this is right toast!</div>
-      </twm-toast>
+      </k-toast>
       <p>
         Toasts provide brief feedback about an operation through a message on
         the screen.
       </p>
       <p>
-        <twm-button @click="() => openToast('left')">
-          Toast on Left
-        </twm-button>
+        <k-button @click="() => openToast('left')"> Toast on Left </k-button>
       </p>
       <p>
-        <twm-button @click="() => openToast('center')">
+        <k-button @click="() => openToast('center')">
           Toast on Center
-        </twm-button>
+        </k-button>
       </p>
       <p>
-        <twm-button @click="() => openToast('right')">
-          Toast on Right
-        </twm-button>
+        <k-button @click="() => openToast('right')"> Toast on Right </k-button>
       </p>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmButton,
-    twmToast,
-    twmBlock,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kButton,
+    kToast,
+    kBlock,
+  } from 'konsta/vue';
 
   export default {
     name: 'ToastPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmButton,
-      twmToast,
-      twmBlock,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kButton,
+      kToast,
+      kBlock,
     },
     setup() {
       const opened = ref({

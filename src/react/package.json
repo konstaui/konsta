@@ -1,6 +1,6 @@
 {
-  "name": "tailwind-mobile/react",
+  "name": "konsta/react",
   "private": true,
-  "jsnext:main": "./tailwind-mobile-react.js",
-  "module": "./tailwind-mobile-react.js"
+  "jsnext:main": "./konsta-react.js",
+  "module": "./konsta-react.js"
 }

@@ -1,77 +1,77 @@
 <template>
-  <twm-page>
-    <twm-navbar title="List">
+  <k-page>
+    <k-navbar title="List">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title>Simple List</twm-block-title>
-    <twm-list>
-      <twm-list-item title="Item 1" />
-      <twm-list-item title="Item 2" />
-      <twm-list-item title="Item 3" />
-    </twm-list>
+    <k-block-title>Simple List</k-block-title>
+    <k-list>
+      <k-list-item title="Item 1" />
+      <k-list-item title="Item 2" />
+      <k-list-item title="Item 3" />
+    </k-list>
 
-    <twm-block-title>Simple Links List</twm-block-title>
-    <twm-list>
-      <twm-list-item title="Link 1" link />
-      <twm-list-item title="Link 2" link />
-      <twm-list-item title="Link 3" link />
-    </twm-list>
+    <k-block-title>Simple Links List</k-block-title>
+    <k-list>
+      <k-list-item title="Link 1" link />
+      <k-list-item title="Link 2" link />
+      <k-list-item title="Link 3" link />
+    </k-list>
 
-    <twm-block-title>Data list, with icons</twm-block-title>
-    <twm-list>
-      <twm-list-item title="Ivan Petrov" after="CEO">
+    <k-block-title>Data list, with icons</k-block-title>
+    <k-list>
+      <k-list-item title="Ivan Petrov" after="CEO">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item title="John Doe">
+      </k-list-item>
+      <k-list-item title="John Doe">
         <template #media>
           <demo-icon />
         </template>
         <template #after>
-          <twm-badge>5</twm-badge>
+          <k-badge>5</k-badge>
         </template>
-      </twm-list-item>
-      <twm-list-item title="Jenna Smith">
+      </k-list-item>
+      <k-list-item title="Jenna Smith">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-    </twm-list>
-    <twm-block-title>Links</twm-block-title>
-    <twm-list>
-      <twm-list-item link title="Ivan Petrov" after="CEO">
+      </k-list-item>
+    </k-list>
+    <k-block-title>Links</k-block-title>
+    <k-list>
+      <k-list-item link title="Ivan Petrov" after="CEO">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item link title="John Doe" after="Cleaner">
+      </k-list-item>
+      <k-list-item link title="John Doe" after="Cleaner">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item link title="Jenna Smith">
+      </k-list-item>
+      <k-list-item link title="Jenna Smith">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-    </twm-list>
-    <twm-block-title>Links, Header, Footer</twm-block-title>
-    <twm-list>
-      <twm-list-item link header="Name" title="John Doe" after="Edit">
+      </k-list-item>
+    </k-list>
+    <k-block-title>Links, Header, Footer</k-block-title>
+    <k-list>
+      <k-list-item link header="Name" title="John Doe" after="Edit">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item link header="Phone" title="+7 90 111-22-3344" after="Edit">
+      </k-list-item>
+      <k-list-item link header="Phone" title="+7 90 111-22-3344" after="Edit">
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </k-list-item>
+      <k-list-item
         link
         header="Email"
         title="john@doe"
@@ -81,82 +81,82 @@
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </k-list-item>
+      <k-list-item
         link
         header="Email"
-        title="john@tailwind-mobile"
+        title="john@konsta"
         footer="Work"
         after="Edit"
       >
         <template #media>
           <demo-icon />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-block-title>Links, no icons</twm-block-title>
-    <twm-list>
-      <twm-list-item link title="Ivan Petrov" />
-      <twm-list-item link title="John Doe" />
-      <twm-list-item divider title="Divider Here" />
-      <twm-list-item link title="Ivan Petrov" />
-      <twm-list-item link title="Jenna Smith" />
-    </twm-list>
+    <k-block-title>Links, no icons</k-block-title>
+    <k-list>
+      <k-list-item link title="Ivan Petrov" />
+      <k-list-item link title="John Doe" />
+      <k-list-item divider title="Divider Here" />
+      <k-list-item link title="Ivan Petrov" />
+      <k-list-item link title="Jenna Smith" />
+    </k-list>
 
-    <twm-block-title>Grouped with sticky titles</twm-block-title>
-    <twm-list>
-      <twm-list-group>
-        <twm-list-item
+    <k-block-title>Grouped with sticky titles</k-block-title>
+    <k-list>
+      <k-list-group>
+        <k-list-item
           title="A"
           group-title
           class="ios:top-11-safe material:top-14-safe"
         />
-        <twm-list-item title="Aaron " />
-        <twm-list-item title="Abbie" />
-        <twm-list-item title="Adam" />
-      </twm-list-group>
-      <twm-list-group>
-        <twm-list-item
+        <k-list-item title="Aaron " />
+        <k-list-item title="Abbie" />
+        <k-list-item title="Adam" />
+      </k-list-group>
+      <k-list-group>
+        <k-list-item
           title="B"
           group-title
           class="ios:top-11-safe material:top-14-safe"
         />
-        <twm-list-item title="Bailey" />
-        <twm-list-item title="Barclay" />
-        <twm-list-item title="Bartolo" />
-      </twm-list-group>
-      <twm-list-group>
-        <twm-list-item
+        <k-list-item title="Bailey" />
+        <k-list-item title="Barclay" />
+        <k-list-item title="Bartolo" />
+      </k-list-group>
+      <k-list-group>
+        <k-list-item
           title="C"
           group-title
           class="ios:top-11-safe material:top-14-safe"
         />
-        <twm-list-item title="Caiden" />
-        <twm-list-item title="Calvin" />
-        <twm-list-item title="Candy" />
-      </twm-list-group>
-    </twm-list>
+        <k-list-item title="Caiden" />
+        <k-list-item title="Calvin" />
+        <k-list-item title="Candy" />
+      </k-list-group>
+    </k-list>
 
-    <twm-block-title>Inset List</twm-block-title>
-    <twm-list inset>
-      <twm-list-item title="Item 1" />
-      <twm-list-item title="Item 2" />
-      <twm-list-item title="Item 3" />
-    </twm-list>
+    <k-block-title>Inset List</k-block-title>
+    <k-list inset>
+      <k-list-item title="Item 1" />
+      <k-list-item title="Item 2" />
+      <k-list-item title="Item 3" />
+    </k-list>
 
-    <twm-block-title class="text-2xl">Media Lists</twm-block-title>
-    <twm-block>
+    <k-block-title class="text-2xl">Media Lists</k-block-title>
+    <k-block>
       <p>
         Media Lists are almost the same as Data Lists, but with a more flexible
         layout for visualization of more complex data, like products, services,
         user, etc.
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Songs</twm-block-title>
-    <twm-list>
-      <twm-list-item
+    <k-block-title>Songs</k-block-title>
+    <k-list>
+      <k-list-item
         link
         title="Yellow Submarine"
         after="$15"
@@ -170,8 +170,8 @@
             alt="demo"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </k-list-item>
+      <k-list-item
         link
         title="Don't Stop Me Now"
         after="$22"
@@ -185,8 +185,8 @@
             alt="demo"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </k-list-item>
+      <k-list-item
         link
         title="Billie Jean"
         after="$16"
@@ -200,67 +200,67 @@
             alt="demo"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
-    <twm-block-title>Mail App</twm-block-title>
-    <twm-list>
-      <twm-list-item
+      </k-list-item>
+    </k-list>
+    <k-block-title>Mail App</k-block-title>
+    <k-list>
+      <k-list-item
         link
         title="Facebook"
         after="17:14"
         subtitle="New messages from John Doe"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
-      <twm-list-item
+      <k-list-item
         link
         title="John Doe (via Twitter)"
         after="17:11"
         subtitle="John Doe (@_johndoe) mentioned you on Twitter!"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
-      <twm-list-item
+      <k-list-item
         link
         title="Facebook"
         after="16:48"
         subtitle="New messages from John Doe"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
-      <twm-list-item
+      <k-list-item
         link
         title="John Doe (via Twitter)"
         after="15:32"
         subtitle="John Doe (@_johndoe) mentioned you on Twitter!"
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
-    </twm-list>
-  </twm-page>
+    </k-list>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBadge,
-    twmBlock,
-    twmBlockTitle,
-    twmList,
-    twmListGroup,
-    twmListItem,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBadge,
+    kBlock,
+    kBlockTitle,
+    kList,
+    kListGroup,
+    kListItem,
+  } from 'konsta/vue';
   import DemoIcon from '../components/DemoIcon.vue';
 
   export default {
     name: 'ListPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBadge,
-      twmBlock,
-      twmBlockTitle,
-      twmList,
-      twmListGroup,
-      twmListItem,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBadge,
+      kBlock,
+      kBlockTitle,
+      kList,
+      kListGroup,
+      kListItem,
       DemoIcon,
     },
     setup() {

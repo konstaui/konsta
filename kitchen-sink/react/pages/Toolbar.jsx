@@ -7,7 +7,7 @@ import {
   Link,
   Block,
   Button,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function ToolbarPage() {
   const isPreview = document.location.href.includes('examplePreview');

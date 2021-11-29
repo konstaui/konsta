@@ -7,7 +7,7 @@ import {
   Block,
   Link,
   Button,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function SidePanelsPage() {
   const isPreview = document.location.href.includes('examplePreview');
@@ -22,7 +22,7 @@ export default function SidePanelsPage() {
 
       <Block strong className="space-y-4">
         <p>
-          Tailwind Mobile comes with 2 panels (on left and on right), both are
+          Konsta UI comes with 2 panels (on left and on right), both are
           optional. You can put absolutely anything inside: data lists, forms,
           custom content, etc.
         </p>

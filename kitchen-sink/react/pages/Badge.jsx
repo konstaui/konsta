@@ -10,7 +10,7 @@ import {
   ListItem,
   Tabbar,
   TabbarLink,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 import {
   PersonCircleFill,
   EnvelopeFill,

@@ -11,7 +11,7 @@
   import { positionClass } from '../shared/position-class.js';
 
   export default {
-    name: 'twm-block',
+    name: 'k-block',
     props: {
       component: {
         type: String,

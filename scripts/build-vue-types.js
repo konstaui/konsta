@@ -199,13 +199,13 @@ module.exports = async (outputDir = 'package') => {
   const importComponents = components
     .map(
       (componentName) =>
-        `import twm${componentName} from './types/${componentName}';`
+        `import k${componentName} from './types/${componentName}';`
     )
     .join('\n');
   const exportComponents = `export { ${components
     .map(
       (componentName) =>
-        `twm${componentName}, twm${componentName} as ${componentName}`
+        `k${componentName}, k${componentName} as ${componentName}`
     )
     .join(', ')} }`;
   typesContent = typesContent

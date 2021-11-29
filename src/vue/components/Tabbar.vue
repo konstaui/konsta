@@ -1,19 +1,19 @@
 <template>
-  <twm-toolbar v-bind="toolbarProps">
+  <k-toolbar v-bind="toolbarProps">
     <slot />
-  </twm-toolbar>
+  </k-toolbar>
 </template>
 <script>
   import { computed } from 'vue';
-  import twmToolbar from './Toolbar.vue';
+  import kToolbar from './Toolbar.vue';
 
   export default {
-    name: 'twm-tabbar',
+    name: 'k-tabbar',
     components: {
-      twmToolbar,
+      kToolbar,
     },
     props: {
-      ...twmToolbar.props,
+      ...kToolbar.props,
       labels: {
         type: Boolean,
       },

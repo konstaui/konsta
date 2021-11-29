@@ -6,7 +6,7 @@ import {
   Button,
   Block,
   BlockTitle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function ButtonsPage() {
   const isPreview = document.location.href.includes('examplePreview');

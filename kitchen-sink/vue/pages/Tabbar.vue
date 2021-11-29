@@ -1,74 +1,74 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Tabbar">
+  <k-page>
+    <k-navbar title="Tabbar">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-tabbar :labels="isTabbarLabels" class="left-0 bottom-0 fixed">
-      <twm-tabbar-link
+    <k-tabbar :labels="isTabbarLabels" class="left-0 bottom-0 fixed">
+      <k-tabbar-link
         :active="activeTab === 'tab-1'"
         label="Tab 1"
         @click="() => (activeTab = 'tab-1')"
       >
         <template v-if="isTabbarLabels" #icon>
-          <twm-icon>
+          <k-icon>
             <template #ios>
               <EnvelopeFill class="w-7 h-7" />
             </template>
             <template #material>
               <MdEmail class="w-6 h-6" />
             </template>
-          </twm-icon>
+          </k-icon>
         </template>
-      </twm-tabbar-link>
-      <twm-tabbar-link
+      </k-tabbar-link>
+      <k-tabbar-link
         :active="activeTab === 'tab-2'"
         label="Tab 2"
         @click="() => (activeTab = 'tab-2')"
       >
         <template v-if="isTabbarLabels" #icon>
-          <twm-icon>
+          <k-icon>
             <template #ios>
               <Calendar class="w-7 h-7" />
             </template>
             <template #material>
               <MdToday class="w-6 h-6" />
             </template>
-          </twm-icon>
+          </k-icon>
         </template>
-      </twm-tabbar-link>
-      <twm-tabbar-link
+      </k-tabbar-link>
+      <k-tabbar-link
         :active="activeTab === 'tab-3'"
         label="Tab 3"
         @click="() => (activeTab = 'tab-3')"
       >
         <template v-if="isTabbarLabels" #icon>
-          <twm-icon>
+          <k-icon>
             <template #ios>
               <CloudUploadFill class="w-7 h-7" />
             </template>
             <template #material>
               <MdFileUpload class="w-6 h-6" />
             </template>
-          </twm-icon>
+          </k-icon>
         </template>
-      </twm-tabbar-link>
-    </twm-tabbar>
+      </k-tabbar-link>
+    </k-tabbar>
 
-    <twm-list>
-      <twm-list-item title="Tabbar Labels">
+    <k-list>
+      <k-list-item title="Tabbar Labels">
         <template #after>
-          <twm-toggle
+          <k-toggle
             :checked="isTabbarLabels"
             @change="() => (isTabbarLabels = !isTabbarLabels)"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-block v-if="activeTab === 'tab-1'" strong class="space-y-4">
+    <k-block v-if="activeTab === 'tab-1'" strong class="space-y-4">
       <p>
         <b>Tab 1</b>
       </p>
@@ -97,9 +97,9 @@
           aspernatur amet et alias! Sit odit cum voluptas quae? Est, omnis eos?
         </span>
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-block v-if="activeTab === 'tab-2'" strong class="space-y-4">
+    <k-block v-if="activeTab === 'tab-2'" strong class="space-y-4">
       <p>
         <b>Tab 2</b>
       </p>
@@ -129,9 +129,9 @@
           recusandae quas inventore?
         </span>
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-block v-if="activeTab === 'tab-3'" strong class="space-y-4">
+    <k-block v-if="activeTab === 'tab-3'" strong class="space-y-4">
       <p>
         <b>Tab 3</b>
       </p>
@@ -161,23 +161,23 @@
           aperiam maiores dicta iure necessitatibus est.
         </span>
       </p>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmTabbar,
-    twmTabbarLink,
-    twmBlock,
-    twmIcon,
-    twmList,
-    twmListItem,
-    twmToggle,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kTabbar,
+    kTabbarLink,
+    kBlock,
+    kIcon,
+    kList,
+    kListItem,
+    kToggle,
+  } from 'konsta/vue';
   import {
     EnvelopeFill,
     Calendar,
@@ -190,16 +190,16 @@
   export default {
     name: 'TabbarPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmTabbar,
-      twmTabbarLink,
-      twmBlock,
-      twmIcon,
-      twmList,
-      twmListItem,
-      twmToggle,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kTabbar,
+      kTabbarLink,
+      kBlock,
+      kIcon,
+      kList,
+      kListItem,
+      kToggle,
 
       EnvelopeFill,
       Calendar,

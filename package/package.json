@@ -1,18 +1,18 @@
 {
-  "name": "tailwind-mobile",
+  "name": "konsta",
   "version": "0.5.1",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tailwind-mobile/tailwind-mobile.git"
+    "url": "https://github.com/konstaui/konstaui.git"
   },
   "keywords": [],
   "author": "Vladimir Kharlampidi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tailwind-mobile/tailwind-mobile/issues"
+    "url": "https://github.com/konstaui/konstaui/issues"
   },
-  "homepage": "https://tailwind-mobile.com",
+  "homepage": "https://konstaui.com",
   "engines": {
     "node": ">= 4.7.0"
   },
@@ -20,12 +20,12 @@
   "exports": {
     "./package.json": "./package.json",
     "./react": {
-      "require": "./react/cjs/tailwind-mobile-react.js",
-      "import": "./react/esm/tailwind-mobile-react.js"
+      "require": "./react/cjs/konsta-react.js",
+      "import": "./react/esm/konsta-react.js"
     },
     "./vue": {
-      "require": "./vue/cjs/tailwind-mobile-vue.js",
-      "import": "./vue/esm/tailwind-mobile-vue.js"
+      "require": "./vue/cjs/konsta-vue.js",
+      "import": "./vue/esm/konsta-vue.js"
     },
     "./config": "./config.js",
     "./config.js": "./config.js"

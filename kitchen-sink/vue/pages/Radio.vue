@@ -1,16 +1,16 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Radio">
+  <k-page>
+    <k-navbar title="Radio">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title>Inline</twm-block-title>
-    <twm-block strong>
+    <k-block-title>Inline</k-block-title>
+    <k-block strong>
       <p>
         Lorem{{ ' ' }}
-        <twm-radio
+        <k-radio
           name="demo-radio-inline"
           value="inline-1"
           :checked="inlineValue === 'inline-1'"
@@ -19,7 +19,7 @@
         beatae illo nihil aut eius commodi sint eveniet aliquid eligendi{{
           ' '
         }}
-        <twm-radio
+        <k-radio
           name="demo-radio-inline"
           value="inline-2"
           :checked="inlineValue === 'inline-2'"
@@ -27,98 +27,98 @@
         />{{ ' ' }} ad delectus impedit tempore nemo, enim vel praesentium
         consequatur nulla mollitia!
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Radio Group</twm-block-title>
-    <twm-list>
-      <twm-list-item label title="Books">
+    <k-block-title>Radio Group</k-block-title>
+    <k-list>
+      <k-list-item label title="Books">
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             value="Books"
             :checked="groupValue === 'Books'"
             @change="() => (groupValue = 'Books')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Movies">
+      </k-list-item>
+      <k-list-item label title="Movies">
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             value="Movies"
             :checked="groupValue === 'Movies'"
             @change="() => (groupValue = 'Movies')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Food">
+      </k-list-item>
+      <k-list-item label title="Food">
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             value="Food"
             :checked="groupValue === 'Food'"
             @change="() => (groupValue = 'Food')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Drinks">
+      </k-list-item>
+      <k-list-item label title="Drinks">
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             value="Drinks"
             :checked="groupValue === 'Drinks'"
             @change="() => (groupValue = 'Drinks')"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-list>
-      <twm-list-item label title="Books">
+    <k-list>
+      <k-list-item label title="Books">
         <template #after>
-          <twm-radio
+          <k-radio
             component="div"
             value="Books"
             :checked="groupValue === 'Books'"
             @change="() => (groupValue = 'Books')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Movies">
+      </k-list-item>
+      <k-list-item label title="Movies">
         <template #after>
-          <twm-radio
+          <k-radio
             component="div"
             value="Movies"
             :checked="groupValue === 'Movies'"
             @change="() => (groupValue = 'Movies')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Food">
+      </k-list-item>
+      <k-list-item label title="Food">
         <template #after>
-          <twm-radio
+          <k-radio
             component="div"
             value="Food"
             :checked="groupValue === 'Food'"
             @change="() => (groupValue = 'Food')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item label title="Drinks">
+      </k-list-item>
+      <k-list-item label title="Drinks">
         <template #after>
-          <twm-radio
+          <k-radio
             component="div"
             value="Drinks"
             :checked="groupValue === 'Drinks'"
             @change="() => (groupValue = 'Drinks')"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
+      </k-list-item>
+    </k-list>
 
-    <twm-block-title>With Media Lists</twm-block-title>
-    <twm-list>
-      <twm-list-item
+    <k-block-title>With Media Lists</k-block-title>
+    <k-list>
+      <k-list-item
         label
         title="Facebook"
         after="17:14"
@@ -126,14 +126,14 @@
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       >
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             :checked="mediaValue === 'Item 1'"
             @change="() => (mediaValue = 'Item 1')"
           />
         </template>
-      </twm-list-item>
-      <twm-list-item
+      </k-list-item>
+      <k-list-item
         label
         title="John Doe (via Twitter)"
         after="17:11"
@@ -141,40 +141,40 @@
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       >
         <template #media>
-          <twm-radio
+          <k-radio
             component="div"
             :checked="mediaValue === 'Item 2'"
             @change="() => (mediaValue = 'Item 2')"
           />
         </template>
-      </twm-list-item>
-    </twm-list>
-  </twm-page>
+      </k-list-item>
+    </k-list>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmRadio,
-    twmBlockTitle,
-    twmBlock,
-    twmList,
-    twmListItem,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kRadio,
+    kBlockTitle,
+    kBlock,
+    kList,
+    kListItem,
+  } from 'konsta/vue';
 
   export default {
     name: 'RadioPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmRadio,
-      twmBlockTitle,
-      twmBlock,
-      twmList,
-      twmListItem,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kRadio,
+      kBlockTitle,
+      kBlock,
+      kList,
+      kListItem,
     },
     setup() {
       const inlineValue = ref('inline-1');

@@ -6,7 +6,7 @@ import {
   Block,
   Segmented,
   SegmentedButton,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function SubnavbarPage() {
   const isPreview = document.location.href.includes('examplePreview');

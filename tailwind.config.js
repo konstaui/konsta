@@ -1,6 +1,6 @@
-const tailwindMobile = require('tailwind-mobile/config');
+const konstaConfig = require('konsta/config');
 
-module.exports = tailwindMobile({
+module.exports = konstaConfig({
   mode: 'jit',
   purge: [
     './kitchen-sink/react/components/*.{js,jsx}',

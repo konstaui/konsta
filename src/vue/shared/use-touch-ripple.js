@@ -2,7 +2,7 @@ import { ref, onMounted, onBeforeUnmount, inject, watch } from 'vue';
 import { TouchRipple } from './touch-ripple-class.js';
 
 export const useTouchRipple = (elRef, props, addCondition) => {
-  const context = inject('TailwindMobileContext');
+  const context = inject('KonstaContext');
   const ripple = ref(null);
   let eventsAttached = false;
 

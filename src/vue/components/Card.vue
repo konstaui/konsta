@@ -20,7 +20,7 @@
   import { cls } from '../shared/cls.js';
 
   export default {
-    name: 'twm-card',
+    name: 'k-card',
     props: {
       component: {
         type: String,

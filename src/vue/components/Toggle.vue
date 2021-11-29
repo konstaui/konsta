@@ -22,7 +22,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-toggle',
+    name: 'k-toggle',
     props: {
       component: {
         type: String,

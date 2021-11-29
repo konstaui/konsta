@@ -1,19 +1,19 @@
 <template>
-  <twm-list v-bind="listProps">
+  <k-list v-bind="listProps">
     <slot />
-  </twm-list>
+  </k-list>
 </template>
 <script>
   import { computed } from 'vue';
-  import twmList from './List.vue';
+  import kList from './List.vue';
 
   export default {
-    name: 'twm-menu-list',
+    name: 'k-menu-list',
     components: {
-      twmList,
+      kList,
     },
     props: {
-      ...twmList.props,
+      ...kList.props,
     },
     setup(props) {
       const listProps = computed(() => ({

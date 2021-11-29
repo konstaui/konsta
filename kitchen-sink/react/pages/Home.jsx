@@ -7,7 +7,7 @@ import {
   ListItem,
   Radio,
   Toggle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 import { Link } from 'react-router-dom';
 import routes from '../routes.js';
 import DemoIcon from '../components/DemoIcon';
@@ -26,7 +26,7 @@ export default function HomePage({ theme, setTheme }) {
 
   return (
     <Page>
-      <Navbar title="Tailwind Mobile" />
+      <Navbar title="Konsta UI" />
 
       <BlockTitle>Theme</BlockTitle>
       <List>

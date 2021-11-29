@@ -7,7 +7,7 @@ import {
   BlockFooter,
   BlockHeader,
   BlockTitle,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function ContentBlockPage() {
   const isPreview = document.location.href.includes('examplePreview');

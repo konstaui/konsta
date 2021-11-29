@@ -11,6 +11,6 @@
 </template>
 <script>
   export default {
-    name: 'twm-dropdown-icon',
+    name: 'k-dropdown-icon',
   };
 </script>

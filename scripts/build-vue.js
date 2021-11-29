@@ -13,15 +13,12 @@ module.exports = async (format, outputDir = 'package') => {
 
   // Add Banner
   let fileContent = await fs.readFile(
-    `./${outputDir}/vue/${format}/tailwind-mobile-vue.js`,
+    `./${outputDir}/vue/${format}/konsta-vue.js`,
     'utf-8'
   );
   fileContent = fileContent.replace(/\.vue/g, '.js');
   fileContent = `${bannerVue}\n${fileContent}`;
-  await fs.writeFile(
-    `./${outputDir}/vue/${format}/tailwind-mobile-vue.js`,
-    fileContent
-  );
+  await fs.writeFile(`./${outputDir}/vue/${format}/konsta-vue.js`, fileContent);
 
   // Transform & copy components
   if (!fs.existsSync(`./${outputDir}/vue/${format}/components/`)) {

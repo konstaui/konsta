@@ -10,7 +10,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-page',
+    name: 'k-page',
     props: {
       component: {
         type: String,

@@ -1,17 +1,17 @@
 <template>
   <li>
-    <twm-list nested>
+    <k-list nested>
       <slot />
-    </twm-list>
+    </k-list>
   </li>
 </template>
 <script>
-  import twmList from './List.vue';
+  import kList from './List.vue';
 
   export default {
-    name: 'twm-list-group',
+    name: 'k-list-group',
     components: {
-      twmList,
+      kList,
     },
   };
 </script>

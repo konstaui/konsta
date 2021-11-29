@@ -1,108 +1,108 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Badge">
+  <k-page>
+    <k-navbar title="Badge">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>
-        <twm-link navbar icon-only>
-          <twm-icon badge="5" :badge-colors="{ bg: 'bg-red-500' }">
+        <k-link navbar icon-only>
+          <k-icon badge="5" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios><PersonCircleFill class="w-7 h-7" /></template>
             <template #material><MdPerson class="w-6 h-6" /></template>
-          </twm-icon>
-        </twm-link>
+          </k-icon>
+        </k-link>
       </template>
-    </twm-navbar>
-    <twm-tabbar labels class="left-0 bottom-0 fixed">
-      <twm-tabbar-link active label="Inbox">
+    </k-navbar>
+    <k-tabbar labels class="left-0 bottom-0 fixed">
+      <k-tabbar-link active label="Inbox">
         <template #icon>
-          <twm-icon badge="5" :badge-colors="{ bg: 'bg-green-500' }">
+          <k-icon badge="5" :badge-colors="{ bg: 'bg-green-500' }">
             <template #ios>
               <EnvelopeFill class="w-7 h-7" />
             </template>
             <template #material>
               <MdEmail class="w-6 h-6" />
             </template>
-          </twm-icon>
+          </k-icon>
         </template>
-      </twm-tabbar-link>
-      <twm-tabbar-link label="Calendar">
+      </k-tabbar-link>
+      <k-tabbar-link label="Calendar">
         <template #icon>
-          <twm-icon badge="7" :badge-colors="{ bg: 'bg-red-500' }">
+          <k-icon badge="7" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios>
               <Calendar class="w-7 h-7" />
             </template>
             <template #material>
               <MdToday class="w-6 h-6" />
             </template>
-          </twm-icon>
+          </k-icon>
         </template>
-      </twm-tabbar-link>
-      <twm-tabbar-link label="Upload">
+      </k-tabbar-link>
+      <k-tabbar-link label="Upload">
         <template #icon>
-          <twm-icon badge="1" :badge-colors="{ bg: 'bg-red-500' }">
+          <k-icon badge="1" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios>
               <CloudUploadFill class="w-7 h-7" />
             </template>
             <template #material>
               <MdFileUpload class="w-6 h-6" />
             </template>
-          </twm-icon>
+          </k-icon>
         </template>
-      </twm-tabbar-link>
-    </twm-tabbar>
-    <twm-list>
-      <twm-list-item title="Foo Bar">
+      </k-tabbar-link>
+    </k-tabbar>
+    <k-list>
+      <k-list-item title="Foo Bar">
         <template #media>
           <demo-icon />
         </template>
         <template #after>
-          <twm-badge :colors="{ bg: 'bg-gray-500' }">0</twm-badge>
+          <k-badge :colors="{ bg: 'bg-gray-500' }">0</k-badge>
         </template>
-      </twm-list-item>
+      </k-list-item>
 
-      <twm-list-item title="Ivan Petrov">
+      <k-list-item title="Ivan Petrov">
         <template #media>
           <demo-icon />
         </template>
         <template #after>
-          <twm-badge>CEO</twm-badge>
+          <k-badge>CEO</k-badge>
         </template>
-      </twm-list-item>
+      </k-list-item>
 
-      <twm-list-item title="John Doe">
+      <k-list-item title="John Doe">
         <template #media>
           <demo-icon />
         </template>
         <template #after>
-          <twm-badge :colors="{ bg: 'bg-green-500' }">5</twm-badge>
+          <k-badge :colors="{ bg: 'bg-green-500' }">5</k-badge>
         </template>
-      </twm-list-item>
+      </k-list-item>
 
-      <twm-list-item title="Jane Doe">
+      <k-list-item title="Jane Doe">
         <template #media>
           <demo-icon />
         </template>
         <template #after>
-          <twm-badge :colors="{ bg: 'bg-yellow-500' }">NEW</twm-badge>
+          <k-badge :colors="{ bg: 'bg-yellow-500' }">NEW</k-badge>
         </template>
-      </twm-list-item>
-    </twm-list>
-  </twm-page>
+      </k-list-item>
+    </k-list>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBadge,
-    twmIcon,
-    twmLink,
-    twmList,
-    twmListItem,
-    twmTabbar,
-    twmTabbarLink,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBadge,
+    kIcon,
+    kLink,
+    kList,
+    kListItem,
+    kTabbar,
+    kTabbarLink,
+  } from 'konsta/vue';
   import {
     PersonCircleFill,
     EnvelopeFill,
@@ -118,16 +118,16 @@
   export default {
     name: 'BadgePage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBadge,
-      twmIcon,
-      twmLink,
-      twmList,
-      twmListItem,
-      twmTabbar,
-      twmTabbarLink,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBadge,
+      kIcon,
+      kLink,
+      kList,
+      kListItem,
+      kTabbar,
+      kTabbarLink,
 
       PersonCircleFill,
       EnvelopeFill,

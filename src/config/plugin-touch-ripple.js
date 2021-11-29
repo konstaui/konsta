@@ -5,11 +5,11 @@ module.exports = () =>
   plugin(({ addUtilities, addBase, theme }) => {
     addBase({
       ':root': {
-        '--twm-touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
-        '--twm-touch-ripple-white': 'rgba(255, 255, 255, 0.15)',
-        '--twm-touch-ripple-color': 'var(--twm-touch-ripple-black)',
+        '--k-touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
+        '--k-touch-ripple-white': 'rgba(255, 255, 255, 0.15)',
+        '--k-touch-ripple-color': 'var(--k-touch-ripple-black)',
       },
-      '.twm-touch-ripple-wave': {
+      '.k-touch-ripple-wave': {
         left: '0',
         top: '0',
         position: 'absolute !important',
@@ -20,23 +20,23 @@ module.exports = () =>
         margin: '0',
         fontSize: '0',
         transform: 'translate3d(0px, 0px, 0) scale(0)',
-        backgroundColor: 'var(--twm-touch-ripple-color)',
-        animation: 'twm-touch-ripple-in 200ms forwards',
+        backgroundColor: 'var(--k-touch-ripple-color)',
+        animation: 'k-touch-ripple-in 200ms forwards',
         display: 'block !important',
-        '&.twm-touch-ripple-wave-out': {
-          transform: 'var(--twm-ripple-transform)',
-          animation: 'twm-touch-ripple-out 300ms forwards',
+        '&.k-touch-ripple-wave-out': {
+          transform: 'var(--k-ripple-transform)',
+          animation: 'k-touch-ripple-out 300ms forwards',
         },
       },
-      '@keyframes twm-touch-ripple-in': {
+      '@keyframes k-touch-ripple-in': {
         from: {
           transform: 'translate3d(0px, 0px, 0) scale(0)',
         },
         to: {
-          transform: 'var(--twm-ripple-transform)',
+          transform: 'var(--k-ripple-transform)',
         },
       },
-      '@keyframes twm-touch-ripple-out': {
+      '@keyframes k-touch-ripple-out': {
         from: {
           opacity: '1',
         },
@@ -49,7 +49,7 @@ module.exports = () =>
 
     const touchRippleColors = {
       '.touch-ripple-current': {
-        '--twm-touch-ripple-color': 'currentColor',
+        '--k-touch-ripple-color': 'currentColor',
       },
     };
 
@@ -61,7 +61,7 @@ module.exports = () =>
           value = `rgba(${r}, ${g}, ${b}, 0.25)`;
         }
         touchRippleColors[`.touch-ripple-${key}`] = {
-          '--twm-touch-ripple-color': value,
+          '--k-touch-ripple-color': value,
         };
       } else {
         Object.keys(value).forEach((subKey) => {
@@ -72,11 +72,11 @@ module.exports = () =>
           }
           if (subKey === 'DEFAULT') {
             touchRippleColors[`.touch-ripple-${key}`] = {
-              '--twm-touch-ripple-color': subValue,
+              '--k-touch-ripple-color': subValue,
             };
           } else {
             touchRippleColors[`.touch-ripple-${key}-${subKey}`] = {
-              '--twm-touch-ripple-color': subValue,
+              '--k-touch-ripple-color': subValue,
             };
           }
         });
@@ -84,10 +84,10 @@ module.exports = () =>
     });
     Object.assign(touchRippleColors, {
       '.touch-ripple-black': {
-        '--twm-touch-ripple-color': 'var(--twm-touch-ripple-black)',
+        '--k-touch-ripple-color': 'var(--k-touch-ripple-black)',
       },
       '.touch-ripple-white': {
-        '--twm-touch-ripple-color': 'var(--twm-touch-ripple-white)',
+        '--k-touch-ripple-color': 'var(--k-touch-ripple-white)',
       },
     });
 

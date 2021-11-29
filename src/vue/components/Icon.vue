@@ -3,25 +3,25 @@
     <slot v-if="theme === 'ios'" name="ios" />
     <slot v-else name="material" />
     <slot />
-    <twm-badge
+    <k-badge
       v-if="(typeof badge !== 'undefined' && badge !== null) || slots.badge"
       small
       :class="c.badge"
       :colors="badgeColors || {}"
       >{{ badge }}<slot name="badge" />
-    </twm-badge>
+    </k-badge>
   </component>
 </template>
 <script>
   import { positionClass } from '../shared/position-class.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import twmBadge from './Badge.vue';
+  import kBadge from './Badge.vue';
 
   export default {
-    name: 'twm-icon',
+    name: 'k-icon',
     components: {
-      twmBadge,
+      kBadge,
     },
     props: {
       component: {

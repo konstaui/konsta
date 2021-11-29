@@ -7,7 +7,7 @@ import {
   Block,
   Link,
   Button,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function PopupPage() {
   const isPreview = document.location.href.includes('examplePreview');

@@ -1,5 +1,5 @@
 <template>
-  <twm-list-item v-bind="listItemProps">
+  <k-list-item v-bind="listItemProps">
     <slot />
     <template v-if="slots.title" #title>
       <slot name="title" />
@@ -28,19 +28,19 @@
     <template v-if="slots.content" #content>
       <slot name="content" />
     </template>
-  </twm-list-item>
+  </k-list-item>
 </template>
 <script>
   import { computed } from 'vue';
-  import twmListItem from './ListItem.vue';
+  import kListItem from './ListItem.vue';
 
   export default {
-    name: 'twm-menu-list-item',
+    name: 'k-menu-list-item',
     components: {
-      twmListItem,
+      kListItem,
     },
     props: {
-      ...twmListItem.props,
+      ...kListItem.props,
       href: { type: [String, Boolean], default: undefined },
       active: Boolean,
     },

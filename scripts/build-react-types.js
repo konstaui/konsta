@@ -26,7 +26,7 @@ export default ${componentName};
 module.exports = async (outputDir = 'package') => {
   // Types
   let typesContent = fs.readFileSync(
-    path.resolve(__dirname, '../src/react/tailwind-mobile-react.d.ts'),
+    path.resolve(__dirname, '../src/react/konsta-react.d.ts'),
     'utf-8'
   );
   const typesDir = path.resolve(__dirname, '../src/types');
@@ -55,7 +55,7 @@ module.exports = async (outputDir = 'package') => {
     .replace('// IMPORT_COMPONENTS', importComponents)
     .replace('// EXPORT_COMPONENTS', exportComponents);
   fs.writeFileSync(
-    path.resolve(outputDir, 'react', 'tailwind-mobile-react.d.ts'),
+    path.resolve(outputDir, 'react', 'konsta-react.d.ts'),
     typesContent
   );
 };

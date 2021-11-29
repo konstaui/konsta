@@ -1,5 +1,5 @@
 <template>
-  <twm-list-item
+  <k-list-item
     :component="component"
     :class="c.base"
     :title="labelStyle === 'inline' ? label : null"
@@ -96,7 +96,7 @@
       </template>
     </template>
     <slot v-if="type !== 'select'" />
-  </twm-list-item>
+  </k-list-item>
 </template>
 <script>
   import { ref, computed } from 'vue';
@@ -106,15 +106,15 @@
 
   import DeleteIcon from './icons/DeleteIcon.vue';
   import DropdownIcon from './icons/DropdownIcon.vue';
-  import twmListItem from './ListItem.vue';
+  import kListItem from './ListItem.vue';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
-    name: 'twm-list-input',
+    name: 'k-list-input',
     components: {
       DeleteIcon,
       DropdownIcon,
-      twmListItem,
+      kListItem,
     },
     props: {
       component: {

@@ -16,7 +16,7 @@
   import PreloaderMaterial from './icons/PreloaderMaterial.vue';
 
   export default {
-    name: 'twm-preloader',
+    name: 'k-preloader',
     props: {
       component: {
         type: String,
@@ -53,9 +53,7 @@
       const c = useThemeClasses(props, () => ({
         base: {
           common: cls(
-            theme.value === 'ios'
-              ? 'twm-ios-preloader'
-              : 'twm-material-preloader',
+            theme.value === 'ios' ? 'k-ios-preloader' : 'k-material-preloader',
             `inline-block ${props.size} ${colors.value.icon}`
           ),
           material: `stroke-4`,

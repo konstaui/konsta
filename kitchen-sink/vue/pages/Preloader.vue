@@ -1,68 +1,68 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Preloader">
+  <k-page>
+    <k-navbar title="Preloader">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block-title>Default</twm-block-title>
-    <twm-block strong class="text-center">
-      <twm-preloader />
-    </twm-block>
+    <k-block-title>Default</k-block-title>
+    <k-block strong class="text-center">
+      <k-preloader />
+    </k-block>
 
-    <twm-block-title>Colors</twm-block-title>
-    <twm-block strong class="grid grid-cols-4">
+    <k-block-title>Colors</k-block-title>
+    <k-block strong class="grid grid-cols-4">
       <div class="text-center">
-        <twm-preloader :colors="{ icon: 'text-red-500' }" />
+        <k-preloader :colors="{ icon: 'text-red-500' }" />
       </div>
       <div class="text-center">
-        <twm-preloader :colors="{ icon: 'text-green-500' }" />
+        <k-preloader :colors="{ icon: 'text-green-500' }" />
       </div>
       <div class="text-center">
-        <twm-preloader :colors="{ icon: 'text-pink-500' }" />
+        <k-preloader :colors="{ icon: 'text-pink-500' }" />
       </div>
       <div class="text-center">
-        <twm-preloader :colors="{ icon: 'text-yellow-500' }" />
+        <k-preloader :colors="{ icon: 'text-yellow-500' }" />
       </div>
-    </twm-block>
+    </k-block>
 
-    <twm-block-title>Sizes</twm-block-title>
-    <twm-block strong class="grid grid-cols-4 items-center">
+    <k-block-title>Sizes</k-block-title>
+    <k-block strong class="grid grid-cols-4 items-center">
       <div class="text-center">
-        <twm-preloader size="w-4 h-4" />
+        <k-preloader size="w-4 h-4" />
       </div>
       <div class="text-center">
-        <twm-preloader size="w-8 h-8" />
+        <k-preloader size="w-8 h-8" />
       </div>
       <div class="text-center">
-        <twm-preloader size="w-12 h-12" />
+        <k-preloader size="w-12 h-12" />
       </div>
       <div class="text-center">
-        <twm-preloader size="w-16 h-16" />
+        <k-preloader size="w-16 h-16" />
       </div>
-    </twm-block>
-  </twm-page>
+    </k-block>
+  </k-page>
 </template>
 <script>
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmBlock,
-    twmBlockTitle,
-    twmPreloader,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kBlock,
+    kBlockTitle,
+    kPreloader,
+  } from 'konsta/vue';
 
   export default {
     name: 'PreloaderPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmBlock,
-      twmBlockTitle,
-      twmPreloader,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kBlock,
+      kBlockTitle,
+      kPreloader,
     },
     setup() {
       return {

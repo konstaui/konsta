@@ -1,27 +1,27 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Popover">
+  <k-page>
+    <k-navbar title="Popover">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>
-        <twm-link
+        <k-link
           class="popover-navbar-link"
           navbar
           @click="() => openPopover('.popover-navbar-link')"
         >
           Popover
-        </twm-link>
+        </k-link>
       </template>
-    </twm-navbar>
-    <twm-block strong class="space-y-4">
+    </k-navbar>
+    <k-block strong class="space-y-4">
       <p>
-        <twm-button
+        <k-button
           class="popover-button"
           @click="() => openPopover('.popover-button')"
         >
           Open popover on me
-        </twm-button>
+        </k-button>
       </p>
       <p>
         Mauris fermentum neque et luctus venenatis. Vivamus a sem rhoncus,
@@ -33,11 +33,11 @@
         Cras suscipit rutrum enim. Nam a odio facilisis, elementum tellus non,{{
           ' '
         }}
-        <twm-link
+        <k-link
           class="popover-link-1"
           @click="() => openPopover('.popover-link-1')"
         >
-          popover </twm-link
+          popover </k-link
         >{{ ' ' }}
         tortor. Pellentesque felis eros, dictum vitae lacinia quis, lobortis
         vitae ipsum. Cras vehicula bibendum lorem quis imperdiet.
@@ -46,11 +46,11 @@
         In hac habitasse platea dictumst. Etiam varius, ante vel ornare
         facilisis, velit massa rutrum dolor, ac porta magna magna lacinia nunc.
         Curabitur{{ ' ' }}
-        <twm-link
+        <k-link
           class="popover-link-2"
           @click="() => openPopover('.popover-link-2')"
         >
-          popover! </twm-link
+          popover! </k-link
         >{{ ' ' }}
         cursus laoreet. Aenean vel tempus augue. Pellentesque in imperdiet nibh.
         Mauris rhoncus nulla id sem suscipit volutpat. Pellentesque ac arcu in
@@ -69,11 +69,11 @@
         Aliquam quis convallis tortor, quis semper ligula. Morbi ullamcorper{{
           ' '
         }}
-        <twm-link
+        <k-link
           class="popover-link-3"
           @click="() => openPopover('.popover-link-3')"
         >
-          one more popover </twm-link
+          one more popover </k-link
         >{{ ' ' }}
         massa at accumsan. Etiam purus odio, posuere in ligula vitae, viverra
         ultricies justo. Vestibulum nec interdum nisi. Aenean ac consectetur
@@ -82,70 +82,70 @@
         interdum auctor nunc. Nunc non metus neque. Suspendisse viverra lectus
         sed risus aliquet, vel accumsan dolor feugiat.
       </p>
-    </twm-block>
+    </k-block>
 
-    <twm-popover
+    <k-popover
       :opened="popoverOpened"
       :target="popoverTargetRef"
       @backdropclick="() => (popoverOpened = false)"
     >
-      <twm-list nested :hairlines="false" :colors="{ bg: 'bg-transparent' }">
-        <twm-list-item
+      <k-list nested :hairlines="false" :colors="{ bg: 'bg-transparent' }">
+        <k-list-item
           title="Item 1"
           link
           @click="() => (popoverOpened = false)"
         />
-        <twm-list-item
+        <k-list-item
           title="List Item 2"
           link
           @click="() => (popoverOpened = false)"
         />
-        <twm-list-item
+        <k-list-item
           title="Item 3"
           link
           @click="() => (popoverOpened = false)"
         />
-        <twm-list-item
+        <k-list-item
           title="List Item 4"
           link
           @click="() => (popoverOpened = false)"
         />
-        <twm-list-item
+        <k-list-item
           title="Item 5"
           link
           @click="() => (popoverOpened = false)"
         />
-      </twm-list>
-    </twm-popover>
-  </twm-page>
+      </k-list>
+    </k-popover>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
 
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmPopover,
-    twmBlock,
-    twmLink,
-    twmButton,
-    twmList,
-    twmListItem,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kPopover,
+    kBlock,
+    kLink,
+    kButton,
+    kList,
+    kListItem,
+  } from 'konsta/vue';
 
   export default {
     name: 'PopoverPage',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmPopover,
-      twmBlock,
-      twmLink,
-      twmButton,
-      twmList,
-      twmListItem,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kPopover,
+      kBlock,
+      kLink,
+      kButton,
+      kList,
+      kListItem,
     },
     setup() {
       const popoverOpened = ref(false);

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { TailwindMobileContext } from './TailwindMobileContext.js';
+import { KonstaContext } from './KonstaContext.js';
 
 const useDarkClasses = () => {
-  const context = useContext(TailwindMobileContext);
+  const context = useContext(KonstaContext);
   return (classNames) => {
     if (!context.dark) return '';
     return classNames;

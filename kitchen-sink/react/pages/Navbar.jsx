@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Page,
-  Navbar,
-  NavbarBackLink,
-  Link,
-  Block,
-} from 'tailwind-mobile/react';
+import { Page, Navbar, NavbarBackLink, Link, Block } from 'konsta/react';
 
 export default function NavbarPage() {
   const isPreview = document.location.href.includes('examplePreview');

@@ -16,7 +16,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-segmented',
+    name: 'k-segmented',
     props: {
       component: {
         type: String,

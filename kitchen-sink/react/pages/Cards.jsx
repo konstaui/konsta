@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
   Link,
-} from 'tailwind-mobile/react';
+} from 'konsta/react';
 
 export default function CardsPage() {
   const isPreview = document.location.href.includes('examplePreview');

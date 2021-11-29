@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Page,
-  Navbar,
-  NavbarBackLink,
-  List,
-  ListButton,
-} from 'tailwind-mobile/react';
+import { Page, Navbar, NavbarBackLink, List, ListButton } from 'konsta/react';
 
 export default function ListButtonPage() {
   const isPreview = document.location.href.includes('examplePreview');

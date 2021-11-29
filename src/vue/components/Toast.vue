@@ -13,7 +13,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-toast',
+    name: 'k-toast',
     props: {
       component: {
         type: String,

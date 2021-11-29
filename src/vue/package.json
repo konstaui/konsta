@@ -1,6 +1,6 @@
 {
-  "name": "tailwind-mobile/vue",
+  "name": "konsta/vue",
   "private": true,
-  "jsnext:main": "./tailwind-mobile-vue.js",
-  "module": "./tailwind-mobile-vue.js"
+  "jsnext:main": "./konsta-vue.js",
+  "module": "./konsta-vue.js"
 }

@@ -27,7 +27,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
-    name: 'twm-range',
+    name: 'k-range',
     props: {
       component: {
         type: String,

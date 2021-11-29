@@ -1,41 +1,37 @@
 <template>
-  <twm-page>
-    <twm-navbar title="Panel / Side Panel">
+  <k-page>
+    <k-navbar title="Panel / Side Panel">
       <template v-if="!isPreview" #left>
-        <twm-navbar-back-link @click="() => history.back()" />
+        <k-navbar-back-link @click="() => history.back()" />
       </template>
-    </twm-navbar>
+    </k-navbar>
 
-    <twm-block strong class="space-y-4">
+    <k-block strong class="space-y-4">
       <p>
-        Tailwind Mobile comes with 2 panels (on left and on right), both are
-        optional. You can put absolutely anything inside: data lists, forms,
-        custom content, etc.
+        Konsta UI comes with 2 panels (on left and on right), both are optional.
+        You can put absolutely anything inside: data lists, forms, custom
+        content, etc.
       </p>
-    </twm-block>
-    <twm-block strong class="flex space-x-4">
-      <twm-button @click="() => (leftPanelOpened = true)"
-        >Left Panel</twm-button
-      >
-      <twm-button @click="() => (rightPanelOpened = true)"
-        >Right Panel</twm-button
-      >
-    </twm-block>
+    </k-block>
+    <k-block strong class="flex space-x-4">
+      <k-button @click="() => (leftPanelOpened = true)">Left Panel</k-button>
+      <k-button @click="() => (rightPanelOpened = true)">Right Panel</k-button>
+    </k-block>
 
-    <twm-panel
+    <k-panel
       side="left"
       :opened="leftPanelOpened"
       @backdropclick="() => (leftPanelOpened = false)"
     >
-      <twm-page>
-        <twm-navbar title="Left Panel">
+      <k-page>
+        <k-navbar title="Left Panel">
           <template #right>
-            <twm-link navbar @click="() => (leftPanelOpened = false)">
+            <k-link navbar @click="() => (leftPanelOpened = false)">
               Close
-            </twm-link>
+            </k-link>
           </template>
-        </twm-navbar>
-        <twm-block class="space-y-4">
+        </k-navbar>
+        <k-block class="space-y-4">
           <p>Here comes left panel.</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
@@ -49,24 +45,24 @@
             ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a
             faucibus lectus.
           </p>
-        </twm-block>
-      </twm-page>
-    </twm-panel>
+        </k-block>
+      </k-page>
+    </k-panel>
 
-    <twm-panel
+    <k-panel
       side="right"
       :opened="rightPanelOpened"
       @backdropclick="() => (rightPanelOpened = false)"
     >
-      <twm-page>
-        <twm-navbar title="Right Panel">
+      <k-page>
+        <k-navbar title="Right Panel">
           <template #right>
-            <twm-link navbar @click="() => (rightPanelOpened = false)">
+            <k-link navbar @click="() => (rightPanelOpened = false)">
               Close
-            </twm-link>
+            </k-link>
           </template>
-        </twm-navbar>
-        <twm-block class="space-y-4">
+        </k-navbar>
+        <k-block class="space-y-4">
           <p>Here comes right panel.</p>
           <p>
             Duis ut mauris sollicitudin, venenatis nisi sed, luctus ligula.
@@ -79,34 +75,34 @@
             tempor congue massa quis faucibus. Vestibulum nunc eros, convallis
             blandit dui sit amet, gravida adipiscing libero.
           </p>
-        </twm-block>
-      </twm-page>
-    </twm-panel>
-  </twm-page>
+        </k-block>
+      </k-page>
+    </k-panel>
+  </k-page>
 </template>
 <script>
   import { ref } from 'vue';
   import {
-    twmPage,
-    twmNavbar,
-    twmNavbarBackLink,
-    twmPanel,
-    twmBlock,
-    twmLink,
-    twmButton,
-  } from 'tailwind-mobile/vue';
+    kPage,
+    kNavbar,
+    kNavbarBackLink,
+    kPanel,
+    kBlock,
+    kLink,
+    kButton,
+  } from 'konsta/vue';
 
   export default {
     name: 'SidePanelsPage',
     title: 'Panel / Side Panels',
     components: {
-      twmPage,
-      twmNavbar,
-      twmNavbarBackLink,
-      twmPanel,
-      twmBlock,
-      twmLink,
-      twmButton,
+      kPage,
+      kNavbar,
+      kNavbarBackLink,
+      kPanel,
+      kBlock,
+      kLink,
+      kButton,
     },
     setup() {
       const leftPanelOpened = ref(false);
