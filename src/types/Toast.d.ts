@@ -49,5 +49,5 @@ interface Props {
    *
    * @default false
    */
-  opened?: string;
+  opened?: boolean;
 }
