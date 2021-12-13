@@ -146,7 +146,7 @@ const ListItem = forwardRef((props, ref) => {
       },
 
       media: {
-        common: `mr-4 flex-shrink-0 ${mediaClassName}`,
+        common: `mr-4 shrink-0 ${mediaClassName}`,
         ios: 'py-2',
         material: 'py-3 min-w-10',
       },
@@ -165,7 +165,7 @@ const ListItem = forwardRef((props, ref) => {
         material: cls(!menuListItem && titleFontSizeMaterial),
       },
       title: {
-        common: `flex-shrink`,
+        common: `shrink`,
         menuListItem: cls(
           'text-sm',
           strongTitle === true || autoStrongTitle
@@ -180,10 +180,10 @@ const ListItem = forwardRef((props, ref) => {
       },
       after: cls(
         textColor,
-        `text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
+        `text-opacity-55 shrink-0 ml-auto pl-1 flex items-center space-x-1`,
         dark('dark:text-opacity-55')
       ),
-      chevron: 'opacity-20 flex-shrink-0 ml-3',
+      chevron: 'opacity-20 shrink-0 ml-3',
       subtitle: 'text-sm',
       text: cls(
         textColor,

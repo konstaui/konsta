@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.6.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.1...v0.6.0) (2021-12-13)
+
+### Features
+
+- support tailwindcss 3 ([#28](https://github.com/tailwind-mobile/tailwind-mobile/issues/28)) ([888a087](https://github.com/tailwind-mobile/tailwind-mobile/commit/888a087f40272be8efeef5508deaa9b7afbc9b8a))
+
 # [0.5.1](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.0...v0.5.1) (2021-11-29)
 
 ### Bug Fixes

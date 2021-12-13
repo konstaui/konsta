@@ -1,8 +1,7 @@
 const konstaConfig = require('konsta/config');
 
 module.exports = konstaConfig({
-  mode: 'jit',
-  purge: [
+  content: [
     './kitchen-sink/react/components/*.{js,jsx}',
     './kitchen-sink/react/pages/*.{js,jsx}',
     './kitchen-sink/vue/components/*.{js,jsx,vue}',

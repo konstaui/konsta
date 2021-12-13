@@ -299,7 +299,7 @@
               }`
             : '',
           inline: {
-            common: `flex-shrink-10 w-full`,
+            common: `shrink-10 w-full`,
             ios: '-mt-2.5',
             material: `-my-1`,
           },
@@ -318,7 +318,7 @@
         },
         titleWrap: {
           material: `duration-200 ${getLabelColor(true)}`,
-          inline: `w-4/12 flex-shrink-0 mr-2`,
+          inline: `w-4/12 shrink-0 mr-2`,
           notInline: '',
         },
         input: {
