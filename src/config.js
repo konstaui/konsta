@@ -51,9 +51,10 @@ const config = (userConfig = {}) => {
 
   if (!newConfig.content) {
     newConfig.content = [content];
-  } else if (Array.isArray(newConfig.purge)) {
-    newConfig.content = [...newConfig.purge, content];
+  } else if (Array.isArray(newConfig.content)) {
+    newConfig.content = [...newConfig.content, content];
   }
+  console.log(newConfig.content);
   return newConfig;
 };
 module.exports = config;
