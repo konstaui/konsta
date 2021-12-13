@@ -13,7 +13,7 @@ const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
 const pluginTouch = require('./config/plugin-touch.js');
 
-const purge = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
+const content = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
 
 const config = (userConfig = {}) => {
   const newConfig = configExtend(
@@ -37,16 +37,23 @@ const config = (userConfig = {}) => {
     },
     userConfig
   );
-  if (!newConfig.purge) {
-    newConfig.purge = [purge];
-  } else if (Array.isArray(newConfig.purge)) {
-    newConfig.purge = [...newConfig.purge, purge];
-  } else if (newConfig.purge.content) {
-    newConfig.purge.content = [...newConfig.purge.content, purge];
-  } else if (!newConfig.purge.content) {
-    newConfig.purge.content = [purge];
+
+  // support tailwind2 purge config
+  if (newConfig.purge) {
+    if (Array.isArray(newConfig.purge)) {
+      newConfig.content = [...newConfig.purge, content];
+    } else if (newConfig.purge.content) {
+      newConfig.content = [...newConfig.purge.content, content];
+    } else if (!newConfig.purge.content) {
+      newConfig.content = [content];
+    }
   }
 
+  if (!newConfig.content) {
+    newConfig.content = [content];
+  } else if (Array.isArray(newConfig.purge)) {
+    newConfig.content = [...newConfig.purge, content];
+  }
   return newConfig;
 };
 module.exports = config;

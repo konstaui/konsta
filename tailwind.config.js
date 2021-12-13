@@ -1,8 +1,7 @@
 const tailwindMobile = require('tailwind-mobile/config');
 
 module.exports = tailwindMobile({
-  mode: 'jit',
-  purge: [
+  content: [
     './kitchen-sink/react/components/*.{js,jsx}',
     './kitchen-sink/react/pages/*.{js,jsx}',
     './kitchen-sink/vue/components/*.{js,jsx,vue}',
