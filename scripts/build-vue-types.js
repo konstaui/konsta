@@ -178,7 +178,7 @@ export default ${componentName};
 
 module.exports = async (outputDir = 'package') => {
   let typesContent = fs.readFileSync(
-    path.resolve(__dirname, '../src/vue/tailwind-mobile-vue.d.ts'),
+    path.resolve(__dirname, '../src/vue/konsta-vue.d.ts'),
     'utf-8'
   );
   const typesDir = path.resolve(__dirname, '../src/types');
@@ -212,7 +212,7 @@ module.exports = async (outputDir = 'package') => {
     .replace('// IMPORT_COMPONENTS', importComponents)
     .replace('// EXPORT_COMPONENTS', exportComponents);
   fs.writeFileSync(
-    path.resolve(outputDir, 'vue', 'tailwind-mobile-vue.d.ts'),
+    path.resolve(outputDir, 'vue', 'konsta-vue.d.ts'),
     typesContent
   );
 };
