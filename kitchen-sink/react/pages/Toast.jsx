@@ -38,7 +38,7 @@ export default function ToastPage() {
             </Button>
           }
         >
-          <div className="flex-shrink">Hello this is left toast!</div>
+          <div className="shrink">Hello this is left toast!</div>
         </Toast>
         <Toast
           position="center"
@@ -49,7 +49,7 @@ export default function ToastPage() {
             </Button>
           }
         >
-          <div className="flex-shrink">Hello this is center toast!</div>
+          <div className="shrink">Hello this is center toast!</div>
         </Toast>
         <Toast
           position="right"
@@ -60,7 +60,7 @@ export default function ToastPage() {
             </Button>
           }
         >
-          <div className="flex-shrink">Hello this is right toast!</div>
+          <div className="shrink">Hello this is right toast!</div>
         </Toast>
         <p>
           Toasts provide brief feedback about an operation through a message on

@@ -13,7 +13,7 @@ const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
 const pluginTouch = require('./config/plugin-touch.js');
 
-const purge = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
+const content = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
 
 const config = (userConfig = {}) => {
   const newConfig = configExtend(
@@ -37,14 +37,15 @@ const config = (userConfig = {}) => {
     },
     userConfig
   );
-  if (!newConfig.purge) {
-    newConfig.purge = [purge];
-  } else if (Array.isArray(newConfig.purge)) {
-    newConfig.purge = [...newConfig.purge, purge];
-  } else if (newConfig.purge.content) {
-    newConfig.purge.content = [...newConfig.purge.content, purge];
-  } else if (!newConfig.purge.content) {
-    newConfig.purge.content = [purge];
+
+  if (!newConfig.content) {
+    newConfig.content = [content];
+  } else if (Array.isArray(newConfig.content)) {
+    newConfig.content = [...newConfig.content, content];
+  } else if (newConfig.content.files) {
+    newConfig.content.files = [...newConfig.content.files, content];
+  } else if (!newConfig.content.files) {
+    newConfig.content.files = [content];
   }
 
   return newConfig;

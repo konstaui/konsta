@@ -70,7 +70,7 @@ const Toast = forwardRef((props, ref) => {
         material: 'px-6 py-3.5',
       },
       button: {
-        common: '-my-2 flex-shrink-0 ml-4',
+        common: '-my-2 shrink-0 ml-4',
         ios: '',
         material: '-mr-2',
       },

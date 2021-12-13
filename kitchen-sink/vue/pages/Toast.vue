@@ -13,7 +13,7 @@
             Close
           </twm-button>
         </template>
-        <div class="flex-shrink">Hello this is left toast!</div>
+        <div class="shrink">Hello this is left toast!</div>
       </twm-toast>
       <twm-toast position="center" :opened="opened.center">
         <template #button>
@@ -21,7 +21,7 @@
             Close
           </twm-button>
         </template>
-        <div class="flex-shrink">Hello this is center toast!</div>
+        <div class="shrink">Hello this is center toast!</div>
       </twm-toast>
       <twm-toast position="right" :opened="opened.right">
         <template #button>
@@ -29,7 +29,7 @@
             Close
           </twm-button>
         </template>
-        <div class="flex-shrink">Hello this is right toast!</div>
+        <div class="shrink">Hello this is right toast!</div>
       </twm-toast>
       <p>
         Toasts provide brief feedback about an operation through a message on

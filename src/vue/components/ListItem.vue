@@ -219,7 +219,7 @@
         },
 
         media: {
-          common: `mr-4 flex-shrink-0 ${props.mediaClass}`,
+          common: `mr-4 shrink-0 ${props.mediaClass}`,
           ios: 'py-2',
           material: 'py-3 min-w-10',
         },
@@ -240,7 +240,7 @@
           material: cls(!props.menuListItem && props.titleFontSizeMaterial),
         },
         title: {
-          common: `flex-shrink`,
+          common: `shrink`,
           menuListItem: cls(
             'text-sm',
             props.strongTitle === true || autoStrongTitle.value
@@ -255,10 +255,10 @@
         },
         after: cls(
           textColor.value,
-          `text-opacity-55 flex-shrink-0 ml-auto pl-1 flex items-center space-x-1`,
+          `text-opacity-55 shrink-0 ml-auto pl-1 flex items-center space-x-1`,
           useDarkClasses('dark:text-opacity-55')
         ),
-        chevron: 'opacity-20 flex-shrink-0 ml-3',
+        chevron: 'opacity-20 shrink-0 ml-3',
         subtitle: 'text-sm',
         text: cls(
           textColor.value,
