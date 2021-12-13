@@ -38,23 +38,16 @@ const config = (userConfig = {}) => {
     userConfig
   );
 
-  // support tailwind2 purge config
-  if (newConfig.purge) {
-    if (Array.isArray(newConfig.purge)) {
-      newConfig.content = [...newConfig.purge, content];
-    } else if (newConfig.purge.content) {
-      newConfig.content = [...newConfig.purge.content, content];
-    } else if (!newConfig.purge.content) {
-      newConfig.content = [content];
-    }
-  }
-
   if (!newConfig.content) {
     newConfig.content = [content];
   } else if (Array.isArray(newConfig.content)) {
     newConfig.content = [...newConfig.content, content];
+  } else if (newConfig.content.files) {
+    newConfig.content.files = [...newConfig.content.files, content];
+  } else if (!newConfig.content.files) {
+    newConfig.content.files = [content];
   }
-  console.log(newConfig.content);
+
   return newConfig;
 };
 module.exports = config;
