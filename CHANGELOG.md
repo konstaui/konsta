@@ -1,5 +1,9 @@
 # Changelog
 
+# [0.7.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.6.0...v0.7.0) (2021-12-13)
+
+- Konsta UI
+
 # [0.6.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.5.1...v0.6.0) (2021-12-13)
 
 ### Features
