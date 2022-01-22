@@ -65,7 +65,7 @@ const Segmented = forwardRef((props, ref) => {
       dark('dark:bg-white dark:bg-opacity-10')
     ),
     strongHighlight: cls(
-      'bg-red-500 absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
+      'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
       rounded ? 'rounded-full' : 'rounded',
       `bg-white shadow`,
       dark('dark:bg-opacity-15 dark:touch-ripple-white')
