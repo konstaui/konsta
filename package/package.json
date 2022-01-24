@@ -1,6 +1,6 @@
 {
   "name": "konsta",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   "engines": {
     "node": ">= 4.7.0"
   },
-  "releaseDate": "December 13, 2021",
+  "releaseDate": "January 24, 2022",
   "exports": {
     "./package.json": "./package.json",
     "./react": {

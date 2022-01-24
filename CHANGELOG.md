@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.7.1](https://github.com/konstaui/konsta/compare/v0.7.0...v0.7.1) (2022-01-24)
+
+### Bug Fixes
+
+- segmented-button getting red ([#30](https://github.com/konstaui/konsta/issues/30)) ([#31](https://github.com/konstaui/konsta/issues/31)) ([2f9ef20](https://github.com/konstaui/konsta/commit/2f9ef207e929cf6c1d53a42bcffb9efc853a53ef))
+
 # [0.7.0](https://github.com/tailwind-mobile/tailwind-mobile/compare/v0.6.0...v0.7.0) (2021-12-13)
 
 - Konsta UI
