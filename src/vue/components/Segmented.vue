@@ -64,7 +64,7 @@
           useDarkClasses('dark:bg-white dark:bg-opacity-10')
         ),
         strongHighlight: cls(
-          'bg-red-500 absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
+          'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
           props.rounded ? 'rounded-full' : 'rounded',
           `bg-white shadow`,
           useDarkClasses('dark:bg-opacity-15 dark:touch-ripple-white')
