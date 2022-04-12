@@ -13,6 +13,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kBackIcon from './icons/BackIcon.vue';
   import kLink from './Link.vue';
+  import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 
   export default {
     name: 'k-navbar-back-link',
@@ -52,13 +53,7 @@
           (props.showText === 'auto' && theme.value === 'ios') ||
           props.showText === true
       );
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: 'cursor-pointer',
-          material: 'min-w-12 touch-ripple-inset',
-        },
-        icon: '',
-      }));
+      const c = useThemeClasses(props, () => NavbarBackLinkClasses());
       return {
         c,
         shouldShowText,

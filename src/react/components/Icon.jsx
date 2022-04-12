@@ -1,8 +1,8 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { positionClass } from '../shared/position-class.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import Badge from './Badge.jsx';
+import { IconClasses } from '../../shared/classes/IconClasses.js';
 
 const Icon = forwardRef((props, ref) => {
   const {
@@ -37,13 +37,7 @@ const Icon = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses();
   const theme = useTheme();
 
-  const c = themeClasses(
-    {
-      base: `${positionClass('relative', className)} inline-block not-italic`,
-      badge: 'absolute -right-1.5 -top-0.5',
-    },
-    className
-  );
+  const c = themeClasses(IconClasses(props, className), className);
 
   return (
     <Component ref={elRef} className={c.base} {...attrs}>

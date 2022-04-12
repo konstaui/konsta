@@ -1,10 +1,10 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
-import { positionClass } from '../shared/position-class.js';
+import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
+import { LinkClasses } from '../../shared/classes/LinkClasses.js';
 
 const Link = forwardRef((props, ref) => {
   const {
@@ -68,45 +68,9 @@ const Link = forwardRef((props, ref) => {
     tabbar && !tabbarActive ? colors.tabbarInactive : colors.text;
   const tabbarState = tabbarActive ? 'active' : 'inactive';
 
-  const c = themeClasses({
-    base: {
-      common: cls(
-        textColor,
-        `inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
-        needsTouchRipple &&
-          `touch-ripple-primary ${positionClass('relative', className)} z-10`
-      ),
-      notTabbar: {
-        ios: `active:opacity-30 duration-300 active:duration-0`,
-        material: needsTouchRipple ? '' : `active:opacity-55`,
-      },
-    },
-    tabbar: {
-      common: cls(
-        positionClass('relative', className),
-        `w-full h-full duration-300`
-      ),
-      material: 'uppercase font-medium text-sm overflow-hidden z-10',
-      active: {},
-      inactive: {
-        ios: 'text-opacity-40',
-        material: 'text-opacity-55',
-      },
-    },
-    tabbarHighlight: {
-      material: 'absolute left-0 top-0 w-full h-0.5 bg-primary duration-300',
-      active: 'opacity-100',
-      inactive: 'opacity-0',
-    },
-    toolbar: {
-      common: cls(`h-full max-h-12`, iconOnly && 'touch-ripple-inset'),
-      material: 'px-3',
-    },
-    navbar: {
-      common: cls(`h-full max-h-12`, iconOnly && 'touch-ripple-inset'),
-      material: 'px-3',
-    },
-  });
+  const c = themeClasses(
+    LinkClasses(props, { textColor, needsTouchRipple }, className)
+  );
 
   const classes = cls(
     // base

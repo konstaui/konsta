@@ -25,8 +25,8 @@
 </template>
 <script>
   import { ref, computed, watch, onMounted } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { CheckboxClasses } from '../../shared/classes/CheckboxClasses.js';
+  import { cls } from '../../shared/cls.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
@@ -79,35 +79,9 @@
         props.checked || props.indeterminate ? 'checked' : 'notChecked'
       );
 
-      const c = useThemeClasses(props, () => ({
-        base: `cursor-pointer inline-block align-middle ${positionClass(
-          'relative',
-          ctx.attrs.class
-        )}`,
-        iconWrap: {
-          common: cls(
-            `flex items-center justify-center text-white`,
-            useDarkClasses('dark:text-black')
-          ),
-          ios: 'w-5.5 h-5.5 rounded-full border',
-          material: 'w-4.5 h-4.5 rounded-sm border-2',
-          notChecked: {
-            ios: colors.value.borderIos,
-            material: colors.value.borderMaterial,
-          },
-          checked: `${colors.value.bgChecked} ${colors.value.borderChecked}`,
-        },
-        icon: {
-          notChecked: 'opacity-0',
-          checked: 'opacity-100',
-        },
-        indeterminateIcon: {
-          common: cls(`bg-white w-3/4`, useDarkClasses('dark:bg-black')),
-          ios: 'h-0.5 rounded-full',
-          material: 'h-0.5',
-        },
-        input: 'hidden',
-      }));
+      const c = useThemeClasses(props, () =>
+        CheckboxClasses(props, colors.value, ctx.attrs.class, useDarkClasses)
+      );
 
       watch(
         () => props.indeterminate,

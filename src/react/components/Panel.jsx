@@ -1,6 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
-import { positionClass } from '../shared/position-class.js';
+import { cls } from '../../shared/cls.js';
+import { PanelClasses } from '../../shared/classes/PanelClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -49,34 +49,7 @@ const Panel = forwardRef((props, ref) => {
   };
 
   const c = themeClasses(
-    {
-      base: {
-        common: cls(
-          'top-0 transition-transform transform duration-400 z-40 max-w-full max-h-full overflow-hidden',
-          colors.bg,
-          positionClass('fixed', className),
-          size
-        ),
-        ios: '',
-        material: 'shadow-2xl',
-      },
-      left: {
-        common: cls('no-safe-areas-right left-0'),
-        opened: 'translate-x-0',
-        closed: '-translate-x-full',
-      },
-      right: {
-        common: cls('no-safe-areas-left left-full'),
-        opened: '-translate-x-full',
-        closed: 'translate-x-0',
-      },
-      backdrop: {
-        common:
-          'fixed z-40 w-full h-full left-0 top-0 bg-black bg-opacity-50 duration-400',
-        opened: '',
-        closed: 'opacity-0 pointer-events-none',
-      },
-    },
+    PanelClasses({ ...props, size }, colors, className),
     className
   );
 

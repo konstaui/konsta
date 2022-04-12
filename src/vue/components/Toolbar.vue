@@ -8,10 +8,10 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
 
   export default {
     name: 'k-toolbar',
@@ -56,43 +56,9 @@
         ...(props.colors || {}),
       }));
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            `w-full z-20`,
-            positionClass('relative', ctx.attrs.class),
-            !props.top && 'pb-safe'
-          ),
-        },
-        bg: {
-          common: cls('absolute w-full h-full left-0 top-0', props.bgClass),
-          ios: cls(
-            props.hairlines && (props.top ? 'hairline-b' : 'hairline-t'),
-            colors.value.bgIos,
-            props.translucent && 'translucent'
-          ),
-          material: cls(
-            `shadow-md ${colors.value.bgMaterial}`,
-            !props.top && 'transform rotate-180'
-          ),
-        },
-        inner: {
-          common: cls(
-            `flex relative justify-between items-center w-full overflow-hidden`,
-            props.innerClass
-          ),
-          ios: 'pl-2-safe pr-2-safe',
-          material: !props.tabbar ? 'pl-2-safe pr-2-safe' : '',
-          toolbar: {
-            ios: 'h-11',
-            material: 'h-12',
-          },
-          tabbarLabels: {
-            ios: 'h-12.5',
-            material: 'h-14',
-          },
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        ToolbarClasses(props, colors.value, ctx.attrs.class)
+      );
       return {
         c,
       };

@@ -10,7 +10,10 @@ export const calcPopoverPosition = ({
 }) => {
   if (targetEl.current) {
     targetEl = targetEl.current;
+  } else if (targetEl.value) {
+    targetEl = targetEl.value;
   }
+
   if (typeof targetEl === 'string') {
     // eslint-disable-next-line
     targetEl = document.querySelector(targetEl);

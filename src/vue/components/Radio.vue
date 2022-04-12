@@ -20,12 +20,12 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
+  import { RadioClasses } from '../../shared/classes/RadioClasses.js';
 
   export default {
     name: 'k-radio',
@@ -74,38 +74,9 @@
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 
-      const c = useThemeClasses(props, () => ({
-        base: cls(
-          `cursor-pointer inline-block align-middle`,
-          positionClass('relative', ctx.attrs.class)
-        ),
-        iconWrap: {
-          common: 'flex items-center justify-center rounded-full',
-          ios: 'w-5.5 h-5.5 border',
-          material: 'w-5 h-5 border-2',
-          notChecked: {
-            ios: colors.value.borderIos,
-            material: colors.value.borderMaterial,
-          },
-          checked: {
-            common: colors.value.borderChecked,
-          },
-        },
-        icon: {
-          ios: 'text-primary',
-          material: `w-3/5 h-3/5 rounded-full ${colors.value.bgChecked}`,
-          notChecked: 'opacity-0',
-          checked: 'opacity-100',
-        },
-        indeterminateIcon: {
-          common: 'bg-white w-3/4',
-          ios: 'h-0.25',
-          material: 'h-0.5',
-        },
-        input: {
-          common: 'hidden',
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        RadioClasses(props, colors.value, ctx.attrs.class)
+      );
 
       const onChange = (e) => {
         ctx.emit('change', e);

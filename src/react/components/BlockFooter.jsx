@@ -1,4 +1,5 @@
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import { BlockFooterClasses } from '../../shared/classes/BlockFooterClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const BlockFooter = forwardRef((props, ref) => {
@@ -30,12 +31,7 @@ const BlockFooter = forwardRef((props, ref) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const c = themeClasses(
-    {
-      base: `pl-4-safe pr-4-safe mb-8 flex items-center -mt-6 text-opacity-55 text-black text-sm`,
-    },
-    className
-  );
+  const c = themeClasses(BlockFooterClasses(), className);
 
   return (
     <Component ref={elRef} className={c.base} {...attrs}>

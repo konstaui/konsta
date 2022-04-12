@@ -5,6 +5,7 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -39,15 +40,8 @@
 
       const size = computed(() => (props.small ? 'sm' : 'md'));
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: `${colors.value.bg} ${colors.value.text} inline-flex items-center justify-center rounded-full leading-none`,
-          ios: `font-semibold`,
-          material: `font-medium`,
-          sm: 'text-2xs min-w-4 min-h-4 px-0.5',
-          md: 'text-xs min-w-5 min-h-5 px-1.5 py-0.5',
-        },
-      }));
+      const c = useThemeClasses(props, () => BadgeClasses(props, colors.value));
+
       return {
         c,
         size,

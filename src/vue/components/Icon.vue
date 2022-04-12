@@ -13,10 +13,11 @@
   </component>
 </template>
 <script>
-  import { positionClass } from '../shared/position-class.js';
+  import { positionClass } from '../../shared/position-class.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kBadge from './Badge.vue';
+  import { IconClasses } from '../../shared/classes/IconClasses.js';
 
   export default {
     name: 'k-icon',
@@ -34,13 +35,9 @@
     setup(props, ctx) {
       const theme = useTheme();
 
-      const c = useThemeClasses(props, () => ({
-        base: `${positionClass(
-          'relative',
-          ctx.attrs.class
-        )} inline-block not-italic`,
-        badge: 'absolute -right-1.5 -top-0.5',
-      }));
+      const c = useThemeClasses(props, () =>
+        IconClasses(props, ctx.attrs.class)
+      );
       return {
         theme,
         c,

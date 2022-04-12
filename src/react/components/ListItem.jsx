@@ -1,10 +1,11 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
+import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import ChevronIcon from './icons/ChevronIcon.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
+import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
 
 const ListItem = forwardRef((props, ref) => {
   const {
@@ -121,92 +122,23 @@ const ListItem = forwardRef((props, ref) => {
   const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
 
   const c = themeClasses(
-    {
-      base: menuListItem ? `${textColor} py-1` : '',
-      itemContent: {
-        common: cls(
-          menuListItem ? 'pl-2 ml-2-safe mr-2-safe rounded-lg' : 'pl-4-safe',
-          `flex items-center ${contentClassName}`
-        ),
-        link: cls(
-          'duration-300 active:duration-0 cursor-pointer select-none',
-          hairlines && 'active:hairline-transparent',
-          needsTouchRipple &&
-            cls(
-              `relative overflow-hidden`,
-              dark('dark:touch-ripple-white z-10')
-            ),
-          isMenuListItemActive
-            ? cls(colors.menuListItemActiveBg, 'bg-opacity-15')
-            : cls(
-                `active:bg-black active:bg-opacity-10`,
-                dark('dark:active:bg-white dark:active:bg-opacity-10')
-              )
-        ),
+    ListItemClasses(
+      {
+        ...props,
+        titleFontSizeIos,
+        titleFontSizeMaterial,
+        hairlines,
+        strongTitle,
       },
-
-      media: {
-        common: `mr-4 shrink-0 ${mediaClassName}`,
-        ios: 'py-2',
-        material: 'py-3 min-w-10',
-      },
-      inner: {
-        common: cls(
-          'pr-4-safe w-full relative',
-          !menuListItem && hairlines && 'hairline-b',
-          innerClassName
-        ),
-        ios: 'py-2.5',
-        material: 'py-3',
-      },
-      titleWrap: {
-        common: cls(`flex justify-between items-center ${titleWrapClassName}`),
-        ios: cls(!menuListItem && titleFontSizeIos),
-        material: cls(!menuListItem && titleFontSizeMaterial),
-      },
-      title: {
-        common: `shrink`,
-        menuListItem: cls(
-          'text-sm',
-          strongTitle === true || autoStrongTitle
-            ? 'font-semibold'
-            : 'font-medium'
-        ),
-        strong: {
-          common: '',
-          ios: 'font-semibold',
-          material: 'font-medium',
-        },
-      },
-      after: cls(
+      colors,
+      {
         textColor,
-        `text-opacity-55 shrink-0 ml-auto pl-1 flex items-center space-x-1`,
-        dark('dark:text-opacity-55')
-      ),
-      chevron: 'opacity-20 shrink-0 ml-3',
-      subtitle: 'text-sm',
-      text: cls(
-        textColor,
-        `text-sm text-opacity-55 line-clamp-2`,
-        dark('dark:text-opacity-55')
-      ),
-      header: 'text-xs mb-0.5',
-      footer: cls(
-        textColor,
-        `text-xs text-opacity-55 mt-0.5`,
-        dark('dark:text-opacity-55')
-      ),
-
-      divider: {
-        common: cls(
-          `bg-list-divider-light text-black text-opacity-55 pl-4-safe pr-4-safe py-1 flex items-center z-20`,
-          divider ? 'relative' : 'sticky top-0',
-          dark(`dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`)
-        ),
-        ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px text-list-title-ios`,
-        material: 'h-12 text-list-title-material',
-      },
-    },
+        needsTouchRipple,
+        isMenuListItemActive,
+        darkClasses: dark,
+        autoStrongTitle,
+      }
+    ),
     className
   );
 

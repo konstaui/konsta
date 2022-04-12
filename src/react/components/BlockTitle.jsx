@@ -1,4 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const BlockTitle = forwardRef((props, ref) => {
@@ -31,18 +32,7 @@ const BlockTitle = forwardRef((props, ref) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const c = themeClasses(
-    {
-      base: {
-        common: `pl-4-safe pr-4-safe mt-8 flex justify-between items-center ${
-          withBlock ? '-mb-6' : 'mb-2'
-        }`,
-        ios: `font-semibold`,
-        material: `font-medium`,
-      },
-    },
-    className
-  );
+  const c = themeClasses(BlockTitleClasses({ ...props, withBlock }), className);
 
   return (
     <Component ref={elRef} className={c.base} {...attrs}>

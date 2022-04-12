@@ -9,6 +9,7 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -40,14 +41,8 @@
         ...(props.colors || {}),
       }));
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: `block h-1 bg-opacity-30 overflow-hidden`,
-          ios: `bg-black rounded-full`,
-          material: colors.value.bg,
-        },
-        inner: `block ${colors.value.bg} duration-200 w-full h-full`,
-      }));
+      const c = useThemeClasses(props, () => ProgressbarClasses(colors.value));
+
       return {
         c,
       };

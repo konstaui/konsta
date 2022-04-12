@@ -7,8 +7,8 @@
   import { computed } from 'vue';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { cls } from '../../shared/cls.js';
+  import { BlockClasses } from '../../shared/classes/BlockClasses.js';
 
   export default {
     name: 'k-block',
@@ -43,31 +43,9 @@
         ...(props.colors || {}),
       }));
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            `text-sm z-10`,
-            positionClass('relative', ctx.attrs.class),
-            props.inset && 'px-4',
-            !props.inset && 'pl-4-safe pr-4-safe',
-            !props.nested && props.margin
-          ),
-        },
-        strong: {
-          common: cls(
-            `py-4 ${colors.value.strongBg}`,
-            !props.inset &&
-              !props.nested &&
-              props.hairlines &&
-              'hairline-t hairline-b'
-          ),
-        },
-        inset: {
-          common: `ml-4-safe mr-4-safe overflow-hidden`,
-          ios: `rounded-lg`,
-          material: `rounded`,
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        BlockClasses(props, colors.value, ctx.attrs.class)
+      );
 
       const classes = computed(() =>
         cls(

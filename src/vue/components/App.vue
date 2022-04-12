@@ -12,10 +12,9 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
   import { useAutoTheme } from '../shared/use-auto-theme.js';
   import KonstaProvider from '../shared/KonstaProvider.vue';
+  import { AppClasses } from '../../shared/classes/AppClasses.js';
 
   export default {
     name: 'k-app',
@@ -47,13 +46,7 @@
     setup(props, ctx) {
       const currentTheme = useAutoTheme(props);
       const classes = computed(() =>
-        cls(
-          currentTheme.value === 'ios' && `k-ios`,
-          currentTheme.value === 'material' && 'k-material',
-          'k-app w-full h-full min-h-screen',
-          props.safeAreas && 'safe-areas',
-          positionClass('relative', ctx.attrs.class)
-        )
+        AppClasses(props, currentTheme.value, ctx.attrs.class)
       );
 
       return {

@@ -1,4 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Badge = forwardRef((props, ref) => {
@@ -40,18 +41,7 @@ const Badge = forwardRef((props, ref) => {
 
   const size = small ? 'sm' : 'md';
 
-  const c = themeClasses(
-    {
-      base: {
-        common: `${colors.bg} ${colors.text} inline-flex items-center justify-center rounded-full leading-none`,
-        ios: `font-semibold`,
-        material: `font-medium`,
-        sm: 'text-2xs min-w-4 min-h-4 px-0.5',
-        md: 'text-xs min-w-5 min-h-5 px-1.5 py-0.5',
-      },
-    },
-    className
-  );
+  const c = themeClasses(BadgeClasses(props, colors), className);
 
   return (
     <Component ref={elRef} className={c.base[size]} {...attrs}>

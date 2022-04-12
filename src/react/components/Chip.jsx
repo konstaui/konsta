@@ -1,5 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
+import { ChipClasses } from '../../shared/classes/ChipClasses.js';
+import { cls } from '../../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -54,19 +55,7 @@ const Chip = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses(
-    {
-      base: {
-        common: `${colors.text} text-sm inline-flex items-center justify-center align-middle rounded-full px-3 py-1`,
-        fill: `${colors.bg}`,
-        outline: `border ${colors.border}`,
-      },
-      media: '-ml-3 -my-1 mr-1 select-none',
-      deleteButton:
-        '-mr-2 -my-1 ml-1 h-full flex items-center justify-center w-6 cursor-pointer opacity-50 active:opacity-100 select-none',
-    },
-    className
-  );
+  const c = themeClasses(ChipClasses(props, colors), className);
 
   return (
     <Component ref={elRef} className={c.base[style]} {...attrs}>

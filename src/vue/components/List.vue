@@ -7,8 +7,8 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { cls } from '../../shared/cls.js';
+  import { ListClasses } from '../../shared/classes/ListClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -46,34 +46,9 @@
         ...(props.colors || {}),
       }));
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            !props.nested && props.margin,
-            colors.value.bg,
-            !props.inset &&
-              !props.nested &&
-              props.hairlines &&
-              'hairline-t hairline-b',
-            positionClass('relative', ctx.attrs.class),
-            'z-10'
-          ),
-        },
-        ul: {
-          common: cls(
-            props.inset && 'no-safe-areas',
-            'last-child-hairline-b-none'
-          ),
-        },
-        inset: {
-          common: `ml-4-safe mr-4-safe overflow-hidden`,
-          ios: `rounded-lg`,
-          material: `rounded`,
-        },
-        menuList: {
-          common: 'py-1',
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        ListClasses(props, colors.value, ctx.attrs.class)
+      );
 
       const classes = computed(() =>
         cls(

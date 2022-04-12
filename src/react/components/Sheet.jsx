@@ -1,6 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
-import { positionClass } from '../shared/position-class.js';
+import { cls } from '../../shared/cls.js';
+import { SheetClasses } from '../../shared/classes/SheetClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -46,28 +46,7 @@ const Sheet = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses(
-    {
-      base: {
-        common: cls(
-          'left-0 top-full transition-transform duration-400 z-40 overflow-hidden',
-          colors.bg,
-          positionClass('fixed', className)
-        ),
-        ios: '',
-        material: 'shadow-2xl',
-        opened: '-translate-y-full',
-        closed: '',
-      },
-      backdrop: {
-        common:
-          'fixed z-40 w-full h-full left-0 top-0 bg-black bg-opacity-50 duration-400',
-        opened: '',
-        closed: 'opacity-0 pointer-events-none',
-      },
-    },
-    className
-  );
+  const c = themeClasses(SheetClasses(props, colors, className), className);
 
   return (
     <>

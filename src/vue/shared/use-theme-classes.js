@@ -1,5 +1,5 @@
 import { inject, computed } from 'vue';
-import { cls } from './cls.js';
+import { cls } from '../../shared/cls.js';
 
 const propClasses = (classesObj, theme, state) => {
   if (typeof classesObj === 'string') return classesObj;

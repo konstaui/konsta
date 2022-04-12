@@ -3,6 +3,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import BackIcon from './icons/BackIcon.jsx';
 import Link from './Link.jsx';
+import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 
 const NavbarBackLink = forwardRef((props, ref) => {
   const {
@@ -41,16 +42,7 @@ const NavbarBackLink = forwardRef((props, ref) => {
   const shouldShowText =
     (showText === 'auto' && theme === 'ios') || showText === true;
 
-  const c = themeClasses(
-    {
-      base: {
-        common: 'cursor-pointer',
-        material: 'min-w-12 touch-ripple-inset',
-      },
-      icon: '',
-    },
-    className
-  );
+  const c = themeClasses(NavbarBackLinkClasses(), className);
 
   return (
     <Link

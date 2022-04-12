@@ -19,6 +19,7 @@
   </k-link>
 </template>
 <script>
+  import { TabbarLinkClasses } from '../../shared/classes/TabbarLinkClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kLink from './Link.vue';
 
@@ -43,22 +44,7 @@
       label: { type: String, default: undefined },
     },
     setup(props, ctx) {
-      const c = useThemeClasses(props, () => ({
-        content: {
-          common: 'flex flex-col items-center h-full',
-          ios: 'py-1',
-          material: 'py-2',
-        },
-        icon: {
-          common: 'flex items-center justify-center',
-          ios: 'w-7 h-7',
-          material: 'w-6 h-6',
-        },
-        label: {
-          ios: 'text-xs font-medium',
-          material: 'text-sm font-normal normal-case',
-        },
-      }));
+      const c = useThemeClasses(props, () => TabbarLinkClasses());
       return {
         c,
         slots: ctx.slots,

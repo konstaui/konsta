@@ -1,6 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
-import { positionClass } from '../shared/position-class.js';
+import { cls } from '../../shared/cls.js';
+import { ListClasses } from '../../shared/classes/ListClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -47,28 +47,9 @@ const List = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses({
-    base: {
-      common: cls(
-        !nested && margin,
-        colors.bg,
-        !inset && !nested && hairlines && 'hairline-t hairline-b',
-        positionClass('relative', className),
-        'z-10'
-      ),
-    },
-    ul: {
-      common: cls(inset && 'no-safe-areas', 'last-child-hairline-b-none'),
-    },
-    inset: {
-      common: `ml-4-safe mr-4-safe overflow-hidden`,
-      ios: `rounded-lg`,
-      material: `rounded`,
-    },
-    menuList: {
-      common: 'py-1',
-    },
-  });
+  const c = themeClasses(
+    ListClasses({ ...props, margin, hairlines }, colors, className)
+  );
 
   const classes = cls(
     c.base,

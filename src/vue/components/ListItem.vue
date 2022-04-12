@@ -51,12 +51,13 @@
 </template>
 <script>
   import { ref, computed } from 'vue';
-  import { cls } from '../shared/cls.js';
+  import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import ChevronIcon from './icons/ChevronIcon.vue';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
 
   export default {
     name: 'k-list-item',
@@ -190,102 +191,15 @@
           (props.subtitle || ctx.slots.subtitle || props.text || ctx.slots.text)
       );
 
-      const c = useThemeClasses(props, () => ({
-        base: props.menuListItem ? `${textColor.value} py-1` : '',
-        itemContent: {
-          common: cls(
-            props.menuListItem
-              ? 'pl-2 ml-2-safe mr-2-safe rounded-lg'
-              : 'pl-4-safe',
-            `flex items-center ${props.contentClass}`
-          ),
-          link: cls(
-            'duration-300 active:duration-0 cursor-pointer select-none',
-            props.hairlines && 'active:hairline-transparent',
-            needsTouchRipple.value &&
-              cls(
-                `relative overflow-hidden`,
-                useDarkClasses('dark:touch-ripple-white z-10')
-              ),
-            isMenuListItemActive.value
-              ? cls(colors.value.menuListItemActiveBg, 'bg-opacity-15')
-              : cls(
-                  `active:bg-black active:bg-opacity-10`,
-                  useDarkClasses(
-                    'dark:active:bg-white dark:active:bg-opacity-10'
-                  )
-                )
-          ),
-        },
-
-        media: {
-          common: `mr-4 shrink-0 ${props.mediaClass}`,
-          ios: 'py-2',
-          material: 'py-3 min-w-10',
-        },
-        inner: {
-          common: cls(
-            'pr-4-safe w-full relative',
-            !props.menuListItem && props.hairlines && 'hairline-b',
-            props.innerClass
-          ),
-          ios: 'py-2.5',
-          material: 'py-3',
-        },
-        titleWrap: {
-          common: cls(
-            `flex justify-between items-center ${props.titleWrapClass}`
-          ),
-          ios: cls(!props.menuListItem && props.titleFontSizeIos),
-          material: cls(!props.menuListItem && props.titleFontSizeMaterial),
-        },
-        title: {
-          common: `shrink`,
-          menuListItem: cls(
-            'text-sm',
-            props.strongTitle === true || autoStrongTitle.value
-              ? 'font-semibold'
-              : 'font-medium'
-          ),
-          strong: {
-            common: '',
-            ios: 'font-semibold',
-            material: 'font-medium',
-          },
-        },
-        after: cls(
-          textColor.value,
-          `text-opacity-55 shrink-0 ml-auto pl-1 flex items-center space-x-1`,
-          useDarkClasses('dark:text-opacity-55')
-        ),
-        chevron: 'opacity-20 shrink-0 ml-3',
-        subtitle: 'text-sm',
-        text: cls(
-          textColor.value,
-          `text-sm text-opacity-55 line-clamp-2`,
-          useDarkClasses('dark:text-opacity-55')
-        ),
-        header: 'text-xs mb-0.5',
-        footer: cls(
-          textColor.value,
-          `text-xs text-opacity-55 mt-0.5`,
-          useDarkClasses('dark:text-opacity-55')
-        ),
-
-        divider: {
-          common: cls(
-            `bg-list-divider-light text-black text-opacity-55 pl-4-safe pr-4-safe py-1 flex items-center z-20`,
-            props.divider ? 'relative' : 'sticky top-0',
-            useDarkClasses(
-              `dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`
-            )
-          ),
-          ios: `h-8${
-            props.hairlines ? ' hairline-t' : ''
-          } -mt-px text-list-title-ios`,
-          material: 'h-12 text-list-title-material',
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        ListItemClasses(props, colors.value, {
+          textColor: textColor.value,
+          needsTouchRipple: needsTouchRipple.value,
+          isMenuListItemActive: isMenuListItemActive.value,
+          darkClasses: useDarkClasses,
+          autoStrongTitle: autoStrongTitle.value,
+        })
+      );
 
       const itemContentClasses = computed(() =>
         isLink.value || isLabel.value

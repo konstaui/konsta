@@ -4,8 +4,7 @@
   </component>
 </template>
 <script>
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { PageClasses } from '../../shared/classes/PageClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -26,22 +25,9 @@
       },
     },
     setup(props, ctx) {
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            'h-full w-full left-0 top-0 overflow-auto',
-            positionClass('absolute', ctx.attrs.class)
-          ),
-          ios: cls(
-            'bg-page-ios-light',
-            useDarkClasses('dark:bg-page-ios-dark')
-          ),
-          material: cls(
-            'bg-page-material-light',
-            useDarkClasses('dark:bg-page-material-dark')
-          ),
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        PageClasses(props, ctx.attrs.class, useDarkClasses)
+      );
 
       return {
         c,

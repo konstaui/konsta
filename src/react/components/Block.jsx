@@ -1,6 +1,6 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
-import { positionClass } from '../shared/position-class.js';
+import { BlockClasses } from '../../shared/classes/BlockClasses.js';
+import { cls } from '../../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -47,28 +47,9 @@ const Block = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses({
-    base: {
-      common: cls(
-        `text-sm z-10`,
-        positionClass('relative', className),
-        inset && 'px-4',
-        !inset && 'pl-4-safe pr-4-safe',
-        !nested && margin
-      ),
-    },
-    strong: {
-      common: cls(
-        `py-4 ${colors.strongBg}`,
-        !inset && !nested && hairlines && 'hairline-t hairline-b'
-      ),
-    },
-    inset: {
-      common: `ml-4-safe mr-4-safe overflow-hidden`,
-      ios: `rounded-lg`,
-      material: `rounded`,
-    },
-  });
+  const c = themeClasses(
+    BlockClasses({ ...props, margin, hairlines }, colors, className)
+  );
 
   const classes = cls(
     // base

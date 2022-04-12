@@ -25,10 +25,10 @@
 <script>
   import { computed } from 'vue';
 
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
 
   export default {
     name: 'k-navbar',
@@ -79,72 +79,14 @@
         ...(props.colors || {}),
       }));
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            `w-full z-20 top-0 pt-safe`,
-            positionClass('sticky', ctx.attrs.class)
-          ),
-          ios: props.fontSizeIos,
-          material: props.fontSizeMaterial,
-        },
-        bg: {
-          common: cls('absolute w-full h-full left-0 top-0', props.bgClass),
-          ios: cls(
-            colors.value.bgIos,
-            props.hairlines && 'hairline-b',
-            props.translucent && 'translucent'
-          ),
-          material: `shadow-md ${colors.value.bgMaterial}`,
-        },
-        subnavbar: {
-          common: cls('relative flex items-center', props.subnavbarClass),
-          ios: 'h-11 pl-2-safe pr-2-safe',
-          material: 'h-12 pl-4-safe pr-4-safe',
-        },
-        inner: {
-          common: cls(
-            'flex relative items-center w-full overflow-hidden',
-            props.innerClass
-          ),
-          ios: cls(
-            'pl-2-safe pr-2-safe h-11',
-            !ctx.slots.left && ctx.slots.right
-              ? 'justify-end'
-              : 'justify-between'
-          ),
-          material: 'justify-start h-14 lg:h-16 pl-safe pr-safe',
-        },
-        left: {
-          common: cls(
-            'flex justify-center items-center h-full',
-            props.leftClass
-          ),
-          ios: 'mr-2 transform transform-gpu',
-          material: 'mx-1',
-        },
-        title: {
-          common: cls(
-            `${colors.value.title} whitespace-nowrap leading-tight`,
-            props.titleClass
-          ),
-          ios: 'font-semibold absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center',
-          material: 'font-medium mx-4 text-left',
-        },
-        subtitle: {
-          common: cls('font-normal leading-none', props.subtitleClass),
-          ios: 'text-2xs opacity-55',
-          material: 'text-sm opacity-85',
-        },
-        right: {
-          common: cls(
-            'flex justify-center items-center h-full',
-            props.rightClass
-          ),
-          ios: 'ml-2 transform transform-gpu',
-          material: 'ml-auto mr-1',
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        NavbarClasses(
+          { ...props, left: ctx.slots.left, right: ctx.slots.right },
+          colors.value,
+          ctx.attrs.class
+        )
+      );
+
       return {
         c,
         slots: ctx.slots,

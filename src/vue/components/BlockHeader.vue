@@ -4,6 +4,7 @@
   </component>
 </template>
 <script>
+  import { BlockHeaderClasses } from '../../shared/classes/BlockHeaderClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -23,9 +24,7 @@
       },
     },
     setup(props) {
-      const c = useThemeClasses(props, () => ({
-        base: `pl-4-safe pr-4-safe mt-8 flex items-center -mb-6 text-opacity-55 text-black text-sm`,
-      }));
+      const c = useThemeClasses(props, () => BlockHeaderClasses());
       return {
         c,
       };

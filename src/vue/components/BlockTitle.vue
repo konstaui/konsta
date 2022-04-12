@@ -4,6 +4,7 @@
   </component>
 </template>
 <script>
+  import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -27,15 +28,7 @@
       },
     },
     setup(props) {
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: `pl-4-safe pr-4-safe mt-8 flex justify-between items-center ${
-            props.withBlock ? '-mb-6' : 'mb-2'
-          }`,
-          ios: `font-semibold`,
-          material: `font-medium`,
-        },
-      }));
+      const c = useThemeClasses(props, () => BlockTitleClasses(props));
       return {
         c,
       };

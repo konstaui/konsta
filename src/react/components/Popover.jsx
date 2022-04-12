@@ -6,12 +6,12 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import { cls } from '../shared/cls.js';
-import { positionClass } from '../shared/position-class.js';
+import { cls } from '../../shared/cls.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
-import { calcPopoverPosition } from '../shared/calc-popover-position.js';
+import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
+import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
 
 const Popover = forwardRef((props, ref) => {
   const {
@@ -75,55 +75,7 @@ const Popover = forwardRef((props, ref) => {
   };
 
   const c = themeClasses(
-    {
-      base: {
-        common: cls(
-          'transition-transform-opacity duration-300 z-40 no-safe-areas',
-          positionClass('fixed', className),
-          size
-        ),
-        ios: '',
-        material: '',
-        opened: '',
-        closed: {
-          common: 'opacity-0 pointer-events-none',
-          ios: '',
-          material: 'scale-x-90 scale-y-75',
-        },
-      },
-      inner: {
-        common: cls('overflow-hidden relative', colors.bg),
-        ios: cls('rounded-xl', translucent && 'translucent'),
-        material: 'rounded shadow-lg',
-      },
-      angleWrap: {
-        common: cls(angleClassName || ''),
-        ios: cls(
-          'absolute w-6.5 h-6.5 z-50 overflow-hidden',
-          translucent && 'opacity-80'
-        ),
-        bottom: 'top-full',
-        top: 'bottom-full',
-        left: 'right-full',
-        right: 'left-full',
-      },
-      angleArrow: {
-        common: cls(
-          colors.bg,
-          'absolute rounded w-full h-full transform rotate-45'
-        ),
-        bottom: '-top-4.75',
-        top: 'top-4.75',
-        left: 'left-4.75',
-        right: '-left-4.75',
-      },
-      backdrop: {
-        common:
-          'fixed z-40 w-full h-full left-0 top-0 bg-black bg-opacity-50 duration-300',
-        opened: '',
-        closed: 'opacity-0 pointer-events-none',
-      },
-    },
+    PopoverClasses({ ...props, size }, colors, className),
     className
   );
 

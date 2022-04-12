@@ -8,12 +8,12 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   import PreloaderIOS from './icons/PreloaderIOS.vue';
   import PreloaderMaterial from './icons/PreloaderMaterial.vue';
+  import { PreloaderClasses } from '../../shared/classes/PreloaderClasses.js';
 
   export default {
     name: 'k-preloader',
@@ -50,18 +50,9 @@
         theme.value === 'ios' ? PreloaderIOS : PreloaderMaterial
       );
 
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            theme.value === 'ios' ? 'k-ios-preloader' : 'k-material-preloader',
-            `inline-block ${props.size} ${colors.value.icon}`
-          ),
-          material: `stroke-4`,
-        },
-        inner: {
-          common: `block w-full h-full`,
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        PreloaderClasses(props, colors.value, theme.value)
+      );
 
       return {
         svgComponent,

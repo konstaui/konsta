@@ -1,4 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Progressbar = forwardRef((props, ref) => {
@@ -38,17 +39,7 @@ const Progressbar = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses(
-    {
-      base: {
-        common: `block h-1 bg-opacity-30 overflow-hidden`,
-        ios: `bg-black rounded-full`,
-        material: colors.bg,
-      },
-      inner: `block ${colors.bg} duration-200 w-full h-full`,
-    },
-    className
-  );
+  const c = themeClasses(ProgressbarClasses(colors), className);
 
   return (
     <Component ref={elRef} className={c.base} {...attrs}>

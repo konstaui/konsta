@@ -1,4 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { TabbarLinkClasses } from '../../shared/classes/TabbarLinkClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import Link from './Link.jsx';
@@ -30,22 +31,7 @@ const TabbarLink = forwardRef((props, ref) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const c = themeClasses({
-    content: {
-      common: 'flex flex-col items-center h-full',
-      ios: 'py-1',
-      material: 'py-2',
-    },
-    icon: {
-      common: 'flex items-center justify-center',
-      ios: 'w-7 h-7',
-      material: 'w-6 h-6',
-    },
-    label: {
-      ios: 'text-xs font-medium',
-      material: 'text-sm font-normal normal-case',
-    },
-  });
+  const c = themeClasses(TabbarLinkClasses());
 
   return (
     <Link

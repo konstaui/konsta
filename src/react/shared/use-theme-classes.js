@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { KonstaContext } from './KonstaContext.js';
-import { cls } from './cls.js';
+import { cls } from '../../shared/cls.js';
 
 const propClasses = (classesObj, theme, state) => {
   if (typeof classesObj === 'string') return classesObj;

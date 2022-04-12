@@ -9,12 +9,12 @@
 </template>
 <script>
   import { ref, computed } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { LinkClasses } from '../../shared/classes/LinkClasses.js';
 
   export default {
     name: 'k-link',
@@ -80,56 +80,16 @@
       const tabbarState = computed(() =>
         props.tabbarActive ? 'active' : 'inactive'
       );
-
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: cls(
-            textColor.value,
-            `inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
-            needsTouchRipple.value &&
-              `touch-ripple-primary ${positionClass(
-                'relative',
-                ctx.attrs.class
-              )} z-10`
-          ),
-          notTabbar: {
-            ios: `active:opacity-30 duration-300 active:duration-0`,
-            material: needsTouchRipple.value ? '' : `active:opacity-55`,
+      const c = useThemeClasses(props, () =>
+        LinkClasses(
+          props,
+          {
+            textColor: textColor.value,
+            needsTouchRipple: needsTouchRipple.value,
           },
-        },
-        tabbar: {
-          common: cls(
-            positionClass('relative', ctx.attrs.class),
-            `w-full h-full duration-300`
-          ),
-          material: 'uppercase font-medium text-sm overflow-hidden z-10',
-          active: {},
-          inactive: {
-            ios: 'text-opacity-40',
-            material: 'text-opacity-55',
-          },
-        },
-        tabbarHighlight: {
-          material:
-            'absolute left-0 top-0 w-full h-0.5 bg-primary duration-300',
-          active: 'opacity-100',
-          inactive: 'opacity-0',
-        },
-        toolbar: {
-          common: cls(
-            `h-full max-h-12`,
-            props.iconOnly && 'touch-ripple-inset'
-          ),
-          material: 'px-3',
-        },
-        navbar: {
-          common: cls(
-            `h-full max-h-12`,
-            props.iconOnly && 'touch-ripple-inset'
-          ),
-          material: 'px-3',
-        },
-      }));
+          ctx.attrs.class
+        )
+      );
 
       const classes = computed(() =>
         cls(

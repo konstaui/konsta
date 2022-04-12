@@ -12,8 +12,7 @@
 </template>
 <script>
   import { ref, computed } from 'vue';
-  import { cls } from '../shared/cls.js';
-  import { positionClass } from '../shared/position-class.js';
+  import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -61,18 +60,9 @@
         ...(props.colors || {}),
       }));
 
-      const c = useThemeClasses(props, () => ({
-        base: ``,
-        button: {
-          common: cls(
-            positionClass('relative', ctx.attrs.class),
-            props.hairlines && 'hairline-b active:hairline-transparent',
-            `flex items-center justify-center px-4 space-x-1 active:bg-opacity-15 w-full duration-300 active:duration-0 focus:outline-none ${colors.value.text} ${colors.value.activeBg} ${colors.value.touchRipple} overflow-hidden select-none`
-          ),
-          ios: 'h-11',
-          material: 'h-12',
-        },
-      }));
+      const c = useThemeClasses(props, () =>
+        ListButtonClasses(props, colors.value, ctx.attrs.class)
+      );
 
       const isLink = computed(() => !!props.href || props.href === '');
       const hrefComputed = computed(() =>

@@ -11,7 +11,8 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../shared/cls.js';
+  import { cls } from '../../shared/cls.js';
+  import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -48,28 +49,10 @@
         divide: 'divide-primary',
         ...(props.colors || {}),
       }));
-      const c = useThemeClasses(props, () => ({
-        base: {
-          common: `flex justify-center items-center overflow-hidden w-full`,
-          square: 'rounded',
-          rounded: 'rounded-full',
-        },
-        raised: props.outline
-          ? 'shadow'
-          : `shadow divide-x divide-black divide-opacity-10`,
-        outline: `border-2 ${colors.value.border}`,
-        outlineInner: `-m-0.5 flex w-full justify-center items-center divide-x-2 ${colors.value.divide}`,
-        strong: cls(
-          'p-0.5 bg-black bg-opacity-5 space-x-1 relative',
-          useDarkClasses('dark:bg-white dark:bg-opacity-10')
-        ),
-        strongHighlight: cls(
-          'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
-          props.rounded ? 'rounded-full' : 'rounded',
-          `bg-white shadow`,
-          useDarkClasses('dark:bg-opacity-15 dark:touch-ripple-white')
-        ),
-      }));
+
+      const c = useThemeClasses(props, () =>
+        SegmentedClasses(props, colors.value, useDarkClasses)
+      );
 
       const classes = computed(() =>
         cls(

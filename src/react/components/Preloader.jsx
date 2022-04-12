@@ -1,10 +1,10 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import PreloaderIOS from './icons/PreloaderIOS.jsx';
 import PreloaderMaterial from './icons/PreloaderMaterial.jsx';
+import { PreloaderClasses } from '../../shared/classes/PreloaderClasses.js';
 
 const Preloader = forwardRef((props, ref) => {
   const {
@@ -47,18 +47,7 @@ const Preloader = forwardRef((props, ref) => {
   const SVGComponent = theme === 'ios' ? PreloaderIOS : PreloaderMaterial;
 
   const c = themeClasses(
-    {
-      base: {
-        common: cls(
-          theme === 'ios' ? 'k-ios-preloader' : 'k-material-preloader',
-          `inline-block ${size} ${colors.icon}`
-        ),
-        material: `stroke-4`,
-      },
-      inner: {
-        common: `block w-full h-full`,
-      },
-    },
+    PreloaderClasses({ ...props, size }, colors, theme),
     className
   );
 
