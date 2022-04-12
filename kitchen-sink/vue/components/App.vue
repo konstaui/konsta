@@ -32,6 +32,13 @@
           if (mode === 'dark') document.documentElement.classList.add('dark');
           else document.documentElement.classList.remove('dark');
         };
+        if (window.location.href.includes('safe-areas')) {
+          const html = document.documentElement;
+          if (html) {
+            html.style.setProperty('--k-safe-area-top', '44px');
+            html.style.setProperty('--k-safe-area-bottom', '34px');
+          }
+        }
       });
 
       return {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import { App as KonstaApp } from 'konsta/react';
 
@@ -15,6 +15,15 @@ function App() {
     };
   }, []);
   const inIFrame = window.parent !== window;
+  useLayoutEffect(() => {
+    if (window.location.href.includes('safe-areas')) {
+      const html = document.documentElement;
+      if (html) {
+        html.style.setProperty('--k-safe-area-top', '44px');
+        html.style.setProperty('--k-safe-area-bottom', '34px');
+      }
+    }
+  }, []);
   return (
     <KonstaApp theme={theme} safeAreas={!inIFrame}>
       <Router>
