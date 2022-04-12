@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.7.2](https://github.com/konstaui/konsta/compare/v0.7.1...v0.7.2) (2022-04-12)
+
+### Bug Fixes
+
+- **preloader:** fix iOS preloader animation in Safari ([8135ac7](https://github.com/konstaui/konsta/commit/8135ac7c44df2e6565e7b4bc52953ecec4aaa35d))
+
 # [0.7.1](https://github.com/konstaui/konsta/compare/v0.7.0...v0.7.1) (2022-01-24)
 
 ### Bug Fixes
