@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.7.3](https://github.com/konstaui/konsta/compare/v0.7.2...v0.7.3) (2022-04-12)
+
+### Features
+
+- move common components classes to shared resources
+
 # [0.7.2](https://github.com/konstaui/konsta/compare/v0.7.1...v0.7.2) (2022-04-12)
 
 ### Bug Fixes
