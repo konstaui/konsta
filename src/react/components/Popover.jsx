@@ -75,7 +75,11 @@ const Popover = forwardRef((props, ref) => {
   };
 
   const c = themeClasses(
-    PopoverClasses({ ...props, size }, colors, className),
+    PopoverClasses(
+      { ...props, size, angleClassName, translucent },
+      colors,
+      className
+    ),
     className
   );
 

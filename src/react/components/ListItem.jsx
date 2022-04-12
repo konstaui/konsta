@@ -129,6 +129,10 @@ const ListItem = forwardRef((props, ref) => {
         titleFontSizeMaterial,
         hairlines,
         strongTitle,
+        mediaClassName,
+        innerClassName,
+        contentClassName,
+        titleWrapClassName,
       },
       colors,
       {

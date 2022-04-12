@@ -62,7 +62,20 @@ const Navbar = forwardRef((props, ref) => {
 
   const c = themeClasses(
     NavbarClasses(
-      { ...props, translucent, hairlines, fontSizeIos, fontSizeMaterial },
+      {
+        ...props,
+        translucent,
+        hairlines,
+        fontSizeIos,
+        fontSizeMaterial,
+        bgClassName,
+        innerClassName,
+        leftClassName,
+        titleClassName,
+        subtitleClassName,
+        rightClassName,
+        subnavbarClassName,
+      },
       colors,
       className
     ),

@@ -44,7 +44,10 @@ const Toast = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses(ToastClasses(props, colors, className), className);
+  const c = themeClasses(
+    ToastClasses({ ...props, translucent }, colors, className),
+    className
+  );
 
   return (
     <Component ref={elRef} className={c.base[position]} {...attrs}>

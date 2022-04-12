@@ -153,6 +153,8 @@ const ListInput = forwardRef((props, ref) => {
       darkClasses: dark,
       getLabelColor,
       getHairlineColor,
+      hairlines,
+      inputClassName,
     })
   );
 

@@ -13,7 +13,6 @@
   </component>
 </template>
 <script>
-  import { positionClass } from '../../shared/position-class.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kBadge from './Badge.vue';
