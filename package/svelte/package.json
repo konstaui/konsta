@@ -1,0 +1,16 @@
+{
+  "name": "konsta/svelte",
+  "private": true,
+  "main": "./konsta-svelte.js",
+  "jsnext:main": "./konsta-svelte.js",
+  "module": "./konsta-svelte.js",
+  "svelte": "./konsta-svelte.js",
+  "types": "./konsta-svelte.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./konsta-svelte.js",
+      "require": "./konsta-svelte.js"
+    }
+  }
+}
