@@ -35,7 +35,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    ChipClasses(props, colors),
+    ChipClasses({}, colors),
     className,
     (v) => (c = v)
   );

@@ -12,8 +12,8 @@
   export let material = undefined;
 
   export let margin = 'm-4';
-  export let header = undefined;
-  export let footer = undefined;
+  export let header = '';
+  export let footer = '';
   export let outline = false;
 
   const dark = useDarkClasses();

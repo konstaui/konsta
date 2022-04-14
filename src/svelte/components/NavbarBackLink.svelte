@@ -1,7 +1,7 @@
 <script>
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import BackIcon from './icons/BackIcon.jsx';
+  import BackIcon from './icons/BackIcon.svelte';
   import Link from './Link.svelte';
   import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 
@@ -29,13 +29,7 @@
   );
 </script>
 
-<svelte:component
-  this={component}
-  class={c.base}
-  navbar
-  {...$$restProps}
-  {onClick}
->
+<Link class={c.base} navbar {component} {...$$restProps} {onClick}>
   <span class={c.icon}>
     <BackIcon {theme} />
   </span>
@@ -43,4 +37,4 @@
     <span>{text}</span>
   {/if}
   <slot />
-</svelte:component>
+</Link>

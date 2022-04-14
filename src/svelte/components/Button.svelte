@@ -99,12 +99,24 @@
   );
 </script>
 
-<svelte:component
-  this={component}
-  bind:this={rippleEl.current}
-  class={classes}
-  {...attrs}
-  on:click={onClick}
->
-  <slot />
-</svelte:component>
+{#if typeof component === 'string'}
+  <svelte:element
+    this={component}
+    bind:this={rippleEl.current}
+    class={classes}
+    {...attrs}
+    on:click={onClick}
+  >
+    <slot />
+  </svelte:element>
+{:else}
+  <svelte:component
+    this={component}
+    bind:this={rippleEl.current}
+    class={classes}
+    {...attrs}
+    on:click={onClick}
+  >
+    <slot />
+  </svelte:component>
+{/if}

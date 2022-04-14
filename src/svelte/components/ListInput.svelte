@@ -1,7 +1,7 @@
 <script>
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import DeleteIcon from './icons/DeleteIcon.jsx';
+  import DeleteIcon from './icons/DeleteIcon.svelte';
   import DropdownIcon from './icons/DropdownIcon.svelte';
   import ListItem from './ListItem.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';

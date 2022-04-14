@@ -35,7 +35,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    RangeClasses(props, colors, dark),
+    RangeClasses({}, colors, dark),
     className,
     (v) => (c = v)
   );

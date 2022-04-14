@@ -42,7 +42,7 @@
     {disabled}
     {readonly}
     {checked}
-    {onChange}
+    on:change={onChange}
     class={c.input}
   />
   <span class={c.inner[state]} />

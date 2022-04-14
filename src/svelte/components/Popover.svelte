@@ -14,6 +14,7 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
+  export let style = '';
 
   export let angleClass = '';
   export let size = 'w-64';
@@ -97,18 +98,18 @@
   $: watchOpened(opened);
 
   $: popoverStyle = positions.set
-    ? {
-        ...(style || {}),
-        left: positions.popoverLeft,
-        top: positions.popoverTop,
-      }
-    : style;
+    ? `
+        ${style || ''};
+        left: ${positions.popoverLeft};
+        top: ${positions.popoverTop};
+      `
+    : style || '';
 
   $: angleStyle = positions.set
-    ? {
-        left: positions.angleLeft,
-        top: positions.angleTop,
-      }
+    ? `
+        left: ${positions.angleLeft};
+        top: ${positions.angleTop};
+      `
     : undefined;
 
   const originClasses = {

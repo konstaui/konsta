@@ -9,7 +9,7 @@
   export let ios = undefined;
   export let material = undefined;
 
-  export let badge = undefined;
+  export let badge = '';
   export let badgeColors = undefined;
 
   let theme;
@@ -17,7 +17,7 @@
 
   $: c = useThemeClasses(
     {},
-    IconClasses(props, className),
+    IconClasses({}, className),
     className,
     (v) => (c = v)
   );
@@ -25,10 +25,10 @@
 
 <i class={c.base} {...$$restProps}>
   {#if theme === 'ios'}
-    {ios}
+    {ios || ''}
     <slot name="ios" />
   {:else}
-    {material}
+    {material || ''}
     <slot name="material" />
   {/if}
 

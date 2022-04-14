@@ -1,5 +1,5 @@
 <script>
-  import List from './List.svelet';
+  import List from './List.svelte';
 </script>
 
 <li>

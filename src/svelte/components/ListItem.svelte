@@ -24,12 +24,12 @@
   export let titleFontSizeMaterial = 'text-list-title-material';
 
   // Content props
-  export let title = undefined;
-  export let subtitle = undefined;
-  export let text = undefined;
-  export let after = undefined;
-  export let header = undefined;
-  export let footer = undefined;
+  export let title = '';
+  export let subtitle = '';
+  export let text = '';
+  export let after = '';
+  export let header = '';
+  export let footer = '';
 
   export let menuListItem = false;
   export let menuListItemActive = false;
@@ -75,9 +75,7 @@
 
   $: isMenuListItemActive = menuListItem && menuListItemActive;
 
-  const textColor = isMenuListItemActive
-    ? colors.menuListItemText
-    : colors.text;
+  $: textColor = isMenuListItemActive ? colors.menuListItemText : colors.text;
 
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;
@@ -140,7 +138,7 @@
 </script>
 
 {#if divider || groupTitle}
-  <svelte:component
+  <svelte:element
     this={component}
     class={cls(c.divider, className)}
     on:click={onClick}
@@ -148,53 +146,107 @@
     {title}
     <slot name="title" />
     <slot />
-  </svelte:component>
+  </svelte:element>
 {:else}
-  <svelte:component
+  <svelte:element
     this={component}
     class={c.base}
     {...$$restProps}
     on:click={onClick}
   >
-    <svelte:component
-      this={ItemContentComponent}
-      bind:this={rippleEl.current}
-      class={itemContentClasses}
-      {...linkPropsComputed}
-    >
-      {#if $$slots.media}
-        <div class={c.media}><slot name="media" /></div>
-      {/if}
-      <div class={c.inner}>
-        {#if header || $$slots.header}
-          <div class={c.header}>{header}<slot name="header" /></div>
+    {#if typeof ItemContentComponent === 'string'}
+      <svelte:element
+        this={ItemContentComponent}
+        bind:this={rippleEl.current}
+        class={itemContentClasses}
+        {...linkPropsComputed}
+      >
+        {#if $$slots.media}
+          <div class={c.media}><slot name="media" /></div>
         {/if}
-        {#if title || after || $$slots.title || $$slots.after}
-          <div class={c.titleWrap}>
-            {#if title || $$slots.after}
-              <div class={titleClasses}>{title}</div>
-            {/if}
-            {#if after || $$slots.after}
-              <div class={c.after}>{after}</div>
-            {/if}
-            {#if isLink && chevron && !menuListItem}
-              <ChevronIcon class={c.chevron} />
-            {/if}
-          </div>
+        <div class={c.inner}>
+          {#if header || $$slots.header}
+            <div class={c.header}>{header}<slot name="header" /></div>
+          {/if}
+          {#if title || after || $$slots.title || $$slots.after}
+            <div class={c.titleWrap}>
+              {#if title || $$slots.title}
+                <div class={titleClasses}>
+                  {title}
+                  <slot name="title" />
+                </div>
+              {/if}
+              {#if after || $$slots.after}
+                <div class={c.after}>
+                  {after}
+                  <slot name="after" />
+                </div>
+              {/if}
+              {#if isLink && chevron && !menuListItem}
+                <ChevronIcon class={c.chevron} />
+              {/if}
+            </div>
+          {/if}
+          {#if subtitle || $$slots.subtitle}
+            <div class={c.subtitle}>{subtitle}<slot name="subtitle" /></div>
+          {/if}
+          {#if text || $$slots.text}
+            <div class={c.text}>{text}<slot name="text" /></div>
+          {/if}
+          {#if footer || $$slots.footer}
+            <div class={c.footer}>{footer}<slot name="footer" /></div>
+          {/if}
+          <slot name="inner" />
+        </div>
+        <slot name="content" />
+      </svelte:element>
+    {:else}
+      <svelte:component
+        this={ItemContentComponent}
+        bind:this={rippleEl.current}
+        class={itemContentClasses}
+        {...linkPropsComputed}
+      >
+        {#if $$slots.media}
+          <div class={c.media}><slot name="media" /></div>
         {/if}
-        {#if subtitle || $$slots.subtitle}
-          <div class={c.subtitle}>{subtitle}<slot name="subtitle" /></div>
-        {/if}
-        {#if text || $$slots.text}
-          <div class={c.text}>{text}<slot name="text" /></div>
-        {/if}
-        {#if footer || $$slots.footer}
-          <div class={c.footer}>{footer}<slot name="footer" /></div>
-        {/if}
-        <slot name="inner" />
-      </div>
-      <slot name="content" />
-    </svelte:component>
+        <div class={c.inner}>
+          {#if header || $$slots.header}
+            <div class={c.header}>{header}<slot name="header" /></div>
+          {/if}
+          {#if title || after || $$slots.title || $$slots.after}
+            <div class={c.titleWrap}>
+              {#if title || $$slots.title}
+                <div class={titleClasses}>
+                  {title}
+                  <slot name="title" />
+                </div>
+              {/if}
+              {#if after || $$slots.after}
+                <div class={c.after}>
+                  {after}
+                  <slot name="after" />
+                </div>
+              {/if}
+              {#if isLink && chevron && !menuListItem}
+                <ChevronIcon class={c.chevron} />
+              {/if}
+            </div>
+          {/if}
+          {#if subtitle || $$slots.subtitle}
+            <div class={c.subtitle}>{subtitle}<slot name="subtitle" /></div>
+          {/if}
+          {#if text || $$slots.text}
+            <div class={c.text}>{text}<slot name="text" /></div>
+          {/if}
+          {#if footer || $$slots.footer}
+            <div class={c.footer}>{footer}<slot name="footer" /></div>
+          {/if}
+          <slot name="inner" />
+        </div>
+        <slot name="content" />
+      </svelte:component>
+    {/if}
     <slot />
-  </svelte:component>
+  </svelte:element>
 {/if}

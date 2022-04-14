@@ -1,9 +1,9 @@
 <script>
   import { useTheme } from '../../shared/use-theme.js';
 
-  export let ios;
-  export let material;
-  export let fill;
+  export let ios = undefined;
+  export let material = undefined;
+  export let fill = undefined;
 
   let theme;
   theme = useTheme({ ios, material }, (v) => (theme = v));
