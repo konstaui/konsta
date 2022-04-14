@@ -2,6 +2,7 @@
 /* eslint no-console: "off" */
 const { promise: exec } = require('exec-sh');
 const fs = require('fs-extra');
+const path = require('path');
 const bannerVue = require('./banner.js')('Vue');
 const transformVueComponent = require('./transform-vue-component.js');
 
@@ -55,6 +56,23 @@ module.exports = async (format, outputDir = 'package') => {
   await exec(
     `MODULES=${format} npx babel --config-file ./babel.config.vue.js src/vue-temp --out-dir ${outputDir}/vue/${format}`
   );
+
+  // Fix global shared paths
+  const dirsWithShared = [`vue/${format}/components`, `vue/${format}/shared`];
+  dirsWithShared.forEach((dirPath) => {
+    const dirFullPath = path.resolve(__dirname, `../${outputDir}`, dirPath);
+    fs.readdirSync(dirFullPath).forEach((f) => {
+      if (fs.lstatSync(path.resolve(dirFullPath, f)).isDirectory()) return;
+      if (f.includes('package.json')) return;
+      // eslint-disable-next-line
+      let fileContent = fs.readFileSync(path.resolve(dirFullPath, f), 'utf-8');
+      fileContent = fileContent.replace(
+        '../../shared/',
+        `../../../shared/${format}/`
+      );
+      fs.writeFileSync(path.resolve(dirFullPath, f), fileContent);
+    });
+  });
 
   // .vue -> .js
   fs.readdirSync(`./${outputDir}/vue/${format}/components/`)

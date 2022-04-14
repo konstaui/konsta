@@ -2,6 +2,7 @@
 /* eslint no-console: "off" */
 const { promise: exec } = require('exec-sh');
 const fs = require('fs-extra');
+const path = require('path');
 const bannerReact = require('./banner.js')('React');
 
 module.exports = async (format, outputDir = 'package') => {
@@ -21,6 +22,26 @@ module.exports = async (format, outputDir = 'package') => {
     `./${outputDir}/react/${format}/konsta-react.js`,
     fileContent
   );
+
+  // Fix global shared paths
+  const dirsWithShared = [
+    `react/${format}/components`,
+    `react/${format}/shared`,
+  ];
+  dirsWithShared.forEach((dirPath) => {
+    const dirFullPath = path.resolve(__dirname, `../${outputDir}`, dirPath);
+    fs.readdirSync(dirFullPath).forEach((f) => {
+      if (fs.lstatSync(path.resolve(dirFullPath, f)).isDirectory()) return;
+      if (f.includes('package.json')) return;
+      // eslint-disable-next-line
+      let fileContent = fs.readFileSync(path.resolve(dirFullPath, f), 'utf-8');
+      fileContent = fileContent.replace(
+        '../../shared/',
+        `../../../shared/${format}/`
+      );
+      fs.writeFileSync(path.resolve(dirFullPath, f), fileContent);
+    });
+  });
 
   // .jsx -> .js
   fs.readdirSync(`./${outputDir}/react/${format}/components/`)

@@ -3,6 +3,9 @@ const buildReact = require('./build-react.js');
 const buildReactTypes = require('./build-react-types.js');
 const buildVue = require('./build-vue.js');
 const buildVueTypes = require('./build-vue-types.js');
+const buildSvelte = require('./build-svelte.js');
+const buildSvelteTypes = require('./build-svelte-types.js');
+const buildShared = require('./build-shared.js');
 
 const formats = ['esm', 'cjs'];
 
@@ -13,8 +16,11 @@ const formats = ['esm', 'cjs'];
     buildCopy(),
     ...formats.map((format) => buildReact(format, outputDir)),
     ...formats.map((format) => buildVue(format, outputDir)),
+    ...formats.map((format) => buildShared(format, outputDir)),
+    buildSvelte(outputDir),
     buildReactTypes(),
     buildVueTypes(),
+    buildSvelteTypes(),
   ]).catch((err) => {
     // eslint-disable-next-line
     console.error(err);

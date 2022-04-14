@@ -45,7 +45,6 @@ export {
   // utils
   KonstaProvider,
   useTheme,
-  // useThemeClasses,
   // components
   App,
   Badge,
