@@ -45,11 +45,17 @@
 
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleEl, touchRipple);
+  $: useTouchRipple(rippleEl, touchRipple);
 
   $: size = large ? 'large' : small ? 'small' : 'medium';
 
-  const getStyle = () => {
+  const getStyle = (
+    outline,
+    clear,
+    segmented,
+    segmentedActive,
+    segmentedStrong
+  ) => {
     let s = outline
       ? 'outline'
       : clear || (segmented && !segmentedActive)
@@ -60,7 +66,13 @@
     return s;
   };
 
-  $: style = getStyle();
+  $: style = getStyle(
+    outline,
+    clear,
+    segmented,
+    segmentedActive,
+    segmentedStrong
+  );
 
   $: colors = {
     text: 'text-primary',

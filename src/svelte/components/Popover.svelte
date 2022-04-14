@@ -127,7 +127,7 @@
 </script>
 
 {#if backdrop}
-  <div class={c.backdrop[state]} onClick={onBackdropClick} />
+  <div class={c.backdrop[state]} on:click={onBackdropClick} />
 {/if}
 <div bind:this={el} class={classes} style={popoverStyle} {...$$restProps}>
   {#if theme === 'ios'}

@@ -36,7 +36,7 @@
   $: needsTouchRipple =
     theme === 'material' && (toolbar || tabbar || navbar) && touchRipple;
 
-  useTouchRipple(rippleEl, needsTouchRipple);
+  $: useTouchRipple(rippleEl, needsTouchRipple);
 
   $: colors = {
     text: 'text-primary',

@@ -15,7 +15,7 @@
 
   export let deleteButton = undefined;
   export let onDelete = undefined;
-  export let outline;
+  export let outline = false;
 
   export let onClick = undefined;
 

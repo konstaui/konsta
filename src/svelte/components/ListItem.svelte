@@ -23,6 +23,9 @@
   export let titleFontSizeIos = 'text-list-title-ios';
   export let titleFontSizeMaterial = 'text-list-title-material';
 
+  export let withMedia = undefined;
+  export let withTitle = undefined;
+
   // Content props
   export let title = '';
   export let subtitle = '';
@@ -77,13 +80,13 @@
 
   $: textColor = isMenuListItemActive ? colors.menuListItemText : colors.text;
 
-  const isLink = !!href || href === '' || menuListItem || link;
-  const isLabel = !!label;
+  $: isLink = !!href || href === '' || menuListItem || link;
+  $: isLabel = !!label;
 
-  const needsTouchRipple =
+  $: needsTouchRipple =
     theme === 'material' && (isLabel || isLink) && touchRipple;
 
-  useTouchRipple(rippleEl, needsTouchRipple);
+  $: useTouchRipple(rippleEl, needsTouchRipple);
 
   $: hrefComputed =
     href === true || href === false || typeof href === 'undefined'
@@ -97,6 +100,7 @@
   $: autoStrongTitle =
     strongTitle === 'auto' &&
     (title || $$slots.title) &&
+    withTitle !== false &&
     (subtitle || text || $$slots.subtitle || $$slots.text);
 
   $: c = useThemeClasses(
@@ -161,16 +165,16 @@
         class={itemContentClasses}
         {...linkPropsComputed}
       >
-        {#if $$slots.media}
+        {#if $$slots.media && withMedia !== false}
           <div class={c.media}><slot name="media" /></div>
         {/if}
         <div class={c.inner}>
           {#if header || $$slots.header}
             <div class={c.header}>{header}<slot name="header" /></div>
           {/if}
-          {#if title || after || $$slots.title || $$slots.after}
+          {#if ((title || $$slots.title) && withTitle !== false) || after || $$slots.after}
             <div class={c.titleWrap}>
-              {#if title || $$slots.title}
+              {#if (title || $$slots.title) && withTitle !== false}
                 <div class={titleClasses}>
                   {title}
                   <slot name="title" />
@@ -214,9 +218,9 @@
           {#if header || $$slots.header}
             <div class={c.header}>{header}<slot name="header" /></div>
           {/if}
-          {#if title || after || $$slots.title || $$slots.after}
+          {#if ((title || $$slots.title) && withTitle !== false) || after || $$slots.after}
             <div class={c.titleWrap}>
-              {#if title || $$slots.title}
+              {#if (title || $$slots.title) && withTitle !== false}
                 <div class={titleClasses}>
                   {title}
                   <slot name="title" />

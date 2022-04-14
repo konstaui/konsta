@@ -32,7 +32,7 @@
     <slot name="material" />
   {/if}
 
-  {#if typeof badge !== 'undefined' && badge !== null}
+  {#if typeof badge !== 'undefined' && badge !== null && badge !== ''}
     <Badge small class={c.badge} colors={badgeColors}>
       {badge}
     </Badge>

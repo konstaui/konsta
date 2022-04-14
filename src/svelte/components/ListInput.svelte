@@ -17,7 +17,7 @@
 
   export let component = 'li';
 
-  export let label = undefined;
+  export let label = '';
   export let inlineLabel = false;
   export let floatingLabel = false;
   export let info = undefined; // string
@@ -162,15 +162,21 @@
 <ListItem
   {component}
   class={c.base}
-  title={labelStyle === 'inline' ? label : null}
+  title={labelStyle === 'inline' ? label : undefined}
   mediaClass={c.media[labelStyleIsInline]}
   innerClass={c.inner[labelStyle]}
   contentClass={c.itemContent}
   titleWrapClass={c.titleWrap[labelStyleIsInline]}
+  withMedia={!!$$slots.media}
+  withTitle={!!$$slots.label || !!label}
   {...$$restProps}
 >
-  <slot name="media" slot="media" />
-  <svelte:fragment slot="label">
+  <svelte:fragment slot="media">
+    {#if $$slots.media}
+      <slot name="media" />
+    {/if}
+  </svelte:fragment>
+  <svelte:fragment slot="title">
     {#if labelStyle === 'inline' && $$slots.label}
       <slot name="label" />
     {/if}
@@ -187,7 +193,7 @@
       {#if $$slots.input}
         <slot name="input" />
       {:else}
-        <svelte:component
+        <svelte:element
           this={InputComponent}
           id={inputId}
           bind:this={inputEl}
@@ -225,7 +231,7 @@
           {#if type === 'select'}
             <slot />
           {/if}
-        </svelte:component>
+        </svelte:element>
       {/if}
 
       {#if clearButton}
@@ -251,23 +257,23 @@
         <!-- error info end -->
       {/if}
     </div>
+    {#if labelStyle !== 'inline'}
+      <!-- error info content -->
+      {#if (error && error !== true) || $$slots.error}
+        <div class={cls(c.errorInfo[labelStyleIsInline], c.error)}>
+          {#if error !== true}{error}{/if}
+          <slot name="error" />
+        </div>
+      {/if}
+      {#if (info || $$slots.info) && !error}
+        <div class={cls(c.errorInfo[labelStyleIsInline], c.info)}>
+          {info}
+          <slot name="info" />
+        </div>
+      {/if}
+      <!-- error info end -->
+    {/if}
   </svelte:fragment>
-  {#if labelStyle !== 'inline'}
-    <!-- error info content -->
-    {#if (error && error !== true) || $$slots.error}
-      <div class={cls(c.errorInfo[labelStyleIsInline], c.error)}>
-        {#if error !== true}{error}{/if}
-        <slot name="error" />
-      </div>
-    {/if}
-    {#if (info || $$slots.info) && !error}
-      <div class={cls(c.errorInfo[labelStyleIsInline], c.info)}>
-        {info}
-        <slot name="info" />
-      </div>
-    {/if}
-    <!-- error info end -->
-  {/if}
 
   {#if type !== 'select'}
     <slot />

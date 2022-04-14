@@ -13,6 +13,8 @@
   export let ios = undefined;
   export let material = undefined;
 
+  export let component = 'label';
+
   export let checked = false;
   export let name = undefined;
   export let value = undefined;
@@ -49,7 +51,7 @@
   );
 </script>
 
-<label class={c.base} {...$$restProps}>
+<svelte:element this={component} class={c.base} {...$$restProps}>
   <input
     type="radio"
     {name}
@@ -69,4 +71,4 @@
     {/if}
   </i>
   <slot />
-</label>
+</svelte:element>

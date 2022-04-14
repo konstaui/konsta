@@ -38,7 +38,7 @@
   let highlightWidth;
   let highlightTranslate;
 
-  if (strong) {
+  $: if (strong) {
     let buttonsLength = childButtonsLength;
     let activeIndex = activeButtonIndex;
     /*
@@ -62,8 +62,12 @@
 
     const between = '4px';
     const padding = '2px';
-    highlightWidth = `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`;
-    highlightTranslate = `calc(${activeIndex} * 100% + ${activeIndex} * ${between})`;
+    highlightWidth = `calc((100% - ${padding} * 2 - ${between} * (${
+      buttonsLength - 1
+    })) / ${buttonsLength})`;
+    highlightTranslate = `calc(${
+      activeIndex * 100
+    }% + ${activeIndex} * ${between})`;
   }
 
   $: classes = cls(
@@ -90,7 +94,7 @@
       class={c.strongHighlight}
       style={`
         width: ${highlightWidth};
-        transform: translateX(${highlightTranslate})};
+        transform: translateX(${highlightTranslate});
       `}
     />
   {/if}

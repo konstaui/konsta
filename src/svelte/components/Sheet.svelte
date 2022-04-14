@@ -33,7 +33,7 @@
 </script>
 
 {#if backdrop}
-  <div class={c.backdrop[state]} onClick={onBackdropClick} />
+  <div class={c.backdrop[state]} on:click={onBackdropClick} />
 {/if}
 <div class={c.base[state]} {...$$restProps}>
   <slot />

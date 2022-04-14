@@ -19,7 +19,7 @@
 
   const rippleEl = { current: null };
 
-  useTouchRipple(rippleEl, touchRipple);
+  $: useTouchRipple(rippleEl, touchRipple);
 
   $: colors = {
     bg: 'bg-primary',

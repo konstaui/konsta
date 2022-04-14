@@ -1,7 +1,16 @@
 import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 
-const useTheme = ({ ios, material } = {}, cb) => {
+const useTheme = (props, cb) => {
+  let ios;
+  let material;
+  if (typeof props === 'function') {
+    cb = props;
+    props = {};
+  } else {
+    ios = props.ios;
+    material = props.material;
+  }
   const calcTheme = (ctx) => {
     let theme = ctx.theme || 'ios';
     if (ios) theme = 'ios';

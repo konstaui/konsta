@@ -12,6 +12,8 @@
   export let active = false;
   export let label = undefined;
 
+  export let withIcon = false;
+
   $: c = useThemeClasses(
     { ios, material },
     TabbarLinkClasses(),
@@ -21,10 +23,12 @@
 </script>
 
 <Link tabbar tabbarActive={active} class={className} {...$$restProps}>
-  {#if $$slots.icon && label}
+  {#if withIcon}
     <span class={c.content}>
       <span class={c.icon}><slot name="icon" /></span>
-      <span class={c.label}>{label}</span>
+      {#if label}
+        <span class={c.label}>{label}</span>
+      {/if}
     </span>
   {:else}
     {label}

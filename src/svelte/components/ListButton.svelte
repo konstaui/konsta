@@ -24,9 +24,11 @@
 
   export let touchRipple = true;
 
+  export let linkComponent = 'a';
+
   const rippleEl = { current: null };
 
-  useTouchRipple(rippleElRef, touchRipple);
+  $: useTouchRipple(rippleEl, touchRipple);
 
   $: colors = {
     text: 'text-primary',
@@ -47,18 +49,28 @@
     !isLink || href === true || href === false ? undefined : href || '';
   $: buttonAttrs = { href: hrefComputed, target, type, value, ...linkProps };
 
-  const ButtonComponent = isLink ? 'a' : 'button';
+  const ButtonComponent = isLink ? linkComponent : 'button';
 </script>
 
 <li class={c.base} {...$$restProps}>
-  {#if ButtonComponent === 'a'}
+  {#if typeof ButtonComponent === 'string'}
     <!-- svelte-ignore a11y-missing-attribute -->
-    <a bind:this={rippleEl.current} class={c.button} {...buttonAttrs}>
+    <svelte:element
+      this={ButtonComponent}
+      bind:this={rippleEl.current}
+      class={c.button}
+      {...buttonAttrs}
+    >
       <slot />
-    </a>
+    </svelte:element>
   {:else}
-    <button bind:this={rippleEl.current} class={c.button} {...buttonAttrs}>
+    <svelte:component
+      this={ButtonComponent}
+      bind:this={rippleEl.current}
+      class={c.button}
+      {...buttonAttrs}
+    >
       <slot />
-    </button>
+    </svelte:component>
   {/if}
 </li>

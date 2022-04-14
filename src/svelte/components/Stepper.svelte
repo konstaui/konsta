@@ -85,8 +85,12 @@
   $: valueClasses = cls(input && c.input, c.value[style]);
 </script>
 
-<svelte:component this={component} class={classes} {...$$restProps}>
-  <span ref={buttonLeftEl.current} class={buttonLeftClasses} on:click={onMinus}>
+<svelte:element this={component} class={classes} {...$$restProps}>
+  <span
+    bind:this={buttonLeftEl.current}
+    class={buttonLeftClasses}
+    on:click={onMinus}
+  >
     <span class={c.hBar} />
   </span>
   {#if input && !buttonsOnly}
@@ -108,11 +112,11 @@
   {/if}
 
   <span
-    ref={buttonRightEl.current}
+    bind:this={buttonRightEl.current}
     class={buttonRightClasses}
     on:click={onPlus}
   >
     <span class={c.hBar} />
     <span class={c.vBar} />
   </span>
-</svelte:component>
+</svelte:element>

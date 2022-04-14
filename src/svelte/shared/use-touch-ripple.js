@@ -4,10 +4,13 @@ import { KonstaStore } from './KonstaStore.js';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
 
 export const useTouchRipple = (el, touchRipple) => {
-  const needsTouchRipple = () =>
-    touchRipple &&
-    get(KonstaStore).theme === 'material' &&
-    get(KonstaStore).touchRipple;
+  const needsTouchRipple = () => {
+    return (
+      touchRipple &&
+      get(KonstaStore).theme === 'material' &&
+      get(KonstaStore).touchRipple
+    );
+  };
 
   let ripple = null;
   const removeRipple = () => {
@@ -26,13 +29,19 @@ export const useTouchRipple = (el, touchRipple) => {
   };
 
   const attachEvents = () => {
-    if (!el || !el.current || !needsTouchRipple()) return;
+    if (
+      !el ||
+      !el.current ||
+      !el.current.addEventListener ||
+      !needsTouchRipple()
+    )
+      return;
     el.current.addEventListener('pointerdown', onPointerDown);
     el.current.addEventListener('pointermove', onPointerMove);
     el.current.addEventListener('pointerup', onPointerUp);
   };
   const detachEvents = () => {
-    if (!el || !el.current) return;
+    if (!el || !el.current || !el.current.addEventListener) return;
     el.current.removeEventListener('pointerdown', onPointerDown);
     el.current.removeEventListener('pointermove', onPointerMove);
     el.current.removeEventListener('pointerup', onPointerUp);
