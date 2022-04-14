@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+<script>
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -58,7 +58,7 @@ const Button = forwardRef((props, ref) => {
   };
 
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
+
   const dark = useDarkClasses();
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
@@ -72,7 +72,7 @@ const Button = forwardRef((props, ref) => {
   if (segmentedStrong) style = 'segmentedStrong';
   if (segmentedStrong && segmentedActive) style = 'segmentedStrongActive';
 
-  const colors = {
+  $: colors = {
     text: 'text-primary',
     border: 'border-primary',
     bg: 'bg-primary',
@@ -82,9 +82,9 @@ const Button = forwardRef((props, ref) => {
     ...colorsProp,
   };
 
-  const c = themeClasses(ButtonClasses(props, colors, className, dark));
+  $: c = useThemeClasses(ButtonClasses(props, colors, className, dark));
 
-  const classes = cls(
+  $: classes = cls(
     c.base[rounded ? 'rounded' : 'square'],
 
     // style
@@ -99,8 +99,8 @@ const Button = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={rippleElRef} className={classes} {...attrs}>
-      {children}
+    <Component ref={rippleElRef} class={classes} {...$$restProps}>
+      <slot />
     </Component>
   );
 });
@@ -108,3 +108,5 @@ const Button = forwardRef((props, ref) => {
 Button.displayName = 'Button';
 
 export default Button;
+
+</script>

@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+<script>
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -71,21 +71,11 @@ const ListItem = forwardRef((props, ref) => {
   const rippleElRef = useRef(null);
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
-  const Component = component;
-
-  const attrs = {
-    ...rest,
-  };
-
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
+
   const dark = useDarkClasses();
 
-  const colors = {
+  $: colors = {
     text: cls(`text-black`, dark('dark:text-white')),
     menuListItemText: cls(`text-primary`, dark('dark:text-white')),
     menuListItemActiveBg: 'bg-primary dark:bg-primary',
@@ -121,7 +111,7 @@ const ListItem = forwardRef((props, ref) => {
 
   const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
 
-  const c = themeClasses(
+  $: c = useThemeClasses(
     ListItemClasses(
       {
         ...props,
@@ -157,41 +147,41 @@ const ListItem = forwardRef((props, ref) => {
 
   if (divider || groupTitle) {
     return (
-      <Component className={cls(c.divider, className)}>
+      <Component class={cls(c.divider, className)}>
         {title}
-        {children}
+        <slot />
       </Component>
     );
   }
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component class={c.base} {...$$restProps}>
       <ItemContentComponent
         ref={rippleElRef}
-        className={itemContentClasses}
+        class={itemContentClasses}
         {...linkPropsComputed}
       >
-        {media && <div className={c.media}>{media}</div>}
-        <div className={c.inner}>
-          {header && <div className={c.header}>{header}</div>}
+        {media && <div class={c.media}>{media}</div>}
+        <div class={c.inner}>
+          {header && <div class={c.header}>{header}</div>}
           {(title || after) && (
-            <div className={c.titleWrap}>
-              {title && <div className={titleClasses}>{title}</div>}
-              {after && <div className={c.after}>{after}</div>}
+            <div class={c.titleWrap}>
+              {title && <div class={titleClasses}>{title}</div>}
+              {after && <div class={c.after}>{after}</div>}
               {isLink &&
                 chevron &&
                 !menuListItem &&
-                (chevronIcon || <ChevronIcon className={c.chevron} />)}
+                (chevronIcon || <ChevronIcon class={c.chevron} />)}
             </div>
           )}
-          {subtitle && <div className={c.subtitle}>{subtitle}</div>}
-          {text && <div className={c.text}>{text}</div>}
-          {footer && <div className={c.footer}>{footer}</div>}
+          {subtitle && <div class={c.subtitle}>{subtitle}</div>}
+          {text && <div class={c.text}>{text}</div>}
+          {footer && <div class={c.footer}>{footer}</div>}
           {innerChildren}
         </div>
         {contentChildren}
       </ItemContentComponent>
-      {children}
+      <slot />
     </Component>
   );
 });
@@ -199,3 +189,5 @@ const ListItem = forwardRef((props, ref) => {
 ListItem.displayName = 'ListItem';
 
 export default ListItem;
+
+</script>

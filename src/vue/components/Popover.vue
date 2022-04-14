@@ -84,6 +84,10 @@
           targetEl: props.target,
           angleEl: angleElRef.value,
           theme: theme.value,
+          targetX: props.targetX,
+          targetY: props.targetY,
+          targetWidth: props.targetWidth,
+          targetHeight: props.targetHeight,
         });
       };
 

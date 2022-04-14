@@ -91,6 +91,10 @@ const Popover = forwardRef((props, ref) => {
         targetEl: target,
         angleEl: angleElRef.current,
         theme,
+        targetX,
+        targetY,
+        targetHeight,
+        targetWidth,
       })
     );
   };

@@ -1,3 +1,4 @@
+<script>
 import React, {
   useRef,
   useState,
@@ -87,10 +88,10 @@ const ListInput = forwardRef((props, ref) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
+
   const dark = useDarkClasses();
 
-  const colors = {
+  $: colors = {
     labelFocus: 'text-primary',
     errorText: 'text-red-500',
     hairlineError: 'hairline-red-500',
@@ -146,7 +147,7 @@ const ListInput = forwardRef((props, ref) => {
     if (onBlur) onBlur(e);
   };
 
-  const c = themeClasses(
+  $: c = useThemeClasses(
     ListInputClasses(props, colors, {
       isFloatingTransformed,
       isFocused,
@@ -158,10 +159,6 @@ const ListInput = forwardRef((props, ref) => {
     })
   );
 
-  const attrs = {
-    ...rest,
-  };
-
   const createInput = () => {
     if (input) return input;
     const InputComponent =
@@ -171,7 +168,7 @@ const ListInput = forwardRef((props, ref) => {
       <InputComponent
         id={inputId}
         ref={inputElRef}
-        className={c.input[labelStyleIsFloating]}
+        class={c.input[labelStyleIsFloating]}
         style={inputStyle}
         name={name}
         type={needsType ? type : undefined}
@@ -210,14 +207,10 @@ const ListInput = forwardRef((props, ref) => {
   const errorInfoContent = (
     <>
       {error && error !== true && (
-        <div className={cls(c.errorInfo[labelStyleIsInline], c.error)}>
-          {error}
-        </div>
+        <div class={cls(c.errorInfo[labelStyleIsInline], c.error)}>{error}</div>
       )}
       {info && !error && (
-        <div className={cls(c.errorInfo[labelStyleIsInline], c.info)}>
-          {info}
-        </div>
+        <div class={cls(c.errorInfo[labelStyleIsInline], c.info)}>{info}</div>
       )}
     </>
   );
@@ -225,14 +218,12 @@ const ListInput = forwardRef((props, ref) => {
   const innerChildren = (
     <>
       {labelStyle !== 'inline' && label && (
-        <div className={c.label[labelStyle]}>{label}</div>
+        <div class={c.label[labelStyle]}>{label}</div>
       )}
-      <div className={c.inputWrap[labelStyle]}>
+      <div class={c.inputWrap[labelStyle]}>
         {createInput()}
-        {clearButton && (
-          <DeleteIcon onClick={onClear} className={c.clearButton} />
-        )}
-        {dropdown && <DropdownIcon className={c.dropdown} />}
+        {clearButton && <DeleteIcon onClick={onClear} class={c.clearButton} />}
+        {dropdown && <DropdownIcon class={c.dropdown} />}
         {labelStyle === 'inline' && errorInfoContent}
       </div>
       {labelStyle !== 'inline' && errorInfoContent}
@@ -241,17 +232,16 @@ const ListInput = forwardRef((props, ref) => {
 
   return (
     <ListItem
-      ref={elRef}
       component={component}
       media={media}
-      className={c.base}
+      class={c.base}
       title={labelStyle === 'inline' ? label : null}
-      mediaClassName={c.media[labelStyleIsInline]}
-      innerClassName={c.inner[labelStyle]}
-      contentClassName={c.itemContent}
-      titleWrapClassName={c.titleWrap[labelStyleIsInline]}
+      mediaclass={c.media[labelStyleIsInline]}
+      innerclass={c.inner[labelStyle]}
+      contentclass={c.itemContent}
+      titleWrapclass={c.titleWrap[labelStyleIsInline]}
       innerChildren={innerChildren}
-      {...attrs}
+      {...$$restProps}
     >
       {type !== 'select' ? children : null}
     </ListItem>
@@ -261,3 +251,5 @@ const ListInput = forwardRef((props, ref) => {
 ListInput.displayName = 'ListInput';
 
 export default ListInput;
+
+</script>

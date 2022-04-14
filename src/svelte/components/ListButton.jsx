@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+<script>
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -38,29 +38,18 @@ const ListButton = forwardRef((props, ref) => {
   const elRef = useRef(null);
   const rippleElRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
-  const Component = component;
-
-  const attrs = {
-    ...rest,
-  };
-
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = {
+  $: colors = {
     text: 'text-primary',
     activeBg: 'active:bg-primary',
     touchRipple: 'touch-ripple-primary',
     ...colorsProp,
   };
 
-  const c = themeClasses(
+  $: c = useThemeClasses(
     ListButtonClasses({ ...props, hairlines }, colors, className),
     className
   );
@@ -73,9 +62,9 @@ const ListButton = forwardRef((props, ref) => {
   const ButtonComponent = isLink ? linkComponent : 'button';
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
-      <ButtonComponent ref={rippleElRef} className={c.button} {...buttonAttrs}>
-        {children}
+    <Component class={c.base} {...$$restProps}>
+      <ButtonComponent ref={rippleElRef} class={c.button} {...buttonAttrs}>
+        <slot />
       </ButtonComponent>
     </Component>
   );
@@ -84,3 +73,5 @@ const ListButton = forwardRef((props, ref) => {
 ListButton.displayName = 'ListButton';
 
 export default ListButton;
+
+</script>

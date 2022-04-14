@@ -1,3 +1,4 @@
+<script>
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -33,41 +34,30 @@ const Fab = forwardRef((props, ref) => {
     el: rippleElRef.current,
   }));
 
-  const Component = component;
-
-  const attrs = {
-    ...rest,
-  };
-
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = {
+  $: colors = {
     bg: 'bg-primary',
     activeBg: 'active:bg-primary-dark',
     text: 'text-white',
     ...colorsProp,
   };
 
-  const c = themeClasses(FabClasses(props, colors), className);
+  $: c = useThemeClasses(FabClasses(props, colors), className);
 
   return (
     <Component
-      className={text ? c.base.withText : c.base.iconOnly}
+      class={text ? c.base.withText : c.base.iconOnly}
       href={href}
       ref={rippleElRef}
-      {...attrs}
+      {...$$restProps}
     >
-      {text && textPosition === 'before' && (
-        <span className={c.text}>{text}</span>
-      )}
-      {icon && <span className={c.icon}>{icon}</span>}
-      {text && textPosition === 'after' && (
-        <span className={c.text}>{text}</span>
-      )}
-      {children}
+      {text && textPosition === 'before' && <span class={c.text}>{text}</span>}
+      {icon && <span class={c.icon}>{icon}</span>}
+      {text && textPosition === 'after' && <span class={c.text}>{text}</span>}
+      <slot />
     </Component>
   );
 });
@@ -75,3 +65,5 @@ const Fab = forwardRef((props, ref) => {
 Fab.displayName = 'Fab';
 
 export default Fab;
+
+</script>

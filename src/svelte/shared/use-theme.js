@@ -1,12 +1,20 @@
+import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 
 const useTheme = ({ ios, material } = {}, cb) => {
-  KonstaStore.subscribe((newValue) => {
-    let theme = newValue.theme || 'ios';
+  const calcTheme = (v) => {
+    let theme = v.theme || 'ios';
     if (ios) theme = 'ios';
     if (material) theme = 'material';
-    cb(theme);
-  });
+    return theme;
+  };
+  if (cb) {
+    KonstaStore.subscribe((newValue) => {
+      cb(calcTheme(newValue));
+    });
+  }
+
+  return calcTheme(get(KonstaStore));
 };
 
 export { useTheme };

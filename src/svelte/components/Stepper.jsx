@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+<script>
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -47,19 +47,12 @@ const Stepper = forwardRef((props, ref) => {
   const buttonLeftElRef = useRef(null);
   const buttonRightElRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
-  const Component = component;
-
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
 
   useTouchRipple(buttonLeftElRef, theme === 'material' && touchRipple);
   useTouchRipple(buttonRightElRef, theme === 'material' && touchRipple);
 
-  const colors = {
+  $: colors = {
     text: 'text-primary',
     border: 'border-primary',
     bg: 'bg-primary',
@@ -73,13 +66,9 @@ const Stepper = forwardRef((props, ref) => {
   const style = outline && raised ? 'clear' : outline ? 'outline' : 'fill';
   const shape = rounded ? 'rounded' : 'square';
 
-  const c = themeClasses(StepperClasses(props, colors));
+  $: c = useThemeClasses(StepperClasses(props, colors));
 
-  const attrs = {
-    ...rest,
-  };
-
-  const classes = cls(
+  $: classes = cls(
     c.base,
     raised && c.raised,
     c.size[size],
@@ -100,17 +89,13 @@ const Stepper = forwardRef((props, ref) => {
   const valueClasses = cls(input && c.input, c.value[style]);
 
   return (
-    <Component ref={elRef} className={classes} {...attrs}>
-      <span
-        ref={buttonLeftElRef}
-        className={buttonLeftClasses}
-        onClick={onMinus}
-      >
-        <span className={c.hBar} />
+    <Component class={classes} {...$$restProps}>
+      <span ref={buttonLeftElRef} class={buttonLeftClasses} onClick={onMinus}>
+        <span class={c.hBar} />
       </span>
       {input && !buttonsOnly && (
         <input
-          className={valueClasses}
+          class={valueClasses}
           placeholder={inputPlaceholder}
           type={inputType}
           value={value}
@@ -123,15 +108,11 @@ const Stepper = forwardRef((props, ref) => {
           onBlur={onBlur}
         />
       )}
-      {!input && !buttonsOnly && <span className={valueClasses}>{value}</span>}
+      {!input && !buttonsOnly && <span class={valueClasses}>{value}</span>}
 
-      <span
-        ref={buttonRightElRef}
-        className={buttonRightClasses}
-        onClick={onPlus}
-      >
-        <span className={c.hBar} />
-        <span className={c.vBar} />
+      <span ref={buttonRightElRef} class={buttonRightClasses} onClick={onPlus}>
+        <span class={c.hBar} />
+        <span class={c.vBar} />
       </span>
     </Component>
   );
@@ -140,3 +121,5 @@ const Stepper = forwardRef((props, ref) => {
 Stepper.displayName = 'Stepper';
 
 export default Stepper;
+
+</script>

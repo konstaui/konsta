@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+<script>
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -40,14 +40,8 @@ const Link = forwardRef((props, ref) => {
     el: rippleElRef.current,
   }));
 
-  const Component = component;
-
-  const attrs = {
-    ...rest,
-  };
-
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
+
   const dark = useDarkClasses();
 
   const needsTouchRipple =
@@ -55,7 +49,7 @@ const Link = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, needsTouchRipple);
 
-  const colors = {
+  $: colors = {
     text: 'text-primary',
     tabbarInactive: cls(
       `text-black`,
@@ -68,11 +62,11 @@ const Link = forwardRef((props, ref) => {
     tabbar && !tabbarActive ? colors.tabbarInactive : colors.text;
   const tabbarState = tabbarActive ? 'active' : 'inactive';
 
-  const c = themeClasses(
+  $: c = useThemeClasses(
     LinkClasses(props, { textColor, needsTouchRipple }, className)
   );
 
-  const classes = cls(
+  $: classes = cls(
     // base
     c.base[tabbar ? 'default' : 'notTabbar'],
 
@@ -88,14 +82,14 @@ const Link = forwardRef((props, ref) => {
   return (
     <Component
       ref={rippleElRef}
-      className={classes}
-      {...attrs}
+      class={classes}
+      {...$$restProps}
       onClick={onClick}
     >
       {theme === 'material' && tabbar && (
-        <span className={c.tabbarHighlight[tabbarState]} />
+        <span class={c.tabbarHighlight[tabbarState]} />
       )}
-      {children}
+      <slot />
     </Component>
   );
 });
@@ -103,3 +97,5 @@ const Link = forwardRef((props, ref) => {
 Link.displayName = 'Link';
 
 export default Link;
+
+</script>
