@@ -10,11 +10,13 @@
   export let ios = undefined;
   export let material = undefined;
 
+  export let component = 'a';
   export let text = 'Back';
   export let showText = 'auto';
   export let onClick = undefined;
 
-  $: theme = useTheme({ ios, material }, (v) => (theme = v));
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
 
   $: shouldShowText =
     (showText === 'auto' && theme === 'ios') || showText === true;
@@ -27,8 +29,13 @@
   );
 </script>
 
-<!-- todo component -->
-<Link {component} class={c.base} navbar {...$$restProps} {onClick}>
+<svelte:component
+  this={component}
+  class={c.base}
+  navbar
+  {...$$restProps}
+  {onClick}
+>
   <span class={c.icon}>
     <BackIcon {theme} />
   </span>
@@ -36,4 +43,4 @@
     <span>{text}</span>
   {/if}
   <slot />
-</Link>
+</svelte:component>

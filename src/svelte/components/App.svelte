@@ -3,7 +3,6 @@
   import { AppClasses } from '../../shared/classes/AppClasses.js';
   import KonstaProvider from '../shared/KonstaProvider.svelte';
   import { KonstaStore } from '../shared/KonstaStore.js';
-  import { useThemeStore } from '../shared/use-theme-store.js';
 
   let className = undefined;
   export { className as class };
@@ -16,7 +15,6 @@
   let currentTheme = theme;
 
   const updateStore = () => {
-    useThemeStore.set(currentTheme);
     KonstaStore.set({
       theme: currentTheme,
       dark,

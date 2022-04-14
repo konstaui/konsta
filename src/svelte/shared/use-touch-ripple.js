@@ -1,9 +1,13 @@
 import { onMount, onDestroy } from 'svelte';
+import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
 
-export const useTouchRipple = (el, needsTouchRipple) => {
-  const context = $KonstaStore;
+export const useTouchRipple = (el, touchRipple) => {
+  const needsTouchRipple = () =>
+    touchRipple &&
+    get(KonstaStore).theme === 'material' &&
+    get(KonstaStore).touchRipple;
 
   let ripple = null;
   const removeRipple = () => {
@@ -12,7 +16,7 @@ export const useTouchRipple = (el, needsTouchRipple) => {
   };
 
   const onPointerDown = (e) => {
-    ripple = new TouchRipple(el, e.pageX, e.pageY);
+    ripple = new TouchRipple(el.current, e.pageX, e.pageY);
   };
   const onPointerMove = () => {
     removeRipple();
@@ -22,23 +26,31 @@ export const useTouchRipple = (el, needsTouchRipple) => {
   };
 
   const attachEvents = () => {
-    if (!context.touchRipple) return;
-
-    el.addEventListener('pointerdown', onPointerDown);
-    el.addEventListener('pointermove', onPointerMove);
-    el.addEventListener('pointerup', onPointerUp);
+    if (!el || !el.current || !needsTouchRipple()) return;
+    el.current.addEventListener('pointerdown', onPointerDown);
+    el.current.addEventListener('pointermove', onPointerMove);
+    el.current.addEventListener('pointerup', onPointerUp);
   };
   const detachEvents = () => {
-    el.removeEventListener('pointerdown', onPointerDown);
-    el.removeEventListener('pointermove', onPointerMove);
-    el.removeEventListener('pointerup', onPointerUp);
+    if (!el || !el.current) return;
+    el.current.removeEventListener('pointerdown', onPointerDown);
+    el.current.removeEventListener('pointermove', onPointerMove);
+    el.current.removeEventListener('pointerup', onPointerUp);
   };
+
   onMount(() => {
-    if (!el || !el || !needsTouchRipple) return;
     attachEvents();
   });
   onDestroy(() => {
-    if (!el || !el || !needsTouchRipple) return;
     detachEvents();
+  });
+
+  KonstaStore.subscribe(() => {
+    if (!needsTouchRipple()) {
+      detachEvents();
+    } else {
+      detachEvents();
+      attachEvents();
+    }
   });
 };

@@ -12,7 +12,8 @@
   export let badge = undefined;
   export let badgeColors = undefined;
 
-  $: theme = useTheme({}, (v) => (theme = v));
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
 
   $: c = useThemeClasses(
     {},

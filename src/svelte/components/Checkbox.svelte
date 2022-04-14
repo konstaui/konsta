@@ -48,13 +48,13 @@
     (v) => (c = v)
   );
 
-  function watchIndeterminate() {
+  function watchIndeterminate(indeterminatePassed) {
     if (inputEl) {
       inputEl.indeterminate = !!indeterminate;
     }
   }
 
-  $: watchIndeterminate();
+  $: watchIndeterminate(indeterminate);
 </script>
 
 <label class={c.base} {...$$restProps}>
@@ -66,7 +66,7 @@
     {disabled}
     {readonly}
     {checked}
-    {onChange}
+    on:change={onChange}
     class={c.input}
   />
   <i class={c.iconWrap[state]}>

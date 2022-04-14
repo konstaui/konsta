@@ -11,6 +11,8 @@
 
   export let small = false;
 
+  export let onClick = undefined;
+
   $: colors = {
     bg: 'bg-primary',
     text: 'text-white',
@@ -27,6 +29,6 @@
   );
 </script>
 
-<span class={c.base[size]} {...$$restProps}>
+<span class={c.base[size]} {...$$restProps} on:click={onClick}>
   <slot />
 </span>

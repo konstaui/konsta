@@ -1,7 +1,6 @@
 <script>
   import { afterUpdate } from 'svelte';
   import { KonstaStore } from './KonstaStore.js';
-  import { useThemeStore } from './use-theme-store.js';
 
   export let theme;
   export let dark = false;
@@ -11,7 +10,6 @@
   let currentTheme = theme;
 
   const updateStore = () => {
-    useThemeStore.set(currentTheme);
     KonstaStore.set({
       theme: currentTheme,
       dark,

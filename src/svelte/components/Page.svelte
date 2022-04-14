@@ -6,8 +6,8 @@
   let className = undefined;
   export { className as class };
 
-  export let ios;
-  export let material;
+  export let ios = undefined;
+  export let material = undefined;
 
   const dark = useDarkClasses();
 

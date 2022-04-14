@@ -4,7 +4,7 @@ import Block from './components/Block.svelte';
 import BlockFooter from './components/BlockFooter.svelte';
 import BlockHeader from './components/BlockHeader.svelte';
 import BlockTitle from './components/BlockTitle.svelte';
-// import Button from './components/Button.svelte';
+import Button from './components/Button.svelte';
 // import Card from './components/Card.svelte';
 // import Checkbox from './components/Checkbox.svelte';
 // import Chip from './components/Chip.svelte';
@@ -24,7 +24,7 @@ import Page from './components/Page.svelte';
 // import Panel from './components/Panel.svelte';
 // import Popover from './components/Popover.svelte';
 // import Popup from './components/Popup.svelte';
-// import Preloader from './components/Preloader.svelte';
+import Preloader from './components/Preloader.svelte';
 // import Progressbar from './components/Progressbar.svelte';
 // import Radio from './components/Radio.svelte';
 // import Range from './components/Range.svelte';
@@ -39,13 +39,13 @@ import Page from './components/Page.svelte';
 // import Toolbar from './components/Toolbar.svelte';
 // eslint-disable-next-line
 import KonstaProvider from './shared/KonstaProvider.svelte';
-import { useThemeStore } from './shared/use-theme-store.js';
+import { useTheme } from './shared/use-theme.js';
 // import { useThemeClasses } from './shared/use-theme-classes.js';
 
 export {
   // utils
   KonstaProvider,
-  useThemeStore as useTheme,
+  useTheme,
   // useThemeClasses,
   // components
   App,
@@ -54,7 +54,7 @@ export {
   BlockFooter,
   BlockHeader,
   BlockTitle,
-  // Button,
+  Button,
   // Card,
   // Checkbox,
   // Chip,
@@ -74,7 +74,7 @@ export {
   // Panel,
   // Popover,
   // Popup,
-  // Preloader,
+  Preloader,
   // Progressbar,
   // Radio,
   // Range,

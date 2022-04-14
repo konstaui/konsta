@@ -5,7 +5,8 @@
   export let material;
   export let fill;
 
-  $: theme = useTheme({ ios, material }, (v) => (theme = v));
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
 </script>
 
 {#if theme === 'ios'}

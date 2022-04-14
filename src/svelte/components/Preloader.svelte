@@ -15,7 +15,9 @@
 
   export let size = 'w-8 h-8';
 
-  $: theme = useTheme({ ios, material }, (v) => (theme = v));
+  let theme;
+
+  theme = useTheme({ ios, material }, (v) => (theme = v));
 
   $: colors = {
     icon: 'text-primary',

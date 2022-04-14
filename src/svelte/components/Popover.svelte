@@ -42,7 +42,8 @@
 
   $: state = opened ? 'opened' : 'closed';
 
-  $: theme = useTheme({ ios, material }, (v) => (theme = v));
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
 
   const dark = useDarkClasses();
 
@@ -93,7 +94,7 @@
     setPopover();
   }
 
-  $: watchOpened();
+  $: watchOpened(opened);
 
   $: popoverStyle = positions.set
     ? {

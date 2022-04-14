@@ -17,6 +17,8 @@
   export let onDelete = undefined;
   export let outline;
 
+  export let onClick = undefined;
+
   const dark = useDarkClasses();
 
   $: style = outline ? 'outline' : 'fill';
@@ -39,7 +41,7 @@
   );
 </script>
 
-<div class={c.base[style]} {...$$restProps}>
+<div class={c.base[style]} {...$$restProps} on:click={onClick}>
   {#if $$slots.media}
     <div class={c.media}><slot name="media" /></div>
   {/if}

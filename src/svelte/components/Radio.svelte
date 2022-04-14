@@ -20,7 +20,8 @@
   export let readonly = false;
   export let onChange = undefined;
 
-  $: theme = useTheme({ ios, material }, (v) => (theme = v));
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
 
   const dark = useDarkClasses();
 
@@ -56,7 +57,7 @@
     {disabled}
     {readonly}
     {checked}
-    {onChange}
+    on:change={onChange}
     class={c.input}
   />
 

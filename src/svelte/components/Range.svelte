@@ -57,9 +57,9 @@
     {value}
     {readonly}
     {disabled}
-    {onInput}
-    {onChange}
-    {onFocus}
-    {onBlur}
+    on:input={onInput}
+    on:change={onChange}
+    on:focus={onFocus}
+    on:blur={onBlur}
   />
 </div>
