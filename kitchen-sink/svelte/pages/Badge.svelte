@@ -43,19 +43,19 @@
   </Navbar>
 
   <Tabbar labels class="left-0 bottom-0 fixed">
-    <TabbarLink active label="Inbox">
+    <TabbarLink active label="Inbox" withIcon>
       <Icon slot="icon" badge="5" badgeColors={{ bg: 'bg-green-500' }}>
         <EnvelopeFill slot="ios" class="w-7 h-7" />
         <MdEmail slot="material" class="w-6 h-6" />
       </Icon>
     </TabbarLink>
-    <TabbarLink label="Calendar">
+    <TabbarLink label="Calendar" withIcon>
       <Icon slot="icon" badge="7" badgeColors={{ bg: 'bg-red-500' }}>
         <Calendar slot="ios" class="w-7 h-7" />
         <MdToday slot="material" class="w-6 h-6" />
       </Icon>
     </TabbarLink>
-    <TabbarLink label="Upload">
+    <TabbarLink label="Upload" withIcon>
       <Icon slot="icon" badge="1" badgeColors={{ bg: 'bg-red-500' }}>
         <CloudUploadFill slot="ios" class="w-7 h-7" />
         <MdFileUpload slot="material" class="w-6 h-6" />

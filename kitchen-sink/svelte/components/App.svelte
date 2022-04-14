@@ -1,9 +1,11 @@
 <script>
   import { onMount } from 'svelte';
   import { App } from 'konsta/svelte';
+  import { Router, Route, createHistory } from 'svelte-navigator';
+  import createHashSource from '../hashHistory.js';
+
+  import routes from '../routes.js';
   import HomePage from '../pages/Home.svelte';
-  import BadgePage from '../pages/Badge.svelte';
-  import CardsPage from '../pages/Cards.svelte';
 
   let theme = 'ios';
   const setTheme = (t) => {
@@ -26,10 +28,17 @@
       }
     }
   });
+
+  const hash = createHistory(createHashSource());
 </script>
 
 <App {theme} safeAreas={!inIFrame}>
-  <!-- <HomePage {theme} {setTheme} /> -->
-  <!-- <BadgePage /> -->
-  <CardsPage />
+  <Router history={hash} primary={false}>
+    <Route path="/">
+      <HomePage {theme} {setTheme} />
+    </Route>
+    {#each routes as route}
+      <Route path={route.path} component={route.component} />
+    {/each}
+  </Router>
 </App>

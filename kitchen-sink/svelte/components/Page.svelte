@@ -1,5 +1,5 @@
 <script>
-  import { Page as PageComponent, Navbar, NavbarBackLink } from 'konsta/react';
+  import { Page as PageComponent, Navbar, NavbarBackLink } from 'konsta/svelte';
 
   export let title;
   export let backLink = true;

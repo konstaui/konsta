@@ -8,9 +8,8 @@
     Radio,
     Toggle,
   } from 'konsta/svelte';
-  import { afterUpdate, onMount } from 'svelte';
-  // import { Link } from 'react-router-dom';
-  // import routes from '../routes.js';
+  import { afterUpdate } from 'svelte';
+  import routes from '../routes.js';
   import DemoIcon from '../components/DemoIcon.svelte';
 
   export let theme;
@@ -61,16 +60,11 @@
   </List>
 
   <BlockTitle>Components</BlockTitle>
-  <!-- <List>
-    {routes.map((route) => (
-      <ListItem
-        key={route.path}
-        link
-        title={route.title}
-        linkComponent={Link}
-        linkProps={{ to: route.path }}
-        media={<DemoIcon />}
-      />
-    ))}
-  </List> -->
+  <List>
+    {#each routes as route}
+      <ListItem link href={`/#${route.path}`} title={route.title}>
+        <DemoIcon slot="media" />
+      </ListItem>
+    {/each}
+  </List>
 </Page>
