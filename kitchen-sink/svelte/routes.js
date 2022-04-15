@@ -26,7 +26,7 @@ import Toast from './pages/Toast.svelte';
 import Toggle from './pages/Toggle.svelte';
 import Toolbar from './pages/Toolbar.svelte';
 
-const routes = [
+const pages = {
   Badge,
   Buttons,
   Cards,
@@ -54,11 +54,8 @@ const routes = [
   Toast,
   Toggle,
   Toolbar,
-].map((component) => {
-  const name = (component.displayName || component.name)
-    .replace('Proxy<', '')
-    .replace('>', '');
-
+};
+const routes = Object.keys(pages).map((name) => {
   const path = `/${name
     .split('Page')[0]
     .split('')
@@ -78,7 +75,7 @@ const routes = [
   if (title === 'Fab') title = 'FAB (Floating Action Button)';
   if (title === 'Side Panels') title = 'Panel / Side Panels';
   return {
-    component,
+    component: pages[name],
     path,
     title,
   };
