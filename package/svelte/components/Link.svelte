@@ -41,7 +41,7 @@
   $: colors = {
     text: 'text-primary',
     tabbarInactive: cls(
-      `text-black`,
+      'text-black',
       dark('dark:text-white dark:text-opacity-55')
     ),
     ...colorsProp,

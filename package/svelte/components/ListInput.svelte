@@ -193,6 +193,7 @@
       {#if $$slots.input}
         <slot name="input" />
       {:else}
+        <!-- svelte-ignore a11y-autofocus -->
         <svelte:element
           this={InputComponent}
           id={inputId}
