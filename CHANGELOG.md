@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.8.0](https://github.com/konstaui/konsta/compare/v0.7.3...v0.8.0) (2022-04-15)
+
+### Features
+
+- Konsta Svelte components 🎉
+
 # [0.7.3](https://github.com/konstaui/konsta/compare/v0.7.2...v0.7.3) (2022-04-12)
 
 ### Features

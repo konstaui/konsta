@@ -20,7 +20,7 @@ const createComponentTypes = (componentName, propsContent) => {
     'inputMode',
   ];
   propsContent = propsContent
-    .replace('interface Props {', 'export interface Props {')
+    .replace('interface Props {', `export interface Props {\n  class?: string;`)
     .replace(/ClassName/g, 'Class')
     .replace(/Children/g, '')
     .split('\n')
