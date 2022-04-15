@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { App as KonstaApp } from 'konsta/react';
 
 import routes from '../routes.js';
@@ -27,16 +27,19 @@ function App() {
   return (
     <KonstaApp theme={theme} safeAreas={!inIFrame}>
       <Router>
-        <Switch>
+        <Routes>
           {routes.map((route) => (
-            <Route key={route.path} path={route.path}>
-              <route.component />
-            </Route>
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<route.component />}
+            />
           ))}
-          <Route path="/">
-            <HomePage theme={theme} setTheme={setTheme} />
-          </Route>
-        </Switch>
+          <Route
+            path="/"
+            element={<HomePage theme={theme} setTheme={setTheme} />}
+          />
+        </Routes>
       </Router>
     </KonstaApp>
   );
