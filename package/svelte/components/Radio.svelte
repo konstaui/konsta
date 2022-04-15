@@ -4,7 +4,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { RadioClasses } from '../../shared/classes/RadioClasses.js';
+  import { RadioClasses } from '../../shared/esm/classes/RadioClasses.js';
 
   let className = undefined;
   export { className as class };

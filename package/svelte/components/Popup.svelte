@@ -1,6 +1,6 @@
 <script>
   import { cls } from '../../shared/esm/cls.js';
-  import { PopupClasses } from '../../shared/classes/PopupClasses.js';
+  import { PopupClasses } from '../../shared/esm/classes/PopupClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 

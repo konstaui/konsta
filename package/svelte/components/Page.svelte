@@ -9,6 +9,8 @@
   export let ios = undefined;
   export let material = undefined;
 
+  export let component = 'div';
+
   const dark = useDarkClasses();
 
   $: c = useThemeClasses(
@@ -19,6 +21,6 @@
   );
 </script>
 
-<div class={c.base} {...$$restProps}>
+<svelte:element this={component} class={c.base} {...$$restProps}>
   <slot />
-</div>
+</svelte:element>

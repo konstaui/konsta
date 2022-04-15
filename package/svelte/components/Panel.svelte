@@ -1,6 +1,6 @@
 <script>
   import { cls } from '../../shared/esm/cls.js';
-  import { PanelClasses } from '../../shared/classes/PanelClasses.js';
+  import { PanelClasses } from '../../shared/esm/classes/PanelClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 

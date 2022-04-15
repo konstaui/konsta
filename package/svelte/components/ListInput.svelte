@@ -6,7 +6,7 @@
   import ListItem from './ListItem.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListInputClasses } from '../../shared/esm/classes/ListInputClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { cls } from '../../shared/esm/cls.js';
 
   let className = undefined;
   export { className as class };

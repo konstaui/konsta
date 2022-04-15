@@ -1,6 +1,6 @@
 <script>
   import { cls } from '../../shared/esm/cls.js';
-  import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
+  import { SegmentedClasses } from '../../shared/esm/classes/SegmentedClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 

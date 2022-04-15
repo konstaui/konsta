@@ -2,7 +2,7 @@
   import { cls } from '../../shared/esm/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
+  import { ToolbarClasses } from '../../shared/esm/classes/ToolbarClasses.js';
 
   let className = undefined;
   export { className as class };

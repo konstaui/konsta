@@ -1,6 +1,6 @@
 <script>
   import { ChipClasses } from '../../shared/esm/classes/ChipClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { cls } from '../../shared/esm/cls.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 

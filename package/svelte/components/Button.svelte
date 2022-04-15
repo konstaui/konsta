@@ -4,7 +4,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
+  import { ButtonClasses } from '../../shared/esm/classes/ButtonClasses.js';
 
   let className = undefined;
   export { className as class };

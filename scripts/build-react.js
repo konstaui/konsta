@@ -36,7 +36,7 @@ module.exports = async (format, outputDir = 'package') => {
       // eslint-disable-next-line
       let fileContent = fs.readFileSync(path.resolve(dirFullPath, f), 'utf-8');
       fileContent = fileContent.replace(
-        '../../shared/',
+        /..\/..\/shared\//g,
         `../../../shared/${format}/`
       );
       fs.writeFileSync(path.resolve(dirFullPath, f), fileContent);

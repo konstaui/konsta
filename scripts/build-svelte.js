@@ -32,7 +32,10 @@ module.exports = async (outputDir = 'package') => {
       if (fs.lstatSync(path.resolve(dirFullPath, f)).isDirectory()) return;
       if (f.includes('package.json')) return;
       let fileContent = fs.readFileSync(path.resolve(dirFullPath, f), 'utf-8');
-      fileContent = fileContent.replace('../../shared/', '../../shared/esm/');
+      fileContent = fileContent.replace(
+        /..\/..\/shared\//g,
+        '../../shared/esm/'
+      );
       fs.writeFileSync(path.resolve(dirFullPath, f), fileContent);
     });
   });

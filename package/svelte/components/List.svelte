@@ -1,6 +1,6 @@
 <script>
   import { cls } from '../../shared/esm/cls.js';
-  import { ListClasses } from '../../shared/classes/ListClasses.js';
+  import { ListClasses } from '../../shared/esm/classes/ListClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 

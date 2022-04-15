@@ -2,7 +2,7 @@
   import { cls } from '../../shared/esm/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import { StepperClasses } from '../../shared/classes/StepperClasses.js';
+  import { StepperClasses } from '../../shared/esm/classes/StepperClasses.js';
 
   let className = undefined;
   export { className as class };

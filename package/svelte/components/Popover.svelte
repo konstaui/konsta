@@ -4,9 +4,9 @@
   import { cls } from '../../shared/esm/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
-  import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
+  import { calcPopoverPosition } from '../../shared/esm/calc-popover-position.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
+  import { PopoverClasses } from '../../shared/esm/classes/PopoverClasses.js';
 
   let className = undefined;
   export { className as class };

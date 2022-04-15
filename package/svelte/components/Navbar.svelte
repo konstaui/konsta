@@ -2,7 +2,7 @@
   import { cls } from '../../shared/esm/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
+  import { NavbarClasses } from '../../shared/esm/classes/NavbarClasses.js';
 
   let className = undefined;
   export { className as class };

@@ -4,7 +4,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+  import { LinkClasses } from '../../shared/esm/classes/LinkClasses.js';
 
   let className = undefined;
   export { className as class };

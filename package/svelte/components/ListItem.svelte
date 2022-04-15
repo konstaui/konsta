@@ -5,7 +5,7 @@
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import ChevronIcon from './icons/ChevronIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
+  import { ListItemClasses } from '../../shared/esm/classes/ListItemClasses.js';
 
   let className = undefined;
   export { className as class };
