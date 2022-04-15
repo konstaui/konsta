@@ -62,7 +62,7 @@
   <BlockTitle>Components</BlockTitle>
   <List>
     {#each routes as route}
-      <ListItem link href={`/#${route.path}`} title={route.title}>
+      <ListItem link href={`#${route.path}`} title={route.title}>
         <DemoIcon slot="media" />
       </ListItem>
     {/each}
