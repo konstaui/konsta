@@ -52,17 +52,7 @@
       <k-card>
         <template #header>
           <div
-            class="
-              -mx-4
-              -my-2
-              h-48
-              p-4
-              flex
-              items-end
-              text-white
-              font-bold
-              bg-cover bg-center
-            "
+            class="-mx-4 -my-2 h-48 p-4 flex items-end text-white font-bold bg-cover bg-center"
             :style="{
               'background-image':
                 'url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)',
@@ -86,17 +76,7 @@
       <k-card>
         <template #header>
           <div
-            class="
-              -mx-4
-              -my-2
-              h-48
-              p-4
-              flex
-              items-end
-              text-white
-              font-bold
-              bg-cover bg-center
-            "
+            class="-mx-4 -my-2 h-48 p-4 flex items-end text-white font-bold bg-cover bg-center"
             :style="{
               'background-image':
                 'url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)',

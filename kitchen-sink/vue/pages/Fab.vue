@@ -45,14 +45,7 @@
 
     <!-- Center Center -->
     <k-fab
-      class="
-        fixed
-        left-1/2
-        top-1/2
-        transform
-        -translate-x-1/2 -translate-y-1/2
-        z-20
-      "
+      class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
       :colors="{ bg: 'bg-pink-500', activeBg: 'active:bg-pink-600' }"
     >
       <template #icon>

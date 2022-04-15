@@ -12,6 +12,7 @@ const rules = {
   'react/jsx-wrap-multilines': 'off',
   'react/jsx-props-no-spreading': ['off'],
   'import/no-extraneous-dependencies': ['off'],
+  'import/no-relative-packages': ['off'],
   'import/extensions': [
     'error',
     'never',
@@ -145,6 +146,15 @@ module.exports = {
         'a11y-invalid-attribute': ['off'],
         'a11y-missing-attribute': ['off'],
         'max-len': ['off'],
+        'no-return-assign': ['off'],
+        quotes: ['off'],
+        'comma-dangle': ['off'],
+        'a11y-autofocus': ['off'],
+        'prefer-const': ['off'],
+        'no-unused-vars': ['off'],
+        'object-shorthand': ['off'],
+        'import/newline-after-import': ['off'],
+        'operator-assignment': ['off'],
       },
     },
     // SVELTE KITCHEN_SINK
