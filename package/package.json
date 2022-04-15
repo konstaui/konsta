@@ -27,6 +27,9 @@
       "require": "./vue/cjs/konsta-vue.js",
       "import": "./vue/esm/konsta-vue.js"
     },
+    "./svelte": {
+      "import": "./svelte/konsta-svelte.js"
+    },
     "./config": "./config.js",
     "./config.js": "./config.js"
   }

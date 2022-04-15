@@ -9,8 +9,7 @@
   "type": "module",
   "exports": {
     ".": {
-      "import": "./konsta-svelte.js",
-      "require": "./konsta-svelte.js"
+      "import": "./konsta-svelte.js"
     }
   }
 }
