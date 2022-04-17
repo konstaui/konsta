@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.8.1](https://github.com/konstaui/konsta/compare/v0.8.0...v0.8.1) (2022-04-17)
+
+### Bug Fixes
+
+- fix sveltekit imports ([9940518](https://github.com/konstaui/konsta/commit/9940518348b0d60c223005314dbe13806c56760f)), closes [#43](https://github.com/konstaui/konsta/issues/43)
+
 # [0.8.0](https://github.com/konstaui/konsta/compare/v0.7.3...v0.8.0) (2022-04-15)
 
 ### Features
