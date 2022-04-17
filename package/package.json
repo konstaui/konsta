@@ -17,6 +17,7 @@
     "node": ">= 4.7.0"
   },
   "releaseDate": "April 15, 2022",
+  "svelte": "./svelte/konsta-svelte.js",
   "exports": {
     "./package.json": "./package.json",
     "./react": {
