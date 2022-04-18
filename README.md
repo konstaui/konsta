@@ -4,6 +4,12 @@
 
 Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS and Material Design components for React, Vue & Svelte
 
+<!-- ## Sponsors -->
+
+<!-- SPONSORS_TABLE_WRAP -->
+
+<!-- SPONSORS_TABLE_WRAP -->
+
 ## Documentation
 
 Documentation available at https://konstaui.com
