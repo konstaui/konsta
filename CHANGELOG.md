@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.8.2](https://github.com/konstaui/konsta/compare/v0.8.1...v0.8.2) (2022-04-20)
+
+### Bug Fixes
+
+- fix shared utils imports in "module" envs ([30793b0](https://github.com/konstaui/konsta/commit/30793b0b4dbc81b91b532f273436128a64abd655)), closes [#44](https://github.com/konstaui/konsta/issues/44)
+
 # [0.8.1](https://github.com/konstaui/konsta/compare/v0.8.0...v0.8.1) (2022-04-17)
 
 ### Bug Fixes
