@@ -1,0 +1,11 @@
+{
+  "name": "konsta/shared",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./esm/*": {
+      "import": "./esm/*",
+      "require": "./cjs/*"
+    }
+  }
+}
