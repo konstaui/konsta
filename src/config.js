@@ -23,7 +23,7 @@ const config = (userConfig = {}) => {
         extend: extendTheme(),
       },
       plugins: [
-        pluginBase(),
+        pluginBase(userConfig),
         pluginPreloader(),
         pluginIosMaterial(),
         pluginHairlines(),

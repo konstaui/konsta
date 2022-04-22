@@ -1,7 +1,34 @@
 const plugin = require('tailwindcss/plugin');
 
-module.exports = () =>
-  plugin(({ addBase, config }) => {
+module.exports = (userConfig = {}) => {
+  let iosFont =
+    '-apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif';
+  let materialFont = 'Roboto, system-ui, Noto, Helvetica, Arial, sans-serif';
+
+  const getFonts = (ff) => {
+    if (ff.ios) {
+      iosFont = Array.isArray(ff.ios) ? ff.ios.join(', ') : ff.ios;
+    }
+    if (ff.material) {
+      materialFont = Array.isArray(ff.fontFamily.material)
+        ? ff.fontFamily.material.join(', ')
+        : ff.fontFamily.material;
+    }
+  };
+  if (
+    userConfig &&
+    userConfig.theme &&
+    userConfig.theme.extend &&
+    userConfig.theme.extend.fontFamily
+  ) {
+    getFonts(userConfig.theme.extend.fontFamily);
+  }
+
+  if (userConfig && userConfig.theme && userConfig.theme.fontFamily) {
+    getFonts(userConfig.theme.fontFamily);
+  }
+
+  return plugin(({ addBase, config }) => {
     const darkMode = config('darkMode');
     let darkProps = {};
     if (darkMode === 'class') {
@@ -47,11 +74,11 @@ module.exports = () =>
         '-moz-osx-font-smoothing': 'grayscale',
       },
       '.k-ios, .ios': {
-        'font-family':
-          '-apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif',
+        'font-family': iosFont,
       },
       '.k-material, .md': {
-        'font-family': 'Roboto, system-ui, Noto, Helvetica, Arial, sans-serif',
+        'font-family': materialFont,
       },
     });
   });
+};
