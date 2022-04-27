@@ -12,6 +12,8 @@ export const calcPopoverPosition = ({
     targetEl = targetEl.current;
   } else if (targetEl.value) {
     targetEl = targetEl.value;
+  } else if (targetEl.el) {
+    targetEl = targetEl.el;
   }
 
   if (typeof targetEl === 'string') {
