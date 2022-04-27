@@ -3,6 +3,25 @@
 const fs = require('fs-extra');
 const path = require('path');
 
+const addOnClick = [
+  'Badge',
+  'Button',
+  'Chip',
+  'Fab',
+  'Link',
+  'ListItem',
+  'NavbarBackLink',
+  'ListButton',
+  'NavbarBackLink',
+  'SegmentedButton',
+];
+
+const addOnClickProp = (componentName) => {
+  if (addOnClick.includes(componentName))
+    return `\n  onClick?: (e: any) => void;\n`;
+  return '';
+};
+
 const createComponentTypes = (componentName, propsContent) => {
   const slots = ['default'];
   const removeProps = ['defaultChecked', 'defaultValue'];
@@ -20,7 +39,12 @@ const createComponentTypes = (componentName, propsContent) => {
     'inputMode',
   ];
   propsContent = propsContent
-    .replace('interface Props {', `export interface Props {\n  class?: string;`)
+    .replace(
+      'interface Props {',
+      `export interface Props {\n  class?: string;${addOnClickProp(
+        componentName
+      )}`
+    )
     .replace(/ClassName/g, 'Class')
     .replace(/Children/g, '')
     .split('\n')
