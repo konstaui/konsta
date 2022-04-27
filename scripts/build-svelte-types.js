@@ -14,6 +14,8 @@ const addOnClick = [
   'ListButton',
   'NavbarBackLink',
   'SegmentedButton',
+  'BreadcrumbsCollapsed',
+  'BreadcrumbsItem',
 ];
 
 const addOnClickProp = (componentName) => {
