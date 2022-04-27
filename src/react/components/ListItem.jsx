@@ -88,7 +88,7 @@ const ListItem = forwardRef((props, ref) => {
   const colors = {
     text: cls(`text-black`, dark('dark:text-white')),
     menuListItemText: cls(`text-primary`, dark('dark:text-white')),
-    menuListItemActiveBg: 'bg-primary dark:bg-primary',
+    menuListItemActiveBg: cls(`bg-primary`, dark('dark:bg-primary')),
     ...colorsProp,
   };
 
