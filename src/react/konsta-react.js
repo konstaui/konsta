@@ -4,6 +4,10 @@ import Block from './components/Block.jsx';
 import BlockFooter from './components/BlockFooter.jsx';
 import BlockHeader from './components/BlockHeader.jsx';
 import BlockTitle from './components/BlockTitle.jsx';
+import Breadcrumbs from './components/Breadcrumbs.jsx';
+import BreadcrumbsItem from './components/BreadcrumbsItem.jsx';
+import BreadcrumbsSeparator from './components/BreadcrumbsSeparator.jsx';
+import BreadcrumbsCollapsed from './components/BreadcrumbsCollapsed.jsx';
 import Button from './components/Button.jsx';
 import Card from './components/Card.jsx';
 import Checkbox from './components/Checkbox.jsx';
@@ -54,6 +58,10 @@ export {
   BlockFooter,
   BlockHeader,
   BlockTitle,
+  Breadcrumbs,
+  BreadcrumbsItem,
+  BreadcrumbsSeparator,
+  BreadcrumbsCollapsed,
   Button,
   Card,
   Checkbox,
