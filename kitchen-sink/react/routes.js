@@ -1,4 +1,5 @@
 import Badge from './pages/Badge.jsx';
+import Breadcrumbs from './pages/Breadcrumbs.jsx';
 import Buttons from './pages/Buttons.jsx';
 import Cards from './pages/Cards.jsx';
 import Checkbox from './pages/Checkbox.jsx';
@@ -28,6 +29,7 @@ import Toolbar from './pages/Toolbar.jsx';
 
 const routes = [
   Badge,
+  Breadcrumbs,
   Buttons,
   Cards,
   Checkbox,
