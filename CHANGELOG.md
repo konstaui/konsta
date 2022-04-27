@@ -1,5 +1,15 @@
 # Changelog
 
+# [0.8.3](https://github.com/konstaui/konsta/compare/v0.8.3...v0.8.3) (2022-04-27)
+
+### Bug Fixes
+
+- **svelte:** add `onClick` props types ([b237927](https://github.com/konstaui/konsta/commit/b237927cb29d2949337144b67248cde7eab8daad))
+
+### Features
+
+- allow to replace default fonts for iOS and Material themes ([b2f2244](https://github.com/konstaui/konsta/commit/b2f224446dbd8fb867cc0f83b26195b8a84ef144)), closes [#35](https://github.com/konstaui/konsta/issues/35)
+
 # [0.8.2](https://github.com/konstaui/konsta/compare/v0.8.1...v0.8.2) (2022-04-20)
 
 ### Bug Fixes
