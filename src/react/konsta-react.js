@@ -1,4 +1,8 @@
 import App from './components/App.jsx';
+import Actions from './components/Actions.jsx';
+import ActionsGroup from './components/ActionsGroup.jsx';
+import ActionsButton from './components/ActionsButton.jsx';
+import ActionsLabel from './components/ActionsLabel.jsx';
 import Badge from './components/Badge.jsx';
 import Block from './components/Block.jsx';
 import BlockFooter from './components/BlockFooter.jsx';
@@ -53,6 +57,10 @@ export {
   useThemeClasses,
   // components
   App,
+  Actions,
+  ActionsGroup,
+  ActionsButton,
+  ActionsLabel,
   Badge,
   Block,
   BlockFooter,

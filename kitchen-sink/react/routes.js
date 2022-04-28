@@ -1,3 +1,4 @@
+import ActionSheet from './pages/ActionSheet.jsx';
 import Badge from './pages/Badge.jsx';
 import Breadcrumbs from './pages/Breadcrumbs.jsx';
 import Buttons from './pages/Buttons.jsx';
@@ -28,6 +29,7 @@ import Toggle from './pages/Toggle.jsx';
 import Toolbar from './pages/Toolbar.jsx';
 
 const routes = [
+  ActionSheet,
   Badge,
   Breadcrumbs,
   Buttons,
