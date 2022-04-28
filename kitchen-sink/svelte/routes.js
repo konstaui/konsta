@@ -1,4 +1,5 @@
 import Badge from './pages/Badge.svelte';
+import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import Buttons from './pages/Buttons.svelte';
 import Cards from './pages/Cards.svelte';
 import Checkbox from './pages/Checkbox.svelte';
@@ -28,6 +29,7 @@ import Toolbar from './pages/Toolbar.svelte';
 
 const pages = {
   Badge,
+  Breadcrumbs,
   Buttons,
   Cards,
   Checkbox,

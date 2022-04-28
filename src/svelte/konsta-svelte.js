@@ -4,6 +4,10 @@ import Block from './components/Block.svelte';
 import BlockFooter from './components/BlockFooter.svelte';
 import BlockHeader from './components/BlockHeader.svelte';
 import BlockTitle from './components/BlockTitle.svelte';
+import Breadcrumbs from './components/Breadcrumbs.svelte';
+import BreadcrumbsItem from './components/BreadcrumbsItem.svelte';
+import BreadcrumbsSeparator from './components/BreadcrumbsSeparator.svelte';
+import BreadcrumbsCollapsed from './components/BreadcrumbsCollapsed.svelte';
 import Button from './components/Button.svelte';
 import Card from './components/Card.svelte';
 import Checkbox from './components/Checkbox.svelte';
@@ -52,6 +56,10 @@ export {
   BlockFooter,
   BlockHeader,
   BlockTitle,
+  Breadcrumbs,
+  BreadcrumbsItem,
+  BreadcrumbsSeparator,
+  BreadcrumbsCollapsed,
   Button,
   Card,
   Checkbox,
