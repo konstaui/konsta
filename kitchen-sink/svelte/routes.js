@@ -1,3 +1,4 @@
+import ActionSheet from './pages/ActionSheet.svelte';
 import Badge from './pages/Badge.svelte';
 import Breadcrumbs from './pages/Breadcrumbs.svelte';
 import Buttons from './pages/Buttons.svelte';
@@ -28,6 +29,7 @@ import Toggle from './pages/Toggle.svelte';
 import Toolbar from './pages/Toolbar.svelte';
 
 const pages = {
+  ActionSheet,
   Badge,
   Breadcrumbs,
   Buttons,

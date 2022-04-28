@@ -41,9 +41,9 @@ const ActionsButton = forwardRef((props, ref) => {
   }));
 
   let Component = component;
-  if (typeof props.component === 'undefined' && (href || href === ''))
+  if (typeof props.component === 'undefined' && (href || href === '')) {
     Component = 'a';
-
+  }
   const attrs = {
     href,
     ...rest,

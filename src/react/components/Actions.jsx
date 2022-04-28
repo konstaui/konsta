@@ -21,10 +21,10 @@ const Actions = forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const rippleElRef = useRef(null);
+  const elRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
-    el: rippleElRef.current,
+    el: elRef.current,
   }));
 
   const state = opened ? 'opened' : 'closed';
@@ -44,7 +44,7 @@ const Actions = forwardRef((props, ref) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component ref={rippleElRef} className={c.base[state]} {...attrs}>
+      <Component ref={elRef} className={c.base[state]} {...attrs}>
         {children}
       </Component>
     </>

@@ -19,10 +19,10 @@ const ActionsGroup = forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const rippleElRef = useRef(null);
+  const elRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
-    el: rippleElRef.current,
+    el: elRef.current,
   }));
 
   const Component = component;
@@ -39,7 +39,7 @@ const ActionsGroup = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={rippleElRef} className={c.base} {...attrs}>
+    <Component ref={elRef} className={c.base} {...attrs}>
       {children}
     </Component>
   );

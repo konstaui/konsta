@@ -1,4 +1,8 @@
 import App from './components/App.svelte';
+import Actions from './components/Actions.svelte';
+import ActionsButton from './components/ActionsButton.svelte';
+import ActionsLabel from './components/ActionsLabel.svelte';
+import ActionsGroup from './components/ActionsGroup.svelte';
 import Badge from './components/Badge.svelte';
 import Block from './components/Block.svelte';
 import BlockFooter from './components/BlockFooter.svelte';
@@ -51,6 +55,10 @@ export {
   useTheme,
   // components
   App,
+  Actions,
+  ActionsButton,
+  ActionsLabel,
+  ActionsGroup,
   Badge,
   Block,
   BlockFooter,
