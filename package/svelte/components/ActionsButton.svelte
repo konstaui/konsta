@@ -1,8 +1,8 @@
 <script>
-  import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
+  import { ActionsButtonClasses } from '../../shared/esm/classes/ActionsButtonClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { cls } from '../../shared/cls.js';
+  import { cls } from '../../shared/esm/cls.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   let className = undefined;
