@@ -13,17 +13,8 @@ import {
   Popover,
   List,
   ListItem,
-  Icon,
   Link,
 } from 'konsta/react';
-
-import {
-  HouseFill,
-  SquareListFill,
-  DevicePhonePortrait,
-} from 'framework7-icons/react';
-
-import { MdHome, MdList, MdSmartphone } from 'react-icons/md';
 
 export default function BreadcrumbsPage() {
   const isPreview = document.location.href.includes('examplePreview');
@@ -125,46 +116,6 @@ export default function BreadcrumbsPage() {
           />
         </List>
       </Popover>
-
-      <BlockTitle>With Icons</BlockTitle>
-      <Block strong>
-        <Breadcrumbs>
-          <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>
-              <Icon
-                className="text-[24px]"
-                ios={<HouseFill />}
-                material={<MdHome />}
-              />
-              <span>Home</span>
-            </Link>
-          </BreadcrumbsItem>
-          <BreadcrumbsSeparator />
-          <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>
-              <Icon
-                className="text-[24px]"
-                ios={<SquareListFill />}
-                material={<MdList />}
-              />
-              <span>Catalog</span>
-            </Link>
-          </BreadcrumbsItem>
-          <BreadcrumbsSeparator />
-          <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>
-              <Icon
-                className="text-[24px]"
-                ios={<DevicePhonePortrait />}
-                material={<MdSmartphone />}
-              />
-              <span>Phones</span>
-            </Link>
-          </BreadcrumbsItem>
-          <BreadcrumbsSeparator />
-          <BreadcrumbsItem active>iPhone 12</BreadcrumbsItem>
-        </Breadcrumbs>
-      </Block>
     </Page>
   );
 }

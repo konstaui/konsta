@@ -4,6 +4,10 @@ import kBlock from './components/Block.vue';
 import kBlockFooter from './components/BlockFooter.vue';
 import kBlockHeader from './components/BlockHeader.vue';
 import kBlockTitle from './components/BlockTitle.vue';
+import kBreadcrumbs from './components/Breadcrumbs.vue';
+import kBreadcrumbsItem from './components/BreadcrumbsItem.vue';
+import kBreadcrumbsSeparator from './components/BreadcrumbsSeparator.vue';
+import kBreadcrumbsCollapsed from './components/BreadcrumbsCollapsed.vue';
 import kButton from './components/Button.vue';
 import kCard from './components/Card.vue';
 import kCheckbox from './components/Checkbox.vue';
@@ -61,6 +65,14 @@ export {
   kBlockHeader as BlockHeader,
   kBlockTitle,
   kBlockTitle as BlockTitle,
+  kBreadcrumbs,
+  kBreadcrumbs as Breadcrumbs,
+  kBreadcrumbsItem,
+  kBreadcrumbsItem as BreadcrumbsItem,
+  kBreadcrumbsSeparator,
+  kBreadcrumbsSeparator as BreadcrumbsSeparator,
+  kBreadcrumbsCollapsed,
+  kBreadcrumbsCollapsed as BreadcrumbsCollapsed,
   kButton,
   kButton as Button,
   kCard,
