@@ -1,4 +1,8 @@
 import kApp from './components/App.vue';
+import kActions from './components/Actions.vue';
+import kActionsButton from './components/ActionsButton.vue';
+import kActionsLabel from './components/ActionsLabel.vue';
+import kActionsGroup from './components/ActionsGroup.vue';
 import kBadge from './components/Badge.vue';
 import kBlock from './components/Block.vue';
 import kBlockFooter from './components/BlockFooter.vue';
@@ -55,6 +59,14 @@ export {
   // components
   kApp,
   kApp as App,
+  kActions,
+  kActions as Actions,
+  kActionsButton,
+  kActionsButton as ActionsButton,
+  kActionsLabel,
+  kActionsLabel as ActionsLabel,
+  kActionsGroup,
+  kActionsGroup as ActionsGroup,
   kBadge,
   kBadge as Badge,
   kBlock,

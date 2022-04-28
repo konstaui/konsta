@@ -1,4 +1,5 @@
 import Home from './pages/Home.vue';
+import ActionSheet from './pages/ActionSheet.vue';
 import Badge from './pages/Badge.vue';
 import Breadcrumbs from './pages/Breadcrumbs.vue';
 import Buttons from './pages/Buttons.vue';
@@ -30,6 +31,7 @@ import Toolbar from './pages/Toolbar.vue';
 
 const routes = [
   Home,
+  ActionSheet,
   Badge,
   Breadcrumbs,
   Buttons,
