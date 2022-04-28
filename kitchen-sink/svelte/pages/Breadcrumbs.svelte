@@ -22,7 +22,7 @@
 </script>
 
 <Page>
-  <Navbar title="Cards">
+  <Navbar title="Breadcrumbs">
     <svelte:fragment slot="left">
       {#if !isPreview}
         <NavbarBackLink onClick={() => history.back()} />
