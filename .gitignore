@@ -30,5 +30,6 @@ package/**/*.css
 
 kitchen-sink/react/dist
 kitchen-sink/vue/dist
+kitchen-sink/svelte/dist
 
 src/vue-temp
