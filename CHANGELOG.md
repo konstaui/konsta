@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.10.1](https://github.com/konstaui/konsta/compare/v0.10.0...v0.10.1) (2022-05-16)
+
+### Bug Fixes
+
+- **svelte:** fix ListInput children error ([2b91a6c](https://github.com/konstaui/konsta/commit/2b91a6cf668e13d375d56ed7ff5f9f5f7df25bfe)), closes [#48](https://github.com/konstaui/konsta/issues/48)
+
 # [0.10.0](https://github.com/konstaui/konsta/compare/v0.9.0...v0.10.0) (2022-04-28)
 
 ### Features
