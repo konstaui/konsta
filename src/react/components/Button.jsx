@@ -16,6 +16,8 @@ const Button = forwardRef((props, ref) => {
     ios,
     material,
 
+    disabled,
+
     // Anchor props
     href,
 
@@ -79,6 +81,18 @@ const Button = forwardRef((props, ref) => {
     activeBg: 'active:bg-primary',
     activeBgDark: 'active:bg-primary-dark',
     touchRipple: 'touch-ripple-primary',
+    disabledText: cls(
+      'text-black text-opacity-30',
+      dark('dark:text-white dark:text-opacity-30')
+    ),
+    disabledBg: cls(
+      'bg-black bg-opacity-10',
+      dark('dark:bg-white dark:bg-opacity-10')
+    ),
+    disabledBorder: cls(
+      'border-black border-opacity-10',
+      dark('dark:border-white dark:border-opacity-10')
+    ),
     ...colorsProp,
   };
 
@@ -99,7 +113,12 @@ const Button = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={rippleElRef} className={classes} {...attrs}>
+    <Component
+      ref={rippleElRef}
+      className={classes}
+      disabled={disabled}
+      {...attrs}
+    >
       {children}
     </Component>
   );

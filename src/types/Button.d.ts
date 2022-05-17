@@ -45,6 +45,27 @@ interface Props {
      * @default 'touch-ripple-primary'
      */
     touchRipple?: string;
+
+    /**
+     * Disabled state button text color
+     *
+     * @default 'text-black text-opacity-30 dark:text-white dark:text-opacity-30'
+     */
+    disabledText?: string;
+
+    /**
+     * Disabled state button bg color
+     *
+     * @default 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10'
+     */
+    disabledBg?: string;
+
+    /**
+     * Disabled state button border color
+     *
+     * @default 'border-black border-opacity-10 dark:border-white dark:border-opacity-10'
+     */
+    disabledBorder?: string;
   };
   /**
    * Link's `href` attribute, when specified will also be rendered as `<a>` element
@@ -117,4 +138,11 @@ interface Props {
    * @default true
    */
   touchRipple?: boolean;
+
+  /**
+   * Makes button disabled
+   *
+   * @default false
+   */
+  disabled?: boolean;
 }

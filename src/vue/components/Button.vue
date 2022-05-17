@@ -1,5 +1,10 @@
 <template>
-  <component :is="Component" ref="rippleElRef" :class="classes">
+  <component
+    :is="Component"
+    ref="rippleElRef"
+    :class="classes"
+    :disabled="disabled"
+  >
     <slot />
   </component>
 </template>
@@ -83,6 +88,11 @@
         type: Boolean,
         default: true,
       },
+
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
     },
     setup(props, ctx) {
       const rippleElRef = ref(null);
@@ -120,6 +130,18 @@
         activeBg: 'active:bg-primary',
         activeBgDark: 'active:bg-primary-dark',
         touchRipple: 'touch-ripple-primary',
+        disabledText: cls(
+          'text-black text-opacity-30',
+          useDarkClasses('dark:text-white dark:text-opacity-30')
+        ),
+        disabledBg: cls(
+          'bg-black bg-opacity-10',
+          useDarkClasses('dark:bg-white dark:bg-opacity-10')
+        ),
+        disabledBorder: cls(
+          'border-black border-opacity-10',
+          useDarkClasses('dark:border-white dark:border-opacity-10')
+        ),
         ...(props.colors || {}),
       }));
 
