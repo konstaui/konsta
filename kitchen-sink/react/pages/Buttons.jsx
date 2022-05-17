@@ -199,6 +199,19 @@ export default function ButtonsPage() {
           </Button>
         </div>
       </Block>
+
+      <BlockTitle>Disabled Buttons</BlockTitle>
+      <Block strong className="space-y-2">
+        <div className="grid grid-cols-3 gap-x-4">
+          <Button disabled>Button</Button>
+          <Button disabled outline>
+            Outline
+          </Button>
+          <Button disabled clear>
+            Clear
+          </Button>
+        </div>
+      </Block>
     </Page>
   );
 }

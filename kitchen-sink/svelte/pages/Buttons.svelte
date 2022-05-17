@@ -148,4 +148,13 @@
       <Button raised rounded clear>Clear</Button>
     </div>
   </Block>
+
+  <BlockTitle>Disabled Buttons</BlockTitle>
+  <Block strong class="space-y-2">
+    <div class="grid grid-cols-3 gap-x-4">
+      <Button disabled>Button</Button>
+      <Button disabled outline>Outline</Button>
+      <Button disabled clear>Clear</Button>
+    </div>
+  </Block>
 </Page>

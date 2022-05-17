@@ -134,6 +134,15 @@
         <k-button raised rounded clear> Clear </k-button>
       </div>
     </k-block>
+
+    <k-block-title>Disabled Buttons</k-block-title>
+    <k-block strong class="space-y-2">
+      <div class="grid grid-cols-3 gap-x-4">
+        <k-button disabled>Button</k-button>
+        <k-button disabled outline>Outline</k-button>
+        <k-button disabled clear>Clear</k-button>
+      </div>
+    </k-block>
   </k-page>
 </template>
 <script>
