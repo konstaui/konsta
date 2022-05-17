@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.10.2](https://github.com/konstaui/konsta/compare/v0.10.1...v0.10.2) (2022-05-17)
+
+### Features
+
+- **button:** add disabled state ([a6330f1](https://github.com/konstaui/konsta/commit/a6330f11f1ed315e89da0db83c741a62f5021576))
+
 # [0.10.1](https://github.com/konstaui/konsta/compare/v0.10.0...v0.10.1) (2022-05-16)
 
 ### Bug Fixes

@@ -18,6 +18,8 @@
   // Anchor props
   export let href = undefined;
 
+  export let disabled = false;
+
   // Style props
   export let outline = false;
   export let clear = false;
@@ -81,13 +83,25 @@
     activeBg: 'active:bg-primary',
     activeBgDark: 'active:bg-primary-dark',
     touchRipple: 'touch-ripple-primary',
+    disabledText: cls(
+      'text-black text-opacity-30',
+      dark('dark:text-white dark:text-opacity-30')
+    ),
+    disabledBg: cls(
+      'bg-black bg-opacity-10',
+      dark('dark:bg-white dark:bg-opacity-10')
+    ),
+    disabledBorder: cls(
+      'border-black border-opacity-10',
+      dark('dark:border-white dark:border-opacity-10')
+    ),
     ...colorsProp,
   };
 
   $: c = useThemeClasses(
     { ios, material },
     ButtonClasses(
-      { inline, segmented, segmentedStrong },
+      { inline, segmented, segmentedStrong, disabled },
       colors,
       className,
       dark
@@ -116,6 +130,7 @@
     this={component}
     bind:this={rippleEl.current}
     class={classes}
+    {disabled}
     {...attrs}
     on:click={onClick}
   >
@@ -126,6 +141,7 @@
     this={component}
     bind:this={rippleEl.current}
     class={classes}
+    {disabled}
     {...attrs}
     on:click={onClick}
   >
