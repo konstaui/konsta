@@ -38,4 +38,4 @@ To run Kitchen Sink with development environment (development version will be bu
 
 ## Contributing
 
-All changes should be committed to `src/` files only. Before you open an issue please review the [contributing guideline](https://github.com/konstaui/konstaui/blob/master/CONTRIBUTING.md).
+All changes should be committed to `src/` files only. Before you open an issue please review the [contributing guideline](https://github.com/konstaui/konsta/blob/master/CONTRIBUTING.md).

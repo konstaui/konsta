@@ -4,13 +4,13 @@
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
-    "url": "https://github.com/konstaui/konstaui.git"
+    "url": "https://github.com/konstaui/konsta.git"
   },
   "keywords": [],
   "author": "Vladimir Kharlampidi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/konstaui/konstaui/issues"
+    "url": "https://github.com/konstaui/konsta/issues"
   },
   "homepage": "https://konstaui.com",
   "engines": {
