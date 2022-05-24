@@ -10,7 +10,7 @@
   </component>
 </template>
 <script>
-  import { computed } from 'vue';
+  import { computed, Fragment } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -65,9 +65,22 @@
       );
 
       const getHighlightStyle = () => {
+        const getRenderedChildren = (children) => {
+          if (!children || !Array.isArray(children)) return [];
+          return children
+            .map((d) =>
+              d.type === Fragment ? getRenderedChildren(d.children) : d
+            )
+            .flat()
+            .filter((d) => d.type && d.type.name === 'k-segmented-button');
+        };
+
         let buttonsLength = props.childButtonsLength;
         let activeIndex = props.activeButtonIndex;
-        const children = ctx.slots && ctx.slots.default && ctx.slots.default();
+
+        const children = getRenderedChildren(
+          ctx.slots && ctx.slots.default && ctx.slots.default()
+        );
         if (typeof activeIndex === 'undefined' && children && children.length) {
           if (typeof buttonsLength === 'undefined') {
             buttonsLength = children.length || 0;
