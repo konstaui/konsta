@@ -6,7 +6,26 @@ Support Konsta UI development by
 - [pledging on Patreon](https://patreon.com/konstaui)
 
 <!-- SPONSORS_TABLE_WRAP -->
-
+<table>
+  <tr>
+    <td align="center" valign="middle">
+      <a href="https://casinoscrypto.com" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/casinoscrypto.png" alt="Best Crypto Casinos | Top Bitcoin Gambling Sites (2022)" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://cryptocurrencycodes.com" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/cryptocurrencycodes.png" alt="Top FREE Crypto Sign Up Bonuses & Referral Codes" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle"></td>
+    <td align="center" valign="middle"></td>
+    <td align="center" valign="middle"></td>
+    <td align="center" valign="middle"></td>
+    <td align="center" valign="middle"></td>
+    <td align="center" valign="middle"></td>
+  </tr>
+</table>
 <!-- SPONSORS_TABLE_WRAP -->
 
 ### \$500 Platinum Sponsor
@@ -34,7 +53,8 @@ Currently vacant. It could be you! [Open Collective](https://opencollective.com/
 ### \$50+ Sponsor
 
 <!-- SPONSOR -->
-
+- [Best Crypto Casinos | Top Bitcoin Gambling Sites (2022)](https://casinoscrypto.com)
+- [Top FREE Crypto Sign Up Bonuses & Referral Codes](https://cryptocurrencycodes.com)
 <!-- SPONSOR -->
 
 Currently vacant. It could be you! [Open Collective](https://opencollective.com/konstaui/contribute/sponsor-39876/checkout) | [Patreon](https://www.patreon.com/join/konstaui/checkout?rid=8541082)

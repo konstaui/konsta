@@ -94,12 +94,12 @@ const buildTables = (sponsors) => {
 };
 
 const buildSponsorsList = async (sponsors) => {
-  const silverSponsorsContent = sponsors['Silver Sponsor'].map((item) =>
+  const silverSponsorsContent = (sponsors['Silver Sponsor'] || []).map((item) =>
     `
   - [${item.title}](${item.link})
   `.trim()
   );
-  const sponsorsContent = sponsors.Sponsor.map((item) =>
+  const sponsorsContent = (sponsors.Sponsor || []).map((item) =>
     `
   - [${item.title}](${item.link})
   `.trim()

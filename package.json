@@ -23,7 +23,8 @@
     "lint": "eslint --ext .js,.vue,.jsx,.svelte .",
     "validate": "npm-run-all --parallel check-format lint",
     "release": "npm run validate && node ./scripts/release",
-    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -u -s"
+    "changelog": "npx conventional-changelog -p angular -i CHANGELOG.md -u -s",
+    "build-sponsors": "node ./scripts/build-sponsors.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
