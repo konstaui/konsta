@@ -25,6 +25,7 @@ yarn-error.log*
 .eslintcache
 
 package/**/*.js
+package/**/*.svelte
 package/**/*.d.ts
 package/**/*.css
 
