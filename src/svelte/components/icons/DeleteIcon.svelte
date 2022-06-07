@@ -1,4 +1,5 @@
 <script>
+  export let onClick;
 </script>
 
 <svg
@@ -7,6 +8,7 @@
   height="28"
   viewBox="0 0 28 28"
   fill="currentcolor"
+  on:click={onClick}
   {...$$restProps}
 >
   <path
