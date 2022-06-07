@@ -1,5 +1,12 @@
 # Changelog
 
+# [0.10.3](https://github.com/konstaui/konsta/compare/v0.10.2...v0.10.3) (2022-06-07)
+
+### Bug Fixes
+
+- **svelte:** fix ListInput onClear handler ([bd6c427](https://github.com/konstaui/konsta/commit/bd6c4278a19cc02ce1e281bb79329ee9b599002f)), closes [#52](https://github.com/konstaui/konsta/issues/52)
+- **vue:** segmented strong highlighting ([#51](https://github.com/konstaui/konsta/issues/51)) ([570049f](https://github.com/konstaui/konsta/commit/570049f0d89c916abf9e8f27a2042725e168e6f8))
+
 # [0.10.2](https://github.com/konstaui/konsta/compare/v0.10.1...v0.10.2) (2022-05-17)
 
 ### Features

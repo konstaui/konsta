@@ -53,6 +53,7 @@ Currently vacant. It could be you! [Open Collective](https://opencollective.com/
 ### \$50+ Sponsor
 
 <!-- SPONSOR -->
+
 - [Best Crypto Casinos | Top Bitcoin Gambling Sites (2022)](https://casinoscrypto.com)
 - [Top FREE Crypto Sign Up Bonuses & Referral Codes](https://cryptocurrencycodes.com)
 <!-- SPONSOR -->
