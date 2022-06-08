@@ -26,6 +26,7 @@ yarn-error.log*
 
 package/**/*.js
 package/**/*.svelte
+package/**/**/*.svelte
 package/**/*.d.ts
 package/**/*.css
 
