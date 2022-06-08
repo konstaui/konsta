@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.10.4](https://github.com/konstaui/konsta/compare/v0.10.3...v0.10.4) (2022-06-08)
+
+### Bug Fixes
+
+- fixed wrong config paths
+
 # [0.10.3](https://github.com/konstaui/konsta/compare/v0.10.2...v0.10.3) (2022-06-07)
 
 ### Bug Fixes
