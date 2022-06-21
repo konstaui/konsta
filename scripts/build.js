@@ -15,9 +15,9 @@ const formats = ['esm', 'cjs'];
   return Promise.all([
     buildCopy(),
     ...formats.map((format) => buildReact(format, outputDir)),
-    ...formats.map((format) => buildVue(format, outputDir)),
     ...formats.map((format) => buildShared(format, outputDir)),
     buildSvelte(outputDir),
+    buildVue(outputDir),
     buildReactTypes(),
     buildVueTypes(),
     buildSvelteTypes(),
