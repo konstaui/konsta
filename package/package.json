@@ -25,8 +25,8 @@
       "import": "./react/esm/konsta-react.js"
     },
     "./vue": {
-      "require": "./vue/konsta-vue.js",
-      "import": "./vue/konsta-vue.js"
+      "require": "./vue/cjs/konsta-vue.js",
+      "import": "./vue/esm/konsta-vue.js"
     },
     "./svelte": {
       "import": "./svelte/konsta-svelte.js"
