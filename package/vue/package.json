@@ -1,15 +1,17 @@
 {
   "name": "konsta/vue",
   "private": true,
-  "main": "./cjs/konsta-vue.js",
-  "jsnext:main": "./esm/konsta-vue.js",
-  "module": "./esm/konsta-vue.js",
+  "main": "./konsta-vue.js",
+  "jsnext:main": "./konsta-vue.js",
+  "module": "./konsta-vue.js",
+  "vue": "./konsta-vue.js",
   "types": "./konsta-vue.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./esm/konsta-vue.js",
-      "require": "./cjs/konsta-vue.js"
+      "vue": "./konsta-vue.js",
+      "import": "./konsta-vue.js",
+      "require": "./konsta-vue.js"
     }
   }
 }
