@@ -80,4 +80,6 @@ Currently vacant. It could be you! [Open Collective](https://opencollective.com/
 
 ### \$5+ Thank You
 
-Currently vacant. It could be you! [Open Collective](https://opencollective.com/konstaui/contribute/thank-you-39663/checkout) | [Patreon](https://www.patreon.com/join/konstaui/checkout?rid=8541069)
+- web8.is
+
+Join here! [Open Collective](https://opencollective.com/konstaui/contribute/thank-you-39663/checkout) | [Patreon](https://www.patreon.com/join/konstaui/checkout?rid=8541069)
