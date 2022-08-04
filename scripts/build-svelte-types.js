@@ -3,6 +3,56 @@
 const fs = require('fs-extra');
 const path = require('path');
 
+const componentNativeElementInheritance = {
+  Actions: 'HTMLDivElement',
+  ActionsButton: 'HTMLButtonElement',
+  ActionsGroup: 'HTMLDivElement',
+  ActionsLabel: 'HTMLDivElement',
+  App: 'HTMLDivElement',
+  Badge: 'HTMLSpanElement',
+  Block: 'HTMLDivElement',
+  BlockFooter: 'HTMLDivElement',
+  BlockHeader: 'HTMLDivElement',
+  BlockTitle: 'HTMLDivElement',
+  Breadcrumbs: 'HTMLDivElement',
+  BreadcrumbsCollapsed: 'HTMLDivElement',
+  BreadcrumbsItem: 'HTMLDivElement',
+  BreadcrumbsSeparator: 'HTMLDivElement',
+  Button: 'HTMLButtonElement',
+  Card: 'HTMLDivElement',
+  Checkbox: 'HTMLLabelElement',
+  Chip: 'HTMLDivElement',
+  Fab: 'HTMLAnchorElement',
+  Icon: 'HTMLElement',
+  Link: 'HTMLAnchorElement',
+  List: 'HTMLDivElement',
+  ListButton: 'HTMLLIElement',
+  ListGroup: 'HTMLLIElement',
+  ListInput: 'HTMLLIElement',
+  ListItem: 'HTMLLIElement',
+  MenuList: 'HTMLDivElement',
+  MenuListItem: 'HTMLLIElement',
+  Navbar: 'HTMLDivElement',
+  NavbarBackLink: 'HTMLAnchorElement',
+  Page: 'HTMLDivElement',
+  Panel: 'HTMLDivElement',
+  Popover: 'HTMLDivElement',
+  Popup: 'HTMLDivElement',
+  Preloader: 'HTMLSpanElement',
+  Progressbar: 'HTMLSpanElement',
+  Radio: 'HTMLLabelElement',
+  Range: 'HTMLDivElement',
+  Segmented: 'HTMLDivElement',
+  SegmentedButton: 'HTMLButtonElement',
+  Sheet: 'HTMLDivElement',
+  Stepper: 'HTMLDivElement',
+  Tabbar: 'HTMLAnchorElement',
+  TabbarLink: 'HTMLAnchorElement',
+  Toast: 'HTMLDivElement',
+  Toggle: 'HTMLLabelElement',
+  Toolbar: 'HTMLDivElement',
+}
+
 const addOnClick = [
   'Badge',
   'Button',
@@ -84,7 +134,7 @@ interface ${componentName}Props {}
 interface ${componentName}Props extends Props {}
 
 declare class ${componentName} extends SvelteComponentTyped<
-  ${componentName}Props,
+  ${componentName}Props${componentNativeElementInheritance[componentName] ? ` & HTMLProps<${componentNativeElementInheritance[componentName]}>`:''},
   {  },
   {
     ${slotsContent}
