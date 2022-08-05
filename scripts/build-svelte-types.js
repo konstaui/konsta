@@ -51,7 +51,7 @@ const componentNativeElementInheritance = {
   Toast: 'HTMLDivElement',
   Toggle: 'HTMLLabelElement',
   Toolbar: 'HTMLDivElement',
-}
+};
 
 const addOnClick = [
   'Badge',
@@ -134,7 +134,11 @@ interface ${componentName}Props {}
 interface ${componentName}Props extends Props {}
 
 declare class ${componentName} extends SvelteComponentTyped<
-  ${componentName}Props${componentNativeElementInheritance[componentName] ? ` & HTMLProps<${componentNativeElementInheritance[componentName]}>`:''},
+  ${componentName}Props${
+    componentNativeElementInheritance[componentName]
+      ? ` & HTMLProps<${componentNativeElementInheritance[componentName]}>`
+      : ''
+  },
   {  },
   {
     ${slotsContent}

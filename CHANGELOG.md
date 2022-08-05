@@ -1,5 +1,11 @@
 # Changelog
 
+# [0.11.1](https://github.com/konstaui/konsta/compare/v0.11.0...v0.11.1) (2022-08-05)
+
+### Bug Fixes
+
+- **svelte-types:** add html props from the native element each component inherits from. ([#66](https://github.com/konstaui/konsta/issues/66)) ([aa1193e](https://github.com/konstaui/konsta/commit/aa1193e9d333aff0c491120f62d7b11d72f8567c))
+
 # [0.11.0](https://github.com/konstaui/konsta/compare/v0.10.4-v0.11.0) (2022-06-21)
 
 ### Features
