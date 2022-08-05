@@ -4,7 +4,9 @@ export const CardClasses = (props, colors, darkClasses) => {
   const { margin } = props;
   return {
     base: {
-      common: cls(margin, colors.bg, `rounded overflow-hidden`),
+      common: cls(margin, colors.bg, `overflow-hidden`),
+      ios: 'rounded',
+      material: 'rounded-xl',
       shadow: 'shadow',
       outline: cls(
         `border border-black border-opacity-10`,
