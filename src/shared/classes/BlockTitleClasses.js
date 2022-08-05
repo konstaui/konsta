@@ -6,7 +6,7 @@ export const BlockTitleClasses = (props) => {
         withBlock ? '-mb-6' : 'mb-2'
       }`,
       ios: `font-semibold`,
-      material: `font-medium`,
+      material: `text-sm font-medium text-primary`,
     },
   };
 };
