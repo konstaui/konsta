@@ -43,7 +43,7 @@ export const NavbarClasses = (props, colors, classes) => {
         hairlines && 'hairline-b',
         translucent && 'translucent'
       ),
-      material: `shadow-md ${colors.bgMaterial}`,
+      material: `${colors.bgMaterial}`,
     },
     subnavbar: {
       common: cls(
@@ -51,7 +51,7 @@ export const NavbarClasses = (props, colors, classes) => {
         subnavbarClassName || subnavbarClass
       ),
       ios: 'h-11 pl-2-safe pr-2-safe',
-      material: 'h-12 pl-4-safe pr-4-safe',
+      material: 'h-16 pl-4-safe pr-4-safe',
     },
     inner: {
       common: cls(
@@ -62,7 +62,7 @@ export const NavbarClasses = (props, colors, classes) => {
         'pl-2-safe pr-2-safe h-11',
         !left && right ? 'justify-end' : 'justify-between'
       ),
-      material: 'justify-start h-14 lg:h-16 pl-safe pr-safe',
+      material: 'justify-start h-16 pl-safe pr-safe',
     },
     left: {
       common: cls(
