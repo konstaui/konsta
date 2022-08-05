@@ -9,7 +9,7 @@ export const ToggleClasses = (props, colors, classes, darkClasses) => {
         `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full group`
       ),
       ios: 'h-8 w-13 p-0.5',
-      material: 'w-14 h-7',
+      material: 'w-13 h-8',
       notChecked: {
         ios: cls(
           'bg-black bg-opacity-10',
@@ -25,6 +25,18 @@ export const ToggleClasses = (props, colors, classes, darkClasses) => {
         material: cls(`${colors.bg}`, darkClasses('dark:bg-opacity-40')),
       },
     },
+    baseBg: {
+      material: cls(
+        'absolute left-0 top-0 w-full h-full rounded-full duration-300',
+        colors.bg
+      ),
+      notChecked: {
+        material: 'bg-opacity-10',
+      },
+      checked: {
+        material: 'bg-opacity-0',
+      },
+    },
     inner: {
       ios: cls(
         'w-full h-full bg-white rounded-full block duration-300 transform',
@@ -38,14 +50,14 @@ export const ToggleClasses = (props, colors, classes, darkClasses) => {
     knob: {
       common: 'rounded-full absolute duration-300 transform',
       ios: 'w-7 h-7 shadow-ios-toggle left-0.5 top-0.5 bg-white',
-      material: 'w-5 h-5 left-1 top-1 group-active:scale-[1.1]',
+      material: 'w-6 h-6 left-1 top-1 group-active:scale-[1.1]',
       checked: {
         ios: 'translate-x-5',
-        material: cls(`bg-white translate-x-7`),
+        material: cls(`bg-white translate-x-5`),
       },
       notChecked: {
         material: cls(
-          'bg-black bg-opacity-40',
+          'bg-black bg-opacity-40 scale-[0.666]',
           darkClasses('dark:bg-white dark:bg-opacity-40')
         ),
       },

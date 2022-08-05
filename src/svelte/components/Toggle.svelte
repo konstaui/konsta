@@ -45,6 +45,7 @@
     on:change={onChange}
     class={c.input}
   />
+  <span class={c.baseBg[state]} />
   <span class={c.inner[state]} />
   <span class={c.knob[state]}>
     <span class={c.knobBg[state]} />
