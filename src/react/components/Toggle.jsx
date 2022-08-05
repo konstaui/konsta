@@ -68,6 +68,7 @@ const Toggle = forwardRef((props, ref) => {
         onChange={onChange}
         className={c.input}
       />
+      <span className={c.baseBg[state]} />
       <span className={c.inner[state]} />
       <span className={c.knob[state]}>
         <span className={c.knobBg[state]} />
