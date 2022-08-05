@@ -6,13 +6,13 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
   return {
     base: {
       common: cls(
-        'uppercase flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10',
+        'flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10',
         inline ? 'inline-flex' : 'w-full flex',
         positionClass('relative', classes),
         disabled && 'pointer-events-none'
       ),
-      ios: `duration-100 font-semibold`,
-      material: `duration-300 font-medium tracking-wider`,
+      ios: `uppercase duration-100 font-semibold`,
+      material: `duration-300 font-medium`,
 
       square:
         segmented && !segmentedStrong
@@ -26,23 +26,36 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
           ? cls(colors.disabledBg, colors.disabledText)
           : `text-white ${colors.bg} ${colors.activeBgDark} touch-ripple-white`
       ),
-      outline: cls(
-        !segmented && `border-2`,
-        disabled
-          ? cls(colors.disabledText, colors.disabledBorder)
-          : cls(
-              !segmented && `${colors.border}`,
-              colors.text,
-              colors.activeBg,
-              'active:bg-opacity-15',
-              colors.touchRipple
-            )
-      ),
+      outline: {
+        common: cls(
+          disabled
+            ? cls(colors.disabledText, colors.disabledBorder)
+            : cls(
+                !segmented && `${colors.border}`,
+                colors.text,
+                colors.activeBg,
+                'active:bg-opacity-15',
+                colors.touchRipple
+              )
+        ),
+        ios: cls(!segmented && 'border-2'),
+        material: cls(!segmented && 'border'),
+      },
       clear: cls(
         disabled
           ? colors.disabledText
           : `${colors.text} ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`
       ),
+      tonal: disabled
+        ? cls(colors.disabledBg, colors.disabledText)
+        : cls(
+            colors.bg,
+            colors.text,
+            'bg-opacity-15',
+            colors.touchRipple,
+            colors.activeBg,
+            'active:bg-opacity-25'
+          ),
       segmentedStrong: cls(
         `active:bg-black active:bg-opacity-10`,
         darkClasses(
@@ -54,12 +67,12 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
     size: {
       small: {
         ios: `text-xs h-7`,
-        material: `text-sm h-7`,
+        material: `text-sm h-8`,
       },
       medium: {
         common: 'text-sm',
         ios: `h-7`,
-        material: `h-9`,
+        material: `h-10`,
       },
       large: {
         ios: `h-11`,

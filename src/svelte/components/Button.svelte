@@ -23,6 +23,7 @@
   // Style props
   export let outline = false;
   export let clear = false;
+  export let tonal = false;
   export let rounded = false;
   export let small = false;
   export let large = false;
@@ -54,6 +55,7 @@
   const getStyle = (
     outline,
     clear,
+    tonal,
     segmented,
     segmentedActive,
     segmentedStrong
@@ -62,6 +64,8 @@
       ? 'outline'
       : clear || (segmented && !segmentedActive)
       ? 'clear'
+      : tonal
+      ? 'tonal'
       : 'fill';
     if (segmentedStrong) s = 'segmentedStrong';
     if (segmentedStrong && segmentedActive) s = 'segmentedStrongActive';
@@ -71,6 +75,7 @@
   $: style = getStyle(
     outline,
     clear,
+    tonal,
     segmented,
     segmentedActive,
     segmentedStrong

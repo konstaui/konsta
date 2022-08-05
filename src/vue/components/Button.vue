@@ -49,6 +49,10 @@
         type: Boolean,
         default: false,
       },
+      tonal: {
+        type: Boolean,
+        default: false,
+      },
       rounded: {
         type: Boolean,
         default: false,
@@ -117,6 +121,8 @@
           ? 'outline'
           : props.clear || (props.segmented && !props.segmentedActive)
           ? 'clear'
+          : props.tonal
+          ? 'tonal'
           : 'fill';
         if (props.segmentedStrong) value = 'segmentedStrong';
         if (props.segmentedStrong && props.segmentedActive)

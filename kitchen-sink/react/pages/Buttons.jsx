@@ -68,6 +68,23 @@ export default function ButtonsPage() {
           </Button>
           <Button clear>Clear</Button>
         </div>
+        <div className="grid grid-cols-3 gap-x-4">
+          <Button tonal>Tonal</Button>
+          <Button
+            colors={{
+              text: 'text-red-500',
+              border: 'border-red-500',
+              bg: 'bg-red-500',
+              activeBg: 'active:bg-red-500',
+              activeBgDark: 'active:bg-red-600',
+              touchRipple: 'touch-ripple-red-500',
+            }}
+            tonal
+          >
+            Tonal
+          </Button>
+          <Button tonal>Tonal</Button>
+        </div>
       </Block>
 
       <BlockTitle>Rounded Buttons</BlockTitle>

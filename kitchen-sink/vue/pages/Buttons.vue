@@ -57,6 +57,23 @@
         </k-button>
         <k-button clear>Clear</k-button>
       </div>
+      <div class="grid grid-cols-3 gap-x-4">
+        <k-button tonal>Tonal</k-button>
+        <k-button
+          :colors="{
+            text: 'text-red-500',
+            border: 'border-red-500',
+            bg: 'bg-red-500',
+            activeBg: 'active:bg-red-500',
+            activeBgDark: 'active:bg-red-600',
+            touchRipple: 'touch-ripple-red-500',
+          }"
+          tonal
+        >
+          Tonal
+        </k-button>
+        <k-button tonal>Tonal</k-button>
+      </div>
     </k-block>
 
     <k-block-title>Rounded Buttons</k-block-title>

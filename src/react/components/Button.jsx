@@ -24,6 +24,7 @@ const Button = forwardRef((props, ref) => {
     // Style props
     outline,
     clear,
+    tonal,
     rounded,
     small,
     large,
@@ -70,6 +71,8 @@ const Button = forwardRef((props, ref) => {
     ? 'outline'
     : clear || (segmented && !segmentedActive)
     ? 'clear'
+    : tonal
+    ? 'tonal'
     : 'fill';
   if (segmentedStrong) style = 'segmentedStrong';
   if (segmentedStrong && segmentedActive) style = 'segmentedStrongActive';

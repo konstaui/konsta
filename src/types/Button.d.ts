@@ -84,6 +84,12 @@ interface Props {
    */
   clear?: boolean;
   /**
+   * Makes button in tonal style (with semitransparent fill color)
+   *
+   * @default false
+   */
+  tonal?: boolean;
+  /**
    * Makes button rounded
    *
    * @default false
