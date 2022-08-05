@@ -15,6 +15,7 @@
   export let side = 'left';
   export let opened = false;
   export let backdrop = true;
+  export let floating = false;
   export let onBackdropClick = undefined;
 
   $: state = opened ? 'opened' : 'closed';
@@ -28,7 +29,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    PanelClasses({ size }, colors, className),
+    PanelClasses({ size, floating }, colors, className),
     className,
     (v) => (c = v)
   );

@@ -14,6 +14,7 @@ const Panel = forwardRef((props, ref) => {
     side = 'left',
     opened,
     backdrop = true,
+    floating = false,
     onBackdropClick,
 
     ios,
@@ -49,7 +50,7 @@ const Panel = forwardRef((props, ref) => {
   };
 
   const c = themeClasses(
-    PanelClasses({ ...props, size }, colors, className),
+    PanelClasses({ ...props, size, floating }, colors, className),
     className
   );
 

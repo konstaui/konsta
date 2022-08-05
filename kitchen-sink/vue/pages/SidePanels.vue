@@ -18,6 +18,16 @@
       <k-button @click="() => (rightPanelOpened = true)">Right Panel</k-button>
     </k-block>
 
+    <k-block-title>Floating Panels</k-block-title>
+    <k-block strong class="flex space-x-4">
+      <k-button @click="() => (leftFloatingPanelOpened = true)"
+        >Left Panel</k-button
+      >
+      <k-button @click="() => (rightFloatingPanelOpened = true)"
+        >Right Panel</k-button
+      >
+    </k-block>
+
     <k-panel
       side="left"
       :opened="leftPanelOpened"
@@ -78,6 +88,69 @@
         </k-block>
       </k-page>
     </k-panel>
+
+    <k-panel
+      side="left"
+      floating
+      :opened="leftFloatingPanelOpened"
+      @backdropclick="() => (leftFloatingPanelOpened = false)"
+    >
+      <k-page>
+        <k-navbar title="Left Panel">
+          <template #right>
+            <k-link navbar @click="() => (leftFloatingPanelOpened = false)">
+              Close
+            </k-link>
+          </template>
+        </k-navbar>
+        <k-block class="space-y-4">
+          <p>Here comes left panel.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            faucibus mauris leo, eu bibendum neque congue non. Ut leo mauris,
+            eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus,
+            viverra ipsum pulvinar, molestie arcu. Etiam lacinia venenatis
+            dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu
+            et eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare
+            consequat nunc viverra pellentesque. Aenean semper eu massa sit amet
+            aliquam. Integer et neque sed libero mollis elementum at vitae
+            ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a
+            faucibus lectus.
+          </p>
+        </k-block>
+      </k-page>
+    </k-panel>
+
+    <k-panel
+      side="right"
+      floating
+      :opened="rightFloatingPanelOpened"
+      @backdropclick="() => (rightFloatingPanelOpened = false)"
+    >
+      <k-page>
+        <k-navbar title="Right Panel">
+          <template #right>
+            <k-link navbar @click="() => (rightFloatingPanelOpened = false)">
+              Close
+            </k-link>
+          </template>
+        </k-navbar>
+        <k-block class="space-y-4">
+          <p>Here comes right panel.</p>
+          <p>
+            Duis ut mauris sollicitudin, venenatis nisi sed, luctus ligula.
+            Phasellus blandit nisl ut lorem semper pharetra. Nullam tortor nibh,
+            suscipit in consequat vel, feugiat sed quam. Nam risus libero,
+            auctor vel tristique ac, malesuada ut ante. Sed molestie, est in
+            eleifend sagittis, leo tortor ullamcorper erat, at vulputate eros
+            sapien nec libero. Mauris dapibus laoreet nibh quis bibendum. Fusce
+            dolor sem, suscipit in iaculis id, pharetra at urna. Pellentesque
+            tempor congue massa quis faucibus. Vestibulum nunc eros, convallis
+            blandit dui sit amet, gravida adipiscing libero.
+          </p>
+        </k-block>
+      </k-page>
+    </k-panel>
   </k-page>
 </template>
 <script>
@@ -88,6 +161,7 @@
     kNavbarBackLink,
     kPanel,
     kBlock,
+    kBlockTitle,
     kLink,
     kButton,
   } from 'konsta/vue';
@@ -101,15 +175,20 @@
       kNavbarBackLink,
       kPanel,
       kBlock,
+      kBlockTitle,
       kLink,
       kButton,
     },
     setup() {
       const leftPanelOpened = ref(false);
       const rightPanelOpened = ref(false);
+      const leftFloatingPanelOpened = ref(false);
+      const rightFloatingPanelOpened = ref(false);
       return {
         leftPanelOpened,
         rightPanelOpened,
+        leftFloatingPanelOpened,
+        rightFloatingPanelOpened,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };

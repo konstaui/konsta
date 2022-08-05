@@ -30,6 +30,7 @@ interface Props {
   /**
    * Additional css class to add on "angle"/"corner" element
    *
+   * @default undefined
    */
   angleClassName?: string;
   /**

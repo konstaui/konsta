@@ -35,6 +35,14 @@ interface Props {
    * @default false
    */
   opened?: boolean;
+
+  /**
+   * When enabled opened panel will have extra spaces from sides
+   *
+   * @default false
+   */
+
+  floating?: boolean;
   /**
    * Enables Panel backdrop (dark semi transparent layer behind)
    *

@@ -32,6 +32,7 @@
       size: { type: String, default: 'w-72 h-screen' },
       side: { type: String, default: 'left' },
       opened: Boolean,
+      floating: { type: Boolean, default: false },
       backdrop: { type: Boolean, default: true },
     },
     emits: ['backdropclick'],

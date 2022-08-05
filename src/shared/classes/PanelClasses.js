@@ -2,27 +2,38 @@ import { cls } from '../cls.js';
 import { positionClass } from '../position-class.js';
 
 export const PanelClasses = (props, colors, classes) => {
-  const { size } = props;
+  const { size, floating } = props;
   return {
     base: {
       common: cls(
-        'top-0 transition-transform transform duration-400 z-40 max-w-full max-h-full overflow-hidden',
+        'transition-transform transform duration-400 z-40 max-w-full overflow-hidden',
+        floating ? 'top-2-safe bottom-2-safe h-auto' : 'top-0 max-h-full',
         colors.bg,
         positionClass('fixed', classes),
         size
       ),
       ios: '',
-      material: 'shadow-2xl',
+      material: '',
     },
     left: {
-      common: cls('no-safe-areas-right left-0'),
-      opened: 'translate-x-0',
-      closed: '-translate-x-full',
+      common: cls(
+        'no-safe-areas-right',
+        floating ? 'right-full -mr-2' : 'right-full'
+      ),
+      ios: floating ? 'rounded-2xl' : '',
+      material: floating ? 'rounded-2xl' : 'rounded-r-2xl',
+      opened: 'translate-x-full',
+      closed: '-translate-x-2',
     },
     right: {
-      common: cls('no-safe-areas-left left-full'),
+      common: cls(
+        'no-safe-areas-left',
+        floating ? 'left-full -ml-2' : 'left-full'
+      ),
+      ios: floating ? 'rounded-2xl' : '',
+      material: floating ? 'rounded-2xl' : 'rounded-l-2xl',
       opened: '-translate-x-full',
-      closed: 'translate-x-0',
+      closed: 'translate-x-2',
     },
     backdrop: {
       common:
