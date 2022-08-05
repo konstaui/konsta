@@ -16,6 +16,7 @@
   export let material = undefined;
   export let style = '';
 
+  export let angle = undefined;
   export let angleClass = '';
   export let size = 'w-64';
   export let opened = false;
@@ -60,13 +61,15 @@
     (v) => (c = v)
   );
 
+  $: needsAngle = typeof angle === 'undefined' ? theme === 'ios' : angle;
+
   const setPopover = () => {
     if (!target || !el || !opened) return;
     positions = calcPopoverPosition({
       popoverEl: el,
       targetEl: target,
       angleEl: angleEl,
-      theme,
+      needsAngle,
       targetX,
       targetY,
       targetWidth,
@@ -130,7 +133,7 @@
   <div class={c.backdrop[state]} on:click={onBackdropClick} />
 {/if}
 <div bind:this={el} class={classes} style={popoverStyle} {...$$restProps}>
-  {#if theme === 'ios'}
+  {#if needsAngle}
     <div
       bind:this={angleEl}
       style={angleStyle}

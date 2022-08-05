@@ -30,6 +30,7 @@ export const PopoverClasses = (props, colors, classes) => {
         'absolute w-6.5 h-6.5 z-50 overflow-hidden',
         translucent && 'opacity-80'
       ),
+      material: cls('absolute w-6.5 h-6.5 z-50 overflow-hidden'),
       bottom: 'top-full',
       top: 'bottom-full',
       left: 'right-full',

@@ -23,6 +23,11 @@ interface Props {
    */
   translucent?: boolean;
   /**
+   * Renders popover "angle"/"corner", if not specified then it will automatically show "angle"/"corner" if iOS theme is enabled
+   *
+   */
+  angle?: boolean;
+  /**
    * Additional css class to add on "angle"/"corner" element
    *
    */
