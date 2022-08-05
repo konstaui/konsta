@@ -56,7 +56,7 @@ const extendTheme = () => {
     'icon-ios': '28px',
     'icon-material': '24px',
     'navbar-ios': '17px',
-    'navbar-material': '17px',
+    'navbar-material': '22px',
     'list-title-ios': '17px',
     'list-title-material': '16px',
   };

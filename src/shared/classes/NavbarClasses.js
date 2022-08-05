@@ -78,7 +78,7 @@ export const NavbarClasses = (props, colors, classes) => {
         titleClassName || titleClass
       ),
       ios: 'font-semibold absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center',
-      material: 'font-medium mx-4 text-left',
+      material: 'font-normal mx-4 text-left',
     },
     subtitle: {
       common: cls(
