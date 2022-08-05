@@ -4,14 +4,22 @@
 
   let className = undefined;
   export { className as class };
+  let colorsProp = undefined;
+  export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
 
   export let withBlock = true;
 
+  $: colors = {
+    textIos: '',
+    textMaterial: 'text-primary',
+    ...colorsProp,
+  };
+
   $: c = useThemeClasses(
     { ios, material },
-    BlockTitleClasses({ withBlock }),
+    BlockTitleClasses({ withBlock }, colors),
     className,
     (v) => (c = v)
   );

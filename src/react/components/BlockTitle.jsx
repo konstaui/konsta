@@ -6,6 +6,8 @@ const BlockTitle = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
+    colors: colorsProp,
+
     withBlock = true,
 
     ios,
@@ -32,7 +34,16 @@ const BlockTitle = forwardRef((props, ref) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const c = themeClasses(BlockTitleClasses({ ...props, withBlock }), className);
+  const colors = {
+    textIos: '',
+    textMaterial: 'text-primary',
+    ...colorsProp,
+  };
+
+  const c = themeClasses(
+    BlockTitleClasses({ ...props, withBlock }, colors),
+    className
+  );
 
   return (
     <Component ref={elRef} className={c.base} {...attrs}>
