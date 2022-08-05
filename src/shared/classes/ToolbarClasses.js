@@ -30,10 +30,7 @@ export const ToolbarClasses = (props, colors, classes) => {
         colors.bgIos,
         translucent && 'translucent'
       ),
-      material: cls(
-        `shadow-md ${colors.bgMaterial}`,
-        !top && 'transform rotate-180'
-      ),
+      material: cls(`${colors.bgMaterial}`, !top && 'transform rotate-180'),
     },
     inner: {
       common: cls(
@@ -44,11 +41,11 @@ export const ToolbarClasses = (props, colors, classes) => {
       material: !tabbar ? 'pl-2-safe pr-2-safe' : '',
       toolbar: {
         ios: 'h-11',
-        material: 'h-12',
+        material: tabbar ? 'h-20' : 'h-16',
       },
       tabbarLabels: {
         ios: 'h-12.5',
-        material: 'h-14',
+        material: 'h-20',
       },
     },
   };
