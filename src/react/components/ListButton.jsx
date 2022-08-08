@@ -61,7 +61,7 @@ const ListButton = forwardRef((props, ref) => {
   };
 
   const c = themeClasses(
-    ListButtonClasses({ ...props, hairlines }, colors, className),
+    ListButtonClasses({ ...props, hairlines }, colors, className, theme),
     className
   );
 

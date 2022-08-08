@@ -120,6 +120,7 @@
       },
       colors,
       {
+        theme,
         textColor,
         needsTouchRipple,
         isMenuListItemActive,

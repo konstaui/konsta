@@ -193,6 +193,7 @@
 
       const c = useThemeClasses(props, () =>
         ListItemClasses(props, colors.value, {
+          theme: theme.value,
           textColor: textColor.value,
           needsTouchRipple: needsTouchRipple.value,
           isMenuListItemActive: isMenuListItemActive.value,

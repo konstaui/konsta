@@ -2,6 +2,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
+  import { useTheme } from '../shared/use-theme.js';
 
   let className = undefined;
   export { className as class };
@@ -28,6 +29,9 @@
 
   const rippleEl = { current: null };
 
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
+
   $: useTouchRipple(rippleEl, touchRipple);
 
   $: colors = {
@@ -39,7 +43,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    ListButtonClasses({ hairlines }, colors, className),
+    ListButtonClasses({ hairlines }, colors, className, theme),
     className,
     (v) => (c = v)
   );

@@ -14,10 +14,17 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
       ios: `uppercase duration-100 font-semibold`,
       material: `duration-300 font-medium`,
 
-      square:
-        segmented && !segmentedStrong
-          ? 'first:rounded-l last:rounded-r'
-          : 'rounded',
+      square: {
+        ios:
+          segmented && !segmentedStrong
+            ? 'first:rounded-l last:rounded-r'
+            : 'rounded',
+        material:
+          segmented && !segmentedStrong
+            ? 'first:rounded-lg-l last:rounded-lg-r'
+            : 'rounded-lg',
+      },
+
       rounded: segmented && !segmentedStrong ? '' : 'rounded-full',
     },
     style: {

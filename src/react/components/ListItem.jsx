@@ -136,6 +136,7 @@ const ListItem = forwardRef((props, ref) => {
       },
       colors,
       {
+        theme,
         textColor,
         needsTouchRipple,
         isMenuListItemActive,

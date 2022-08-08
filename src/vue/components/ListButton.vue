@@ -13,6 +13,7 @@
 <script>
   import { ref, computed } from 'vue';
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -60,8 +61,10 @@
         ...(props.colors || {}),
       }));
 
+      const theme = useTheme(props);
+
       const c = useThemeClasses(props, () =>
-        ListButtonClasses(props, colors.value, ctx.attrs.class)
+        ListButtonClasses(props, colors.value, ctx.attrs.class, theme.value)
       );
 
       const isLink = computed(() => !!props.href || props.href === '');
