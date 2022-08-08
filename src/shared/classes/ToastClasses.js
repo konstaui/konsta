@@ -16,7 +16,7 @@ export const ToastClasses = (props, colors, classes) => {
         colors.bgIos,
         translucent && 'translucent'
       ),
-      material: cls(`sm:rounded duration-200`, colors.bgMaterial),
+      material: cls(`sm:rounded-2xl duration-200`, colors.bgMaterial),
       left: 'sm:left-4-safe sm:bottom-4-safe',
       right: 'sm:right-4-safe sm:bottom-4-safe sm:left-auto',
       center: 'sm:left-1/2 sm:bottom-4-safe sm:-translate-x-1/2',
