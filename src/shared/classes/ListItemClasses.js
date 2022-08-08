@@ -4,6 +4,7 @@ export const ListItemClasses = (
   props,
   colors,
   {
+    theme,
     textColor,
     needsTouchRipple,
     isMenuListItemActive,
@@ -36,7 +37,7 @@ export const ListItemClasses = (
       ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
-        hairlines && 'active:hairline-transparent',
+        hairlines && theme === 'ios' && 'active:hairline-transparent',
         needsTouchRipple &&
           cls(
             `relative overflow-hidden`,
@@ -44,10 +45,11 @@ export const ListItemClasses = (
           ),
         isMenuListItemActive
           ? cls(colors.menuListItemActiveBg, 'bg-opacity-15')
-          : cls(
-              `active:bg-black active:bg-opacity-10`,
-              darkClasses('dark:active:bg-white dark:active:bg-opacity-10')
-            )
+          : theme === 'ios' &&
+              cls(
+                `active:bg-black active:bg-opacity-10`,
+                darkClasses('dark:active:bg-white dark:active:bg-opacity-10')
+              )
       ),
     },
 
