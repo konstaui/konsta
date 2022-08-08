@@ -13,25 +13,21 @@ export const PanelClasses = (props, colors, classes) => {
         size
       ),
       ios: '',
-      material: '',
+      material: 'ease-material-in',
     },
     left: {
       common: cls(
         'no-safe-areas-right',
-        floating ? 'right-full -mr-2' : 'right-full'
+        floating ? 'right-full -mr-2 rounded-2xl' : 'right-full'
       ),
-      ios: floating ? 'rounded-2xl' : '',
-      material: floating ? 'rounded-2xl' : 'rounded-r-2xl',
       opened: 'translate-x-full',
       closed: '-translate-x-2',
     },
     right: {
       common: cls(
         'no-safe-areas-left',
-        floating ? 'left-full -ml-2' : 'left-full'
+        floating ? 'left-full -ml-2 rounded-2xl' : 'left-full'
       ),
-      ios: floating ? 'rounded-2xl' : '',
-      material: floating ? 'rounded-2xl' : 'rounded-l-2xl',
       opened: '-translate-x-full',
       closed: 'translate-x-2',
     },

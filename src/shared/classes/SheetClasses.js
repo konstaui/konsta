@@ -10,7 +10,7 @@ export const SheetClasses = (props, colors, classes) => {
         positionClass('fixed', classes)
       ),
       ios: '',
-      material: 'shadow-2xl',
+      material: 'rounded-t-xl ease-material-in',
       opened: '-translate-y-full',
       closed: '',
     },

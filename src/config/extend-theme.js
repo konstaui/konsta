@@ -96,6 +96,10 @@ const extendTheme = () => {
     },
   };
 
+  const transitionTimingFunction = {
+    'material-in': 'cubic-bezier(0,0.8,0.34,1)',
+  };
+
   return {
     fontSize,
     spacing,
@@ -109,6 +113,7 @@ const extendTheme = () => {
     scale,
     boxShadow,
     colors,
+    transitionTimingFunction,
   };
 };
 
