@@ -1,1 +1,10 @@
 - Tabbar MD translate highlight
+- Roundend Block and List
+- Cards
+  - Unify
+    - add raised, outline modifiers
+- Colors
+- Popover
+- Stepper (tweak to buttons)
+- List sizes and styles
+- Menu list sizes and styles
