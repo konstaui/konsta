@@ -37,7 +37,10 @@
       <Toggle
         slot="after"
         class="-my-1"
-        colors={{ bg: 'bg-red-500' }}
+        colors={{
+          bg: 'bg-red-500',
+          darkBg: 'dark:bg-red-500',
+        }}
         checked={checked2}
         onChange={() => (checked2 = !checked2)}
       />
@@ -46,7 +49,10 @@
       <Toggle
         slot="after"
         class="-my-1"
-        colors={{ bg: 'bg-green-500' }}
+        colors={{
+          bg: 'bg-green-500',
+          darkBg: 'dark:bg-green-500',
+        }}
         checked={checked3}
         onChange={() => (checked3 = !checked3)}
       />
@@ -55,7 +61,10 @@
       <Toggle
         slot="after"
         class="-my-1"
-        colors={{ bg: 'bg-yellow-500' }}
+        colors={{
+          bg: 'bg-yellow-500',
+          darkBg: 'dark:bg-yellow-500',
+        }}
         checked={checked4}
         onChange={() => (checked4 = !checked4)}
       />

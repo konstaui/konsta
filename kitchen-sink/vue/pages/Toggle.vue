@@ -20,7 +20,10 @@
         <template #after>
           <k-toggle
             class="-my-1"
-            :colors="{ bg: 'bg-red-500' }"
+            :colors="{
+              bg: 'bg-red-500',
+              darkBg: 'dark:bg-red-500',
+            }"
             :checked="checked2"
             @change="() => (checked2 = !checked2)"
           />
@@ -30,7 +33,10 @@
         <template #after>
           <k-toggle
             class="-my-1"
-            :colors="{ bg: 'bg-green-500' }"
+            :colors="{
+              bg: 'bg-green-500',
+              darkBg: 'dark:bg-green-500',
+            }"
             :checked="checked3"
             @change="() => (checked3 = !checked3)"
           />
@@ -40,7 +46,10 @@
         <template #after>
           <k-toggle
             class="-my-1"
-            :colors="{ bg: 'bg-yellow-500' }"
+            :colors="{
+              bg: 'bg-yellow-500',
+              darkBg: 'dark:bg-yellow-500',
+            }"
             :checked="checked4"
             @change="() => (checked4 = !checked4)"
           />

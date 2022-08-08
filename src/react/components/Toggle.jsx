@@ -44,6 +44,7 @@ const Toggle = forwardRef((props, ref) => {
 
   const colors = {
     bg: 'bg-primary',
+    darkBg: 'dark:bg-primary',
     ...colorsProp,
   };
 
@@ -68,11 +69,8 @@ const Toggle = forwardRef((props, ref) => {
         onChange={onChange}
         className={c.input}
       />
-      <span className={c.baseBg[state]} />
       <span className={c.inner[state]} />
-      <span className={c.knob[state]}>
-        <span className={c.knobBg[state]} />
-      </span>
+      <span className={c.knob[state]} />
       {children}
     </Component>
   );

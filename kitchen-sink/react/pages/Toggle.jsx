@@ -37,7 +37,10 @@ export default function TogglePage() {
           after={
             <Toggle
               className="-my-1"
-              colors={{ bg: 'bg-red-500' }}
+              colors={{
+                bg: 'bg-red-500',
+                darkBg: 'dark:bg-red-500',
+              }}
               checked={checked2}
               onChange={() => setChecked2(!checked2)}
             />
@@ -48,7 +51,10 @@ export default function TogglePage() {
           after={
             <Toggle
               className="-my-1"
-              colors={{ bg: 'bg-green-500' }}
+              colors={{
+                bg: 'bg-green-500',
+                darkBg: 'dark:bg-green-500',
+              }}
               checked={checked3}
               onChange={() => setChecked3(!checked3)}
             />
@@ -59,7 +65,10 @@ export default function TogglePage() {
           after={
             <Toggle
               className="-my-1"
-              colors={{ bg: 'bg-yellow-500' }}
+              colors={{
+                bg: 'bg-yellow-500',
+                darkBg: 'dark:bg-yellow-500',
+              }}
               checked={checked4}
               onChange={() => setChecked4(!checked4)}
             />

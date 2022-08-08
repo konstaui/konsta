@@ -9,11 +9,8 @@
       :checked="checked"
       :class="c.input"
     />
-    <span :class="c.baseBg[state]" />
     <span :class="c.inner[state]" />
-    <span :class="c.knob[state]">
-      <span :class="c.knobBg[state]" />
-    </span>
+    <span :class="c.knob[state]" />
     <slot />
   </component>
 </template>
@@ -50,6 +47,7 @@
     setup(props, ctx) {
       const colors = computed(() => ({
         bg: 'bg-primary',
+        darkBg: 'dark:bg-primary',
         ...(props.colors || {}),
       }));
 
