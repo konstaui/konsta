@@ -1,8 +1,8 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../../shared/cls.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
+import { NavbarColors } from '../../shared/colors/NavbarColors.js';
 
 const Navbar = forwardRef((props, ref) => {
   const {
@@ -50,13 +50,7 @@ const Navbar = forwardRef((props, ref) => {
     ...rest,
   };
 
-  const colors = {
-    bgIos: cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark')),
-    bgMaterial: cls('bg-md-surface-2-light', dark('dark:bg-md-surface-2-dark')),
-    titleIos: cls('text-black', dark('dark:text-white')),
-    titleMaterial: cls('text-black', dark('dark:text-white')),
-    ...colorsProp,
-  };
+  const colors = NavbarColors(colorsProp, dark);
 
   const c = themeClasses(
     NavbarClasses(

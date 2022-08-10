@@ -25,10 +25,10 @@
 <script>
   import { computed } from 'vue';
 
-  import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
+  import { NavbarColors } from '../../shared/colors/NavbarColors.js';
 
   export default {
     name: 'k-navbar',
@@ -66,19 +66,9 @@
       subtitle: String,
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        bgIos: cls(
-          'bg-bars-ios-light',
-          useDarkClasses('dark:bg-bars-ios-dark')
-        ),
-        bgMaterial: cls(
-          'bg-md-surface-2-light',
-          useDarkClasses('dark:bg-md-surface-2-dark')
-        ),
-        titleIos: cls('text-black', useDarkClasses('dark:text-white')),
-        titleMaterial: cls('text-black', useDarkClasses('dark:text-white')),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        NavbarColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         NavbarClasses(

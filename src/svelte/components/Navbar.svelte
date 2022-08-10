@@ -1,8 +1,8 @@
 <script>
-  import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
+  import { NavbarColors } from '../../shared/classes/NavbarColors.js';
 
   let className = undefined;
   export { className as class };
@@ -30,13 +30,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bgIos: cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark')),
-    bgMaterial: cls('bg-md-surface-2-light', dark('dark:bg-md-surface-2-dark')),
-    titleIos: cls('text-black', dark('dark:text-white')),
-    titleMaterial: cls('text-black', dark('dark:text-white')),
-    ...colorsProp,
-  };
+  $: colors = NavbarColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },
