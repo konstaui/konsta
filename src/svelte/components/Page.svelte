@@ -6,6 +6,9 @@
   let className = undefined;
   export { className as class };
 
+  let colorsProp = undefined;
+  export { colorsProp as colors };
+
   export let ios = undefined;
   export let material = undefined;
 
@@ -13,9 +16,18 @@
 
   const dark = useDarkClasses();
 
+  $: colors = {
+    bgIos: cls('bg-page-ios-light', dark('dark:bg-page-ios-dark')),
+    bgMaterial: cls(
+      'bg-page-material-light',
+      dark('dark:bg-page-material-dark')
+    ),
+    ...colorsProp,
+  };
+
   $: c = useThemeClasses(
     { ios, material },
-    PageClasses({}, className, dark),
+    PageClasses({}, className, colors),
     className,
     (v) => (c = v)
   );

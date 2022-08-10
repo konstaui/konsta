@@ -1,5 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { PageClasses } from '../../shared/classes/PageClasses.js';
+import { cls } from '../../shared/cls.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -7,6 +8,7 @@ const Page = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
+    colors: colorsProp,
 
     ios,
     material,
@@ -33,7 +35,16 @@ const Page = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const c = themeClasses(PageClasses(props, className, dark), className);
+  const colors = {
+    bgIos: cls('bg-page-ios-light', dark('dark:bg-page-ios-dark')),
+    bgMaterial: cls(
+      'bg-page-material-light',
+      dark('dark:bg-page-material-dark')
+    ),
+    ...colorsProp,
+  };
+
+  const c = themeClasses(PageClasses(props, colors, className), className);
 
   return (
     <Component ref={elRef} className={c.base} {...attrs}>

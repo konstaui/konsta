@@ -4,7 +4,9 @@
   </component>
 </template>
 <script>
+  import { computed } from 'vue';
   import { PageClasses } from '../../shared/classes/PageClasses.js';
+  import { cls } from '../../shared/cls.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -23,10 +25,24 @@
         type: Boolean,
         default: undefined,
       },
+      colors: {
+        type: Object,
+      },
     },
     setup(props, ctx) {
+      const colors = computed(() => ({
+        bgIos: cls(
+          'bg-page-ios-light',
+          useDarkClasses('dark:bg-page-ios-dark')
+        ),
+        bgMaterial: cls(
+          'bg-page-material-light',
+          useDarkClasses('dark:bg-page-material-dark')
+        ),
+        ...(props.colors || {}),
+      }));
       const c = useThemeClasses(props, () =>
-        PageClasses(props, ctx.attrs.class, useDarkClasses)
+        PageClasses(props, ctx.attrs.class, colors)
       );
 
       return {
