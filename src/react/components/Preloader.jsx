@@ -5,6 +5,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import PreloaderIOS from './icons/PreloaderIOS.jsx';
 import PreloaderMaterial from './icons/PreloaderMaterial.jsx';
 import { PreloaderClasses } from '../../shared/classes/PreloaderClasses.js';
+import { PreloaderColors } from '../../shared/colors/PreloaderColors.js';
 
 const Preloader = forwardRef((props, ref) => {
   const {
@@ -39,10 +40,7 @@ const Preloader = forwardRef((props, ref) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
 
-  const colors = {
-    icon: 'text-primary',
-    ...colorsProp,
-  };
+  const colors = PreloaderColors(colorsProp);
 
   const SVGComponent = theme === 'ios' ? PreloaderIOS : PreloaderMaterial;
 

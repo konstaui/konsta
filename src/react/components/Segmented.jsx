@@ -3,6 +3,7 @@ import { cls } from '../../shared/cls.js';
 import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { SegmentedColors } from '../../shared/colors/SegmentedColors.js';
 
 const Segmented = forwardRef((props, ref) => {
   const {
@@ -44,11 +45,7 @@ const Segmented = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    border: 'border-primary',
-    divide: 'divide-primary',
-    ...colorsProp,
-  };
+  const colors = SegmentedColors(colorsProp, dark);
 
   const c = themeClasses(SegmentedClasses(props, colors, dark));
 

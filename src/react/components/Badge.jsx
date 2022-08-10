@@ -1,5 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
+import { BadgeColors } from '../../shared/colors/BadgeColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 const Badge = forwardRef((props, ref) => {
@@ -33,11 +34,7 @@ const Badge = forwardRef((props, ref) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const colors = {
-    bg: 'bg-primary',
-    text: 'text-white',
-    ...colorsProp,
-  };
+  const colors = BadgeColors(colorsProp);
 
   const size = small ? 'sm' : 'md';
 

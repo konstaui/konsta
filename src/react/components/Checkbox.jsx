@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
 } from 'react';
 import { CheckboxClasses } from '../../shared/classes/CheckboxClasses.js';
-import { cls } from '../../shared/cls.js';
+import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -53,19 +53,7 @@ const Checkbox = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    borderIos: cls(
-      `border-black border-opacity-30`,
-      dark('dark:border-white dark:border-opacity-30')
-    ),
-    borderMaterial: cls(
-      `border-black border-opacity-40`,
-      dark('dark:border-white dark:border-opacity-40')
-    ),
-    bgChecked: 'bg-primary',
-    borderChecked: 'border-primary',
-    ...colorsProp,
-  };
+  const colors = CheckboxColors(colorsProp, dark);
 
   const state =
     checked || (defaultChecked && !onChange) || indeterminate

@@ -1,6 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { ChipClasses } from '../../shared/classes/ChipClasses.js';
-import { cls } from '../../shared/cls.js';
+import { ChipColors } from '../../shared/colors/ChipColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -45,15 +45,7 @@ const Chip = forwardRef((props, ref) => {
 
   const style = outline ? 'outline' : 'fill';
 
-  const colors = {
-    bg: cls(`bg-black bg-opacity-10`, dark('dark:bg-white dark:bg-opacity-10')),
-    text: 'text-current',
-    border: cls(
-      `border-black border-opacity-20`,
-      dark('dark:border-white dark:border-opacity-20')
-    ),
-    ...colorsProp,
-  };
+  const colors = ChipColors(colorsProp, dark);
 
   const c = themeClasses(ChipClasses(props, colors), className);
 

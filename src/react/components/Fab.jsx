@@ -3,6 +3,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { FabClasses } from '../../shared/classes/FabClasses.js';
+import { FabColors } from '../../shared/colors/FabColors.js';
 
 const Fab = forwardRef((props, ref) => {
   const {
@@ -44,12 +45,7 @@ const Fab = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = {
-    bg: 'bg-primary',
-    activeBg: 'active:bg-primary-dark',
-    text: 'text-white',
-    ...colorsProp,
-  };
+  const colors = FabColors(colorsProp);
 
   const c = themeClasses(FabClasses(props, colors), className);
 

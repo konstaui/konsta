@@ -1,10 +1,10 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
+import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
 
 const ActionsButton = forwardRef((props, ref) => {
   const {
@@ -55,12 +55,7 @@ const ActionsButton = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = {
-    bg: cls('bg-white', dark('dark:bg-neutral-800')),
-    activeBg: cls('active:bg-neutral-200', dark('dark:active:bg-neutral-700')),
-    text: 'text-primary',
-    ...colorsProp,
-  };
+  const colors = ActionsButtonColors(colorsProp, dark);
 
   const c = themeClasses(
     ActionsButtonClasses(

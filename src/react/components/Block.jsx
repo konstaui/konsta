@@ -1,6 +1,7 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 import { BlockClasses } from '../../shared/classes/BlockClasses.js';
 import { cls } from '../../shared/cls.js';
+import { BlockColors } from '../../shared/colors/BlockColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -42,10 +43,7 @@ const Block = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    strongBg: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
-    ...colorsProp,
-  };
+  const colors = BlockColors(colorsProp, dark);
 
   const c = themeClasses(
     BlockClasses({ ...props, margin, hairlines }, colors, className)

@@ -5,6 +5,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+import { LinkColors } from '../../shared/colors/LinkColors.js';
 
 const Link = forwardRef((props, ref) => {
   const {
@@ -55,14 +56,7 @@ const Link = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, needsTouchRipple);
 
-  const colors = {
-    text: 'text-primary',
-    tabbarInactive: cls(
-      `text-black`,
-      dark('dark:text-white dark:text-opacity-55')
-    ),
-    ...colorsProp,
-  };
+  const colors = LinkColors(colorsProp, dark);
 
   const textColor =
     tabbar && !tabbarActive ? colors.tabbarInactive : colors.text;

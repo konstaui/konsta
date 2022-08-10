@@ -3,6 +3,7 @@ import { cls } from '../../shared/cls.js';
 import { PanelClasses } from '../../shared/classes/PanelClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { PanelColors } from '../../shared/colors/PanelColors.js';
 
 const Panel = forwardRef((props, ref) => {
   const {
@@ -44,10 +45,7 @@ const Panel = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+  const colors = PanelColors(colorsProp, dark);
 
   const c = themeClasses(
     PanelClasses({ ...props, size, floating }, colors, className),

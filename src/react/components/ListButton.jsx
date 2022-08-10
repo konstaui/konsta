@@ -3,6 +3,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
+import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
 
 const ListButton = forwardRef((props, ref) => {
   const {
@@ -53,12 +54,7 @@ const ListButton = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = {
-    text: 'text-primary',
-    activeBg: 'active:bg-primary',
-    touchRipple: 'touch-ripple-primary',
-    ...colorsProp,
-  };
+  const colors = ListButtonColors(colorsProp);
 
   const c = themeClasses(
     ListButtonClasses({ ...props, hairlines }, colors, className, theme),

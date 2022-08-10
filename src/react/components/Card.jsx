@@ -1,6 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { CardClasses } from '../../shared/classes/CardClasses.js';
-import { cls } from '../../shared/cls.js';
+import { CardColors } from '../../shared/colors/CardColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -41,11 +41,7 @@ const Card = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
-    footerText: cls(`text-black`, dark('dark:text-white')),
-    ...colorsProp,
-  };
+  const colors = CardColors(colorsProp, dark);
 
   const style = outline ? 'outline' : 'shadow';
 

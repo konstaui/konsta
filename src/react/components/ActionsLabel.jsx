@@ -1,8 +1,8 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../../shared/cls.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ActionsLabelClasses } from '../../shared/classes/ActionsLabelClasses.js';
+import { ActionsLabelColors } from '../../shared/colors/ActionsLabelColors.js';
 
 const ActionsLabel = forwardRef((props, ref) => {
   const {
@@ -40,15 +40,7 @@ const ActionsLabel = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: cls('bg-white', dark('dark:bg-neutral-800')),
-    activeBg: cls('active:bg-neutral-200', dark('dark:active:bg-neutral-700')),
-    text: cls(
-      'text-black text-opacity-55',
-      dark('dark:text-white dark:text-opacity-55')
-    ),
-    ...colorsProp,
-  };
+  const colors = ActionsLabelColors(colorsProp, dark);
 
   const c = themeClasses(
     ActionsLabelClasses(

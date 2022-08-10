@@ -2,7 +2,7 @@ import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { BreadcrumbsCollapsedClasses } from '../../shared/classes/BreadcrumbsCollapsedClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
-import { cls } from '../../shared/cls.js';
+import { BreadcrumbsCollapsedColors } from '../../shared/colors/BreadcrumbsCollapsedColors.js';
 
 const BreadcrumbsCollapsed = forwardRef((props, ref) => {
   const {
@@ -28,11 +28,7 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
 
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: cls('bg-black bg-opacity-15', dark('dark:bg-white dark:bg-opacity-15')),
-    dotBg: cls('bg-black', dark('dark:bg-white')),
-    ...colorsProp,
-  };
+  const colors = BreadcrumbsCollapsedColors(colorsProp, dark);
 
   const Component = component;
 

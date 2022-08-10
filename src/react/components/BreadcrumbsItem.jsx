@@ -1,6 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { BreadcrumbsItemClasses } from '../../shared/classes/BreadcrumbsItemClasses.js';
-import { cls } from '../../shared/cls.js';
+import { BreadcrumbsItemColors } from '../../shared/colors/BreadcrumbsItemColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -39,14 +39,7 @@ const BreadcrumbsItem = forwardRef((props, ref) => {
 
   const dark = useDarkClasses();
 
-  const colors = {
-    text: cls(
-      'text-black text-opacity-55',
-      dark('dark:text-white dark:text-opacity-55')
-    ),
-    textActive: cls('text-black', dark('dark:text-white')),
-    ...colorsProp,
-  };
+  const colors = BreadcrumbsItemColors(colorsProp, dark);
 
   const c = themeClasses(
     BreadcrumbsItemClasses({ ...props }, colors),

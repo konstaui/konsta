@@ -4,6 +4,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { StepperClasses } from '../../shared/classes/StepperClasses.js';
+import { StepperColors } from '../../shared/colors/StepperColors.js';
 
 const Stepper = forwardRef((props, ref) => {
   const {
@@ -59,15 +60,7 @@ const Stepper = forwardRef((props, ref) => {
   useTouchRipple(buttonLeftElRef, theme === 'material' && touchRipple);
   useTouchRipple(buttonRightElRef, theme === 'material' && touchRipple);
 
-  const colors = {
-    text: 'text-primary',
-    border: 'border-primary',
-    bg: 'bg-primary',
-    activeBg: 'active:bg-primary',
-    activeBgDark: 'active:bg-primary-dark',
-    touchRipple: 'touch-ripple-primary',
-    ...colorsProp,
-  };
+  const colors = StepperColors(colorsProp);
 
   const size = large ? 'large' : small ? 'small' : 'medium';
   const style = outline && raised ? 'clear' : outline ? 'outline' : 'fill';

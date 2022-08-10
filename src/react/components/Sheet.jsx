@@ -1,8 +1,8 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
-import { cls } from '../../shared/cls.js';
 import { SheetClasses } from '../../shared/classes/SheetClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { SheetColors } from '../../shared/colors/SheetColors.js';
 
 const Sheet = forwardRef((props, ref) => {
   const {
@@ -41,10 +41,7 @@ const Sheet = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+  const colors = SheetColors(colorsProp, dark);
 
   const c = themeClasses(SheetClasses(props, colors, className), className);
 

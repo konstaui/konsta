@@ -18,7 +18,7 @@ interface Props {
     /**
      * Navbar bg color in Material theme
      *
-     * @default 'bg-md-surface-2-light dark:bg-md-surface-2-dark'
+     * @default 'bg-md-light-surface-2 dark:bg-md-dark-surface-2'
      */
     bgMaterial?: string;
     /**

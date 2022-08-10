@@ -3,6 +3,7 @@ import { cls } from '../../shared/cls.js';
 import { RangeClasses } from '../../shared/classes/RangeClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { RangeColors } from '../../shared/colors/RangeColors.js';
 
 const Range = forwardRef((props, ref) => {
   const {
@@ -49,12 +50,7 @@ const Range = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    valueBg: 'bg-primary',
-    thumbBgIos: 'range-thumb:bg-white',
-    thumbBgMaterial: 'range-thumb:bg-primary',
-    ...colorsProp,
-  };
+  const colors = RangeColors(colorsProp, dark);
 
   const c = themeClasses(RangeClasses(props, colors, dark), className);
 

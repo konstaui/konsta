@@ -1,5 +1,6 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { ToggleClasses } from '../../shared/classes/ToggleClasses.js';
+import { ToggleColors } from '../../shared/colors/ToggleColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -42,11 +43,7 @@ const Toggle = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: 'bg-primary',
-    darkBg: 'dark:bg-primary',
-    ...colorsProp,
-  };
+  const colors = ToggleColors(colorsProp, dark);
 
   const state =
     checked || (defaultChecked && !onChange) ? 'checked' : 'notChecked';

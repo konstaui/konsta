@@ -13,6 +13,7 @@ import DropdownIcon from './icons/DropdownIcon.jsx';
 import ListItem from './ListItem.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
+import { ListInputColors } from '../../shared/colors/ListInputColors.js';
 
 const ListInput = forwardRef((props, ref) => {
   const {
@@ -90,13 +91,7 @@ const ListInput = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    labelFocus: 'text-primary',
-    errorText: 'text-red-500',
-    hairlineError: 'hairline-red-500',
-    hairlineFocus: 'hairline-primary',
-    ...colorsProp,
-  };
+  const colors = ListInputColors(colorsProp, dark);
 
   const labelStyle =
     !label || inlineLabel

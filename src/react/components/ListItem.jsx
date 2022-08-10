@@ -6,6 +6,7 @@ import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import ChevronIcon from './icons/ChevronIcon.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
+import { ListItemColors } from '../../shared/colors/ListItemColors.js';
 
 const ListItem = forwardRef((props, ref) => {
   const {
@@ -85,12 +86,7 @@ const ListItem = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    text: cls(`text-black`, dark('dark:text-white')),
-    menuListItemText: cls(`text-primary`, dark('dark:text-white')),
-    menuListItemActiveBg: cls(`bg-primary`, dark('dark:bg-primary')),
-    ...colorsProp,
-  };
+  const colors = ListItemColors(colorsProp, dark);
 
   const isMenuListItemActive = menuListItem && menuListItemActive;
 

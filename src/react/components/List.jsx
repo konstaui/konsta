@@ -3,6 +3,7 @@ import { cls } from '../../shared/cls.js';
 import { ListClasses } from '../../shared/classes/ListClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { ListColors } from '../../shared/colors/ListColors.js';
 
 const List = forwardRef((props, ref) => {
   const {
@@ -42,10 +43,7 @@ const List = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = {
-    bg: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
-    ...colorsProp,
-  };
+  const colors = ListColors(colorsProp, dark);
 
   const c = themeClasses(
     ListClasses({ ...props, margin, hairlines }, colors, className)
