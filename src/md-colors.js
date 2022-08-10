@@ -95,12 +95,12 @@ const mdColors = (hexColor = '') => {
   };
 
   Object.keys(theme.schemes.light.props).forEach((prop) => {
-    colors[name(`md-light-${prop}`)] = hexFromArgb(
+    colors[name(`md-${prop}-light`)] = hexFromArgb(
       theme.schemes.light.props[prop]
     );
   });
   Object.keys(theme.schemes.dark.props).forEach((prop) => {
-    colors[name(`md-dark-${prop}`)] = hexFromArgb(
+    colors[name(`md-${prop}-dark`)] = hexFromArgb(
       theme.schemes.dark.props[prop]
     );
   });
