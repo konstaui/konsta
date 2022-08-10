@@ -55,9 +55,34 @@ module.exports = (userConfig = {}) => {
         '--k-hairline-color': 'rgba(0, 0, 0, 0.2)',
       },
       ...darkProps,
+      '@media (min-resolution: 1.25dppx)': {
+        ':root': {
+          '--k-device-pixel-ratio': '1.25',
+        },
+      },
+      '@media (min-resolution: 1.5dppx)': {
+        ':root': {
+          '--k-device-pixel-ratio': '1.5',
+        },
+      },
+      '@media (min-resolution: 1.75dppx)': {
+        ':root': {
+          '--k-device-pixel-ratio': '1.75',
+        },
+      },
       '@media (min-resolution: 2dppx)': {
         ':root': {
           '--k-device-pixel-ratio': '2',
+        },
+      },
+      '@media (min-resolution: 2.25dppx)': {
+        ':root': {
+          '--k-device-pixel-ratio': '2.25',
+        },
+      },
+      '@media (min-resolution: 2.5dppx)': {
+        ':root': {
+          '--k-device-pixel-ratio': '2.5',
         },
       },
       '@media (min-resolution: 3dppx)': {
