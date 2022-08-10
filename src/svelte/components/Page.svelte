@@ -21,7 +21,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    PageClasses({}, className, colors),
+    PageClasses({}, colors, className),
     className,
     (v) => (c = v)
   );

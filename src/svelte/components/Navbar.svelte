@@ -2,7 +2,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
-  import { NavbarColors } from '../../shared/classes/NavbarColors.js';
+  import { NavbarColors } from '../../shared/colors/NavbarColors.js';
 
   let className = undefined;
   export { className as class };

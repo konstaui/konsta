@@ -34,7 +34,7 @@
         PageColors(props.colors || {}, useDarkClasses)
       );
       const c = useThemeClasses(props, () =>
-        PageClasses(props, ctx.attrs.class, colors)
+        PageClasses(props, colors.value, ctx.attrs.class)
       );
 
       return {

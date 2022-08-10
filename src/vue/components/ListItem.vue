@@ -128,7 +128,9 @@
     setup(props, ctx) {
       const rippleElRef = ref(null);
 
-      const colors = computed(() => ListItemColors(props.colors || {}));
+      const colors = computed(() =>
+        ListItemColors(props.colors || {}, useDarkClasses)
+      );
 
       const isMenuListItemActive = computed(
         () => props.menuListItem && props.menuListItemActive
