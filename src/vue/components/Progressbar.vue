@@ -10,6 +10,7 @@
 <script>
   import { computed } from 'vue';
   import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
+  import { ProgressbarColors } from '../../shared/colors/ProgressbarColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -36,10 +37,7 @@
       },
     },
     setup(props) {
-      const colors = computed(() => ({
-        bg: 'bg-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => ProgressbarColors(props.colors || {}));
 
       const c = useThemeClasses(props, () => ProgressbarClasses(colors.value));
 

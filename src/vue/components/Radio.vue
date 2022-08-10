@@ -20,12 +20,12 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
+  import { RadioColors } from '../../shared/colors/RadioColors.js';
 
   export default {
     name: 'k-radio',
@@ -58,19 +58,9 @@
     setup(props, ctx) {
       const theme = useTheme(props);
 
-      const colors = computed(() => ({
-        borderIos: cls(
-          'border-black border-opacity-30',
-          useDarkClasses('dark:border-white dark:border-opacity-30')
-        ),
-        borderMaterial: cls(
-          'border-black border-opacity-40',
-          useDarkClasses('dark:border-white dark:border-opacity-40')
-        ),
-        bgChecked: 'bg-primary',
-        borderChecked: 'border-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        RadioColors(props.colors || {}, useDarkClasses)
+      );
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 

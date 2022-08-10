@@ -24,6 +24,7 @@
   import { computed } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { RangeClasses } from '../../shared/classes/RangeClasses.js';
+  import { RangeColors } from '../../shared/colors/RangeColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -56,12 +57,9 @@
     },
     emits: ['input', 'change', 'focus', 'blur'],
     setup(props, ctx) {
-      const colors = computed(() => ({
-        valueBg: 'bg-primary',
-        thumbBgIos: 'range-thumb:bg-white',
-        thumbBgMaterial: 'range-thumb:bg-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        RangeColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         RangeClasses(props, colors.value, useDarkClasses)

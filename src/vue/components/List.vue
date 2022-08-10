@@ -9,6 +9,7 @@
   import { computed } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { ListClasses } from '../../shared/classes/ListClasses.js';
+  import { ListColors } from '../../shared/colors/ListColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -38,13 +39,9 @@
       hairlines: { type: Boolean, default: true },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        bg: cls(
-          `bg-block-strong-light`,
-          useDarkClasses('dark:bg-block-strong-dark')
-        ),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        ListColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         ListClasses(props, colors.value, ctx.attrs.class)

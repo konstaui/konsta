@@ -109,6 +109,7 @@
   import kListItem from './ListItem.vue';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
+  import { ListInputColors } from '../../shared/colors/ListInputColors.js';
 
   export default {
     name: 'k-list-input',
@@ -195,13 +196,7 @@
         labelStyle.value === 'floating' ? 'floating' : 'notFloating'
       );
 
-      const colors = computed(() => ({
-        labelFocus: 'text-primary',
-        errorText: 'text-red-500',
-        hairlineError: 'hairline-red-500',
-        hairlineFocus: 'hairline-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => ListInputColors(props.colors || {}));
 
       const getDomValue = () => {
         if (!inputElRef.value) return undefined;

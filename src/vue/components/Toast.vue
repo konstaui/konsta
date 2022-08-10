@@ -9,6 +9,7 @@
 <script>
   import { computed } from 'vue';
   import { ToastClasses } from '../../shared/classes/ToastClasses.js';
+  import { ToastColors } from '../../shared/colors/ToastColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -34,12 +35,7 @@
       translucent: { type: Boolean, default: true },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        bgIos: 'bg-toast-ios',
-        bgMaterial: 'bg-toast-material',
-        text: 'text-white',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => ToastColors(props.colors || {}));
       const c = useThemeClasses(props, () =>
         ToastClasses(props, colors.value, ctx.attrs.class)
       );

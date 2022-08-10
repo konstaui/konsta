@@ -6,6 +6,7 @@
 <script>
   import { computed } from 'vue';
   import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
+  import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -32,11 +33,7 @@
       },
     },
     setup(props) {
-      const colors = computed(() => ({
-        textIos: '',
-        textMaterial: 'text-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => BlockTitleColors(props.colors || {}));
       const c = useThemeClasses(props, () => BlockTitleClasses(props, colors));
       return {
         c,

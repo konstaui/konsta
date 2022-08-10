@@ -26,7 +26,7 @@
 <script>
   import { ref, computed, watch, onMounted } from 'vue';
   import { CheckboxClasses } from '../../shared/classes/CheckboxClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
@@ -61,19 +61,9 @@
     setup(props, ctx) {
       const inputElRef = ref(null);
 
-      const colors = computed(() => ({
-        borderIos: cls(
-          `border-black border-opacity-30`,
-          useDarkClasses('dark:border-white dark:border-opacity-30')
-        ),
-        borderMaterial: cls(
-          `border-black border-opacity-40`,
-          useDarkClasses('dark:border-white dark:border-opacity-40')
-        ),
-        bgChecked: 'bg-primary',
-        borderChecked: 'border-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        CheckboxColors(props.colors || {}, useDarkClasses)
+      );
 
       const state = computed(() =>
         props.checked || props.indeterminate ? 'checked' : 'notChecked'

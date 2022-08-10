@@ -5,11 +5,11 @@
 </template>
 <script>
   import { ref, computed } from 'vue';
-  import { cls } from '../../shared/cls.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
+  import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
 
   export default {
     name: 'k-actions-button',
@@ -58,15 +58,9 @@
 
       useTouchRipple(rippleElRef, props);
 
-      const colors = computed(() => ({
-        bg: cls('bg-white', useDarkClasses('dark:bg-neutral-800')),
-        activeBg: cls(
-          'active:bg-neutral-200',
-          useDarkClasses('dark:active:bg-neutral-700')
-        ),
-        text: 'text-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        ActionsButtonColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(
         props,

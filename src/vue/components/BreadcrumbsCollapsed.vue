@@ -9,7 +9,7 @@
 <script>
   import { computed } from 'vue';
   import { BreadcrumbsCollapsedClasses } from '../../shared/classes/BreadcrumbsCollapsedClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { BreadcrumbsCollapsedColors } from '../../shared/colors/BreadcrumbsCollapsedColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
@@ -33,14 +33,9 @@
       },
     },
     setup(props) {
-      const colors = computed(() => ({
-        bg: cls(
-          'bg-black bg-opacity-15',
-          useDarkClasses('dark:bg-white dark:bg-opacity-15')
-        ),
-        dotBg: cls('bg-black', useDarkClasses('dark:bg-white')),
-        ...props.colors,
-      }));
+      const colors = computed(() =>
+        BreadcrumbsCollapsedColors(props.colors, useDarkClasses)
+      );
       const c = useThemeClasses(props, () =>
         BreadcrumbsCollapsedClasses(props, colors.value)
       );

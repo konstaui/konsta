@@ -15,6 +15,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
+  import { ButtonColors } from '../../shared/colors/ButtonColors.js';
 
   export default {
     name: 'k-button',
@@ -129,27 +130,9 @@
           value = 'segmentedStrongActive';
         return value;
       });
-      const colors = computed(() => ({
-        text: 'text-primary',
-        border: 'border-primary',
-        bg: 'bg-primary',
-        activeBg: 'active:bg-primary',
-        activeBgDark: 'active:bg-primary-dark',
-        touchRipple: 'touch-ripple-primary',
-        disabledText: cls(
-          'text-black text-opacity-30',
-          useDarkClasses('dark:text-white dark:text-opacity-30')
-        ),
-        disabledBg: cls(
-          'bg-black bg-opacity-10',
-          useDarkClasses('dark:bg-white dark:bg-opacity-10')
-        ),
-        disabledBorder: cls(
-          'border-black border-opacity-10',
-          useDarkClasses('dark:border-white dark:border-opacity-10')
-        ),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        ButtonColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         ButtonClasses(props, colors.value, ctx.attrs.class, useDarkClasses)

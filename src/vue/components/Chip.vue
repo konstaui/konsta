@@ -10,7 +10,7 @@
 <script>
   import { computed } from 'vue';
   import { ChipClasses } from '../../shared/classes/ChipClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { ChipColors } from '../../shared/colors/ChipColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import DeleteIcon from './icons/DeleteIcon.vue';
@@ -49,18 +49,9 @@
     setup(props, ctx) {
       const style = computed(() => (props.outline ? 'outline' : 'fill'));
 
-      const colors = computed(() => ({
-        bg: cls(
-          `bg-black bg-opacity-10`,
-          useDarkClasses('dark:bg-white dark:bg-opacity-10')
-        ),
-        text: 'text-current',
-        border: cls(
-          `border-black border-opacity-10`,
-          useDarkClasses('dark:border-white dark:border-opacity-10')
-        ),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        ChipColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () => ChipClasses(props, colors.value));
 

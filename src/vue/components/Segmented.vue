@@ -13,6 +13,7 @@
   import { computed, Fragment } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
+  import { SegmentedColors } from '../../shared/colors/SegmentedColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -44,11 +45,9 @@
       childButtonsLength: { type: Number, default: undefined },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        border: 'border-primary',
-        divide: 'divide-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        SegmentedColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         SegmentedClasses(props, colors.value, useDarkClasses)

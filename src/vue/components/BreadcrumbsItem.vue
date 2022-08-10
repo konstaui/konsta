@@ -6,9 +6,9 @@
 <script>
   import { computed } from 'vue';
   import { BreadcrumbsItemClasses } from '../../shared/classes/BreadcrumbsItemClasses.js';
+  import { BreadcrumbsItemColors } from '../../shared/colors/BreadcrumbsItemColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { cls } from '../../shared/cls.js';
 
   export default {
     name: 'k-breadcrumbs-item',
@@ -34,14 +34,9 @@
       },
     },
     setup(props) {
-      const colors = computed(() => ({
-        text: cls(
-          'text-black text-opacity-55',
-          useDarkClasses('dark:text-white dark:text-opacity-55')
-        ),
-        textActive: cls('text-black', useDarkClasses('dark:text-white')),
-        ...props.colors,
-      }));
+      const colors = computed(() =>
+        BreadcrumbsItemColors(props.colors, useDarkClasses)
+      );
       const c = useThemeClasses(props, () =>
         BreadcrumbsItemClasses(props, colors.value)
       );

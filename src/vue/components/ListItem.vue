@@ -51,13 +51,13 @@
 </template>
 <script>
   import { ref, computed } from 'vue';
-  import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import ChevronIcon from './icons/ChevronIcon.vue';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
+  import { ListItemColors } from '../../shared/colors/ListItemColors.js';
 
   export default {
     name: 'k-list-item',
@@ -128,15 +128,7 @@
     setup(props, ctx) {
       const rippleElRef = ref(null);
 
-      const colors = computed(() => ({
-        text: cls(`text-black`, useDarkClasses('dark:text-white')),
-        menuListItemText: cls(
-          `text-primary`,
-          useDarkClasses('dark:text-white')
-        ),
-        menuListItemActiveBg: 'bg-primary dark:bg-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => ListItemColors(props.colors || {}));
 
       const isMenuListItemActive = computed(
         () => props.menuListItem && props.menuListItemActive

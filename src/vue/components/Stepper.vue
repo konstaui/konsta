@@ -28,6 +28,7 @@
   import { ref, computed } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { StepperClasses } from '../../shared/classes/StepperClasses.js';
+  import { StepperColors } from '../../shared/colors/StepperColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -74,15 +75,7 @@
       useTouchRipple(buttonLeftElRef, props);
       useTouchRipple(buttonRightElRef, props);
 
-      const colors = computed(() => ({
-        text: 'text-primary',
-        border: 'border-primary',
-        bg: 'bg-primary',
-        activeBg: 'active:bg-primary',
-        activeBgDark: 'active:bg-primary-dark',
-        touchRipple: 'touch-ripple-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => StepperColors(props.colors || {}));
 
       const size = computed(() =>
         props.large ? 'large' : props.small ? 'small' : 'medium'

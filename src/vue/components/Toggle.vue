@@ -17,6 +17,7 @@
 <script>
   import { computed } from 'vue';
   import { ToggleClasses } from '../../shared/classes/ToggleClasses.js';
+  import { ToggleColors } from '../../shared/colors/ToggleColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -45,11 +46,9 @@
       readonly: { type: Boolean, default: false },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        bg: 'bg-primary',
-        darkBg: 'dark:bg-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        ToggleColors(props.colors || {}, useDarkClasses)
+      );
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 

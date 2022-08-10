@@ -1,3 +1,4 @@
+import { useDarkClasses } from '../shared/use-dark-classes';
 <template>
   <component :is="component" :class="c.base">
     <span :class="c.inner">
@@ -14,6 +15,7 @@
   import PreloaderIOS from './icons/PreloaderIOS.vue';
   import PreloaderMaterial from './icons/PreloaderMaterial.vue';
   import { PreloaderClasses } from '../../shared/classes/PreloaderClasses.js';
+  import { PreloaderColors } from '../../shared/colors/PreloaderColors.js';
 
   export default {
     name: 'k-preloader',
@@ -41,10 +43,7 @@
     setup(props) {
       const theme = useTheme(props);
 
-      const colors = computed(() => ({
-        icon: 'text-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => PreloaderColors(props.colors || {}));
 
       const svgComponent = computed(() =>
         theme.value === 'ios' ? PreloaderIOS : PreloaderMaterial

@@ -21,6 +21,7 @@
   import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
+  import { PopoverColors } from '../../shared/colors/PopoverColors.js';
 
   export default {
     name: 'k-popover',
@@ -69,10 +70,9 @@
 
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
 
-      const colors = computed(() => ({
-        bg: cls('bg-popover-light', useDarkClasses('dark:bg-popover-dark')),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        PopoverColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         PopoverClasses(props, colors.value, ctx.attrs.class)

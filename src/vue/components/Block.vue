@@ -9,6 +9,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { cls } from '../../shared/cls.js';
   import { BlockClasses } from '../../shared/classes/BlockClasses.js';
+  import { BlockColors } from '../../shared/colors/BlockColors.js';
 
   export default {
     name: 'k-block',
@@ -35,13 +36,9 @@
       hairlines: { type: Boolean, default: true },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        strongBg: cls(
-          `bg-block-strong-light`,
-          useDarkClasses('dark:bg-block-strong-dark')
-        ),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        BlockColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         BlockClasses(props, colors.value, ctx.attrs.class)

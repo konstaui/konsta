@@ -8,6 +8,7 @@
   import { computed } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { SheetClasses } from '../../shared/classes/SheetClasses.js';
+  import { SheetColors } from '../../shared/colors/SheetColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -36,10 +37,9 @@
     setup(props, ctx) {
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
 
-      const colors = computed(() => ({
-        bg: cls('bg-white', useDarkClasses('dark:bg-black')),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        SheetColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () =>
         SheetClasses(props, colors.value, ctx.attrs.class)

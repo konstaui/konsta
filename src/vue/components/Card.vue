@@ -17,8 +17,8 @@
   import { computed } from 'vue';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { cls } from '../../shared/cls.js';
   import { CardClasses } from '../../shared/classes/CardClasses.js';
+  import { CardColors } from '../../shared/colors/CardColors.js';
 
   export default {
     name: 'k-card',
@@ -45,14 +45,9 @@
       outline: { type: Boolean, default: false },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        bg: cls(
-          `bg-block-strong-light`,
-          useDarkClasses('dark:bg-block-strong-dark')
-        ),
-        footerText: cls(`text-black`, useDarkClasses('dark:text-white')),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        CardColors(props.colors || {}, useDarkClasses)
+      );
 
       const style = computed(() => (props.outline ? 'outline' : 'shadow'));
       const c = useThemeClasses(props, () =>

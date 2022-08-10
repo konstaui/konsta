@@ -6,6 +6,7 @@
 <script>
   import { computed } from 'vue';
   import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
+  import { BadgeColors } from '../../shared/colors/BadgeColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -32,11 +33,7 @@
       },
     },
     setup(props) {
-      const colors = computed(() => ({
-        bg: 'bg-primary',
-        text: 'text-white',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => BadgeColors(props.colors || {}));
 
       const size = computed(() => (props.small ? 'sm' : 'md'));
 

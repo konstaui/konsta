@@ -22,6 +22,7 @@
 <script>
   import { ref, computed } from 'vue';
   import { FabClasses } from '../../shared/classes/FabClasses.js';
+  import { FabColors } from '../../shared/colors/FabColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -52,12 +53,7 @@
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props);
 
-      const colors = computed(() => ({
-        bg: 'bg-primary',
-        activeBg: 'active:bg-primary-dark',
-        text: 'text-white',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => FabColors(props.colors || {}));
 
       const c = useThemeClasses(props, () => FabClasses(props, colors.value));
       return {

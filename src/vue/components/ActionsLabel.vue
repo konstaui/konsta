@@ -5,10 +5,10 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ActionsLabelClasses } from '../../shared/classes/ActionsLabelClasses.js';
+  import { ActionsLabelColors } from '../../shared/colors/ActionsLabelColors.js';
 
   export default {
     name: 'k-actions-label',
@@ -33,18 +33,9 @@
       fontSizeMaterial: { type: String, default: 'text-base' },
     },
     setup(props, ctx) {
-      const colors = computed(() => ({
-        bg: cls('bg-white', useDarkClasses('dark:bg-neutral-800')),
-        activeBg: cls(
-          'active:bg-neutral-200',
-          useDarkClasses('dark:active:bg-neutral-700')
-        ),
-        text: cls(
-          'text-black text-opacity-55',
-          useDarkClasses('dark:text-white dark:text-opacity-55')
-        ),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        ActionsLabelColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(
         props,

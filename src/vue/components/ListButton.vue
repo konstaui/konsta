@@ -13,6 +13,7 @@
 <script>
   import { ref, computed } from 'vue';
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
+  import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -54,12 +55,7 @@
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props);
 
-      const colors = computed(() => ({
-        text: 'text-primary',
-        activeBg: 'active:bg-primary',
-        touchRipple: 'touch-ripple-primary',
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() => ListButtonColors(props.colors || {}));
 
       const theme = useTheme(props);
 

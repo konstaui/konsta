@@ -15,6 +15,7 @@
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+  import { LinkColors } from '../../shared/colors/LinkColors.js';
 
   export default {
     name: 'k-link',
@@ -63,14 +64,9 @@
         () => props.toolbar || props.tabbar || props.navbar
       );
 
-      const colors = computed(() => ({
-        text: 'text-primary',
-        tabbarInactive: cls(
-          `text-black`,
-          useDarkClasses('dark:text-white dark:text-opacity-55')
-        ),
-        ...(props.colors || {}),
-      }));
+      const colors = computed(() =>
+        LinkColors(props.colors || {}, useDarkClasses)
+      );
 
       const textColor = computed(() =>
         props.tabbar && !props.tabbarActive
