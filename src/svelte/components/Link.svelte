@@ -5,6 +5,7 @@
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+  import { LinkColors } from '../../shared/colors/LinkColors.js';
 
   let className = undefined;
   export { className as class };
@@ -38,14 +39,7 @@
 
   $: useTouchRipple(rippleEl, needsTouchRipple);
 
-  $: colors = {
-    text: 'text-primary',
-    tabbarInactive: cls(
-      'text-black',
-      dark('dark:text-white dark:text-opacity-55')
-    ),
-    ...colorsProp,
-  };
+  $: colors = LinkColors(colorsProp, dark);
 
   $: textColor = tabbar && !tabbarActive ? colors.tabbarInactive : colors.text;
   $: tabbarState = tabbarActive ? 'active' : 'inactive';

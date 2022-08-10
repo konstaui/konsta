@@ -1,5 +1,6 @@
 <script>
   import { PageClasses } from '../../shared/classes/PageClasses.js';
+  import { PageColors } from '../../shared/colors/PageColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -16,14 +17,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bgIos: cls('bg-page-ios-light', dark('dark:bg-page-ios-dark')),
-    bgMaterial: cls(
-      'bg-page-material-light',
-      dark('dark:bg-page-material-dark')
-    ),
-    ...colorsProp,
-  };
+  $: colors = PageColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

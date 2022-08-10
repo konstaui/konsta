@@ -1,5 +1,6 @@
 <script>
   import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
+  import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
@@ -11,11 +12,7 @@
 
   export let withBlock = true;
 
-  $: colors = {
-    textIos: '',
-    textMaterial: 'text-primary',
-    ...colorsProp,
-  };
+  $: colors = BlockTitleColors(colorsProp);
 
   $: c = useThemeClasses(
     { ios, material },

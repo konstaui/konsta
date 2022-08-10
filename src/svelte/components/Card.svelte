@@ -1,6 +1,6 @@
 <script>
   import { CardClasses } from '../../shared/classes/CardClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { CardColors } from '../../shared/colors/CardColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -18,11 +18,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bg: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
-    footerText: cls(`text-black`, dark('dark:text-white')),
-    ...colorsProp,
-  };
+  $: colors = CardColors(colorsProp, dark);
 
   $: style = outline ? 'outline' : 'shadow';
 

@@ -2,6 +2,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { FabClasses } from '../../shared/classes/FabClasses.js';
+  import { FabColors } from '../../shared/colors/FabColors.js';
 
   let className = undefined;
   export { className as class };
@@ -21,12 +22,7 @@
 
   $: useTouchRipple(rippleEl, touchRipple);
 
-  $: colors = {
-    bg: 'bg-primary',
-    activeBg: 'active:bg-primary-dark',
-    text: 'text-white',
-    ...colorsProp,
-  };
+  $: colors = FabColors(colorsProp);
 
   $: c = useThemeClasses(
     { ios, material },

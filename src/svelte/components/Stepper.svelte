@@ -3,6 +3,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { StepperClasses } from '../../shared/classes/StepperClasses.js';
+  import { StepperColors } from '../../shared/colors/StepperColors.js';
 
   let className = undefined;
   export { className as class };
@@ -43,15 +44,7 @@
   useTouchRipple(buttonLeftEl, touchRipple);
   useTouchRipple(buttonRightEl, touchRipple);
 
-  $: colors = {
-    text: 'text-primary',
-    border: 'border-primary',
-    bg: 'bg-primary',
-    activeBg: 'active:bg-primary',
-    activeBgDark: 'active:bg-primary-dark',
-    touchRipple: 'touch-ripple-primary',
-    ...colorsProp,
-  };
+  $: colors = StepperColors(colorsProp);
 
   $: size = large ? 'large' : small ? 'small' : 'medium';
   $: style = outline && raised ? 'clear' : outline ? 'outline' : 'fill';

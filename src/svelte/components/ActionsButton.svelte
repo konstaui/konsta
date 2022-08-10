@@ -1,8 +1,8 @@
 <script>
   import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
+  import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { cls } from '../../shared/cls.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   let className = undefined;
@@ -41,12 +41,7 @@
     Component = 'button';
   }
 
-  $: colors = {
-    bg: cls('bg-white', dark('dark:bg-neutral-800')),
-    activeBg: cls('active:bg-neutral-200', dark('dark:active:bg-neutral-700')),
-    text: 'text-primary',
-    ...colorsProp,
-  };
+  $: colors = ActionsButtonColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

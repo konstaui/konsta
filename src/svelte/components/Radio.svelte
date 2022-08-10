@@ -1,10 +1,10 @@
 <script>
-  import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
+  import { RadioColors } from '../../shared/colors/RadioColors.js';
 
   let className = undefined;
   export { className as class };
@@ -27,19 +27,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    borderIos: cls(
-      'border-black border-opacity-30',
-      dark('dark:border-white dark:border-opacity-30')
-    ),
-    borderMaterial: cls(
-      'border-black border-opacity-40',
-      dark('dark:border-white dark:border-opacity-40')
-    ),
-    bgChecked: 'bg-primary',
-    borderChecked: 'border-primary',
-    ...colorsProp,
-  };
+  $: colors = RadioColors(colorsProp, dark);
 
   $: state = checked ? 'checked' : 'notChecked';
 

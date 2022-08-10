@@ -1,6 +1,6 @@
 <script>
-  import { cls } from '../../shared/cls.js';
   import { SheetClasses } from '../../shared/classes/SheetClasses.js';
+  import { SheetColors } from '../../shared/colors/SheetColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -19,10 +19,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+  $: colors = SheetColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

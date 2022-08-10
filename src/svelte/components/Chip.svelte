@@ -1,6 +1,6 @@
 <script>
   import { ChipClasses } from '../../shared/classes/ChipClasses.js';
-  import { cls } from '../../shared/cls.js';
+  import { ChipColors } from '../../shared/colors/ChipColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -23,15 +23,7 @@
 
   $: style = outline ? 'outline' : 'fill';
 
-  $: colors = {
-    bg: cls(`bg-black bg-opacity-10`, dark('dark:bg-white dark:bg-opacity-10')),
-    text: 'text-current',
-    border: cls(
-      `border-black border-opacity-10`,
-      dark('dark:border-white dark:border-opacity-10')
-    ),
-    ...colorsProp,
-  };
+  $: colors = ChipColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

@@ -1,5 +1,6 @@
 <script>
   import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
+  import { BadgeColors } from '../../shared/colors/BadgeColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
@@ -13,11 +14,7 @@
 
   export let onClick = undefined;
 
-  $: colors = {
-    bg: 'bg-primary',
-    text: 'text-white',
-    ...colorsProp,
-  };
+  $: colors = BadgeColors(colorsProp);
 
   $: size = small ? 'sm' : 'md';
 

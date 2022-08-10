@@ -15,6 +15,13 @@ interface Props {
      * @default 'bg-primary'
      */
     bg?: string;
+
+    /**
+     * Checked toggle bg color in dark theme
+     *
+     * @default 'dark:bg-primary'
+     */
+    darkBg: 'dark:bg-primary';
   };
 
   /**

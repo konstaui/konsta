@@ -1,6 +1,6 @@
 <script>
-  import { cls } from '../../shared/cls.js';
   import { PopupClasses } from '../../shared/classes/PopupClasses.js';
+  import { PopupColors } from '../../shared/colors/PopupColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -20,10 +20,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bg: cls('bg-white', dark('dark:bg-black')),
-    ...colorsProp,
-  };
+  $: colors = PopoverColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

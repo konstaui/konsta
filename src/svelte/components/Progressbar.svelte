@@ -1,5 +1,6 @@
 <script>
   import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
+  import { ProgressbarColors } from '../../shared/colors/ProgressbarColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
@@ -11,10 +12,7 @@
 
   export let progress = 0;
 
-  $: colors = {
-    bg: 'bg-primary',
-    ...colorsProp,
-  };
+  $: colors = ProgressbarColors(colorsProp);
 
   $: c = useThemeClasses(
     { ios, material },

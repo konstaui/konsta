@@ -7,6 +7,7 @@
   import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
+  import { PopoverColors } from '../../shared/colors/PopoverColors.js';
 
   let className = undefined;
   export { className as class };
@@ -49,10 +50,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bg: cls('bg-popover-light', dark('dark:bg-popover-dark')),
-    ...colorsProp,
-  };
+  $: colors = PopoverColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

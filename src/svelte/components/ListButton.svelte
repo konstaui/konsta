@@ -2,6 +2,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
+  import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
   import { useTheme } from '../shared/use-theme.js';
 
   let className = undefined;
@@ -34,12 +35,7 @@
 
   $: useTouchRipple(rippleEl, touchRipple);
 
-  $: colors = {
-    text: 'text-primary',
-    activeBg: 'active:bg-primary',
-    touchRipple: 'touch-ripple-primary',
-    ...colorsProp,
-  };
+  $: colors = ListButtonColors(colorsProp);
 
   $: c = useThemeClasses(
     { ios, material },

@@ -1,8 +1,8 @@
 <script>
-  import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
+  import { ToolbarColors } from '../../shared/colors/ToolbarColors.js';
 
   let className = undefined;
   export { className as class };
@@ -25,14 +25,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bgIos: cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark')),
-    bgMaterial: cls(
-      'bg-bars-material-light',
-      dark('dark:bg-bars-material-dark')
-    ),
-    ...colorsProp,
-  };
+  $: colors = ToolbarColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

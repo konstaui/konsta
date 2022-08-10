@@ -5,6 +5,7 @@
   import PreloaderIOS from './icons/PreloaderIOS.svelte';
   import PreloaderMaterial from './icons/PreloaderMaterial.svelte';
   import { PreloaderClasses } from '../../shared/classes/PreloaderClasses.js';
+  import { PreloaderColors } from '../../shared/colors/PreloaderColors.js';
 
   let className = undefined;
   export { className as class };
@@ -19,10 +20,7 @@
 
   theme = useTheme({ ios, material }, (v) => (theme = v));
 
-  $: colors = {
-    icon: 'text-primary',
-    ...colorsProp,
-  };
+  $: colors = PreloaderColors(colorsProp);
 
   $: c = useThemeClasses(
     { ios, material },

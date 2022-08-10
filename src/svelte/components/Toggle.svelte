@@ -1,5 +1,6 @@
 <script>
   import { ToggleClasses } from '../../shared/classes/ToggleClasses.js';
+  import { ToggleColors } from '../../shared/colors/ToggleColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -19,11 +20,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    bg: 'bg-primary',
-    darkBg: 'dark:bg-primary',
-    ...colorsProp,
-  };
+  $: colors = ToggleColors(colorsProp, dark);
 
   $: state = checked ? 'checked' : 'notChecked';
 

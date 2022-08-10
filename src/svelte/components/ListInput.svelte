@@ -6,6 +6,7 @@
   import ListItem from './ListItem.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
+  import { ListInputColors } from '../../shared/colors/ListInputColors.js';
   import { cls } from '../../shared/cls.js';
 
   let className = undefined;
@@ -72,13 +73,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    labelFocus: 'text-primary',
-    errorText: 'text-red-500',
-    hairlineError: 'hairline-red-500',
-    hairlineFocus: 'hairline-primary',
-    ...colorsProp,
-  };
+  $: colors = ListInputColors(colorsProp, dark);
 
   $: labelStyle =
     !label || inlineLabel

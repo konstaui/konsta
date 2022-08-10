@@ -1,5 +1,6 @@
 <script>
   import { ToastClasses } from '../../shared/classes/ToastClasses.js';
+  import { ToastColors } from '../../shared/colors/ToastColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
@@ -13,12 +14,7 @@
   export let position = 'left';
   export let opened = false;
 
-  $: colors = {
-    bgIos: 'bg-toast-ios',
-    bgMaterial: 'bg-toast-material',
-    text: 'text-white',
-    ...colorsProp,
-  };
+  $: colors = ToastColors(colorsProp);
 
   $: c = useThemeClasses(
     { ios, material },

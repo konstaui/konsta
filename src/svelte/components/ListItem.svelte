@@ -6,6 +6,7 @@
   import ChevronIcon from './icons/ChevronIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
+  import { ListItemColors } from '../../shared/colors/ListItemColors.js';
 
   let className = undefined;
   export { className as class };
@@ -69,12 +70,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    text: cls(`text-black`, dark('dark:text-white')),
-    menuListItemText: cls(`text-primary`, dark('dark:text-white')),
-    menuListItemActiveBg: 'bg-primary dark:bg-primary',
-    ...colorsProp,
-  };
+  $: colors = ListItemColors(colorsProp, dark);
 
   $: isMenuListItemActive = menuListItem && menuListItemActive;
 

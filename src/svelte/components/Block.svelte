@@ -1,5 +1,6 @@
 <script>
   import { BlockClasses } from '../../shared/classes/BlockClasses.js';
+  import { BlockColors } from '../../shared/colors/BlockColors.js';
   import { cls } from '../../shared/cls.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -20,10 +21,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = {
-    strongBg: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
-    ...colorsProp,
-  };
+  $: colors = BlockColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },
