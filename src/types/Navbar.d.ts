@@ -16,17 +16,23 @@ interface Props {
      */
     bgIos?: string;
     /**
-     * Navbar bg color in iOS theme
+     * Navbar bg color in Material theme
      *
-     * @default 'bg-bars-material-light dark:bg-bars-material-dark'
+     * @default 'bg-md-surface-2-light dark:bg-md-surface-2-dark'
      */
     bgMaterial?: string;
     /**
-     * Title text color
+     * Title text color iOS theme
      *
      * @default 'text-black dark:text-white'
      */
-    title?: string;
+    titleIos?: string;
+    /**
+     * Title text color in Material theme
+     *
+     * @default 'text-black dark:text-white'
+     */
+    titleMaterial?: string;
   };
 
   /**

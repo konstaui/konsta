@@ -74,11 +74,11 @@ export const NavbarClasses = (props, colors, classes) => {
     },
     title: {
       common: cls(
-        `${colors.title} whitespace-nowrap leading-tight`,
+        `whitespace-nowrap leading-tight`,
         titleClassName || titleClass
       ),
-      ios: 'font-semibold absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center',
-      material: 'font-normal mx-4 text-left',
+      ios: `${colors.titleIos} font-semibold absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center`,
+      material: `${colors.titleMaterial} font-normal mx-4 text-left`,
     },
     subtitle: {
       common: cls(

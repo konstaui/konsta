@@ -72,10 +72,11 @@
           useDarkClasses('dark:bg-bars-ios-dark')
         ),
         bgMaterial: cls(
-          'bg-md-light-surface-2',
-          useDarkClasses('dark:bg-md-dark-surface-2')
+          'bg-md-surface-2-light',
+          useDarkClasses('dark:bg-md-surface-2-dark')
         ),
-        title: cls('text-black', useDarkClasses('dark:text-white')),
+        titleIos: cls('text-black', useDarkClasses('dark:text-white')),
+        titleMaterial: cls('text-black', useDarkClasses('dark:text-white')),
         ...(props.colors || {}),
       }));
 
