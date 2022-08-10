@@ -12,6 +12,7 @@ const pluginSafeAreas = require('./config/plugin-safe-areas.js');
 const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
 const pluginTouch = require('./config/plugin-touch.js');
+const mdColors = require('./config/md-colors.js');
 
 const content = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
 
@@ -37,6 +38,11 @@ const config = (userConfig = {}) => {
     },
     userConfig
   );
+  const materialColors = mdColors(
+    newConfig.theme.extend.colors.primary.DEFAULT
+  );
+  console.log(materialColors);
+  Object.assign(newConfig.theme.extend.colors, materialColors);
 
   if (!newConfig.content) {
     newConfig.content = [content];

@@ -6,6 +6,7 @@ const buildVueTypes = require('./build-vue-types.js');
 const buildSvelte = require('./build-svelte.js');
 const buildSvelteTypes = require('./build-svelte-types.js');
 const buildShared = require('./build-shared.js');
+const buildMdColors = require('./build-md-colors.js');
 
 const formats = ['esm', 'cjs'];
 
@@ -13,6 +14,7 @@ const formats = ['esm', 'cjs'];
   const env = process.env.NODE_ENV || 'development';
   const outputDir = env === 'development' ? 'build' : 'package';
   return Promise.all([
+    buildMdColors(),
     buildCopy(),
     ...formats.map((format) => buildReact(format, outputDir)),
     ...formats.map((format) => buildShared(format, outputDir)),
