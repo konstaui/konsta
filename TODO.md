@@ -9,3 +9,36 @@
 - Stepper (tweak to buttons)
 - List sizes and styles
 - Menu list sizes and styles
+- Update colors in .d.ts
+- Multi colors
+
+Colors
+
+- Actions
+- Badge
+- Breadcrumbs
+- Cards
+- Checkbox
+- Chips
+- Content Block
+- Fab
+- Form Inputs
+- List
+- List Button
+- Menu List
+- Navbar
+- Panel
+- Popover
+- Popup
+- Preloader
+- Progressbar
+- Radio
+- Range Slider
+- Segmented
+- Sheet Modal
+- Stepper
+- Subnavbar
+- Tabbar
+- Toast
+- Toggle
+- Toolbar
