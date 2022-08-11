@@ -2,6 +2,7 @@
   import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
   import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   let className = undefined;
   export { className as class };
@@ -11,8 +12,9 @@
   export let material = undefined;
 
   export let withBlock = true;
+  const dark = useDarkClasses();
 
-  $: colors = BlockTitleColors(colorsProp);
+  $: colors = BlockTitleColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

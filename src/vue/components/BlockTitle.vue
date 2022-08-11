@@ -8,6 +8,7 @@
   import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
   import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
     name: 'k-block-title',
@@ -33,7 +34,9 @@
       },
     },
     setup(props) {
-      const colors = computed(() => BlockTitleColors(props.colors || {}));
+      const colors = computed(() =>
+        BlockTitleColors(props.colors || {}, useDarkClasses)
+      );
       const c = useThemeClasses(props, () => BlockTitleClasses(props, colors));
       return {
         c,

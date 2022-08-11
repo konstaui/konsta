@@ -2,6 +2,7 @@ import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
 import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const BlockTitle = forwardRef((props, ref) => {
   const {
@@ -34,8 +35,9 @@ const BlockTitle = forwardRef((props, ref) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
-  const colors = BlockTitleColors(colorsProp);
+  const colors = BlockTitleColors(colorsProp, dark);
 
   const c = themeClasses(
     BlockTitleClasses({ ...props, withBlock }, colors),
