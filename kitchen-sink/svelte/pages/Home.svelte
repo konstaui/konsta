@@ -27,7 +27,7 @@
 </script>
 
 <Page>
-  <Navbar title="Konsta UI" />
+  <Navbar title="Konsta UI" centerTitle />
 
   <BlockTitle>Theme</BlockTitle>
   <List>

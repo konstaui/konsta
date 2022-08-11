@@ -1,6 +1,6 @@
 <template>
   <k-page>
-    <k-navbar title="Konsta UI" />
+    <k-navbar title="Konsta UI" center-title />
 
     <k-block-title>Theme</k-block-title>
     <k-list>
