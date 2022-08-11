@@ -30,7 +30,7 @@
         <template #media>
           <img
             alt="avatar"
-            class="h-7 rounded-full"
+            class="ios:h-7 material:h-6 rounded-full"
             src="https://cdn.framework7.io/placeholder/people-100x100-9.jpg"
           />
         </template>
@@ -40,7 +40,7 @@
         <template #media>
           <img
             alt="avatar"
-            class="h-7 rounded-full"
+            class="ios:h-7 material:h-6 rounded-full"
             src="https://cdn.framework7.io/placeholder/people-100x100-3.jpg"
           />
         </template>
@@ -50,7 +50,7 @@
         <template #media>
           <img
             alt="avatar"
-            class="h-7 rounded-full"
+            class="ios:h-7 material:h-6 rounded-full"
             src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
           />
         </template>
@@ -67,7 +67,7 @@
         <template #media>
           <img
             alt="avatar"
-            class="h-7 rounded-full"
+            class="ios:h-7 material:h-6 rounded-full"
             src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
           />
         </template>

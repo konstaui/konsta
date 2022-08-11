@@ -52,7 +52,7 @@ export default function ChipsPage() {
           media={
             <img
               alt="avatar"
-              className="h-7 rounded-full"
+              className="ios:h-7 material:h-6 rounded-full"
               src="https://cdn.framework7.io/placeholder/people-100x100-9.jpg"
             />
           }
@@ -64,7 +64,7 @@ export default function ChipsPage() {
           media={
             <img
               alt="avatar"
-              className="h-7 rounded-full"
+              className="ios:h-7 material:h-6 rounded-full"
               src="https://cdn.framework7.io/placeholder/people-100x100-3.jpg"
             />
           }
@@ -76,7 +76,7 @@ export default function ChipsPage() {
           media={
             <img
               alt="avatar"
-              className="h-7 rounded-full"
+              className="ios:h-7 material:h-6 rounded-full"
               src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
             />
           }
@@ -101,7 +101,7 @@ export default function ChipsPage() {
           media={
             <img
               alt="avatar"
-              className="h-7 rounded-full"
+              className="ios:h-7 material:h-6 rounded-full"
               src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
             />
           }
