@@ -16,12 +16,13 @@ export const RadioClasses = (props, colors, classes) => {
         material: colors.borderMaterial,
       },
       checked: {
-        common: colors.borderChecked,
+        ios: colors.borderCheckedIos,
+        material: colors.borderCheckedMaterial,
       },
     },
     icon: {
       ios: 'text-primary',
-      material: `w-3/5 h-3/5 rounded-full ${colors.bgChecked}`,
+      material: `w-3/5 h-3/5 rounded-full ${colors.bgCheckedMaterial}`,
       notChecked: 'opacity-0',
       checked: 'opacity-100',
     },
