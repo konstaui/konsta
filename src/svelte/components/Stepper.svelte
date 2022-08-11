@@ -1,6 +1,7 @@
 <script>
   import { cls } from '../../shared/cls.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { StepperClasses } from '../../shared/classes/StepperClasses.js';
   import { StepperColors } from '../../shared/colors/StepperColors.js';
@@ -44,7 +45,9 @@
   useTouchRipple(buttonLeftEl, touchRipple);
   useTouchRipple(buttonRightEl, touchRipple);
 
-  $: colors = StepperColors(colorsProp);
+  const dark = useDarkClasses();
+
+  $: colors = StepperColors(colorsProp, dark);
 
   $: size = large ? 'large' : small ? 'small' : 'medium';
   $: style = outline && raised ? 'clear' : outline ? 'outline' : 'fill';

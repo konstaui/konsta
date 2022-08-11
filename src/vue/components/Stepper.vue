@@ -30,6 +30,7 @@
   import { StepperClasses } from '../../shared/classes/StepperClasses.js';
   import { StepperColors } from '../../shared/colors/StepperColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
@@ -75,7 +76,9 @@
       useTouchRipple(buttonLeftElRef, props);
       useTouchRipple(buttonRightElRef, props);
 
-      const colors = computed(() => StepperColors(props.colors || {}));
+      const colors = computed(() =>
+        StepperColors(props.colors || {}, useDarkClasses)
+      );
 
       const size = computed(() =>
         props.large ? 'large' : props.small ? 'small' : 'medium'

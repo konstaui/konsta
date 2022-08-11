@@ -2,6 +2,7 @@ import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { StepperClasses } from '../../shared/classes/StepperClasses.js';
 import { StepperColors } from '../../shared/colors/StepperColors.js';
@@ -60,7 +61,9 @@ const Stepper = forwardRef((props, ref) => {
   useTouchRipple(buttonLeftElRef, theme === 'material' && touchRipple);
   useTouchRipple(buttonRightElRef, theme === 'material' && touchRipple);
 
-  const colors = StepperColors(colorsProp);
+  const dark = useDarkClasses();
+
+  const colors = StepperColors(colorsProp, dark);
 
   const size = large ? 'large' : small ? 'small' : 'medium';
   const style = outline && raised ? 'clear' : outline ? 'outline' : 'fill';

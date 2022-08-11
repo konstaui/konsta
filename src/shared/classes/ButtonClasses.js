@@ -39,8 +39,10 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
           disabled
             ? cls(colors.disabledBg, colors.disabledText)
             : cls(
-                `${colors.fillTextMaterial} ${colors.fillBgMaterial} ${colors.fillActiveBgMaterial} touch-ripple-white`,
-                darkClasses('dark:touch-ripple-black')
+                colors.fillTextMaterial,
+                colors.fillBgMaterial,
+                colors.fillActiveBgMaterial,
+                colors.fillTouchRipple
               )
         ),
       },

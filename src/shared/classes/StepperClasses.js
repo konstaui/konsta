@@ -7,10 +7,13 @@ export const StepperClasses = (props, colors) => {
     base: `${colors.text} inline-flex items-stretch`,
     raised: 'shadow',
     size: {
-      small: 'h-7',
+      small: {
+        ios: `h-6`,
+        material: `h-8`,
+      },
       medium: {
         ios: `h-7`,
-        material: `h-9`,
+        material: `h-10`,
       },
       large: {
         ios: `h-11`,
@@ -18,7 +21,7 @@ export const StepperClasses = (props, colors) => {
       },
     },
     shape: {
-      square: 'rounded',
+      square: { ios: 'rounded', material: 'rounded-lg' },
       rounded: 'rounded-full',
     },
     button: {
@@ -26,42 +29,69 @@ export const StepperClasses = (props, colors) => {
         'relative flex items-center justify-center w-10 cursor-pointer overflow-hidden z-10 select-none',
     },
     buttonLeftShape: {
-      square: 'rounded-l',
+      square: { ios: 'rounded-l', material: 'rounded-l-lg' },
       rounded: 'rounded-l-full',
     },
     buttonRightShape: {
-      square: 'rounded-r',
+      square: { ios: 'rounded-r', material: 'rounded-r-lg' },
       rounded: 'rounded-r-full',
     },
     buttonStyle: {
-      fill: cls(
-        'text-white',
-        colors.bg,
-        colors.activeBgDark,
-        'touch-ripple-white',
-        buttonsOnly && 'first:border-r border-black border-opacity-10'
-      ),
-      outline: cls(
-        'border-2',
-        colors.border,
-        colors.text,
-        colors.touchRipple,
-        colors.activeBg,
-        'active:bg-opacity-15',
-        buttonsOnly && 'first:border-r-0'
-      ),
+      fill: {
+        common: cls(
+          colors.fillTouchRipple,
+          buttonsOnly && 'first:border-r border-black border-opacity-10'
+        ),
+        ios: cls(colors.fillBgIos, colors.fillTextIos, colors.fillActiveBgIos),
+        material: cls(
+          colors.fillBgMaterial,
+          colors.fillTextMaterial,
+          colors.fillActiveBgMaterial
+        ),
+      },
+      outline: {
+        common: cls(
+          colors.touchRipple,
+          'active:bg-opacity-15',
+          buttonsOnly && 'first:border-r-0'
+        ),
+        ios: cls(
+          'border-2',
+          colors.textIos,
+          colors.activeBgIos,
+          colors.outlineBorderIos
+        ),
+        material: cls(
+          'border',
+          colors.textMaterial,
+          colors.activeBgMaterial,
+          colors.outlineBorderMaterial
+        ),
+      },
 
-      clear: `${colors.text} ${colors.activeBg} ${colors.touchRipple} active:bg-opacity-15 last:border-l border-black border-opacity-10`,
+      clear: {
+        common: `${colors.touchRipple} active:bg-opacity-15 last:border-l border-black border-opacity-10`,
+        ios: cls(colors.textIos, colors.activeBgIos),
+        material: cls(colors.textMaterial, colors.activeBgMaterial),
+      },
     },
     input: {
       common: 'focus:outline-none text-center appearance-none bg-transparent',
     },
     value: {
-      common: `w-11 flex items-center justify-center ${colors.text} font-medium`,
-      ios: 'text-base',
-      material: 'text-sm',
-      fill: `border-t-2 border-b-2 ${colors.border} ${colors.text}`,
-      outline: `border-t-2 border-b-2 ${colors.border} ${colors.text}`,
+      common: `w-11 flex items-center justify-center font-medium`,
+      ios: `text-base ${colors.textIos}`,
+      material: `text-sm ${colors.textMaterial}`,
+      fill: {
+        common: ``,
+        ios: `border-t-2 border-b-2 ${colors.outlineBorderIos}`,
+        material: `border-t border-b ${colors.outlineBorderMaterial}`,
+      },
+      outline: {
+        common: ``,
+        ios: `border-t-2 border-b-2 ${colors.outlineBorderIos}`,
+        material: `border-t border-b ${colors.outlineBorderMaterial}`,
+      },
       clear: 'border-l border-black border-opacity-10',
     },
     hBar: 'w-4 h-0.5 bg-current block',

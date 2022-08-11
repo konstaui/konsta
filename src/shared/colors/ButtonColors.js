@@ -15,6 +15,7 @@ export const ButtonColors = (colorsProp = {}, dark) => {
     fillActiveBgMaterial: '',
     fillBgIos: 'bg-primary',
     fillBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),
+    fillTouchRipple: cls('touch-ripple-white', 'dark:touch-ripple-primary'),
     outlineBorderIos: 'border-primary',
     outlineBorderMaterial: cls(
       'border-md-light-outline',

@@ -2,11 +2,25 @@ import { cls } from '../cls.js';
 
 export const StepperColors = (colorsProp = {}, dark) => {
   return {
-    text: 'text-primary',
-    border: 'border-primary',
-    bg: 'bg-primary',
-    activeBg: 'active:bg-primary',
-    activeBgDark: 'active:bg-primary-dark',
+    activeBgIos: 'active:bg-primary',
+    activeBgMaterial: '',
+    textIos: 'text-primary',
+    textMaterial: cls('text-md-light-primary', 'dark:text-md-dark-primary'),
+    fillTextIos: cls('text-white'),
+    fillTextMaterial: cls(
+      'text-md-light-on-primary',
+      dark('dark:text-md-dark-on-primary')
+    ),
+    fillBgIos: 'bg-primary',
+    fillBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),
+    fillActiveBgIos: 'active:bg-primary-dark',
+    fillActiveBgMaterial: '',
+    fillTouchRipple: cls('touch-ripple-white', 'dark:touch-ripple-primary'),
+    outlineBorderIos: 'border-primary',
+    outlineBorderMaterial: cls(
+      'border-md-light-outline',
+      dark('dark:border-md-dark-outline')
+    ),
     touchRipple: 'touch-ripple-primary',
     ...colorsProp,
   };
