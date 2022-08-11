@@ -67,7 +67,7 @@ const Toggle = forwardRef((props, ref) => {
         className={c.input}
       />
       <span className={c.inner[state]} />
-      <span className={c.knob[state]} />
+      <span className={c.thumb[state]} />
       {children}
     </Component>
   );

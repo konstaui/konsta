@@ -44,6 +44,6 @@
     class={c.input}
   />
   <span class={c.inner[state]} />
-  <span class={c.knob[state]} />
+  <span class={c.thumb[state]} />
   <slot />
 </label>
