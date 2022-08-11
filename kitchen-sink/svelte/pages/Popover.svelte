@@ -105,7 +105,11 @@
     target={popoverTargetEl}
     onBackdropClick={() => (popoverOpened = false)}
   >
-    <List nested hairlines={false} colors={{ bg: 'bg-transparent' }}>
+    <List
+      nested
+      hairlines={false}
+      colors={{ bgIos: 'bg-transparent', bgMaterial: 'bg-transparent' }}
+    >
       <ListItem title="Item 1" link onClick={() => (popoverOpened = false)} />
       <ListItem
         title="List Item 2"

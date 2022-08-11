@@ -109,7 +109,11 @@ export default function PopoverPage() {
         target={popoverTargetRef.current}
         onBackdropClick={() => setPopoverOpened(false)}
       >
-        <List nested hairlines={false} colors={{ bg: 'bg-transparent' }}>
+        <List
+          nested
+          hairlines={false}
+          colors={{ bgIos: 'bg-transparent', bgMaterial: 'bg-transparent' }}
+        >
           <ListItem
             title="Item 1"
             link

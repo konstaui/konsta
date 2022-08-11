@@ -89,7 +89,11 @@
       :target="popoverTargetRef"
       @backdropclick="() => (popoverOpened = false)"
     >
-      <k-list nested :hairlines="false" :colors="{ bg: 'bg-transparent' }">
+      <k-list
+        nested
+        :hairlines="false"
+        :colors="{ bgIos: 'bg-transparent', bgMaterial: 'bg-transparent' }"
+      >
         <k-list-item
           title="Item 1"
           link
