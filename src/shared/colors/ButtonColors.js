@@ -2,11 +2,34 @@ import { cls } from '../cls.js';
 
 export const ButtonColors = (colorsProp = {}, dark) => {
   return {
-    text: 'text-primary',
-    border: 'border-primary',
-    bg: 'bg-primary',
-    activeBg: 'active:bg-primary',
-    activeBgDark: 'active:bg-primary-dark',
+    activeBgIos: 'active:bg-primary',
+    activeBgMaterial: '',
+    textIos: 'text-primary',
+    textMaterial: cls('text-md-light-primary', 'dark:text-md-dark-primary'),
+    fillTextIos: cls('text-white'),
+    fillTextMaterial: cls(
+      'text-md-light-on-primary',
+      dark('dark:text-md-dark-on-primary')
+    ),
+    fillActiveBgIos: 'active:bg-primary-dark',
+    fillActiveBgMaterial: '',
+    fillBgIos: 'bg-primary',
+    fillBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),
+    outlineBorderIos: 'border-primary',
+    outlineBorderMaterial: cls(
+      'border-md-light-outline',
+      dark('dark:border-md-dark-outline')
+    ),
+    tonalBgIos: 'bg-primary',
+    tonalBgMaterial: cls(
+      'bg-md-light-secondary-container',
+      dark('dark:bg-md-dark-secondary-container')
+    ),
+    tonalTextIos: 'text-primary',
+    tonalTextMaterial: cls(
+      'text-md-light-on-secondary-container',
+      dark('dark:text-md-dark-on-secondary-container')
+    ),
     touchRipple: 'touch-ripple-primary',
     disabledText: cls(
       'text-black text-opacity-30',

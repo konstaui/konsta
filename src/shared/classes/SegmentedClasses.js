@@ -12,14 +12,14 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
       ? 'shadow'
       : `shadow divide-x divide-black divide-opacity-10`,
     outline: {
-      common: `${colors.border}`,
-      ios: 'border-2',
-      material: 'border',
+      common: ``,
+      ios: `${colors.borderIos} border-2`,
+      material: `${colors.borderMaterial} border`,
     },
     outlineInner: {
-      common: `-m-0.5 flex w-full justify-center items-center ${colors.divide}`,
-      ios: 'divide-x-2',
-      material: 'divide-x',
+      common: `-m-0.5 flex w-full justify-center items-center`,
+      ios: `divide-x-2 ${colors.divideIos}`,
+      material: `divide-x ${colors.divideMaterial}`,
     },
     strong: cls(
       'p-0.5 bg-black bg-opacity-5 space-x-1 relative',

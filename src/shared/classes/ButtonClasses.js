@@ -28,41 +28,69 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
       rounded: segmented && !segmentedStrong ? '' : 'rounded-full',
     },
     style: {
-      fill: cls(
-        disabled
-          ? cls(colors.disabledBg, colors.disabledText)
-          : `text-white ${colors.bg} ${colors.activeBgDark} touch-ripple-white`
-      ),
+      fill: {
+        common: cls(disabled && cls(colors.disabledBg, colors.disabledText)),
+        ios: cls(
+          disabled
+            ? cls(colors.disabledBg, colors.disabledText)
+            : `${colors.fillTextIos} ${colors.fillBgIos} ${colors.fillActiveBgIos}`
+        ),
+        material: cls(
+          disabled
+            ? cls(colors.disabledBg, colors.disabledText)
+            : cls(
+                `${colors.fillTextMaterial} ${colors.fillBgMaterial} ${colors.fillActiveBgMaterial} touch-ripple-white`,
+                darkClasses('dark:touch-ripple-black')
+              )
+        ),
+      },
       outline: {
         common: cls(
           disabled
             ? cls(colors.disabledText, colors.disabledBorder)
-            : cls(
-                !segmented && `${colors.border}`,
-                colors.text,
-                colors.activeBg,
-                'active:bg-opacity-15',
-                colors.touchRipple
-              )
+            : cls('active:bg-opacity-15', colors.touchRipple)
         ),
-        ios: cls(!segmented && 'border-2'),
-        material: cls(!segmented && 'border'),
+        ios: cls(
+          !segmented && 'border-2',
+          !disabled && !segmented && colors.outlineBorderIos,
+          !disabled && cls(colors.textIos, colors.activeBgIos)
+        ),
+        material: cls(
+          !segmented && 'border',
+          !disabled && !segmented && colors.outlineBorderMaterial,
+          !disabled && cls(colors.textMaterial, colors.activeBgMaterial)
+        ),
       },
-      clear: cls(
-        disabled
-          ? colors.disabledText
-          : `${colors.text} ${colors.activeBg} active:bg-opacity-15 ${colors.touchRipple}`
-      ),
-      tonal: disabled
-        ? cls(colors.disabledBg, colors.disabledText)
-        : cls(
-            colors.bg,
-            colors.text,
-            'bg-opacity-15',
-            colors.touchRipple,
-            colors.activeBg,
-            'active:bg-opacity-25'
+      clear: {
+        common: cls(
+          disabled
+            ? colors.disabledText
+            : `active:bg-opacity-15 ${colors.touchRipple}`
+        ),
+        ios: !disabled && cls(colors.textIos, colors.activeBgIos),
+        material:
+          !disabled && cls(colors.textMaterial, colors.activeBgMaterial),
+      },
+      tonal: {
+        common: disabled
+          ? cls(colors.disabledBg, colors.disabledText)
+          : cls(colors.touchRipple),
+        ios:
+          !disabled &&
+          cls(
+            colors.tonalTextIos,
+            colors.tonalBgIos,
+            colors.activeBgIos,
+            'bg-opacity-15 active:bg-opacity-25'
           ),
+        material:
+          !disabled &&
+          cls(
+            colors.tonalTextMaterial,
+            colors.tonalBgMaterial,
+            colors.activeBgMaterial
+          ),
+      },
       segmentedStrong: cls(
         `active:bg-black active:bg-opacity-10`,
         darkClasses(
