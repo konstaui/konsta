@@ -1,6 +1,7 @@
 <script>
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { FabClasses } from '../../shared/classes/FabClasses.js';
   import { FabColors } from '../../shared/colors/FabColors.js';
 
@@ -20,9 +21,11 @@
 
   const rippleEl = { current: null };
 
+  const dark = useDarkClasses();
+
   $: useTouchRipple(rippleEl, touchRipple);
 
-  $: colors = FabColors(colorsProp);
+  $: colors = FabColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

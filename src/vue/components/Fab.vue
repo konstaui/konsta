@@ -25,6 +25,7 @@
   import { FabColors } from '../../shared/colors/FabColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
     name: 'k-fab',
@@ -53,7 +54,9 @@
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props);
 
-      const colors = computed(() => FabColors(props.colors || {}));
+      const colors = computed(() =>
+        FabColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () => FabClasses(props, colors.value));
       return {

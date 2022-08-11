@@ -2,6 +2,7 @@ import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { FabClasses } from '../../shared/classes/FabClasses.js';
 import { FabColors } from '../../shared/colors/FabColors.js';
 
@@ -42,10 +43,11 @@ const Fab = forwardRef((props, ref) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses();
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = FabColors(colorsProp);
+  const colors = FabColors(colorsProp, dark);
 
   const c = themeClasses(FabClasses(props, colors), className);
 
