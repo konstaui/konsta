@@ -6,12 +6,12 @@ export const PopoverClasses = (props, colors, classes) => {
   return {
     base: {
       common: cls(
-        'transition-transform-opacity duration-300 z-40 no-safe-areas',
+        'transition-transform-opacity z-40 no-safe-areas',
         positionClass('fixed', classes),
         size
       ),
-      ios: '',
-      material: '',
+      ios: 'duration-300',
+      material: 'duration-400 ease-material-in',
       opened: '',
       closed: {
         common: 'opacity-0 pointer-events-none',
@@ -20,9 +20,9 @@ export const PopoverClasses = (props, colors, classes) => {
       },
     },
     inner: {
-      common: cls('overflow-hidden relative', colors.bg),
-      ios: cls('rounded-xl', translucent && 'translucent'),
-      material: 'rounded shadow-lg',
+      common: cls('overflow-hidden relative'),
+      ios: cls('rounded-xl', translucent && 'translucent', colors.bgIos),
+      material: cls('rounded-[1.75rem] shadow-lg', colors.bgMaterial),
     },
     angleWrap: {
       common: cls(angleClassName || angleClass || ''),
@@ -37,10 +37,9 @@ export const PopoverClasses = (props, colors, classes) => {
       right: 'left-full',
     },
     angleArrow: {
-      common: cls(
-        colors.bg,
-        'absolute rounded w-full h-full transform rotate-45'
-      ),
+      common: cls('absolute rounded w-full h-full transform rotate-45'),
+      ios: colors.bgIos,
+      material: colors.bgMaterial,
       bottom: '-top-4.75',
       top: 'top-4.75',
       left: 'left-4.75',
