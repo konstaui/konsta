@@ -18,7 +18,7 @@ const Popover = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
-    angle,
+    angle = true,
     angleClassName = '',
     colors: colorsProp,
     size = 'w-64',
@@ -82,8 +82,6 @@ const Popover = forwardRef((props, ref) => {
     className
   );
 
-  const needsAngle = typeof angle === 'undefined' ? theme === 'ios' : angle;
-
   const setPopover = () => {
     if (!target || !elRef.current || !opened) return;
     setPositions(
@@ -91,7 +89,7 @@ const Popover = forwardRef((props, ref) => {
         popoverEl: elRef.current,
         targetEl: target,
         angleEl: angleElRef.current,
-        needsAngle,
+        needsAngle: angle,
         targetX,
         targetY,
         targetHeight,
@@ -160,7 +158,7 @@ const Popover = forwardRef((props, ref) => {
         style={popoverStyle}
         {...attrs}
       >
-        {needsAngle && (
+        {angle && (
           <div
             ref={angleElRef}
             style={angleStyle}

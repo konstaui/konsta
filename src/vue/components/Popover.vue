@@ -2,7 +2,7 @@
   <div v-if="backdrop" :class="c.backdrop[state]" @click="onBackdropClick" />
   <component :is="component" ref="elRef" :style="popoverStyle" :class="classes">
     <div
-      v-if="needsAngle"
+      v-if="angle"
       ref="angleElRef"
       :style="angleStyle"
       :class="c.angleWrap[positions.anglePosition]"
@@ -78,19 +78,13 @@
         PopoverClasses(props, colors.value, ctx.attrs.class)
       );
 
-      const needsAngle = computed(() => {
-        return typeof props.angle === 'undefined'
-          ? theme.value === 'ios'
-          : props.angle;
-      });
-
       const setPopover = () => {
         if (!props.target || !elRef.value || !props.opened) return;
         positions.value = calcPopoverPosition({
           popoverEl: elRef.value,
           targetEl: props.target,
           angleEl: angleElRef.value,
-          needsAngle: needsAngle.value,
+          needsAngle: props.angle,
           targetX: props.targetX,
           targetY: props.targetY,
           targetWidth: props.targetWidth,
@@ -168,7 +162,7 @@
         angleElRef,
         classes,
         popoverStyle,
-        needsAngle,
+        needsAngle: props.angle,
         angleStyle,
         positions,
         theme,
