@@ -55,10 +55,6 @@ const extendTheme = () => {
     '2xs': '0.625rem',
     'icon-ios': '28px',
     'icon-material': '24px',
-    'navbar-ios': '17px',
-    'navbar-material': '22px',
-    'list-title-ios': '17px',
-    'list-title-material': '16px',
   };
 
   // SCALE
@@ -75,8 +71,6 @@ const extendTheme = () => {
   const colors = {
     'ios-light-page': '#efeff4',
     'ios-dark-page': '#000',
-    'page-material-light': '#fff',
-    'page-material-dark': '#121212',
     'block-strong-light': '#fff',
     'block-strong-dark': '#1c1c1d',
     'list-divider-light': '#f4f4f4',

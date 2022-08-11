@@ -53,13 +53,13 @@ interface Props {
   /**
    * Tailwind CSS class for item title font size in iOS theme
    *
-   * @default 'text-list-title-ios'
+   * @default 'text-[17px]'
    */
   titleFontSizeIos?: string;
   /**
    * Tailwind CSS class for item title font size in Material theme
    *
-   * @default 'text-list-title-material'
+   * @default 'text-[16px]'
    */
   titleFontSizeMaterial?: string;
   /**

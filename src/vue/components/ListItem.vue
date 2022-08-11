@@ -84,10 +84,10 @@
       innerClass: { type: String, default: '' },
       contentClass: { type: String, default: '' },
       titleWrapClass: { type: String, default: '' },
-      titleFontSizeIos: { type: String, default: 'text-list-title-ios' },
+      titleFontSizeIos: { type: String, default: 'text-[17px]' },
       titleFontSizeMaterial: {
         type: String,
-        default: 'text-list-title-material',
+        default: 'text-[16px]',
       },
 
       // Content props

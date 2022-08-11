@@ -20,8 +20,8 @@ const ListItem = forwardRef((props, ref) => {
     contentChildren,
     titleWrapClassName = '',
 
-    titleFontSizeIos = 'text-list-title-ios',
-    titleFontSizeMaterial = 'text-list-title-material',
+    titleFontSizeIos = 'text-[17px]',
+    titleFontSizeMaterial = 'text-[16px]',
 
     // Content props
     title,
@@ -90,9 +90,10 @@ const ListItem = forwardRef((props, ref) => {
 
   const isMenuListItemActive = menuListItem && menuListItemActive;
 
-  const textColor = isMenuListItemActive
-    ? colors.menuListItemText
-    : colors.text;
+  const textColorProp = `${isMenuListItemActive ? 'menuListItemText' : 'text'}${
+    theme === 'ios' ? 'Ios' : 'Material'
+  }`;
+  const textColor = colors[textColorProp];
 
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;

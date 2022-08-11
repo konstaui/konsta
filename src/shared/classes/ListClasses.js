@@ -7,11 +7,12 @@ export const ListClasses = (props, colors, classes) => {
     base: {
       common: cls(
         !nested && margin,
-        colors.bg,
         !inset && !nested && hairlines && 'hairline-t hairline-b',
         positionClass('relative', classes),
         'z-10'
       ),
+      ios: colors.bgIos,
+      material: colors.bgMaterial,
     },
     ul: {
       common: cls(inset && 'no-safe-areas', 'last-child-hairline-b-none'),
@@ -19,7 +20,7 @@ export const ListClasses = (props, colors, classes) => {
     inset: {
       common: `ml-4-safe mr-4-safe overflow-hidden`,
       ios: `rounded-lg`,
-      material: `rounded`,
+      material: `rounded-xl`,
     },
     menuList: {
       common: 'py-1',

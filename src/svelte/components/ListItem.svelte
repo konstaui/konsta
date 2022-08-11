@@ -21,8 +21,8 @@
   export let contentClass = '';
   export let titleWrapClass = '';
 
-  export let titleFontSizeIos = 'text-list-title-ios';
-  export let titleFontSizeMaterial = 'text-list-title-material';
+  export let titleFontSizeIos = 'text-[17px]';
+  export let titleFontSizeMaterial = 'text-[16px]';
 
   export let withMedia = undefined;
   export let withTitle = undefined;
