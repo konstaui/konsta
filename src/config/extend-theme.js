@@ -73,8 +73,8 @@ const extendTheme = () => {
 
   // COLORS
   const colors = {
-    'page-ios-light': '#efeff4',
-    'page-ios-dark': '#000',
+    'ios-light-page': '#efeff4',
+    'ios-dark-page': '#000',
     'page-material-light': '#fff',
     'page-material-dark': '#121212',
     'block-strong-light': '#fff',
