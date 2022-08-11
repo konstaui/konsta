@@ -18,7 +18,10 @@ export const CheckboxClasses = (props, colors, classes, darkClasses) => {
         ios: colors.borderIos,
         material: colors.borderMaterial,
       },
-      checked: `${colors.bgChecked} ${colors.borderChecked}`,
+      checked: {
+        ios: `${colors.bgCheckedIos} ${colors.borderCheckedIos}`,
+        material: `${colors.bgCheckedMaterial} ${colors.borderCheckedMaterial}`,
+      },
     },
     icon: {
       notChecked: 'opacity-0',
