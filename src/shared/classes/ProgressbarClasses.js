@@ -3,8 +3,12 @@ export const ProgressbarClasses = (colors) => {
     base: {
       common: `block h-1 bg-opacity-30 overflow-hidden`,
       ios: `bg-black rounded-full`,
-      material: colors.bg,
+      material: colors.bgMaterial,
     },
-    inner: `block ${colors.bg} duration-200 w-full h-full`,
+    inner: {
+      common: `block duration-200 w-full h-full`,
+      ios: colors.bgIos,
+      material: colors.bgMaterial,
+    },
   };
 };

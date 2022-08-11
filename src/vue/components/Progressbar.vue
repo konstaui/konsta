@@ -12,6 +12,7 @@
   import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
   import { ProgressbarColors } from '../../shared/colors/ProgressbarColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
     name: 'k-progressbar',
@@ -37,7 +38,9 @@
       },
     },
     setup(props) {
-      const colors = computed(() => ProgressbarColors(props.colors || {}));
+      const colors = computed(() =>
+        ProgressbarColors(props.colors || {}, useDarkClasses)
+      );
 
       const c = useThemeClasses(props, () => ProgressbarClasses(colors.value));
 

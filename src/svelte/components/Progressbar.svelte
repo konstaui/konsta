@@ -2,6 +2,7 @@
   import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
   import { ProgressbarColors } from '../../shared/colors/ProgressbarColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   let className = undefined;
   export { className as class };
@@ -12,7 +13,9 @@
 
   export let progress = 0;
 
-  $: colors = ProgressbarColors(colorsProp);
+  const dark = useDarkClasses();
+
+  $: colors = ProgressbarColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

@@ -2,7 +2,8 @@ import { cls } from '../cls.js';
 
 export const ProgressbarColors = (colorsProp = {}, dark) => {
   return {
-    bg: 'bg-primary',
+    bgIos: 'bg-primary',
+    bgMaterial: cls('bg-md-light-primary', dark('dark:md-dark-primary')),
     ...colorsProp,
   };
 };
