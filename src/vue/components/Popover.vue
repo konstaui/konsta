@@ -89,6 +89,7 @@
           targetY: props.targetY,
           targetWidth: props.targetWidth,
           targetHeight: props.targetHeight,
+          theme: theme.value,
         });
       };
 

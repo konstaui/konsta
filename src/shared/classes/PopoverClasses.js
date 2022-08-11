@@ -22,10 +22,10 @@ export const PopoverClasses = (props, colors, classes) => {
     inner: {
       common: cls('overflow-hidden relative'),
       ios: cls('rounded-xl', translucent && 'translucent', colors.bgIos),
-      material: cls('rounded-[1.75rem] shadow-lg', colors.bgMaterial),
+      material: cls('rounded-[1.75rem]', colors.bgMaterial),
     },
     angleWrap: {
-      common: cls(angleClassName || angleClass || ''),
+      common: cls(angleClassName || angleClass || '', 'pointer-events-none'),
       ios: cls(
         'absolute w-6.5 h-6.5 z-50 overflow-hidden',
         translucent && 'opacity-80'

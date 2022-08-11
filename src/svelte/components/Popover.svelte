@@ -70,6 +70,7 @@
       targetY,
       targetWidth,
       targetHeight,
+      theme,
     });
   };
 

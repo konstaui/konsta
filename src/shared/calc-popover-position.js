@@ -7,6 +7,7 @@ export const calcPopoverPosition = ({
   targetY,
   targetWidth = 0,
   targetHeight = 0,
+  theme,
 }) => {
   if (targetEl.current) {
     targetEl = targetEl.current;
@@ -72,6 +73,8 @@ export const calcPopoverPosition = ({
 
   let [left, top, diff] = [0, 0, 0];
 
+  const angleMin = theme === 'ios' ? 13 : 23;
+
   // Top Position
   let position = 'top';
 
@@ -114,8 +117,8 @@ export const calcPopoverPosition = ({
     diff -= left;
     angleLeft = popoverWidth / 2 - angleSize + diff;
     angleLeft = Math.max(
-      Math.min(angleLeft, popoverWidth - angleSize * 2 - 13),
-      13
+      Math.min(angleLeft, popoverWidth - angleSize * 2 - angleMin),
+      angleMin
     );
   } else if (position === 'middle') {
     left = targetOffsetLeft - popoverWidth - angleSize;
@@ -133,8 +136,8 @@ export const calcPopoverPosition = ({
     }
     angleTop = popoverHeight / 2 - angleSize + diff;
     angleTop = Math.max(
-      Math.min(angleTop, popoverHeight - angleSize * 2 - 13),
-      13
+      Math.min(angleTop, popoverHeight - angleSize * 2 - angleMin),
+      angleMin
     );
   }
 
