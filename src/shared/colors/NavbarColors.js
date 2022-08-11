@@ -5,7 +5,10 @@ export const NavbarColors = (colorsProp, dark) => {
     bgIos: cls('bg-bars-ios-light', dark('dark:bg-bars-ios-dark')),
     bgMaterial: cls('bg-md-light-surface-2', dark('dark:bg-md-dark-surface-2')),
     titleIos: cls('text-black', dark('dark:text-white')),
-    titleMaterial: cls('text-black', dark('dark:text-white')),
+    titleMaterial: cls(
+      'text-md-light-on-surface',
+      dark('dark:text-md-dark-on-surface')
+    ),
     ...colorsProp,
   };
 };

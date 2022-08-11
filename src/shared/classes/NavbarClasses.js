@@ -9,6 +9,8 @@ export const NavbarClasses = (props, colors, classes) => {
     right,
     fontSizeIos,
     fontSizeMaterial,
+    titleFontSizeIos,
+    titleFontSizeMaterial,
     bgClassName = '',
     bgClass = '',
     subnavbarClassName = '',
@@ -23,6 +25,7 @@ export const NavbarClasses = (props, colors, classes) => {
     subtitleClass = '',
     rightClassName = '',
     rightClass = '',
+    centerTitle,
   } = props;
   return {
     base: {
@@ -75,10 +78,19 @@ export const NavbarClasses = (props, colors, classes) => {
     title: {
       common: cls(
         `whitespace-nowrap leading-tight`,
-        titleClassName || titleClass
+        titleClassName || titleClass,
+        centerTitle
+          ? `absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center`
+          : 'text-left'
       ),
-      ios: `${colors.titleIos} font-semibold absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center`,
-      material: `${colors.titleMaterial} font-normal mx-4 text-left`,
+      ios: cls(
+        `${colors.titleIos} ${titleFontSizeIos} font-semibold`,
+        !centerTitle && 'first:mx-2'
+      ),
+      material: cls(
+        `${colors.titleMaterial} ${titleFontSizeMaterial} font-normal`,
+        !centerTitle && 'first:mx-4'
+      ),
     },
     subtitle: {
       common: cls(

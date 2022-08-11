@@ -25,6 +25,7 @@
 <script>
   import { computed } from 'vue';
 
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
@@ -56,23 +57,37 @@
       rightClass: { type: String, default: '' },
       subnavbarClass: { type: String, default: '' },
 
+      centerTitle: { type: Boolean, default: undefined },
+
       translucent: { type: Boolean, default: true },
       hairlines: { type: Boolean, default: true },
 
-      fontSizeIos: { type: String, default: 'text-navbar-ios' },
-      fontSizeMaterial: { type: String, default: 'text-navbar-material' },
+      fontSizeIos: { type: String, default: 'text-[17px]' },
+      fontSizeMaterial: { type: String, default: 'text-[16px]' },
+
+      titleFontSizeIos: { type: String, default: 'text-[17px]' },
+      titleFontSizeMaterial: { type: String, default: 'text-[22px]' },
 
       title: String,
       subtitle: String,
     },
     setup(props, ctx) {
+      const theme = useTheme(props);
       const colors = computed(() =>
         NavbarColors(props.colors || {}, useDarkClasses)
       );
 
       const c = useThemeClasses(props, () =>
         NavbarClasses(
-          { ...props, left: ctx.slots.left, right: ctx.slots.right },
+          {
+            ...props,
+            left: ctx.slots.left,
+            right: ctx.slots.right,
+            centerTitle:
+              typeof props.centerTitle === 'undefined'
+                ? theme.value === 'ios'
+                : props.centerTitle,
+          },
           colors.value,
           ctx.attrs.class
         )

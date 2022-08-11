@@ -1,4 +1,5 @@
 <script>
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
@@ -19,9 +20,13 @@
   export { colorsProp as colors };
   export let translucent = true;
   export let hairlines = true;
+  export let centerTitle = undefined;
 
-  export let fontSizeIos = 'text-navbar-ios';
-  export let fontSizeMaterial = 'text-navbar-material';
+  export let fontSizeIos = 'text-navbar-[17px]';
+  export let fontSizeMaterial = 'text-navbar-[16px';
+
+  export let titleFontSizeIos = 'text-navbar-[17px]';
+  export let titleFontSizeMaterial = 'text-navbar-[16px';
 
   export let title = undefined;
   export let subtitle = undefined;
@@ -31,6 +36,9 @@
   const dark = useDarkClasses();
 
   $: colors = NavbarColors(colorsProp, dark);
+
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
 
   $: c = useThemeClasses(
     { ios, material },
@@ -47,6 +55,10 @@
         hairlines,
         fontSizeIos,
         fontSizeMaterial,
+        titleFontSizeIos,
+        titleFontSizeMaterial,
+        centerTitle:
+          typeof centerTitle === 'undeifned' ? theme === 'ios' : centerTitle,
       },
       colors,
       className

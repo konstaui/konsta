@@ -38,16 +38,30 @@ interface Props {
   /**
    * Tailwind CSS class for font size in iOS theme
    *
-   * @default 'text-navbar-ios'
+   * @default 'text-[17px]'
    */
   fontSizeIos?: string;
 
   /**
    * Tailwind CSS class for font size in Material theme
    *
-   * @default 'text-navbar-material'
+   * @default 'text-[16px]'
    */
   fontSizeMaterial?: string;
+
+  /**
+   * Tailwind CSS class for navbar title font size in iOS theme
+   *
+   * @default 'text-[17px]'
+   */
+  titleFontSizeIos?: string;
+
+  /**
+   * Tailwind CSS class for navbar title font size in Material theme
+   *
+   * @default 'text-[22px]'
+   */
+  titleFontSizeMaterial?: string;
 
   /**
    * Additional class to add on Navbar's "background" element
@@ -89,6 +103,13 @@ interface Props {
    * @default true
    */
   hairlines?: boolean;
+
+  /**
+   * Makes centered navbar title. If not specified then it set it to center in iOS theme
+   *
+   * @default undefined
+   */
+  centerTitle?: boolean;
 
   /**
    * Content of the Navbar's "left" area

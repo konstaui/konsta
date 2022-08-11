@@ -1,4 +1,5 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
@@ -17,12 +18,17 @@ const Navbar = forwardRef((props, ref) => {
     rightClassName = '',
     subnavbarClassName = '',
 
+    centerTitle,
+
     colors: colorsProp,
     translucent = true,
     hairlines = true,
 
-    fontSizeIos = 'text-navbar-ios',
-    fontSizeMaterial = 'text-navbar-material',
+    fontSizeIos = 'text-[17px]',
+    fontSizeMaterial = 'text-[16px]',
+
+    titleFontSizeIos = 'text-[17px]',
+    titleFontSizeMaterial = 'text-[22px]',
 
     left,
     title,
@@ -43,6 +49,7 @@ const Navbar = forwardRef((props, ref) => {
 
   const Component = component;
 
+  const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
@@ -56,10 +63,14 @@ const Navbar = forwardRef((props, ref) => {
     NavbarClasses(
       {
         ...props,
+        centerTitle:
+          typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
         translucent,
         hairlines,
         fontSizeIos,
         fontSizeMaterial,
+        titleFontSizeIos,
+        titleFontSizeMaterial,
         bgClassName,
         innerClassName,
         leftClassName,
