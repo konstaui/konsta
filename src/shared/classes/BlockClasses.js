@@ -15,14 +15,16 @@ export const BlockClasses = (props, colors, classes) => {
     },
     strong: {
       common: cls(
-        `py-4 ${colors.strongBg}`,
+        `py-4`,
         !inset && !nested && hairlines && 'hairline-t hairline-b'
       ),
+      ios: colors.strongBgIos,
+      material: colors.strongBgMaterial,
     },
     inset: {
       common: `ml-4-safe mr-4-safe overflow-hidden`,
       ios: `rounded-lg`,
-      material: `rounded`,
+      material: `rounded-xl`,
     },
   };
 };

@@ -10,7 +10,7 @@ export const ActionsClasses = (props, classes) => {
       ),
       ios: 'pt-2 px-2 pb-2-safe duration-300',
       material:
-        'pb-safe last-child-hairline-b-none rounded-t-xl duration-400 ease-material-in',
+        'pb-safe last-child-hairline-b-none rounded-t-2xl duration-400 ease-material-in',
       opened: '',
       closed: 'translate-y-full',
     },

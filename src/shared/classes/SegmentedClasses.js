@@ -5,7 +5,10 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
   return {
     base: {
       common: `flex justify-center items-center overflow-hidden w-full`,
-      square: 'rounded',
+      square: {
+        ios: 'rounded',
+        material: 'rounded-lg',
+      },
       rounded: 'rounded-full',
     },
     raised: outline
@@ -25,11 +28,15 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
       'p-0.5 bg-black bg-opacity-5 space-x-1 relative',
       darkClasses('dark:bg-white dark:bg-opacity-10')
     ),
-    strongHighlight: cls(
-      'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
-      rounded ? 'rounded-full' : 'rounded',
-      `bg-white shadow`,
-      darkClasses('dark:bg-opacity-15 dark:touch-ripple-white')
-    ),
+    strongHighlight: {
+      common: cls(
+        'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
+        rounded && 'rounded-full',
+        `bg-white shadow`,
+        darkClasses('dark:bg-opacity-15 dark:touch-ripple-white')
+      ),
+      ios: cls(!rounded && 'rounded'),
+      material: cls(!rounded && 'rounded-lg'),
+    },
   };
 };
