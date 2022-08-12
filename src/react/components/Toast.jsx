@@ -2,6 +2,7 @@ import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { ToastClasses } from '../../shared/classes/ToastClasses.js';
 import { ToastColors } from '../../shared/colors/ToastColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const Toast = forwardRef((props, ref) => {
   const {
@@ -37,8 +38,8 @@ const Toast = forwardRef((props, ref) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
-
-  const colors = ToastColors(colorsProp);
+  const dark = useDarkClasses();
+  const colors = ToastColors(colorsProp, dark);
 
   const c = themeClasses(
     ToastClasses({ ...props, translucent }, colors, className),

@@ -33,7 +33,13 @@ export default function ToastPage() {
           position="left"
           opened={toastLeftOpened}
           button={
-            <Button clear inline onClick={() => setToastLeftOpened(false)}>
+            <Button
+              rounded
+              clear
+              small
+              inline
+              onClick={() => setToastLeftOpened(false)}
+            >
               Close
             </Button>
           }
@@ -44,7 +50,13 @@ export default function ToastPage() {
           position="center"
           opened={toastCenterOpened}
           button={
-            <Button clear inline onClick={() => setToastCenterOpened(false)}>
+            <Button
+              rounded
+              clear
+              small
+              inline
+              onClick={() => setToastCenterOpened(false)}
+            >
               Close
             </Button>
           }
@@ -55,7 +67,13 @@ export default function ToastPage() {
           position="right"
           opened={toastRightOpened}
           button={
-            <Button clear inline onClick={() => setToastRightOpened(false)}>
+            <Button
+              rounded
+              clear
+              small
+              inline
+              onClick={() => setToastRightOpened(false)}
+            >
               Close
             </Button>
           }

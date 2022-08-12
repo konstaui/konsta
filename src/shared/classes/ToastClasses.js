@@ -6,17 +6,21 @@ export const ToastClasses = (props, colors, classes) => {
   return {
     base: {
       common: cls(
-        colors.text,
         positionClass('fixed', classes),
         'z-50 transform transition-transform-opacity w-full sm:w-auto left-0 bottom-0 sm:max-w-lg',
         !opened && 'translate-y-full opacity-0 pointer-events-none'
       ),
       ios: cls(
         `sm:rounded-lg duration-300`,
+        colors.textIos,
         colors.bgIos,
         translucent && 'translucent'
       ),
-      material: cls(`sm:rounded-2xl duration-200`, colors.bgMaterial),
+      material: cls(
+        `sm:rounded-2xl duration-200`,
+        colors.textMaterial,
+        colors.bgMaterial
+      ),
       left: 'sm:left-4-safe sm:bottom-4-safe',
       right: 'sm:right-4-safe sm:bottom-4-safe sm:left-auto',
       center: 'sm:left-1/2 sm:bottom-4-safe sm:-translate-x-1/2',

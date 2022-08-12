@@ -11,6 +11,7 @@
   import { ToastClasses } from '../../shared/classes/ToastClasses.js';
   import { ToastColors } from '../../shared/colors/ToastColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
     name: 'k-toast',
@@ -35,7 +36,9 @@
       translucent: { type: Boolean, default: true },
     },
     setup(props, ctx) {
-      const colors = computed(() => ToastColors(props.colors || {}));
+      const colors = computed(() =>
+        ToastColors(props.colors || {}, useDarkClasses)
+      );
       const c = useThemeClasses(props, () =>
         ToastClasses(props, colors.value, ctx.attrs.class)
       );

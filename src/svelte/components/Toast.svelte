@@ -2,6 +2,7 @@
   import { ToastClasses } from '../../shared/classes/ToastClasses.js';
   import { ToastColors } from '../../shared/colors/ToastColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   let className = undefined;
   export { className as class };
@@ -14,7 +15,9 @@
   export let position = 'left';
   export let opened = false;
 
-  $: colors = ToastColors(colorsProp);
+  const dark = useDarkClasses();
+
+  $: colors = ToastColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },
