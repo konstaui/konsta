@@ -41,7 +41,17 @@
 
   $: colors = LinkColors(colorsProp, dark);
 
-  $: textColor = tabbar && !tabbarActive ? colors.tabbarInactive : colors.text;
+  // prettier-ignore
+  $: themeTextColor = props.navbar ?
+    (
+      theme === 'material' ? colors.navbarTextMaterial : colors.navbarTextIos
+    ) :
+    (
+      theme === 'material' ? colors.textMaterial : colors.textIos
+    );
+
+  $: textColor =
+    tabbar && !tabbarActive ? colors.tabbarInactive : themeTextColor;
   $: tabbarState = tabbarActive ? 'active' : 'inactive';
 
   $: c = useThemeClasses(

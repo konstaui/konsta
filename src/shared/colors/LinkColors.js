@@ -7,6 +7,8 @@ export const LinkColors = (colorsProp = {}, dark) => {
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')
     ),
+    navbarTextIos: 'text-primary',
+    navbarTextMaterial: '',
     tabbarInactive: cls(
       `text-black`,
       dark('dark:text-white dark:text-opacity-55')

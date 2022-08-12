@@ -68,10 +68,20 @@
         LinkColors(props.colors || {}, useDarkClasses)
       );
 
+      // prettier-ignore
+      const themeTextColor = computed(() => props.navbar ?
+        (
+          theme === 'material' ? colors.value.navbarTextMaterial : colors.value.navbarTextIos
+        ) :
+        (
+          theme === 'material' ? colors.value.textMaterial : colors.value.textIos
+        )
+      );
+
       const textColor = computed(() =>
         props.tabbar && !props.tabbarActive
           ? colors.value.tabbarInactive
-          : colors.value.text
+          : themeTextColor.value
       );
       const tabbarState = computed(() =>
         props.tabbarActive ? 'active' : 'inactive'

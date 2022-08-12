@@ -58,8 +58,14 @@ const Link = forwardRef((props, ref) => {
 
   const colors = LinkColors(colorsProp, dark);
 
-  const themeTextColor =
-    theme === 'material' ? colors.textMaterial : colors.textIos;
+  // prettier-ignore
+  const themeTextColor = props.navbar ?
+    (
+      theme === 'material' ? colors.navbarTextMaterial : colors.navbarTextIos
+    ) :
+    (
+      theme === 'material' ? colors.textMaterial : colors.textIos
+    );
   const textColor =
     tabbar && !tabbarActive ? colors.tabbarInactive : themeTextColor;
   const tabbarState = tabbarActive ? 'active' : 'inactive';
