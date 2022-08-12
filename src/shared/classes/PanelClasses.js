@@ -20,6 +20,7 @@ export const PanelClasses = (props, colors, classes) => {
         'no-safe-areas-right',
         floating ? 'right-full -mr-2 rounded-2xl' : 'right-full'
       ),
+      material: cls(!floating && 'rounded-r-2xl'),
       opened: 'translate-x-full',
       closed: '-translate-x-2',
     },
@@ -28,6 +29,7 @@ export const PanelClasses = (props, colors, classes) => {
         'no-safe-areas-left',
         floating ? 'left-full -ml-2 rounded-2xl' : 'left-full'
       ),
+      material: cls(!floating && 'rounded-l-2xl'),
       opened: '-translate-x-full',
       closed: 'translate-x-2',
     },
