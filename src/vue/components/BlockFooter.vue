@@ -4,8 +4,11 @@
   </component>
 </template>
 <script>
+  import { computed } from 'vue';
   import { BlockFooterClasses } from '../../shared/classes/BlockFooterClasses.js';
+  import { BlockFooterColors } from '../../shared/colors/BlockFooterColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
     name: 'k-block-footer',
@@ -13,6 +16,9 @@
       component: {
         type: String,
         default: 'div',
+      },
+      colors: {
+        type: Object,
       },
       ios: {
         type: Boolean,
@@ -24,7 +30,12 @@
       },
     },
     setup(props) {
-      const c = useThemeClasses(props, () => BlockFooterClasses());
+      const colors = computed(() =>
+        BlockFooterColors(props.colors || {}, useDarkClasses)
+      );
+      const c = useThemeClasses(props, () =>
+        BlockFooterClasses(props, colors.value)
+      );
       return {
         c,
       };
