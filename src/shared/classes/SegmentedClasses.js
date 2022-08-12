@@ -24,10 +24,11 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
       ios: `divide-x-2 ${colors.divideIos}`,
       material: `divide-x ${colors.divideMaterial}`,
     },
-    strong: cls(
-      'p-0.5 bg-black bg-opacity-5 space-x-1 relative',
-      darkClasses('dark:bg-white dark:bg-opacity-10')
-    ),
+    strong: {
+      common: cls('p-0.5 space-x-1 relative'),
+      ios: colors.strongBgIos,
+      material: colors.strongBgMaterial,
+    },
     strongHighlight: {
       common: cls(
         'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
@@ -36,7 +37,7 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
         darkClasses('dark:bg-opacity-15 dark:touch-ripple-white')
       ),
       ios: cls(!rounded && 'rounded'),
-      material: cls(!rounded && 'rounded-lg'),
+      material: cls(!rounded && 'rounded-md'),
     },
   };
 };
