@@ -30,7 +30,7 @@
       },
       hairlines: { type: Boolean, default: true },
       fontSizeIos: { type: String, default: 'text-sm' },
-      fontSizeMaterial: { type: String, default: 'text-base' },
+      fontSizeMaterial: { type: String, default: 'text-sm' },
     },
     setup(props, ctx) {
       const colors = computed(() =>

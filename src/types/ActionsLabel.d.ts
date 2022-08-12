@@ -39,7 +39,7 @@ interface Props {
   /**
    * Button text font size in Material theme
    *
-   * @default 'text-base'
+   * @default 'text-sm'
    */
   fontSizeMaterial?: string;
 

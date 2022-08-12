@@ -5,17 +5,24 @@ export const ActionsLabelClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        colors.bg,
-        colors.text,
         `flex items-center w-full px-4 relative z-10 overflow-hidden ${colors.activeBg}`
       ),
       ios: cls(
         `h-14`,
+        colors.bgIos,
+        colors.textIos,
         fontSizeIos,
         hairlines && 'hairline-b',
         'first:rounded-t-xl last:rounded-b-xl justify-center'
       ),
-      material: cls(`h-12`, fontSizeMaterial, 'justify-start'),
+      material: cls(
+        `h-12`,
+        colors.bgMaterial,
+        colors.textMaterial,
+        fontSizeMaterial,
+        'font-medium',
+        'justify-start'
+      ),
     },
   };
 };

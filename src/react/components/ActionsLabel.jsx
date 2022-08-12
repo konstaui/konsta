@@ -14,7 +14,7 @@ const ActionsLabel = forwardRef((props, ref) => {
     material,
 
     fontSizeIos = 'text-sm',
-    fontSizeMaterial = 'text-base',
+    fontSizeMaterial = 'text-sm',
 
     hairlines = true,
 

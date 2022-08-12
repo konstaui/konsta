@@ -12,7 +12,7 @@
   export let material = undefined;
 
   export let fontSizeIos = 'text-sm';
-  export let fontSizeMaterial = 'text-base';
+  export let fontSizeMaterial = 'text-sm';
   export let hairlines = true;
 
   const dark = useDarkClasses();

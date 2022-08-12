@@ -2,11 +2,15 @@ import { cls } from '../cls.js';
 
 export const ActionsLabelColors = (colorsProp = {}, dark) => {
   return {
-    bg: cls('bg-white', dark('dark:bg-neutral-800')),
-    activeBg: cls('active:bg-neutral-200', dark('dark:active:bg-neutral-700')),
-    text: cls(
+    bgIos: cls('bg-white', dark('dark:bg-neutral-800')),
+    bgMaterial: cls('bg-md-light-surface-3', dark('dark:bg-md-dark-surface-3')),
+    textIos: cls(
       'text-black text-opacity-55',
       dark('dark:text-white dark:text-opacity-55')
+    ),
+    textMaterial: cls(
+      'text-md-light-primary',
+      dark('dark:text-md-dark-primary')
     ),
     ...colorsProp,
   };
