@@ -3,7 +3,7 @@
     <k-navbar title="Konsta UI" center-title />
 
     <k-block-title>Theme</k-block-title>
-    <k-list>
+    <k-list strong outline-ios inset-material>
       <k-list-item label title="iOS Theme">
         <template #media>
           <k-radio
@@ -22,9 +22,6 @@
           />
         </template>
       </k-list-item>
-    </k-list>
-
-    <k-list>
       <k-list-item title="Dark Mode">
         <template #after>
           <k-toggle :checked="darkMode" @change="() => toggleDarkMode()" />
@@ -33,7 +30,7 @@
     </k-list>
 
     <k-block-title>Components</k-block-title>
-    <k-list>
+    <k-list strong outline-ios inset-material>
       <k-list-item
         v-for="route in routes"
         :key="route.path"

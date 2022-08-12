@@ -165,6 +165,7 @@
       >
         <template #media>
           <img
+            class="ios:rounded-lg material:rounded-2xl"
             src="https://cdn.framework7.io/placeholder/people-160x160-1.jpg"
             width="80"
             alt="demo"
@@ -180,6 +181,7 @@
       >
         <template #media>
           <img
+            class="ios:rounded-lg material:rounded-2xl"
             src="https://cdn.framework7.io/placeholder/people-160x160-2.jpg"
             width="80"
             alt="demo"
@@ -195,6 +197,7 @@
       >
         <template #media>
           <img
+            class="ios:rounded-lg material:rounded-2xl"
             src="https://cdn.framework7.io/placeholder/people-160x160-3.jpg"
             width="80"
             alt="demo"

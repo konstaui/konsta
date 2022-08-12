@@ -30,7 +30,7 @@
   <Navbar title="Konsta UI" centerTitle />
 
   <BlockTitle>Theme</BlockTitle>
-  <List>
+  <List strong outlineIos insetMaterial>
     <ListItem label title="iOS Theme">
       <Radio
         slot="media"
@@ -47,9 +47,6 @@
         checked={theme === 'material'}
       />
     </ListItem>
-  </List>
-
-  <List>
     <ListItem title="Dark Mode">
       <Toggle
         slot="after"
@@ -60,7 +57,7 @@
   </List>
 
   <BlockTitle>Components</BlockTitle>
-  <List>
+  <List strong outlineIos insetMaterial>
     {#each routes as route}
       <ListItem link href={`#${route.path}`} title={route.title}>
         <DemoIcon slot="media" />

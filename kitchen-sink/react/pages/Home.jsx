@@ -29,7 +29,7 @@ export default function HomePage({ theme, setTheme }) {
       <Navbar title="Konsta UI" centerTitle />
 
       <BlockTitle>Theme</BlockTitle>
-      <List>
+      <List strong outlineIos insetMaterial>
         <ListItem
           label
           title="iOS Theme"
@@ -52,9 +52,6 @@ export default function HomePage({ theme, setTheme }) {
             />
           }
         />
-      </List>
-
-      <List>
         <ListItem
           title="Dark Mode"
           after={
@@ -64,7 +61,7 @@ export default function HomePage({ theme, setTheme }) {
       </List>
 
       <BlockTitle>Components</BlockTitle>
-      <List>
+      <List strong outlineIos insetMaterial>
         {routes.map((route) => (
           <ListItem
             key={route.path}
