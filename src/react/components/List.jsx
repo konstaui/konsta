@@ -3,6 +3,7 @@ import { cls } from '../../shared/cls.js';
 import { ListClasses } from '../../shared/classes/ListClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTheme } from '../shared/use-theme.js';
 import { ListColors } from '../../shared/colors/ListColors.js';
 
 const List = forwardRef((props, ref) => {
@@ -12,11 +13,20 @@ const List = forwardRef((props, ref) => {
     colors: colorsProp,
 
     margin = 'my-8',
-    inset,
     nested,
     menuList,
 
-    hairlines = true,
+    inset,
+    insetIos,
+    insetMaterial,
+    strong,
+    strongIos,
+    strongMaterial,
+    outline,
+    outlineIos,
+    outlineMaterial,
+
+    // hairlines = true,
 
     ios,
     material,
@@ -39,20 +49,50 @@ const List = forwardRef((props, ref) => {
   const attrs = {
     ...rest,
   };
-
+  const theme = useTheme();
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
+
+  const isStrong =
+    typeof strong === 'undefined'
+      ? theme === 'ios'
+        ? strongIos
+        : strongMaterial
+      : strong;
+
+  const isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
+  const isInset =
+    typeof inset === 'undefined'
+      ? theme === 'ios'
+        ? insetIos
+        : insetMaterial
+      : inset;
 
   const colors = ListColors(colorsProp, dark);
 
   const c = themeClasses(
-    ListClasses({ ...props, margin, hairlines }, colors, className)
+    ListClasses(
+      {
+        ...props,
+        margin,
+        inset: isInset,
+        strong: isStrong,
+        outline: isOutline,
+      },
+      colors,
+      className
+    )
   );
 
   const classes = cls(
     c.base,
 
-    inset && c.inset,
+    isInset && c.inset,
 
     menuList && c.menuList,
 

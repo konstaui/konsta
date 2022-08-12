@@ -12,6 +12,7 @@
   import { ListColors } from '../../shared/colors/ListColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
 
   export default {
     name: 'k-list',
@@ -32,26 +33,66 @@
         default: undefined,
       },
       margin: { type: String, default: 'my-8' },
-      inset: { type: Boolean, default: false },
+      inset: { type: Boolean, default: undefined },
+      insetIos: { type: Boolean, default: false },
+      insetMaterial: { type: Boolean, default: false },
+      strong: { type: Boolean, default: undefined },
+      strongIos: { type: Boolean, default: false },
+      strongMaterial: { type: Boolean, default: false },
+      outline: { type: Boolean, default: undefined },
+      outlineIos: { type: Boolean, default: false },
+      outlineMaterial: { type: Boolean, default: false },
       nested: { type: Boolean, default: false },
       menuList: { type: Boolean, default: false },
-
-      hairlines: { type: Boolean, default: true },
     },
     setup(props, ctx) {
+      const theme = useTheme();
+
+      const isStrong = computed(() =>
+        typeof props.strong === 'undefined'
+          ? theme.value === 'ios'
+            ? props.strongIos
+            : props.strongMaterial
+          : props.strong
+      );
+
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+            ? props.outlineIos
+            : props.outlineMaterial
+          : props.outline
+      );
+      const isInset = computed(() =>
+        typeof props.inset === 'undefined'
+          ? theme.value === 'ios'
+            ? props.insetIos
+            : props.insetMaterial
+          : props.inset
+      );
+
       const colors = computed(() =>
         ListColors(props.colors || {}, useDarkClasses)
       );
 
       const c = useThemeClasses(props, () =>
-        ListClasses(props, colors.value, ctx.attrs.class)
+        ListClasses(
+          {
+            ...props,
+            inset: isInset.value,
+            strong: isStrong.value,
+            outline: isOutline.value,
+          },
+          colors.value,
+          ctx.attrs.class
+        )
       );
 
       const classes = computed(() =>
         cls(
           c.value.base,
 
-          props.inset && c.value.inset,
+          isInset.value && c.value.inset,
 
           props.menuList && c.value.menuList
         )
