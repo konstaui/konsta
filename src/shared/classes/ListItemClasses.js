@@ -32,33 +32,45 @@ export const ListItemClasses = (
     base: menuListItem ? `${textColor} py-1` : '',
     itemContent: {
       common: cls(
-        menuListItem ? 'pl-2 ml-2-safe mr-2-safe rounded-lg' : 'pl-4-safe',
+        !menuListItem && 'pl-4-safe',
         `flex items-center ${contentClassName || contentClass}`
       ),
-      ios: colors.primaryTextIos,
-      material: colors.primaryTextMaterial,
+      ios: cls(
+        !menuListItem && colors.primaryTextIos,
+        menuListItem && 'rounded-lg ml-2-safe mr-2-safe pl-2'
+      ),
+      material: cls(
+        !menuListItem && colors.primaryTextMaterial,
+        menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe pl-4'
+      ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
         hairlines && theme === 'ios' && 'active:hairline-transparent',
         needsTouchRipple &&
           cls(
-            `relative overflow-hidden touch-ripple-black`,
-            dark('dark:touch-ripple-white dark:z-10')
+            `relative overflow-hidden touch-ripple-black z-10`,
+            dark('dark:touch-ripple-white')
           ),
         isMenuListItemActive
-          ? cls(colors.menuListItemActiveBg, 'bg-opacity-15')
-          : theme === 'ios' &&
-              cls(
-                `active:bg-black active:bg-opacity-10`,
-                dark('dark:active:bg-white dark:active:bg-opacity-10')
-              )
+          ? cls(
+              theme === 'ios'
+                ? colors.menuListItemActiveBgIos
+                : colors.menuListItemActiveBgMaterial
+            )
+          : menuListItem
+          ? cls(
+              theme === 'ios'
+                ? colors.menuListItemBgIos
+                : colors.menuListItemBgMaterial
+            )
+          : cls(theme === 'ios' ? colors.activeBgIos : colors.activeBgMaterial)
       ),
     },
 
     media: {
-      common: `mr-4 shrink-0 flex ${mediaClassName || mediaClass}`,
-      ios: 'py-2',
-      material: 'py-3',
+      common: `shrink-0 flex ${mediaClassName || mediaClass}`,
+      ios: 'py-2 mr-4',
+      material: cls('py-3', menuListItem ? 'mr-3' : 'mr-4'),
     },
     inner: {
       common: cls(

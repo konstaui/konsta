@@ -90,10 +90,16 @@ const ListItem = forwardRef((props, ref) => {
 
   const isMenuListItemActive = menuListItem && menuListItemActive;
 
-  const textColorProp = `${isMenuListItemActive ? 'menuListItemText' : 'text'}${
-    theme === 'ios' ? 'Ios' : 'Material'
-  }`;
-  const textColor = colors[textColorProp];
+  const textColor =
+    colors[
+      `${
+        isMenuListItemActive
+          ? 'menuListItemActiveText'
+          : menuListItem
+          ? 'menuListItemText'
+          : 'text'
+      }${theme === 'ios' ? 'Ios' : 'Material'}`
+    ];
 
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;

@@ -74,7 +74,16 @@
 
   $: isMenuListItemActive = menuListItem && menuListItemActive;
 
-  $: textColor = isMenuListItemActive ? colors.menuListItemText : colors.text;
+  $: textColor =
+    colors[
+      `${
+        isMenuListItemActive
+          ? 'menuListItemActiveText'
+          : menuListItem
+          ? 'menuListItemText'
+          : 'text'
+      }${theme === 'ios' ? 'Ios' : 'Material'}`
+    ];
 
   $: isLink = !!href || href === '' || menuListItem || link;
   $: isLabel = !!label;

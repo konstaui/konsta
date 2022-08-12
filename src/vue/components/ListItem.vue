@@ -127,6 +127,7 @@
     },
     setup(props, ctx) {
       const rippleElRef = ref(null);
+      const theme = useTheme(props);
 
       const colors = computed(() =>
         ListItemColors(props.colors || {}, useDarkClasses)
@@ -136,10 +137,17 @@
         () => props.menuListItem && props.menuListItemActive
       );
 
-      const textColor = computed(() =>
-        isMenuListItemActive.value
-          ? colors.value.menuListItemText
-          : colors.value.text
+      const textColor = computed(
+        () =>
+          colors.value[
+            `${
+              isMenuListItemActive.value
+                ? 'menuListItemActiveText'
+                : props.menuListItem
+                ? 'menuListItemText'
+                : 'text'
+            }${theme.value === 'ios' ? 'Ios' : 'Material'}`
+          ]
       );
 
       const isLink = computed(
@@ -147,8 +155,6 @@
           !!props.href || props.href === '' || props.menuListItem || props.link
       );
       const isLabel = computed(() => !!props.label);
-
-      const theme = useTheme(props);
 
       const needsTouchRipple = computed(
         () =>

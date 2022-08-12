@@ -7,7 +7,6 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       `text-md-light-on-surface`,
       dark('dark:text-md-dark-on-surface')
     ),
-
     secondaryTextIos: cls(
       'text-black text-opacity-55',
       dark('dark:text-white dark:text-opacity-55')
@@ -16,7 +15,11 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface-variant',
       dark('dark:text-md-dark-on-surface-variant')
     ),
-
+    activeBgIos: cls(
+      `active:bg-black active:bg-opacity-10`,
+      dark('dark:active:bg-white dark:active:bg-opacity-10')
+    ),
+    activeBgMaterial: '',
     dividerBgIos: cls(
       'bg-list-divider-light',
       dark('dark:bg-list-divider-dark')
@@ -25,8 +28,32 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       'bg-md-light-surface-2',
       dark('dark:bg-md-dark-surface-2')
     ),
-    menuListItemText: cls(`text-primary`, dark('dark:text-white')),
-    menuListItemActiveBg: cls(`bg-primary`, dark('dark:bg-primary')),
+    menuListItemTextIos: cls(`text-black`, dark('dark:text-white')),
+    menuListItemTextMaterial: cls(
+      `text-md-light-on-surface-variant`,
+      dark('dark:text-md-dark-on-surface-variant')
+    ),
+    menuListItemBgIos: cls(
+      `active:bg-black active:bg-opacity-10`,
+      dark('dark:active:bg-white dark:active:bg-opacity-10')
+    ),
+    menuListItemBgMaterial: cls(
+      'bg-md-light-surface-1',
+      dark('dark:bg-md-dark-surface-1')
+    ),
+    menuListItemActiveTextIos: cls(`text-primary`, dark('dark:text-white')),
+    menuListItemActiveTextMaterial: cls(
+      `text-md-light-on-secondary-container`,
+      dark('dark:text-md-dark-on-secondary-container')
+    ),
+    menuListItemActiveBgIos: cls(
+      `bg-primary bg-opacity-15`,
+      dark('dark:bg-primary')
+    ),
+    menuListItemActiveBgMaterial: cls(
+      `bg-md-light-secondary-container`,
+      dark('dark:bg-md-dark-secondary-container')
+    ),
     ...colorsProp,
   };
 };
