@@ -6,7 +6,7 @@ export const CardClasses = (props, colors, darkClasses) => {
     base: {
       common: cls(margin, `overflow-hidden`),
       ios: cls('rounded', colors.bgIos),
-      material: cls('rounded-xl', colors.bgMaterial),
+      material: cls('rounded-2xl', colors.bgMaterial),
       shadow: 'shadow',
       outline: cls(
         `border border-black border-opacity-10`,

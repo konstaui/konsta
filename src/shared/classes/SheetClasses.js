@@ -6,12 +6,11 @@ export const SheetClasses = (props, colors, classes) => {
     base: {
       common: cls(
         'left-0 top-full transition-transform duration-400 z-40 overflow-hidden',
-        colors.bg,
         positionClass('fixed', classes)
       ),
       ios: '',
-      material: 'rounded-t-xl ease-material-in',
-      opened: '-translate-y-full',
+      material: `rounded-t-2xl ease-material-in ${colors.bgIos}`,
+      opened: `-translate-y-full ${colors.bgMaterial}`,
       closed: '',
     },
     backdrop: {

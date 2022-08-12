@@ -20,7 +20,7 @@ export const ListClasses = (props, colors, classes) => {
     inset: {
       common: `ml-4-safe mr-4-safe overflow-hidden`,
       ios: `rounded-lg`,
-      material: `rounded-xl`,
+      material: `rounded-2xl`,
     },
     menuList: {
       common: 'py-1',
