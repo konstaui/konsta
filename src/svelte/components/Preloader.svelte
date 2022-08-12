@@ -1,6 +1,7 @@
 <script>
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   import PreloaderIOS from './icons/PreloaderIOS.svelte';
   import PreloaderMaterial from './icons/PreloaderMaterial.svelte';
@@ -20,7 +21,8 @@
 
   theme = useTheme({ ios, material }, (v) => (theme = v));
 
-  $: colors = PreloaderColors(colorsProp);
+  const dark = useDarkClasses();
+  $: colors = PreloaderColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

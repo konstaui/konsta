@@ -1,6 +1,7 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 import PreloaderIOS from './icons/PreloaderIOS.jsx';
 import PreloaderMaterial from './icons/PreloaderMaterial.jsx';
@@ -39,8 +40,8 @@ const Preloader = forwardRef((props, ref) => {
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
-
-  const colors = PreloaderColors(colorsProp);
+  const dark = useDarkClasses();
+  const colors = PreloaderColors(colorsProp, dark);
 
   const SVGComponent = theme === 'ios' ? PreloaderIOS : PreloaderMaterial;
 

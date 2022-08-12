@@ -1,4 +1,3 @@
-import { useDarkClasses } from '../shared/use-dark-classes';
 <template>
   <component :is="component" :class="c.base">
     <span :class="c.inner">
@@ -11,6 +10,7 @@ import { useDarkClasses } from '../shared/use-dark-classes';
   import { computed } from 'vue';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   import PreloaderIOS from './icons/PreloaderIOS.vue';
   import PreloaderMaterial from './icons/PreloaderMaterial.vue';
@@ -43,7 +43,9 @@ import { useDarkClasses } from '../shared/use-dark-classes';
     setup(props) {
       const theme = useTheme(props);
 
-      const colors = computed(() => PreloaderColors(props.colors || {}));
+      const colors = computed(() =>
+        PreloaderColors(props.colors || {}, useDarkClasses)
+      );
 
       const svgComponent = computed(() =>
         theme.value === 'ios' ? PreloaderIOS : PreloaderMaterial
