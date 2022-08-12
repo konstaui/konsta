@@ -7,8 +7,8 @@ export const RadioColors = (colorsProp = {}, dark) => {
       dark('dark:border-white dark:border-opacity-30')
     ),
     borderMaterial: cls(
-      'border-black border-opacity-40',
-      dark('dark:border-white dark:border-opacity-40')
+      `border-md-light-outline`,
+      dark('dark:border-md-dark-outline')
     ),
     bgCheckedIos: 'bg-primary',
     bgCheckedMaterial: cls(
