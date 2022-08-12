@@ -37,7 +37,9 @@
       const colors = computed(() =>
         BlockTitleColors(props.colors || {}, useDarkClasses)
       );
-      const c = useThemeClasses(props, () => BlockTitleClasses(props, colors));
+      const c = useThemeClasses(props, () =>
+        BlockTitleClasses(props, colors.value)
+      );
       return {
         c,
       };
