@@ -40,4 +40,20 @@ interface Props {
    * Makes card outline
    */
   outline?: boolean;
+  /**
+   * Makes card raised
+   */
+  raised?: boolean;
+  /**
+   * Enabled divider between header and content
+   *
+   * @default false
+   */
+  headerDivider?: boolean;
+  /**
+   * Enabled divider between footer and content
+   *
+   * @default false
+   */
+  footerDivider?: boolean;
 }

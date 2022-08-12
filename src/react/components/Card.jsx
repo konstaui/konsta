@@ -16,8 +16,14 @@ const Card = forwardRef((props, ref) => {
     ios,
     material,
 
+    headerFontSizeIos = 'text-[17px]',
+    headerFontSizeMaterial = 'text-[22px]',
+
     // Style
+    raised,
     outline,
+    headerDivider = false,
+    footerDivider = false,
 
     // Children
     children,
@@ -43,10 +49,21 @@ const Card = forwardRef((props, ref) => {
 
   const colors = CardColors(colorsProp, dark);
 
-  const style = outline ? 'outline' : 'shadow';
+  const style = outline ? 'outline' : raised ? 'raised' : 'plain';
 
   const c = themeClasses(
-    CardClasses({ ...props, margin }, colors, dark),
+    CardClasses(
+      {
+        ...props,
+        margin,
+        headerDivider,
+        footerDivider,
+        headerFontSizeIos,
+        headerFontSizeMaterial,
+      },
+      colors,
+      dark
+    ),
     className
   );
 

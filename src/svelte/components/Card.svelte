@@ -14,17 +14,24 @@
   export let margin = 'm-4';
   export let header = '';
   export let footer = '';
+  export let raised = false;
   export let outline = false;
+  export let headerDivider = false;
+  export let footerDivider = false;
 
   const dark = useDarkClasses();
 
   $: colors = CardColors(colorsProp, dark);
 
-  $: style = outline ? 'outline' : 'shadow';
+  $: style = outline ? 'outline' : raised ? 'raised' : 'plain';
 
   $: c = useThemeClasses(
     { ios, material },
-    CardClasses({ margin, outline }, colors, dark),
+    CardClasses(
+      { margin, outline, raised, headerDivider, footerDivider },
+      colors,
+      dark
+    ),
     className,
     (v) => (c = v)
   );

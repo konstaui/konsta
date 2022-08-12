@@ -36,6 +36,33 @@
       Mauris aliquet magna justo.{' '}
     </k-card>
 
+    <k-block-title :with-block="false">Outline With Dividers</k-block-title>
+    <k-card
+      outline
+      header="Card header"
+      footer="Card footer"
+      header-divider
+      footer-divider
+    >
+      Card with header and footer. Card headers are used to display card titles
+      and footers for additional information or just for custom actions.
+    </k-card>
+
+    <k-block-title :with-block="false">Raised Cards</k-block-title>
+    <k-card raised>
+      This is a simple card with plain text, but cards can also contain their
+      own header, footer, list view, image, or any other element.
+    </k-card>
+    <k-card raised header="Card header" footer="Card footer">
+      Card with header and footer. Card headers are used to display card titles
+      and footers for additional information or just for custom actions.
+    </k-card>
+    <k-card raised>
+      Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Suspendisse feugiat sem est, non tincidunt ligula volutpat sit amet.
+      Mauris aliquet magna justo.{' '}
+    </k-card>
+
     <k-block-title :with-block="false">Card With List View</k-block-title>
     <k-card>
       <k-list nested class="-m-4">
@@ -49,24 +76,26 @@
 
     <k-block-title :with-block="false">Styled Cards</k-block-title>
     <div class="lg:grid lg:grid-cols-2">
-      <k-card>
-        <template #header>
-          <div
-            class="-mx-4 -my-2 h-48 p-4 flex items-end text-white font-bold bg-cover bg-center"
-            :style="{
-              'background-image':
-                'url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)',
-            }"
-          >
-            Journey To Mountains
-          </div>
-        </template>
+      <k-card outline>
         <template #footer>
-          <div class="flex justify-between">
+          <div class="flex justify-between material:hidden">
             <k-link>Like</k-link>
             <k-link>Read more</k-link>
           </div>
+          <div className="flex justify-start ios:hidden space-x-2">
+            <k-button rounded inline> Like </k-button>
+            <k-button rounded inline outline> Read more </k-button>
+          </div>
         </template>
+        <div
+          class="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
+          :style="{
+            'background-image':
+              'url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)',
+          }"
+        >
+          Journey To Mountains
+        </div>
         <div class="text-gray-500 mb-3">Posted on January 21, 2021</div>
         <p>
           Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
@@ -74,23 +103,25 @@
         </p>
       </k-card>
       <k-card>
-        <template #header>
-          <div
-            class="-mx-4 -my-2 h-48 p-4 flex items-end text-white font-bold bg-cover bg-center"
-            :style="{
-              'background-image':
-                'url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)',
-            }"
-          >
-            Lorem Ipsum
-          </div>
-        </template>
         <template #footer>
-          <div class="flex justify-between">
+          <div class="flex justify-between material:hidden">
             <k-link>Like</k-link>
             <k-link>Read more</k-link>
           </div>
+          <div className="flex justify-start ios:hidden space-x-2">
+            <k-button rounded inline> Like </k-button>
+            <k-button rounded inline outline> Read more </k-button>
+          </div>
         </template>
+        <div
+          class="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
+          :style="{
+            'background-image':
+              'url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)',
+          }"
+        >
+          Lorem Ipsum
+        </div>
         <div class="text-gray-500 mb-3">Posted on January 21, 2021</div>
         <p>
           Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
@@ -110,6 +141,7 @@
     kList,
     kListItem,
     kLink,
+    kButton,
   } from 'konsta/vue';
 
   export default {
@@ -123,6 +155,7 @@
       kList,
       kListItem,
       kLink,
+      kButton,
     },
     setup() {
       return {

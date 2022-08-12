@@ -42,14 +42,19 @@
       header: { type: [String, Number] },
       footer: { type: [String, Number] },
       // Style
+      raised: { type: Boolean, default: false },
       outline: { type: Boolean, default: false },
+      headerDivider: { type: Boolean, default: false },
+      footerDivider: { type: Boolean, default: false },
     },
     setup(props, ctx) {
       const colors = computed(() =>
         CardColors(props.colors || {}, useDarkClasses)
       );
 
-      const style = computed(() => (props.outline ? 'outline' : 'shadow'));
+      const style = computed(() =>
+        props.outline ? 'outline' : props.raised ? 'raised' : 'plain'
+      );
       const c = useThemeClasses(props, () =>
         CardClasses(props, colors.value, useDarkClasses)
       );

@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
   Link,
+  Button,
 } from 'konsta/react';
 
 export default function CardsPage() {
@@ -51,6 +52,35 @@ export default function CardsPage() {
         Mauris aliquet magna justo.{' '}
       </Card>
 
+      <BlockTitle withBlock={false}>Outline With Dividers</BlockTitle>
+      <Card
+        outline
+        header="Card header"
+        footer="Card footer"
+        headerDivider
+        footerDivider
+      >
+        Card with header and footer. Card headers are used to display card
+        titles and footers for additional information or just for custom
+        actions.
+      </Card>
+
+      <BlockTitle withBlock={false}>Raised Cards</BlockTitle>
+      <Card raised>
+        This is a simple card with plain text, but cards can also contain their
+        own header, footer, list view, image, or any other element.
+      </Card>
+      <Card raised header="Card header" footer="Card footer">
+        Card with header and footer. Card headers are used to display card
+        titles and footers for additional information or just for custom
+        actions.
+      </Card>
+      <Card raised>
+        Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Suspendisse feugiat sem est, non tincidunt ligula volutpat sit amet.
+        Mauris aliquet magna justo.{' '}
+      </Card>
+
       <BlockTitle withBlock={false}>Card With List View</BlockTitle>
       <Card>
         <List nested className="-m-4">
@@ -65,24 +95,33 @@ export default function CardsPage() {
       <BlockTitle withBlock={false}>Styled Cards</BlockTitle>
       <div className="lg:grid lg:grid-cols-2">
         <Card
-          header={
-            <div
-              className="-mx-4 -my-2 h-48 p-4 flex items-end text-white font-bold bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  'url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)',
-              }}
-            >
-              Journey To Mountains
-            </div>
-          }
+          outline
           footer={
-            <div className="flex justify-between">
-              <Link>Like</Link>
-              <Link>Read more</Link>
-            </div>
+            <>
+              <div className="flex justify-between material:hidden">
+                <Link>Like</Link>
+                <Link>Read more</Link>
+              </div>
+              <div className="flex justify-start ios:hidden space-x-2">
+                <Button rounded inline>
+                  Like
+                </Button>
+                <Button rounded inline outline>
+                  Read more
+                </Button>
+              </div>
+            </>
           }
         >
+          <div
+            className="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
+            style={{
+              backgroundImage:
+                'url(https://cdn.framework7.io/placeholder/nature-1000x600-3.jpg)',
+            }}
+          >
+            Journey To Mountains
+          </div>
           <div className="text-gray-500 mb-3">Posted on January 21, 2021</div>
           <p>
             Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
@@ -90,24 +129,32 @@ export default function CardsPage() {
           </p>
         </Card>
         <Card
-          header={
-            <div
-              className="-mx-4 -my-2 h-48 p-4 flex items-end text-white font-bold bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  'url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)',
-              }}
-            >
-              Lorem Ipsum
-            </div>
-          }
           footer={
-            <div className="flex justify-between">
-              <Link>Like</Link>
-              <Link>Read more</Link>
-            </div>
+            <>
+              <div className="flex justify-between material:hidden">
+                <Link>Like</Link>
+                <Link>Read more</Link>
+              </div>
+              <div className="flex justify-start ios:hidden space-x-2">
+                <Button rounded inline>
+                  Like
+                </Button>
+                <Button rounded inline outline>
+                  Read more
+                </Button>
+              </div>
+            </>
           }
         >
+          <div
+            className="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
+            style={{
+              backgroundImage:
+                'url(https://cdn.framework7.io/placeholder/people-1000x600-3.jpg)',
+            }}
+          >
+            Journey To Mountains
+          </div>
           <div className="text-gray-500 mb-3">Posted on January 21, 2021</div>
           <p>
             Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies

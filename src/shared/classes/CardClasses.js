@@ -1,29 +1,36 @@
 import { cls } from '../cls.js';
 
-export const CardClasses = (props, colors, darkClasses) => {
-  const { margin } = props;
+export const CardClasses = (props, colors) => {
+  const { margin, headerDivider, footerDivider } = props;
   return {
     base: {
       common: cls(margin, `overflow-hidden`),
-      ios: cls('rounded', colors.bgIos),
-      material: cls('rounded-2xl', colors.bgMaterial),
-      shadow: 'shadow',
-      outline: cls(
-        `border border-black border-opacity-10`,
-        darkClasses('dark:border-white dark:border-opacity-10')
+      ios: cls('rounded-lg', colors.bgIos, colors.textIos),
+      material: cls('rounded-2xl', colors.bgMaterial, colors.textMaterial),
+      plain: '',
+      raised: 'shadow',
+      outline: {
+        common: cls(`border`),
+        ios: colors.outlineIos,
+        material: colors.outlineMaterial,
+      },
+    },
+    header: {
+      common: cls(headerDivider && `border-b`, `p-4`),
+      ios: cls(headerDivider && colors.outlineIos, props.headerFontSizeIos),
+      material: cls(
+        headerDivider && colors.outlineMaterial,
+        props.headerFontSizeMaterial
       ),
     },
-    header: cls(
-      `border-b border-black border-opacity-10 px-4 py-2`,
-      darkClasses('dark:border-white dark:border-opacity-10')
-    ),
     content: 'p-4 text-sm',
-    footer: cls(
-      `border-t border-black border-opacity-10 text-sm text-opacity-55`,
-      colors.footerText,
-      darkClasses(
-        'dark:border-white  dark:border-opacity-10 dark:text-opacity-55 px-4 py-2'
-      )
-    ),
+    footer: {
+      common: cls(headerDivider && `border-t`, `text-sm p-4`),
+      ios: cls(colors.footerTextIos, footerDivider && colors.outlineIos),
+      material: cls(
+        colors.footerTextMaterial,
+        footerDivider && colors.outlineMaterial
+      ),
+    },
   };
 };
