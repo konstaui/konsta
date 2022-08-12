@@ -42,7 +42,7 @@
   $: colors = LinkColors(colorsProp, dark);
 
   // prettier-ignore
-  $: themeTextColor = props.navbar ?
+  $: themeTextColor = navbar ?
     (
       theme === 'material' ? colors.navbarTextMaterial : colors.navbarTextIos
     ) :

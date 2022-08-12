@@ -71,10 +71,10 @@
       // prettier-ignore
       const themeTextColor = computed(() => props.navbar ?
         (
-          theme === 'material' ? colors.value.navbarTextMaterial : colors.value.navbarTextIos
+          theme.value === 'material' ? colors.value.navbarTextMaterial : colors.value.navbarTextIos
         ) :
         (
-          theme === 'material' ? colors.value.textMaterial : colors.value.textIos
+          theme.value === 'material' ? colors.value.textMaterial : colors.value.textIos
         )
       );
 
