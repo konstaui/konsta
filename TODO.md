@@ -1,14 +1,6 @@
 - Tabbar MD translate highlight
-- Roundend Block and List
-- Cards
-  - Unify
-    - add raised, outline modifiers
 - Colors
   - name colors
-- Popover
-- Stepper (tweak to buttons)
-- List sizes and styles
-- Menu list sizes and styles
 - Update colors in .d.ts
 - Multi colors
 
@@ -17,28 +9,36 @@ Colors
 - Actions
 - Badge
 - Breadcrumbs
-- Cards
 - Checkbox
-- Chips
+  - Ripple
 - Content Block
+  - add outline
+  - add strong
 - Fab
 - Form Inputs
 - List
+  - add outline
+  - add strong
 - List Button
 - Menu List
 - Navbar
 - Panel
-- Popover
+  - tweak demos with close button in MD themes
 - Popup
+  - tweak MD easing
+  - use MD close button
 - Preloader
-- Progressbar
-- Radio
+  - use MD 3 colors
+- Radio - Ripple
 - Range Slider
+  - touch ripple
 - Segmented
+  - tweak strong bg in MD theme
 - Sheet Modal
-- Stepper
+  - Push?
 - Subnavbar
 - Tabbar
 - Toast
 - Toggle
+  - Ripple
 - Toolbar
