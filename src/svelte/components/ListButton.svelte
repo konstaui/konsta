@@ -1,5 +1,6 @@
 <script>
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
   import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
@@ -35,7 +36,9 @@
 
   $: useTouchRipple(rippleEl, touchRipple);
 
-  $: colors = ListButtonColors(colorsProp);
+  const dark = useDarkClasses();
+
+  $: colors = ListButtonColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

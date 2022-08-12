@@ -2,16 +2,21 @@ import { cls } from '../cls.js';
 
 export const ListItemColors = (colorsProp = {}, dark) => {
   return {
-    textIos: cls(`text-black`, dark('dark:text-white')),
-    textMaterial: cls(
+    primaryTextIos: cls(`text-black`, dark('dark:text-white')),
+    primaryTextMaterial: cls(
       `text-md-light-on-surface`,
       dark('dark:text-md-dark-on-surface')
     ),
-    dividerTextIos: cls(
+
+    secondaryTextIos: cls(
       'text-black text-opacity-55',
       dark('dark:text-white dark:text-opacity-55')
     ),
-    dividerTextMaterial: '',
+    secondaryTextMaterial: cls(
+      'text-md-light-on-surface-variant',
+      dark('dark:text-md-dark-on-surface-variant')
+    ),
+
     dividerBgIos: cls(
       'bg-list-divider-light',
       dark('dark:bg-list-divider-dark')

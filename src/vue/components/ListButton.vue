@@ -16,6 +16,7 @@
   import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
@@ -55,7 +56,9 @@
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props);
 
-      const colors = computed(() => ListButtonColors(props.colors || {}));
+      const colors = computed(() =>
+        ListButtonColors(props.colors || {}, useDarkClasses)
+      );
 
       const theme = useTheme(props);
 

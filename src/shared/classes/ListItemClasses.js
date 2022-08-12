@@ -32,17 +32,18 @@ export const ListItemClasses = (
     base: menuListItem ? `${textColor} py-1` : '',
     itemContent: {
       common: cls(
-        textColor,
         menuListItem ? 'pl-2 ml-2-safe mr-2-safe rounded-lg' : 'pl-4-safe',
         `flex items-center ${contentClassName || contentClass}`
       ),
+      ios: colors.primaryTextIos,
+      material: colors.primaryTextMaterial,
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
         hairlines && theme === 'ios' && 'active:hairline-transparent',
         needsTouchRipple &&
           cls(
             `relative overflow-hidden touch-ripple-black`,
-            dark('touch-ripple-white z-10')
+            dark('dark:touch-ripple-white dark:z-10')
           ),
         isMenuListItemActive
           ? cls(colors.menuListItemActiveBg, 'bg-opacity-15')
@@ -55,7 +56,7 @@ export const ListItemClasses = (
     },
 
     media: {
-      common: `mr-4 shrink-0 ${mediaClassName || mediaClass}`,
+      common: `mr-4 shrink-0 flex ${mediaClassName || mediaClass}`,
       ios: 'py-2',
       material: 'py-3',
     },
@@ -91,18 +92,28 @@ export const ListItemClasses = (
         material: 'font-medium',
       },
     },
-    after: cls(
-      `text-opacity-55 shrink-0 ml-auto pl-1 flex items-center space-x-1`,
-      dark('dark:text-opacity-55')
-    ),
+    after: {
+      common: cls(`shrink-0 ml-auto pl-1 flex items-center space-x-1`),
+      ios: colors.secondaryTextIos,
+      material: colors.secondaryTextMaterial,
+    },
     chevron: 'opacity-20 shrink-0 ml-3',
     subtitle: 'text-sm',
-    text: cls(
-      `text-sm text-opacity-55 line-clamp-2`,
-      dark('dark:text-opacity-55')
-    ),
-    header: 'text-xs mb-0.5',
-    footer: cls(`text-xs text-opacity-55 mt-0.5`, dark('dark:text-opacity-55')),
+    text: {
+      common: cls(`text-sm line-clamp-2`),
+      ios: colors.secondaryTextIos,
+      material: colors.secondaryTextMaterial,
+    },
+    header: {
+      common: 'text-xs mb-0.5',
+      ios: colors.secondaryTextIos,
+      material: colors.secondaryTextMaterial,
+    },
+    footer: {
+      common: cls(`text-xs mt-0.5`),
+      ios: colors.secondaryTextIos,
+      material: colors.secondaryTextMaterial,
+    },
 
     divider: {
       common: cls(
@@ -110,9 +121,9 @@ export const ListItemClasses = (
         divider ? 'relative' : 'sticky top-0'
       ),
       ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${
-        colors.dividerTextIos
+        colors.secondaryTextIos
       } ${colors.dividerBgIos}`,
-      material: `h-12 ${titleFontSizeMaterial}  ${colors.dividerTextMaterial} ${colors.dividerBgMaterial}`,
+      material: `h-12 ${titleFontSizeMaterial} ${colors.secondaryTextMaterial} ${colors.dividerBgMaterial}`,
     },
   };
 };

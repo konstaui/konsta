@@ -1,6 +1,7 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
 import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
@@ -54,7 +55,9 @@ const ListButton = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const colors = ListButtonColors(colorsProp);
+  const dark = useDarkClasses();
+
+  const colors = ListButtonColors(colorsProp, dark);
 
   const c = themeClasses(
     ListButtonClasses({ ...props, hairlines }, colors, className, theme),
