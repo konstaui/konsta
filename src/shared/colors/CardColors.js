@@ -23,7 +23,7 @@ export const CardColors = (colorsProp = {}, dark) => {
     ),
     outlineMaterial: cls(
       'border-md-light-outline',
-      dark('dark:md-dark-outline')
+      dark('dark:border-md-dark-outline')
     ),
     ...colorsProp,
   };
