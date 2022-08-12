@@ -54,7 +54,7 @@ export const NavbarClasses = (props, colors, classes) => {
         subnavbarClassName || subnavbarClass
       ),
       ios: 'h-11 pl-2-safe pr-2-safe',
-      material: 'h-16 pl-4-safe pr-4-safe',
+      material: 'h-14 pl-4-safe pr-4-safe',
     },
     inner: {
       common: cls(
