@@ -6,13 +6,13 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
   return {
     base: {
       common: cls(
-        'flex text-center justify-center items-center appearance-none px-2 py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10',
+        'flex text-center justify-center items-center appearance-none py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10',
         inline ? 'inline-flex' : 'w-full flex',
         positionClass('relative', classes),
         disabled && 'pointer-events-none'
       ),
-      ios: `uppercase duration-100 font-semibold`,
-      material: `duration-300 font-medium`,
+      ios: `uppercase duration-100 font-semibold px-2`,
+      material: `duration-300 font-medium px-4`,
 
       square: {
         ios:
