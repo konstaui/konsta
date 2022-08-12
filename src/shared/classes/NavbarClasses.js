@@ -33,8 +33,8 @@ export const NavbarClasses = (props, colors, classes) => {
         `w-full z-20 top-0 pt-safe`,
         positionClass('sticky', classes)
       ),
-      ios: fontSizeIos,
-      material: fontSizeMaterial,
+      ios: cls(fontSizeIos, colors.textIos),
+      material: cls(fontSizeMaterial, colors.textMaterial),
     },
     bg: {
       common: cls(
@@ -84,11 +84,11 @@ export const NavbarClasses = (props, colors, classes) => {
           : 'text-left'
       ),
       ios: cls(
-        `${colors.titleIos} ${titleFontSizeIos} font-semibold`,
+        `${titleFontSizeIos} font-semibold`,
         !centerTitle && 'first:mx-2'
       ),
       material: cls(
-        `${colors.titleMaterial} ${titleFontSizeMaterial} font-normal`,
+        `${titleFontSizeMaterial} font-normal`,
         !centerTitle && 'first:mx-4'
       ),
     },

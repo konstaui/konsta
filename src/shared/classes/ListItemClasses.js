@@ -32,6 +32,7 @@ export const ListItemClasses = (
     base: menuListItem ? `${textColor} py-1` : '',
     itemContent: {
       common: cls(
+        textColor,
         menuListItem ? 'pl-2 ml-2-safe mr-2-safe rounded-lg' : 'pl-4-safe',
         `flex items-center ${contentClassName || contentClass}`
       ),
@@ -39,7 +40,10 @@ export const ListItemClasses = (
         'duration-300 active:duration-0 cursor-pointer select-none',
         hairlines && theme === 'ios' && 'active:hairline-transparent',
         needsTouchRipple &&
-          cls(`relative overflow-hidden`, dark('dark:touch-ripple-white z-10')),
+          cls(
+            `relative overflow-hidden touch-ripple-black`,
+            dark('touch-ripple-white z-10')
+          ),
         isMenuListItemActive
           ? cls(colors.menuListItemActiveBg, 'bg-opacity-15')
           : theme === 'ios' &&
@@ -88,32 +92,27 @@ export const ListItemClasses = (
       },
     },
     after: cls(
-      textColor,
       `text-opacity-55 shrink-0 ml-auto pl-1 flex items-center space-x-1`,
       dark('dark:text-opacity-55')
     ),
     chevron: 'opacity-20 shrink-0 ml-3',
     subtitle: 'text-sm',
     text: cls(
-      textColor,
       `text-sm text-opacity-55 line-clamp-2`,
       dark('dark:text-opacity-55')
     ),
     header: 'text-xs mb-0.5',
-    footer: cls(
-      textColor,
-      `text-xs text-opacity-55 mt-0.5`,
-      dark('dark:text-opacity-55')
-    ),
+    footer: cls(`text-xs text-opacity-55 mt-0.5`, dark('dark:text-opacity-55')),
 
     divider: {
       common: cls(
-        `bg-list-divider-light text-black text-opacity-55 pl-4-safe pr-4-safe py-1 flex items-center z-20`,
-        divider ? 'relative' : 'sticky top-0',
-        dark(`dark:bg-list-divider-dark dark:text-white dark:text-opacity-55`)
+        `pl-4-safe pr-4-safe py-1 flex items-center z-20`,
+        divider ? 'relative' : 'sticky top-0'
       ),
-      ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos}`,
-      material: `h-12 ${titleFontSizeMaterial}`,
+      ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${
+        colors.dividerTextIos
+      } ${colors.dividerBgIos}`,
+      material: `h-12 ${titleFontSizeMaterial}  ${colors.dividerTextMaterial} ${colors.dividerBgMaterial}`,
     },
   };
 };

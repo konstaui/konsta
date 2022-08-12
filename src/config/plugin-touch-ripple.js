@@ -4,9 +4,11 @@ const hexToRgb = require('./hex-to-rgb.js');
 module.exports = () =>
   plugin(({ addUtilities, addBase, theme }) => {
     addBase({
+      // prettier-ignore
       ':root': {
-        '--k-touch-ripple-black': 'rgba(0, 0, 0, 0.1)',
-        '--k-touch-ripple-white': 'rgba(255, 255, 255, 0.15)',
+        '--k-touch-ripple-opacity': '0.15',
+        '--k-touch-ripple-black': 'rgba(0, 0, 0, var(--k-touch-ripple-opacity))',
+        '--k-touch-ripple-white': 'rgba(255, 255, 255, var(--k-touch-ripple-opacity))',
         '--k-touch-ripple-color': 'var(--k-touch-ripple-black)',
       },
       '.k-touch-ripple-wave': {
@@ -58,7 +60,7 @@ module.exports = () =>
       if (typeof value === 'string') {
         if (value[0] === '#') {
           const [r, g, b] = hexToRgb(value);
-          value = `rgba(${r}, ${g}, ${b}, 0.25)`;
+          value = `rgba(${r}, ${g}, ${b}, var(--k-touch-ripple-opacity))`;
         }
         touchRippleColors[`.touch-ripple-${key}`] = {
           '--k-touch-ripple-color': value,
@@ -68,7 +70,7 @@ module.exports = () =>
           let subValue = value[subKey];
           if (subValue[0] === '#') {
             const [r, g, b] = hexToRgb(subValue);
-            subValue = `rgba(${r}, ${g}, ${b}, 0.25)`;
+            subValue = `rgba(${r}, ${g}, ${b}, var(--k-touch-ripple-opacity))`;
           }
           if (subKey === 'DEFAULT') {
             touchRippleColors[`.touch-ripple-${key}`] = {
