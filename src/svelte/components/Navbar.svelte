@@ -22,11 +22,11 @@
   export let hairlines = true;
   export let centerTitle = undefined;
 
-  export let fontSizeIos = 'text-navbar-[17px]';
-  export let fontSizeMaterial = 'text-navbar-[16px';
+  export let fontSizeIos = 'text-[17px]';
+  export let fontSizeMaterial = 'text-[16px]';
 
-  export let titleFontSizeIos = 'text-navbar-[17px]';
-  export let titleFontSizeMaterial = 'text-navbar-[16px';
+  export let titleFontSizeIos = 'text-[17px]';
+  export let titleFontSizeMaterial = 'text-[22px]';
 
   export let title = undefined;
   export let subtitle = undefined;
@@ -38,7 +38,7 @@
   $: colors = NavbarColors(colorsProp, dark);
 
   let theme;
-  theme = useTheme({}, (v) => (theme = v));
+  theme = useTheme((v) => (theme = v));
 
   $: c = useThemeClasses(
     { ios, material },
@@ -58,7 +58,7 @@
         titleFontSizeIos,
         titleFontSizeMaterial,
         centerTitle:
-          typeof centerTitle === 'undeifned' ? theme === 'ios' : centerTitle,
+          typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
       },
       colors,
       className
