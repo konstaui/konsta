@@ -4,6 +4,8 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
+  export let component = 'label';
+
   let className = undefined;
   export { className as class };
   let colorsProp = undefined;
@@ -32,7 +34,7 @@
   );
 </script>
 
-<label class={c.base[state]} {...$$restProps}>
+<svelte:element this={component} class={c.base[state]} {...$$restProps}>
   <input
     type="checkbox"
     {name}
@@ -46,4 +48,4 @@
   <span class={c.inner[state]} />
   <span class={c.thumb[state]} />
   <slot />
-</label>
+</svelte:element>
