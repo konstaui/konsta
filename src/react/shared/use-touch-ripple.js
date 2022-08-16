@@ -2,9 +2,9 @@ import { useRef, useEffect, useContext } from 'react';
 import { KonstaContext } from './KonstaContext.js';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
 
-export const useTouchRipple = (elRef, needsTouchRipple) => {
+export const useTouchRipple = (elRef, needsTouchRipple, eventsElRef) => {
   const context = useContext(KonstaContext);
-
+  if (!eventsElRef) eventsElRef = elRef;
   const ripple = useRef(null);
   const removeRipple = () => {
     if (ripple.current) ripple.current.remove();
@@ -24,23 +24,23 @@ export const useTouchRipple = (elRef, needsTouchRipple) => {
   const attachEvents = () => {
     if (!context.touchRipple) return;
 
-    const el = elRef.current;
+    const el = eventsElRef.current;
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);
     el.addEventListener('pointerup', onPointerUp);
   };
   const detachEvents = () => {
-    const el = elRef.current;
+    const el = eventsElRef.current;
     el.removeEventListener('pointerdown', onPointerDown);
     el.removeEventListener('pointermove', onPointerMove);
     el.removeEventListener('pointerup', onPointerUp);
   };
   const onMounted = () => {
-    if (!elRef || !elRef.current || !needsTouchRipple) return;
+    if (!eventsElRef || !eventsElRef.current || !needsTouchRipple) return;
     attachEvents();
   };
   const onDestroy = () => {
-    if (!elRef || !elRef.current || !needsTouchRipple) return;
+    if (!eventsElRef || !eventsElRef.current || !needsTouchRipple) return;
     detachEvents();
   };
 

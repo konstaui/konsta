@@ -162,7 +162,9 @@
           (isLabel.value || isLink.value) &&
           props.touchRipple
       );
-      useTouchRipple(rippleElRef, props, () => isLabel.value || isLink.value);
+      useTouchRipple(rippleElRef, props, {
+        addCondition: () => isLabel.value || isLink.value,
+      });
 
       const hrefComputed = computed(() =>
         props.href === true ||

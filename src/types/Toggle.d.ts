@@ -57,6 +57,12 @@ interface Props {
    */
   readOnly?: boolean;
   /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
+  /**
    * Toggle input `change` event handler
    */
   onChange?: (e: any) => void;

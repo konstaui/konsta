@@ -6,7 +6,8 @@ export const ToggleClasses = (props, colors, classes, dark) => {
     base: {
       common: cls(
         positionClass('relative', classes),
-        `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full group`
+        `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full group`,
+        dark('dark:touch-ripple-white')
       ),
       ios: 'h-8 w-13 p-0.5',
       material: 'w-13 h-8 border-2',
@@ -29,13 +30,24 @@ export const ToggleClasses = (props, colors, classes, dark) => {
         ios: 'scale-0',
       },
     },
-    thumb: {
+    thumbWrap: {
       common: 'rounded-full absolute duration-300 transform',
-      ios: 'w-7 h-7 shadow-ios-toggle left-0.5 top-0.5',
-      material: 'w-6 h-6 left-0.5 top-0.5 group-active:scale-[1.1]',
+      ios: 'w-7 h-7 left-0.5 top-0.5',
+      material: 'w-6 h-6 left-0.5 top-0.5',
       checked: {
-        ios: cls('translate-x-5', colors.checkedThumbBgIos),
-        material: cls(`translate-x-5`, colors.checkedThumbBgMaterial),
+        ios: cls('translate-x-5'),
+        material: cls(`translate-x-5`),
+      },
+      notChecked: '',
+    },
+    thumb: {
+      common:
+        'w-full h-full rounded-full absolute duration-300 transform left-0 top-0',
+      ios: 'shadow-ios-toggle',
+      material: 'group-active:scale-[1.1]',
+      checked: {
+        ios: cls(colors.checkedThumbBgIos),
+        material: cls(colors.checkedThumbBgMaterial),
       },
       notChecked: {
         ios: colors.thumbBgIos,

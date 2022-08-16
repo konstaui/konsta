@@ -3,6 +3,8 @@ import { ToggleClasses } from '../../shared/classes/ToggleClasses.js';
 import { ToggleColors } from '../../shared/colors/ToggleColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTheme } from '../shared/use-theme.js';
+import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
 const Toggle = forwardRef((props, ref) => {
   const {
@@ -17,6 +19,7 @@ const Toggle = forwardRef((props, ref) => {
     disabled,
     readOnly,
     onChange,
+    touchRipple = true,
 
     ios,
     material,
@@ -29,6 +32,7 @@ const Toggle = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
+  const rippleTargetElRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     el: elRef.current,
@@ -40,8 +44,11 @@ const Toggle = forwardRef((props, ref) => {
     ...rest,
   };
 
+  const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
+
+  useTouchRipple(rippleTargetElRef, theme === 'material' && touchRipple, elRef);
 
   const colors = ToggleColors(colorsProp, dark);
 
@@ -67,7 +74,9 @@ const Toggle = forwardRef((props, ref) => {
         className={c.input}
       />
       <span className={c.inner[state]} />
-      <span className={c.thumb[state]} />
+      <span ref={rippleTargetElRef} className={c.thumbWrap[state]}>
+        <span className={c.thumb[state]} />
+      </span>
       {children}
     </Component>
   );

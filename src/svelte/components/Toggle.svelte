@@ -3,8 +3,11 @@
   import { ToggleColors } from '../../shared/colors/ToggleColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export let component = 'label';
+  export let elRef = { current: null };
+  export let rippleTargetElRef = { current: null };
 
   let className = undefined;
   export { className as class };
@@ -20,7 +23,11 @@
   export let readonly = false;
   export let onChange = undefined;
 
+  export let touchRipple = true;
+
   const dark = useDarkClasses();
+
+  useTouchRipple(rippleTargetElRef, touchRipple, elRef);
 
   $: colors = ToggleColors(colorsProp, dark);
 
@@ -34,7 +41,12 @@
   );
 </script>
 
-<svelte:element this={component} class={c.base[state]} {...$$restProps}>
+<svelte:element
+  this={component}
+  bind:this={elRef.current}
+  class={c.base[state]}
+  {...$$restProps}
+>
   <input
     type="checkbox"
     {name}
@@ -46,6 +58,8 @@
     class={c.input}
   />
   <span class={c.inner[state]} />
-  <span class={c.thumb[state]} />
+  <span bind:this={rippleTargetElRef.current} class={c.thumbWrap[state]}>
+    <span class={c.thumb[state]} />
+  </span>
   <slot />
 </svelte:element>

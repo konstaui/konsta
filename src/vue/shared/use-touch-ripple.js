@@ -1,14 +1,19 @@
 import { ref, onMounted, onBeforeUnmount, inject, watch } from 'vue';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
 
-export const useTouchRipple = (elRef, props, addCondition) => {
+export const useTouchRipple = (
+  elRef,
+  props,
+  { addCondition, eventsElRef } = {}
+) => {
+  if (!eventsElRef) eventsElRef = elRef;
   const context = inject('KonstaContext');
   const ripple = ref(null);
   let eventsAttached = false;
 
-  const getEl = () => {
-    if (!elRef || !elRef.value) return null;
-    let el = elRef.value;
+  const getEl = (reference) => {
+    if (!reference || !reference.value) return null;
+    let el = reference.value;
     if (el.$el) el = el.$el;
     return el;
   };
@@ -32,7 +37,7 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   };
 
   const onPointerDown = (e) => {
-    ripple.value = new TouchRipple(getEl(), e.pageX, e.pageY);
+    ripple.value = new TouchRipple(getEl(elRef), e.pageX, e.pageY);
   };
   const onPointerMove = () => {
     removeRipple();
@@ -44,14 +49,14 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   const attachEvents = () => {
     if (!context.value.touchRipple || eventsAttached) return;
     eventsAttached = true;
-    const el = getEl();
+    const el = getEl(eventsElRef);
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);
     el.addEventListener('pointerup', onPointerUp);
   };
   const detachEvents = () => {
     eventsAttached = false;
-    const el = getEl();
+    const el = getEl(eventsElRef);
     el.removeEventListener('pointerdown', onPointerDown);
     el.removeEventListener('pointermove', onPointerMove);
     el.removeEventListener('pointerup', onPointerUp);
@@ -66,12 +71,12 @@ export const useTouchRipple = (elRef, props, addCondition) => {
   );
 
   onMounted(() => {
-    if (!getEl() || !needsTouchRipple()) return;
+    if (!getEl(eventsElRef) || !needsTouchRipple()) return;
     attachEvents();
   });
 
   onBeforeUnmount(() => {
-    if (!getEl() || !needsTouchRipple()) return;
+    if (!getEl(eventsElRef) || !needsTouchRipple()) return;
     detachEvents();
   });
 };

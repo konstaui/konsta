@@ -3,7 +3,8 @@ import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
 
-export const useTouchRipple = (el, touchRipple) => {
+export const useTouchRipple = (el, touchRipple, eventsEl) => {
+  if (!eventsEl) eventsEl = el;
   const needsTouchRipple = () => {
     return (
       touchRipple &&
@@ -30,21 +31,22 @@ export const useTouchRipple = (el, touchRipple) => {
 
   const attachEvents = () => {
     if (
-      !el ||
-      !el.current ||
-      !el.current.addEventListener ||
+      !eventsEl ||
+      !eventsEl.current ||
+      !eventsEl.current.addEventListener ||
       !needsTouchRipple()
     )
       return;
-    el.current.addEventListener('pointerdown', onPointerDown);
-    el.current.addEventListener('pointermove', onPointerMove);
-    el.current.addEventListener('pointerup', onPointerUp);
+    eventsEl.current.addEventListener('pointerdown', onPointerDown);
+    eventsEl.current.addEventListener('pointermove', onPointerMove);
+    eventsEl.current.addEventListener('pointerup', onPointerUp);
   };
   const detachEvents = () => {
-    if (!el || !el.current || !el.current.addEventListener) return;
-    el.current.removeEventListener('pointerdown', onPointerDown);
-    el.current.removeEventListener('pointermove', onPointerMove);
-    el.current.removeEventListener('pointerup', onPointerUp);
+    if (!eventsEl || !eventsEl.current || !eventsEl.current.addEventListener)
+      return;
+    eventsEl.current.removeEventListener('pointerdown', onPointerDown);
+    eventsEl.current.removeEventListener('pointermove', onPointerMove);
+    eventsEl.current.removeEventListener('pointerup', onPointerUp);
   };
 
   onMount(() => {
