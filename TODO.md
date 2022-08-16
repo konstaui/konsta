@@ -6,39 +6,26 @@
 
 Colors
 
-- Actions
-- Badge
-- Breadcrumbs
-- Checkbox
-  - Ripple
-- Content Block
-  - add outline
-  - add strong
-- Fab
-- Form Inputs
 - List
-  - add outline
-  - add strong
-- List Button
-- Menu List
+  - make dividers controlled on List
+- TS for theme-specific props
+  - List
+  - Block
+- Update demos for
+  - List
+  - Block
+- Ripple
+  - Range
+  - Toggle
+- Breadcrumbs
+- Form Inputs
 - Navbar
-- Panel
-  - tweak demos with close button in MD themes
+  - transparent
+  - large
 - Popup
   - tweak MD easing
-  - use MD close button
-- Preloader
-  - use MD 3 colors
-- Radio - Ripple
-- Range Slider
-  - touch ripple
-- Segmented
-  - tweak strong bg in MD theme
+  - push?
 - Sheet Modal
-  - Push?
-- Subnavbar
+  - push?
 - Tabbar
-- Toast
-- Toggle
-  - Ripple
 - Toolbar
