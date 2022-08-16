@@ -7,7 +7,9 @@ import React, {
 import { CheckboxClasses } from '../../shared/classes/CheckboxClasses.js';
 import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
+import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
 import CheckboxIcon from './icons/CheckboxIcon.jsx';
 
@@ -28,6 +30,8 @@ const Checkbox = forwardRef((props, ref) => {
 
     ios,
     material,
+
+    touchRipple = true,
 
     // Children
     children,
@@ -50,8 +54,11 @@ const Checkbox = forwardRef((props, ref) => {
     ...rest,
   };
 
+  const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
+
+  useTouchRipple(elRef, theme === 'material' && touchRipple);
 
   const colors = CheckboxColors(colorsProp, dark);
 

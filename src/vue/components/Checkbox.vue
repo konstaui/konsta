@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="c.base">
+  <component :is="component" :class="c.base" ref="elRef">
     <input
       ref="inputElRef"
       type="checkbox"
@@ -29,6 +29,7 @@
   import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
 
   export default {
@@ -50,6 +51,10 @@
         type: Boolean,
         default: undefined,
       },
+      touchRipple: {
+        type: Boolean,
+        default: true,
+      },
       checked: { type: Boolean, default: false },
       indeterminate: { type: Boolean, default: false },
       name: { type: String, default: undefined },
@@ -59,7 +64,10 @@
     },
     emits: ['change'],
     setup(props, ctx) {
+      const elRef = ref(null);
       const inputElRef = ref(null);
+
+      useTouchRipple(elRef, props);
 
       const colors = computed(() =>
         CheckboxColors(props.colors || {}, useDarkClasses)
@@ -90,6 +98,7 @@
       };
 
       return {
+        elRef,
         inputElRef,
         c,
         state,

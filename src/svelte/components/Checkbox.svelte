@@ -3,6 +3,7 @@
   import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   import CheckboxIcon from './icons/CheckboxIcon.svelte';
 
@@ -21,10 +22,14 @@
   export let disabled = false;
   export let readonly = false;
   export let onChange = undefined;
+  export let touchRipple = true;
 
   let inputEl;
+  const rippleEl = { current: null };
 
   const dark = useDarkClasses();
+
+  $: useTouchRipple(rippleEl, touchRipple);
 
   $: colors = CheckboxColors(colorsProp, dark);
 
@@ -46,7 +51,12 @@
   $: watchIndeterminate(indeterminate);
 </script>
 
-<svelte:element this={component} class={c.base} {...$$restProps}>
+<svelte:element
+  this={component}
+  bind:this={rippleEl.current}
+  class={c.base}
+  {...$$restProps}
+>
   <input
     bind:this={inputEl}
     type="checkbox"
