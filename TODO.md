@@ -4,7 +4,14 @@
 - Update colors in .d.ts
 - Multi colors
 
-Colors
+To redesign
+
+- Tabbar
+- Toolbar
+- Breadcrumbs
+- Form Inputs
+
+Tweaks
 
 - List
   - make dividers controlled on List
@@ -14,11 +21,6 @@ Colors
 - Update demos for
   - List
   - Block
-- Ripple
-  - Range
-  - Toggle
-- Breadcrumbs
-- Form Inputs
 - Navbar
   - transparent
   - large
@@ -27,5 +29,3 @@ Colors
   - push?
 - Sheet Modal
   - push?
-- Tabbar
-- Toolbar
