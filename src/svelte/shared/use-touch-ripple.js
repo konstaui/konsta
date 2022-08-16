@@ -34,18 +34,24 @@ export const useTouchRipple = (el, touchRipple, eventsEl) => {
       !eventsEl ||
       !eventsEl.current ||
       !eventsEl.current.addEventListener ||
-      !needsTouchRipple()
+      !needsTouchRipple() ||
+      eventsEl.__touchRippleAttached__
     )
       return;
+
+    eventsEl.__touchRippleAttached__ = true;
     eventsEl.current.addEventListener('pointerdown', onPointerDown);
     eventsEl.current.addEventListener('pointermove', onPointerMove);
     eventsEl.current.addEventListener('pointerup', onPointerUp);
     eventsEl.current.addEventListener('pointercancel', onPointerUp);
     eventsEl.current.addEventListener('contextmenu', onPointerUp);
   };
-  const detachEvents = () => {
+  const detachEvents = (deleteFlag) => {
     if (!eventsEl || !eventsEl.current || !eventsEl.current.addEventListener)
       return;
+    if (deleteFlag) {
+      delete eventsEl.__touchRippleAttached__;
+    }
     eventsEl.current.removeEventListener('pointerdown', onPointerDown);
     eventsEl.current.removeEventListener('pointermove', onPointerMove);
     eventsEl.current.removeEventListener('pointerup', onPointerUp);
@@ -57,7 +63,7 @@ export const useTouchRipple = (el, touchRipple, eventsEl) => {
     attachEvents();
   });
   onDestroy(() => {
-    detachEvents();
+    detachEvents(true);
   });
 
   KonstaStore.subscribe(() => {

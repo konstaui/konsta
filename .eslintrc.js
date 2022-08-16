@@ -1,4 +1,5 @@
 const rules = {
+  'no-underscore-dangle': ['off'],
   'no-param-reassign': ['off'],
   'prefer-destructuring': ['off'],
   'prefer-object-spread': ['off'],
