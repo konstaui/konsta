@@ -7,18 +7,20 @@
     </k-navbar>
 
     <k-list>
-      <k-list-item title="Item 1">
+      <k-list-item label title="Item 1">
         <template #after>
           <k-toggle
+            component="div"
             class="-my-1"
             :checked="checked1"
             @change="() => (checked1 = !checked1)"
           />
         </template>
       </k-list-item>
-      <k-list-item title="Item 2">
+      <k-list-item label title="Item 2">
         <template #after>
           <k-toggle
+            component="div"
             class="-my-1"
             :colors="{
               bg: 'bg-red-500',
@@ -29,9 +31,10 @@
           />
         </template>
       </k-list-item>
-      <k-list-item title="Item 3">
+      <k-list-item label title="Item 3">
         <template #after>
           <k-toggle
+            component="div"
             class="-my-1"
             :colors="{
               bg: 'bg-green-500',
@@ -42,9 +45,10 @@
           />
         </template>
       </k-list-item>
-      <k-list-item title="Item 4">
+      <k-list-item label title="Item 4">
         <template #after>
           <k-toggle
+            component="div"
             class="-my-1"
             :colors="{
               bg: 'bg-yellow-500',

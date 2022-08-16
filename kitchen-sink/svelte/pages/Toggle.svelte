@@ -25,17 +25,19 @@
   </Navbar>
 
   <List>
-    <ListItem title="Item 1">
+    <ListItem label title="Item 1">
       <Toggle
         slot="after"
+        component="div"
         class="-my-1"
         checked={checked1}
         onChange={() => (checked1 = !checked1)}
       />
     </ListItem>
-    <ListItem title="Item 2">
+    <ListItem label title="Item 2">
       <Toggle
         slot="after"
+        component="div"
         class="-my-1"
         colors={{
           bg: 'bg-red-500',
@@ -45,9 +47,10 @@
         onChange={() => (checked2 = !checked2)}
       />
     </ListItem>
-    <ListItem title="Item 3">
+    <ListItem label title="Item 3">
       <Toggle
         slot="after"
+        component="div"
         class="-my-1"
         colors={{
           bg: 'bg-green-500',
@@ -57,9 +60,10 @@
         onChange={() => (checked3 = !checked3)}
       />
     </ListItem>
-    <ListItem title="Item 4">
+    <ListItem label title="Item 4">
       <Toggle
         slot="after"
+        component="div"
         class="-my-1"
         colors={{
           bg: 'bg-yellow-500',

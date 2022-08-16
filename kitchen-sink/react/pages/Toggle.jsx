@@ -23,9 +23,11 @@ export default function TogglePage() {
 
       <List>
         <ListItem
+          label
           title="Item 1"
           after={
             <Toggle
+              component="div"
               className="-my-1"
               checked={checked1}
               onChange={() => setChecked1(!checked1)}
@@ -33,9 +35,11 @@ export default function TogglePage() {
           }
         />
         <ListItem
+          label
           title="Item 2"
           after={
             <Toggle
+              component="div"
               className="-my-1"
               colors={{
                 bg: 'bg-red-500',
@@ -47,9 +51,11 @@ export default function TogglePage() {
           }
         />
         <ListItem
+          label
           title="Item 3"
           after={
             <Toggle
+              component="div"
               className="-my-1"
               colors={{
                 bg: 'bg-green-500',
@@ -61,9 +67,11 @@ export default function TogglePage() {
           }
         />
         <ListItem
+          label
           title="Item 4"
           after={
             <Toggle
+              component="div"
               className="-my-1"
               colors={{
                 bg: 'bg-yellow-500',
