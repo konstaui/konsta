@@ -1,6 +1,7 @@
 <script>
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import CheckboxIcon from './icons/CheckboxIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
@@ -21,11 +22,16 @@
   export let disabled = false;
   export let readonly = false;
   export let onChange = undefined;
+  export let touchRipple = true;
+
+  const rippleEl = { current: null };
 
   let theme;
   theme = useTheme({ ios, material }, (v) => (theme = v));
 
   const dark = useDarkClasses();
+
+  $: useTouchRipple(rippleEl, touchRipple);
 
   $: colors = RadioColors(colorsProp, dark);
 
@@ -33,13 +39,18 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    RadioClasses({}, colors, className),
+    RadioClasses({}, colors, className, dark),
     className,
     (v) => (c = v)
   );
 </script>
 
-<svelte:element this={component} class={c.base} {...$$restProps}>
+<svelte:element
+  this={component}
+  bind:this={rippleEl.current}
+  class={c.base}
+  {...$$restProps}
+>
   <input
     type="radio"
     {name}

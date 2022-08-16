@@ -1,11 +1,12 @@
 import { cls } from '../cls.js';
 import { positionClass } from '../position-class.js';
 
-export const RadioClasses = (props, colors, classes) => {
+export const RadioClasses = (props, colors, classes, darkClasses) => {
   return {
     base: cls(
-      `cursor-pointer inline-block align-middle`,
-      positionClass('relative', classes)
+      `cursor-pointer inline-flex align-middle`,
+      positionClass('relative', classes),
+      darkClasses('dark:touch-ripple-white')
     ),
     iconWrap: {
       common: 'flex items-center justify-center rounded-full',

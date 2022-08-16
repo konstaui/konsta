@@ -73,6 +73,12 @@ interface Props {
    */
   readOnly?: boolean;
   /**
+   * Enables touch ripple effect in Material theme
+   *
+   * @default true
+   */
+  touchRipple?: boolean;
+  /**
    * Event will be triggered when checkbox state changed
    */
   onChange?: (e: any) => void;
