@@ -13,9 +13,6 @@
   export let ios = undefined;
   export let material = undefined;
 
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
-
   export let margin = 'my-8';
   export let inset = undefined;
   export let insetIos = undefined;
@@ -29,7 +26,11 @@
   export let nested = false;
   export let menuList = false;
 
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
+
   const dark = useDarkClasses();
+
   $: isStrong =
     typeof strong === 'undefined'
       ? theme === 'ios'

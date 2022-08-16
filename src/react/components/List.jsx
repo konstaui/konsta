@@ -26,8 +26,6 @@ const List = forwardRef((props, ref) => {
     outlineIos,
     outlineMaterial,
 
-    // hairlines = true,
-
     ios,
     material,
 

@@ -2,24 +2,27 @@ import { cls } from '../cls.js';
 import { positionClass } from '../position-class.js';
 
 export const BlockClasses = (props, colors, classes) => {
-  const { inset, nested, margin, hairlines } = props;
+  const { inset, nested, margin, strong, outline } = props;
   return {
     base: {
       common: cls(
         `text-sm z-10`,
         positionClass('relative', classes),
+        !inset && !nested && outline && 'hairline-t hairline-b',
+        inset && outline && 'border',
         inset && 'px-4',
         !inset && 'pl-4-safe pr-4-safe',
-        !nested && margin
+        !nested && margin,
+        (strong || outline) && 'py-4'
       ),
-    },
-    strong: {
-      common: cls(
-        `py-4`,
-        !inset && !nested && hairlines && 'hairline-t hairline-b'
+      ios: cls(
+        strong && colors.strongBgIos,
+        inset && outline && colors.outlineIos
       ),
-      ios: colors.strongBgIos,
-      material: colors.strongBgMaterial,
+      material: cls(
+        strong && colors.strongBgMaterial,
+        inset && outline && colors.outlineMaterial
+      ),
     },
     inset: {
       common: `ml-4-safe mr-4-safe overflow-hidden`,
