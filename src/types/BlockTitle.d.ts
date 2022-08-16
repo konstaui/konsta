@@ -11,4 +11,18 @@ interface Props {
    * @default true
    */
   withBlock?: boolean;
+
+  /**
+   * Medium sized block title
+   *
+   * @default false
+   */
+  medium?: boolean;
+
+  /**
+   * Large sized block title
+   *
+   * @default false
+   */
+  large?: boolean;
 }

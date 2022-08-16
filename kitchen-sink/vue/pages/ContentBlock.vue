@@ -31,7 +31,7 @@
       </p>
     </k-block>
     <k-block-footer>Footer</k-block-footer>
-    <k-block-title class="text-2xl">Medium Title</k-block-title>
+    <k-block-title medium>Medium Title</k-block-title>
     <k-block strong>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
@@ -39,7 +39,7 @@
         mollis, vulputate turpis vel, sagittis felis.
       </p>
     </k-block>
-    <k-block-title class="text-3xl">Large Title</k-block-title>
+    <k-block-title large>Large Title</k-block-title>
     <k-block strong>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.

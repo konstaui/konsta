@@ -43,7 +43,7 @@ export default function ContentBlockPage() {
         </p>
       </Block>
       <BlockFooter>Footer</BlockFooter>
-      <BlockTitle className="text-2xl">Medium Title</BlockTitle>
+      <BlockTitle medium>Medium Title</BlockTitle>
       <Block strong>
         <p>
           Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
@@ -51,7 +51,7 @@ export default function ContentBlockPage() {
           mollis, vulputate turpis vel, sagittis felis.
         </p>
       </Block>
-      <BlockTitle className="text-3xl">Large Title</BlockTitle>
+      <BlockTitle large>Large Title</BlockTitle>
       <Block strong>
         <p>
           Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.

@@ -12,13 +12,15 @@
   export let material = undefined;
 
   export let withBlock = true;
+  export let medium = false;
+  export let large = false;
   const dark = useDarkClasses();
 
   $: colors = BlockTitleColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },
-    BlockTitleClasses({ withBlock }, colors),
+    BlockTitleClasses({ withBlock, medium, large }, colors),
     className,
     (v) => (c = v)
   );

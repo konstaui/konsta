@@ -32,6 +32,14 @@
         type: Boolean,
         default: true,
       },
+      medium: {
+        type: Boolean,
+        default: false,
+      },
+      large: {
+        type: Boolean,
+        default: false,
+      },
     },
     setup(props) {
       const colors = computed(() =>

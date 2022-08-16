@@ -12,6 +12,9 @@ const BlockTitle = forwardRef((props, ref) => {
 
     withBlock = true,
 
+    medium,
+    large,
+
     ios,
     material,
 
