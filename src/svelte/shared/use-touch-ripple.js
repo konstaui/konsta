@@ -40,6 +40,8 @@ export const useTouchRipple = (el, touchRipple, eventsEl) => {
     eventsEl.current.addEventListener('pointerdown', onPointerDown);
     eventsEl.current.addEventListener('pointermove', onPointerMove);
     eventsEl.current.addEventListener('pointerup', onPointerUp);
+    eventsEl.current.addEventListener('pointercancel', onPointerUp);
+    eventsEl.current.addEventListener('contextmenu', onPointerUp);
   };
   const detachEvents = () => {
     if (!eventsEl || !eventsEl.current || !eventsEl.current.addEventListener)
@@ -47,6 +49,8 @@ export const useTouchRipple = (el, touchRipple, eventsEl) => {
     eventsEl.current.removeEventListener('pointerdown', onPointerDown);
     eventsEl.current.removeEventListener('pointermove', onPointerMove);
     eventsEl.current.removeEventListener('pointerup', onPointerUp);
+    eventsEl.current.removeEventListener('pointercancel', onPointerUp);
+    eventsEl.current.removeEventListener('contextmenu', onPointerUp);
   };
 
   onMount(() => {

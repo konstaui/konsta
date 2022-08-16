@@ -28,12 +28,16 @@ export const useTouchRipple = (elRef, needsTouchRipple, eventsElRef) => {
     el.addEventListener('pointerdown', onPointerDown);
     el.addEventListener('pointermove', onPointerMove);
     el.addEventListener('pointerup', onPointerUp);
+    el.addEventListener('pointercancel', onPointerUp);
+    el.addEventListener('contextmenu', onPointerUp);
   };
   const detachEvents = () => {
     const el = eventsElRef.current;
     el.removeEventListener('pointerdown', onPointerDown);
     el.removeEventListener('pointermove', onPointerMove);
     el.removeEventListener('pointerup', onPointerUp);
+    el.removeEventListener('pointercancel', onPointerUp);
+    el.removeEventListener('contextmenu', onPointerUp);
   };
   const onMounted = () => {
     if (!eventsElRef || !eventsElRef.current || !needsTouchRipple) return;
