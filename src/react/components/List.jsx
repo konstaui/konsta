@@ -5,6 +5,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { ListColors } from '../../shared/colors/ListColors.js';
+import { ListDividersContext } from '../shared/ListDividersContext.js';
 
 const List = forwardRef((props, ref) => {
   const {
@@ -15,6 +16,10 @@ const List = forwardRef((props, ref) => {
     margin = 'my-8',
     nested,
     menuList,
+
+    dividers,
+    dividersIos = true,
+    dividersMaterial = false,
 
     inset,
     insetIos,
@@ -51,13 +56,18 @@ const List = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
+  const hasDividers =
+    typeof dividers === 'undefined'
+      ? theme === 'ios'
+        ? dividersIos
+        : dividersMaterial
+      : dividers;
   const isStrong =
     typeof strong === 'undefined'
       ? theme === 'ios'
         ? strongIos
         : strongMaterial
       : strong;
-
   const isOutline =
     typeof outline === 'undefined'
       ? theme === 'ios'
@@ -98,9 +108,11 @@ const List = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={classes} {...attrs}>
-      <ul className={c.ul}>{children}</ul>
-    </Component>
+    <ListDividersContext.Provider value={hasDividers}>
+      <Component ref={elRef} className={classes} {...attrs}>
+        <ul className={c.ul}>{children}</ul>
+      </Component>
+    </ListDividersContext.Provider>
   );
 });
 

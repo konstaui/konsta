@@ -14,7 +14,7 @@ export const ListItemClasses = (
 ) => {
   const {
     menuListItem,
-    hairlines,
+    dividers,
     mediaClassName = '',
     mediaClass = '',
     innerClassName = '',
@@ -45,7 +45,7 @@ export const ListItemClasses = (
       ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
-        hairlines && theme === 'ios' && 'active:hairline-transparent',
+        dividers && theme === 'ios' && 'active:hairline-transparent',
         needsTouchRipple &&
           cls(
             `relative overflow-hidden touch-ripple-black z-10`,
@@ -75,7 +75,7 @@ export const ListItemClasses = (
     inner: {
       common: cls(
         'pr-4-safe w-full relative',
-        !menuListItem && hairlines && 'hairline-b',
+        !menuListItem && dividers && 'hairline-b',
         innerClassName || innerClass
       ),
       ios: 'py-2.5',
@@ -132,7 +132,7 @@ export const ListItemClasses = (
         `pl-4-safe pr-4-safe py-1 flex items-center z-20`,
         divider ? 'relative' : 'sticky top-0'
       ),
-      ios: `h-8${hairlines ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${
+      ios: `h-8${dividers ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${
         colors.secondaryTextIos
       } ${colors.dividerBgIos}`,
       material: `h-12 ${titleFontSizeMaterial} ${colors.secondaryTextMaterial} ${colors.dividerBgMaterial}`,

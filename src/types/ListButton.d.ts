@@ -29,12 +29,6 @@ interface Props {
     touchRipple?: string;
   };
   /**
-   * Renders button outer hairlines (borders)
-   *
-   * @default true
-   */
-  hairlines?: boolean;
-  /**
    * Button's link `href` attribute
    */
   href?: string;

@@ -7,6 +7,7 @@ import ChevronIcon from './icons/ChevronIcon.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
 import { ListItemColors } from '../../shared/colors/ListItemColors.js';
+import { useListDividers } from '../shared/use-list-dividers.js';
 
 const ListItem = forwardRef((props, ref) => {
   const {
@@ -34,8 +35,6 @@ const ListItem = forwardRef((props, ref) => {
 
     menuListItem,
     menuListItemActive,
-
-    hairlines = true,
 
     // Enable divider
     divider,
@@ -82,6 +81,7 @@ const ListItem = forwardRef((props, ref) => {
     ...rest,
   };
 
+  const dividers = useListDividers();
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
@@ -130,7 +130,7 @@ const ListItem = forwardRef((props, ref) => {
         ...props,
         titleFontSizeIos,
         titleFontSizeMaterial,
-        hairlines,
+        dividers,
         strongTitle,
         mediaClassName,
         innerClassName,

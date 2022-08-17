@@ -8,6 +8,7 @@
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
   import { ListInputColors } from '../../shared/colors/ListInputColors.js';
   import { cls } from '../../shared/cls.js';
+  import { getReactiveContext } from '../shared/get-reactive-context.js';
 
   let className = undefined;
   export { className as class };
@@ -25,8 +26,6 @@
   export let error = undefined; // string or bool
   export let clearButton = false;
   export let dropdown = false;
-
-  export let hairlines = true;
 
   // input props
   export let inputId = undefined;
@@ -63,6 +62,13 @@
   export let onFocus = undefined;
   export let onBlur = undefined;
   export let onClear = undefined;
+
+  let ListDividersContext = getReactiveContext(
+    'ListDividersContext',
+    (value) => {
+      ListDividersContext = value || {};
+    }
+  ) || { value: false };
 
   let inputEl = null;
 
@@ -130,7 +136,7 @@
     { ios, material },
     ListInputClasses(
       {
-        hairlines,
+        dividers: ListDividersContext.value,
         error,
         type,
         inputClass,

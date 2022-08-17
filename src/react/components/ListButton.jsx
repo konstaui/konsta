@@ -5,14 +5,13 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
 import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
+import { useListDividers } from '../shared/use-list-dividers.js';
 
 const ListButton = forwardRef((props, ref) => {
   const {
     component = 'li',
     className,
     colors: colorsProp,
-
-    hairlines = true,
 
     // Link props
     href,
@@ -39,6 +38,7 @@ const ListButton = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
   const rippleElRef = useRef(null);
+  const dividers = useListDividers();
 
   useImperativeHandle(ref, () => ({
     el: elRef.current,
@@ -60,7 +60,7 @@ const ListButton = forwardRef((props, ref) => {
   const colors = ListButtonColors(colorsProp, dark);
 
   const c = themeClasses(
-    ListButtonClasses({ ...props, hairlines }, colors, className, theme),
+    ListButtonClasses({ ...props, dividers }, colors, className, theme),
     className
   );
 

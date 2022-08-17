@@ -14,6 +14,7 @@ import ListItem from './ListItem.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
 import { ListInputColors } from '../../shared/colors/ListInputColors.js';
+import { useListDividers } from '../shared/use-list-dividers.js';
 
 const ListInput = forwardRef((props, ref) => {
   const {
@@ -30,8 +31,6 @@ const ListInput = forwardRef((props, ref) => {
     error, // string or bool
     clearButton,
     dropdown,
-
-    hairlines = true,
 
     // input props
     inputId,
@@ -90,6 +89,7 @@ const ListInput = forwardRef((props, ref) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
+  const dividers = useListDividers();
 
   const colors = ListInputColors(colorsProp, dark);
 
@@ -148,7 +148,7 @@ const ListInput = forwardRef((props, ref) => {
       darkClasses: dark,
       getLabelColor,
       getHairlineColor,
-      hairlines,
+      dividers,
       inputClassName,
     })
   );

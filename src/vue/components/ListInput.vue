@@ -99,7 +99,7 @@
   </k-list-item>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { ref, computed, inject } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -141,8 +141,6 @@
       error: String, // string or bool
       clearButton: Boolean,
       dropdown: Boolean,
-
-      hairlines: { type: Boolean, default: true },
 
       // input props
       inputId: String,
@@ -254,14 +252,22 @@
         ctx.emit('blur', e);
       };
 
+      const ListDividersContext = inject('ListDividersContext', {
+        value: false,
+      });
+
       const c = useThemeClasses(props, () =>
-        ListInputClasses(props, colors.value, {
-          isFloatingTransformed: isFloatingTransformed.value,
-          isFocused: isFocused.value,
-          darkClasses: useDarkClasses,
-          getLabelColor,
-          getHairlineColor,
-        })
+        ListInputClasses(
+          { ...props, dividers: ListDividersContext.value },
+          colors.value,
+          {
+            isFloatingTransformed: isFloatingTransformed.value,
+            isFocused: isFocused.value,
+            darkClasses: useDarkClasses,
+            getLabelColor,
+            getHairlineColor,
+          }
+        )
       );
 
       const InputComponent = computed(() =>

@@ -5,6 +5,7 @@
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
   import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
   import { useTheme } from '../shared/use-theme.js';
+  import { getReactiveContext } from '../shared/get-reactive-context.js';
 
   let className = undefined;
   export { className as class };
@@ -12,8 +13,6 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
-
-  export let hairlines = true;
 
   // Link props
   export let href = undefined;
@@ -29,6 +28,13 @@
 
   export let linkComponent = 'a';
 
+  let ListDividersContext = getReactiveContext(
+    'ListDividersContext',
+    (value) => {
+      ListDividersContext = value || {};
+    }
+  ) || { value: false };
+
   const rippleEl = { current: null };
 
   let theme;
@@ -42,7 +48,12 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    ListButtonClasses({ hairlines }, colors, className, theme),
+    ListButtonClasses(
+      { dividers: ListDividersContext.value },
+      colors,
+      className,
+      theme
+    ),
     className,
     (v) => (c = v)
   );

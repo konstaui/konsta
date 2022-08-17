@@ -106,12 +106,6 @@ interface Props {
    * @default false
    */
   menuListItemActive?: boolean;
-  /**
-   * Renders list item outer hairlines (borders)
-   *
-   * @default true
-   */
-  hairlines?: boolean;
 
   /**
    * Renders item as list divider

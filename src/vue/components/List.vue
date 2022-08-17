@@ -6,7 +6,7 @@
   </component>
 </template>
 <script>
-  import { computed } from 'vue';
+  import { computed, provide } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { ListClasses } from '../../shared/classes/ListClasses.js';
   import { ListColors } from '../../shared/colors/ListColors.js';
@@ -33,6 +33,9 @@
         default: undefined,
       },
       margin: { type: String, default: 'my-8' },
+      dividers: { type: Boolean, default: undefined },
+      dividersIos: { type: Boolean, default: true },
+      dividersMaterial: { type: Boolean, default: false },
       inset: { type: Boolean, default: undefined },
       insetIos: { type: Boolean, default: false },
       insetMaterial: { type: Boolean, default: false },
@@ -48,6 +51,13 @@
     setup(props, ctx) {
       const theme = useTheme();
 
+      const hasDividers = computed(() =>
+        typeof props.dividers === 'undefined'
+          ? theme.value === 'ios'
+            ? props.dividersIos
+            : props.dividersMaterial
+          : props.dividers
+      );
       const isStrong = computed(() =>
         typeof props.strong === 'undefined'
           ? theme.value === 'ios'
@@ -55,7 +65,6 @@
             : props.strongMaterial
           : props.strong
       );
-
       const isOutline = computed(() =>
         typeof props.outline === 'undefined'
           ? theme.value === 'ios'
@@ -70,6 +79,9 @@
             : props.insetMaterial
           : props.inset
       );
+      const ListDividersContext = computed(() => hasDividers.value);
+
+      provide('ListDividersContext', ListDividersContext);
 
       const colors = computed(() =>
         ListColors(props.colors || {}, useDarkClasses)

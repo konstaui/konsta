@@ -11,7 +11,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { ref, computed, inject } from 'vue';
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
   import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
   import { useTheme } from '../shared/use-theme.js';
@@ -37,7 +37,6 @@
         type: Boolean,
         default: undefined,
       },
-      hairlines: { type: Boolean, default: true },
 
       // Link props
       href: { type: [String, Boolean], default: undefined },
@@ -56,6 +55,10 @@
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props);
 
+      const ListDividersContext = inject('ListDividersContext', {
+        value: false,
+      });
+
       const colors = computed(() =>
         ListButtonColors(props.colors || {}, useDarkClasses)
       );
@@ -63,7 +66,12 @@
       const theme = useTheme(props);
 
       const c = useThemeClasses(props, () =>
-        ListButtonClasses(props, colors.value, ctx.attrs.class, theme.value)
+        ListButtonClasses(
+          { ...props, dividers: ListDividersContext.value },
+          colors.value,
+          ctx.attrs.class,
+          theme.value
+        )
       );
 
       const isLink = computed(() => !!props.href || props.href === '');

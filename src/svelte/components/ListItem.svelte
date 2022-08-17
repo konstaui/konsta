@@ -7,6 +7,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
   import { ListItemColors } from '../../shared/colors/ListItemColors.js';
+  import { getReactiveContext } from '../shared/get-reactive-context.js';
 
   let className = undefined;
   export { className as class };
@@ -38,8 +39,6 @@
   export let menuListItem = false;
   export let menuListItemActive = false;
 
-  export let hairlines = true;
-
   // Enable divider
   export let divider = false;
   export let groupTitle = false;
@@ -62,6 +61,13 @@
   export let touchRipple = true;
 
   export let onClick = undefined;
+
+  let ListDividersContext = getReactiveContext(
+    'ListDividersContext',
+    (value) => {
+      ListDividersContext = value || {};
+    }
+  ) || { value: false };
 
   const rippleEl = { current: null };
 
@@ -113,7 +119,7 @@
     ListItemClasses(
       {
         menuListItem,
-        hairlines,
+        dividers: ListDividersContext.value,
         mediaClass,
         innerClass,
         contentClass,

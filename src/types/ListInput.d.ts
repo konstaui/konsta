@@ -79,12 +79,6 @@ interface Props {
    */
   dropdown?: boolean;
   /**
-   * Renders outer hairlines (borders)
-   *
-   * @default true
-   */
-  hairlines?: boolean;
-  /**
    * Input id attribute
    */
   inputId?: string;

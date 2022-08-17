@@ -11,13 +11,7 @@ export const ListInputClasses = (
     getHairlineColor,
   }
 ) => {
-  const {
-    hairlines,
-    error,
-    type,
-    inputClassName = '',
-    inputClass = '',
-  } = props;
+  const { dividers, error, type, inputClassName = '', inputClass = '' } = props;
   return {
     base: ``,
     itemContent: '',
@@ -51,7 +45,7 @@ export const ListInputClasses = (
     inputWrap: {
       common: 'relative',
       ios: '-mb-2.5',
-      material: hairlines
+      material: dividers
         ? `hairline-b hairline-duration-200 ${getHairlineColor()} ${
             isFocused || error ? 'hairline-b-scale' : ''
           }`

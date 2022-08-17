@@ -23,6 +23,24 @@ interface Props {
    * */
   margin?: string;
   /**
+   * Renders dividers (borders) between list items, overwrites `dividersIos` and `dividersMaterial`
+   *
+   * @default undefined
+   */
+  dividers?: boolean;
+  /**
+   * Renders dividers (borders) between list items in iOS theme
+   *
+   * @default true
+   */
+  dividersIos?: boolean;
+  /**
+   * Renders dividers (borders) between list items in Material theme
+   *
+   * @default false
+   */
+  dividersMaterial?: boolean;
+  /**
    * Makes list block inset
    *
    * @default false

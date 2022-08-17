@@ -4,10 +4,12 @@
 - Update colors in .d.ts
 - Multi colors
 
+TS
+
+- ...Ios, ...Material props modifiers
+
 To redesign
 
-- Tabbar
-- Toolbar
 - Breadcrumbs
 - Form Inputs
 

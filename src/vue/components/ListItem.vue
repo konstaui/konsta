@@ -50,7 +50,7 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { ref, computed, inject } from 'vue';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -101,8 +101,6 @@
 
       menuListItem: { type: Boolean, default: false },
       menuListItemActive: { type: Boolean, default: false },
-
-      hairlines: { type: Boolean, default: true },
 
       // Enable divider
       divider: { type: Boolean, default: false },
@@ -193,15 +191,23 @@
           (props.subtitle || ctx.slots.subtitle || props.text || ctx.slots.text)
       );
 
+      const ListDividersContext = inject('ListDividersContext', {
+        value: false,
+      });
+
       const c = useThemeClasses(props, () =>
-        ListItemClasses(props, colors.value, {
-          theme: theme.value,
-          textColor: textColor.value,
-          needsTouchRipple: needsTouchRipple.value,
-          isMenuListItemActive: isMenuListItemActive.value,
-          darkClasses: useDarkClasses,
-          autoStrongTitle: autoStrongTitle.value,
-        })
+        ListItemClasses(
+          { ...props, dividers: ListDividersContext.value },
+          colors.value,
+          {
+            theme: theme.value,
+            textColor: textColor.value,
+            needsTouchRipple: needsTouchRipple.value,
+            isMenuListItemActive: isMenuListItemActive.value,
+            darkClasses: useDarkClasses,
+            autoStrongTitle: autoStrongTitle.value,
+          }
+        )
       );
 
       const itemContentClasses = computed(() =>

@@ -5,6 +5,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
+  import { setReactiveContext } from '../shared/set-reactive-context.js';
 
   let className = undefined;
   export { className as class };
@@ -14,6 +15,9 @@
   export let material = undefined;
 
   export let margin = 'my-8';
+  export let dividers = undefined;
+  export let dividersIos = true;
+  export let dividersMaterial = false;
   export let inset = undefined;
   export let insetIos = undefined;
   export let insetMaterial = undefined;
@@ -31,13 +35,18 @@
 
   const dark = useDarkClasses();
 
+  $: hasDividers =
+    typeof dividers === 'undefined'
+      ? theme === 'ios'
+        ? dividersIos
+        : dividersMaterial
+      : dividers;
   $: isStrong =
     typeof strong === 'undefined'
       ? theme === 'ios'
         ? strongIos
         : strongMaterial
       : strong;
-
   $: isOutline =
     typeof outline === 'undefined'
       ? theme === 'ios'
@@ -50,6 +59,10 @@
         ? insetIos
         : insetMaterial
       : inset;
+
+  setReactiveContext('ListDividersContext', () => ({
+    value: hasDividers,
+  }));
 
   $: colors = ListColors(colorsProp, dark);
 
