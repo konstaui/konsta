@@ -78,7 +78,7 @@
       style="width: 120px"
       @backdropclick="() => (popoverOpened = false)"
     >
-      <k-list nested :hairlines="false" :colors="{ bg: 'bg-transparent' }">
+      <k-list nested>
         <k-list-item
           link
           title="Catalog"

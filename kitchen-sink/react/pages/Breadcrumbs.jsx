@@ -98,7 +98,7 @@ export default function BreadcrumbsPage() {
         target={popoverTargetRef.current}
         onBackdropClick={() => setPopoverOpened(false)}
       >
-        <List nested hairlines={false} colors={{ bg: 'bg-transparent' }}>
+        <List nested>
           <ListItem
             link
             title="Catalog"
