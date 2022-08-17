@@ -38,7 +38,7 @@ export default function BadgePage() {
           </Link>
         }
       />
-      <Tabbar labels className="left-0 bottom-0 fixed">
+      <Tabbar labels icons className="left-0 bottom-0 fixed">
         <TabbarLink
           active
           icon={

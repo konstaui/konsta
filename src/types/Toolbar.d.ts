@@ -59,6 +59,13 @@ interface Props {
   tabbarLabels?: boolean;
 
   /**
+   * Enables tabbar with icons, same as using `<Tabbar icons>` component
+   *
+   * @default false
+   */
+  tabbarIcons?: boolean;
+
+  /**
    * Enables top toolbar, in this case it renders border on shadows on opposite sides
    *
    * @default false

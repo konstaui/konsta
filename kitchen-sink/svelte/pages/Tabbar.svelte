@@ -22,7 +22,8 @@
 
   const isPreview = document.location.href.includes('examplePreview');
   let activeTab = 'tab-1';
-  let isTabbarLabels = false;
+  let isTabbarLabels = true;
+  let isTabbarIcons = true;
 </script>
 
 <Page>
@@ -34,49 +35,68 @@
     </svelte:fragment>
   </Navbar>
 
-  <Tabbar labels={isTabbarLabels} class="left-0 bottom-0 fixed">
-    <TabbarLink
-      active={activeTab === 'tab-1'}
-      onClick={() => (activeTab = 'tab-1')}
-      label="Tab 1"
-      withIcon={isTabbarLabels}
-    >
-      <svelte:fragment slot="icon">
-        <Icon>
-          <EnvelopeFill slot="ios" class="w-7 h-7" />
-          <MdEmail slot="material" class="w-6 h-6" />
-        </Icon>
-      </svelte:fragment>
-    </TabbarLink>
-    <TabbarLink
-      active={activeTab === 'tab-2'}
-      onClick={() => (activeTab = 'tab-2')}
-      label="Tab 2"
-      withIcon={isTabbarLabels}
-    >
-      <svelte:fragment slot="icon">
-        <Icon>
-          <Calendar slot="ios" class="w-7 h-7" />
-          <MdToday slot="material" class="w-6 h-6" />
-        </Icon>
-      </svelte:fragment>
-    </TabbarLink>
-    <TabbarLink
-      active={activeTab === 'tab-3'}
-      onClick={() => (activeTab = 'tab-3')}
-      label="Tab 3"
-      withIcon={isTabbarLabels}
-    >
-      <svelte:fragment slot="icon">
-        <Icon>
-          <CloudUploadFill slot="ios" class="w-7 h-7" />
-          <MdFileUpload slot="material" class="w-6 h-6" />
-        </Icon>
-      </svelte:fragment>
-    </TabbarLink>
+  <Tabbar
+    labels={isTabbarLabels}
+    icons={isTabbarIcons}
+    class="left-0 bottom-0 fixed"
+  >
+    {#if isTabbarIcons}
+      <TabbarLink
+        active={activeTab === 'tab-1'}
+        onClick={() => (activeTab = 'tab-1')}
+        label={isTabbarLabels ? 'Tab 1' : undefined}
+      >
+        <svelte:fragment slot="icon">
+          <Icon>
+            <EnvelopeFill slot="ios" class="w-7 h-7" />
+            <MdEmail slot="material" class="w-6 h-6" />
+          </Icon>
+        </svelte:fragment>
+      </TabbarLink>
+      <TabbarLink
+        active={activeTab === 'tab-2'}
+        onClick={() => (activeTab = 'tab-2')}
+        label={isTabbarLabels ? 'Tab 2' : undefined}
+      >
+        <svelte:fragment slot="icon">
+          <Icon>
+            <Calendar slot="ios" class="w-7 h-7" />
+            <MdToday slot="material" class="w-6 h-6" />
+          </Icon>
+        </svelte:fragment>
+      </TabbarLink>
+      <TabbarLink
+        active={activeTab === 'tab-3'}
+        onClick={() => (activeTab = 'tab-3')}
+        label={isTabbarLabels ? 'Tab 3' : undefined}
+      >
+        <svelte:fragment slot="icon">
+          <Icon>
+            <CloudUploadFill slot="ios" class="w-7 h-7" />
+            <MdFileUpload slot="material" class="w-6 h-6" />
+          </Icon>
+        </svelte:fragment>
+      </TabbarLink>
+    {:else}
+      <TabbarLink
+        active={activeTab === 'tab-1'}
+        onClick={() => (activeTab = 'tab-1')}
+        label={isTabbarLabels ? 'Tab 1' : undefined}
+      />
+      <TabbarLink
+        active={activeTab === 'tab-2'}
+        onClick={() => (activeTab = 'tab-2')}
+        label={isTabbarLabels ? 'Tab 2' : undefined}
+      />
+      <TabbarLink
+        active={activeTab === 'tab-3'}
+        onClick={() => (activeTab = 'tab-3')}
+        label={isTabbarLabels ? 'Tab 3' : undefined}
+      />
+    {/if}
   </Tabbar>
 
-  <List>
+  <List strong inset>
     <ListItem title="Tabbar Labels">
       <Toggle
         slot="after"
@@ -84,10 +104,17 @@
         onChange={() => (isTabbarLabels = !isTabbarLabels)}
       />
     </ListItem>
+    <ListItem title="Tabbar Icons">
+      <Toggle
+        slot="after"
+        checked={isTabbarIcons}
+        onChange={() => (isTabbarIcons = !isTabbarIcons)}
+      />
+    </ListItem>
   </List>
 
   {#if activeTab === 'tab-1'}
-    <Block strong class="space-y-4">
+    <Block strong inset class="space-y-4">
       <p>
         <b>Tab 1</b>
       </p>
@@ -119,7 +146,7 @@
     </Block>
   {/if}
   {#if activeTab === 'tab-2'}
-    <Block strong class="space-y-4">
+    <Block strong inset class="space-y-4">
       <p>
         <b>Tab 2</b>
       </p>
@@ -152,7 +179,7 @@
     </Block>
   {/if}
   {#if activeTab === 'tab-3'}
-    <Block strong class="space-y-4">
+    <Block strong inset class="space-y-4">
       <p>
         <b>Tab 3</b>
       </p>

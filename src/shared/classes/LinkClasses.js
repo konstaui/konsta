@@ -6,11 +6,11 @@ export const LinkClasses = (
   { textColor, needsTouchRipple },
   classes
 ) => {
-  const { iconOnly } = props;
+  const { iconOnly, tabbar } = props;
   return {
     base: {
       common: cls(
-        textColor,
+        !tabbar && textColor,
         `inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
         needsTouchRipple &&
           `touch-ripple-primary ${positionClass('relative', classes)} z-10`
@@ -25,24 +25,16 @@ export const LinkClasses = (
         positionClass('relative', classes),
         `w-full h-full duration-300`
       ),
-      material: 'uppercase font-medium text-sm overflow-hidden z-10',
-      active: {},
-      inactive: {
-        ios: 'text-opacity-40',
-        material: 'text-opacity-55',
-      },
-    },
-    tabbarHighlight: {
-      material: 'absolute left-0 top-0 w-full h-0.5 bg-primary duration-300',
-      active: 'opacity-100',
-      inactive: 'opacity-0',
+      material: 'font-medium text-sm z-10',
+      active: 'k-tabbar-link-active',
+      inactive: '',
     },
     toolbar: {
-      common: cls(`h-full max-h-12`, iconOnly && 'touch-ripple-inset'),
-      material: 'px-3',
+      common: cls(`h-full max-h-12`, iconOnly && 'k-touch-ripple-inset'),
+      material: 'px-3 text-sm font-medium',
     },
     navbar: {
-      common: cls(`h-full max-h-12`, iconOnly && 'touch-ripple-inset'),
+      common: cls(`h-full max-h-12`, iconOnly && 'k-touch-ripple-inset'),
       material: 'px-3',
     },
   };

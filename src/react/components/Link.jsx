@@ -94,9 +94,6 @@ const Link = forwardRef((props, ref) => {
       {...attrs}
       onClick={onClick}
     >
-      {theme === 'material' && tabbar && (
-        <span className={c.tabbarHighlight[tabbarState]} />
-      )}
       {children}
     </Component>
   );

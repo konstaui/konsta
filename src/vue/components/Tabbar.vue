@@ -17,6 +17,9 @@
       labels: {
         type: Boolean,
       },
+      icons: {
+        type: Boolean,
+      },
     },
     setup(props) {
       const toolbarProps = computed(() => {
@@ -24,6 +27,7 @@
           ...props,
           tabbar: true,
           tabbarLabels: props.labels,
+          tabbarIcons: props.icons,
         };
       });
       return {

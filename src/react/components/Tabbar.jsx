@@ -4,6 +4,7 @@ import Toolbar from './Toolbar.jsx';
 const Tabbar = forwardRef((props, ref) => {
   const {
     labels,
+    icons,
 
     children,
 
@@ -21,7 +22,13 @@ const Tabbar = forwardRef((props, ref) => {
   };
 
   return (
-    <Toolbar ref={elRef} tabbar tabbarLabels={labels} {...attrs}>
+    <Toolbar
+      ref={elRef}
+      tabbar
+      tabbarIcons={icons}
+      tabbarLabels={labels}
+      {...attrs}
+    >
       {children}
     </Toolbar>
   );

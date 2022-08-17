@@ -5,4 +5,11 @@ interface Props {
    * @default false
    */
   labels?: boolean;
+
+  /**
+   * Enables Tabbar with icons
+   *
+   * @default false
+   */
+  icons?: boolean;
 }

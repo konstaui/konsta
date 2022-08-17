@@ -21,7 +21,8 @@ import { MdEmail, MdToday, MdFileUpload } from 'react-icons/md';
 export default function TabbarPage() {
   const isPreview = document.location.href.includes('examplePreview');
   const [activeTab, setActiveTab] = useState('tab-1');
-  const [isTabbarLabels, setIsTabbarLabels] = useState(false);
+  const [isTabbarLabels, setIsTabbarLabels] = useState(true);
+  const [isTabbarIcons, setIsTabbarIcons] = useState(false);
   return (
     <Page>
       <Navbar
@@ -29,49 +30,53 @@ export default function TabbarPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Tabbar labels={isTabbarLabels} className="left-0 bottom-0 fixed">
+      <Tabbar
+        labels={isTabbarLabels}
+        icons={isTabbarIcons}
+        className="left-0 bottom-0 fixed"
+      >
         <TabbarLink
           active={activeTab === 'tab-1'}
           onClick={() => setActiveTab('tab-1')}
           icon={
-            isTabbarLabels && (
+            isTabbarIcons && (
               <Icon
                 ios={<EnvelopeFill className="w-7 h-7" />}
                 material={<MdEmail className="w-6 h-6" />}
               />
             )
           }
-          label="Tab 1"
+          label={isTabbarLabels && 'Tab 1'}
         />
         <TabbarLink
           active={activeTab === 'tab-2'}
           onClick={() => setActiveTab('tab-2')}
           icon={
-            isTabbarLabels && (
+            isTabbarIcons && (
               <Icon
                 ios={<Calendar className="w-7 h-7" />}
                 material={<MdToday className="w-6 h-6" />}
               />
             )
           }
-          label="Tab 2"
+          label={isTabbarLabels && 'Tab 2'}
         />
         <TabbarLink
           active={activeTab === 'tab-3'}
           onClick={() => setActiveTab('tab-3')}
           icon={
-            isTabbarLabels && (
+            isTabbarIcons && (
               <Icon
                 ios={<CloudUploadFill className="w-7 h-7" />}
                 material={<MdFileUpload className="w-6 h-6" />}
               />
             )
           }
-          label="Tab 3"
+          label={isTabbarLabels && 'Tab 3'}
         />
       </Tabbar>
 
-      <List>
+      <List strong inset>
         <ListItem
           title="Tabbar Labels"
           after={
@@ -81,10 +86,19 @@ export default function TabbarPage() {
             />
           }
         />
+        <ListItem
+          title="Tabbar Icons"
+          after={
+            <Toggle
+              checked={isTabbarIcons}
+              onChange={() => setIsTabbarIcons(!isTabbarIcons)}
+            />
+          }
+        />
       </List>
 
       {activeTab === 'tab-1' && (
-        <Block strong className="space-y-4">
+        <Block strong inset className="space-y-4">
           <p>
             <b>Tab 1</b>
           </p>
@@ -117,7 +131,7 @@ export default function TabbarPage() {
         </Block>
       )}
       {activeTab === 'tab-2' && (
-        <Block strong className="space-y-4">
+        <Block strong inset className="space-y-4">
           <p>
             <b>Tab 2</b>
           </p>
@@ -150,7 +164,7 @@ export default function TabbarPage() {
         </Block>
       )}
       {activeTab === 'tab-3' && (
-        <Block strong className="space-y-4">
+        <Block strong inset className="space-y-4">
           <p>
             <b>Tab 3</b>
           </p>

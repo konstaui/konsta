@@ -1,5 +1,7 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { TabbarLinkClasses } from '../../shared/classes/TabbarLinkClasses.js';
+import { TabbarLinkColors } from '../../shared/colors/TabbarLinkColors.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import Link from './Link.jsx';
@@ -11,6 +13,7 @@ const TabbarLink = forwardRef((props, ref) => {
 
     ios,
     material,
+    colors: colorsProp,
 
     icon,
     label,
@@ -28,10 +31,15 @@ const TabbarLink = forwardRef((props, ref) => {
   const attrs = {
     ...rest,
   };
-
+  const dark = useDarkClasses();
+  const colors = TabbarLinkColors(colorsProp, dark);
   const themeClasses = useThemeClasses({ ios, material });
 
-  const c = themeClasses(TabbarLinkClasses());
+  const hasIcon = !!icon;
+  const hasLabel = label || (children && children.length);
+  const c = themeClasses(
+    TabbarLinkClasses({ hasLabel, hasIcon, active }, colors)
+  );
 
   return (
     <Link
@@ -41,17 +49,20 @@ const TabbarLink = forwardRef((props, ref) => {
       className={className}
       {...attrs}
     >
-      {icon && label ? (
-        <span className={c.content}>
-          <span className={c.icon}>{icon}</span>
-          <span className={c.label}>{label}</span>
-        </span>
-      ) : (
-        <>
-          {label}
-          {children}
-        </>
-      )}
+      <span className={c.content}>
+        {icon && (
+          <span className={c.iconContainer}>
+            <span className={c.iconBg} />
+            {icon}
+          </span>
+        )}
+        {(label || (children && children.length)) && (
+          <span className={c.label}>
+            {label}
+            {children}
+          </span>
+        )}
+      </span>
     </Link>
   );
 });

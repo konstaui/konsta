@@ -82,8 +82,5 @@
   {...$$restProps}
   on:click={onClick}
 >
-  {#if theme === 'material' && tabbar}
-    <span class={c.tabbarHighlight[tabbarState]} />
-  {/if}
   <slot />
 </a>

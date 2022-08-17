@@ -1,9 +1,5 @@
 <template>
   <component :is="component" ref="rippleElRef" :class="classes">
-    <span
-      v-if="theme === 'material' && tabbar"
-      :class="c.tabbarHighlight[tabbarState]"
-    />
     <slot />
   </component>
 </template>

@@ -1,4 +1,6 @@
 <script>
+  import { onMount, afterUpdate } from 'svelte';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
@@ -20,8 +22,45 @@
 
   export let tabbar = false;
   export let tabbarLabels = false;
+  export let tabbarIcons = false;
 
   export let top = false;
+
+  let highlightElRef = null;
+
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
+
+  let highlightStyle = {
+    transform: '',
+    width: '',
+  };
+
+  $: hasHighlight = theme === 'material' && tabbar && !tabbarIcons;
+
+  const setHighlight = () => {
+    if (hasHighlight && highlightElRef) {
+      const linksEl = highlightElRef.previousElementSibling;
+      const activeIndex = [...linksEl.children].indexOf(
+        linksEl.querySelector('.k-tabbar-link-active')
+      );
+      const width = `${(1 / linksEl.children.length) * 100}%`;
+      const transform = `translateX(${activeIndex * 100}%)`;
+
+      if (
+        width !== highlightStyle.width ||
+        transform !== highlightStyle.transform
+      ) {
+        highlightStyle = {
+          ...highlightStyle,
+          width,
+          transform,
+        };
+      }
+    }
+  };
+  onMount(() => setHighlight());
+  afterUpdate(() => setHighlight());
 
   const dark = useDarkClasses();
 
@@ -30,7 +69,16 @@
   $: c = useThemeClasses(
     { ios, material },
     ToolbarClasses(
-      { hairlines, translucent, bgClass, innerClass, tabbar, top },
+      {
+        hairlines,
+        translucent,
+        bgClass,
+        innerClass,
+        tabbar,
+        top,
+        tabbarIcons,
+        tabbarLabels,
+      },
       colors,
       className
     ),
@@ -41,7 +89,14 @@
 
 <div class={c.base} {...$$restProps}>
   <div class={c.bg} />
-  <div class={c.inner[tabbar && tabbarLabels ? 'tabbarLabels' : 'toolbar']}>
+  <div class={c.inner}>
     <slot />
   </div>
+  {#if hasHighlight}
+    <span
+      class={c.highlight}
+      style={`width: ${highlightStyle.width} ; transform: ${highlightStyle.transform}`}
+      bind:this={highlightElRef}
+    />
+  {/if}
 </div>

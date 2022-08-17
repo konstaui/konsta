@@ -10,6 +10,7 @@ export const ToolbarClasses = (props, colors, classes) => {
     innerClassName = '',
     innerClass = '',
     tabbar,
+    tabbarIcons,
     top,
   } = props;
   return {
@@ -37,16 +38,19 @@ export const ToolbarClasses = (props, colors, classes) => {
         `flex relative justify-between items-center w-full overflow-hidden`,
         innerClassName || innerClass
       ),
-      ios: 'pl-2-safe pr-2-safe',
-      material: !tabbar ? 'pl-2-safe pr-2-safe' : '',
-      toolbar: {
-        ios: 'h-11',
-        material: tabbar ? 'h-20' : 'h-16',
-      },
-      tabbarLabels: {
-        ios: 'h-12.5',
-        material: 'h-20',
-      },
+      ios: cls('pl-2-safe pr-2-safe', tabbarIcons ? 'h-12.5' : 'h-11'),
+      material: cls(
+        !tabbar ? 'pl-2-safe pr-2-safe' : '',
+        tabbarIcons ? 'h-20' : 'h-14'
+      ),
+    },
+    highlight: {
+      common: cls(
+        top ? 'bottom-0' : 'top-0',
+        'absolute left-0 w-full h-0.5 duration-200 pointer-events-none transition-transform'
+      ),
+      ios: colors.tabbarHighlightBgIos,
+      material: colors.tabbarHighlightBgMaterial,
     },
   };
 };

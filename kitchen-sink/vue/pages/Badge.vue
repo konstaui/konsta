@@ -13,7 +13,7 @@
         </k-link>
       </template>
     </k-navbar>
-    <k-tabbar labels class="left-0 bottom-0 fixed">
+    <k-tabbar labels icons class="left-0 bottom-0 fixed">
       <k-tabbar-link active label="Inbox">
         <template #icon>
           <k-icon badge="5" :badge-colors="{ bg: 'bg-green-500' }">

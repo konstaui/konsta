@@ -9,10 +9,6 @@ export const LinkColors = (colorsProp = {}, dark) => {
     ),
     navbarTextIos: 'text-primary',
     navbarTextMaterial: '',
-    tabbarInactive: cls(
-      `text-black`,
-      dark('dark:text-white dark:text-opacity-55')
-    ),
     ...colorsProp,
   };
 };

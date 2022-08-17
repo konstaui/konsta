@@ -12,7 +12,7 @@ export class TouchRipple {
     };
     let diameter = Math.max((height ** 2 + width ** 2) ** 0.5, 48);
 
-    const isInset = el.classList.contains('touch-ripple-inset');
+    const isInset = el.classList.contains('k-touch-ripple-inset');
 
     if (isInset) {
       diameter = Math.max(Math.min(width, height), 48);

@@ -6,13 +6,17 @@
       </template>
     </k-navbar>
 
-    <k-tabbar :labels="isTabbarLabels" class="left-0 bottom-0 fixed">
+    <k-tabbar
+      :labels="isTabbarLabels"
+      :icons="isTabbarIcons"
+      class="left-0 bottom-0 fixed"
+    >
       <k-tabbar-link
         :active="activeTab === 'tab-1'"
-        label="Tab 1"
         @click="() => (activeTab = 'tab-1')"
       >
-        <template v-if="isTabbarLabels" #icon>
+        <template v-if="isTabbarLabels" #label> Tab 1 </template>
+        <template v-if="isTabbarIcons" #icon>
           <k-icon>
             <template #ios>
               <EnvelopeFill class="w-7 h-7" />
@@ -25,10 +29,10 @@
       </k-tabbar-link>
       <k-tabbar-link
         :active="activeTab === 'tab-2'"
-        label="Tab 2"
         @click="() => (activeTab = 'tab-2')"
       >
-        <template v-if="isTabbarLabels" #icon>
+        <template v-if="isTabbarLabels" #label> Tab 2 </template>
+        <template v-if="isTabbarIcons" #icon>
           <k-icon>
             <template #ios>
               <Calendar class="w-7 h-7" />
@@ -41,10 +45,10 @@
       </k-tabbar-link>
       <k-tabbar-link
         :active="activeTab === 'tab-3'"
-        label="Tab 3"
         @click="() => (activeTab = 'tab-3')"
       >
-        <template v-if="isTabbarLabels" #icon>
+        <template v-if="isTabbarLabels" #label> Tab 3 </template>
+        <template v-if="isTabbarIcons" #icon>
           <k-icon>
             <template #ios>
               <CloudUploadFill class="w-7 h-7" />
@@ -57,7 +61,7 @@
       </k-tabbar-link>
     </k-tabbar>
 
-    <k-list>
+    <k-list strong inset>
       <k-list-item title="Tabbar Labels">
         <template #after>
           <k-toggle
@@ -66,9 +70,17 @@
           />
         </template>
       </k-list-item>
+      <k-list-item title="Tabbar Icons">
+        <template #after>
+          <k-toggle
+            :checked="isTabbarIcons"
+            @change="() => (isTabbarIcons = !isTabbarIcons)"
+          />
+        </template>
+      </k-list-item>
     </k-list>
 
-    <k-block v-if="activeTab === 'tab-1'" strong class="space-y-4">
+    <k-block v-if="activeTab === 'tab-1'" strong inset class="space-y-4">
       <p>
         <b>Tab 1</b>
       </p>
@@ -99,7 +111,7 @@
       </p>
     </k-block>
 
-    <k-block v-if="activeTab === 'tab-2'" strong class="space-y-4">
+    <k-block v-if="activeTab === 'tab-2'" strong inset class="space-y-4">
       <p>
         <b>Tab 2</b>
       </p>
@@ -131,7 +143,7 @@
       </p>
     </k-block>
 
-    <k-block v-if="activeTab === 'tab-3'" strong class="space-y-4">
+    <k-block v-if="activeTab === 'tab-3'" strong inset class="space-y-4">
       <p>
         <b>Tab 3</b>
       </p>
@@ -210,11 +222,13 @@
     },
     setup() {
       const activeTab = ref('tab-1');
-      const isTabbarLabels = ref(false);
+      const isTabbarLabels = ref(true);
+      const isTabbarIcons = ref(true);
 
       return {
         activeTab,
         isTabbarLabels,
+        isTabbarIcons,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };
