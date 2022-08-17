@@ -1,4 +1,4 @@
-import { onMount, onDestroy } from 'svelte';
+import { onMount, onDestroy, beforeUpdate } from 'svelte';
 import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
@@ -38,7 +38,6 @@ export const useTouchRipple = (el, touchRipple, eventsEl) => {
       eventsEl.__touchRippleAttached__
     )
       return;
-
     eventsEl.__touchRippleAttached__ = true;
     eventsEl.current.addEventListener('pointerdown', onPointerDown);
     eventsEl.current.addEventListener('pointermove', onPointerMove);
@@ -61,6 +60,11 @@ export const useTouchRipple = (el, touchRipple, eventsEl) => {
 
   onMount(() => {
     attachEvents();
+  });
+  beforeUpdate(() => {
+    if (!needsTouchRipple()) {
+      detachEvents(true);
+    }
   });
   onDestroy(() => {
     detachEvents(true);
