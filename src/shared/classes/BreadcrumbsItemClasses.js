@@ -4,13 +4,18 @@ export const BreadcrumbsItemClasses = (props, colors) => {
   const { active } = props;
   return {
     base: {
-      common: cls(
-        `flex items-center`,
-        active && 'font-semibold',
-        colors[active ? 'textActive' : 'text']
+      common: cls(`flex items-center`),
+      ios: cls(
+        colors.textIos,
+        colors.bgIos,
+        active ? colors.textActiveIos : colors.textIos,
+        active && 'font-semibold'
       ),
-      ios: ``,
-      material: ``,
+      material: cls(
+        `font-medium px-2 py-1 rounded-lg`,
+        colors.bgMaterial,
+        active ? colors.textActiveMaterial : colors.textMaterial
+      ),
     },
   };
 };

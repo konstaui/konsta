@@ -8,7 +8,7 @@ const Breadcrumbs = forwardRef((props, ref) => {
     className,
 
     fontSizeIos = 'text-[17px]',
-    fontSizeMaterial = 'text-[16px]',
+    fontSizeMaterial = 'text-[14px]',
 
     ios,
     material,
