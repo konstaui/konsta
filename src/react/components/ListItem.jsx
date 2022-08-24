@@ -56,6 +56,8 @@ const ListItem = forwardRef((props, ref) => {
     linkComponent = 'a',
     linkProps = {},
 
+    dividers: dividersProp,
+
     ios,
     material,
 
@@ -81,7 +83,8 @@ const ListItem = forwardRef((props, ref) => {
     ...rest,
   };
 
-  const dividers = useListDividers();
+  const dividers =
+    typeof dividersProp === 'undefined' ? useListDividers() : dividersProp;
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();

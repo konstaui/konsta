@@ -2,21 +2,22 @@
   <k-list-item
     :component="component"
     :class="c.base"
-    :title="labelStyle === 'inline' ? label : null"
-    :media-class="c.media[labelStyleIsInline]"
+    :title="null"
+    :media-class="c.media"
     :inner-class="c.inner[labelStyle]"
     :content-class="c.itemContent"
-    :title-wrap-class="c.titleWrap[labelStyleIsInline]"
+    :title-wrap-class="c.titleWrap"
+    :dividers="theme === 'material' || isOutline ? false : undefined"
   >
-    <template v-if="labelStyle === 'inline' ? label : null" #title>
-      <slot name="label" />
+    <template v-if="isOutline || theme === 'material'" #content>
+      <span :class="c.border" />
     </template>
     <template v-if="slots.media" #media>
       <slot name="media" />
     </template>
     <template #inner>
-      <div v-if="labelStyle !== 'inline' && label" :class="c.label[labelStyle]">
-        {{ label }}<slot name="label" />
+      <div v-if="label" :class="c.label[labelStyle]">
+        <div :class="c.labelText">{{ label }}<slot name="label" /></div>
       </div>
       <div :class="c.inputWrap[labelStyle]">
         <component
@@ -29,7 +30,6 @@
           :name="name"
           :placeholder="placeholder"
           :inputmode="inputmode"
-          :size="size"
           :accept="accept"
           :autocomplete="autocomplete"
           :autocorrect="autocorrect"
@@ -44,10 +44,10 @@
           :minlength="minlength"
           :step="step"
           :multiple="multiple"
-          :read-only="readonly"
+          :readonly="readonly"
           :required="required"
           :pattern="pattern"
-          :tab-index="tabindex"
+          :tabindex="tabindex"
           v-bind="inputProps"
           @input="onInput"
           @change="onChange"
@@ -59,47 +59,31 @@
         <slot v-if="slots.input" name="input" />
         <DeleteIcon
           v-if="clearButton"
+          :theme="theme"
           :class="c.clearButton"
           @click="onClear"
         />
         <DropdownIcon v-if="dropdown" :class="c.dropdown" />
-        <template v-if="labelStyle === 'inline'">
-          <!-- error info content -->
-          <div
-            v-if="(error && error !== true) || slots.error"
-            :class="cls(c.errorInfo[labelStyleIsInline], c.error)"
-          >
-            {{ error }}<slot name="error" />
-          </div>
-          <div
-            v-if="(info && !error) || slots.info"
-            :class="cls(c.errorInfo[labelStyleIsInline], c.info)"
-          >
-            {{ info }}<slot name="info" />
-          </div>
-        </template>
       </div>
-      <template v-if="labelStyle !== 'inline'">
-        <!-- error info content -->
-        <div
-          v-if="(error && error !== true) || slots.error"
-          :class="cls(c.errorInfo[labelStyleIsInline], c.error)"
-        >
-          {{ error }}<slot name="error" />
-        </div>
-        <div
-          v-if="(info && !error) || slots.info"
-          :class="cls(c.errorInfo[labelStyleIsInline], c.info)"
-        >
-          {{ info }}<slot name="info" />
-        </div>
-      </template>
+      <!-- error info content -->
+      <div
+        v-if="(error && error !== true) || slots.error"
+        :class="cls(c.errorInfo, c.error)"
+      >
+        {{ error }}<slot name="error" />
+      </div>
+      <div
+        v-if="(info && !error) || slots.info"
+        :class="cls(c.errorInfo, c.info)"
+      >
+        {{ info }}<slot name="info" />
+      </div>
     </template>
     <slot v-if="type !== 'select'" />
   </k-list-item>
 </template>
 <script>
-  import { ref, computed, inject } from 'vue';
+  import { ref, computed } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -134,8 +118,19 @@
         type: Boolean,
         default: undefined,
       },
+      outline: {
+        type: Boolean,
+        default: undefined,
+      },
+      outlineIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      outlineMaterial: {
+        type: Boolean,
+        default: undefined,
+      },
       label: String,
-      inlineLabel: Boolean,
       floatingLabel: Boolean,
       info: String, // string
       error: String, // string or bool
@@ -155,7 +150,7 @@
       required: Boolean,
       disabled: Boolean,
       placeholder: String,
-      size: [String, Number],
+      size: { type: [String, Number], default: undefined },
       accept: [String, Number],
       autocomplete: [String],
       autocorrect: [String],
@@ -176,25 +171,26 @@
     setup(props, ctx) {
       const inputElRef = ref(null);
       const isFocused = ref(false);
-
       const theme = useTheme(props);
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+            ? props.outlineIos
+            : props.outlineMaterial
+          : props.outline
+      );
 
       const labelStyle = computed(() =>
-        !props.label || props.inlineLabel
-          ? 'inline'
-          : props.label && props.floatingLabel
-          ? 'floating'
-          : 'stacked'
-      );
-      const labelStyleIsInline = computed(() =>
-        labelStyle.value === 'inline' ? 'inline' : 'notInline'
+        props.label && props.floatingLabel ? 'floating' : 'stacked'
       );
 
       const labelStyleIsFloating = computed(() =>
         labelStyle.value === 'floating' ? 'floating' : 'notFloating'
       );
 
-      const colors = computed(() => ListInputColors(props.colors || {}));
+      const colors = computed(() =>
+        ListInputColors(props.colors || {}, useDarkClasses)
+      );
 
       const getDomValue = () => {
         if (!inputElRef.value) return undefined;
@@ -207,27 +203,28 @@
           ? domValue || domValue === 0
           : props.value || props.value === 0;
       };
-      const isFloatingTransformed = computed(
-        () =>
+      const isFloatingTransformed = computed(() => {
+        return (
           props.label &&
           props.floatingLabel &&
           !isInputHasValue() &&
           !isFocused.value
-      );
+        );
+      });
 
-      const getLabelColor = (force) => {
-        if (labelStyle.value === 'inline' && !force) return '';
+      const getLabelColor = () => {
         if (props.error) return colors.value.errorText;
-        if (isFocused.value && theme.value === 'material')
-          return colors.value.labelFocus;
-        if (labelStyle.value === 'floating') return 'opacity-50';
+        if (theme === 'material') {
+          return isFocused.value
+            ? colors.value.labelTextFocusMaterial
+            : colors.value.labelTextMaterial;
+        }
+        if (theme === 'ios') {
+          return isFocused.value
+            ? colors.value.labelTextFocusIos
+            : colors.value.labelTextIos;
+        }
 
-        return '';
-      };
-
-      const getHairlineColor = () => {
-        if (props.error) return colors.value.hairlineError;
-        if (isFocused.value) return colors.value.hairlineFocus;
         return '';
       };
 
@@ -252,22 +249,15 @@
         ctx.emit('blur', e);
       };
 
-      const ListDividersContext = inject('ListDividersContext', {
-        value: false,
-      });
-
       const c = useThemeClasses(props, () =>
-        ListInputClasses(
-          { ...props, dividers: ListDividersContext.value },
-          colors.value,
-          {
-            isFloatingTransformed: isFloatingTransformed.value,
-            isFocused: isFocused.value,
-            darkClasses: useDarkClasses,
-            getLabelColor,
-            getHairlineColor,
-          }
-        )
+        ListInputClasses({ ...props }, colors.value, {
+          isFloatingTransformed: isFloatingTransformed.value,
+          isFocused: isFocused.value,
+          darkClasses: useDarkClasses,
+          getLabelColor,
+          outline: isOutline,
+          hasLabel: props.label || ctx.slots.label,
+        })
       );
 
       const InputComponent = computed(() =>
@@ -279,6 +269,7 @@
 
       const inputProps = computed(() => {
         return {
+          ...(typeof props.size === 'undefined' ? {} : { size: props.size }),
           ...(needsType.value ? { type: props.type } : {}),
           ...(typeof props.value === 'undefined' ? {} : { value: props.value }),
         };
@@ -296,10 +287,11 @@
         needsType,
         cls,
         labelStyle,
-        labelStyleIsInline,
         labelStyleIsFloating,
         slots: ctx.slots,
         inputProps,
+        theme,
+        isOutline,
       };
     },
   };

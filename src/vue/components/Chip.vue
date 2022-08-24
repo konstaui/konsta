@@ -3,7 +3,7 @@
     <div v-if="slots.media" :class="c.media"><slot name="media" /></div>
     <slot />
     <div v-if="deleteButton" :class="c.deleteButton" @click="onDelete">
-      <delete-icon class="h-4 w-4" />
+      <delete-icon :theme="theme" class="h-4 w-4" />
     </div>
   </component>
 </template>
@@ -12,6 +12,7 @@
   import { ChipClasses } from '../../shared/classes/ChipClasses.js';
   import { ChipColors } from '../../shared/colors/ChipColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import DeleteIcon from './icons/DeleteIcon.vue';
 
@@ -48,6 +49,7 @@
     emits: ['delete'],
     setup(props, ctx) {
       const style = computed(() => (props.outline ? 'outline' : 'fill'));
+      const theme = useTheme();
 
       const colors = computed(() =>
         ChipColors(props.colors || {}, useDarkClasses)
@@ -62,6 +64,7 @@
         c,
         slots: ctx.slots,
         style,
+        theme,
         onDelete,
       };
     },

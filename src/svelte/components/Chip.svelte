@@ -3,6 +3,7 @@
   import { ChipColors } from '../../shared/colors/ChipColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
 
   import DeleteIcon from './icons/DeleteIcon.svelte';
 
@@ -20,6 +21,7 @@
   export let onClick = undefined;
 
   const dark = useDarkClasses();
+  const theme = useTheme();
 
   $: style = outline ? 'outline' : 'fill';
 
@@ -40,7 +42,7 @@
   <slot />
   {#if deleteButton}
     <div class={c.deleteButton} on:click={onDelete}>
-      <DeleteIcon class="h-4 w-4" />
+      <DeleteIcon {theme} class="h-4 w-4" />
     </div>
   {/if}
 </div>

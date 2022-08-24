@@ -8,15 +8,11 @@ TS
 
 - ...Ios, ...Material props modifiers
 
-To redesign
-
-- Breadcrumbs
-- Form Inputs
-
 Tweaks
 
 - List
   - make dividers controlled on List
+  - check list inputs
 - TS for theme-specific props
   - List
   - Block

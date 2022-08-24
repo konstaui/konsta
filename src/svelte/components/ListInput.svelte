@@ -8,7 +8,6 @@
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
   import { ListInputColors } from '../../shared/colors/ListInputColors.js';
   import { cls } from '../../shared/cls.js';
-  import { getReactiveContext } from '../shared/get-reactive-context.js';
 
   let className = undefined;
   export { className as class };
@@ -20,7 +19,9 @@
   export let component = 'li';
 
   export let label = '';
-  export let inlineLabel = false;
+  export let outline = undefined;
+  export let outlineIos = undefined;
+  export let outlineMaterial = undefined;
   export let floatingLabel = false;
   export let info = undefined; // string
   export let error = undefined; // string or bool
@@ -63,12 +64,12 @@
   export let onBlur = undefined;
   export let onClear = undefined;
 
-  let ListDividersContext = getReactiveContext(
-    'ListDividersContext',
-    (value) => {
-      ListDividersContext = value || {};
-    }
-  ) || { value: false };
+  $: isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
 
   let inputEl = null;
 
@@ -81,13 +82,7 @@
 
   $: colors = ListInputColors(colorsProp, dark);
 
-  $: labelStyle =
-    !label || inlineLabel
-      ? 'inline'
-      : label && floatingLabel
-      ? 'floating'
-      : 'stacked';
-  $: labelStyleIsInline = labelStyle === 'inline' ? 'inline' : 'notInline';
+  $: labelStyle = label && floatingLabel ? 'floating' : 'stacked';
   $: labelStyleIsFloating =
     labelStyle === 'floating' ? 'floating' : 'notFloating';
 
@@ -108,18 +103,17 @@
     !isInputHasValue() &&
     !isFocused;
 
-  const getLabelColor = (force) => {
-    if (labelStyle === 'inline' && !force) return '';
+  const getLabelColor = () => {
     if (error || $$slots.error) return colors.errorText;
-    if (isFocused && theme === 'material') return colors.labelFocus;
-    if (labelStyle === 'floating') return 'opacity-50';
+    if (theme === 'material') {
+      return isFocused
+        ? colors.labelTextFocusMaterial
+        : colors.labelTextMaterial;
+    }
+    if (theme === 'ios') {
+      return isFocused ? colors.labelTextFocusIos : colors.labelTextIos;
+    }
 
-    return '';
-  };
-
-  const getHairlineColor = () => {
-    if (error || $$slots.error) return colors.hairlineError;
-    if (isFocused) return colors.hairlineFocus;
     return '';
   };
 
@@ -136,10 +130,10 @@
     { ios, material },
     ListInputClasses(
       {
-        dividers: ListDividersContext.value,
         error,
         type,
         inputClass,
+        outline: isOutline,
       },
       colors,
       {
@@ -147,9 +141,8 @@
         isFocused,
         darkClasses: dark,
         getLabelColor,
-        getHairlineColor,
-        hairlines,
         inputClass,
+        hasLabel: !!label || $$slots.label,
       }
     ),
     className,
@@ -163,31 +156,34 @@
 <ListItem
   {component}
   class={c.base}
-  title={labelStyle === 'inline' ? label : undefined}
-  mediaClass={c.media[labelStyleIsInline]}
+  title={undefined}
+  mediaClass={c.media}
   innerClass={c.inner[labelStyle]}
   contentClass={c.itemContent}
-  titleWrapClass={c.titleWrap[labelStyleIsInline]}
+  titleWrapClass={c.titleWrap}
   withMedia={!!$$slots.media}
   withTitle={!!$$slots.label || !!label}
+  dividers={theme === 'material' || isOutline ? false : undefined}
   {...$$restProps}
 >
+  <svelte:fragment slot="content">
+    {#if isOutline || theme === 'material'}
+      <span class={c.border} />
+    {/if}
+  </svelte:fragment>
   <svelte:fragment slot="media">
     {#if $$slots.media}
       <slot name="media" />
     {/if}
   </svelte:fragment>
-  <svelte:fragment slot="title">
-    {#if labelStyle === 'inline' && $$slots.label}
-      <slot name="label" />
-    {/if}
-  </svelte:fragment>
 
   <svelte:fragment slot="inner">
-    {#if labelStyle !== 'inline' && (label || $$slots.label)}
+    {#if label || $$slots.label}
       <div class={c.label[labelStyle]}>
-        {label}
-        <slot name="label" />
+        <div class={c.labelText}>
+          {label}
+          <slot name="label" />
+        </div>
       </div>
     {/if}
     <div class={c.inputWrap[labelStyle]}>
@@ -273,44 +269,26 @@
       {/if}
 
       {#if clearButton}
-        <DeleteIcon onClick={onClear} class={c.clearButton} />
+        <DeleteIcon {theme} onClick={onClear} class={c.clearButton} />
       {/if}
       {#if dropdown}
         <DropdownIcon class={c.dropdown} />
       {/if}
-      {#if labelStyle === 'inline'}
-        <!-- error info content -->
-        {#if (error && error !== true) || $$slots.error}
-          <div class={cls(c.errorInfo[labelStyleIsInline], c.error)}>
-            {#if error !== true}{error}{/if}
-            <slot name="error" />
-          </div>
-        {/if}
-        {#if (info || $$slots.info) && !error}
-          <div class={cls(c.errorInfo[labelStyleIsInline], c.info)}>
-            {info}
-            <slot name="info" />
-          </div>
-        {/if}
-        <!-- error info end -->
-      {/if}
     </div>
-    {#if labelStyle !== 'inline'}
-      <!-- error info content -->
-      {#if (error && error !== true) || $$slots.error}
-        <div class={cls(c.errorInfo[labelStyleIsInline], c.error)}>
-          {#if error !== true}{error}{/if}
-          <slot name="error" />
-        </div>
-      {/if}
-      {#if (info || $$slots.info) && !error}
-        <div class={cls(c.errorInfo[labelStyleIsInline], c.info)}>
-          {info}
-          <slot name="info" />
-        </div>
-      {/if}
-      <!-- error info end -->
+    <!-- error info content -->
+    {#if (error && error !== true) || $$slots.error}
+      <div class={cls(c.errorInfo, c.error)}>
+        {#if error !== true}{error}{/if}
+        <slot name="error" />
+      </div>
     {/if}
+    {#if (info || $$slots.info) && !error}
+      <div class={cls(c.errorInfo, c.info)}>
+        {info}
+        <slot name="info" />
+      </div>
+    {/if}
+    <!-- error info end -->
   </svelte:fragment>
 
   {#if type !== 'select'}

@@ -1,7 +1,7 @@
 export const ProgressbarClasses = (colors) => {
   return {
     base: {
-      common: `block h-1 bg-opacity-30 overflow-hidden`,
+      common: `block h-1 bg-opacity-30 dark:bg-opacity-30 overflow-hidden`,
       ios: `bg-black rounded-full`,
       material: colors.bgMaterial,
     },

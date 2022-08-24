@@ -39,11 +39,23 @@ interface Props {
    */
   label?: string | React.ReactNode;
   /**
-   * Makes label inline
+   * Renders outline-style input (with border around), overwrites `outlineIos` and `outlineMaterial`
+   *
+   * @default undefined
+   */
+  outline?: boolean;
+  /**
+   * Renders outline-style input (with border around) in iOS theme
    *
    * @default false
    */
-  inlineLabel?: boolean;
+  outlineIos?: boolean;
+  /**
+   * Renders outline-style input (with border around) in Material theme
+   *
+   * @default false
+   */
+  outlineMaterial?: boolean;
   /**
    * Makes floating label
    *

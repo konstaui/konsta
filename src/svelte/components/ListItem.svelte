@@ -53,6 +53,7 @@
   export let chevron = true;
   export let href = undefined;
   export let target = undefined;
+  export let dividers = undefined;
 
   export let link = false;
   export let linkComponent = 'a';
@@ -119,7 +120,10 @@
     ListItemClasses(
       {
         menuListItem,
-        dividers: ListDividersContext.value,
+        dividers:
+          typeof dividers === 'undefined'
+            ? ListDividersContext.value
+            : dividers,
         mediaClass,
         innerClass,
         contentClass,

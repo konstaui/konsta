@@ -14,7 +14,7 @@ interface Props {
   /**
    * Font size in Material theme
    *
-   * @default 'text-[16px]'
+   * @default 'text-[14px]'
    */
   fontSizeMaterial?: string;
 }

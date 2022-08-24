@@ -57,9 +57,9 @@ interface Props {
    */
   menuList?: boolean;
   /**
-   * Renders outer hairlines (borders)
+   * Renders list outer borders
    *
    * @default true
    */
-  hairlines?: boolean;
+  outline?: boolean;
 }

@@ -14,7 +14,6 @@ import ListItem from './ListItem.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
 import { ListInputColors } from '../../shared/colors/ListInputColors.js';
-import { useListDividers } from '../shared/use-list-dividers.js';
 
 const ListInput = forwardRef((props, ref) => {
   const {
@@ -23,8 +22,10 @@ const ListInput = forwardRef((props, ref) => {
     colors: colorsProp,
 
     label,
-    inlineLabel,
     floatingLabel,
+    outline,
+    outlineIos,
+    outlineMaterial,
     media,
     input, // for custom input
     info, // string
@@ -89,17 +90,10 @@ const ListInput = forwardRef((props, ref) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
-  const dividers = useListDividers();
 
   const colors = ListInputColors(colorsProp, dark);
 
-  const labelStyle =
-    !label || inlineLabel
-      ? 'inline'
-      : label && floatingLabel
-      ? 'floating'
-      : 'stacked';
-  const labelStyleIsInline = labelStyle === 'inline' ? 'inline' : 'notInline';
+  const labelStyle = label && floatingLabel ? 'floating' : 'stacked';
   const labelStyleIsFloating =
     labelStyle === 'floating' ? 'floating' : 'notFloating';
 
@@ -117,18 +111,17 @@ const ListInput = forwardRef((props, ref) => {
   const isFloatingTransformed =
     label && floatingLabel && !isInputHasValue() && !isFocused;
 
-  const getLabelColor = (force) => {
-    if (labelStyle === 'inline' && !force) return '';
+  const getLabelColor = () => {
     if (error) return colors.errorText;
-    if (isFocused && theme === 'material') return colors.labelFocus;
-    if (labelStyle === 'floating') return 'opacity-50';
+    if (theme === 'material') {
+      return isFocused
+        ? colors.labelTextFocusMaterial
+        : colors.labelTextMaterial;
+    }
+    if (theme === 'ios') {
+      return isFocused ? colors.labelTextFocusIos : colors.labelTextIos;
+    }
 
-    return '';
-  };
-
-  const getHairlineColor = () => {
-    if (error) return colors.hairlineError;
-    if (isFocused) return colors.hairlineFocus;
     return '';
   };
 
@@ -141,15 +134,21 @@ const ListInput = forwardRef((props, ref) => {
     if (onBlur) onBlur(e);
   };
 
+  const isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
+
   const c = themeClasses(
-    ListInputClasses(props, colors, {
+    ListInputClasses({ ...props, outline: isOutline }, colors, {
       isFloatingTransformed,
       isFocused,
       darkClasses: dark,
       getLabelColor,
-      getHairlineColor,
-      dividers,
       inputClassName,
+      hasLabel: !!label,
     })
   );
 
@@ -205,32 +204,31 @@ const ListInput = forwardRef((props, ref) => {
   const errorInfoContent = (
     <>
       {error && error !== true && (
-        <div className={cls(c.errorInfo[labelStyleIsInline], c.error)}>
-          {error}
-        </div>
+        <div className={cls(c.errorInfo, c.error)}>{error}</div>
       )}
-      {info && !error && (
-        <div className={cls(c.errorInfo[labelStyleIsInline], c.info)}>
-          {info}
-        </div>
-      )}
+      {info && !error && <div className={cls(c.errorInfo, c.info)}>{info}</div>}
     </>
   );
 
   const innerChildren = (
     <>
-      {labelStyle !== 'inline' && label && (
-        <div className={c.label[labelStyle]}>{label}</div>
+      {label && (
+        <div className={c.label[labelStyle]}>
+          <div className={c.labelText}>{label}</div>
+        </div>
       )}
       <div className={c.inputWrap[labelStyle]}>
         {createInput()}
         {clearButton && (
-          <DeleteIcon onClick={onClear} className={c.clearButton} />
+          <DeleteIcon
+            theme={theme}
+            onClick={onClear}
+            className={c.clearButton}
+          />
         )}
         {dropdown && <DropdownIcon className={c.dropdown} />}
-        {labelStyle === 'inline' && errorInfoContent}
       </div>
-      {labelStyle !== 'inline' && errorInfoContent}
+      {errorInfoContent}
     </>
   );
 
@@ -240,12 +238,16 @@ const ListInput = forwardRef((props, ref) => {
       component={component}
       media={media}
       className={c.base}
-      title={labelStyle === 'inline' ? label : null}
-      mediaClassName={c.media[labelStyleIsInline]}
+      title={null}
+      mediaClassName={c.media}
       innerClassName={c.inner[labelStyle]}
       contentClassName={c.itemContent}
-      titleWrapClassName={c.titleWrap[labelStyleIsInline]}
+      titleWrapClassName={c.titleWrap}
       innerChildren={innerChildren}
+      contentChildren={
+        (isOutline || theme === 'material') && <span className={c.border} />
+      }
+      dividers={theme === 'material' || isOutline ? false : undefined}
       {...attrs}
     >
       {type !== 'select' ? children : null}

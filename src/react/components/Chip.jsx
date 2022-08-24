@@ -3,6 +3,7 @@ import { ChipClasses } from '../../shared/classes/ChipClasses.js';
 import { ChipColors } from '../../shared/colors/ChipColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTheme } from '../shared/use-theme.js';
 
 import DeleteIcon from './icons/DeleteIcon.jsx';
 
@@ -41,6 +42,7 @@ const Chip = forwardRef((props, ref) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const theme = useTheme({ ios, material });
   const dark = useDarkClasses();
 
   const style = outline ? 'outline' : 'fill';
@@ -55,7 +57,7 @@ const Chip = forwardRef((props, ref) => {
       {children}
       {deleteButton && (
         <div className={c.deleteButton} onClick={onDelete}>
-          <DeleteIcon className="h-4 w-4" />
+          <DeleteIcon theme={theme} className="h-4 w-4" />
         </div>
       )}
     </Component>

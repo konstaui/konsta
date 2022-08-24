@@ -90,6 +90,11 @@
         default: 'text-[16px]',
       },
 
+      dividers: {
+        type: Boolean,
+        default: undefined,
+      },
+
       // Content props
       title: { type: String, default: undefined },
       subtitle: { type: String, default: undefined },
@@ -197,7 +202,13 @@
 
       const c = useThemeClasses(props, () =>
         ListItemClasses(
-          { ...props, dividers: ListDividersContext.value },
+          {
+            ...props,
+            dividers:
+              typeof props.dividers === 'undefined'
+                ? ListDividersContext.value
+                : props.dividers,
+          },
           colors.value,
           {
             theme: theme.value,
