@@ -18,11 +18,11 @@
     <k-block strong>
       <k-breadcrumbs>
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Home</k-link>
+          <k-link>Home</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Catalog</k-link>
+          <k-link>Catalog</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-item active>Phones</k-breadcrumbs-item>
@@ -37,19 +37,19 @@
     <k-block strong>
       <k-breadcrumbs>
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Home</k-link>
+          <k-link>Home</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Catalog</k-link>
+          <k-link>Catalog</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Phones</k-link>
+          <k-link>Phones</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Apple</k-link>
+          <k-link>Apple</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-item active>iPhone 12</k-breadcrumbs-item>
@@ -60,7 +60,7 @@
     <k-block strong>
       <k-breadcrumbs>
         <k-breadcrumbs-item>
-          <k-link :colors="{ text: 'text-inherit' }">Home</k-link>
+          <k-link>Home</k-link>
         </k-breadcrumbs-item>
         <k-breadcrumbs-separator />
         <k-breadcrumbs-collapsed

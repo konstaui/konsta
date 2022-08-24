@@ -6,7 +6,6 @@ import {
   BlockTitle,
   List,
   ListInput,
-  useTheme,
 } from 'konsta/react';
 
 import DemoIcon from '../components/DemoIcon';
@@ -15,8 +14,6 @@ export default function FormInputsPage() {
   const isPreview = document.location.href.includes('examplePreview');
   const [name, setName] = useState({ value: '', changed: false });
   const [demoValue, setDemoValue] = useState('');
-  const theme = useTheme();
-  const hairlines = theme !== 'material';
 
   const onNameChange = (e) => {
     setName({ value: e.target.value, changed: true });
@@ -34,11 +31,10 @@ export default function FormInputsPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <BlockTitle>Full Layout / Inline Labels</BlockTitle>
-      <List hairlines={hairlines}>
+      <BlockTitle>Default</BlockTitle>
+      <List strongIos insetIos>
         <ListInput
           label="Name"
-          inlineLabel
           type="text"
           placeholder="Your name"
           media={<DemoIcon />}
@@ -46,7 +42,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="Password"
-          inlineLabel
           type="password"
           placeholder="Your password"
           media={<DemoIcon />}
@@ -54,7 +49,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="E-mail"
-          inlineLabel
           type="email"
           placeholder="Your e-mail"
           media={<DemoIcon />}
@@ -62,7 +56,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="URL"
-          inlineLabel
           type="url"
           placeholder="URL"
           media={<DemoIcon />}
@@ -70,7 +63,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="Phone"
-          inlineLabel
           type="tel"
           placeholder="Your phone number"
           media={<DemoIcon />}
@@ -78,7 +70,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="Gender"
-          inlineLabel
           type="select"
           dropdown
           defaultValue="Male"
@@ -91,7 +82,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="Birthday"
-          inlineLabel
           type="date"
           defaultValue="2014-04-30"
           placeholder="Please choose..."
@@ -100,7 +90,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="Date time"
-          inlineLabel
           type="datetime-local"
           placeholder="Please choose..."
           media={<DemoIcon />}
@@ -108,7 +97,6 @@ export default function FormInputsPage() {
 
         <ListInput
           label="Textarea"
-          inlineLabel
           type="textarea"
           placeholder="Bio"
           media={<DemoIcon />}
@@ -116,9 +104,10 @@ export default function FormInputsPage() {
         />
       </List>
 
-      <BlockTitle>Full Layout / Stacked Labels</BlockTitle>
-      <List hairlines={hairlines}>
+      <BlockTitle>Outline</BlockTitle>
+      <List strongIos insetIos>
         <ListInput
+          outline
           label="Name"
           type="text"
           placeholder="Your name"
@@ -126,6 +115,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="Password"
           type="password"
           placeholder="Your password"
@@ -133,6 +123,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="E-mail"
           type="email"
           placeholder="Your e-mail"
@@ -140,6 +131,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="URL"
           type="url"
           placeholder="URL"
@@ -147,6 +139,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="Phone"
           type="tel"
           placeholder="Your phone number"
@@ -154,6 +147,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="Gender"
           type="select"
           dropdown
@@ -166,6 +160,7 @@ export default function FormInputsPage() {
         </ListInput>
 
         <ListInput
+          outline
           label="Birthday"
           type="date"
           defaultValue="2014-04-30"
@@ -174,6 +169,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="Date time"
           type="datetime-local"
           placeholder="Please choose..."
@@ -181,6 +177,7 @@ export default function FormInputsPage() {
         />
 
         <ListInput
+          outline
           label="Textarea"
           type="textarea"
           placeholder="Bio"
@@ -190,7 +187,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Floating Labels</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput
           label="Name"
           floatingLabel
@@ -232,8 +229,56 @@ export default function FormInputsPage() {
         />
       </List>
 
+      <BlockTitle>Outline + Floating Labels</BlockTitle>
+      <List strongIos insetIos>
+        <ListInput
+          outline
+          label="Name"
+          floatingLabel
+          type="text"
+          placeholder="Your name"
+          media={<DemoIcon />}
+        />
+
+        <ListInput
+          outline
+          label="Password"
+          floatingLabel
+          type="password"
+          placeholder="Your password"
+          media={<DemoIcon />}
+        />
+
+        <ListInput
+          outline
+          label="E-mail"
+          floatingLabel
+          type="email"
+          placeholder="Your e-mail"
+          media={<DemoIcon />}
+        />
+
+        <ListInput
+          outline
+          label="URL"
+          floatingLabel
+          type="url"
+          placeholder="URL"
+          media={<DemoIcon />}
+        />
+
+        <ListInput
+          outline
+          label="Phone"
+          floatingLabel
+          type="tel"
+          placeholder="Your phone number"
+          media={<DemoIcon />}
+        />
+      </List>
+
       <BlockTitle>Validation + Additional Info</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput
           label="Name"
           type="text"
@@ -249,7 +294,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Clear Button</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput
           label="TV Show"
           type="text"
@@ -264,7 +309,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Icon + Input</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput type="text" placeholder="Your name" media={<DemoIcon />} />
 
         <ListInput
@@ -283,7 +328,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Label + Input</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput label="Name" type="text" placeholder="Your name" />
 
         <ListInput
@@ -298,7 +343,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Only Inputs</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput type="text" placeholder="Your name" />
 
         <ListInput type="password" placeholder="Your password" />
@@ -309,7 +354,7 @@ export default function FormInputsPage() {
       </List>
 
       <BlockTitle>Inputs + Additional Info</BlockTitle>
-      <List hairlines={hairlines}>
+      <List strongIos insetIos>
         <ListInput
           type="text"
           placeholder="Your name"
@@ -329,17 +374,6 @@ export default function FormInputsPage() {
         />
 
         <ListInput type="url" placeholder="URL" info="Your website URL" />
-      </List>
-
-      <BlockTitle>Only Inputs Inset</BlockTitle>
-      <List inset>
-        <ListInput type="text" placeholder="Your name" />
-
-        <ListInput type="password" placeholder="Your password" />
-
-        <ListInput type="email" placeholder="Your e-mail" />
-
-        <ListInput type="url" placeholder="URL" />
       </List>
     </Page>
   );

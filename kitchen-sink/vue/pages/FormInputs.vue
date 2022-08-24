@@ -6,111 +6,8 @@
       </template>
     </k-navbar>
 
-    <k-block-title>Full Layout / Inline Labels</k-block-title>
-    <k-list :hairlines="hairlines">
-      <k-list-input
-        label="Name"
-        inline-label
-        type="text"
-        placeholder="Your name"
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input
-        label="Password"
-        inline-label
-        type="password"
-        placeholder="Your password"
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input
-        label="E-mail"
-        inline-label
-        type="email"
-        placeholder="Your e-mail"
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input label="URL" inline-label type="url" placeholder="URL">
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input
-        label="Phone"
-        inline-label
-        type="tel"
-        placeholder="Your phone number"
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input
-        label="Gender"
-        inline-label
-        type="select"
-        dropdown
-        default-value="Male"
-        placeholder="Please choose..."
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </k-list-input>
-
-      <k-list-input
-        label="Birthday"
-        inline-label
-        type="date"
-        default-value="2014-04-30"
-        placeholder="Please choose..."
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input
-        label="Date time"
-        inline-label
-        type="datetime-local"
-        placeholder="Please choose..."
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-
-      <k-list-input
-        label="Textarea"
-        inline-label
-        type="textarea"
-        placeholder="Bio"
-        input-class="h-20 resize-none"
-      >
-        <template #media>
-          <demo-icon />
-        </template>
-      </k-list-input>
-    </k-list>
-
-    <k-block-title>Full Layout / Stacked Labels</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-block-title>Default</k-block-title>
+    <k-list inset-ios strong-ios>
       <k-list-input label="Name" type="text" placeholder="Your name">
         <template #media>
           <demo-icon />
@@ -192,8 +89,106 @@
       </k-list-input>
     </k-list>
 
+    <k-block-title>Outline</k-block-title>
+    <k-list inset-ios strong-ios>
+      <k-list-input outline label="Name" type="text" placeholder="Your name">
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Password"
+        type="password"
+        placeholder="Your password"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="E-mail"
+        type="email"
+        placeholder="Your e-mail"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input outline label="URL" type="url" placeholder="URL">
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Phone"
+        type="tel"
+        placeholder="Your phone number"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Gender"
+        type="select"
+        dropdown
+        default-value="Male"
+        placeholder="Please choose..."
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Birthday"
+        type="date"
+        default-value="2014-04-30"
+        placeholder="Please choose..."
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Date time"
+        type="datetime-local"
+        placeholder="Please choose..."
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Textarea"
+        type="textarea"
+        placeholder="Bio"
+        input-class="h-20 resize-none"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+    </k-list>
+
     <k-block-title>Floating Labels</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input
         label="Name"
         floating-label
@@ -245,8 +240,71 @@
       </k-list-input>
     </k-list>
 
+    <k-block-title>Outline + Floating Labels</k-block-title>
+    <k-list inset-ios strong-ios>
+      <k-list-input
+        outline
+        label="Name"
+        floating-label
+        type="text"
+        placeholder="Your name"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Password"
+        floating-label
+        type="password"
+        placeholder="Your password"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="E-mail"
+        floating-label
+        type="email"
+        placeholder="Your e-mail"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="URL"
+        floating-label
+        type="url"
+        placeholder="URL"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+
+      <k-list-input
+        outline
+        label="Phone"
+        floating-label
+        type="tel"
+        placeholder="Your phone number"
+      >
+        <template #media>
+          <demo-icon />
+        </template>
+      </k-list-input>
+    </k-list>
+
     <k-block-title>Validation + Additional Info</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input
         label="Name"
         type="text"
@@ -265,7 +323,7 @@
     </k-list>
 
     <k-block-title>Clear Button</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input
         label="TV Show"
         type="text"
@@ -283,7 +341,7 @@
     </k-list>
 
     <k-block-title>Icon + Input</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input type="text" placeholder="Your name">
         <template #media>
           <demo-icon />
@@ -310,7 +368,7 @@
     </k-list>
 
     <k-block-title>Label + Input</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input label="Name" type="text" placeholder="Your name" />
 
       <k-list-input
@@ -325,7 +383,7 @@
     </k-list>
 
     <k-block-title>Only Inputs</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input type="text" placeholder="Your name" />
 
       <k-list-input type="password" placeholder="Your password" />
@@ -336,7 +394,7 @@
     </k-list>
 
     <k-block-title>Inputs + Additional Info</k-block-title>
-    <k-list :hairlines="hairlines">
+    <k-list inset-ios strong-ios>
       <k-list-input
         type="text"
         placeholder="Your name"
@@ -357,21 +415,10 @@
 
       <k-list-input type="url" placeholder="URL" info="Your website URL" />
     </k-list>
-
-    <k-block-title>Only Inputs Inset</k-block-title>
-    <k-list inset>
-      <k-list-input type="text" placeholder="Your name" />
-
-      <k-list-input type="password" placeholder="Your password" />
-
-      <k-list-input type="email" placeholder="Your e-mail" />
-
-      <k-list-input type="url" placeholder="URL" />
-    </k-list>
   </k-page>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { ref } from 'vue';
   import {
     kPage,
     kNavbar,
@@ -379,7 +426,6 @@
     kBlockTitle,
     kList,
     kListInput,
-    useTheme,
   } from 'konsta/vue';
   import DemoIcon from '../components/DemoIcon.vue';
 
@@ -397,8 +443,6 @@
     setup() {
       const name = ref({ value: '', changed: false });
       const demoValue = ref('');
-      const theme = useTheme();
-      const hairlines = computed(() => theme.value !== 'material');
 
       const onNameChange = (e) => {
         name.value = { value: e.target.value, changed: true };
@@ -413,8 +457,6 @@
       return {
         name,
         demoValue,
-        theme,
-        hairlines,
         onNameChange,
         onDemoValueChange,
         onDemoValueClear,

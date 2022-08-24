@@ -6,7 +6,6 @@
     BlockTitle,
     List,
     ListInput,
-    useTheme,
   } from 'konsta/svelte';
 
   import DemoIcon from '../components/DemoIcon.svelte';
@@ -14,8 +13,6 @@
   const isPreview = document.location.href.includes('examplePreview');
   let name = { value: '', changed: false };
   let demoValue = '';
-  $: theme = useTheme((newValue) => (theme = newValue));
-  $: hairlines = theme !== 'material';
 
   const onNameChange = (e) => {
     name = { value: e.target.value, changed: true };
@@ -37,88 +34,8 @@
     </svelte:fragment>
   </Navbar>
 
-  <BlockTitle>Full Layout / Inline Labels</BlockTitle>
-  <List {hairlines}>
-    <ListInput label="Name" inlineLabel type="text" placeholder="Your name">
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput
-      label="Password"
-      inlineLabel
-      type="password"
-      placeholder="Your password"
-    >
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput
-      label="E-mail"
-      inlineLabel
-      type="email"
-      placeholder="Your e-mail"
-    >
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput label="URL" inlineLabel type="url" placeholder="URL">
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput
-      label="Phone"
-      inlineLabel
-      type="tel"
-      placeholder="Your phone number"
-    >
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput
-      label="Gender"
-      inlineLabel
-      type="select"
-      dropdown
-      defaultValue="Male"
-      placeholder="Please choose..."
-    >
-      <DemoIcon slot="media" />
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </ListInput>
-
-    <ListInput
-      label="Birthday"
-      inlineLabel
-      type="date"
-      defaultValue="2014-04-30"
-      placeholder="Please choose..."
-    >
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput
-      label="Date time"
-      inlineLabel
-      type="datetime-local"
-      placeholder="Please choose..."
-    >
-      <DemoIcon slot="media" />
-    </ListInput>
-
-    <ListInput
-      label="Textarea"
-      inlineLabel
-      type="textarea"
-      placeholder="Bio"
-      inputclass="h-20 resize-none"
-    >
-      <DemoIcon slot="media" />
-    </ListInput>
-  </List>
-
-  <BlockTitle>Full Layout / Stacked Labels</BlockTitle>
-  <List {hairlines}>
+  <BlockTitle>Default</BlockTitle>
+  <List strongIos insetIos>
     <ListInput label="Name" type="text" placeholder="Your name">
       <DemoIcon slot="media" />
     </ListInput>
@@ -178,8 +95,78 @@
     </ListInput>
   </List>
 
+  <BlockTitle>Outline</BlockTitle>
+  <List strongIos insetIos>
+    <ListInput outline label="Name" type="text" placeholder="Your name">
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Password"
+      type="password"
+      placeholder="Your password"
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput outline label="E-mail" type="email" placeholder="Your e-mail">
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput outline label="URL" type="url" placeholder="URL">
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput outline label="Phone" type="tel" placeholder="Your phone number">
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Gender"
+      type="select"
+      dropdown
+      defaultValue="Male"
+      placeholder="Please choose..."
+    >
+      <DemoIcon slot="media" />
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Birthday"
+      type="date"
+      defaultValue="2014-04-30"
+      placeholder="Please choose..."
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Date time"
+      type="datetime-local"
+      placeholder="Please choose..."
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Textarea"
+      type="textarea"
+      placeholder="Bio"
+      inputclass="h-20 resize-none"
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+  </List>
+
   <BlockTitle>Floating Labels</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput label="Name" floatingLabel type="text" placeholder="Your name">
       <DemoIcon slot="media" />
     </ListInput>
@@ -216,8 +203,55 @@
     </ListInput>
   </List>
 
+  <BlockTitle>Outline + Floating Labels</BlockTitle>
+  <List strongIos insetIos>
+    <ListInput
+      outline
+      label="Name"
+      floatingLabel
+      type="text"
+      placeholder="Your name"
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Password"
+      floatingLabel
+      type="password"
+      placeholder="Your password"
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="E-mail"
+      floatingLabel
+      type="email"
+      placeholder="Your e-mail"
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput outline label="URL" floatingLabel type="url" placeholder="URL">
+      <DemoIcon slot="media" />
+    </ListInput>
+
+    <ListInput
+      outline
+      label="Phone"
+      floatingLabel
+      type="tel"
+      placeholder="Your phone number"
+    >
+      <DemoIcon slot="media" />
+    </ListInput>
+  </List>
+
   <BlockTitle>Validation + Additional Info</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput
       label="Name"
       type="text"
@@ -234,7 +268,7 @@
   </List>
 
   <BlockTitle>Clear Button</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput
       label="TV Show"
       type="text"
@@ -250,7 +284,7 @@
   </List>
 
   <BlockTitle>Icon + Input</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput type="text" placeholder="Your name">
       <DemoIcon slot="media" />
     </ListInput>
@@ -269,7 +303,7 @@
   </List>
 
   <BlockTitle>Label + Input</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput label="Name" type="text" placeholder="Your name" />
 
     <ListInput label="Password" type="password" placeholder="Your password" />
@@ -280,7 +314,7 @@
   </List>
 
   <BlockTitle>Only Inputs</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput type="text" placeholder="Your name" />
 
     <ListInput type="password" placeholder="Your password" />
@@ -291,7 +325,7 @@
   </List>
 
   <BlockTitle>Inputs + Additional Info</BlockTitle>
-  <List {hairlines}>
+  <List strongIos insetIos>
     <ListInput type="text" placeholder="Your name" info="Full name please" />
 
     <ListInput
@@ -307,16 +341,5 @@
     />
 
     <ListInput type="url" placeholder="URL" info="Your website URL" />
-  </List>
-
-  <BlockTitle>Only Inputs Inset</BlockTitle>
-  <List inset>
-    <ListInput type="text" placeholder="Your name" />
-
-    <ListInput type="password" placeholder="Your password" />
-
-    <ListInput type="email" placeholder="Your e-mail" />
-
-    <ListInput type="url" placeholder="URL" />
   </List>
 </Page>

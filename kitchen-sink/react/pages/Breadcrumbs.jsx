@@ -38,11 +38,11 @@ export default function BreadcrumbsPage() {
       <Block strong>
         <Breadcrumbs>
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Home</Link>
+            <Link>Home</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Catalog</Link>
+            <Link>Catalog</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsItem active>Phones</BreadcrumbsItem>
@@ -56,19 +56,19 @@ export default function BreadcrumbsPage() {
       <Block strong>
         <Breadcrumbs>
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Home</Link>
+            <Link>Home</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Catalog</Link>
+            <Link>Catalog</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Phones</Link>
+            <Link>Phones</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Apple</Link>
+            <Link>Apple</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsItem active>iPhone 12</BreadcrumbsItem>
@@ -79,7 +79,7 @@ export default function BreadcrumbsPage() {
       <Block strong>
         <Breadcrumbs>
           <BreadcrumbsItem>
-            <Link colors={{ text: 'text-inherit' }}>Home</Link>
+            <Link>Home</Link>
           </BreadcrumbsItem>
           <BreadcrumbsSeparator />
           <BreadcrumbsCollapsed
