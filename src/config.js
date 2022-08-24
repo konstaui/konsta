@@ -12,6 +12,7 @@ const pluginSafeAreas = require('./config/plugin-safe-areas.js');
 const pluginTranslucent = require('./config/plugin-translucent.js');
 const pluginRange = require('./config/plugin-range.js');
 const pluginTouch = require('./config/plugin-touch.js');
+const pluginNoScrollbar = require('./config/plugin-no-scrollbar.js');
 const mdColors = require('./config/md-colors.js');
 
 const content = `${path.resolve(__dirname)}/**/*.{js,jsx,vue,svelte}`;
@@ -34,6 +35,7 @@ const config = (userConfig = {}) => {
         pluginTranslucent(),
         pluginRange(),
         pluginTouch(),
+        pluginNoScrollbar(),
       ],
     },
     userConfig
