@@ -1,12 +1,19 @@
-- Tabbar MD translate highlight
 - Colors
   - name colors
 - Update colors in .d.ts
 - Multi colors
 
-TS
+TS / DOCS
 
 - ...Ios, ...Material props modifiers
+
+New components
+
+- Portal Modals
+- Dialog
+- Navbar
+  - large
+  - transparent
 
 Tweaks
 
@@ -19,9 +26,6 @@ Tweaks
 - Update demos for
   - List
   - Block
-- Navbar
-  - transparent
-  - large
 - Popup
   - tweak MD easing
   - push?
