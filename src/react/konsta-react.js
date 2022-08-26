@@ -16,6 +16,8 @@ import Button from './components/Button.jsx';
 import Card from './components/Card.jsx';
 import Checkbox from './components/Checkbox.jsx';
 import Chip from './components/Chip.jsx';
+import Dialog from './components/Dialog.jsx';
+import DialogButton from './components/DialogButton.jsx';
 import Fab from './components/Fab.jsx';
 import Icon from './components/Icon.jsx';
 import Link from './components/Link.jsx';
@@ -74,6 +76,8 @@ export {
   Card,
   Checkbox,
   Chip,
+  Dialog,
+  DialogButton,
   Fab,
   Icon,
   Link,

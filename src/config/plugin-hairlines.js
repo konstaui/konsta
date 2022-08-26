@@ -137,6 +137,22 @@ module.exports = () =>
           },
         },
       },
+      '.last-child-hairline-r-none': {
+        '> *:last-child': {
+          '&::after': {
+            display: 'none',
+          },
+          ':not(.hairline-b):after': {
+            display: 'none',
+          },
+          '> * > *:after': {
+            display: 'none',
+          },
+          '> *:after': {
+            display: 'none',
+          },
+        },
+      },
       '.hairline-r': {
         '&::after': {
           ...common,

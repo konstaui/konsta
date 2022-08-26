@@ -2,7 +2,7 @@ import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { PopupClasses } from '../../shared/classes/PopupClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
-import { PopoverColors } from '../../shared/colors/PopoverColors.js';
+import { PopupColors } from '../../shared/colors/PopupColors.js';
 
 const Popup = forwardRef((props, ref) => {
   const {
@@ -42,7 +42,7 @@ const Popup = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const colors = PopoverColors(colorsProp, dark);
+  const colors = PopupColors(colorsProp, dark);
 
   const c = themeClasses(
     PopupClasses({ ...props, size }, colors, className),
