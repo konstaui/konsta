@@ -16,6 +16,8 @@ import kButton from './components/Button.vue';
 import kCard from './components/Card.vue';
 import kCheckbox from './components/Checkbox.vue';
 import kChip from './components/Chip.vue';
+import kDialog from './components/Dialog.vue';
+import kDialogButton from './components/DialogButton.vue';
 import kFab from './components/Fab.vue';
 import kIcon from './components/Icon.vue';
 import kLink from './components/Link.vue';
@@ -93,6 +95,10 @@ export {
   kCheckbox as Checkbox,
   kChip,
   kChip as Chip,
+  kDialog,
+  kDialog as Dialog,
+  kDialogButton,
+  kDialogButton as DialogButton,
   kFab,
   kFab as Fab,
   kIcon,

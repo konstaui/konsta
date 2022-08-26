@@ -31,14 +31,14 @@ export const DialogClasses = (props, colors, classes, { hasButtons }) => {
       ios: cls('p-4 space-y-1 relative', hasButtons && 'hairline-b'),
     },
     title: {
-      common: cls(''),
+      common: cls('w-full'),
       ios: cls(colors.titleIos, titleFontSizeIos, 'font-semibold text-center'),
-      material: cls(colors.titleMaterial, titleFontSizeMaterial, 'w-full'),
+      material: cls(colors.titleMaterial, titleFontSizeMaterial),
     },
     content: {
-      common: cls('text-sm'),
-      ios: cls(colors.contentIos, 'text-center'),
-      material: cls(colors.contentMaterial),
+      common: cls('text-sm w-full'),
+      ios: cls(colors.contentTextIos, 'text-center'),
+      material: cls(colors.contentTextMaterial),
     },
     buttons: {
       common: 'flex items-center',

@@ -6,6 +6,7 @@ import Cards from './pages/Cards.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chips from './pages/Chips.svelte';
 import ContentBlock from './pages/ContentBlock.svelte';
+import Dialog from './pages/Dialog.svelte';
 import Fab from './pages/Fab.svelte';
 import FormInputs from './pages/FormInputs.svelte';
 import List from './pages/List.svelte';
@@ -37,6 +38,7 @@ const pages = {
   Checkbox,
   Chips,
   ContentBlock,
+  Dialog,
   Fab,
   FormInputs,
   List,

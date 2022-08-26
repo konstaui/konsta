@@ -45,8 +45,15 @@ const DialogButton = forwardRef((props, ref) => {
 
   const colors = DialogButtonColors(colorsProp, dark);
 
+  const isStrong =
+    typeof strong === 'undefined'
+      ? theme === 'ios'
+        ? strongIos
+        : strongMaterial
+      : strong;
+
   const c = themeClasses(
-    DialogButtonClasses({ ...props }, colors, dark),
+    DialogButtonClasses({ ...props, strong: isStrong }, colors, dark),
     className
   );
 
@@ -64,7 +71,7 @@ const DialogButton = forwardRef((props, ref) => {
       inline
       rounded
       disabled={disabled}
-      clear={!strong}
+      clear={!isStrong}
       className={className}
       {...attrs}
     >

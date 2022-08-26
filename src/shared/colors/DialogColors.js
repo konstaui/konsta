@@ -9,8 +9,8 @@ export const DialogColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface',
       dark('dark:text-md-dark-on-surface')
     ),
-    contentIos: '',
-    contentMaterial: cls(
+    contentTextIos: '',
+    contentTextMaterial: cls(
       'text-md-light-on-surface-variant',
       dark('dark:text-md-dark-on-surface-variant')
     ),

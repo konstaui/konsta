@@ -16,6 +16,8 @@ import Button from './components/Button.svelte';
 import Card from './components/Card.svelte';
 import Checkbox from './components/Checkbox.svelte';
 import Chip from './components/Chip.svelte';
+import Dialog from './components/Dialog.svelte';
+import DialogButton from './components/DialogButton.svelte';
 import Fab from './components/Fab.svelte';
 import Icon from './components/Icon.svelte';
 import Link from './components/Link.svelte';
@@ -72,6 +74,8 @@ export {
   Card,
   Checkbox,
   Chip,
+  Dialog,
+  DialogButton,
   Fab,
   Icon,
   Link,

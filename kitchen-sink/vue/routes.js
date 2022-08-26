@@ -7,6 +7,7 @@ import Cards from './pages/Cards.vue';
 import Checkbox from './pages/Checkbox.vue';
 import Chips from './pages/Chips.vue';
 import ContentBlock from './pages/ContentBlock.vue';
+import Dialog from './pages/Dialog.vue';
 import Fab from './pages/Fab.vue';
 import FormInputs from './pages/FormInputs.vue';
 import List from './pages/List.vue';
@@ -39,6 +40,7 @@ const routes = [
   Checkbox,
   Chips,
   ContentBlock,
+  Dialog,
   Fab,
   FormInputs,
   List,
