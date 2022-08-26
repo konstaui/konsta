@@ -18,8 +18,7 @@ New components
 Tweaks
 
 - List
-  - make dividers controlled on List
-  - check list inputs
+  - rename divider to something else
 - TS for theme-specific props
   - List
   - Block
