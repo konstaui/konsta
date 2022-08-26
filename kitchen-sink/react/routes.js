@@ -6,6 +6,7 @@ import Cards from './pages/Cards.jsx';
 import Checkbox from './pages/Checkbox.jsx';
 import Chips from './pages/Chips.jsx';
 import ContentBlock from './pages/ContentBlock.jsx';
+import Dialog from './pages/Dialog.jsx';
 import Fab from './pages/Fab.jsx';
 import FormInputs from './pages/FormInputs.jsx';
 import List from './pages/List.jsx';
@@ -37,6 +38,7 @@ const routes = [
   Checkbox,
   Chips,
   ContentBlock,
+  Dialog,
   Fab,
   FormInputs,
   List,
