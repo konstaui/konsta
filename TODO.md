@@ -10,7 +10,7 @@ TS / DOCS
 New components
 
 - Portal Modals
-- Dialog
+- Searchbar
 - Navbar
   - large
   - transparent
