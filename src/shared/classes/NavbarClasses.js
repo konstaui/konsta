@@ -5,12 +5,19 @@ export const NavbarClasses = (props, colors, classes) => {
   const {
     hairlines,
     translucent,
+    large,
+    medium,
+    transparent,
     left,
     right,
     fontSizeIos,
     fontSizeMaterial,
     titleFontSizeIos,
     titleFontSizeMaterial,
+    titleLargeFontSizeIos,
+    titleLargeFontSizeMaterial,
+    titleMediumFontSizeIos,
+    titleMediumFontSizeMaterial,
     bgClassName = '',
     bgClass = '',
     subnavbarClassName = '',
@@ -67,6 +74,17 @@ export const NavbarClasses = (props, colors, classes) => {
       ),
       material: 'justify-start h-16 pl-safe pr-safe',
     },
+    titleContainer: {
+      common: 'flex items-center px-4 relative',
+      ios: cls(
+        medium && cls(titleMediumFontSizeIos, 'h-11 font-semibold'),
+        large && cls(titleLargeFontSizeIos, 'h-13 font-bold')
+      ),
+      material: cls(
+        medium && cls(titleMediumFontSizeMaterial, 'h-12 pb-4'),
+        large && cls(titleLargeFontSizeMaterial, 'h-[5.5rem]')
+      ),
+    },
     left: {
       common: cls(
         'flex justify-center items-center h-full',
@@ -79,6 +97,7 @@ export const NavbarClasses = (props, colors, classes) => {
       common: cls(
         `whitespace-nowrap leading-tight`,
         titleClassName || titleClass,
+        (large || medium || transparent) && 'opacity-0',
         centerTitle
           ? `absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center`
           : 'text-left'
@@ -89,6 +108,7 @@ export const NavbarClasses = (props, colors, classes) => {
       ),
       material: cls(
         `${titleFontSizeMaterial} font-normal`,
+
         !centerTitle && 'first:mx-4'
       ),
     },
@@ -105,7 +125,7 @@ export const NavbarClasses = (props, colors, classes) => {
         'flex justify-center items-center h-full',
         rightClassName || rightClass
       ),
-      ios: 'ml-2 transform transform-gpu',
+      ios: cls('transform transform-gpu', centerTitle ? 'ml-2' : 'ml-auto'),
       material: 'ml-auto mr-1',
     },
   };

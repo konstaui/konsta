@@ -64,6 +64,34 @@ interface Props {
   titleFontSizeMaterial?: string;
 
   /**
+   * Tailwind CSS class for medium-sized navbar title font size in iOS theme
+   *
+   * @default 'text-[24px]'
+   */
+  titleMediumFontSizeIos?: string;
+
+  /**
+   * Tailwind CSS class for medium-sized navbar title font size in Material theme
+   *
+   * @default 'text-[24px]'
+   */
+  titleMediumFontSizeMaterial?: string;
+
+  /**
+   * Tailwind CSS class for large-sized navbar title font size in iOS theme
+   *
+   * @default 'text-[34px]'
+   */
+  titleLargeFontSizeIos?: string;
+
+  /**
+   * Tailwind CSS class for large-sized navbar title font size in Material theme
+   *
+   * @default 'text-[28px]'
+   */
+  titleLargeFontSizeMaterial?: string;
+
+  /**
    * Additional class to add on Navbar's "background" element
    */
   bgClassName?: string;
@@ -103,6 +131,31 @@ interface Props {
    * @default true
    */
   hairlines?: boolean;
+
+  /**
+   * Renders medium-sized navbar with extra row for medium-sized title which becomes usual size on scroll
+   *
+   * @default false
+   */
+  medium?: boolean;
+  /**
+   * Renders large-sized navbar with extra row for large-sized title which becomes usual size on scroll
+   *
+   * @default false
+   */
+  large?: boolean;
+  /**
+   * Renders transparent navbar which becomes opaque on scroll
+   *
+   * @default false
+   */
+  transparent?: boolean;
+  /**
+   * Element required for correct "collapse" functionality for medium/large/transparent Navbar. If not specified, it will use Navbar's parent element
+   *
+   * @default undefined
+   */
+  scrollEl?: any;
 
   /**
    * Makes centered navbar title. If not specified then it set it to center in iOS theme
