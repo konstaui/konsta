@@ -26,11 +26,11 @@
   });
 </script>
 
-<Page>
+<Page colors={{ bgIos: 'bg-white dark:bg-black' }}>
   <Navbar title="Konsta UI" centerTitle />
 
   <BlockTitle>Theme</BlockTitle>
-  <List strong outlineIos insetMaterial>
+  <List strong insetMaterial>
     <ListItem label title="iOS Theme">
       <Radio
         slot="media"
@@ -57,7 +57,7 @@
   </List>
 
   <BlockTitle>Components</BlockTitle>
-  <List strong outlineIos insetMaterial>
+  <List strong insetMaterial>
     {#each routes as route}
       <ListItem link href={`#${route.path}`} title={route.title}>
         <DemoIcon slot="media" />

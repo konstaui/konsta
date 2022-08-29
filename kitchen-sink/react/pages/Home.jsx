@@ -25,11 +25,11 @@ export default function HomePage({ theme, setTheme }) {
   });
 
   return (
-    <Page>
-      <Navbar title="Konsta UI" centerTitle />
+    <Page colors={{ bgIos: 'bg-white dark:bg-black' }}>
+      <Navbar title="Konsta UI" large transparent centerTitle />
 
       <BlockTitle>Theme</BlockTitle>
-      <List strong outlineIos insetMaterial>
+      <List strong insetMaterial>
         <ListItem
           label
           title="iOS Theme"
@@ -61,7 +61,7 @@ export default function HomePage({ theme, setTheme }) {
       </List>
 
       <BlockTitle>Components</BlockTitle>
-      <List strong outlineIos insetMaterial>
+      <List strong insetMaterial>
         {routes.map((route) => (
           <ListItem
             key={route.path}

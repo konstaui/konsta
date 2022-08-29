@@ -1,9 +1,9 @@
 <template>
-  <k-page>
+  <k-page colors="{bgIos: 'bg-white dark:bg-black'}">
     <k-navbar title="Konsta UI" center-title />
 
     <k-block-title>Theme</k-block-title>
-    <k-list strong outline-ios inset-material>
+    <k-list strong inset-material>
       <k-list-item label title="iOS Theme">
         <template #media>
           <k-radio
@@ -30,7 +30,7 @@
     </k-list>
 
     <k-block-title>Components</k-block-title>
-    <k-list strong outline-ios inset-material>
+    <k-list strong inset-material>
       <k-list-item
         v-for="route in routes"
         :key="route.path"
