@@ -9,6 +9,16 @@ Support Konsta UI development by
 <table>
   <tr>
     <td align="center" valign="middle">
+      <a href="https://www.noneedtostudy.com/take-my-online-class/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/noneedtostudy.png" alt="Pay someone to do online class? NoNeedToStudy.com" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://www.casinoutanlicens.io/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/casinoutanlicens.png" alt="Casino utan svensk licens" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
       <a href="https://casinoscrypto.com" target="_blank">
         <img src="https://konstaui.com/images/sponsors/casinoscrypto.png" alt="Best Crypto Casinos | Top Bitcoin Gambling Sites (2022)" width="160">
       </a>
@@ -18,8 +28,6 @@ Support Konsta UI development by
         <img src="https://konstaui.com/images/sponsors/cryptocurrencycodes.png" alt="Top FREE Crypto Sign Up Bonuses & Referral Codes" width="160">
       </a>
     </td>
-    <td align="center" valign="middle"></td>
-    <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
@@ -53,7 +61,8 @@ Currently vacant. It could be you! [Open Collective](https://opencollective.com/
 ### \$50+ Sponsor
 
 <!-- SPONSOR -->
-
+- [Pay someone to do online class? NoNeedToStudy.com](https://www.noneedtostudy.com/take-my-online-class/)
+- [Casino utan svensk licens](https://www.casinoutanlicens.io/)
 - [Best Crypto Casinos | Top Bitcoin Gambling Sites (2022)](https://casinoscrypto.com)
 - [Top FREE Crypto Sign Up Bonuses & Referral Codes](https://cryptocurrencycodes.com)
 <!-- SPONSOR -->
