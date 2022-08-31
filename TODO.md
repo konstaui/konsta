@@ -1,7 +1,4 @@
-- Colors
-  - name colors
 - Update colors in .d.ts
-- Multi colors
 
 TS / DOCS
 
@@ -11,9 +8,6 @@ New components
 
 - Portal Modals
 - Searchbar
-- Navbar
-  - large
-  - transparent
 
 Tweaks
 
