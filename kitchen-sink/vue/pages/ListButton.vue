@@ -18,15 +18,7 @@
       <k-list-button>Button 3</k-list-button>
     </k-list>
     <k-list inset>
-      <k-list-button
-        :colors="{
-          text: 'text-red-500',
-          activeBg: 'active:bg-red-500',
-          touchRipple: 'touch-ripple-red-500',
-        }"
-      >
-        Red Button
-      </k-list-button>
+      <k-list-button class="k-color-brand-red"> Red Button </k-list-button>
     </k-list>
   </k-page>
 </template>

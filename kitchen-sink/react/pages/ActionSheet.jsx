@@ -47,10 +47,7 @@ export default function ActionSheetPage() {
           <ActionsButton onClick={() => setActionsOneOpened(false)}>
             Button 2
           </ActionsButton>
-          <ActionsButton
-            onClick={() => setActionsOneOpened(false)}
-            colors={{ text: 'text-red-500' }}
-          >
+          <ActionsButton onClick={() => setActionsOneOpened(false)}>
             Cancel
           </ActionsButton>
         </ActionsGroup>
@@ -70,10 +67,7 @@ export default function ActionSheetPage() {
           </ActionsButton>
         </ActionsGroup>
         <ActionsGroup>
-          <ActionsButton
-            onClick={() => setActionsTwoOpened(false)}
-            colors={{ text: 'text-red-500' }}
-          >
+          <ActionsButton onClick={() => setActionsTwoOpened(false)}>
             Cancel
           </ActionsButton>
         </ActionsGroup>

@@ -30,10 +30,7 @@
         <k-actions-button @click="() => (actionsOneOpened = false)">
           Button 2
         </k-actions-button>
-        <k-actions-button
-          :colors="{ text: 'text-red-500' }"
-          @click="() => (actionsOneOpened = false)"
-        >
+        <k-actions-button @click="() => (actionsOneOpened = false)">
           Cancel
         </k-actions-button>
       </k-actions-group>
@@ -53,10 +50,7 @@
         </k-actions-button>
       </k-actions-group>
       <k-actions-group>
-        <k-actions-button
-          :colors="{ text: 'text-red-500' }"
-          @click="() => (actionsTwoOpened = false)"
-        >
+        <k-actions-button @click="() => (actionsTwoOpened = false)">
           Cancel
         </k-actions-button>
       </k-actions-group>

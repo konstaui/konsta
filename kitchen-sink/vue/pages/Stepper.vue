@@ -339,13 +339,7 @@
         <div>
           <k-stepper
             :value="value"
-            :colors="{
-              text: 'text-red-500',
-              border: 'border-red-500',
-              bg: 'bg-red-500',
-              activeBg: 'active:bg-red-500',
-              activeBgDark: 'active:bg-red-600',
-            }"
+            class="k-color-brand-red"
             @plus="increase"
             @minus="decrease"
           />
@@ -354,13 +348,7 @@
           <k-stepper
             :value="value"
             rounded
-            :colors="{
-              text: 'text-green-500',
-              border: 'border-green-500',
-              bg: 'bg-green-500',
-              activeBg: 'active:bg-green-500',
-              activeBgDark: 'active:bg-green-600',
-            }"
+            class="k-color-brand-green"
             @plus="increase"
             @minus="decrease"
           />
@@ -371,13 +359,7 @@
         <div>
           <k-stepper
             :value="value"
-            :colors="{
-              text: 'text-yellow-500',
-              border: 'border-yellow-500',
-              bg: 'bg-yellow-500',
-              activeBg: 'active:bg-yellow-500',
-              activeBgDark: 'active:bg-yellow-600',
-            }"
+            class="k-color-brand-yellow"
             @plus="increase"
             @minus="decrease"
           />
@@ -386,13 +368,7 @@
           <k-stepper
             :value="value"
             rounded
-            :colors="{
-              text: 'text-pink-500',
-              border: 'border-pink-500',
-              bg: 'bg-pink-500',
-              activeBg: 'active:bg-pink-500',
-              activeBgDark: 'active:bg-pink-600',
-            }"
+            class="k-color-brand-purple"
             @plus="increase"
             @minus="decrease"
           />

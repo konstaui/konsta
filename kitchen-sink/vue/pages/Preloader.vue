@@ -14,16 +14,16 @@
     <k-block-title>Colors</k-block-title>
     <k-block strong class="grid grid-cols-4">
       <div class="text-center">
-        <k-preloader :colors="{ icon: 'text-red-500' }" />
+        <k-preloader class="k-color-brand-red" />
       </div>
       <div class="text-center">
-        <k-preloader :colors="{ icon: 'text-green-500' }" />
+        <k-preloader class="k-color-brand-green" />
       </div>
       <div class="text-center">
-        <k-preloader :colors="{ icon: 'text-pink-500' }" />
+        <k-preloader class="k-color-brand-purple" />
       </div>
       <div class="text-center">
-        <k-preloader :colors="{ icon: 'text-yellow-500' }" />
+        <k-preloader class="k-color-brand-yellow" />
       </div>
     </k-block>
 

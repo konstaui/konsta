@@ -24,8 +24,7 @@ export default function FabPage() {
 
       {/* Right Top */}
       <Fab
-        className="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20"
-        colors={{ bg: 'bg-red-500', activeBg: 'active:bg-red-600' }}
+        className="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20 k-color-brand-red"
         icon={<PlusIcon />}
       />
 
@@ -37,22 +36,19 @@ export default function FabPage() {
 
       {/* Left Bottom */}
       <Fab
-        className="fixed left-4-safe bottom-4-safe z-20"
+        className="fixed left-4-safe bottom-4-safe z-20 k-color-brand-green"
         icon={<PlusIcon />}
-        colors={{ bg: 'bg-green-500', activeBg: 'active:bg-green-600' }}
       />
 
       {/* Left Top */}
       <Fab
-        className="fixed left-4-safe ios:top-15-safe material:top-18-safe z-20"
-        colors={{ bg: 'bg-yellow-500', activeBg: 'active:bg-yellow-600' }}
+        className="fixed left-4-safe ios:top-15-safe material:top-18-safe z-20 k-color-brand-yellow"
         icon={<PlusIcon />}
       />
 
       {/* Center Center */}
       <Fab
         className="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-        colors={{ bg: 'bg-pink-500', activeBg: 'active:bg-pink-600' }}
         icon={<PlusIcon />}
       />
 

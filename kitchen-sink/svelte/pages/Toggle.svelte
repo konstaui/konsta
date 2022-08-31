@@ -38,11 +38,7 @@
       <Toggle
         slot="after"
         component="div"
-        class="-my-1"
-        colors={{
-          bg: 'bg-red-500',
-          darkBg: 'dark:bg-red-500',
-        }}
+        class="-my-1 k-color-brand-red"
         checked={checked2}
         onChange={() => (checked2 = !checked2)}
       />
@@ -51,11 +47,7 @@
       <Toggle
         slot="after"
         component="div"
-        class="-my-1"
-        colors={{
-          bg: 'bg-green-500',
-          darkBg: 'dark:bg-green-500',
-        }}
+        class="-my-1 k-color-brand-green"
         checked={checked3}
         onChange={() => (checked3 = !checked3)}
       />
@@ -64,11 +56,7 @@
       <Toggle
         slot="after"
         component="div"
-        class="-my-1"
-        colors={{
-          bg: 'bg-yellow-500',
-          darkBg: 'dark:bg-yellow-500',
-        }}
+        class="-my-1 k-color-brand-yellow"
         checked={checked4}
         onChange={() => (checked4 = !checked4)}
       />

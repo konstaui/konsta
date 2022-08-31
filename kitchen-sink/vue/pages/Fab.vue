@@ -8,8 +8,7 @@
 
     <!-- Right Top -->
     <k-fab
-      class="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20"
-      :colors="{ bg: 'bg-red-500', activeBg: 'active:bg-red-600' }"
+      class="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20 k-color-brand-red"
     >
       <template #icon>
         <component :is="PlusIcon" />
@@ -24,10 +23,7 @@
     </k-fab>
 
     <!-- Left Bottom -->
-    <k-fab
-      class="fixed left-4-safe bottom-4-safe z-20"
-      :colors="{ bg: 'bg-green-500', activeBg: 'active:bg-green-600' }"
-    >
+    <k-fab class="fixed left-4-safe bottom-4-safe z-20 k-color-brand-green">
       <template #icon>
         <component :is="PlusIcon" />
       </template>
@@ -35,8 +31,7 @@
 
     <!-- Left Top -->
     <k-fab
-      class="fixed left-4-safe ios:top-15-safe material:top-18-safe z-20"
-      :colors="{ bg: 'bg-yellow-500', activeBg: 'active:bg-yellow-600' }"
+      class="fixed left-4-safe ios:top-15-safe material:top-18-safe z-20 k-color-brand-yellow"
     >
       <template #icon>
         <component :is="PlusIcon" />
@@ -46,7 +41,6 @@
     <!-- Center Center -->
     <k-fab
       class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-      :colors="{ bg: 'bg-pink-500', activeBg: 'active:bg-pink-600' }"
     >
       <template #icon>
         <component :is="PlusIcon" />

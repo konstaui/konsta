@@ -68,10 +68,7 @@
     <ListItem>
       <Range
         slot="inner"
-        colors={{
-          valueBg: 'bg-red-500',
-          thumbBgMaterial: 'range-thumb:bg-red-500',
-        }}
+        class="k-color-brand-red"
         value={red}
         step={1}
         min={0}
@@ -82,10 +79,7 @@
     <ListItem>
       <Range
         slot="inner"
-        colors={{
-          valueBg: 'bg-green-500',
-          thumbBgMaterial: 'range-thumb:bg-green-500',
-        }}
+        class="k-color-brand-green"
         value={green}
         step={1}
         min={0}
@@ -96,10 +90,7 @@
     <ListItem>
       <Range
         slot="inner"
-        colors={{
-          valueBg: 'bg-blue-500',
-          thumbBgMaterial: 'range-thumb:bg-blue-500',
-        }}
+        class="k-color-brand-blue"
         value={blue}
         step={1}
         min={0}

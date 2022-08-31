@@ -28,16 +28,16 @@
   <BlockTitle>Colors</BlockTitle>
   <Block strong class="grid grid-cols-4">
     <div class="text-center">
-      <Preloader colors={{ icon: 'text-red-500' }} />
+      <Preloader class="k-color-brand-red" />
     </div>
     <div class="text-center">
-      <Preloader colors={{ icon: 'text-green-500' }} />
+      <Preloader class="k-color-brand-green" />
     </div>
     <div class="text-center">
-      <Preloader colors={{ icon: 'text-pink-500' }} />
+      <Preloader class="k-color-brand-purple" />
     </div>
     <div class="text-center">
-      <Preloader colors={{ icon: 'text-yellow-500' }} />
+      <Preloader class="k-color-brand-yellow" />
     </div>
   </Block>
 

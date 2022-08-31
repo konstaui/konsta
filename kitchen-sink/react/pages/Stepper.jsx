@@ -385,13 +385,7 @@ export default function StepperPage() {
           <div>
             <Stepper
               value={value}
-              colors={{
-                text: 'text-red-500',
-                border: 'border-red-500',
-                bg: 'bg-red-500',
-                activeBg: 'active:bg-red-500',
-                activeBgDark: 'active:bg-red-600',
-              }}
+              className="k-color-brand-red"
               onPlus={increase}
               onMinus={decrease}
             />
@@ -400,13 +394,7 @@ export default function StepperPage() {
             <Stepper
               value={value}
               rounded
-              colors={{
-                text: 'text-green-500',
-                border: 'border-green-500',
-                bg: 'bg-green-500',
-                activeBg: 'active:bg-green-500',
-                activeBgDark: 'active:bg-green-600',
-              }}
+              className="k-color-brand-green"
               onPlus={increase}
               onMinus={decrease}
             />
@@ -417,13 +405,7 @@ export default function StepperPage() {
           <div>
             <Stepper
               value={value}
-              colors={{
-                text: 'text-yellow-500',
-                border: 'border-yellow-500',
-                bg: 'bg-yellow-500',
-                activeBg: 'active:bg-yellow-500',
-                activeBgDark: 'active:bg-yellow-600',
-              }}
+              className="k-color-brand-yellow"
               onPlus={increase}
               onMinus={decrease}
             />
@@ -432,13 +414,7 @@ export default function StepperPage() {
             <Stepper
               value={value}
               rounded
-              colors={{
-                text: 'text-pink-500',
-                border: 'border-pink-500',
-                bg: 'bg-pink-500',
-                activeBg: 'active:bg-pink-500',
-                activeBgDark: 'active:bg-pink-600',
-              }}
+              className="k-color-brand-purple"
               onPlus={increase}
               onMinus={decrease}
             />

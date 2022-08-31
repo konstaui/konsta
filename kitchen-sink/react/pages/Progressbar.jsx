@@ -55,10 +55,10 @@ export default function ProgressbarPage() {
 
       <BlockTitle>Colors</BlockTitle>
       <Block strong className="space-y-4">
-        <Progressbar colors={{ bg: 'bg-red-500' }} progress={0.25} />
-        <Progressbar colors={{ bg: 'bg-green-500' }} progress={0.5} />
-        <Progressbar colors={{ bg: 'bg-blue-500' }} progress={0.75} />
-        <Progressbar colors={{ bg: 'bg-yellow-500' }} progress={1} />
+        <Progressbar className="k-color-brand-red" progress={0.25} />
+        <Progressbar className="k-color-brand-green" progress={0.5} />
+        <Progressbar className="k-color-brand-yellow" progress={0.75} />
+        <Progressbar className="k-color-brand-purple" progress={1} />
       </Block>
     </Page>
   );

@@ -21,11 +21,7 @@
         <template #after>
           <k-toggle
             component="div"
-            class="-my-1"
-            :colors="{
-              bg: 'bg-red-500',
-              darkBg: 'dark:bg-red-500',
-            }"
+            class="-my-1 k-color-brand-red"
             :checked="checked2"
             @change="() => (checked2 = !checked2)"
           />
@@ -35,11 +31,7 @@
         <template #after>
           <k-toggle
             component="div"
-            class="-my-1"
-            :colors="{
-              bg: 'bg-green-500',
-              darkBg: 'dark:bg-green-500',
-            }"
+            class="-my-1 k-color-brand-green"
             :checked="checked3"
             @change="() => (checked3 = !checked3)"
           />
@@ -49,11 +41,7 @@
         <template #after>
           <k-toggle
             component="div"
-            class="-my-1"
-            :colors="{
-              bg: 'bg-yellow-500',
-              darkBg: 'dark:bg-yellow-500',
-            }"
+            class="-my-1 k-color-brand-yellow"
             :checked="checked4"
             @change="() => (checked4 = !checked4)"
           />

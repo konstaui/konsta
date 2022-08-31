@@ -51,10 +51,7 @@
       <ActionsButton onClick={() => (actionsOneOpened = false)}>
         Button 2
       </ActionsButton>
-      <ActionsButton
-        onClick={() => (actionsOneOpened = false)}
-        colors={{ text: 'text-red-500' }}
-      >
+      <ActionsButton onClick={() => (actionsOneOpened = false)}>
         Cancel
       </ActionsButton>
     </ActionsGroup>
@@ -74,10 +71,7 @@
       </ActionsButton>
     </ActionsGroup>
     <ActionsGroup>
-      <ActionsButton
-        onClick={() => (actionsTwoOpened = false)}
-        colors={{ text: 'text-red-500' }}
-      >
+      <ActionsButton onClick={() => (actionsTwoOpened = false)}>
         Cancel
       </ActionsButton>
     </ActionsGroup>

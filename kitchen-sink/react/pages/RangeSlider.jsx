@@ -71,10 +71,7 @@ export default function RangeSliderPage() {
         <ListItem
           innerChildren={
             <Range
-              colors={{
-                valueBg: 'bg-red-500',
-                thumbBgMaterial: 'range-thumb:bg-red-500',
-              }}
+              className="k-color-brand-red"
               value={red}
               step={1}
               min={0}
@@ -86,10 +83,7 @@ export default function RangeSliderPage() {
         <ListItem
           innerChildren={
             <Range
-              colors={{
-                valueBg: 'bg-green-500',
-                thumbBgMaterial: 'range-thumb:bg-green-500',
-              }}
+              className="k-color-brand-green"
               value={green}
               step={1}
               min={0}
@@ -101,10 +95,7 @@ export default function RangeSliderPage() {
         <ListItem
           innerChildren={
             <Range
-              colors={{
-                valueBg: 'bg-blue-500',
-                thumbBgMaterial: 'range-thumb:bg-blue-500',
-              }}
+              className="k-color-brand-blue"
               value={blue}
               step={1}
               min={0}
