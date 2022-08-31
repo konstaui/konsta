@@ -94,12 +94,26 @@ const mdColors = (hexColor = '') => {
       .join('');
   };
 
+  const shouldSkip = (prop) => {
+    const skip = [
+      'tertiary',
+      'inverse',
+      'shadow',
+      'scrim',
+      'error',
+      'background',
+    ];
+    return skip.filter((v) => prop.toLowerCase().includes(v)).length > 0;
+  };
+
   Object.keys(theme.schemes.light.props).forEach((prop) => {
+    if (shouldSkip(prop)) return;
     colors[name(`md-light-${prop}`)] = hexFromArgb(
       theme.schemes.light.props[prop]
     );
   });
   Object.keys(theme.schemes.dark.props).forEach((prop) => {
+    if (shouldSkip(prop)) return;
     colors[name(`md-dark-${prop}`)] = hexFromArgb(
       theme.schemes.dark.props[prop]
     );

@@ -8,22 +8,26 @@ module.exports = () =>
     const hairlineColors = {};
     const hairlineDurations = {};
 
+    const alphaValue = (v) => {
+      return (v || '').replace('<alpha-value>', '0.2');
+    };
+
     Object.keys(themeColors).forEach((key) => {
       const value = themeColors[key];
       if (typeof value === 'string') {
         hairlineColors[`.hairline-${key}`] = {
-          '--k-hairline-color': value,
+          '--k-hairline-color': alphaValue(value),
         };
       } else {
         Object.keys(value).forEach((subKey) => {
           const subValue = value[subKey];
           if (subKey === 'DEFAULT') {
             hairlineColors[`.hairline-${key}`] = {
-              '--k-hairline-color': subValue,
+              '--k-hairline-color': alphaValue(subValue),
             };
           } else {
             hairlineColors[`.hairline-${key}-${subKey}`] = {
-              '--k-hairline-color': subValue,
+              '--k-hairline-color': alphaValue(subValue),
             };
           }
         });

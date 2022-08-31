@@ -11,7 +11,7 @@ export const ButtonColors = (colorsProp = {}, dark) => {
       'text-md-light-on-primary',
       dark('dark:text-md-dark-on-primary')
     ),
-    fillActiveBgIos: 'active:bg-primary-dark',
+    fillActiveBgIos: 'active:bg-ios-primary-shade',
     fillActiveBgMaterial: '',
     fillBgIos: 'bg-primary',
     fillBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),

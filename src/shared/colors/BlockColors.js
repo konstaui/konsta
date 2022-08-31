@@ -11,8 +11,8 @@ export const BlockColors = (colorsProp = {}, dark) => {
       dark('border-md-dark-outline')
     ),
     strongBgIos: cls(
-      `bg-block-strong-light`,
-      dark('dark:bg-block-strong-dark')
+      `bg-ios-light-surface-1`,
+      dark('dark:bg-ios-dark-surface-1')
     ),
     strongBgMaterial: cls(
       'bg-md-light-surface-1',

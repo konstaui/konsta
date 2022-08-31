@@ -1,4 +1,7 @@
-const extendTheme = () => {
+const iosColors = require('./ios-colors.js');
+const mdColors = require('./md-colors.js');
+
+const extendTheme = (konstaConfig) => {
   // SIZES
   const sizesValues = [
     0.25, 0.75, 4.5, 4.75, 5.5, 5.75, 6.5, 7.5, 12.5, 13, 15, 18, 160,
@@ -67,27 +70,33 @@ const extendTheme = () => {
     'ios-toggle': '0 2px 4px rgba(0,0,0,.3)',
   };
 
+  const themeColors = {};
+  Object.keys(konstaConfig.colors).forEach((key) => {
+    themeColors[key] = `rgb(var(--k-color-${key}) / <alpha-value>)`;
+  });
+  const mdColorsResult = mdColors(konstaConfig.colors.primary);
+  Object.keys(mdColorsResult).forEach((key) => {
+    mdColorsResult[key] = `rgb(var(--k-color-${key}) / <alpha-value>)`;
+  });
+  const iosColorsResult = iosColors(konstaConfig.colors.primary);
+  Object.keys(iosColorsResult).forEach((key) => {
+    iosColorsResult[key] = `rgb(var(--k-color-${key}) / <alpha-value>)`;
+  });
   // COLORS
   const colors = {
-    'ios-light-page': '#efeff4',
-    'ios-dark-page': '#000',
-    'block-strong-light': '#fff',
-    'block-strong-dark': '#1c1c1d',
-    'list-divider-light': '#f4f4f4',
-    'list-divider-dark': '#232323',
-    'bars-ios-light': '#f7f7f8',
-    'bars-ios-dark': '#121212',
-    'bars-material-light': '#fff',
-    'bars-material-dark': '#202020',
-    'toast-ios': '#000000',
-    'toast-material': '#323232',
-    'popover-light': '#ffffff',
-    'popover-dark': '#1c1c1d',
-    primary: {
-      light: '#298fff',
-      DEFAULT: '#007aff',
-      dark: '#0066d6',
-    },
+    ...themeColors,
+    ...mdColorsResult,
+    'ios-light-surface': '#efeff4',
+    'ios-dark-surface': '#000',
+    'ios-light-surface-1': '#fff',
+    'ios-dark-surface-1': '#1c1c1d',
+    'ios-light-surface-2': '#f7f7f8',
+    'ios-dark-surface-2': '#121212',
+    'ios-light-surface-3': '#fff',
+    'ios-dark-surface-3': '#1c1c1d',
+    'ios-light-surface-variant': '#f4f4f4',
+    'ios-dark-surface-variant': '#232323',
+    ...iosColorsResult,
   };
 
   const transitionTimingFunction = {

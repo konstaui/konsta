@@ -13,7 +13,7 @@ export const StepperColors = (colorsProp = {}, dark) => {
     ),
     fillBgIos: 'bg-primary',
     fillBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),
-    fillActiveBgIos: 'active:bg-primary-dark',
+    fillActiveBgIos: 'active:bg-ios-primary-shade',
     fillActiveBgMaterial: '',
     fillTouchRipple: cls('touch-ripple-white', 'dark:touch-ripple-primary'),
     outlineBorderIos: 'border-primary',

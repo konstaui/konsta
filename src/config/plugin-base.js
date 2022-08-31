@@ -1,6 +1,9 @@
 const plugin = require('tailwindcss/plugin');
+const hexToRgb = require('./hex-to-rgb.js');
+const iosColors = require('./ios-colors.js');
+const mdColors = require('./md-colors.js');
 
-module.exports = (userConfig = {}) => {
+module.exports = (userConfig = {}, konstConfig = {}) => {
   let iosFont =
     '-apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue, Helvetica, Arial, sans-serif';
   let materialFont = 'Roboto, system-ui, Noto, Helvetica, Arial, sans-serif';
@@ -49,10 +52,26 @@ module.exports = (userConfig = {}) => {
       };
     }
 
+    const primaryColors = {
+      ...iosColors(konstConfig.colors.primary),
+      ...mdColors(konstConfig.colors.primary),
+    };
+    Object.keys(konstConfig.colors).forEach((key) => {
+      primaryColors[key] = konstConfig.colors[key];
+    });
+    const primaryColorVars = {};
+
+    Object.keys(primaryColors).forEach((key) => {
+      primaryColorVars[`--k-color-${key}`] = hexToRgb(primaryColors[key]).join(
+        ' '
+      );
+    });
+
     addBase({
       ':root': {
         '--k-device-pixel-ratio': '1',
         '--k-hairline-color': 'rgba(0, 0, 0, 0.2)',
+        ...primaryColorVars,
       },
       ...darkProps,
       '@media (min-resolution: 1.25dppx)': {

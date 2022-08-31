@@ -219,7 +219,6 @@
         if (!wasScrollable.value && isScrollable.value) {
           initScroll();
         } else if (wasScrollable.value && !isScrollable.value) {
-          console.log('here');
           onScroll();
           wasScrollable.value = isScrollable.value;
           destroyScroll();

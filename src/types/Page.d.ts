@@ -13,7 +13,7 @@ interface Props {
     /**
      * Page bg color in iOS theme
      *
-     * @default 'bg-ios-light-page dark:bg-ios-dark-page'
+     * @default 'bg-ios-light-surface dark:bg-ios-dark-surface'
      */
     bgIos?: string;
     /**

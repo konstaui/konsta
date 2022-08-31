@@ -18,7 +18,7 @@ interface Props {
     /**
      * FAB pressed bg color
      *
-     * @default 'active:bg-primary-dark'
+     * @default 'active:bg-ios-primary-shade'
      */
     activeBg?: string;
     /**

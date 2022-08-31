@@ -21,8 +21,8 @@ export const ListInputColors = (colorsProp = {}, dark) => {
       dark('dark:border-md-dark-primary')
     ),
     outlineLabelBgIos: cls(
-      'bg-block-strong-light',
-      dark('dark:bg-block-strong-dark')
+      'bg-ios-light-surface-1',
+      dark('dark:bg-ios-dark-surface-1')
     ),
     outlineLabelBgMaterial: cls(
       'bg-md-light-surface',

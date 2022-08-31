@@ -62,6 +62,12 @@ module.exports = () =>
           const [r, g, b] = hexToRgb(value);
           value = `rgba(${r}, ${g}, ${b}, var(--k-touch-ripple-opacity))`;
         }
+        if (value.includes('<alpha-value>')) {
+          value = value.replace(
+            '<alpha-value>',
+            'var(--k-touch-ripple-opacity)'
+          );
+        }
         touchRippleColors[`.touch-ripple-${key}`] = {
           '--k-touch-ripple-color': value,
         };
@@ -74,11 +80,17 @@ module.exports = () =>
           }
           if (subKey === 'DEFAULT') {
             touchRippleColors[`.touch-ripple-${key}`] = {
-              '--k-touch-ripple-color': subValue,
+              '--k-touch-ripple-color': subValue.replace(
+                '<alpha-value>',
+                'var(--k-touch-ripple-opacity)'
+              ),
             };
           } else {
             touchRippleColors[`.touch-ripple-${key}-${subKey}`] = {
-              '--k-touch-ripple-color': subValue,
+              '--k-touch-ripple-color': subValue.replace(
+                '<alpha-value>',
+                'var(--k-touch-ripple-opacity)'
+              ),
             };
           }
         });

@@ -12,7 +12,7 @@ interface Props {
     /**
      * Toolbar bg color in iOS theme
      *
-     * @default 'bg-bars-ios-light dark:bg-bars-ios-dark'
+     * @default 'bg-ios-light-surface-2 dark:bg-ios-dark-surface-2'
      */
     bgIos?: string;
     /**

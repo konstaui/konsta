@@ -12,7 +12,7 @@ interface Props {
     /**
      * Popover bg color
      *
-     * @default 'bg-popover-light dark:bg-popover-dark'
+     * @default 'bg-ios-light-surface-3 dark:bg-ios-dark-surface-3'
      */
     bg?: string;
   };

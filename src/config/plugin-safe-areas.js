@@ -17,27 +17,28 @@ module.exports = () =>
           '--k-safe-area-top': 'env(safe-area-inset-top)',
           '--k-safe-area-bottom': 'env(safe-area-inset-bottom)',
         },
-        '.no-safe-areas': {
-          '--k-safe-area-left': '0px',
-          '--k-safe-area-right': '0px',
-          '--k-safe-area-top': '0px',
-          '--k-safe-area-bottom': '0px',
-        },
-        '.no-safe-areas-top': {
-          '--k-safe-area-top': '0px',
-        },
-        '.no-safe-areas-right': {
-          '--k-safe-area-right': '0px',
-        },
-        '.no-safe-areas-bottom': {
-          '--k-safe-area-bottom': '0px',
-        },
-        '.no-safe-areas-left': {
-          '--k-safe-area-left': '0px',
-        },
       },
     };
-    const safe = {};
+    const safe = {
+      '.no-safe-areas': {
+        '--k-safe-area-left': '0px',
+        '--k-safe-area-right': '0px',
+        '--k-safe-area-top': '0px',
+        '--k-safe-area-bottom': '0px',
+      },
+      '.no-safe-areas-top': {
+        '--k-safe-area-top': '0px',
+      },
+      '.no-safe-areas-right': {
+        '--k-safe-area-right': '0px',
+      },
+      '.no-safe-areas-bottom': {
+        '--k-safe-area-bottom': '0px',
+      },
+      '.no-safe-areas-left': {
+        '--k-safe-area-left': '0px',
+      },
+    };
     const spacing = theme('spacing');
     ['top', 'right', 'bottom', 'left'].forEach((side) => {
       const first = side[0];

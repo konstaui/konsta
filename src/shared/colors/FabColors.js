@@ -7,7 +7,7 @@ export const FabColors = (colorsProp = {}, dark) => {
       'bg-md-light-primary-container',
       dark('dark:bg-md-dark-primary-container')
     ),
-    activeBgIos: 'active:bg-primary-dark',
+    activeBgIos: 'active:bg-ios-primary-shade',
     activeBgMaterial: '',
     textIos: 'text-white',
     textMaterial: cls(

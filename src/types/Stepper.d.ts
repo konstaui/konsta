@@ -36,7 +36,7 @@ interface Props {
     /**
      * Fill-style stepper button pressed/active bg color
      *
-     * @default 'active:bg-primary-dark'
+     * @default 'active:bg-ios-primary-shade'
      */
     activeBgDark?: string;
     /**

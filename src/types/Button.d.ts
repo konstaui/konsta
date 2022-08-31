@@ -36,7 +36,7 @@ interface Props {
     /**
      * Clicked fill button bg color in dark theme
      *
-     * @default 'active:bg-primary-dark'
+     * @default 'active:bg-ios-primary-shade'
      */
     activeBgDark?: string;
     /**

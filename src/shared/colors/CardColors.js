@@ -7,7 +7,7 @@ export const CardColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface',
       dark('dark:text-md-dark-on-surface')
     ),
-    bgIos: cls(`bg-block-strong-light`, dark('dark:bg-block-strong-dark')),
+    bgIos: cls(`bg-ios-light-surface-1`, dark('dark:bg-ios-dark-surface-1')),
     bgMaterial: cls('bg-md-light-surface-1', dark('dark:bg-md-dark-surface-1')),
     footerTextIos: cls(
       `text-black text-opacity-55`,

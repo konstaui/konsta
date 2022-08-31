@@ -7,13 +7,25 @@ export const ChipClasses = (props, colors) => {
       ios: 'rounded-full h-7',
       material: 'rounded-lg h-8 font-medium',
       fill: {
-        ios: cls(colors.fillBgIos, colors.fillTextIos),
-        material: cls(colors.fillBgMaterial, colors.fillTextMaterial),
+        ios: cls(
+          colors.fillBg || colors.fillBgIos,
+          colors.fillText || colors.fillTextIos
+        ),
+        material: cls(
+          colors.fillBg || colors.fillBgMaterial,
+          colors.fillText || colors.fillTextMaterial
+        ),
       },
       outline: {
         common: `border`,
-        ios: cls(colors.outlineTextIos, colors.outlineBorderIos),
-        material: cls(colors.outlineTextMaterial, colors.outlineBorderMaterial),
+        ios: cls(
+          colors.outlineText || colors.outlineTextIos,
+          colors.outlineBorder || colors.outlineBorderIos
+        ),
+        material: cls(
+          colors.outlineText || colors.outlineTextMaterial,
+          colors.outlineBorder || colors.outlineBorderMaterial
+        ),
       },
     },
     media: {
