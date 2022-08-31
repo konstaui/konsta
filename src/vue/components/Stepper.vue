@@ -29,6 +29,7 @@
   import { cls } from '../../shared/cls.js';
   import { StepperClasses } from '../../shared/classes/StepperClasses.js';
   import { StepperColors } from '../../shared/colors/StepperColors.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -61,16 +62,27 @@
 
       buttonsOnly: Boolean,
 
-      rounded: Boolean,
-      small: Boolean,
-      large: Boolean,
-      raised: Boolean,
-      outline: Boolean,
+      rounded: { type: Boolean, default: undefined },
+      roundedIos: { type: Boolean, default: undefined },
+      roundedMaterial: { type: Boolean, default: undefined },
+      small: { type: Boolean, default: undefined },
+      smallIos: { type: Boolean, default: undefined },
+      smallMaterial: { type: Boolean, default: undefined },
+      large: { type: Boolean, default: undefined },
+      largeIos: { type: Boolean, default: undefined },
+      largeMaterial: { type: Boolean, default: undefined },
+      raised: { type: Boolean, default: undefined },
+      raisedIos: { type: Boolean, default: undefined },
+      raisedMaterial: { type: Boolean, default: undefined },
+      outline: { type: Boolean, default: undefined },
+      outlineIos: { type: Boolean, default: undefined },
+      outlineMaterial: { type: Boolean, default: undefined },
 
       touchRipple: { type: Boolean, default: true },
     },
     emits: ['input', 'change', 'focus', 'blur', 'minus', 'plus'],
     setup(props, ctx) {
+      const theme = useTheme();
       const buttonLeftElRef = ref(null);
       const buttonRightElRef = ref(null);
       useTouchRipple(buttonLeftElRef, props);
@@ -80,26 +92,72 @@
         StepperColors(props.colors || {}, useDarkClasses)
       );
 
+      const isRounded = computed(() =>
+        typeof props.rounded === 'undefined'
+          ? theme.value === 'ios'
+            ? props.roundedIos
+            : props.roundedMaterial
+          : props.rounded
+      );
+      const isSmall = computed(() =>
+        typeof props.small === 'undefined'
+          ? theme.value === 'ios'
+            ? props.smallIos
+            : props.smallMaterial
+          : props.small
+      );
+      const isLarge = computed(() =>
+        typeof props.large === 'undefined'
+          ? theme.value === 'ios'
+            ? props.largeIos
+            : props.largeMaterial
+          : props.large
+      );
+      const isRaised = computed(() =>
+        typeof props.raised === 'undefined'
+          ? theme.value === 'ios'
+            ? props.raisedIos
+            : props.raisedMaterial
+          : props.raised
+      );
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+            ? props.outlineIos
+            : props.outlineMaterial
+          : props.outline
+      );
+
       const size = computed(() =>
-        props.large ? 'large' : props.small ? 'small' : 'medium'
+        isLarge.value ? 'large' : isSmall.value ? 'small' : 'medium'
       );
       const style = computed(() =>
-        props.outline && props.raised
+        isOutline.value && isRaised.value
           ? 'clear'
-          : props.outline
+          : isOutline.value
           ? 'outline'
           : 'fill'
       );
-      const shape = computed(() => (props.rounded ? 'rounded' : 'square'));
+      const shape = computed(() => (isRounded.value ? 'rounded' : 'square'));
 
       const c = useThemeClasses(props, () =>
-        StepperClasses(props, colors.value)
+        StepperClasses(
+          {
+            ...props,
+            rounded: isRounded.value,
+            small: isSmall.value,
+            large: isLarge.value,
+            raised: isRaised.value,
+            outline: isOutline.value,
+          },
+          colors.value
+        )
       );
 
       const classes = computed(() =>
         cls(
           c.value.base,
-          props.raised && c.value.raised,
+          isRaised.value && c.value.raised,
           c.value.size[size.value],
           c.value.shape[shape.value]
         )

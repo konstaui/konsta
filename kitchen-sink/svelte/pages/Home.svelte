@@ -27,7 +27,7 @@
 </script>
 
 <Page colors={{ bgIos: 'bg-white dark:bg-black' }}>
-  <Navbar title="Konsta UI" centerTitle />
+  <Navbar title="Konsta UI" large transparent centerTitle />
 
   <BlockTitle>Theme</BlockTitle>
   <List strong insetMaterial>

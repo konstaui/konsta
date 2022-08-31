@@ -11,15 +11,13 @@ interface Props {
    * */
   colors?: {
     /**
-     * Page bg color in iOS theme
      *
      * @default 'bg-ios-light-surface dark:bg-ios-dark-surface'
      */
     bgIos?: string;
     /**
-     * Page bg color in Material theme
      *
-     * @default 'bg-page-material-light dark:bg-page-material-dark'
+     * @default 'bg-md-light-surface dark:bg-md-dark-surface'
      */
     bgMaterial?: string;
   };

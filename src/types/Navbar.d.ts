@@ -10,29 +10,25 @@ interface Props {
    * */
   colors?: {
     /**
-     * Navbar bg color in iOS theme
      *
      * @default 'bg-ios-light-surface-2 dark:bg-ios-dark-surface-2'
      */
     bgIos?: string;
     /**
-     * Navbar bg color in Material theme
      *
      * @default 'bg-md-light-surface-2 dark:bg-md-dark-surface-2'
      */
     bgMaterial?: string;
     /**
-     * Title text color iOS theme
      *
      * @default 'text-black dark:text-white'
      */
-    titleIos?: string;
+    textIos?: string;
     /**
-     * Title text color in Material theme
      *
-     * @default 'text-black dark:text-white'
+     * @default 'text-md-light-on-surface dark:text-md-dark-on-surface'
      */
-    titleMaterial?: string;
+    textMaterial?: string;
   };
 
   /**

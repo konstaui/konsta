@@ -1,7 +1,6 @@
 <template>
-  <k-page colors="{bgIos: 'bg-white dark:bg-black'}">
-    <k-navbar title="Konsta UI" center-title />
-
+  <k-page :colors="{ bgIos: 'bg-white dark:bg-black' }">
+    <k-navbar title="Konsta UI" large transparent center-title />
     <k-block-title>Theme</k-block-title>
     <k-list strong inset-material>
       <k-list-item label title="iOS Theme">

@@ -10,11 +10,15 @@ interface Props {
    * */
   colors?: {
     /**
-     * Preloader icon color
      *
      * @default 'text-primary'
      */
-    icon?: string;
+    iconIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    iconMaterial?: string;
   };
   /**
    * Tailwind CSS size classes

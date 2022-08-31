@@ -10,11 +10,15 @@ interface Props {
    * */
   colors?: {
     /**
-     * Popover bg color
      *
      * @default 'bg-ios-light-surface-3 dark:bg-ios-dark-surface-3'
      */
-    bg?: string;
+    bgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-3 dark:bg-md-dark-surface-3'
+     */
+    bgMaterial?: string;
   };
   /**
    * Makes Popover background translucent (with `backdrop-filter: blur`) in iOS theme

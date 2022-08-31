@@ -10,23 +10,35 @@ interface Props {
    * */
   colors?: {
     /**
-     * Button text color
-     *
-     * @default 'text-primary'
-     */
-    text?: string;
-    /**
-     * Full button bg color
      *
      * @default 'bg-white dark:bg-neutral-800'
      */
-    bg?: string;
+    bgIos?: string;
     /**
-     * Clicked fill button bg color
+     *
+     * @default 'bg-md-light-surface-3 dark:bg-md-dark-surface-3'
+     */
+    bgMaterial?: string;
+    /**
      *
      * @default 'active:bg-neutral-200 dark:active:bg-neutral-700'
      */
-    activeBg?: string;
+    activeBgIos?: string;
+    /**
+     *
+     * @default ''
+     */
+    activeBgMaterial?: string;
+    /**
+     *
+     * @default 'text-primary'
+     */
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-surface dark:text-md-dark-on-surface'
+     */
+    textMaterial?: string;
   };
   /**
    * Link's `href` attribute, when specified will also be rendered as `<a>` element
@@ -34,11 +46,25 @@ interface Props {
   href?: string;
 
   /**
-   * Makes button text bold
+   * Makes button text bold. Overwrites `boldIos` and `boldMaterial`
+   *
+   * @default undefined
+   */
+  bold?: boolean;
+
+  /**
+   * Makes button text bold in iOS theme
    *
    * @default false
    */
-  bold?: boolean;
+  boldIos?: boolean;
+
+  /**
+   * Makes button text bold in Material theme
+   *
+   * @default false
+   */
+  boldMaterial?: boolean;
 
   /**
    * Button text font size in iOS theme

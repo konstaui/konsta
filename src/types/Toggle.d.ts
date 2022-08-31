@@ -10,18 +10,55 @@ interface Props {
    * */
   colors?: {
     /**
-     * Checked toggle bg color
+     *
+     * @default 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-20'
+     */
+    bgIos?: string;
+    /**
      *
      * @default 'bg-primary'
      */
-    bg?: string;
-
+    checkedBgIos?: string;
     /**
-     * Checked toggle bg color in dark theme
      *
-     * @default 'dark:bg-primary'
+     * @default 'bg-white'
      */
-    darkBg: 'dark:bg-primary';
+    thumbBgIos?: string;
+    /**
+     *
+     * @default 'bg-white'
+     */
+    checkedThumbBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-variant dark:bg-md-dark-surface-variant'
+     */
+    bgMaterial?: string;
+    /**
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    checkedBgMaterial?: string;
+    /**
+     *
+     * @default 'border-md-light-outline dark:border-md-dark-outline'
+     */
+    borderMaterial?: string;
+    /**
+     *
+     * @default 'border-md-light-primary dark:border-md-dark-primary'
+     */
+    checkedBorderMaterial?: string;
+    /**
+     *
+     * @default 'bg-md-light-outline dark:bg-md-dark-outline'
+     */
+    thumbBgMaterial?: string;
+    /**
+     *
+     * @default 'bg-md-light-on-primary dark:bg-md-dark-on-primary'
+     */
+    checkedThumbBgMaterial?: string;
   };
 
   /**

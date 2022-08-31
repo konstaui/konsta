@@ -10,19 +10,26 @@ interface Props {
    * */
   colors?: {
     /**
-     * List button text color
      *
      * @default 'text-primary'
      */
-    text?: string;
+    textIos?: string;
     /**
-     * List button pressed bg color
      *
-     * @default 'active:bg-primary'
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
      */
-    activeBg?: string;
+    textMaterial?: string;
     /**
-     * List button touch ripple color
+     *
+     * @default 'active:bg-primary active:bg-opacity-15'
+     */
+    activeBgIos?: string;
+    /**
+     *
+     * @default ''
+     */
+    activeBgMaterial?: string;
+    /**
      *
      * @default 'touch-ripple-primary'
      */

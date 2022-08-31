@@ -25,4 +25,20 @@ interface Props {
    * @default false
    */
   large?: boolean;
+
+  /**
+   * Object with Tailwind CSS colors classes
+   * */
+  colors?: {
+    /**
+     *
+     * @default ''
+     */
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    textMaterial?: string;
+  };
 }

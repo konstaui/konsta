@@ -15,7 +15,9 @@ const ActionsButton = forwardRef((props, ref) => {
     ios,
     material,
 
-    bold = false,
+    bold,
+    boldIos = false,
+    boldMaterial = false,
 
     fontSizeIos = 'text-xl',
     fontSizeMaterial = 'text-base',
@@ -57,9 +59,16 @@ const ActionsButton = forwardRef((props, ref) => {
 
   const colors = ActionsButtonColors(colorsProp, dark);
 
+  const isBold =
+    typeof bold === 'undefined'
+      ? theme === 'ios'
+        ? boldIos
+        : boldMaterial
+      : bold;
+
   const c = themeClasses(
     ActionsButtonClasses(
-      { fontSizeIos, fontSizeMaterial, bold, hairlines, ...props },
+      { fontSizeIos, fontSizeMaterial, bold: isBold, hairlines, ...props },
       colors,
       dark
     ),

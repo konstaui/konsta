@@ -3,6 +3,7 @@ import { CardClasses } from '../../shared/classes/CardClasses.js';
 import { CardColors } from '../../shared/colors/CardColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
+import { useTheme } from '../shared/use-theme.js';
 
 const Card = forwardRef((props, ref) => {
   const {
@@ -21,7 +22,11 @@ const Card = forwardRef((props, ref) => {
 
     // Style
     raised,
+    raisedIos,
+    raisedMaterial,
     outline,
+    outlineIos,
+    outlineMaterial,
     headerDivider = false,
     footerDivider = false,
 
@@ -43,13 +48,26 @@ const Card = forwardRef((props, ref) => {
   const attrs = {
     ...rest,
   };
-
+  const theme = useTheme();
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
   const colors = CardColors(colorsProp, dark);
 
-  const style = outline ? 'outline' : raised ? 'raised' : 'plain';
+  const isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
+  const isRaised =
+    typeof raised === 'undefined'
+      ? theme === 'ios'
+        ? raisedIos
+        : raisedMaterial
+      : raised;
+
+  const style = isOutline ? 'outline' : isRaised ? 'raised' : 'plain';
 
   const c = themeClasses(
     CardClasses(
@@ -60,6 +78,8 @@ const Card = forwardRef((props, ref) => {
         footerDivider,
         headerFontSizeIos,
         headerFontSizeMaterial,
+        outline: isOutline,
+        raised: isRaised,
       },
       colors,
       dark

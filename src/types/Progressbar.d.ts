@@ -10,11 +10,15 @@ interface Props {
    * */
   colors?: {
     /**
-     * Progressbar bg color
      *
      * @default 'bg-primary'
      */
-    bg?: string;
+    bgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    bgMaterial?: string;
   };
   /**
    * Determinate progress (from 0 to 1)

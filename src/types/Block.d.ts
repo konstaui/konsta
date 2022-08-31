@@ -23,17 +23,59 @@ interface Props {
    * */
   margin?: string;
   /**
-   * Adds extra highlighting and padding block content
+   * Adds extra highlighting and padding block content. Overwrites `strongIos` and `strongMaterial` props
    *
-   * @default false
+   * @default undefined
    */
   strong?: boolean;
   /**
-   * Makes block inset
+   * Adds extra highlighting and padding block content in iOS theme
    *
    * @default false
    */
+  strongIos?: boolean;
+  /**
+   * Adds extra highlighting and padding block content in Material theme
+   *
+   * @default false
+   */
+  strongMaterial?: boolean;
+  /**
+   * Makes block inset. Overwrites `insetIos` and `insetMaterial` props
+   *
+   * @default undefined
+   */
   inset?: boolean;
+  /**
+   * Makes block inset in iOS theme
+   *
+   * @default false
+   */
+  insetIos?: boolean;
+  /**
+   * Makes block inset in Material theme
+   *
+   * @default false
+   */
+  insetMaterial?: boolean;
+  /**
+   * Makes block outline. Overwrites `outlineIos` and `outlineMaterial` props
+   *
+   * @default undefined
+   */
+  outline?: boolean;
+  /**
+   * Makes block outline in iOS theme
+   *
+   * @default false
+   */
+  outlineIos?: boolean;
+  /**
+   * Makes block outline in Material theme
+   *
+   * @default false
+   */
+  outlineMaterial?: boolean;
   /**
    * Removes hairlines and margins, useful for case nesting block within other blocks
    *

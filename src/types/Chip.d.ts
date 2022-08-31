@@ -10,23 +10,45 @@ interface Props {
    * */
   colors?: {
     /**
-     * Chip bg color
-     *
-     * @default 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10'
-     */
-    bg?: string;
-    /**
-     * Chip text color
      *
      * @default 'text-current'
      */
-    text?: string;
+    fillTextIos?: string;
     /**
-     * Chip border color
      *
-     * @default 'border-black border-opacity-10 dark:border-white dark:border-opacity-10'
+     * @default 'text-md-light-on-secondary-container dark:text-md-dark-on-secondary-container'
      */
-    border?: string;
+    fillTextMaterial?: string;
+    /**
+     *
+     * @default 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10'
+     */
+    fillBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-secondary-container dark:bg-md-dark-secondary-container'
+     */
+    fillBgMaterial?: string;
+    /**
+     *
+     * @default 'text-current'
+     */
+    outlineTextIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-surface dark:text-md-dark-on-surface'
+     */
+    outlineTextMaterial?: string;
+    /**
+     *
+     * @default 'border-black border-opacity-20 dark:border-white dark:border-opacity-20'
+     */
+    outlineBorderIos?: string;
+    /**
+     *
+     * @default 'border-md-light-outline dark:border-md-dark-outline'
+     */
+    outlineBorderMaterial?: string;
   };
   /**
    * Content of the chip media area (e.g. icon)

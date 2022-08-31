@@ -10,29 +10,75 @@ interface Props {
    * */
   colors?: {
     /**
-     * Input text color
      *
-     * @default 'text-primary'
+     * @default ''
      */
-    labelFocus?: string;
+    bgIos?: string;
     /**
-     * Input error color
+     *
+     * @default 'bg-md-light-surface-variant dark:bg-md-dark-surface-variant'
+     */
+    bgMaterial?: string;
+    /**
+     *
+     * @default 'border-black border-opacity-30 dark:border-white dark:border-opacity-30'
+     */
+    outlineBorderIos?: string;
+    /**
+     *
+     * @default 'border-primary'
+     */
+    outlineBorderFocusIos?: string;
+    /**
+     *
+     * @default 'border-md-light-on-surface dark:border-md-dark-on-surface'
+     */
+    outlineBorderMaterial?: string;
+    /**
+     *
+     * @default 'border-md-light-primary dark:border-md-dark-primary'
+     */
+    outlineBorderFocusMaterial?: string;
+    /**
+     *
+     * @default 'bg-ios-light-surface-1 dark:bg-ios-dark-surface-1'
+     */
+    outlineLabelBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface dark:bg-md-dark-surface'
+     */
+    outlineLabelBgMaterial?: string;
+    /**
+     *
+     * @default ''
+     */
+    labelTextIos?: string;
+    /**
+     *
+     * @default ''
+     */
+    labelTextFocusIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-surface-variant dark:text-md-dark-on-surface-variant'
+     */
+    labelTextMaterial?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    labelTextFocusMaterial?: string;
+    /**
      *
      * @default 'text-red-500'
      */
     errorText?: string;
     /**
-     * Input errored hairline color
      *
-     * @default 'hairline-red-500'
+     * @default 'border-red-500'
      */
-    hairlineError?: string;
-    /**
-     * Input hairline color
-     *
-     * @default 'hairline-primary'
-     */
-    hairlineFocus?: string;
+    errorBorder?: string;
   };
   /**
    * Label content

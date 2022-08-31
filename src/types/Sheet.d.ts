@@ -10,11 +10,15 @@ interface Props {
    * */
   colors?: {
     /**
-     * Sheet bg color
      *
      * @default 'bg-white dark:bg-black'
      */
-    bg?: string;
+    bgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface dark:bg-md-dark-surface'
+     */
+    bgMaterial?: string;
   };
 
   /**

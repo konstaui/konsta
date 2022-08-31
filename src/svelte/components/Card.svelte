@@ -2,6 +2,7 @@
   import { CardClasses } from '../../shared/classes/CardClasses.js';
   import { CardColors } from '../../shared/colors/CardColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
@@ -14,21 +15,48 @@
   export let margin = 'm-4';
   export let header = '';
   export let footer = '';
-  export let raised = false;
-  export let outline = false;
+  export let raised = undefined;
+  export let raisedIos = undefined;
+  export let raisedMaterial = undefined;
+  export let outline = undefined;
+  export let outlineIos = undefined;
+  export let outlineMaterial = undefined;
   export let headerDivider = false;
   export let footerDivider = false;
 
   const dark = useDarkClasses();
 
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
+
+  $: isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
+
+  $: isRaised =
+    typeof raised === 'undefined'
+      ? theme === 'ios'
+        ? raisedIos
+        : raisedMaterial
+      : raised;
+
   $: colors = CardColors(colorsProp, dark);
 
-  $: style = outline ? 'outline' : raised ? 'raised' : 'plain';
+  $: style = isOutline ? 'outline' : isRaised ? 'raised' : 'plain';
 
   $: c = useThemeClasses(
     { ios, material },
     CardClasses(
-      { margin, outline, raised, headerDivider, footerDivider },
+      {
+        margin,
+        outline: isOutline,
+        raised: isRaised,
+        headerDivider,
+        footerDivider,
+      },
       colors,
       dark
     ),

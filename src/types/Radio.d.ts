@@ -10,29 +10,35 @@ interface Props {
    * */
   colors?: {
     /**
-     * Radio border color in iOS theme
      *
      * @default 'border-black border-opacity-30 dark:border-white dark:border-opacity-30'
      */
     borderIos?: string;
     /**
-     * Radio border color in Material theme
      *
-     * @default 'border-black border-opacity-40 dark:border-white dark:border-opacity-40'
+     * @default 'border-md-light-outline dark:border-md-dark-outline'
      */
     borderMaterial?: string;
     /**
-     * Radio bg color when it is checked
      *
      * @default 'bg-primary'
      */
-    bgChecked?: string;
+    bgCheckedIos?: string;
     /**
-     * Radio border color when it is checked
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    bgCheckedMaterial?: string;
+    /**
      *
      * @default 'border-primary'
      */
-    borderChecked?: string;
+    borderCheckedIos?: string;
+    /**
+     *
+     * @default 'border-md-light-primary dark:border-md-dark-primary'
+     */
+    borderCheckedMaterial?: string;
   };
 
   /**

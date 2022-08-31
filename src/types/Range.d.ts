@@ -10,21 +10,23 @@ interface Props {
    * */
   colors?: {
     /**
-     * Range bg color
      *
      * @default 'bg-primary'
      */
-    valueBg?: string;
+    valueBgIos?: string;
     /**
-     * Range thumb bg color in iOS theme
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    valueBgMaterial?: string;
+    /**
      *
      * @default 'range-thumb:bg-white'
      */
     thumbBgIos?: string;
     /**
-     * Range thumb bg color in Material theme
      *
-     * @default 'range-thumb:bg-primary'
+     * @default 'range-thumb:bg-md-light-primary dark:range-thumb:bg-md-dark-primary'
      */
     thumbBgMaterial?: string;
   };

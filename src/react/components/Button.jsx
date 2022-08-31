@@ -24,12 +24,27 @@ const Button = forwardRef((props, ref) => {
 
     // Style props
     outline,
+    outlineIos,
+    outlineMaterial,
     clear,
+    clearIos,
+    clearMaterial,
     tonal,
+    tonalIos,
+    tonalMaterial,
     rounded,
+    roundedIos,
+    roundedMaterial,
     small,
+    smallIos,
+    smallMaterial,
     large,
+    largeIos,
+    largeMaterial,
     raised,
+    raisedIos,
+    raisedMaterial,
+
     inline,
 
     // Segmented
@@ -67,12 +82,38 @@ const Button = forwardRef((props, ref) => {
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const size = large ? 'large' : small ? 'small' : 'medium';
-  let style = outline
+  const getThemeSpecificProps = (obj) => {
+    const res = {};
+    Object.keys(obj).forEach((key) => {
+      res[key] =
+        typeof obj[key] === 'undefined'
+          ? theme === 'ios'
+            ? props[`${key}Ios`]
+            : props[`${key}Material`]
+          : obj[key];
+    });
+    return res;
+  };
+  const themeProps = getThemeSpecificProps({
+    outline,
+    clear,
+    tonal,
+    rounded,
+    small,
+    large,
+    raised,
+  });
+
+  const size = themeProps.large
+    ? 'large'
+    : themeProps.small
+    ? 'small'
+    : 'medium';
+  let style = themeProps.outline
     ? 'outline'
-    : clear || (segmented && !segmentedActive)
+    : themeProps.clear || (segmented && !segmentedActive)
     ? 'clear'
-    : tonal
+    : themeProps.tonal
     ? 'tonal'
     : 'fill';
   if (segmentedStrong) style = 'segmentedStrong';
@@ -80,10 +121,20 @@ const Button = forwardRef((props, ref) => {
 
   const colors = ButtonColors(colorsProp, dark);
 
-  const c = themeClasses(ButtonClasses(props, colors, className, dark));
+  const c = themeClasses(
+    ButtonClasses(
+      {
+        ...props,
+        ...themeProps,
+      },
+      colors,
+      className,
+      dark
+    )
+  );
 
   const classes = cls(
-    c.base[rounded ? 'rounded' : 'square'],
+    c.base[themeProps.rounded ? 'rounded' : 'square'],
 
     // style
     c.style[style],
@@ -91,7 +142,7 @@ const Button = forwardRef((props, ref) => {
     // size
     c.size[size],
 
-    raised && c.raised,
+    themeProps.raised && c.raised,
 
     className
   );

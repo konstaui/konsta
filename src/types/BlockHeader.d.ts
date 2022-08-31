@@ -26,4 +26,20 @@ interface Props {
    * @default undefined
    */
   insetMaterial?: boolean;
+
+  /**
+   * Object with Tailwind CSS colors classes
+   * */
+  colors?: {
+    /**
+     *
+     * @default 'text-black dark:text-white'
+     */
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-surface-variant dark:text-md-dark-on-surface-variant'
+     */
+    textMaterial?: string;
+  };
 }

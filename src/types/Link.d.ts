@@ -10,17 +10,25 @@ interface Props {
    * */
   colors?: {
     /**
-     * Link text color
      *
      * @default 'text-primary'
      */
-    text?: string;
+    textIos?: string;
     /**
-     * Inactive tabbar link text color
      *
-     * @default 'text-black dark:text-white dark:text-opacity-55'
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
      */
-    tabbarInactive?: string;
+    textMaterial?: string;
+    /**
+     *
+     * @default 'text-primary'
+     */
+    navbarTextIos?: string;
+    /**
+     *
+     * @default ''
+     */
+    navbarTextMaterial?: string;
   };
   /**
    * Should be enabled if Link is in the Navbar

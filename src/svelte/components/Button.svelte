@@ -2,6 +2,7 @@
   import { cls } from '../../shared/cls.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
 
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
@@ -22,13 +23,28 @@
   export let disabled = false;
 
   // Style props
-  export let outline = false;
-  export let clear = false;
-  export let tonal = false;
-  export let rounded = false;
-  export let small = false;
-  export let large = false;
-  export let raised = false;
+  export let outline = undefined;
+  export let outlineIos = undefined;
+  export let outlineMaterial = undefined;
+  export let clear = undefined;
+  export let clearIos = undefined;
+  export let clearMaterial = undefined;
+  export let tonal = undefined;
+  export let tonalIos = undefined;
+  export let tonalMaterial = undefined;
+  export let rounded = undefined;
+  export let roundedIos = undefined;
+  export let roundedMaterial = undefined;
+  export let small = undefined;
+  export let smallIos = undefined;
+  export let smallMaterial = undefined;
+  export let large = undefined;
+  export let largeIos = undefined;
+  export let largeMaterial = undefined;
+  export let raised = undefined;
+  export let raisedIos = undefined;
+  export let raisedMaterial = undefined;
+
   export let inline = false;
 
   // Segmented
@@ -39,6 +55,9 @@
   export let touchRipple = true;
 
   export let onClick = undefined;
+
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
 
   const rippleEl = { current: null };
 
@@ -51,21 +70,64 @@
 
   $: useTouchRipple(rippleEl, touchRipple);
 
-  $: size = large ? 'large' : small ? 'small' : 'medium';
+  $: isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
+  $: isClear =
+    typeof clear === 'undefined'
+      ? theme === 'ios'
+        ? clearIos
+        : clearMaterial
+      : clear;
+  $: isTonal =
+    typeof tonal === 'undefined'
+      ? theme === 'ios'
+        ? tonalIos
+        : tonalMaterial
+      : tonal;
+  $: isRounded =
+    typeof rounded === 'undefined'
+      ? theme === 'ios'
+        ? roundedIos
+        : roundedMaterial
+      : rounded;
+  $: isSmall =
+    typeof small === 'undefined'
+      ? theme === 'ios'
+        ? smallIos
+        : smallMaterial
+      : small;
+  $: isLarge =
+    typeof large === 'undefined'
+      ? theme === 'ios'
+        ? largeIos
+        : largeMaterial
+      : large;
+  $: isRaised =
+    typeof raised === 'undefined'
+      ? theme === 'ios'
+        ? raisedIos
+        : raisedMaterial
+      : raised;
+
+  $: size = isLarge ? 'large' : isSmall ? 'small' : 'medium';
 
   const getStyle = (
-    outline,
-    clear,
-    tonal,
+    isOutline,
+    isClear,
+    isTonal,
     segmented,
     segmentedActive,
     segmentedStrong
   ) => {
-    let s = outline
+    let s = isOutline
       ? 'outline'
-      : clear || (segmented && !segmentedActive)
+      : isClear || (segmented && !segmentedActive)
       ? 'clear'
-      : tonal
+      : isTonal
       ? 'tonal'
       : 'fill';
     if (segmentedStrong) s = 'segmentedStrong';
@@ -74,9 +136,9 @@
   };
 
   $: style = getStyle(
-    outline,
-    clear,
-    tonal,
+    isOutline,
+    isClear,
+    isTonal,
     segmented,
     segmentedActive,
     segmentedStrong
@@ -87,7 +149,19 @@
   $: c = useThemeClasses(
     { ios, material },
     ButtonClasses(
-      { inline, segmented, segmentedStrong, disabled },
+      {
+        inline,
+        segmented,
+        segmentedStrong,
+        disabled,
+        outline: isOutline,
+        clear: isClear,
+        tonal: isTonal,
+        rounded: isRounded,
+        small: isSmall,
+        large: isLarge,
+        raised: isRaised,
+      },
       colors,
       className,
       dark
@@ -97,7 +171,7 @@
   );
 
   $: classes = cls(
-    c.base[rounded ? 'rounded' : 'square'],
+    c.base[isRounded ? 'rounded' : 'square'],
 
     // style
     c.style[style],
@@ -105,7 +179,7 @@
     // size
     c.size[size],
 
-    raised && c.raised,
+    isRaised && c.raised,
 
     className
   );

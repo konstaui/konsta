@@ -10,37 +10,71 @@ interface Props {
    * */
   colors?: {
     /**
-     * Stepper text (value) color
-     *
-     * @default 'text-primary'
-     */
-    text?: string;
-    /**
-     * Stepper border color
-     *
-     * @default 'border-primary'
-     */
-    border?: string;
-    /**
-     * Stepper button bg color
-     *
-     * @default 'bg-primary'
-     */
-    bg?: string;
-    /**
-     * Outline stepper button pressed/active bg color
      *
      * @default 'active:bg-primary'
      */
-    activeBg?: string;
+    activeBgIos?: string;
     /**
-     * Fill-style stepper button pressed/active bg color
+     *
+     * @default ''
+     */
+    activeBgMaterial?: string;
+    /**
+     *
+     * @default 'text-primary'
+     */
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    textMaterial?: string;
+    /**
+     *
+     * @default 'text-white'
+     */
+    fillTextIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-primary dark:text-md-dark-on-primary'
+     */
+    fillTextMaterial?: string;
+    /**
+     *
+     * @default 'bg-primary'
+     */
+    fillBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    fillBgMaterial?: string;
+    /**
      *
      * @default 'active:bg-ios-primary-shade'
      */
-    activeBgDark?: string;
+    fillActiveBgIos?: string;
     /**
-     * Touch ripple color
+     *
+     * @default ''
+     */
+    fillActiveBgMaterial?: string;
+    /**
+     *
+     * @default 'touch-ripple-white dark:touch-ripple-primary'
+     */
+    fillTouchRipple?: string;
+    /**
+     *
+     * @default 'border-primary'
+     */
+    outlineBorderIos?: string;
+    /**
+     *
+     * @default 'border-md-light-outline dark:border-md-dark-outline'
+     */
+    outlineBorderMaterial?: string;
+    /**
      *
      * @default 'touch-ripple-primary'
      */
@@ -92,35 +126,95 @@ interface Props {
    */
   buttonsOnly?: boolean;
   /**
-   * Makes stepper round
+   * Makes stepper round. Overwrites `roundedIos` and `roundedMaterial`
    *
-   * @default false
+   * @default undefined
    */
   rounded?: boolean;
   /**
-   * Makes stepper small
+   * Makes stepper round in iOS theme
    *
-   * @default false
+   * @default undefined
+   */
+  roundedIos?: boolean;
+  /**
+   * Makes stepper round in Material theme
+   *
+   * @default undefined
+   */
+  roundedMaterial?: boolean;
+  /**
+   * Makes stepper small. Overwrites `smallIos` and `smallMaterial`
+   *
+   * @default undefined
    */
   small?: boolean;
   /**
-   * Makes stepper large
+   * Makes stepper small in iOS theme
    *
-   * @default false
+   * @default undefined
+   */
+  smallIos?: boolean;
+  /**
+   * Makes stepper small in Material theme
+   *
+   * @default undefined
+   */
+  smallMaterial?: boolean;
+  /**
+   * Makes stepper large. Overwrites `largeIos` and `largeMaterial`
+   *
+   * @default undefined
    */
   large?: boolean;
   /**
-   * Makes stepper raised (with shadow)
+   * Makes stepper large in iOS theme
    *
-   * @default false
+   * @default undefined
+   */
+  largeIos?: boolean;
+  /**
+   * Makes stepper large in Material theme
+   *
+   * @default undefined
+   */
+  largeMaterial?: boolean;
+  /**
+   * Makes stepper raised (with shadow). Overwrites `raisedIos` and `raisedMaterial`
+   *
+   * @default undefined
    */
   raised?: boolean;
   /**
-   * Makes stepper outline
+   * Makes stepper raised (with shadow) in iOS theme
    *
-   * @default false
+   * @default undefined
+   */
+  raisedIos?: boolean;
+  /**
+   * Makes stepper raised (with shadow) in Material theme
+   *
+   * @default undefined
+   */
+  raisedMaterial?: boolean;
+  /**
+   * Makes stepper outline. Overwrites `outlineIos` and `outlineMaterial`
+   *
+   * @default undefined
    */
   outline?: boolean;
+  /**
+   * Makes stepper outline in iOS theme
+   *
+   * @default undefined
+   */
+  outlineIos?: boolean;
+  /**
+   * Makes stepper outline in Material theme
+   *
+   * @default undefined
+   */
+  outlineMaterial?: boolean;
   /**
    * Enables touch ripple effect in Material theme
    *

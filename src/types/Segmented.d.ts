@@ -10,17 +10,35 @@ interface Props {
    * */
   colors?: {
     /**
-     * Outline segmented border color
+     *
+     * @default 'bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-10'
+     */
+    strongBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-variant dark:bg-md-dark-surface-variant'
+     */
+    strongBgMaterial?: string;
+    /**
      *
      * @default 'border-primary'
      */
-    border?: string;
+    borderIos?: string;
     /**
-     * Outline segmented divider color
+     *
+     * @default 'border-md-light-outline dark:border-md-dark-outline'
+     */
+    borderMaterial?: string;
+    /**
      *
      * @default 'divide-primary'
      */
-    divide?: string;
+    divideIos?: string;
+    /**
+     *
+     * @default 'divide-md-light-outline dark:divide-md-dark-outline'
+     */
+    divideMaterial?: string;
   };
 
   /**

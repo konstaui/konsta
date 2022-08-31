@@ -2,6 +2,7 @@
   import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
   import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -15,7 +16,9 @@
   export let component = 'button';
   export let href = undefined;
 
-  export let bold = false;
+  export let bold = undefined;
+  export let boldIos = false;
+  export let boldMaterial = false;
   export let fontSizeIos = 'text-xl';
   export let fontSizeMaterial = 'text-base';
   export let touchRipple = true;
@@ -43,10 +46,20 @@
 
   $: colors = ActionsButtonColors(colorsProp, dark);
 
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
+
+  $: isBold =
+    typeof bold === 'undefined'
+      ? theme === 'ios'
+        ? boldIos
+        : boldMaterial
+      : bold;
+
   $: c = useThemeClasses(
     { ios, material },
     ActionsButtonClasses(
-      { bold, fontSizeIos, fontSizeMaterial, hairlines },
+      { bold: isBold, fontSizeIos, fontSizeMaterial, hairlines },
       colors,
       dark
     ),

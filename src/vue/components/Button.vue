@@ -13,6 +13,7 @@
   import { cls } from '../../shared/cls.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
   import { ButtonColors } from '../../shared/colors/ButtonColors.js';
@@ -44,32 +45,89 @@
       // Style props
       outline: {
         type: Boolean,
-        default: false,
+        default: undefined,
+      },
+      outlineIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      outlineMaterial: {
+        type: Boolean,
+        default: undefined,
       },
       clear: {
         type: Boolean,
-        default: false,
+        default: undefined,
+      },
+      clearIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      clearMaterial: {
+        type: Boolean,
+        default: undefined,
       },
       tonal: {
         type: Boolean,
-        default: false,
+        default: undefined,
+      },
+      tonalIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      tonalMaterial: {
+        type: Boolean,
+        default: undefined,
       },
       rounded: {
         type: Boolean,
-        default: false,
+        default: undefined,
+      },
+      roundedIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      roundedMaterial: {
+        type: Boolean,
+        default: undefined,
       },
       small: {
         type: Boolean,
-        default: false,
+        default: undefined,
+      },
+      smallIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      smallMaterial: {
+        type: Boolean,
+        default: undefined,
       },
       large: {
         type: Boolean,
-        default: false,
+        default: undefined,
+      },
+      largeIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      largeMaterial: {
+        type: Boolean,
+        default: undefined,
       },
       raised: {
         type: Boolean,
-        default: false,
+        default: undefined,
       },
+      raisedIos: {
+        type: Boolean,
+        default: undefined,
+      },
+      raisedMaterial: {
+        type: Boolean,
+        default: undefined,
+      },
+
       inline: {
         type: Boolean,
         default: false,
@@ -114,15 +172,67 @@
 
       useTouchRipple(rippleElRef, props);
 
+      const theme = useTheme();
+
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+            ? props.outlineIos
+            : props.outlineMaterial
+          : props.outline
+      );
+      const isClear = computed(() =>
+        typeof props.clear === 'undefined'
+          ? theme.value === 'ios'
+            ? props.clearIos
+            : props.clearMaterial
+          : props.clear
+      );
+      const isTonal = computed(() =>
+        typeof props.tonal === 'undefined'
+          ? theme.value === 'ios'
+            ? props.tonalIos
+            : props.tonalMaterial
+          : props.tonal
+      );
+      const isRounded = computed(() =>
+        typeof props.rounded === 'undefined'
+          ? theme.value === 'ios'
+            ? props.roundedIos
+            : props.roundedMaterial
+          : props.rounded
+      );
+      const isSmall = computed(() =>
+        typeof props.small === 'undefined'
+          ? theme.value === 'ios'
+            ? props.smallIos
+            : props.smallMaterial
+          : props.small
+      );
+      const isLarge = computed(() =>
+        typeof props.large === 'undefined'
+          ? theme.value === 'ios'
+            ? props.largeIos
+            : props.largeMaterial
+          : props.large
+      );
+      const isRaised = computed(() =>
+        typeof props.raised === 'undefined'
+          ? theme.value === 'ios'
+            ? props.raisedIos
+            : props.raisedMaterial
+          : props.raised
+      );
+
       const size = computed(() =>
-        props.large ? 'large' : props.small ? 'small' : 'medium'
+        isLarge.value ? 'large' : isSmall.value ? 'small' : 'medium'
       );
       const style = computed(() => {
-        let value = props.outline
+        let value = isOutline.value
           ? 'outline'
-          : props.clear || (props.segmented && !props.segmentedActive)
+          : isClear.value || (props.segmented && !props.segmentedActive)
           ? 'clear'
-          : props.tonal
+          : isTonal.value
           ? 'tonal'
           : 'fill';
         if (props.segmentedStrong) value = 'segmentedStrong';
@@ -135,12 +245,26 @@
       );
 
       const c = useThemeClasses(props, () =>
-        ButtonClasses(props, colors.value, ctx.attrs.class, useDarkClasses)
+        ButtonClasses(
+          {
+            ...props,
+            outline: isOutline.value,
+            clear: isClear.value,
+            tonal: isTonal.value,
+            rounded: isRounded.value,
+            small: isSmall.value,
+            large: isLarge.value,
+            raised: isRaised.value,
+          },
+          colors.value,
+          ctx.attrs.class,
+          useDarkClasses
+        )
       );
 
       const classes = computed(() =>
         cls(
-          c.value.base[props.rounded ? 'rounded' : 'square'],
+          c.value.base[isRounded.value ? 'rounded' : 'square'],
 
           // style
           c.value.style[style.value],
@@ -148,7 +272,7 @@
           // size
           c.value.size[size.value],
 
-          props.raised && c.value.raised
+          isRaised.value && c.value.raised
         )
       );
 

@@ -10,29 +10,35 @@ interface Props {
    * */
   colors?: {
     /**
-     * Checkbox border color in iOS theme
      *
      * @default 'border-black border-opacity-30 dark:border-white dark:border-opacity-30'
      */
     borderIos?: string;
     /**
-     * Checkbox border color in Material theme
      *
-     * @default 'border-black border-opacity-40 dark:border-white dark:border-opacity-40'
+     * @default 'border-md-light-outline dark:border-md-dark-outline'
      */
     borderMaterial?: string;
     /**
-     * Bg color when it is checked
      *
      * @default 'bg-primary'
      */
-    bgChecked?: string;
+    bgCheckedIos?: string;
     /**
-     * Border color when it is checked
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    bgCheckedMaterial?: string;
+    /**
      *
      * @default 'border-primary'
      */
-    borderChecked?: string;
+    borderCheckedIos?: string;
+    /**
+     *
+     * @default 'border-md-light-primary dark:border-md-dark-primary'
+     */
+    borderCheckedMaterial?: string;
   };
   /**
    * Defines whether the checkbox input is checked or not, for the case if it is uncontrolled component

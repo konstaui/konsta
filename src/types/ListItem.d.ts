@@ -10,23 +10,85 @@ interface Props {
    * */
   colors?: {
     /**
-     * List item text color
      *
      * @default 'text-black dark:text-white'
      */
-    text?: string;
+    primaryTextIos?: string;
     /**
-     * Menu list item text color
+     *
+     * @default 'text-md-light-on-surface dark:text-md-dark-on-surface'
+     */
+    primaryTextMaterial?: string;
+    /**
+     *
+     * @default 'text-black text-opacity-55 dark:text-white dark:text-opacity-55'
+     */
+    secondaryTextIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-surface-variant dark:text-md-dark-on-surface-variant'
+     */
+    secondaryTextMaterial?: string;
+    /**
+     *
+     * @default 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
+     */
+    activeBgIos?: string;
+    /**
+     *
+     * @default ''
+     */
+    activeBgMaterial?: string;
+    /**
+     *
+     * @default 'bg-ios-light-surface-variant dark:bg-ios-dark-surface-variant'
+     */
+    groupTitleBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-2 dark:bg-md-dark-surface-2'
+     */
+    groupTitleBgMaterial?: string;
+    /**
+     *
+     * @default 'text-black dark:text-white'
+     */
+    menuListItemTextIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-surface-variant dark:text-md-dark-on-surface-variant'
+     */
+    menuListItemTextMaterial?: string;
+    /**
+     *
+     * @default 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
+     */
+    menuListItemBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-1 dark:bg-md-dark-surface-1'
+     */
+    menuListItemBgMaterial?: string;
+    /**
      *
      * @default 'text-primary dark:text-white'
      */
-    menuListItemText?: string;
+    menuListItemActiveTextIos?: string;
     /**
-     * Active menu list item bg color
      *
-     * @default 'bg-primary dark:bg-primary'
+     * @default 'text-md-light-on-secondary-container dark:text-md-dark-on-secondary-container'
      */
-    menuListItemActiveBg?: string;
+    menuListItemActiveTextMaterial?: string;
+    /**
+     *
+     * @default 'bg-primary bg-opacity-15 dark:bg-primary'
+     */
+    menuListItemActiveBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-secondary-container dark:bg-md-dark-secondary-container'
+     */
+    menuListItemActiveBgMaterial?: string;
   };
 
   /**

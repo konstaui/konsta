@@ -10,11 +10,25 @@ interface Props {
    * */
   colors?: {
     /**
-     * List bg color
+     *
+     * @default 'border-black border-opacity-20 dark:border-white dark:border-opacity-15'
+     */
+    outlineIos?: string;
+    /**
+     *
+     * @default 'border-md-light-outline border-md-dark-outline'
+     */
+    outlineMaterial?: string;
+    /**
      *
      * @default 'bg-ios-light-surface-1 dark:bg-ios-dark-surface-1'
      */
-    bg?: string;
+    strongBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-1 dark:bg-md-dark-surface-1'
+     */
+    strongBgMaterial?: string;
   };
   /**
    * Tailwind CSS margin class
@@ -40,14 +54,64 @@ interface Props {
    * @default false
    */
   dividersMaterial?: boolean;
+
   /**
-   * Makes list block inset
+   * Adds extra highlighting. Overwrites `strongIos` and `strongMaterial`
    *
-   * @default false
+   * @default undefined
+   */
+  strong?: boolean;
+  /**
+   * Adds extra highlighting in iOS theme
+   *
+   * @default undefined
+   */
+  strongIos?: boolean;
+  /**
+   * Adds extra highlighting in Material theme
+   *
+   * @default undefined
+   */
+  strongMaterial?: boolean;
+  /**
+   * Makes list block inset. Overwrites `insetIos` and `insetMaterial`
+   *
+   * @default undefined
    */
   inset?: boolean;
   /**
-   * Removes hairlines and margins, useful for case nesting list block within other blocks
+   * Makes list block inset in iOS theme
+   *
+   * @default undefined
+   */
+  insetIos?: boolean;
+  /**
+   * Makes list block inset in Material theme
+   *
+   * @default undefined
+   */
+  insetMaterial?: boolean;
+  /**
+   * Renders list outer borders. Overwrites `outlineIos` and `outlineMaterial`
+   *
+   * @default undefined
+   */
+  outline?: boolean;
+  /**
+   * Renders list outer borders in iOS theme
+   *
+   * @default undefined
+   */
+  outlineIos?: boolean;
+  /**
+   * Renders list outer borders in Material theme
+   *
+   * @default undefined
+   */
+  outlineMaterial?: boolean;
+
+  /**
+   * Removes hairlines/dividers and margins, useful for case nesting list block within other blocks
    *
    * @default false
    */
@@ -56,10 +120,4 @@ interface Props {
    * Renders list as Menu List (same as `<MenuList>`)
    */
   menuList?: boolean;
-  /**
-   * Renders list outer borders
-   *
-   * @default true
-   */
-  outline?: boolean;
 }

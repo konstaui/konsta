@@ -10,23 +10,40 @@ interface Props {
    * */
   colors?: {
     /**
-     * FAB bg color
      *
      * @default 'bg-primary'
      */
-    bg?: string;
+    bgIos?: string;
     /**
-     * FAB pressed bg color
+     *
+     * @default 'bg-md-light-primary-container dark:bg-md-dark-primary-container'
+     */
+    bgMaterial?: string;
+    /**
      *
      * @default 'active:bg-ios-primary-shade'
      */
-    activeBg?: string;
+    activeBgIos?: string;
     /**
-     * FAB text color
+     *
+     * @default ''
+     */
+    activeBgMaterial?: string;
+    /**
      *
      * @default 'text-white'
      */
-    text?: string;
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-on-primary-container dark:text-md-dark-on-primary-container'
+     */
+    textMaterial?: string;
+    /**
+     *
+     * @default 'touch-ripple-primary dark:touch-ripple-white'
+     */
+    touchRipple?: string;
   };
   /**
    * Fab's link `href` attribute

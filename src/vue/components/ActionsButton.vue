@@ -7,6 +7,7 @@
   import { ref, computed } from 'vue';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
   import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
@@ -39,7 +40,9 @@
         default: true,
       },
       hairlines: { type: Boolean, default: true },
-      bold: { type: Boolean, default: false },
+      bold: { type: Boolean, default: undefined },
+      boldIos: { type: Boolean, default: false },
+      boldMaterial: { type: Boolean, default: false },
       fontSizeIos: { type: String, default: 'text-xl' },
       fontSizeMaterial: { type: String, default: 'text-base' },
     },
@@ -62,9 +65,23 @@
         ActionsButtonColors(props.colors || {}, useDarkClasses)
       );
 
+      const theme = useTheme();
+      const isBold = computed(() =>
+        typeof props.bold === 'undefined'
+          ? theme.value === 'ios'
+            ? props.boldIos
+            : props.boldMaterial
+          : props.bold
+      );
+
       const c = useThemeClasses(
         props,
-        () => ActionsButtonClasses(props, colors.value, useDarkClasses),
+        () =>
+          ActionsButtonClasses(
+            { ...props, bold: isBold.value },
+            colors.value,
+            useDarkClasses
+          ),
         ctx.attrs.class
       );
 

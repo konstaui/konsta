@@ -10,23 +10,25 @@ interface Props {
    * */
   colors?: {
     /**
-     * Toast bg in iOS theme
      *
-     * @default 'bg-toast-ios'
+     * @default 'bg-black'
      */
     bgIos?: string;
     /**
-     * Toast bg in Material theme
      *
-     * @default 'bg-toast-material'
+     * @default 'bg-md-light-surface-5 dark:bg-md-dark-surface-5'
      */
     bgMaterial?: string;
     /**
-     * Toast text color
      *
      * @default 'text-white'
      */
-    text?: string;
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    textMaterial?: string;
   };
   /**
    * Makes Toast background translucent (with `backdrop-filter: blur`) in iOS theme

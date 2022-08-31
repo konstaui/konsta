@@ -16,6 +16,7 @@
 <script>
   import { computed } from 'vue';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { CardClasses } from '../../shared/classes/CardClasses.js';
   import { CardColors } from '../../shared/colors/CardColors.js';
@@ -42,8 +43,12 @@
       header: { type: [String, Number] },
       footer: { type: [String, Number] },
       // Style
-      raised: { type: Boolean, default: false },
-      outline: { type: Boolean, default: false },
+      raised: { type: Boolean, default: undefined },
+      raisedIos: { type: Boolean, default: undefined },
+      raisedMaterial: { type: Boolean, default: undefined },
+      outline: { type: Boolean, default: undefined },
+      outlineIos: { type: Boolean, default: undefined },
+      outlineMaterial: { type: Boolean, default: undefined },
       headerDivider: { type: Boolean, default: false },
       footerDivider: { type: Boolean, default: false },
     },
@@ -52,11 +57,32 @@
         CardColors(props.colors || {}, useDarkClasses)
       );
 
+      const theme = useTheme();
+
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+            ? props.outlineIos
+            : props.outlineMaterial
+          : props.outline
+      );
+      const isRaised = computed(() =>
+        typeof props.raised === 'undefined'
+          ? theme.value === 'ios'
+            ? props.raisedIos
+            : props.raisedMaterial
+          : props.raised
+      );
+
       const style = computed(() =>
-        props.outline ? 'outline' : props.raised ? 'raised' : 'plain'
+        isOutline.value ? 'outline' : isRaised.value ? 'raised' : 'plain'
       );
       const c = useThemeClasses(props, () =>
-        CardClasses(props, colors.value, useDarkClasses)
+        CardClasses(
+          { ...props, raised: isRaised.value, outline: isOutline.value },
+          colors.value,
+          useDarkClasses
+        )
       );
 
       return {

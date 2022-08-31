@@ -11,23 +11,25 @@ interface Props {
    * */
   colors?: {
     /**
-     * Button text color
-     *
-     * @default 'text-black text-opacity-55 dark:text-white dark:text-opacity-55'
-     */
-    text?: string;
-    /**
-     * Full button bg color
      *
      * @default 'bg-white dark:bg-neutral-800'
      */
-    bg?: string;
+    bgIos?: string;
     /**
-     * Clicked fill button bg color
      *
-     * @default 'active:bg-neutral-200 dark:active:bg-neutral-700'
+     * @default 'bg-md-light-surface-3 dark:bg-md-dark-surface-3'
      */
-    activeBg?: string;
+    bgMaterial?: string;
+    /**
+     *
+     * @default 'text-black text-opacity-55 dark:text-white dark:text-opacity-55'
+     */
+    textIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    textMaterial?: string;
   };
 
   /**

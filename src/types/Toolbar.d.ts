@@ -10,17 +10,25 @@ interface Props {
    * */
   colors?: {
     /**
-     * Toolbar bg color in iOS theme
      *
      * @default 'bg-ios-light-surface-2 dark:bg-ios-dark-surface-2'
      */
     bgIos?: string;
     /**
-     * Toolbar bg color in iOS theme
      *
-     * @default 'bg-bars-material-light dark:bg-bars-material-dark'
+     * @default 'bg-md-light-surface-2 dark:bg-md-dark-surface-2'
      */
     bgMaterial?: string;
+    /**
+     *
+     * @default 'bg-primary'
+     */
+    tabbarHighlightBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
+     */
+    tabbarHighlightBgMaterial?: string;
   };
 
   /**

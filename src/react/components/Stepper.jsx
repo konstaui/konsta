@@ -24,11 +24,20 @@ const Stepper = forwardRef((props, ref) => {
     buttonsOnly,
 
     rounded,
+    roundedIos,
+    roundedMaterial,
     small,
+    smallIos,
+    smallMaterial,
     large,
+    largeIos,
+    largeMaterial,
     raised,
+    raisedIos,
+    raisedMaterial,
     outline,
-
+    outlineIos,
+    outlineMaterial,
     onInput,
     onChange,
     onFocus,
@@ -61,15 +70,59 @@ const Stepper = forwardRef((props, ref) => {
   useTouchRipple(buttonLeftElRef, theme === 'material' && touchRipple);
   useTouchRipple(buttonRightElRef, theme === 'material' && touchRipple);
 
+  const isRounded =
+    typeof rounded === 'undefined'
+      ? theme === 'ios'
+        ? roundedIos
+        : roundedMaterial
+      : rounded;
+  const isSmall =
+    typeof small === 'undefined'
+      ? theme === 'ios'
+        ? smallIos
+        : smallMaterial
+      : small;
+  const isLarge =
+    typeof large === 'undefined'
+      ? theme === 'ios'
+        ? largeIos
+        : largeMaterial
+      : large;
+  const isRaised =
+    typeof raised === 'undefined'
+      ? theme === 'ios'
+        ? raisedIos
+        : raisedMaterial
+      : raised;
+  const isOutline =
+    typeof outline === 'undefined'
+      ? theme === 'ios'
+        ? outlineIos
+        : outlineMaterial
+      : outline;
+
   const dark = useDarkClasses();
 
   const colors = StepperColors(colorsProp, dark);
 
-  const size = large ? 'large' : small ? 'small' : 'medium';
-  const style = outline && raised ? 'clear' : outline ? 'outline' : 'fill';
-  const shape = rounded ? 'rounded' : 'square';
+  const size = isLarge ? 'large' : isSmall ? 'small' : 'medium';
+  const style =
+    isOutline && isRaised ? 'clear' : isOutline ? 'outline' : 'fill';
+  const shape = isRounded ? 'rounded' : 'square';
 
-  const c = themeClasses(StepperClasses(props, colors));
+  const c = themeClasses(
+    StepperClasses(
+      {
+        ...props,
+        rounded: isRounded,
+        small: isSmall,
+        large: isLarge,
+        raised: isRaised,
+        outline: isOutline,
+      },
+      colors
+    )
+  );
 
   const attrs = {
     ...rest,
@@ -77,7 +130,7 @@ const Stepper = forwardRef((props, ref) => {
 
   const classes = cls(
     c.base,
-    raised && c.raised,
+    isRaised && c.raised,
     c.size[size],
     c.shape[shape],
     className
