@@ -23,7 +23,7 @@
   </Navbar>
 
   <BlockTitle>Default Segmented</BlockTitle>
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <Segmented>
       <SegmentedButton
         active={activeSegmented === 1}
@@ -68,7 +68,7 @@
   </Block>
 
   <BlockTitle>Raised Segmented</BlockTitle>
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <Segmented raised>
       <SegmentedButton
         active={activeSegmented === 1}
@@ -112,7 +112,7 @@
   </Block>
 
   <BlockTitle>Outline</BlockTitle>
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <Segmented outline>
       <SegmentedButton
         active={activeSegmented === 1}
@@ -156,7 +156,7 @@
   </Block>
 
   <BlockTitle>Strong Segmented</BlockTitle>
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <Segmented
       strong
       activeButtonIndex={activeSegmented - 1}

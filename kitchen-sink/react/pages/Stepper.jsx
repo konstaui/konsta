@@ -45,7 +45,7 @@ export default function StepperPage() {
       />
 
       <BlockTitle>Shape and size</BlockTitle>
-      <Block strong className="text-center space-y-4">
+      <Block strongIos outlineIos className="text-center space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
             <div className="block text-xs mb-1">Default</div>
@@ -168,7 +168,7 @@ export default function StepperPage() {
       </Block>
 
       <BlockTitle>Raised</BlockTitle>
-      <Block strong className="text-center space-y-4">
+      <Block strongIos outlineIos className="text-center space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
             <div className="block text-xs mb-1">Default</div>
@@ -316,7 +316,7 @@ export default function StepperPage() {
         </div>
       </Block>
       <BlockTitle>With Text Input</BlockTitle>
-      <Block strong className="text-center space-y-4">
+      <Block strongIos outlineIos className="text-center space-y-4">
         <div>
           <Stepper
             value={inputValue}
@@ -340,7 +340,7 @@ export default function StepperPage() {
         </div>
       </Block>
       <BlockTitle>Only Buttons</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           title={`Value is ${value}`}
           after={
@@ -380,7 +380,7 @@ export default function StepperPage() {
       </List>
 
       <BlockTitle>Colors</BlockTitle>
-      <Block strong className="text-center space-y-4">
+      <Block strongIos outlineIos className="text-center space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
             <Stepper

@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Inline</k-block-title>
-    <k-block strong>
+    <k-block strong-ios outline-ios>
       <p>
         Lorem{{ ' ' }}
         <k-radio
@@ -30,7 +30,7 @@
     </k-block>
 
     <k-block-title>Radio Group</k-block-title>
-    <k-list>
+    <k-list strong-ios outline-ios>
       <k-list-item label title="Books">
         <template #media>
           <k-radio
@@ -73,7 +73,7 @@
       </k-list-item>
     </k-list>
 
-    <k-list>
+    <k-list strong-ios outline-ios>
       <k-list-item label title="Books">
         <template #after>
           <k-radio
@@ -117,7 +117,7 @@
     </k-list>
 
     <k-block-title>With Media Lists</k-block-title>
-    <k-list>
+    <k-list strong-ios outline-ios>
       <k-list-item
         label
         title="Facebook"

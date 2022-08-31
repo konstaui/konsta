@@ -32,7 +32,7 @@ export default function ToolbarPage() {
         <Link toolbar>Link 3</Link>
       </Toolbar>
 
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <p>
           Toolbar supports both top and bottom positions. Click the following
           button to change its position.

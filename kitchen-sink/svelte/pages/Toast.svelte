@@ -31,7 +31,7 @@
     </svelte:fragment>
   </Navbar>
 
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <Toast position="left" opened={toastLeftOpened}>
       <Button
         slot="button"

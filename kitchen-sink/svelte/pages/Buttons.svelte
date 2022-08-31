@@ -21,7 +21,7 @@
   </Navbar>
 
   <BlockTitle>Default Buttons</BlockTitle>
-  <Block strong class="space-y-2">
+  <Block strong outlineIos class="space-y-2">
     <div class="grid grid-cols-3 gap-x-4">
       <Button>Button</Button>
       <Button class="k-color-brand-red">Button</Button>
@@ -45,7 +45,7 @@
   </Block>
 
   <BlockTitle>Rounded Buttons</BlockTitle>
-  <Block strong class="space-y-2">
+  <Block strong outlineIos class="space-y-2">
     <div class="grid grid-cols-3 gap-x-4">
       <Button rounded>Button</Button>
       <Button rounded class="k-color-brand-green">Button</Button>
@@ -64,7 +64,7 @@
   </Block>
 
   <BlockTitle>Large Buttons</BlockTitle>
-  <Block strong class="space-y-2">
+  <Block strong outlineIos class="space-y-2">
     <div class="grid grid-cols-3 gap-x-4">
       <Button large>Button</Button>
       <Button large class="k-color-brand-yellow">Button</Button>
@@ -83,7 +83,7 @@
   </Block>
 
   <BlockTitle>Small Buttons</BlockTitle>
-  <Block strong class="space-y-2">
+  <Block strong outlineIos class="space-y-2">
     <div class="grid grid-cols-3 gap-x-4">
       <Button small>Button</Button>
       <Button small>Button</Button>
@@ -102,7 +102,7 @@
   </Block>
 
   <BlockTitle>Raised Buttons</BlockTitle>
-  <Block strong class="space-y-2">
+  <Block strong outlineIos class="space-y-2">
     <div class="grid grid-cols-3 gap-x-4">
       <Button raised>Button</Button>
       <Button raised>Button</Button>
@@ -121,7 +121,7 @@
   </Block>
 
   <BlockTitle>Disabled Buttons</BlockTitle>
-  <Block strong class="space-y-2">
+  <Block strong outlineIos class="space-y-2">
     <div class="grid grid-cols-3 gap-x-4">
       <Button disabled>Button</Button>
       <Button disabled outline>Outline</Button>

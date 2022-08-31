@@ -21,7 +21,7 @@ export default function TogglePage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <List>
+      <List strong inset>
         <ListItem
           label
           title="Item 1"

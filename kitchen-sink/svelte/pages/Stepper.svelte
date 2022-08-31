@@ -48,7 +48,7 @@
   </Navbar>
 
   <BlockTitle>Shape and size</BlockTitle>
-  <Block strong class="text-center space-y-4">
+  <Block strongIos outlineIos class="text-center space-y-4">
     <div class="grid grid-cols-2 gap-4">
       <div>
         <div class="block text-xs mb-1">Default</div>
@@ -131,7 +131,7 @@
   </Block>
 
   <BlockTitle>Raised</BlockTitle>
-  <Block strong class="text-center space-y-4">
+  <Block strongIos outlineIos class="text-center space-y-4">
     <div class="grid grid-cols-2 gap-4">
       <div>
         <div class="block text-xs mb-1">Default</div>
@@ -250,7 +250,7 @@
     </div>
   </Block>
   <BlockTitle>With Text Input</BlockTitle>
-  <Block strong class="text-center space-y-4">
+  <Block strongIos outlineIos class="text-center space-y-4">
     <div>
       <Stepper
         value={inputValue}
@@ -274,7 +274,7 @@
     </div>
   </Block>
   <BlockTitle>Only Buttons</BlockTitle>
-  <List>
+  <List strongIos outlineIos>
     <ListItem title={`Value is ${value}`}>
       <Stepper
         slot="after"
@@ -308,7 +308,7 @@
   </List>
 
   <BlockTitle>Colors</BlockTitle>
-  <Block strong class="text-center space-y-4">
+  <Block strongIos outlineIos class="text-center space-y-4">
     <div class="grid grid-cols-2 gap-4">
       <div>
         <Stepper

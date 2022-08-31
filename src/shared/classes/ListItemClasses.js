@@ -1,9 +1,11 @@
 import { cls } from '../cls.js';
+import { positionClass } from '../position-class.js';
 
 export const ListItemClasses = (
   props,
   colors,
   {
+    className,
     theme,
     textColor,
     needsTouchRipple,
@@ -26,7 +28,6 @@ export const ListItemClasses = (
     titleFontSizeIos,
     titleFontSizeMaterial,
     strongTitle,
-    divider,
   } = props;
   return {
     base: menuListItem ? `${textColor} py-1` : '',
@@ -127,15 +128,16 @@ export const ListItemClasses = (
       material: colors.secondaryTextMaterial,
     },
 
-    divider: {
+    groupTitle: {
       common: cls(
         `pl-4-safe pr-4-safe py-1 flex items-center z-20`,
-        divider ? 'relative' : 'sticky top-0'
+        positionClass('relative', className)
+        // divider ? 'relative' : 'sticky top-0'
       ),
       ios: `h-8${dividers ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${
         colors.secondaryTextIos
-      } ${colors.dividerBgIos}`,
-      material: `h-12 ${titleFontSizeMaterial} ${colors.secondaryTextMaterial} ${colors.dividerBgMaterial}`,
+      } ${colors.groupTitleBgIos}`,
+      material: `h-12 ${titleFontSizeMaterial} ${colors.secondaryTextMaterial} ${colors.groupTitleBgMaterial}`,
     },
   };
 };

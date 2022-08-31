@@ -25,14 +25,14 @@ export default function SidePanelsPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <p>
           Konsta UI comes with 2 panels (on left and on right), both are
           optional. You can put absolutely anything inside: data lists, forms,
           custom content, etc.
         </p>
       </Block>
-      <Block strong className="flex space-x-4">
+      <Block strongIos outlineIos className="flex space-x-4">
         <Button rounded onClick={() => setLeftPanelOpened(true)}>
           Left Panel
         </Button>
@@ -41,7 +41,7 @@ export default function SidePanelsPage() {
         </Button>
       </Block>
       <BlockTitle>Floating Panels</BlockTitle>
-      <Block strong className="flex space-x-4">
+      <Block strongIos outlineIos className="flex space-x-4">
         <Button rounded onClick={() => setLeftFloatingPanelOpened(true)}>
           Left Panel
         </Button>

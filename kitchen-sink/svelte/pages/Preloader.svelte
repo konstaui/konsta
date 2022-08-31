@@ -21,12 +21,12 @@
   </Navbar>
 
   <BlockTitle>Default</BlockTitle>
-  <Block strong class="text-center">
+  <Block strong insetMaterial outlineIos class="text-center">
     <Preloader />
   </Block>
 
   <BlockTitle>Colors</BlockTitle>
-  <Block strong class="grid grid-cols-4">
+  <Block strong insetMaterial outlineIos class="grid grid-cols-4">
     <div class="text-center">
       <Preloader class="k-color-brand-red" />
     </div>
@@ -42,7 +42,7 @@
   </Block>
 
   <BlockTitle>Sizes</BlockTitle>
-  <Block strong class="grid grid-cols-4 items-center">
+  <Block strong insetMaterial outlineIos class="grid grid-cols-4 items-center">
     <div class="text-center">
       <Preloader size="w-4 h-4" />
     </div>

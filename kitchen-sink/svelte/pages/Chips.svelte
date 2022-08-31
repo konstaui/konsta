@@ -21,7 +21,7 @@
   </Navbar>
 
   <BlockTitle>Chips With Text</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Chip class="m-0.5">Example Chip</Chip>
     <Chip class="m-0.5">Another Chip</Chip>
     <Chip class="m-0.5">One More Chip</Chip>
@@ -30,7 +30,7 @@
   </Block>
 
   <BlockTitle>Outline Chips</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Chip outline class="m-0.5">Example Chip</Chip>
     <Chip outline class="m-0.5">Another Chip</Chip>
     <Chip outline class="m-0.5">One More Chip</Chip>
@@ -39,7 +39,7 @@
   </Block>
 
   <BlockTitle>Contact Chips</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Chip class="m-0.5">
       <img
         slot="media"
@@ -70,7 +70,7 @@
   </Block>
 
   <BlockTitle>Deletable Chips / Tags</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Chip
       class="m-0.5"
       deleteButton
@@ -93,7 +93,7 @@
     </Chip>
   </Block>
   <BlockTitle class=" bg-b bg-b">Color Chips</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Chip
       class="m-0.5"
       colors={{ fillBg: 'bg-red-500', fillText: 'text-white' }}

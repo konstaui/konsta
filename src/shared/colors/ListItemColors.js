@@ -20,11 +20,11 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       dark('dark:active:bg-white dark:active:bg-opacity-10')
     ),
     activeBgMaterial: '',
-    dividerBgIos: cls(
+    groupTitleBgIos: cls(
       'bg-ios-light-surface-variant',
       dark('dark:bg-ios-dark-surface-variant')
     ),
-    dividerBgMaterial: cls(
+    groupTitleBgMaterial: cls(
       'bg-md-light-surface-2',
       dark('dark:bg-md-dark-surface-2')
     ),

@@ -51,7 +51,7 @@
         </template>
       </k-tabbar-link>
     </k-tabbar>
-    <k-list>
+    <k-list strong inset>
       <k-list-item title="Foo Bar">
         <template #media>
           <demo-icon />

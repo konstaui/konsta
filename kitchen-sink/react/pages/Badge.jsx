@@ -74,7 +74,7 @@ export default function BadgePage() {
           label="Upload"
         />
       </Tabbar>
-      <List>
+      <List strong inset>
         <ListItem
           media={<DemoIcon />}
           title="Foo Bar"

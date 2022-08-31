@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" v-if="divider || groupTitle" :class="c.divider">
+  <component :is="component" v-if="groupTitle" :class="c.groupTitle">
     {{ title }}
     <slot name="title" />
     <slot />
@@ -107,8 +107,6 @@
       menuListItem: { type: Boolean, default: false },
       menuListItemActive: { type: Boolean, default: false },
 
-      // Enable divider
-      divider: { type: Boolean, default: false },
       groupTitle: { type: Boolean, default: false },
 
       // Title
@@ -217,6 +215,7 @@
             isMenuListItemActive: isMenuListItemActive.value,
             darkClasses: useDarkClasses,
             autoStrongTitle: autoStrongTitle.value,
+            className: ctx.attrs.class,
           }
         )
       );

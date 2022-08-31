@@ -24,7 +24,7 @@
     </svelte:fragment>
   </Navbar>
 
-  <List>
+  <List strong inset>
     <ListItem label title="Item 1">
       <Toggle
         slot="after"

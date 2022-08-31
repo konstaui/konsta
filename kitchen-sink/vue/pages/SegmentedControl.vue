@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Default Segmented</k-block-title>
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios class="space-y-4">
       <k-segmented>
         <k-segmented-button
           :active="activeSegmented === 1"
@@ -52,7 +52,7 @@
     </k-block>
 
     <k-block-title>Raised Segmented</k-block-title>
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios class="space-y-4">
       <k-segmented raised>
         <k-segmented-button
           :active="activeSegmented === 1"
@@ -96,7 +96,7 @@
     </k-block>
 
     <k-block-title>Outline</k-block-title>
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios class="space-y-4">
       <k-segmented outline>
         <k-segmented-button
           :active="activeSegmented === 1"
@@ -140,7 +140,7 @@
     </k-block>
 
     <k-block-title>Strong Segmented</k-block-title>
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios class="space-y-4">
       <k-segmented strong>
         <k-segmented-button
           strong

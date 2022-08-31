@@ -30,8 +30,16 @@
     </svelte:fragment>
   </Navbar>
 
+  <Block strong inset>
+    <p>
+      Breadcrumbs allow users to keep track and maintain awareness of their
+      locations within the app or website. They should be used for large sites
+      and apps with hierarchically arranged pages.
+    </p>
+  </Block>
+
   <BlockTitle>Basic</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Breadcrumbs>
       <BreadcrumbsItem>
         <Link>Home</Link>
@@ -49,7 +57,7 @@
   <BlockHeader
     >Breadcrumbs will be scrollable if they don't fit the screen</BlockHeader
   >
-  <Block strong>
+  <Block strongIos outlineIos>
     <Breadcrumbs>
       <BreadcrumbsItem>
         <Link>Home</Link>
@@ -72,7 +80,7 @@
   </Block>
 
   <BlockTitle>Collapsed</BlockTitle>
-  <Block strong>
+  <Block strongIos outlineIos>
     <Breadcrumbs>
       <BreadcrumbsItem>
         <Link>Home</Link>

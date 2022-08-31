@@ -21,7 +21,7 @@ export default function SegmentedControlPage() {
       />
 
       <BlockTitle>Default Segmented</BlockTitle>
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <Segmented>
           <SegmentedButton
             active={activeSegmented === 1}
@@ -66,7 +66,7 @@ export default function SegmentedControlPage() {
       </Block>
 
       <BlockTitle>Raised Segmented</BlockTitle>
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <Segmented raised>
           <SegmentedButton
             active={activeSegmented === 1}
@@ -110,7 +110,7 @@ export default function SegmentedControlPage() {
       </Block>
 
       <BlockTitle>Outline</BlockTitle>
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <Segmented outline>
           <SegmentedButton
             active={activeSegmented === 1}
@@ -154,7 +154,7 @@ export default function SegmentedControlPage() {
       </Block>
 
       <BlockTitle>Strong Segmented</BlockTitle>
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <Segmented strong>
           <SegmentedButton
             strong

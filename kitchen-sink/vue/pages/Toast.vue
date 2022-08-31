@@ -6,7 +6,7 @@
       </template>
     </k-navbar>
 
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios class="space-y-4">
       <k-toast position="left" :opened="opened.left">
         <template #button>
           <k-button clear inline @click="() => (opened.left = false)">

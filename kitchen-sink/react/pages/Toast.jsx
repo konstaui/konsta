@@ -28,7 +28,7 @@ export default function ToastPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Block strong className="space-y-4">
+      <Block strongIos outlineIos className="space-y-4">
         <Toast
           position="left"
           opened={toastLeftOpened}

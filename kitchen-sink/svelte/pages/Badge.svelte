@@ -62,7 +62,7 @@
       </Icon>
     </TabbarLink>
   </Tabbar>
-  <List>
+  <List strong inset>
     <ListItem title="Foo Bar">
       <DemoIcon slot="media" />
       <Badge slot="after" colors={{ bg: 'bg-gray-500' }}>0</Badge>

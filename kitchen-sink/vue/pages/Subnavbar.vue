@@ -13,7 +13,7 @@
       </template>
     </k-navbar>
     <div class="relative">
-      <k-block strong>
+      <k-block strong-ios outline-ios>
         <p>
           Subnavbar is useful when you need to put any additional elements into
           Navbar, like Tab Links or Search Bar. It also remains visible when

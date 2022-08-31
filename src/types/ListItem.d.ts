@@ -108,20 +108,13 @@ interface Props {
   menuListItemActive?: boolean;
 
   /**
-   * Renders item as list divider
-   *
-   * @default false
-   */
-  divider?: boolean;
-
-  /**
    * Renders dividers (borders) between list items. If not specified then inherits `dividers` prop value from parent List component
    *
    * @default undefined
    */
   dividers?: boolean;
   /**
-   * Renders it as list group title
+   * Renders it as a list group title
    *
    * @default false
    */

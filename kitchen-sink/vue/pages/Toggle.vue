@@ -6,7 +6,7 @@
       </template>
     </k-navbar>
 
-    <k-list>
+    <k-list strong inset>
       <k-list-item label title="Item 1">
         <template #after>
           <k-toggle

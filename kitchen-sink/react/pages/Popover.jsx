@@ -36,7 +36,7 @@ export default function PopoverPage() {
           </Link>
         }
       />
-      <Block strong className="space-y-4">
+      <Block className="space-y-4">
         <p>
           <Button
             className="popover-button"

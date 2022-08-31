@@ -18,7 +18,7 @@ export default function ChipsPage() {
       />
 
       <BlockTitle>Chips With Text</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Chip className="m-0.5">Example Chip</Chip>
         <Chip className="m-0.5">Another Chip</Chip>
         <Chip className="m-0.5">One More Chip</Chip>
@@ -27,7 +27,7 @@ export default function ChipsPage() {
       </Block>
 
       <BlockTitle>Outline Chips</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Chip outline className="m-0.5">
           Example Chip
         </Chip>
@@ -46,7 +46,7 @@ export default function ChipsPage() {
       </Block>
 
       <BlockTitle>Contact Chips</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Chip
           className="m-0.5"
           media={
@@ -86,7 +86,7 @@ export default function ChipsPage() {
       </Block>
 
       <BlockTitle>Deletable Chips / Tags</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Chip
           className="m-0.5"
           deleteButton
@@ -109,8 +109,8 @@ export default function ChipsPage() {
           Adam Smith
         </Chip>
       </Block>
-      <BlockTitle className=" bg-b bg-b">Color Chips</BlockTitle>
-      <Block strong>
+      <BlockTitle>Color Chips</BlockTitle>
+      <Block strongIos outlineIos>
         <Chip
           className="m-0.5"
           colors={{ fillBg: 'bg-red-500', fillText: 'text-white' }}

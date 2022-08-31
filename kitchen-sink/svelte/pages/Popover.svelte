@@ -37,7 +37,7 @@
       Popover
     </Link>
   </Navbar>
-  <Block strong class="space-y-4">
+  <Block class="space-y-4">
     <p>
       <Button
         class="popover-button"

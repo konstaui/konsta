@@ -29,7 +29,7 @@
 
   <BlockTitle>Volume: {volume}</BlockTitle>
   <BlockHeader>From 0 to 100 with step 10</BlockHeader>
-  <List>
+  <List strong insetMaterial outlineIos>
     <ListItem innerClass="flex space-x-4">
       <svelte:fragment slot="inner">
         <span>0</span>
@@ -45,7 +45,7 @@
 
   <BlockTitle>Price: ${price}</BlockTitle>
   <BlockHeader>From 0 to 1000 with step 1</BlockHeader>
-  <List>
+  <List strong insetMaterial outlineIos>
     <ListItem innerClass="flex space-x-4">
       <svelte:fragment slot="inner">
         <span>$0</span>
@@ -64,7 +64,7 @@
   <BlockTitle>
     Color: rgb({red}, {green}, {blue})
   </BlockTitle>
-  <List>
+  <List strong insetMaterial outlineIos>
     <ListItem>
       <Range
         slot="inner"

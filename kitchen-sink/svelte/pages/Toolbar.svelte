@@ -33,7 +33,7 @@
     <Link toolbar>Link 3</Link>
   </Toolbar>
 
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <p>
       Toolbar supports both top and bottom positions. Click the following button
       to change its position.

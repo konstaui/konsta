@@ -28,14 +28,14 @@ export default function BreadcrumbsPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Block strong>
+      <Block strong inset>
         Breadcrumbs allow users to keep track and maintain awareness of their
         locations within the app or website. They should be used for large sites
         and apps with hierarchically arranged pages.
       </Block>
 
       <BlockTitle>Basic</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Breadcrumbs>
           <BreadcrumbsItem>
             <Link>Home</Link>
@@ -53,7 +53,7 @@ export default function BreadcrumbsPage() {
       <BlockHeader>
         Breadcrumbs will be scrollable if they don't fit the screen
       </BlockHeader>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Breadcrumbs>
           <BreadcrumbsItem>
             <Link>Home</Link>
@@ -76,7 +76,7 @@ export default function BreadcrumbsPage() {
       </Block>
 
       <BlockTitle>Collapsed</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <Breadcrumbs>
           <BreadcrumbsItem>
             <Link>Home</Link>

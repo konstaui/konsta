@@ -21,14 +21,14 @@ export default function MenuListPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Block strong>
+      <Block strong inset>
         <p>
           Menu list unlike usual links list is designed to indicate currently
           active screen (or section) of your app. Think about it like a Tabbar
           but in a form of a list.
         </p>
       </Block>
-      <MenuList>
+      <MenuList strongIos outlineIos>
         <MenuListItem
           title="Home"
           active={selected === 'home'}
@@ -49,7 +49,7 @@ export default function MenuListPage() {
         />
       </MenuList>
 
-      <MenuList>
+      <MenuList strongIos outlineIos>
         <MenuListItem
           title="Home"
           subtitle="Home subtitle"

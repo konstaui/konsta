@@ -6,20 +6,20 @@
       </template>
     </k-navbar>
 
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios class="space-y-4">
       <p>
         Konsta UI comes with 2 panels (on left and on right), both are optional.
         You can put absolutely anything inside: data lists, forms, custom
         content, etc.
       </p>
     </k-block>
-    <k-block strong class="flex space-x-4">
+    <k-block strong-ios outline-ios class="flex space-x-4">
       <k-button @click="() => (leftPanelOpened = true)">Left Panel</k-button>
       <k-button @click="() => (rightPanelOpened = true)">Right Panel</k-button>
     </k-block>
 
     <k-block-title>Floating Panels</k-block-title>
-    <k-block strong class="flex space-x-4">
+    <k-block strong-ios outline-ios class="flex space-x-4">
       <k-button @click="() => (leftFloatingPanelOpened = true)"
         >Left Panel</k-button
       >

@@ -23,7 +23,7 @@
     </svelte:fragment>
   </Navbar>
 
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <p>
       Sheet Modals slide up from the bottom of the screen to reveal more
       content. Such modals allow to create custom overlays with custom content.

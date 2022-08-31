@@ -39,8 +39,6 @@
   export let menuListItem = false;
   export let menuListItemActive = false;
 
-  // Enable divider
-  export let divider = false;
   export let groupTitle = false;
 
   // Title
@@ -131,7 +129,6 @@
         titleFontSizeIos,
         titleFontSizeMaterial,
         strongTitle,
-        divider,
       },
       colors,
       {
@@ -141,6 +138,7 @@
         isMenuListItemActive,
         darkClasses: dark,
         autoStrongTitle,
+        className,
       }
     ),
     className,
@@ -157,10 +155,10 @@
     : c.title.default;
 </script>
 
-{#if divider || groupTitle}
+{#if groupTitle}
   <svelte:element
     this={component}
-    class={cls(c.divider, className)}
+    class={cls(c.groupTitle, className)}
     on:click={onClick}
   >
     {title}

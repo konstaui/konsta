@@ -59,7 +59,7 @@ export default function CheckboxPage() {
       />
 
       <BlockTitle>Inline</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <p>
           Lorem{' '}
           <Checkbox
@@ -80,7 +80,7 @@ export default function CheckboxPage() {
       </Block>
 
       <BlockTitle>Checkbox Group</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           label
           title="Books"
@@ -132,7 +132,7 @@ export default function CheckboxPage() {
       </List>
 
       <BlockTitle>Indeterminate State</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           label
           title="Movies"
@@ -175,7 +175,7 @@ export default function CheckboxPage() {
       </List>
 
       <BlockTitle>With Media Lists</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           label
           title="Facebook"

@@ -6,7 +6,7 @@
       </template>
     </k-navbar>
 
-    <k-block strong>
+    <k-block strong inset>
       <p>
         Breadcrumbs allow users to keep track and maintain awareness of their
         locations within the app or website. They should be used for large sites
@@ -15,7 +15,7 @@
     </k-block>
 
     <k-block-title>Basic</k-block-title>
-    <k-block strong>
+    <k-block strong-ios outline-ios>
       <k-breadcrumbs>
         <k-breadcrumbs-item>
           <k-link>Home</k-link>
@@ -34,7 +34,7 @@
       >Breadcrumbs will be scrollable if they don't fit the
       screen</k-block-header
     >
-    <k-block strong>
+    <k-block strong-ios outline-ios>
       <k-breadcrumbs>
         <k-breadcrumbs-item>
           <k-link>Home</k-link>
@@ -57,7 +57,7 @@
     </k-block>
 
     <k-block-title>Collapsed</k-block-title>
-    <k-block strong>
+    <k-block strong-ios outline-ios>
       <k-breadcrumbs>
         <k-breadcrumbs-item>
           <k-link>Home</k-link>

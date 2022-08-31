@@ -24,7 +24,7 @@ export default function RadioPage() {
       />
 
       <BlockTitle>Inline</BlockTitle>
-      <Block strong>
+      <Block strongIos outlineIos>
         <p>
           Lorem{' '}
           <Radio
@@ -47,7 +47,7 @@ export default function RadioPage() {
       </Block>
 
       <BlockTitle>Radio Group</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           label
           title="Books"
@@ -98,7 +98,7 @@ export default function RadioPage() {
         />
       </List>
 
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           label
           title="Books"
@@ -150,7 +150,7 @@ export default function RadioPage() {
       </List>
 
       <BlockTitle>With Media Lists</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           label
           title="Facebook"

@@ -6,14 +6,14 @@
       </template>
     </k-navbar>
 
-    <k-block strong class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         Action Sheet is a slide-up pane for presenting the user with a set of
         alternatives for how to proceed with a given task.
       </p>
     </k-block>
     <k-block-title>Open Action Sheet</k-block-title>
-    <k-block strong class="flex space-x-4">
+    <k-block strong inset class="flex space-x-4">
       <k-button @click="() => (actionsOneOpened = true)">One group</k-button>
       <k-button @click="() => (actionsTwoOpened = true)">Two groups</k-button>
     </k-block>

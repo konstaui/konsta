@@ -6,6 +6,7 @@
       </template>
     </k-navbar>
 
+    <k-block-title>Block Title</k-block-title>
     <k-block>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
@@ -13,8 +14,34 @@
         mollis, vulputate turpis vel, sagittis felis.
       </p>
     </k-block>
-    <k-block-title>Block Title</k-block-title>
+    <k-block-title>Strong Block</k-block-title>
     <k-block strong>
+      <p>
+        Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
+        Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
+        mollis, vulputate turpis vel, sagittis felis.
+      </p>
+    </k-block>
+    <k-block-title>Strong Outline Block</k-block-title>
+    <k-block strong outline>
+      <p>
+        Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
+        Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
+        mollis, vulputate turpis vel, sagittis felis.
+      </p>
+    </k-block>
+
+    <k-block-title>Strong Inset Block</k-block-title>
+    <k-block strong inset>
+      <p>
+        Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
+        Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
+        mollis, vulputate turpis vel, sagittis felis.
+      </p>
+    </k-block>
+
+    <k-block-title>Strong Inset Outline Block</k-block-title>
+    <k-block strong inset outline>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
@@ -23,7 +50,7 @@
     </k-block>
     <k-block-title>With Header & Footer</k-block-title>
     <k-block-header>Header</k-block-header>
-    <k-block strong>
+    <k-block strong outline>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
@@ -32,7 +59,7 @@
     </k-block>
     <k-block-footer>Footer</k-block-footer>
     <k-block-title medium>Medium Title</k-block-title>
-    <k-block strong>
+    <k-block strong outline>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
@@ -40,16 +67,7 @@
       </p>
     </k-block>
     <k-block-title large>Large Title</k-block-title>
-    <k-block strong>
-      <p>
-        Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
-        Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
-        mollis, vulputate turpis vel, sagittis felis.
-      </p>
-    </k-block>
-
-    <k-block-title>Inset Block</k-block-title>
-    <k-block strong inset>
+    <k-block strong outline>
       <p>
         Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
         Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam

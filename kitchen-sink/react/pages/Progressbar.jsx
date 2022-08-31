@@ -21,7 +21,7 @@ export default function ProgressbarPage() {
       />
 
       <BlockTitle>Determinate Progress Bar</BlockTitle>
-      <Block strong>
+      <Block strong insetMaterial outlineIos>
         <div className="my-4">
           <Progressbar progress={progress} />
         </div>
@@ -54,7 +54,7 @@ export default function ProgressbarPage() {
       </Block>
 
       <BlockTitle>Colors</BlockTitle>
-      <Block strong className="space-y-4">
+      <Block strong insetMaterial outlineIos className="space-y-4">
         <Progressbar className="k-color-brand-red" progress={0.25} />
         <Progressbar className="k-color-brand-green" progress={0.5} />
         <Progressbar className="k-color-brand-yellow" progress={0.75} />

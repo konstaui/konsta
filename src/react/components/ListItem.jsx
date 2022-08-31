@@ -36,8 +36,6 @@ const ListItem = forwardRef((props, ref) => {
     menuListItem,
     menuListItemActive,
 
-    // Enable divider
-    divider,
     groupTitle,
 
     // Title
@@ -148,6 +146,7 @@ const ListItem = forwardRef((props, ref) => {
         isMenuListItemActive,
         darkClasses: dark,
         autoStrongTitle,
+        className,
       }
     ),
     className
@@ -162,9 +161,9 @@ const ListItem = forwardRef((props, ref) => {
     ? c.title.strong
     : c.title.default;
 
-  if (divider || groupTitle) {
+  if (groupTitle) {
     return (
-      <Component className={cls(c.divider, className)}>
+      <Component className={cls(c.groupTitle, className)}>
         {title}
         {children}
       </Component>

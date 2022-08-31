@@ -26,20 +26,20 @@
     </svelte:fragment>
   </Navbar>
 
-  <Block strong class="space-y-4">
+  <Block strongIos outlineIos class="space-y-4">
     <p>
       Konsta UI comes with 2 panels (on left and on right), both are optional.
       You can put absolutely anything inside: data lists, forms, custom content,
       etc.
     </p>
   </Block>
-  <Block strong class="flex space-x-4">
+  <Block strongIos outlineIos class="flex space-x-4">
     <Button onClick={() => (leftPanelOpened = true)}>Left Panel</Button>
     <Button onClick={() => (rightPanelOpened = true)}>Right Panel</Button>
   </Block>
 
   <BlockTitle>Floating Panels</BlockTitle>
-  <Block strong class="flex space-x-4">
+  <Block strongIos outlineIos class="flex space-x-4">
     <Button onClick={() => (leftFloatingPanelOpened = true)}>Left Panel</Button>
     <Button onClick={() => (rightFloatingPanelOpened = true)}
       >Right Panel</Button

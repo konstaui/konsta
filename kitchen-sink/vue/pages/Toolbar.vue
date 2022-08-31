@@ -17,7 +17,7 @@
       <k-link toolbar>Link 3</k-link>
     </k-toolbar>
 
-    <k-block strong class="space-y-4">
+    <k-block strong-ios outline-ios-p class="space-y-4">
       <p>
         Toolbar supports both top and bottom positions. Click the following
         button to change its position.

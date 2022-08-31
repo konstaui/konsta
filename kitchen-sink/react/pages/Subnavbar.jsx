@@ -30,7 +30,7 @@ export default function SubnavbarPage() {
         }
       />
       <div className="relative">
-        <Block strong>
+        <Block strongIos outlineIos>
           <p>
             Subnavbar is useful when you need to put any additional elements
             into Navbar, like Tab Links or Search Bar. It also remains visible

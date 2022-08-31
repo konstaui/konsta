@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Inline</k-block-title>
-    <k-block strong>
+    <k-block strong-ios outline-ios>
       <p>
         Lorem{{ ' ' }}
         <k-checkbox
@@ -28,7 +28,7 @@
     </k-block>
 
     <k-block-title>Checkbox Group</k-block-title>
-    <k-list>
+    <k-list strong-ios outline-ios>
       <k-list-item label title="Books">
         <template #media>
           <k-checkbox
@@ -72,7 +72,7 @@
     </k-list>
 
     <k-block-title>Indeterminate State</k-block-title>
-    <k-list>
+    <k-list strong-ios outline-ios>
       <k-list-item label title="Movies" name="demo-checkbox">
         <template #media>
           <k-checkbox
@@ -107,7 +107,7 @@
     </k-list>
 
     <k-block-title>With Media Lists</k-block-title>
-    <k-list>
+    <k-list strong-ios outline-ios>
       <k-list-item
         label
         title="Facebook"

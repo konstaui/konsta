@@ -28,15 +28,43 @@ export default function ListPage() {
         <ListItem title="Item 3" />
       </List>
 
+      <BlockTitle>Strong List</BlockTitle>
+      <List strong>
+        <ListItem title="Item 1" />
+        <ListItem title="Item 2" />
+        <ListItem title="Item 3" />
+      </List>
+
+      <BlockTitle>Strong Outline List</BlockTitle>
+      <List strong outline>
+        <ListItem title="Item 1" />
+        <ListItem title="Item 2" />
+        <ListItem title="Item 3" />
+      </List>
+
+      <BlockTitle>Strong Inset List</BlockTitle>
+      <List strong inset>
+        <ListItem title="Item 1" />
+        <ListItem title="Item 2" />
+        <ListItem title="Item 3" />
+      </List>
+
+      <BlockTitle>Strong Outline Inset List</BlockTitle>
+      <List strong outline inset>
+        <ListItem title="Item 1" />
+        <ListItem title="Item 2" />
+        <ListItem title="Item 3" />
+      </List>
+
       <BlockTitle>Simple Links List</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem title="Link 1" link />
         <ListItem title="Link 2" link />
         <ListItem title="Link 3" link />
       </List>
 
       <BlockTitle>Data list, with icons</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem media={<DemoIcon />} title="Ivan Petrov" after="CEO" />
         <ListItem
           title="John Doe"
@@ -46,13 +74,13 @@ export default function ListPage() {
         <ListItem media={<DemoIcon />} title="Jenna Smith" />
       </List>
       <BlockTitle>Links</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem media={<DemoIcon />} link title="Ivan Petrov" after="CEO" />
         <ListItem media={<DemoIcon />} link title="John Doe" after="Cleaner" />
         <ListItem media={<DemoIcon />} link title="Jenna Smith" />
       </List>
       <BlockTitle>Links, Header, Footer</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           media={<DemoIcon />}
           link
@@ -86,21 +114,21 @@ export default function ListPage() {
       </List>
 
       <BlockTitle>Links, no icons</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem link title="Ivan Petrov" />
         <ListItem link title="John Doe" />
-        <ListItem divider title="Divider Here" />
+        <ListItem groupTitle title="Group title here" />
         <ListItem link title="Ivan Petrov" />
         <ListItem link title="Jenna Smith" />
       </List>
 
       <BlockTitle>Grouped with sticky titles</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListGroup>
           <ListItem
             title="A"
             groupTitle
-            className="ios:top-11-safe material:top-14-safe"
+            className="ios:top-11-safe material:top-16-safe sticky"
           />
           <ListItem title="Aaron " />
           <ListItem title="Abbie" />
@@ -110,7 +138,7 @@ export default function ListPage() {
           <ListItem
             title="B"
             groupTitle
-            className="ios:top-11-safe material:top-14-safe"
+            className="ios:top-11-safe material:top-16-safe  sticky"
           />
           <ListItem title="Bailey" />
           <ListItem title="Barclay" />
@@ -120,19 +148,12 @@ export default function ListPage() {
           <ListItem
             title="C"
             groupTitle
-            className="ios:top-11-safe material:top-14-safe"
+            className="ios:top-11-safe material:top-16-safe  sticky"
           />
           <ListItem title="Caiden" />
           <ListItem title="Calvin" />
           <ListItem title="Candy" />
         </ListGroup>
-      </List>
-
-      <BlockTitle>Inset List</BlockTitle>
-      <List inset>
-        <ListItem title="Item 1" />
-        <ListItem title="Item 2" />
-        <ListItem title="Item 3" />
       </List>
 
       <BlockTitle className="text-2xl">Media Lists</BlockTitle>
@@ -145,7 +166,7 @@ export default function ListPage() {
       </Block>
 
       <BlockTitle>Songs</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           link
           title="Yellow Submarine"
@@ -193,7 +214,7 @@ export default function ListPage() {
         />
       </List>
       <BlockTitle>Mail App</BlockTitle>
-      <List>
+      <List strongIos outlineIos>
         <ListItem
           link
           title="Facebook"

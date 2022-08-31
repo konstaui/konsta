@@ -21,6 +21,7 @@
     </svelte:fragment>
   </Navbar>
 
+  <BlockTitle>Block Title</BlockTitle>
   <Block>
     <p>
       Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
@@ -28,8 +29,34 @@
       mollis, vulputate turpis vel, sagittis felis.
     </p>
   </Block>
-  <BlockTitle>Block Title</BlockTitle>
+  <BlockTitle>Strong Block</BlockTitle>
   <Block strong>
+    <p>
+      Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
+      Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
+      mollis, vulputate turpis vel, sagittis felis.
+    </p>
+  </Block>
+  <BlockTitle>Strong Outline Block</BlockTitle>
+  <Block strong outline>
+    <p>
+      Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
+      Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
+      mollis, vulputate turpis vel, sagittis felis.
+    </p>
+  </Block>
+
+  <BlockTitle>Strong Inset Block</BlockTitle>
+  <Block strong inset>
+    <p>
+      Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
+      Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
+      mollis, vulputate turpis vel, sagittis felis.
+    </p>
+  </Block>
+
+  <BlockTitle>Strong Inset Outline Block</BlockTitle>
+  <Block strong inset outline>
     <p>
       Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
       Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
@@ -38,7 +65,7 @@
   </Block>
   <BlockTitle>With Header & Footer</BlockTitle>
   <BlockHeader>Header</BlockHeader>
-  <Block strong>
+  <Block strong outline>
     <p>
       Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
       Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
@@ -47,7 +74,7 @@
   </Block>
   <BlockFooter>Footer</BlockFooter>
   <BlockTitle medium>Medium Title</BlockTitle>
-  <Block strong>
+  <Block strong outline>
     <p>
       Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
       Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
@@ -55,16 +82,7 @@
     </p>
   </Block>
   <BlockTitle large>Large Title</BlockTitle>
-  <Block strong>
-    <p>
-      Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
-      Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam
-      mollis, vulputate turpis vel, sagittis felis.
-    </p>
-  </Block>
-
-  <BlockTitle>Inset Block</BlockTitle>
-  <Block strong inset>
+  <Block strong outline>
     <p>
       Donec et nulla auctor massa pharetra adipiscing ut sit amet sem.
       Suspendisse molestie velit vitae mattis tincidunt. Ut sit amet quam

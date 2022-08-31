@@ -7,12 +7,12 @@
     </k-navbar>
 
     <k-block-title>Default</k-block-title>
-    <k-block strong class="text-center">
+    <k-block strong inset-material outline-ios class="text-center">
       <k-preloader />
     </k-block>
 
     <k-block-title>Colors</k-block-title>
-    <k-block strong class="grid grid-cols-4">
+    <k-block strong inset-material outline-ios class="grid grid-cols-4">
       <div class="text-center">
         <k-preloader class="k-color-brand-red" />
       </div>
@@ -28,7 +28,12 @@
     </k-block>
 
     <k-block-title>Sizes</k-block-title>
-    <k-block strong class="grid grid-cols-4 items-center">
+    <k-block
+      strong
+      inset-material
+      outline-ios
+      class="grid grid-cols-4 items-center"
+    >
       <div class="text-center">
         <k-preloader size="w-4 h-4" />
       </div>
