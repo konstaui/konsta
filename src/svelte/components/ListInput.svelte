@@ -64,6 +64,9 @@
   export let onBlur = undefined;
   export let onClear = undefined;
 
+  let theme;
+  theme = useTheme({ ios, material }, (v) => (theme = v));
+
   $: isOutline =
     typeof outline === 'undefined'
       ? theme === 'ios'
@@ -74,9 +77,6 @@
   let inputEl = null;
 
   let isFocused = false;
-
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
 
   const dark = useDarkClasses();
 

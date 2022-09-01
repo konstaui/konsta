@@ -1,6 +1,4 @@
-import { cls } from '../cls.js';
-
-export const BadgeColors = (colorsProp = {}, dark) => {
+export const BadgeColors = (colorsProp = {}) => {
   return {
     bg: 'bg-primary',
     text: 'text-white',

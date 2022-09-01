@@ -20,7 +20,7 @@
 
   const dark = useDarkClasses();
 
-  $: colors = PopoverColors(colorsProp, dark);
+  $: colors = PopupColors(colorsProp, dark);
 
   $: c = useThemeClasses(
     { ios, material },

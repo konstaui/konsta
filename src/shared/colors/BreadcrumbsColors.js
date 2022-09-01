@@ -1,6 +1,4 @@
-import { cls } from '../cls.js';
-
-export const BreadcrumbsColors = (colorsProp = {}, dark) => {
+export const BreadcrumbsColors = (colorsProp = {}) => {
   return {
     ...colorsProp,
   };

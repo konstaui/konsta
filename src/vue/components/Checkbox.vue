@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="c.base" ref="elRef">
+  <component :is="component" ref="elRef" :class="c.base">
     <input
       ref="inputElRef"
       type="checkbox"
