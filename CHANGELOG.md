@@ -1,3 +1,11 @@
+# Changelog
+
+# [1.0.0-beta.2](https://github.com/konstaui/konsta/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-09-01)
+
+### Features
+
+- **card:** add `contentWrap` and `contentWrapPadding` props ([5571a78](https://github.com/konstaui/konsta/commit/5571a78b6647a7a1993e3121088b7fa3178e01c7))
+
 # [1.0.0-beta.1](https://github.com/konstaui/konsta/compare/v0.11.1...1.0.0-beta.1) (2022-09-01)
 
 ### Bug Fixes
@@ -71,8 +79,6 @@
 - **toolbar:** reworked material Toolbar and Tabbar to match m3 styles ([3022a45](https://github.com/konstaui/konsta/commit/3022a45837156b6c82c20ffe57acae49784083c3))
 - tweak Sheet, Actions, Panel appearance and easing in m3 theme ([92dc0f1](https://github.com/konstaui/konsta/commit/92dc0f1a5cc146ca3ad40a36fc77da85e837462c))
 - tweak Toast to match m3 design ([f39f544](https://github.com/konstaui/konsta/commit/f39f5446bbdb3d9879ba3fe984e80d9a79dc1d92))
-
-# Changelog
 
 # [0.11.1](https://github.com/konstaui/konsta/compare/v0.11.0...v0.11.1) (2022-08-05)
 
