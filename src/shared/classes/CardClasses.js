@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const CardClasses = (props, colors) => {
-  const { margin, headerDivider, footerDivider } = props;
+  const { margin, headerDivider, footerDivider, contentWrapPadding } = props;
   return {
     base: {
       common: cls(margin, `overflow-hidden`),
@@ -23,7 +23,7 @@ export const CardClasses = (props, colors) => {
         props.headerFontSizeMaterial
       ),
     },
-    content: 'p-4 text-sm',
+    content: cls(contentWrapPadding, 'text-sm'),
     footer: {
       common: cls(headerDivider && `border-t`, `text-sm p-4`),
       ios: cls(colors.footerTextIos, footerDivider && colors.outlineIos),

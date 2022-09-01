@@ -5,6 +5,7 @@
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
+  export let component = 'div';
   let className = undefined;
   export { className as class };
   let colorsProp = undefined;
@@ -15,6 +16,8 @@
   export let margin = 'm-4';
   export let header = '';
   export let footer = '';
+  export let contentWrap = true;
+  export let contentWrapPadding = 'p-4';
   export let raised = undefined;
   export let raisedIos = undefined;
   export let raisedMaterial = undefined;
@@ -54,6 +57,7 @@
         margin,
         outline: isOutline,
         raised: isRaised,
+        contentWrapPadding,
         headerDivider,
         footerDivider,
       },
@@ -65,12 +69,32 @@
   );
 </script>
 
-<div class={c.base[style]} {...$$restProps}>
-  {#if header || $$slots.header}
-    <div class={c.header}>{header}<slot name="header" /></div>
-  {/if}
-  <div class={c.content}><slot /></div>
-  {#if footer || $$slots.footer}
-    <div class={c.footer}>{footer}<slot name="footer" /></div>
-  {/if}
-</div>
+{#if typeof component === 'string'}
+  <svelte:element this={component} class={c.base[style]} {...$$restProps}>
+    {#if header || $$slots.header}
+      <div class={c.header}>{header}<slot name="header" /></div>
+    {/if}
+    {#if contentWrap}
+      <div class={c.content}><slot /></div>
+    {:else}
+      <slot />
+    {/if}
+    {#if footer || $$slots.footer}
+      <div class={c.footer}>{footer}<slot name="footer" /></div>
+    {/if}
+  </svelte:element>
+{:else}
+  <svelte:component this={component} class={c.base[style]} {...$$restProps}>
+    {#if header || $$slots.header}
+      <div class={c.header}>{header}<slot name="header" /></div>
+    {/if}
+    {#if contentWrap}
+      <div class={c.content}><slot /></div>
+    {:else}
+      <slot />
+    {/if}
+    {#if footer || $$slots.footer}
+      <div class={c.footer}>{footer}<slot name="footer" /></div>
+    {/if}
+  </svelte:component>
+{/if}

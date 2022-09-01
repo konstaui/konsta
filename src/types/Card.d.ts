@@ -65,6 +65,18 @@ interface Props {
    */
   footer?: string | React.ReactNode;
   /**
+   * Wraps card content with extra element with padding
+   *
+   * @default true
+   */
+  contentWrap?: boolean;
+  /**
+   * Content wrap padding (if `contentWrap` enabled)
+   *
+   * @default 'p-4'
+   */
+  contentWrapPadding?: string;
+  /**
    * Makes card outline. Overwrites `outlineIos` and `outlineMaterial`
    *
    * @default undefined

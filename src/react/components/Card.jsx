@@ -20,6 +20,9 @@ const Card = forwardRef((props, ref) => {
     headerFontSizeIos = 'text-[17px]',
     headerFontSizeMaterial = 'text-[22px]',
 
+    contentWrap = true,
+    contentWrapPadding = 'p-4',
+
     // Style
     raised,
     raisedIos,
@@ -74,6 +77,7 @@ const Card = forwardRef((props, ref) => {
       {
         ...props,
         margin,
+        contentWrapPadding,
         headerDivider,
         footerDivider,
         headerFontSizeIos,
@@ -90,7 +94,7 @@ const Card = forwardRef((props, ref) => {
   return (
     <Component ref={elRef} className={c.base[style]} {...attrs}>
       {header && <div className={c.header}>{header}</div>}
-      <div className={c.content}>{children}</div>
+      {contentWrap ? <div className={c.content}>{children}</div> : children}
       {footer && <div className={c.footer}>{footer}</div>}
     </Component>
   );

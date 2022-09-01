@@ -4,9 +4,10 @@
       {{ header }}<slot name="header" />
     </div>
 
-    <div :class="c.content">
+    <div v-if="contentWrap" :class="c.content">
       <slot />
     </div>
+    <slot v-else />
 
     <div v-if="footer || slots.footer" :class="c.footer">
       {{ footer }}<slot name="footer" />
@@ -42,6 +43,8 @@
       margin: { type: String, default: 'm-4' },
       header: { type: [String, Number] },
       footer: { type: [String, Number] },
+      contentWrap: { type: Boolean, default: true },
+      contentWrapPadding: { type: String, default: 'p-4' },
       // Style
       raised: { type: Boolean, default: undefined },
       raisedIos: { type: Boolean, default: undefined },
