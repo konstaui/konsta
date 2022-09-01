@@ -6,7 +6,6 @@ New components
 Tweaks
 
 - Popup
-  - tweak MD easing
   - push?
 - Sheet Modal
   - push?

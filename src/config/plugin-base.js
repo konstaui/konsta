@@ -37,6 +37,7 @@ module.exports = (userConfig = {}, konstConfig = {}) => {
     if (darkMode === 'class') {
       darkProps = {
         '.dark': {
+          backgroundColor: '#000',
           '--k-hairline-color': 'rgba(255, 255, 255, 0.15)',
           color: '#fff',
         },
@@ -45,6 +46,7 @@ module.exports = (userConfig = {}, konstConfig = {}) => {
       darkProps = {
         '@media (prefers-color-scheme: dark)': {
           ':root': {
+            backgroundColor: '#000',
             '--k-hairline-color': 'rgba(255, 255, 255, 0.15)',
             color: '#fff',
           },

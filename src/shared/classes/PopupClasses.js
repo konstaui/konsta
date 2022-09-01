@@ -12,9 +12,12 @@ export const PopupClasses = (props, colors, classes) => {
         size
       ),
       ios: 'duration-400 md:rounded-lg',
-      material: 'duration-400 md:rounded-[1.75rem]',
-      opened: '-translate-y-1/2',
-      closed: 'translate-y-full',
+      material: ' md:rounded-[1.75rem]',
+      opened: {
+        common: '-translate-y-1/2',
+        material: cls('ease-material-in-popup duration-[600ms]'),
+      },
+      closed: { common: 'translate-y-full', material: 'duration-400' },
     },
     backdrop: {
       common:

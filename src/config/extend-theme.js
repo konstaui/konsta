@@ -101,6 +101,7 @@ const extendTheme = (konstaConfig) => {
 
   const transitionTimingFunction = {
     'material-in': 'cubic-bezier(0,0.8,0.34,1)',
+    'material-in-popup': 'cubic-bezier(0,1,0.2,1)',
   };
 
   return {
