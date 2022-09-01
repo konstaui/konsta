@@ -5,11 +5,11 @@
     <k-block-title>Theming</k-block-title>
     <k-block>
       <div class="grid grid-cols-3 gap-4">
-        <k-card margin="" class="overflow-hidden">
+        <k-card margin="" :content-wrap="false" class="overflow-hidden">
           <k-link
             component="label"
             touch-ripple
-            class="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+            class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
           >
             <LogoIos class="text-[28px]" />
             <k-radio
@@ -20,11 +20,11 @@
           </k-link>
         </k-card>
 
-        <k-card margin="" class="overflow-hidden">
+        <k-card margin="" :content-wrap="false" class="overflow-hidden">
           <k-link
             component="label"
             touch-ripple
-            class="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+            class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
           >
             <LogoAndroid class="text-[28px]" />
             <k-radio
@@ -35,11 +35,11 @@
           </k-link>
         </k-card>
 
-        <k-card margin="" class="overflow-hidden">
+        <k-card margin="" :content-wrap="false" class="overflow-hidden">
           <k-link
             component="label"
             touch-ripple
-            class="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+            class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
           >
             <MoonStarsFill class="text-[28px]" />
             <k-toggle :checked="darkMode" @change="() => toggleDarkMode()" />

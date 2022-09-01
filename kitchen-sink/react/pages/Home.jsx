@@ -40,11 +40,11 @@ export default function HomePage({
       <BlockTitle>Theming</BlockTitle>
       <Block>
         <div className="grid grid-cols-3 gap-4">
-          <Card margin="" className="overflow-hidden">
+          <Card margin="" contentWrap={false} className="overflow-hidden">
             <Link
               component="label"
               touchRipple
-              className="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+              className="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
             >
               <LogoIos className="text-[28px]" />
               <Radio
@@ -55,11 +55,11 @@ export default function HomePage({
             </Link>
           </Card>
 
-          <Card margin="" className="overflow-hidden">
+          <Card margin="" contentWrap={false} className="overflow-hidden">
             <Link
               component="label"
               touchRipple
-              className=" -m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+              className="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
             >
               <LogoAndroid className="text-[28px]" />
               <Radio
@@ -70,11 +70,11 @@ export default function HomePage({
             </Link>
           </Card>
 
-          <Card margin="" className="overflow-hidden">
+          <Card margin="" contentWrap={false} className="overflow-hidden">
             <Link
               component="label"
               touchRipple
-              className="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+              className="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
             >
               <MoonStarsFill className="text-[28px]" />
               <Toggle onChange={() => toggleDarkMode()} checked={darkMode} />

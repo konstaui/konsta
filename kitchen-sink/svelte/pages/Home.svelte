@@ -40,11 +40,11 @@
   <BlockTitle>Theming</BlockTitle>
   <Block>
     <div class="grid grid-cols-3 gap-4">
-      <Card margin="" class="overflow-hidden">
+      <Card margin="" contentWrap={false} class="overflow-hidden">
         <Link
           component="label"
           touchRipple
-          class="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+          class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
         >
           <LogoIos class="text-[28px]" />
           <Radio
@@ -55,11 +55,11 @@
         </Link>
       </Card>
 
-      <Card margin="" class="overflow-hidden">
+      <Card margin="" contentWrap={false} class="overflow-hidden">
         <Link
           component="label"
           touchRipple
-          class=" -m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+          class=" !flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
         >
           <LogoAndroid class="text-[28px]" />
           <Radio
@@ -70,11 +70,11 @@
         </Link>
       </Card>
 
-      <Card margin="" class="overflow-hidden">
+      <Card margin="" contentWrap={false} class="overflow-hidden">
         <Link
           component="label"
           touchRipple
-          class="-m-4 !flex flex-col p-4 space-y-4 !space-x-0 text-center h-28"
+          class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
         >
           <MoonStarsFill class="text-[28px]" />
           <Toggle onChange={() => toggleDarkMode()} checked={darkMode} />
