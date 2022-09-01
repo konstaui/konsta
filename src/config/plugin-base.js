@@ -13,9 +13,9 @@ module.exports = (userConfig = {}, konstConfig = {}) => {
       iosFont = Array.isArray(ff.ios) ? ff.ios.join(', ') : ff.ios;
     }
     if (ff.material) {
-      materialFont = Array.isArray(ff.fontFamily.material)
-        ? ff.fontFamily.material.join(', ')
-        : ff.fontFamily.material;
+      materialFont = Array.isArray(ff.material)
+        ? ff.material.join(', ')
+        : ff.material;
     }
   };
   if (
