@@ -11,6 +11,16 @@
   const setTheme = (t) => {
     theme = t;
   };
+  let currentColorTheme = '';
+  const setColorTheme = (color) => {
+    const htmlEl = document.documentElement;
+    htmlEl.classList.forEach((c) => {
+      if (c.includes('k-color')) htmlEl.classList.remove(c);
+    });
+    if (color) htmlEl.classList.add(color);
+    currentColorTheme = color;
+  };
+
   window.setTheme = setTheme;
   window.setMode = (mode) => {
     if (mode === 'dark') document.documentElement.classList.add('dark');
@@ -35,7 +45,12 @@
 <App {theme} safeAreas={!inIFrame}>
   <Router history={hash} primary={false}>
     <Route path="/">
-      <HomePage {theme} {setTheme} />
+      <HomePage
+        {theme}
+        {setTheme}
+        colorTheme={currentColorTheme}
+        {setColorTheme}
+      />
     </Route>
     {#each routes as route}
       <Route path={route.path} component={route.component} />

@@ -14,6 +14,8 @@
   export let ios = undefined;
   export let material = undefined;
 
+  export let component = 'a';
+
   // Toolbar/navbar link
   export let navbar = false;
   export let toolbar = false;
@@ -35,7 +37,9 @@
   const dark = useDarkClasses();
 
   $: needsTouchRipple =
-    theme === 'material' && (toolbar || tabbar || navbar) && touchRipple;
+    theme === 'material' &&
+    (touchRipple ||
+      (typeof touchRipple === 'undefined' && (toolbar || tabbar || navbar)));
 
   $: useTouchRipple(rippleEl, needsTouchRipple);
 
@@ -76,11 +80,12 @@
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<a
+<svelte:element
+  this={component}
   bind:this={rippleEl.current}
   class={classes}
   {...$$restProps}
   on:click={onClick}
 >
   <slot />
-</a>
+</svelte:element>

@@ -13,6 +13,15 @@
     },
     setup() {
       const theme = ref('ios');
+      const currentColorTheme = ref('');
+      const setColorTheme = (color) => {
+        const htmlEl = document.documentElement;
+        htmlEl.classList.forEach((c) => {
+          if (c.includes('k-color')) htmlEl.classList.remove(c);
+        });
+        if (color) htmlEl.classList.add(color);
+        currentColorTheme.value = color;
+      };
       const inIFrame = window.parent !== window;
 
       const setTheme = (t) => {
@@ -22,6 +31,8 @@
       const AppContext = computed(() => ({
         theme: theme.value,
         setTheme,
+        colorTheme: currentColorTheme.value,
+        setColorTheme,
       }));
 
       provide('AppContext', AppContext);

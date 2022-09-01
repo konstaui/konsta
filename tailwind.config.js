@@ -4,6 +4,7 @@ module.exports = konstaConfig({
   konsta: {
     colors: {
       primary: '#007aff',
+      'brand-primary': '#007aff',
       'brand-red': '#ff3b30',
       'brand-green': '#4cd964',
       'brand-yellow': '#ffcc00',

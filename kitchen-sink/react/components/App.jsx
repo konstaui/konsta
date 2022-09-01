@@ -7,6 +7,15 @@ import HomePage from '../pages/Home.jsx';
 
 function App() {
   const [theme, setTheme] = useState('ios');
+  const [currentColorTheme, setCurrentColorTheme] = useState('');
+  const setColorTheme = (color) => {
+    const htmlEl = document.documentElement;
+    htmlEl.classList.forEach((c) => {
+      if (c.includes('k-color')) htmlEl.classList.remove(c);
+    });
+    if (color) htmlEl.classList.add(color);
+    setCurrentColorTheme(color);
+  };
   useEffect(() => {
     window.setTheme = (t) => setTheme(t);
     window.setMode = (mode) => {
@@ -37,7 +46,14 @@ function App() {
           ))}
           <Route
             path="/"
-            element={<HomePage theme={theme} setTheme={setTheme} />}
+            element={
+              <HomePage
+                theme={theme}
+                setTheme={setTheme}
+                colorTheme={currentColorTheme}
+                setColorTheme={setColorTheme}
+              />
+            }
           />
         </Routes>
       </Router>

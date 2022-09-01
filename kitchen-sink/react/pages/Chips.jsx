@@ -115,7 +115,7 @@ export default function ChipsPage() {
           className="m-0.5"
           colors={{ fillBg: 'bg-red-500', fillText: 'text-white' }}
         >
-          Primary Chip
+          Red Chip
         </Chip>
         <Chip
           className="m-0.5"

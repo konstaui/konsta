@@ -41,7 +41,7 @@
       tabbar: Boolean,
       tabbarActive: Boolean,
 
-      touchRipple: { type: Boolean, default: true },
+      touchRipple: { type: Boolean, default: undefined },
     },
     setup(props, ctx) {
       const rippleElRef = ref(null);
@@ -50,14 +50,18 @@
       const needsTouchRipple = computed(
         () =>
           theme.value === 'material' &&
-          props.touchRipple &&
-          (props.toolbar || props.tabbar || props.navbar)
+          (props.touchRipple ||
+            (typeof props.touchRipple === 'undefined' &&
+              (props.toolbar || props.tabbar || props.navbar)))
       );
 
       useTouchRipple(
         rippleElRef,
         props,
-        () => props.toolbar || props.tabbar || props.navbar
+        () =>
+          props.touchRipple ||
+          (typeof props.touchRipple === 'undefined' &&
+            (props.toolbar || props.tabbar || props.navbar))
       );
 
       const colors = computed(() =>
