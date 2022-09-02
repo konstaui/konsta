@@ -29,7 +29,7 @@
             {{ after }}<slot name="after" />
           </div>
           <chevron-icon
-            v-if="isLink && chevron && !menuListItem"
+            v-if="isLink && hasChevron && !menuListItem"
             :class="c.chevron"
           />
         </div>
@@ -116,7 +116,9 @@
       label: { type: Boolean, default: false },
 
       // Link props
-      chevron: { type: Boolean, default: true },
+      chevron: { type: Boolean, default: undefined },
+      chevronIos: { type: Boolean, default: true },
+      chevronMaterial: { type: Boolean, default: true },
       href: { type: [Boolean, String], default: undefined },
       target: { type: String, default: undefined },
 
@@ -136,6 +138,14 @@
 
       const isMenuListItemActive = computed(
         () => props.menuListItem && props.menuListItemActive
+      );
+
+      const hasChevron = computed(() =>
+        typeof props.chevron === 'undefined'
+          ? theme.value === 'ios'
+            ? props.chevronIos
+            : props.chevronMaterial
+          : props.chevron
       );
 
       const textColor = computed(
@@ -187,11 +197,14 @@
           : {}
       );
 
-      const autoStrongTitle = computed(
+      const isMediaItem = computed(
         () =>
-          props.strongTitle === 'auto' &&
           (props.title || ctx.slots.title) &&
           (props.subtitle || ctx.slots.subtitle || props.text || ctx.slots.text)
+      );
+
+      const autoStrongTitle = computed(
+        () => props.strongTitle === 'auto' && isMediaItem.value
       );
 
       const ListDividersContext = inject('ListDividersContext', {
@@ -209,6 +222,7 @@
           },
           colors.value,
           {
+            isMediaItem: isMediaItem.value,
             theme: theme.value,
             textColor: textColor.value,
             needsTouchRipple: needsTouchRipple.value,
@@ -239,6 +253,7 @@
         ItemContentComponent,
         isLink,
         c,
+        hasChevron,
         linkPropsComputed,
         itemContentClasses,
         titleClasses,

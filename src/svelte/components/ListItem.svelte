@@ -48,7 +48,9 @@
   export let label = false;
 
   // Link props
-  export let chevron = true;
+  export let chevron = undefined;
+  export let chevronIos = true;
+  export let chevronMaterial = true;
   export let href = undefined;
   export let target = undefined;
   export let dividers = undefined;
@@ -74,6 +76,13 @@
   theme = useTheme({ ios, material }, (v) => (theme = v));
 
   const dark = useDarkClasses();
+
+  $: hasChevron =
+    typeof chevron === 'undefined'
+      ? theme === 'ios'
+        ? chevronIos
+        : chevronMaterial
+      : chevron;
 
   $: colors = ListItemColors(colorsProp, dark);
 
@@ -107,6 +116,11 @@
     ? { href: hrefComputed, target, ...linkProps }
     : {};
 
+  $: isMediaItem =
+    (title || $$slots.title) &&
+    withTitle !== false &&
+    (subtitle || text || $$slots.subtitle || $$slots.text);
+
   $: autoStrongTitle =
     strongTitle === 'auto' &&
     (title || $$slots.title) &&
@@ -132,6 +146,7 @@
       },
       colors,
       {
+        isMediaItem,
         theme,
         textColor,
         needsTouchRipple,
@@ -200,7 +215,7 @@
                   <slot name="after" />
                 </div>
               {/if}
-              {#if isLink && chevron && !menuListItem}
+              {#if isLink && hasChevron && !menuListItem}
                 <ChevronIcon class={c.chevron} />
               {/if}
             </div>
@@ -246,7 +261,7 @@
                   <slot name="after" />
                 </div>
               {/if}
-              {#if isLink && chevron && !menuListItem}
+              {#if isLink && hasChevron && !menuListItem}
                 <ChevronIcon class={c.chevron} />
               {/if}
             </div>

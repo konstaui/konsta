@@ -6,11 +6,11 @@ export const ListItemClasses = (
   colors,
   {
     className,
+    isMediaItem,
     theme,
     textColor,
     needsTouchRipple,
     isMenuListItemActive,
-    darkClasses: dark,
     autoStrongTitle,
   }
 ) => {
@@ -32,26 +32,24 @@ export const ListItemClasses = (
   return {
     base: menuListItem ? `${textColor} py-1` : '',
     itemContent: {
-      common: cls(
-        !menuListItem && 'pl-4-safe',
-        `flex items-center ${contentClassName || contentClass}`
-      ),
+      common: cls(`flex items-center ${contentClassName || contentClass}`),
       ios: cls(
-        !menuListItem && colors.primaryTextIos,
+        !menuListItem && cls(colors.primaryTextIos, 'pl-4-safe'),
         menuListItem && 'rounded-lg ml-2-safe mr-2-safe pl-2'
       ),
       material: cls(
-        !menuListItem && colors.primaryTextMaterial,
+        !menuListItem &&
+          cls(
+            colors.primaryTextMaterial,
+            isMediaItem ? 'ml-2-safe mr-2-safe rounded-2xl pl-2' : 'pl-4-safe'
+          ),
         menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe pl-4'
       ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
         dividers && theme === 'ios' && 'active:hairline-transparent',
         needsTouchRipple &&
-          cls(
-            `relative overflow-hidden touch-ripple-black z-10`,
-            dark('dark:touch-ripple-white')
-          ),
+          cls(`relative overflow-hidden z-10`, colors.touchRipple),
         isMenuListItemActive
           ? cls(
               theme === 'ios'
@@ -75,12 +73,15 @@ export const ListItemClasses = (
     },
     inner: {
       common: cls(
-        'pr-4-safe w-full relative',
+        'w-full relative',
         !menuListItem && dividers && 'hairline-b',
         innerClassName || innerClass
       ),
-      ios: 'py-2.5',
-      material: 'py-3',
+      ios: 'py-2.5 pr-4-safe',
+      material: cls(
+        'py-3',
+        isMediaItem && !menuListItem ? 'pr-2' : 'pr-4-safe'
+      ),
     },
     titleWrap: {
       common: cls(
@@ -108,7 +109,7 @@ export const ListItemClasses = (
     after: {
       common: cls(`shrink-0 ml-auto pl-1 flex items-center space-x-1`),
       ios: colors.secondaryTextIos,
-      material: colors.secondaryTextMaterial,
+      material: cls(colors.secondaryTextMaterial, 'text-sm'),
     },
     chevron: 'opacity-20 shrink-0 ml-3',
     subtitle: 'text-sm',

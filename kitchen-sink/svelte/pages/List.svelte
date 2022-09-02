@@ -166,6 +166,7 @@
   <BlockTitle>Songs</BlockTitle>
   <List strongIos outlineIos>
     <ListItem
+      chevronMaterial={false}
       link
       title="Yellow Submarine"
       after="$15"
@@ -173,7 +174,7 @@
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
       <img
-        class="ios:rounded-lg material:rounded-2xl"
+        class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
         slot="media"
         src="https://cdn.framework7.io/placeholder/people-160x160-1.jpg"
         width="80"
@@ -181,6 +182,7 @@
       />
     </ListItem>
     <ListItem
+      chevronMaterial={false}
       link
       title="Don't Stop Me Now"
       after="$22"
@@ -188,7 +190,7 @@
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
       <img
-        class="ios:rounded-lg material:rounded-2xl"
+        class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
         slot="media"
         src="https://cdn.framework7.io/placeholder/people-160x160-2.jpg"
         width="80"
@@ -196,6 +198,7 @@
       />
     </ListItem>
     <ListItem
+      chevronMaterial={false}
       link
       title="Billie Jean"
       after="$16"
@@ -203,7 +206,7 @@
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
       <img
-        class="ios:rounded-lg material:rounded-2xl"
+        class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
         slot="media"
         src="https://cdn.framework7.io/placeholder/people-160x160-3.jpg"
         width="80"
@@ -214,6 +217,7 @@
   <BlockTitle>Mail App</BlockTitle>
   <List strongIos outlineIos>
     <ListItem
+      chevronMaterial={false}
       link
       title="Facebook"
       after="17:14"
@@ -221,6 +225,7 @@
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     />
     <ListItem
+      chevronMaterial={false}
       link
       title="John Doe (via Twitter)"
       after="17:11"
@@ -228,6 +233,7 @@
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     />
     <ListItem
+      chevronMaterial={false}
       link
       title="Facebook"
       after="16:48"
@@ -235,6 +241,7 @@
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     />
     <ListItem
+      chevronMaterial={false}
       link
       title="John Doe (via Twitter)"
       after="15:32"

@@ -45,7 +45,9 @@ const ListItem = forwardRef((props, ref) => {
     label,
 
     // Link props
-    chevron = true,
+    chevron = undefined,
+    chevronIos = true,
+    chevronMaterial = true,
     chevronIcon,
     href,
     target,
@@ -87,6 +89,13 @@ const ListItem = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
+  const hasChevron =
+    typeof chevron === 'undefined'
+      ? theme === 'ios'
+        ? chevronIos
+        : chevronMaterial
+      : chevron;
+
   const colors = ListItemColors(colorsProp, dark);
 
   const isMenuListItemActive = menuListItem && menuListItemActive;
@@ -123,7 +132,8 @@ const ListItem = forwardRef((props, ref) => {
     ? { href: hrefComputed, target, ...linkProps }
     : {};
 
-  const autoStrongTitle = strongTitle === 'auto' && title && (subtitle || text);
+  const isMediaItem = title && (subtitle || text);
+  const autoStrongTitle = strongTitle === 'auto' && isMediaItem;
 
   const c = themeClasses(
     ListItemClasses(
@@ -140,6 +150,7 @@ const ListItem = forwardRef((props, ref) => {
       },
       colors,
       {
+        isMediaItem,
         theme,
         textColor,
         needsTouchRipple,
@@ -185,7 +196,7 @@ const ListItem = forwardRef((props, ref) => {
               {title && <div className={titleClasses}>{title}</div>}
               {after && <div className={c.after}>{after}</div>}
               {isLink &&
-                chevron &&
+                hasChevron &&
                 !menuListItem &&
                 (chevronIcon || <ChevronIcon className={c.chevron} />)}
             </div>

@@ -54,6 +54,10 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       `bg-md-light-secondary-container`,
       dark('dark:bg-md-dark-secondary-container')
     ),
+    touchRipple: cls(
+      'touch-ripple-md-light-primary',
+      dark('dark:touch-ripple-md-dark-primary')
+    ),
     ...colorsProp,
   };
 };

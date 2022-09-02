@@ -89,6 +89,12 @@ interface Props {
      * @default 'bg-md-light-secondary-container dark:bg-md-dark-secondary-container'
      */
     menuListItemActiveBgMaterial?: string;
+
+    /**
+     *
+     * @default 'touch-ripple-md-light-primary dark:touch-ripple-md-dark-primary'
+     */
+    touchRipple?: string;
   };
 
   /**
@@ -194,11 +200,23 @@ interface Props {
    */
   label?: boolean;
   /**
-   * Enables chevron icon if list item is link
+   * Enables chevron icon if list item is link. Overwrites `chevronIos` and `chevronMaterial`
+   *
+   * @default undefined
+   */
+  chevron?: boolean;
+  /**
+   * Enables chevron icon if list item is link in iOS theme
    *
    * @default true
    */
-  chevron?: boolean;
+  chevronIos?: boolean;
+  /**
+   * Enables chevron icon if list item is link in Material theme
+   *
+   * @default true
+   */
+  chevronMaterial?: boolean;
   /**
    * Allows to replace default chevron icon with custom one
    */

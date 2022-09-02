@@ -178,6 +178,7 @@
     <k-block-title>Songs</k-block-title>
     <k-list strong-ios outline-ios>
       <k-list-item
+        :chevron-material="false"
         link
         title="Yellow Submarine"
         after="$15"
@@ -186,7 +187,7 @@
       >
         <template #media>
           <img
-            class="ios:rounded-lg material:rounded-2xl"
+            class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
             src="https://cdn.framework7.io/placeholder/people-160x160-1.jpg"
             width="80"
             alt="demo"
@@ -194,6 +195,7 @@
         </template>
       </k-list-item>
       <k-list-item
+        :chevron-material="false"
         link
         title="Don't Stop Me Now"
         after="$22"
@@ -202,7 +204,7 @@
       >
         <template #media>
           <img
-            class="ios:rounded-lg material:rounded-2xl"
+            class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
             src="https://cdn.framework7.io/placeholder/people-160x160-2.jpg"
             width="80"
             alt="demo"
@@ -210,6 +212,7 @@
         </template>
       </k-list-item>
       <k-list-item
+        :chevron-material="false"
         link
         title="Billie Jean"
         after="$16"
@@ -218,7 +221,7 @@
       >
         <template #media>
           <img
-            class="ios:rounded-lg material:rounded-2xl"
+            class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
             src="https://cdn.framework7.io/placeholder/people-160x160-3.jpg"
             width="80"
             alt="demo"
@@ -229,6 +232,7 @@
     <k-block-title>Mail App</k-block-title>
     <k-list strong-ios outline-ios>
       <k-list-item
+        :chevron-material="false"
         link
         title="Facebook"
         after="17:14"
@@ -236,6 +240,7 @@
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
       <k-list-item
+        :chevron-material="false"
         link
         title="John Doe (via Twitter)"
         after="17:11"
@@ -243,6 +248,7 @@
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
       <k-list-item
+        :chevron-material="false"
         link
         title="Facebook"
         after="16:48"
@@ -250,6 +256,7 @@
         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
       />
       <k-list-item
+        :chevron-material="false"
         link
         title="John Doe (via Twitter)"
         after="15:32"
