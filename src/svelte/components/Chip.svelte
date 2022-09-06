@@ -21,7 +21,8 @@
   export let onClick = undefined;
 
   const dark = useDarkClasses();
-  const theme = useTheme();
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
 
   $: style = outline ? 'outline' : 'fill';
 

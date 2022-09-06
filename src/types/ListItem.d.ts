@@ -92,7 +92,7 @@ interface Props {
 
     /**
      *
-     * @default 'touch-ripple-md-light-primary dark:touch-ripple-md-dark-primary'
+     * @default 'touch-ripple-black dark:touch-ripple-white'
      */
     touchRipple?: string;
   };
