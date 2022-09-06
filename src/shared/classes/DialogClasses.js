@@ -12,16 +12,20 @@ export const DialogClasses = (props, colors, classes, { hasButtons }) => {
   return {
     base: {
       common: cls(
-        'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-w-full max-h-full overflow-hidden duration-400',
+        'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400',
         positionClass('fixed', classes)
       ),
       ios: cls(
-        'rounded-xl',
+        'rounded-xl max-w-full',
         sizeIos,
         colors.bgIos,
         translucent && 'translucent'
       ),
-      material: cls('rounded-[1.75rem] p-6', sizeMaterial, colors.bgMaterial),
+      material: cls(
+        'rounded-[1.75rem] p-6 max-w-[90%]',
+        sizeMaterial,
+        colors.bgMaterial
+      ),
       opened: '',
       closed: 'scale-[0.85] opacity-0 pointer-events-none',
     },
