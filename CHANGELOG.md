@@ -1,5 +1,15 @@
 # Changelog
 
+# [1.0.0-beta.3](https://github.com/konstaui/konsta/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-09-06)
+
+### Bug Fixes
+
+- **config:** fix material font extraction ([792ace3](https://github.com/konstaui/konsta/commit/792ace387dd115403e75178e7a9440d5dded2c5d))
+
+### Features
+
+- **list:** update media list styles in m3 theme ([d9a03a9](https://github.com/konstaui/konsta/commit/d9a03a9b5d3136bc1fc23a3b43f4f1142ab6b5bc))
+
 # [1.0.0-beta.2](https://github.com/konstaui/konsta/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-09-01)
 
 ### Features
