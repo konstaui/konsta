@@ -27,7 +27,7 @@ const Navbar = forwardRef((props, ref) => {
 
     colors: colorsProp,
     translucent = true,
-    hairlines = true,
+    outline,
     medium,
     large,
     transparent,
@@ -159,6 +159,8 @@ const Navbar = forwardRef((props, ref) => {
     return destroyScroll;
   });
 
+  const isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
+
   const c = themeClasses(
     NavbarClasses(
       {
@@ -166,7 +168,7 @@ const Navbar = forwardRef((props, ref) => {
         centerTitle:
           typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
         translucent,
-        hairlines,
+        outline: isOutline,
         fontSizeIos,
         fontSizeMaterial,
         titleFontSizeIos,

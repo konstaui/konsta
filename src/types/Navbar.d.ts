@@ -122,11 +122,11 @@ interface Props {
    */
   translucent?: boolean;
   /**
-   * Renders outer hairlines (borders) on iOS theme
+   * Renders outer hairlines (borders). If not specified, will be enabled for iOS theme
    *
-   * @default true
+   * @default undefined
    */
-  hairlines?: boolean;
+  outline?: boolean;
 
   /**
    * Renders medium-sized navbar with extra row for medium-sized title which becomes usual size on scroll

@@ -20,7 +20,7 @@
   let colorsProp = undefined;
   export { colorsProp as colors };
   export let translucent = true;
-  export let hairlines = true;
+  export let outline = undefined;
   export let centerTitle = undefined;
 
   export let medium = false;
@@ -60,6 +60,8 @@
 
   $: colors = NavbarColors(colorsProp, dark);
 
+  $: isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
+
   let theme;
   theme = useTheme((v) => (theme = v));
 
@@ -76,7 +78,7 @@
         subnavbarClass,
         translucent,
         transparent,
-        hairlines,
+        outline: isOutline,
         fontSizeIos,
         fontSizeMaterial,
         titleFontSizeIos,

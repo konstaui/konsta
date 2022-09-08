@@ -3,7 +3,7 @@ import { positionClass } from '../position-class.js';
 
 export const NavbarClasses = (props, colors, classes) => {
   const {
-    hairlines,
+    outline,
     translucent,
     large,
     medium,
@@ -46,13 +46,10 @@ export const NavbarClasses = (props, colors, classes) => {
     bg: {
       common: cls(
         'absolute w-full h-full left-0 top-0',
+        outline && 'hairline-b',
         bgClassName || bgClass
       ),
-      ios: cls(
-        colors.bgIos,
-        hairlines && 'hairline-b',
-        translucent && 'translucent'
-      ),
+      ios: cls(colors.bgIos, translucent && 'translucent'),
       material: `${colors.bgMaterial}`,
     },
     subnavbar: {

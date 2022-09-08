@@ -69,7 +69,7 @@
       centerTitle: { type: Boolean, default: undefined },
 
       translucent: { type: Boolean, default: true },
-      hairlines: { type: Boolean, default: true },
+      outline: { type: Boolean, default: undefined },
       medium: { type: Boolean, default: false },
       large: { type: Boolean, default: false },
       transparent: { type: Boolean, default: false },
@@ -109,10 +109,17 @@
         NavbarColors(props.colors || {}, useDarkClasses)
       );
 
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+          : props.outline
+      );
+
       const c = useThemeClasses(props, () =>
         NavbarClasses(
           {
             ...props,
+            outline: isOutline.value,
             left: ctx.slots.left,
             right: ctx.slots.right,
             centerTitle:
