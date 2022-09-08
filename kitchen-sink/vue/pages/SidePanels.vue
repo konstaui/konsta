@@ -95,7 +95,7 @@
       :opened="leftFloatingPanelOpened"
       @backdropclick="() => (leftFloatingPanelOpened = false)"
     >
-      <k-page>
+      <k-page class="no-safe-areas-top no-safe-areas-bottom">
         <k-navbar title="Left Panel">
           <template #right>
             <k-link navbar @click="() => (leftFloatingPanelOpened = false)">
@@ -127,7 +127,7 @@
       :opened="rightFloatingPanelOpened"
       @backdropclick="() => (rightFloatingPanelOpened = false)"
     >
-      <k-page>
+      <k-page class="no-safe-areas-top no-safe-areas-bottom">
         <k-navbar title="Right Panel">
           <template #right>
             <k-link navbar @click="() => (rightFloatingPanelOpened = false)">

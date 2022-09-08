@@ -120,7 +120,7 @@ export default function SidePanelsPage() {
         opened={leftFloatingPanelOpened}
         onBackdropClick={() => setLeftFloatingPanelOpened(false)}
       >
-        <Page>
+        <Page className="no-safe-areas-top no-safe-areas-bottom">
           <Navbar
             title="Left Panel"
             right={
@@ -153,7 +153,7 @@ export default function SidePanelsPage() {
         opened={rightFloatingPanelOpened}
         onBackdropClick={() => setRightFloatingPanelOpened(false)}
       >
-        <Page>
+        <Page className="no-safe-areas-top no-safe-areas-bottom">
           <Navbar
             title="Right Panel"
             right={
