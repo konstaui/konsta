@@ -7,9 +7,9 @@ interface Props {
   component?: string;
 
   /**
-   * Renders group outer hairlines (borders) (in Material theme only)
+   * Renders group outer hairlines (borders). (in Material theme only)
    *
    * @default true
    */
-  hairlines?: boolean;
+  dividers?: boolean;
 }

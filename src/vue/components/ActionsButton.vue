@@ -39,7 +39,7 @@
         type: Boolean,
         default: true,
       },
-      hairlines: { type: Boolean, default: true },
+      dividers: { type: Boolean, default: undefined },
       bold: { type: Boolean, default: undefined },
       boldIos: { type: Boolean, default: false },
       boldMaterial: { type: Boolean, default: false },
@@ -66,6 +66,13 @@
       );
 
       const theme = useTheme();
+
+      const isDividers = computed(() =>
+        typeof props.dividers === 'undefined'
+          ? theme.value === 'ios'
+          : props.dividers
+      );
+
       const isBold = computed(() =>
         typeof props.bold === 'undefined'
           ? theme.value === 'ios'
@@ -78,7 +85,7 @@
         props,
         () =>
           ActionsButtonClasses(
-            { ...props, bold: isBold.value },
+            { ...props, bold: isBold.value, dividers: isDividers.value },
             colors.value,
             useDarkClasses
           ),

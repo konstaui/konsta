@@ -46,9 +46,9 @@ interface Props {
   fontSizeMaterial?: string;
 
   /**
-   * Renders button outer hairlines (borders)
+   * Renders button outer hairlines (borders). If not specified, will be enabled in iOS theme
    *
-   * @default true
+   * @default undefined
    */
-  hairlines?: boolean;
+  dividers?: boolean;
 }

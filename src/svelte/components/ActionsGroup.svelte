@@ -7,11 +7,11 @@
   export let ios = undefined;
   export let material = undefined;
 
-  export let hairlines = true;
+  export let dividers = true;
 
   $: c = useThemeClasses(
     { ios, material },
-    ActionsGroupClasses({ hairlines }),
+    ActionsGroupClasses({ dividers }),
     className,
     (v) => (c = v)
   );

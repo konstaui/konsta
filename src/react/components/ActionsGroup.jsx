@@ -10,7 +10,7 @@ const ActionsGroup = forwardRef((props, ref) => {
     ios,
     material,
 
-    hairlines = true,
+    dividers = true,
 
     // Children
     children,
@@ -34,7 +34,7 @@ const ActionsGroup = forwardRef((props, ref) => {
   const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(
-    ActionsGroupClasses({ hairlines, ...props }),
+    ActionsGroupClasses({ dividers, ...props }),
     className
   );
 

@@ -1,11 +1,12 @@
 import { cls } from '../cls.js';
 
 export const ActionsButtonClasses = (props, colors, darkClasses) => {
-  const { fontSizeIos, fontSizeMaterial, bold, hairlines } = props;
+  const { fontSizeIos, fontSizeMaterial, bold, dividers } = props;
   return {
     base: {
       common: cls(
-        `flex items-center w-full px-4 relative z-10 overflow-hidden`
+        `flex items-center w-full px-4 relative z-10 overflow-hidden`,
+        dividers && 'hairline-b'
       ),
       ios: cls(
         `h-14`,
@@ -13,7 +14,6 @@ export const ActionsButtonClasses = (props, colors, darkClasses) => {
         colors.bgIos,
         colors.activeBgIos,
         fontSizeIos,
-        hairlines && 'hairline-b',
         'first:rounded-t-xl last:rounded-b-xl justify-center',
         bold && 'font-semibold'
       ),

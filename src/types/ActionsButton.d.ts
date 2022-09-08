@@ -87,9 +87,9 @@ interface Props {
   touchRipple?: boolean;
 
   /**
-   * Renders button outer hairlines (borders)
+   * Renders button outer hairlines (borders). If not specified, will be enabled for iOS theme
    *
-   * @default true
+   * @default undefined
    */
-  hairlines?: boolean;
+  dividers?: boolean;
 }

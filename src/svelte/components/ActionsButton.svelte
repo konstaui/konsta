@@ -22,7 +22,7 @@
   export let fontSizeIos = 'text-xl';
   export let fontSizeMaterial = 'text-base';
   export let touchRipple = true;
-  export let hairlines = true;
+  export let dividers = true;
 
   export let onClick = undefined;
 
@@ -49,6 +49,8 @@
   let theme;
   theme = useTheme({}, (v) => (theme = v));
 
+  $: isDividers = typeof dividers === 'undefined' ? theme === 'ios' : dividers;
+
   $: isBold =
     typeof bold === 'undefined'
       ? theme === 'ios'
@@ -59,7 +61,7 @@
   $: c = useThemeClasses(
     { ios, material },
     ActionsButtonClasses(
-      { bold: isBold, fontSizeIos, fontSizeMaterial, hairlines },
+      { bold: isBold, fontSizeIos, fontSizeMaterial, dividers: isDividers },
       colors,
       dark
     ),

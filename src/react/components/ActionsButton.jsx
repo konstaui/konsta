@@ -27,7 +27,7 @@ const ActionsButton = forwardRef((props, ref) => {
 
     touchRipple = true,
 
-    hairlines = true,
+    dividers = undefined,
 
     // Children
     children,
@@ -59,6 +59,9 @@ const ActionsButton = forwardRef((props, ref) => {
 
   const colors = ActionsButtonColors(colorsProp, dark);
 
+  const isDividers =
+    typeof dividers === 'undefined' ? theme === 'ios' : dividers;
+
   const isBold =
     typeof bold === 'undefined'
       ? theme === 'ios'
@@ -68,7 +71,13 @@ const ActionsButton = forwardRef((props, ref) => {
 
   const c = themeClasses(
     ActionsButtonClasses(
-      { fontSizeIos, fontSizeMaterial, bold: isBold, hairlines, ...props },
+      {
+        fontSizeIos,
+        fontSizeMaterial,
+        bold: isBold,
+        dividers: isDividers,
+        ...props,
+      },
       colors,
       dark
     ),

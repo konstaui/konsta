@@ -5,6 +5,7 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ActionsLabelClasses } from '../../shared/classes/ActionsLabelClasses.js';
@@ -28,7 +29,7 @@
         type: Boolean,
         default: undefined,
       },
-      hairlines: { type: Boolean, default: true },
+      dividers: { type: Boolean, default: undefined },
       fontSizeIos: { type: String, default: 'text-sm' },
       fontSizeMaterial: { type: String, default: 'text-sm' },
     },
@@ -37,8 +38,16 @@
         ActionsLabelColors(props.colors || {}, useDarkClasses)
       );
 
+      const theme = useTheme();
+
+      const isDividers = computed(() =>
+        typeof props.dividers === 'undefined'
+          ? theme.value === 'ios'
+          : props.dividers
+      );
+
       const c = useThemeClasses(
-        props,
+        { ...props, dividers: isDividers.value },
         () => ActionsLabelClasses(props, colors.value),
         ctx.attrs.class
       );

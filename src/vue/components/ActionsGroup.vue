@@ -22,7 +22,7 @@
         type: Boolean,
         default: undefined,
       },
-      hairlines: { type: Boolean, default: true },
+      dividers: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const c = useThemeClasses(
