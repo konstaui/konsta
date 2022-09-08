@@ -1,4 +1,5 @@
 <script>
+  import { onMount, afterUpdate } from 'svelte';
   import { cls } from '../../shared/cls.js';
   import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
   import { SegmentedColors } from '../../shared/colors/SegmentedColors.js';
@@ -18,8 +19,7 @@
   export let strong = false;
   export let rounded = false;
 
-  export let activeButtonIndex = undefined;
-  export let childButtonsLength = undefined;
+  let highlightElRef = null;
 
   const dark = useDarkClasses();
 
@@ -32,40 +32,10 @@
     (v) => (c = v)
   );
 
-  let highlightWidth;
-  let highlightTranslate;
-
-  $: if (strong) {
-    let buttonsLength = childButtonsLength;
-    let activeIndex = activeButtonIndex;
-    /*
-    if (
-      typeof activeIndex === 'undefined' &&
-      children &&
-      (children.length || children.type === React.Fragment)
-    ) {
-      const elements =
-        children.type === React.Fragment ? children.props.children : children;
-      if (typeof buttonsLength === 'undefined') {
-        buttonsLength = elements.length || 0;
-      }
-      const activeButton = elements.filter(
-        (child) =>
-          child.props && (child.props.active || child.props.segmentedActive)
-      )[0];
-      activeIndex = elements.indexOf(activeButton);
-    }
-    */
-
-    const between = '4px';
-    const padding = '2px';
-    highlightWidth = `calc((100% - ${padding} * 2 - ${between} * (${
-      buttonsLength - 1
-    })) / ${buttonsLength})`;
-    highlightTranslate = `calc(${
-      activeIndex * 100
-    }% + ${activeIndex} * ${between})`;
-  }
+  let highlightStyle = {
+    transform: '',
+    width: '',
+  };
 
   $: classes = cls(
     // base
@@ -76,6 +46,34 @@
 
     className
   );
+
+  const setHighlight = () => {
+    if (strong && highlightElRef) {
+      const buttonsEl = highlightElRef.parentElement;
+      const buttonsLength = buttonsEl.children.length - 1;
+      const activeIndex = [...buttonsEl.children].indexOf(
+        buttonsEl.querySelector('.k-segmented-strong-button-active')
+      );
+
+      const between = '4px';
+      const padding = '2px';
+
+      const width = `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`;
+      const transform = `translateX(calc(${activeIndex} * 100% + ${activeIndex} * ${between}))`;
+
+      if (
+        width !== highlightStyle.width ||
+        transform !== highlightStyle.transform
+      ) {
+        highlightStyle = {
+          width,
+          transform,
+        };
+      }
+    }
+  };
+  onMount(() => setHighlight());
+  afterUpdate(() => setHighlight());
 </script>
 
 <div class={classes} {...$$restProps}>
@@ -88,10 +86,11 @@
   {/if}
   {#if strong}
     <span
+      bind:this={highlightElRef}
       class={c.strongHighlight}
       style={`
-        width: ${highlightWidth};
-        transform: translateX(${highlightTranslate});
+        width: ${highlightStyle.width};
+        transform: ${highlightStyle.transform};
       `}
     />
   {/if}

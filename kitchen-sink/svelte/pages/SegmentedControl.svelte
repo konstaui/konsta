@@ -157,11 +157,7 @@
 
   <BlockTitle>Strong Segmented</BlockTitle>
   <Block strongIos outlineIos class="space-y-4">
-    <Segmented
-      strong
-      activeButtonIndex={activeSegmented - 1}
-      childButtonsLength={3}
-    >
+    <Segmented strong>
       <SegmentedButton
         strong
         active={activeSegmented === 1}
@@ -185,12 +181,7 @@
       </SegmentedButton>
     </Segmented>
 
-    <Segmented
-      strong
-      rounded
-      activeButtonIndex={activeSegmented - 1}
-      childButtonsLength={3}
-    >
+    <Segmented strong rounded>
       <SegmentedButton
         strong
         rounded

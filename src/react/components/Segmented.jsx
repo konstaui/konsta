@@ -1,4 +1,10 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, {
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useEffect,
+  useState,
+} from 'react';
 import { cls } from '../../shared/cls.js';
 import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -23,18 +29,21 @@ const Segmented = forwardRef((props, ref) => {
     // Children
     children,
 
-    activeButtonIndex = undefined,
-    childButtonsLength = undefined,
-
     // Rest
     ...rest
   } = props;
 
   const elRef = useRef(null);
+  const highlightElRef = useRef(null);
 
   useImperativeHandle(ref, () => ({
     el: elRef.current,
   }));
+
+  const [highlightStyle, setHighlightStyle] = useState({
+    transform: '',
+    width: '',
+  });
 
   const Component = component;
 
@@ -49,35 +58,6 @@ const Segmented = forwardRef((props, ref) => {
 
   const c = themeClasses(SegmentedClasses(props, colors, dark));
 
-  let highlightWidth;
-  let highlightTranslate;
-
-  if (strong) {
-    let buttonsLength = childButtonsLength;
-    let activeIndex = activeButtonIndex;
-    if (
-      typeof activeIndex === 'undefined' &&
-      children &&
-      (children.length || children.type === React.Fragment)
-    ) {
-      const elements =
-        children.type === React.Fragment ? children.props.children : children;
-      if (typeof buttonsLength === 'undefined') {
-        buttonsLength = elements.length || 0;
-      }
-      const activeButton = elements.filter(
-        (child) =>
-          child.props && (child.props.active || child.props.segmentedActive)
-      )[0];
-      activeIndex = elements.indexOf(activeButton);
-    }
-
-    const between = '4px';
-    const padding = '2px';
-    highlightWidth = `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`;
-    highlightTranslate = `calc(${activeIndex} * 100% + ${activeIndex} * ${between})`;
-  }
-
   const classes = cls(
     // base
     rounded ? c.base.rounded : c.base.square,
@@ -88,16 +68,33 @@ const Segmented = forwardRef((props, ref) => {
     className
   );
 
+  useEffect(() => {
+    if (strong && highlightElRef.current) {
+      const buttonsEl = highlightElRef.current.parentElement;
+      const buttonsLength = buttonsEl.children.length - 1;
+      const activeIndex = [...buttonsEl.children].indexOf(
+        buttonsEl.querySelector('.k-segmented-strong-button-active')
+      );
+
+      const between = '4px';
+      const padding = '2px';
+
+      setHighlightStyle({
+        ...highlightStyle,
+        width: `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`,
+        transform: `translateX(calc(${activeIndex} * 100% + ${activeIndex} * ${between}))`,
+      });
+    }
+  }, [children]);
+
   return (
     <Component ref={elRef} className={classes} {...attrs}>
       {outline ? <span className={c.outlineInner}>{children}</span> : children}
       {strong && (
         <span
+          ref={highlightElRef}
           className={c.strongHighlight}
-          style={{
-            width: highlightWidth,
-            transform: `translateX(${highlightTranslate})`,
-          }}
+          style={highlightStyle}
         />
       )}
     </Component>

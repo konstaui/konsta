@@ -153,6 +153,7 @@
         inline,
         segmented,
         segmentedStrong,
+        segmentedActive,
         disabled,
         outline: isOutline,
         clear: isClear,
