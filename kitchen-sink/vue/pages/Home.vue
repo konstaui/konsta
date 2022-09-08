@@ -2,85 +2,92 @@
   <k-page>
     <k-navbar title="Konsta UI" large transparent center-title />
 
-    <k-block-title>Theming</k-block-title>
-    <k-block>
-      <div class="grid grid-cols-3 gap-4">
-        <k-card margin="" :content-wrap="false" class="overflow-hidden">
-          <k-link
-            component="label"
-            touch-ripple
-            class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
-          >
-            <LogoIos class="text-[28px]" />
-            <k-radio
-              component="div"
-              :checked="theme === 'ios'"
-              @change="() => setTheme('ios')"
-            />
-          </k-link>
-        </k-card>
+    <k-block-title>Theme</k-block-title>
+    <k-list strong inset>
+      <k-list-item label title="iOS Theme">
+        <template #media>
+          <k-radio
+            component="div"
+            :checked="theme === 'ios'"
+            @change="() => setTheme('ios')"
+          />
+        </template>
+      </k-list-item>
+      <k-list-item label title="Material Theme">
+        <template #media>
+          <k-radio
+            component="div"
+            :checked="theme === 'material'"
+            @change="() => setTheme('material')"
+          />
+        </template>
+      </k-list-item>
+    </k-list>
+    <k-list strong inset>
+      <k-list-item title="Dark Mode" label>
+        <template #after>
+          <k-toggle
+            component="div"
+            :checked="darkMode"
+            @change="() => toggleDarkMode()"
+          />
+        </template>
+      </k-list-item>
 
-        <k-card margin="" :content-wrap="false" class="overflow-hidden">
-          <k-link
-            component="label"
-            touch-ripple
-            class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
-          >
-            <LogoAndroid class="text-[28px]" />
-            <k-radio
-              component="div"
-              :checked="theme === 'material'"
-              @change="() => setTheme('material')"
-            />
-          </k-link>
-        </k-card>
-
-        <k-card margin="" :content-wrap="false" class="overflow-hidden">
-          <k-link
-            component="label"
-            touch-ripple
-            class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
-          >
-            <MoonStarsFill class="text-[28px]" />
-            <k-toggle :checked="darkMode" @change="() => toggleDarkMode()" />
-          </k-link>
-        </k-card>
+      <k-list-item
+        title="Color Theme"
+        link
+        @click="() => (colorPickerOpened = true)"
+      >
+        <template #after>
+          <div class="w-6 h-6 rounded-full bg-primary home-color-picker" />
+        </template>
+      </k-list-item>
+    </k-list>
+    <k-popover
+      :opened="colorPickerOpened"
+      size="w-36"
+      target=".home-color-picker"
+      @backdropclick="() => (colorPickerOpened = false)"
+    >
+      <div class="grid grid-cols-3 py-2">
+        <k-link
+          touch-ripple
+          class="overflow-hidden h-12"
+          @click="() => setColorTheme('')"
+        >
+          <span class="bg-brand-primary w-6 h-6 rounded-full" />
+        </k-link>
+        <k-link
+          touch-ripple
+          class="overflow-hidden h-12"
+          @click="() => setColorTheme('k-color-brand-red')"
+        >
+          <span class="bg-brand-red w-6 h-6 rounded-full" />
+        </k-link>
+        <k-link
+          touch-ripple
+          class="overflow-hidden h-12"
+          @click="() => setColorTheme('k-color-brand-green')"
+        >
+          <span class="bg-brand-green w-6 h-6 rounded-full" />
+        </k-link>
+        <k-link
+          touch-ripple
+          class="overflow-hidden h-12"
+          @click="() => setColorTheme('k-color-brand-yellow')"
+        >
+          <span class="bg-brand-yellow w-6 h-6 rounded-full" />
+        </k-link>
+        <k-link
+          touch-ripple
+          class="overflow-hidden h-12"
+          @click="() => setColorTheme('k-color-brand-purple')"
+        >
+          <span class="bg-brand-purple w-6 h-6 rounded-full" />
+        </k-link>
       </div>
-      <k-card margin="mt-4">
-        <div class="flex items-center justify-around">
-          <div
-            :class="`bg-brand-primary w-8 h-8 rounded-full cursor-pointer duration-200 ${
-              colorTheme === '' ? '' : 'scale-75'
-            }`"
-            @click="() => setColorTheme('')"
-          />
-          <div
-            :class="`bg-brand-red w-8 h-8 rounded-full cursor-pointer duration-200 ${
-              colorTheme === 'k-color-brand-red' ? '' : 'scale-75'
-            }`"
-            @click="() => setColorTheme('k-color-brand-red')"
-          />
-          <div
-            :class="`bg-brand-green w-8 h-8 rounded-full cursor-pointer duration-200 ${
-              colorTheme === 'k-color-brand-green' ? '' : 'scale-75'
-            }`"
-            @click="() => setColorTheme('k-color-brand-green')"
-          />
-          <div
-            :class="`bg-brand-yellow w-8 h-8 rounded-full cursor-pointer duration-200 ${
-              colorTheme === 'k-color-brand-yellow' ? '' : 'scale-75'
-            }`"
-            @click="() => setColorTheme('k-color-brand-yellow')"
-          />
-          <div
-            :class="`bg-brand-purple w-8 h-8 rounded-full cursor-pointer duration-200 ${
-              colorTheme === 'k-color-brand-purple' ? '' : 'scale-75'
-            }`"
-            @click="() => setColorTheme('k-color-brand-purple')"
-          />
-        </div>
-      </k-card>
-    </k-block>
+    </k-popover>
 
     <k-block-title>Components</k-block-title>
     <k-list strong inset>
@@ -108,11 +115,9 @@
     kListItem,
     kRadio,
     kToggle,
-    kBlock,
-    kCard,
     kLink,
+    kPopover,
   } from 'konsta/vue';
-  import { LogoAndroid, LogoIos, MoonStarsFill } from 'framework7-icons/vue';
 
   import { inject, onMounted, ref, computed } from 'vue';
 
@@ -130,17 +135,14 @@
       kListItem,
       kRadio,
       kToggle,
-      kBlock,
-      kCard,
       kLink,
+      kPopover,
       DemoIcon,
-      LogoAndroid,
-      LogoIos,
-      MoonStarsFill,
     },
 
     setup() {
       const darkMode = ref(false);
+      const colorPickerOpened = ref(false);
       const AppContext = inject('AppContext');
 
       const toggleDarkMode = () => {
@@ -165,6 +167,7 @@
 
       return {
         darkMode,
+        colorPickerOpened,
         toggleDarkMode,
         colorTheme,
         setColorTheme,

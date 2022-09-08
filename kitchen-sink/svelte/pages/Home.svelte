@@ -7,11 +7,9 @@
     ListItem,
     Radio,
     Toggle,
-    Card,
-    Block,
     Link,
+    Popover,
   } from 'konsta/svelte';
-  import { LogoAndroid, LogoIos, MoonStarsFill } from 'framework7-icons/svelte';
 
   import { afterUpdate } from 'svelte';
   import routes from '../routes.js';
@@ -19,8 +17,8 @@
 
   export let theme;
   export let setTheme;
-  export let colorTheme;
   export let setColorTheme;
+  export let colorPickerOpened;
 
   let darkMode = false;
 
@@ -37,85 +35,90 @@
 <Page>
   <Navbar title="Konsta UI" large transparent centerTitle />
 
-  <BlockTitle>Theming</BlockTitle>
-  <Block>
-    <div class="grid grid-cols-3 gap-4">
-      <Card margin="" contentWrap={false} class="overflow-hidden">
-        <Link
-          component="label"
-          touchRipple
-          class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
-        >
-          <LogoIos class="text-[28px]" />
-          <Radio
-            onChange={() => setTheme('ios')}
-            component="div"
-            checked={theme === 'ios'}
-          />
-        </Link>
-      </Card>
+  <BlockTitle>Theme</BlockTitle>
+  <List strong inset>
+    <ListItem label title="iOS Theme">
+      <Radio
+        slot="media"
+        onChange={() => setTheme('ios')}
+        component="div"
+        checked={theme === 'ios'}
+      />
+    </ListItem>
+    <ListItem label title="Material Theme">
+      <Radio
+        slot="media"
+        onChange={() => setTheme('material')}
+        component="div"
+        checked={theme === 'material'}
+      />
+    </ListItem>
+  </List>
+  <List strong inset>
+    <ListItem title="Dark Mode" label>
+      <Toggle
+        slot="after"
+        component="div"
+        onChange={() => toggleDarkMode()}
+        checked={darkMode}
+      />
+    </ListItem>
 
-      <Card margin="" contentWrap={false} class="overflow-hidden">
-        <Link
-          component="label"
-          touchRipple
-          class=" !flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
-        >
-          <LogoAndroid class="text-[28px]" />
-          <Radio
-            onChange={() => setTheme('material')}
-            component="div"
-            checked={theme === 'material'}
-          />
-        </Link>
-      </Card>
-
-      <Card margin="" contentWrap={false} class="overflow-hidden">
-        <Link
-          component="label"
-          touchRipple
-          class="!flex flex-col p-4 space-y-4 !space-x-0 text-center h-full"
-        >
-          <MoonStarsFill class="text-[28px]" />
-          <Toggle onChange={() => toggleDarkMode()} checked={darkMode} />
-        </Link>
-      </Card>
+    <ListItem
+      title="Color Theme"
+      link
+      onClick={() => (colorPickerOpened = true)}
+    >
+      <div
+        slot="after"
+        class="w-6 h-6 rounded-full bg-primary home-color-picker"
+      />
+    </ListItem>
+  </List>
+  <Popover
+    opened={colorPickerOpened}
+    onBackdropClick={() => (colorPickerOpened = false)}
+    size="w-36"
+    target=".home-color-picker"
+  >
+    <div class="grid grid-cols-3 py-2">
+      <Link
+        touchRipple
+        class="overflow-hidden h-12"
+        onClick={() => setColorTheme('')}
+      >
+        <span class="bg-brand-primary w-6 h-6 rounded-full" />
+      </Link>
+      <Link
+        touchRipple
+        class="overflow-hidden h-12"
+        onClick={() => setColorTheme('k-color-brand-red')}
+      >
+        <span class="bg-brand-red w-6 h-6 rounded-full" />
+      </Link>
+      <Link
+        touchRipple
+        class="overflow-hidden h-12"
+        onClick={() => setColorTheme('k-color-brand-green')}
+      >
+        <span class="bg-brand-green w-6 h-6 rounded-full" />
+      </Link>
+      <Link
+        touchRipple
+        class="overflow-hidden h-12"
+        onClick={() => setColorTheme('k-color-brand-yellow')}
+      >
+        <span class="bg-brand-yellow w-6 h-6 rounded-full" />
+      </Link>
+      <Link
+        touchRipple
+        class="overflow-hidden h-12"
+        onClick={() => setColorTheme('k-color-brand-purple')}
+      >
+        <span class="bg-brand-purple w-6 h-6 rounded-full" />
+      </Link>
     </div>
-    <Card margin="mt-4">
-      <div class="flex items-center justify-around">
-        <div
-          on:click={() => setColorTheme('')}
-          class={`bg-brand-primary w-8 h-8 rounded-full cursor-pointer duration-200 ${
-            colorTheme === '' ? '' : 'scale-75'
-          }`}
-        />
-        <div
-          on:click={() => setColorTheme('k-color-brand-red')}
-          class={`bg-brand-red w-8 h-8 rounded-full cursor-pointer duration-200 ${
-            colorTheme === 'k-color-brand-red' ? '' : 'scale-75'
-          }`}
-        />
-        <div
-          on:click={() => setColorTheme('k-color-brand-green')}
-          class={`bg-brand-green w-8 h-8 rounded-full cursor-pointer duration-200 ${
-            colorTheme === 'k-color-brand-green' ? '' : 'scale-75'
-          }`}
-        />
-        <div
-          on:click={() => setColorTheme('k-color-brand-yellow')}
-          class={`bg-brand-yellow w-8 h-8 rounded-full cursor-pointer duration-200 ${
-            colorTheme === 'k-color-brand-yellow' ? '' : 'scale-75'
-          }`}
-        />
-        <div
-          on:click={() => setColorTheme('k-color-brand-purple')}
-          class={`bg-brand-purple w-8 h-8 rounded-full cursor-pointer duration-200 ${
-            colorTheme === 'k-color-brand-purple' ? '' : 'scale-75'
-          }`}
-        />
-      </div>
-    </Card>
-  </Block>
+  </Popover>
 
   <BlockTitle>Components</BlockTitle>
   <List strong inset>
