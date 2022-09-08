@@ -26,7 +26,7 @@
       {{ title }}
       <slot name="title" />
     </div>
-    <div v-if="slots.subnavbar" :class="c.subnavbar">
+    <div v-if="slots.subnavbar" ref="subnavbarElRef" :class="c.subnavbar">
       <slot name="subnavbar" />
     </div>
   </component>
@@ -98,6 +98,7 @@
       const innerElRef = ref(null);
       const titleContainerElRef = ref(null);
       const titleElRef = ref(null);
+      const subnavbarElRef = ref(null);
 
       const isScrollable = computed(
         () => props.transparent || props.large || props.medium
@@ -164,7 +165,9 @@
           0
         );
 
-        bgElRef.value.style.opacity = props.transparent ? scrollProgress : '';
+        bgElRef.value.style.opacity = props.transparent
+          ? -0.5 + scrollProgress * 1.5
+          : '';
         if (props.medium || props.large) {
           bgElRef.value.style.transform = `translateY(-${
             scrollProgress * maxTranslate
@@ -178,7 +181,12 @@
           titleContainerElRef.value.style.opacity = 1 - scrollProgress * 2;
         }
         if (titleElRef.value) {
-          titleElRef.value.style.opacity = -0.5 + scrollProgress * 2;
+          titleElRef.value.style.opacity = -0.5 + scrollProgress * 1.5;
+        }
+        if ((props.medium || props.large) && subnavbarElRef.value) {
+          subnavbarElRef.value.style.transform = `translateY(-${
+            scrollProgress * maxTranslate
+          }px)`;
         }
       };
 
@@ -249,6 +257,7 @@
         innerElRef,
         titleContainerElRef,
         titleElRef,
+        subnavbarElRef,
       };
     },
   };

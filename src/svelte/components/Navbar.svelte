@@ -52,18 +52,19 @@
   let innerElRef = null;
   let titleContainerElRef = null;
   let titleElRef = null;
+  let subnavbarElRef = null;
 
   $: isScrollable = medium || large || transparent;
   let wasScrollable = isScrollable;
 
   const dark = useDarkClasses();
 
+  let theme;
+  theme = useTheme((v) => (theme = v));
+
   $: colors = NavbarColors(colorsProp, dark);
 
   $: isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
-
-  let theme;
-  theme = useTheme((v) => (theme = v));
 
   $: c = useThemeClasses(
     { ios, material },
@@ -128,7 +129,7 @@
     const maxTranslate = titleContainerHeight;
     const scrollProgress = Math.max(Math.min(scrollTop / maxTranslate, 1), 0);
 
-    bgElRef.style.opacity = transparent ? scrollProgress : '';
+    bgElRef.style.opacity = transparent ? -0.5 + scrollProgress * 1.5 : '';
     if (medium || large) {
       bgElRef.style.transform = `translateY(-${
         scrollProgress * maxTranslate
@@ -142,7 +143,12 @@
       titleContainerElRef.style.opacity = 1 - scrollProgress * 2;
     }
     if (titleElRef) {
-      titleElRef.style.opacity = -0.5 + scrollProgress * 2;
+      titleElRef.style.opacity = -0.5 + scrollProgress * 1.5;
+    }
+    if ((medium || large) && subnavbarElRef) {
+      subnavbarElRef.style.transform = `translateY(-${
+        scrollProgress * maxTranslate
+      }px)`;
     }
   };
 
@@ -230,7 +236,7 @@
     </div>
   {/if}
   {#if $$slots.subnavbar}
-    <div class={c.subnavbar}>
+    <div class={c.subnavbar} bind:this={subnavbarElRef}>
       <slot name="subnavbar" />
     </div>
   {/if}

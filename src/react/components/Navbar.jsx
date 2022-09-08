@@ -63,6 +63,7 @@ const Navbar = forwardRef((props, ref) => {
   const innerElRef = useRef(null);
   const titleContainerElRef = useRef(null);
   const titleElRef = useRef(null);
+  const subnavbarElRef = useRef(null);
 
   const wasScrollable = useRef(null);
 
@@ -99,7 +100,9 @@ const Navbar = forwardRef((props, ref) => {
     const maxTranslate = titleContainerHeight.current;
     const scrollProgress = Math.max(Math.min(scrollTop / maxTranslate, 1), 0);
 
-    bgElRef.current.style.opacity = transparent ? scrollProgress : '';
+    bgElRef.current.style.opacity = transparent
+      ? -0.5 + scrollProgress * 1.5
+      : '';
     if (medium || large) {
       bgElRef.current.style.transform = `translateY(-${
         scrollProgress * maxTranslate
@@ -113,7 +116,12 @@ const Navbar = forwardRef((props, ref) => {
       titleContainerElRef.current.style.opacity = 1 - scrollProgress * 2;
     }
     if (titleElRef.current) {
-      titleElRef.current.style.opacity = -0.5 + scrollProgress * 2;
+      titleElRef.current.style.opacity = -0.5 + scrollProgress * 1.5;
+    }
+    if ((medium || large) && subnavbarElRef.current) {
+      subnavbarElRef.current.style.transform = `translateY(-${
+        scrollProgress * maxTranslate
+      }px)`;
     }
   };
 
@@ -210,7 +218,11 @@ const Navbar = forwardRef((props, ref) => {
           {title}
         </div>
       )}
-      {subnavbar && <div className={c.subnavbar}>{subnavbar}</div>}
+      {subnavbar && (
+        <div className={c.subnavbar} ref={subnavbarElRef}>
+          {subnavbar}
+        </div>
+      )}
     </Component>
   );
 });

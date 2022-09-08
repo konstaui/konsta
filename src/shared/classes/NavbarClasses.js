@@ -38,6 +38,7 @@ export const NavbarClasses = (props, colors, classes) => {
     base: {
       common: cls(
         `w-full z-20 top-0 pt-safe`,
+        (large || medium) && 'pointer-events-none',
         positionClass('sticky', classes)
       ),
       ios: cls(fontSizeIos, colors.textIos),
@@ -55,7 +56,8 @@ export const NavbarClasses = (props, colors, classes) => {
     subnavbar: {
       common: cls(
         'relative flex items-center',
-        subnavbarClassName || subnavbarClass
+        subnavbarClassName || subnavbarClass,
+        (large || medium) && 'pointer-events-auto'
       ),
       ios: 'h-11 pl-2-safe pr-2-safe',
       material: 'h-14 pl-4-safe pr-4-safe',
@@ -63,7 +65,8 @@ export const NavbarClasses = (props, colors, classes) => {
     inner: {
       common: cls(
         'flex relative items-center w-full overflow-hidden',
-        innerClassName || innerClass
+        innerClassName || innerClass,
+        (large || medium) && 'pointer-events-auto z-10'
       ),
       ios: cls(
         'pl-2-safe pr-2-safe h-11',
@@ -72,7 +75,10 @@ export const NavbarClasses = (props, colors, classes) => {
       material: 'justify-start h-16 pl-safe pr-safe',
     },
     titleContainer: {
-      common: 'flex items-center px-4 relative',
+      common: cls(
+        'flex items-center px-4 relative',
+        (large || medium) && 'pointer-events-auto'
+      ),
       ios: cls(
         medium && cls(titleMediumFontSizeIos, 'h-11 font-semibold'),
         large && cls(titleLargeFontSizeIos, 'h-13 font-bold')
