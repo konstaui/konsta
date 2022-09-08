@@ -21,7 +21,7 @@ const Toolbar = forwardRef((props, ref) => {
     bgClassName = '',
     innerClassName = '',
 
-    hairlines = true,
+    outline,
 
     tabbar,
     tabbarIcons,
@@ -59,9 +59,17 @@ const Toolbar = forwardRef((props, ref) => {
 
   const colors = ToolbarColors(colorsProp, dark);
 
+  const isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
+
   const c = themeClasses(
     ToolbarClasses(
-      { ...props, hairlines, translucent, bgClassName, innerClassName },
+      {
+        ...props,
+        outline: isOutline,
+        translucent,
+        bgClassName,
+        innerClassName,
+      },
       colors,
       className
     ),

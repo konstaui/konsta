@@ -43,7 +43,7 @@
       bgClass: { type: String, default: '' },
       innerClass: { type: String, default: '' },
 
-      hairlines: { type: Boolean, default: true },
+      outline: { type: Boolean, default: undefined },
 
       tabbar: { type: Boolean, default: false },
       tabbarLabels: { type: Boolean, default: false },
@@ -65,8 +65,18 @@
         ToolbarColors(props.colors || {}, useDarkClasses)
       );
 
+      const isOutline = computed(() =>
+        typeof props.outline === 'undefined'
+          ? theme.value === 'ios'
+          : props.outline
+      );
+
       const c = useThemeClasses(props, () =>
-        ToolbarClasses(props, colors.value, ctx.attrs.class)
+        ToolbarClasses(
+          { ...props, outline: isOutline.value },
+          colors.value,
+          ctx.attrs.class
+        )
       );
       const setHighlight = () => {
         if (hasHighlight.value && highlightElRef.value) {

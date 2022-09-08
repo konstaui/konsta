@@ -20,6 +20,7 @@ export default function ToolbarPage() {
       />
 
       <Toolbar
+        outline
         top={isTop}
         className={`left-0 ${
           isTop

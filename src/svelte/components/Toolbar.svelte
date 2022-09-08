@@ -18,7 +18,7 @@
   export let bgClass = '';
   export let innerClass = '';
 
-  export let hairlines = true;
+  export let outline = undefined;
 
   export let tabbar = false;
   export let tabbarLabels = false;
@@ -35,6 +35,8 @@
     transform: '',
     width: '',
   };
+
+  $: isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
 
   $: hasHighlight = theme === 'material' && tabbar && !tabbarIcons;
 
@@ -70,7 +72,7 @@
     { ios, material },
     ToolbarClasses(
       {
-        hairlines,
+        outline: isOutline,
         translucent,
         bgClass,
         innerClass,

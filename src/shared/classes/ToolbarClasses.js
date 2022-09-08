@@ -5,7 +5,7 @@ export const ToolbarClasses = (props, colors, classes) => {
   const {
     bgClassName = '',
     bgClass = '',
-    hairlines,
+    outline,
     translucent,
     innerClassName = '',
     innerClass = '',
@@ -24,14 +24,11 @@ export const ToolbarClasses = (props, colors, classes) => {
     bg: {
       common: cls(
         'absolute w-full h-full left-0 top-0',
+        outline && (top ? 'hairline-b' : 'hairline-t'),
         bgClassName || bgClass
       ),
-      ios: cls(
-        hairlines && (top ? 'hairline-b' : 'hairline-t'),
-        colors.bgIos,
-        translucent && 'translucent'
-      ),
-      material: cls(`${colors.bgMaterial}`, !top && 'transform rotate-180'),
+      ios: cls(colors.bgIos, translucent && 'translucent'),
+      material: cls(`${colors.bgMaterial}`),
     },
     inner: {
       common: cls(

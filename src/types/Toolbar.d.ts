@@ -47,11 +47,11 @@ interface Props {
   innerClassName?: string;
 
   /**
-   * Renders outer hairlines (borders) on iOS theme
+   * Renders outer hairlines (borders). If not specified, will be enabled for iOS theme
    *
-   * @default true
+   * @default undefined
    */
-  hairlines?: boolean;
+  outline?: boolean;
 
   /**
    * Enables tabbar, same as using `<Tabbar>` component
