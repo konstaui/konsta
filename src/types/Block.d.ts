@@ -82,10 +82,4 @@ interface Props {
    * @default false
    */
   nested?: boolean;
-  /**
-   * Renders outer hairlines (borders) when the block is `strong`
-   *
-   * @default true
-   */
-  hairlines?: boolean;
 }
