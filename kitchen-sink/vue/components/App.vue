@@ -4,7 +4,7 @@
   </k-app>
 </template>
 <script>
-  import { ref, onMounted, provide, computed } from 'vue';
+  import { ref, onMounted, provide, computed, watch } from 'vue';
   import { kApp } from 'konsta/vue';
 
   export default {
@@ -12,7 +12,7 @@
       kApp,
     },
     setup() {
-      const theme = ref('ios');
+      const theme = ref('material');
       const currentColorTheme = ref('');
       const setColorTheme = (color) => {
         const htmlEl = document.documentElement;
@@ -37,19 +37,28 @@
 
       provide('AppContext', AppContext);
 
+      const calcSafeAreas = () => {
+        if (window.location.href.includes('safe-areas')) {
+          const html = document.documentElement;
+          if (html) {
+            html.style.setProperty(
+              '--k-safe-area-top',
+              theme.value === 'ios' ? '44px' : '24px'
+            );
+            html.style.setProperty('--k-safe-area-bottom', '34px');
+          }
+        }
+      };
       onMounted(() => {
         window.setTheme = setTheme;
         window.setMode = (mode) => {
           if (mode === 'dark') document.documentElement.classList.add('dark');
           else document.documentElement.classList.remove('dark');
         };
-        if (window.location.href.includes('safe-areas')) {
-          const html = document.documentElement;
-          if (html) {
-            html.style.setProperty('--k-safe-area-top', '44px');
-            html.style.setProperty('--k-safe-area-bottom', '34px');
-          }
-        }
+        calcSafeAreas();
+      });
+      watch(theme, () => {
+        calcSafeAreas();
       });
 
       return {

@@ -28,11 +28,14 @@ function App() {
     if (window.location.href.includes('safe-areas')) {
       const html = document.documentElement;
       if (html) {
-        html.style.setProperty('--k-safe-area-top', '44px');
+        html.style.setProperty(
+          '--k-safe-area-top',
+          theme === 'ios' ? '44px' : '24px'
+        );
         html.style.setProperty('--k-safe-area-bottom', '34px');
       }
     }
-  }, []);
+  }, [theme]);
   return (
     <KonstaApp theme={theme} safeAreas={!inIFrame}>
       <Router>

@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, beforeUpdate } from 'svelte';
   import { App } from 'konsta/svelte';
   import { Router, Route, createHistory } from 'svelte-navigator';
   import createHashSource from '../hashHistory.js';
@@ -29,14 +29,25 @@
 
   const inIFrame = window.parent !== window;
 
-  onMount(() => {
+  const calcSafeAreas = () => {
     if (window.location.href.includes('safe-areas')) {
       const html = document.documentElement;
       if (html) {
-        html.style.setProperty('--k-safe-area-top', '44px');
+        html.style.setProperty(
+          '--k-safe-area-top',
+          theme === 'ios' ? '44px' : '24px'
+        );
         html.style.setProperty('--k-safe-area-bottom', '34px');
       }
     }
+  };
+
+  onMount(() => {
+    calcSafeAreas();
+  });
+
+  beforeUpdate(() => {
+    calcSafeAreas();
   });
 
   const hash = createHistory(createHashSource());
