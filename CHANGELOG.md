@@ -1,5 +1,15 @@
 # Changelog
 
+# [1.0.0-beta.5](https://github.com/konstaui/konsta/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-09-08)
+
+### Features
+
+- **actions:** rename prop `hairlines` to `dividers` ([29b3bdd](https://github.com/konstaui/konsta/commit/29b3bdda858cd9e0c8b6372c4efa39bb66fa2265))
+- **navbar:** animate navbar for large and medium size ([30adb31](https://github.com/konstaui/konsta/commit/30adb316a611cf0ba0c4cb15f864673ea20a8f6c))
+- **navbar:** rename prop `hairlines` to `outline` ([b18b1ea](https://github.com/konstaui/konsta/commit/b18b1ea89f1908e4100547ac187a11c1d515a26d))
+- **segmented:** simplify `strong` logic and remove `activeButtonIndex` and `childButtonsLength` props ([9bc4ef8](https://github.com/konstaui/konsta/commit/9bc4ef812da9c71c79524dd8b9e3f8890ba44b3c))
+- **toolbar:** rename prop `hairlines` to `outline` ([9862c93](https://github.com/konstaui/konsta/commit/9862c93878f77f2a9b30a22f63fb072e38d57dd1))
+
 # [1.0.0-beta.3](https://github.com/konstaui/konsta/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-09-06)
 
 ### Bug Fixes
