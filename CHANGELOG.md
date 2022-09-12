@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.0.0](https://github.com/konstaui/konsta/compare/v1.0.0-beta.4...v1.0.0) (2022-09-10)
+
+- All new Material You design
+- New [Dialog](https://konstaui.com/react/dialog) component
+- New way of handling [color schemes](https://konstaui.com/react/colors)
+- Lots of minor changes, new features, improvements and fixes across all components (see beta changelogs below)
+
 # [1.0.0-beta.5](https://github.com/konstaui/konsta/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-09-08)
 
 ### Features
