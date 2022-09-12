@@ -1,6 +1,6 @@
 # Changelog
 
-# [1.0.0](https://github.com/konstaui/konsta/compare/v1.0.0-beta.4...v1.0.0) (2022-09-10)
+# [1.0.0](https://github.com/konstaui/konsta/compare/v1.0.0-beta.4...v1.0.0) (2022-09-13)
 
 - All new Material You design
 - New [Dialog](https://konstaui.com/react/dialog) component
