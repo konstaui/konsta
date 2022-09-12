@@ -134,13 +134,13 @@ interface Props {
   /**
    * Makes stepper round in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   roundedIos?: boolean;
   /**
    * Makes stepper round in Material theme
    *
-   * @default undefined
+   * @default false
    */
   roundedMaterial?: boolean;
   /**
@@ -152,13 +152,13 @@ interface Props {
   /**
    * Makes stepper small in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   smallIos?: boolean;
   /**
    * Makes stepper small in Material theme
    *
-   * @default undefined
+   * @default false
    */
   smallMaterial?: boolean;
   /**
@@ -170,13 +170,13 @@ interface Props {
   /**
    * Makes stepper large in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   largeIos?: boolean;
   /**
    * Makes stepper large in Material theme
    *
-   * @default undefined
+   * @default false
    */
   largeMaterial?: boolean;
   /**
@@ -188,13 +188,13 @@ interface Props {
   /**
    * Makes stepper raised (with shadow) in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   raisedIos?: boolean;
   /**
    * Makes stepper raised (with shadow) in Material theme
    *
-   * @default undefined
+   * @default false
    */
   raisedMaterial?: boolean;
   /**
@@ -206,13 +206,13 @@ interface Props {
   /**
    * Makes stepper outline in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   outlineIos?: boolean;
   /**
    * Makes stepper outline in Material theme
    *
-   * @default undefined
+   * @default false
    */
   outlineMaterial?: boolean;
   /**

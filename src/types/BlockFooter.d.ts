@@ -16,14 +16,14 @@ interface Props {
   /**
    * Makes block footer inset in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   insetIos?: boolean;
 
   /**
    * Makes block footer inset in Material theme
    *
-   * @default undefined
+   * @default false
    */
   insetMaterial?: boolean;
 

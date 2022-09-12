@@ -64,13 +64,13 @@ interface Props {
   /**
    * Adds extra highlighting in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   strongIos?: boolean;
   /**
    * Adds extra highlighting in Material theme
    *
-   * @default undefined
+   * @default false
    */
   strongMaterial?: boolean;
   /**
@@ -82,13 +82,13 @@ interface Props {
   /**
    * Makes list block inset in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   insetIos?: boolean;
   /**
    * Makes list block inset in Material theme
    *
-   * @default undefined
+   * @default false
    */
   insetMaterial?: boolean;
   /**
@@ -100,13 +100,13 @@ interface Props {
   /**
    * Renders list outer borders in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   outlineIos?: boolean;
   /**
    * Renders list outer borders in Material theme
    *
-   * @default undefined
+   * @default false
    */
   outlineMaterial?: boolean;
 

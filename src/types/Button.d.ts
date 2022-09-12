@@ -130,14 +130,14 @@ interface Props {
   /**
    * Makes button outline in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   outlineIos?: boolean;
 
   /**
    * Makes button outline in Material theme
    *
-   * @default undefined
+   * @default false
    */
   outlineMaterial?: boolean;
 
@@ -151,14 +151,14 @@ interface Props {
   /**
    * Makes button in clear style (without fill color) in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   clearIos?: boolean;
 
   /**
    * Makes button in clear style (without fill color) in Material theme
    *
-   * @default undefined
+   * @default false
    */
   clearMaterial?: boolean;
 
@@ -172,14 +172,14 @@ interface Props {
   /**
    * Makes button in tonal style (with semitransparent fill color) in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   tonalIos?: boolean;
 
   /**
    * Makes button in tonal style (with semitransparent fill color) in Material theme
    *
-   * @default undefined
+   * @default false
    */
   tonalMaterial?: boolean;
 
@@ -193,14 +193,14 @@ interface Props {
   /**
    * Makes button rounded in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   roundedIos?: boolean;
 
   /**
    * Makes button rounded in Material theme
    *
-   * @default undefined
+   * @default false
    */
   roundedMaterial?: boolean;
 
@@ -214,14 +214,14 @@ interface Props {
   /**
    * Makes button small in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   smallIos?: boolean;
 
   /**
    * Makes button small in Material theme
    *
-   * @default undefined
+   * @default false
    */
   smallMaterial?: boolean;
 
@@ -235,14 +235,14 @@ interface Props {
   /**
    * Makes button large in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   largeIos?: boolean;
 
   /**
    * Makes button large in Material theme
    *
-   * @default undefined
+   * @default false
    */
   largeMaterial?: boolean;
 
@@ -256,14 +256,14 @@ interface Props {
   /**
    * Makes button raised (with shadow) in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   raisedIos?: boolean;
 
   /**
    * Makes button raised (with shadow) in Material theme
    *
-   * @default undefined
+   * @default false
    */
   raisedMaterial?: boolean;
 

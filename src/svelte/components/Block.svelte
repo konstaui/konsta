@@ -15,14 +15,14 @@
 
   export let margin = 'my-8';
   export let inset = undefined;
-  export let insetIos = undefined;
-  export let insetMaterial = undefined;
+  export let insetIos = false;
+  export let insetMaterial = false;
   export let strong = undefined;
-  export let strongIos = undefined;
-  export let strongMaterial = undefined;
+  export let strongIos = false;
+  export let strongMaterial = false;
   export let outline = undefined;
-  export let outlineIos = undefined;
-  export let outlineMaterial = undefined;
+  export let outlineIos = false;
+  export let outlineMaterial = false;
   export let nested = undefined;
 
   let theme;

@@ -12,8 +12,8 @@
   export let ios = undefined;
   export let material = undefined;
   export let inset = undefined;
-  export let insetIos = undefined;
-  export let insetMaterial = undefined;
+  export let insetIos = false;
+  export let insetMaterial = false;
 
   let theme;
   theme = useTheme({}, (v) => (theme = v));

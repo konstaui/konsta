@@ -85,13 +85,13 @@ interface Props {
   /**
    * Makes card outline in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   outlineIos?: boolean;
   /**
    * Makes card outline in Material theme
    *
-   * @default undefined
+   * @default false
    */
   outlineMaterial?: boolean;
   /**
@@ -103,13 +103,13 @@ interface Props {
   /**
    * Makes card raised in iOS theme
    *
-   * @default undefined
+   * @default false
    */
   raisedIos?: boolean;
   /**
    * Makes card raised in Material theme
    *
-   * @default undefined
+   * @default false
    */
   raisedMaterial?: boolean;
   /**
