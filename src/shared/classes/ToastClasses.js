@@ -28,7 +28,7 @@ export const ToastClasses = (props, colors, classes) => {
     content: {
       common: 'flex items-center justify-between',
       ios: 'pl-4-safe pr-4-safe pt-3 pb-3-safe sm:px-4 sm:py-3',
-      material: 'px-6 py-3.5',
+      material: 'pl-6-safe pr-6-safe py-3.5 pb-3.5-safe sm:px-6 sm:py-3.5',
     },
     button: {
       common: '-my-2 shrink-0 ml-4',
