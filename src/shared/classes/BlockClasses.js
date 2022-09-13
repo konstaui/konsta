@@ -16,10 +16,12 @@ export const BlockClasses = (props, colors, classes) => {
         (strong || outline) && 'py-4'
       ),
       ios: cls(
+        colors.textIos,
         strong && colors.strongBgIos,
         inset && outline && colors.outlineIos
       ),
       material: cls(
+        colors.textMaterial,
         strong && colors.strongBgMaterial,
         inset && outline && colors.outlineMaterial
       ),

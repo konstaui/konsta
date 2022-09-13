@@ -18,6 +18,11 @@ export const BlockColors = (colorsProp = {}, dark) => {
       'bg-md-light-surface-1',
       dark('dark:bg-md-dark-surface-1')
     ),
+    textIos: '',
+    textMaterial: cls(
+      'text-md-light-on-surface',
+      dark('dark:text-md-dark-on-surface')
+    ),
     ...colorsProp,
   };
 };
