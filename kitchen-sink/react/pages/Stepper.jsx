@@ -113,7 +113,7 @@ export default function StepperPage() {
             />
           </div>
           <div>
-            <div className="block text-xs mb-1">Small Outline</div>
+            <div className="block text-xs mb-1">Small Rounded Outline</div>
             <Stepper
               value={value}
               small

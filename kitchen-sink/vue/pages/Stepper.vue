@@ -75,7 +75,7 @@
           />
         </div>
         <div>
-          <div class="block text-xs mb-1">Small Outline</div>
+          <div class="block text-xs mb-1">Small Rounded Outline</div>
           <k-stepper
             :value="value"
             small

@@ -88,7 +88,7 @@
         <Stepper {value} small outline onPlus={increase} onMinus={decrease} />
       </div>
       <div>
-        <div class="block text-xs mb-1">Small Outline</div>
+        <div class="block text-xs mb-1">Small Rounded Outline</div>
         <Stepper
           {value}
           small
