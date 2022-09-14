@@ -1,5 +1,9 @@
 # Changelog
 
+# [1.0.1](https://github.com/konstaui/konsta/compare/v1.0.0...v1.0.1) (2022-09-13)
+
+- fix config folder
+
 # [1.0.0](https://github.com/konstaui/konsta/compare/v0.11.1...v1.0.0) (2022-09-13)
 
 - All new Material You design
