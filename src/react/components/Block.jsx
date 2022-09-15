@@ -13,6 +13,7 @@ const Block = forwardRef((props, ref) => {
     colors: colorsProp,
 
     margin = 'my-8',
+    padding = 'py-4',
     inset,
     insetIos,
     insetMaterial,
@@ -78,6 +79,7 @@ const Block = forwardRef((props, ref) => {
       {
         ...props,
         margin,
+        padding,
         inset: isInset,
         strong: isStrong,
         outline: isOutline,
