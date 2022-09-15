@@ -14,6 +14,7 @@
   export let material = undefined;
 
   export let margin = 'my-8';
+  export let padding = 'py-4';
   export let inset = undefined;
   export let insetIos = false;
   export let insetMaterial = false;
