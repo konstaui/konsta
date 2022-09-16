@@ -47,6 +47,12 @@ interface Props {
    * */
   margin?: string;
   /**
+   * Tailwind CSS padding class
+   *
+   * @default 'py-4'
+   * */
+  padding?: string;
+  /**
    * Adds extra highlighting and padding block content. Overwrites `strongIos` and `strongMaterial` props
    *
    * @default undefined

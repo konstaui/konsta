@@ -2,7 +2,7 @@ import { cls } from '../cls.js';
 import { positionClass } from '../position-class.js';
 
 export const BlockClasses = (props, colors, classes) => {
-  const { inset, nested, margin, strong, outline } = props;
+  const { inset, nested, margin, padding, strong, outline } = props;
   return {
     base: {
       common: cls(
@@ -13,7 +13,7 @@ export const BlockClasses = (props, colors, classes) => {
         inset && 'px-4',
         !inset && 'pl-4-safe pr-4-safe',
         !nested && margin,
-        (strong || outline) && 'py-4'
+        (strong || outline) && padding
       ),
       ios: cls(
         colors.textIos,

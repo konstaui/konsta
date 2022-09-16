@@ -31,6 +31,7 @@
         default: undefined,
       },
       margin: { type: String, default: 'my-8' },
+      padding: { type: String, default: 'py-4' },
       inset: { type: Boolean, default: undefined },
       insetIos: { type: Boolean, default: false },
       insetMaterial: { type: Boolean, default: false },

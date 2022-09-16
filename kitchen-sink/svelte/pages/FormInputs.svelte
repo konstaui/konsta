@@ -89,7 +89,7 @@
       label="Textarea"
       type="textarea"
       placeholder="Bio"
-      inputclass="h-20 resize-none"
+      inputClass="h-20 resize-none"
     >
       <DemoIcon slot="media" />
     </ListInput>
@@ -159,7 +159,7 @@
       label="Textarea"
       type="textarea"
       placeholder="Bio"
-      inputclass="h-20 resize-none"
+      inputClass="h-20 resize-none"
     >
       <DemoIcon slot="media" />
     </ListInput>
