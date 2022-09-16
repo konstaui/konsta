@@ -100,7 +100,7 @@ export default function FormInputsPage() {
           type="textarea"
           placeholder="Bio"
           media={<DemoIcon />}
-          inputClassName="h-20 resize-none"
+          inputClassName="!h-20 resize-none"
         />
       </List>
 
@@ -182,7 +182,7 @@ export default function FormInputsPage() {
           type="textarea"
           placeholder="Bio"
           media={<DemoIcon />}
-          inputClassName="h-20 resize-none"
+          inputClassName="!h-20 resize-none"
         />
       </List>
 

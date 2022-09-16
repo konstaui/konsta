@@ -81,7 +81,7 @@
         label="Textarea"
         type="textarea"
         placeholder="Bio"
-        input-class="h-20 resize-none"
+        input-class="!h-20 resize-none"
       >
         <template #media>
           <demo-icon />
@@ -179,7 +179,7 @@
         label="Textarea"
         type="textarea"
         placeholder="Bio"
-        input-class="h-20 resize-none"
+        input-class="!h-20 resize-none"
       >
         <template #media>
           <demo-icon />
