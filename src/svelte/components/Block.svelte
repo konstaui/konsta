@@ -56,7 +56,14 @@
   $: c = useThemeClasses(
     { ios, material },
     BlockClasses(
-      { margin, padding, nested, inset: isInset, outline: isOutline, strong: isStrong },
+      {
+        margin,
+        padding,
+        nested,
+        inset: isInset,
+        outline: isOutline,
+        strong: isStrong,
+      },
       colors,
       className
     ),
