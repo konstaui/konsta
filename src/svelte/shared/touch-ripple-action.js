@@ -9,12 +9,12 @@ import { useTouchRipple } from './use-touch-ripple.js';
  * @returns void
  */
 export function touchRipple(node, styles = true) {
-    if (!node) return;
-    if (styles) {
-        node.style.position = 'relative';
-        node.style.overflow = 'hidden';
-    }
-    const el = { current: node };
+  if (!node) return;
+  if (styles) {
+    node.style.position = 'relative';
+    node.style.overflow = 'hidden';
+  }
+  const el = { current: node };
 
-    useTouchRipple(el, true);
+  useTouchRipple(el, true);
 }

@@ -50,7 +50,7 @@ import Toolbar from './components/Toolbar.svelte';
 // eslint-disable-next-line
 import KonstaProvider from './shared/KonstaProvider.svelte';
 import { useTheme } from './shared/use-theme.js';
-import { touchRipple } from './shared/touch-ripple-action';
+import { touchRipple } from './shared/touch-ripple-action.js';
 
 export {
   // utils
