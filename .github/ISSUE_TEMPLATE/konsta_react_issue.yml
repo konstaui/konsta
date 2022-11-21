@@ -18,7 +18,7 @@ body:
     id: reproduction
     attributes:
       label: Reproduction link
-      description: Please provide a link to a repo that can reproduce the problem you ran into. You can fork [this Stack Blitz](https://stackblitz.com/edit/vite-7wtkxc?file=App.jsx) to get start. A reproduction is required unless you are absolutely sure that the issue is obvious and the provided information is enough to understand the problem. If a report is vague (e.g. just a generic error message) and has no reproduction, it will receive a "missing demo" label. If no reproduction is provided after 3 days, it will be auto-closed.
+      description: Please provide a link to a repo that can reproduce the problem you ran into. You can fork [this Stack Blitz](https://stackblitz.com/edit/konsta-react?file=App.jsx) to get start. A reproduction is required unless you are absolutely sure that the issue is obvious and the provided information is enough to understand the problem. If a report is vague (e.g. just a generic error message) and has no reproduction, it will receive a "missing demo" label. If no reproduction is provided after 3 days, it will be auto-closed.
       placeholder: 'https://stackblitz.com/..'
     validations:
       required: true
