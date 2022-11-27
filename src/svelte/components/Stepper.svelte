@@ -1,11 +1,14 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
+  import { StepperClasses } from '../../shared/classes/StepperClasses.js';
   import { cls } from '../../shared/cls.js';
+  import { StepperColors } from '../../shared/colors/StepperColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import { StepperClasses } from '../../shared/classes/StepperClasses.js';
-  import { StepperColors } from '../../shared/colors/StepperColors.js';
+
+  const dispatch = createEventDispatcher();
 
   let className = undefined;
   export { className as class };
@@ -40,13 +43,6 @@
   export let outline = undefined;
   export let outlineIos = undefined;
   export let outlineMaterial = undefined;
-
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
-  export let onBlur = undefined;
-  export let onMinus = undefined;
-  export let onPlus = undefined;
 
   export let touchRipple = true;
 
@@ -130,7 +126,7 @@
   <span
     bind:this={buttonLeftEl.current}
     class={buttonLeftClasses}
-    on:click={onMinus}
+    on:click={() => dispatch('minus')}
   >
     <span class={c.hBar} />
   </span>
@@ -142,10 +138,10 @@
       {value}
       disabled={inputDisabled}
       readonly={inputReadonly}
-      on:input={onInput}
-      on:change={onChange}
-      on:focus={onFocus}
-      on:blur={onBlur}
+      on:input
+      on:change
+      on:focus
+      on:blur
     />
   {/if}
   {#if !input && !buttonsOnly}
@@ -155,7 +151,7 @@
   <span
     bind:this={buttonRightEl.current}
     class={buttonRightClasses}
-    on:click={onPlus}
+    on:click={() => dispatch('plus')}
   >
     <span class={c.hBar} />
     <span class={c.vBar} />

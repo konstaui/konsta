@@ -1,8 +1,11 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
   import { PopupClasses } from '../../shared/classes/PopupClasses.js';
   import { PopupColors } from '../../shared/colors/PopupColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
+  const dispatch = createEventDispatcher();
 
   let className = undefined;
   export { className as class };
@@ -14,7 +17,6 @@
   export let size = 'w-screen h-screen md:w-160 md:h-160';
   export let opened = false;
   export let backdrop = true;
-  export let onBackdropClick = undefined;
 
   $: state = opened ? 'opened' : 'closed';
 
@@ -31,7 +33,7 @@
 </script>
 
 {#if backdrop}
-  <div class={c.backdrop[state]} on:click={onBackdropClick} />
+  <div class={c.backdrop[state]} on:click={() => dispatch('backdropClick')} />
 {/if}
 <div class={c.base[state]} {...$$restProps}>
   <slot />

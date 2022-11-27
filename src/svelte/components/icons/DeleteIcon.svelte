@@ -1,5 +1,4 @@
 <script>
-  export let onClick;
   export let theme;
 </script>
 
@@ -10,7 +9,7 @@
     height="28"
     viewBox="0 0 28 28"
     fill="currentcolor"
-    on:click={onClick}
+    on:click
     {...$$restProps}
   >
     <path
@@ -24,7 +23,7 @@
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    on:click={onClick}
+    on:click
     {...$$restProps}
   >
     <path

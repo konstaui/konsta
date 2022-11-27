@@ -12,8 +12,6 @@
   let colorsProp = undefined;
   export { colorsProp as colors };
 
-  export let onClick = undefined;
-
   const dark = useDarkClasses();
 
   $: colors = BreadcrumbsCollapsedColors(colorsProp, dark);
@@ -26,7 +24,7 @@
   );
 </script>
 
-<div class={c.base} {...$$restProps} on:click={onClick}>
+<div class={c.base} {...$$restProps} on:click>
   <span class={c.dot} />
   <span class={c.dot} />
   <span class={c.dot} />

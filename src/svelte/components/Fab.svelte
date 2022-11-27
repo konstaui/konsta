@@ -1,9 +1,9 @@
 <script>
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { FabClasses } from '../../shared/classes/FabClasses.js';
   import { FabColors } from '../../shared/colors/FabColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   let className = undefined;
   export { className as class };
@@ -18,8 +18,6 @@
   export let text = undefined;
   export let textPosition = 'after';
   export let touchRipple = true;
-
-  export let onClick = undefined;
 
   const rippleEl = { current: null };
 
@@ -43,7 +41,7 @@
     class={text ? c.base.withText : c.base.iconOnly}
     {href}
     bind:this={rippleEl.current}
-    on:click={onClick}
+    on:click
     {...$$restProps}
   >
     {#if (text || $$slots.text) && textPosition === 'before'}
@@ -63,7 +61,7 @@
     class={text ? c.base.withText : c.base.iconOnly}
     {href}
     bind:this={rippleEl.current}
-    on:click={onClick}
+    on:click
     {...$$restProps}
   >
     {#if (text || $$slots.text) && textPosition === 'before'}

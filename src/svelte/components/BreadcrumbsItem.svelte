@@ -12,8 +12,6 @@
   let colorsProp = undefined;
   export { colorsProp as colors };
 
-  export let onClick = undefined;
-
   export let active = false;
 
   const dark = useDarkClasses();
@@ -28,6 +26,6 @@
   );
 </script>
 
-<div class={c.base} {...$$restProps} on:click={onClick}>
+<div class={c.base} {...$$restProps} on:click>
   <slot />
 </div>

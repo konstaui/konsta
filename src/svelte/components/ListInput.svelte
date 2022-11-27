@@ -1,13 +1,16 @@
 <script>
-  import { useTheme } from '../shared/use-theme.js';
+  import { createEventDispatcher } from 'svelte';
+  import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
+  import { cls } from '../../shared/cls.js';
+  import { ListInputColors } from '../../shared/colors/ListInputColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import DeleteIcon from './icons/DeleteIcon.svelte';
   import DropdownIcon from './icons/DropdownIcon.svelte';
   import ListItem from './ListItem.svelte';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
-  import { ListInputColors } from '../../shared/colors/ListInputColors.js';
-  import { cls } from '../../shared/cls.js';
+
+  const dispatch = createEventDispatcher();
 
   let className = undefined;
   export { className as class };
@@ -57,12 +60,6 @@
   export let multiple = undefined;
   export let pattern = undefined;
   export let tabindex = undefined;
-
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
-  export let onBlur = undefined;
-  export let onClear = undefined;
 
   let theme;
   theme = useTheme({ ios, material }, (v) => (theme = v));
@@ -115,15 +112,6 @@
     }
 
     return '';
-  };
-
-  const onFocusInternal = (e) => {
-    isFocused = true;
-    if (onFocus) onFocus(e);
-  };
-  const onBlurInternal = (e) => {
-    isFocused = false;
-    if (onBlur) onBlur(e);
   };
 
   $: c = useThemeClasses(
@@ -222,10 +210,10 @@
             {pattern}
             {tabindex}
             {value}
-            on:input={onInput}
-            on:change={onChange}
-            on:focus={onFocusInternal}
-            on:blur={onBlurInternal}
+            on:input
+            on:change
+            on:focus
+            on:blur
           >
             <slot />
           </svelte:element>
@@ -260,16 +248,20 @@
             {pattern}
             {tabindex}
             {value}
-            on:input={onInput}
-            on:change={onChange}
-            on:focus={onFocusInternal}
-            on:blur={onBlurInternal}
+            on:input
+            on:change
+            on:focus
+            on:blur
           />
         {/if}
       {/if}
 
       {#if clearButton}
-        <DeleteIcon {theme} onClick={onClear} class={c.clearButton} />
+        <DeleteIcon
+          {theme}
+          on:click={() => dispatch('clear')}
+          class={c.clearButton}
+        />
       {/if}
       {#if dropdown}
         <DropdownIcon class={c.dropdown} />

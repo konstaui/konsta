@@ -2,9 +2,9 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { DialogButtonClasses } from '../../shared/classes/DialogButtonClasses.js';
   import { DialogButtonColors } from '../../shared/colors/DialogButtonColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import Button from './Button.svelte';
 
   let className = undefined;
@@ -20,8 +20,6 @@
   export let strong = undefined;
   export let strongIos = undefined;
   export let strongMaterial = undefined;
-
-  export let onClick = undefined;
 
   let theme;
   theme = useTheme({}, (v) => (theme = v));
@@ -61,7 +59,7 @@
       class={c.base}
       {disabled}
       {...attrs}
-      on:click={onClick}
+      on:click
     >
       <slot />
     </svelte:element>
@@ -71,7 +69,7 @@
       class={c.base}
       {disabled}
       {...attrs}
-      on:click={onClick}
+      on:click
     >
       <slot />
     </svelte:component>
@@ -84,7 +82,7 @@
     {disabled}
     clear={!isStrong}
     class={className}
-    {onClick}
+    on:click
     {...attrs}
   >
     <slot />

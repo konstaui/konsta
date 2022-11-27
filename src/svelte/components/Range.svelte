@@ -1,6 +1,6 @@
 <script>
-  import { cls } from '../../shared/cls.js';
   import { RangeClasses } from '../../shared/classes/RangeClasses.js';
+  import { cls } from '../../shared/cls.js';
   import { RangeColors } from '../../shared/colors/RangeColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -20,10 +20,6 @@
   export let step = 1;
   export let min = 0;
   export let max = 100;
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
-  export let onBlur = undefined;
 
   const dark = useDarkClasses();
 
@@ -53,9 +49,9 @@
     {value}
     {readonly}
     {disabled}
-    on:input={onInput}
-    on:change={onChange}
-    on:focus={onFocus}
-    on:blur={onBlur}
+    on:input
+    on:change
+    on:focus
+    on:blur
   />
 </div>

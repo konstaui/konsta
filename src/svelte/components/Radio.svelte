@@ -1,11 +1,11 @@
 <script>
-  import { useTheme } from '../shared/use-theme.js';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import CheckboxIcon from './icons/CheckboxIcon.svelte';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
   import { RadioColors } from '../../shared/colors/RadioColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import CheckboxIcon from './icons/CheckboxIcon.svelte';
 
   let className = undefined;
   export { className as class };
@@ -21,7 +21,6 @@
   export let value = undefined;
   export let disabled = false;
   export let readonly = false;
-  export let onChange = undefined;
   export let touchRipple = true;
 
   const rippleEl = { current: null };
@@ -58,7 +57,7 @@
     {disabled}
     {readonly}
     {checked}
-    on:change={onChange}
+    on:change
     class={c.input}
   />
 

@@ -21,7 +21,6 @@
   export let value = undefined;
   export let disabled = false;
   export let readonly = false;
-  export let onChange = undefined;
 
   export let touchRipple = true;
 
@@ -54,7 +53,7 @@
     {disabled}
     {readonly}
     {checked}
-    on:change={onChange}
+    on:change
     class={c.input}
   />
   <span class={c.inner[state]} />

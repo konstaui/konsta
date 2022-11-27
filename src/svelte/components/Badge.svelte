@@ -12,8 +12,6 @@
 
   export let small = false;
 
-  export let onClick = undefined;
-
   $: colors = BadgeColors(colorsProp);
 
   $: size = small ? 'sm' : 'md';
@@ -26,6 +24,6 @@
   );
 </script>
 
-<span class={c.base[size]} {...$$restProps} on:click={onClick}>
+<span class={c.base[size]} {...$$restProps} on:click>
   <slot />
 </span>

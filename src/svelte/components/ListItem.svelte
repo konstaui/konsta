@@ -1,13 +1,13 @@
 <script>
-  import { cls } from '../../shared/cls.js';
-  import { useTheme } from '../shared/use-theme.js';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import ChevronIcon from './icons/ChevronIcon.svelte';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
+  import { cls } from '../../shared/cls.js';
   import { ListItemColors } from '../../shared/colors/ListItemColors.js';
   import { getReactiveContext } from '../shared/get-reactive-context.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import ChevronIcon from './icons/ChevronIcon.svelte';
 
   let className = undefined;
   export { className as class };
@@ -60,8 +60,6 @@
   export let linkProps = {};
 
   export let touchRipple = true;
-
-  export let onClick = undefined;
 
   let ListDividersContext = getReactiveContext(
     'ListDividersContext',
@@ -174,19 +172,14 @@
   <svelte:element
     this={component}
     class={cls(c.groupTitle, className)}
-    on:click={onClick}
+    on:click
   >
     {title}
     <slot name="title" />
     <slot />
   </svelte:element>
 {:else}
-  <svelte:element
-    this={component}
-    class={c.base}
-    {...$$restProps}
-    on:click={onClick}
-  >
+  <svelte:element this={component} class={c.base} {...$$restProps} on:click>
     {#if typeof ItemContentComponent === 'string'}
       <svelte:element
         this={ItemContentComponent}

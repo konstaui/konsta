@@ -1,9 +1,9 @@
 <script>
   import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
   import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   let className = undefined;
@@ -23,8 +23,6 @@
   export let fontSizeMaterial = 'text-base';
   export let touchRipple = true;
   export let dividers = true;
-
-  export let onClick = undefined;
 
   const rippleEl = { current: null };
 
@@ -74,7 +72,7 @@
   this={Component}
   bind:this={rippleEl.current}
   class={c.base}
-  on:click={onClick}
+  on:click
   {...attrs}
 >
   <slot />

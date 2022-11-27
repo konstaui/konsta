@@ -1,11 +1,11 @@
 <script>
-  import { cls } from '../../shared/cls.js';
-  import { useTheme } from '../shared/use-theme.js';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+  import { cls } from '../../shared/cls.js';
   import { LinkColors } from '../../shared/colors/LinkColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   let className = undefined;
   export { className as class };
@@ -26,8 +26,6 @@
   export let tabbarActive = false;
 
   export let touchRipple = true;
-
-  export let onClick = undefined;
 
   const rippleEl = { current: null };
 
@@ -85,7 +83,7 @@
   bind:this={rippleEl.current}
   class={classes}
   {...$$restProps}
-  on:click={onClick}
+  on:click
 >
   <slot />
 </svelte:element>

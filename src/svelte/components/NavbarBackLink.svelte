@@ -1,9 +1,9 @@
 <script>
-  import { useTheme } from '../shared/use-theme.js';
+  import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useTheme } from '../shared/use-theme.js';
   import BackIcon from './icons/BackIcon.svelte';
   import Link from './Link.svelte';
-  import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 
   let className = undefined;
   export { className as class };
@@ -13,7 +13,6 @@
   export let component = 'a';
   export let text = 'Back';
   export let showText = 'auto';
-  export let onClick = undefined;
 
   let theme;
   theme = useTheme({ ios, material }, (v) => (theme = v));
@@ -29,7 +28,7 @@
   );
 </script>
 
-<Link class={c.base} navbar {component} {...$$restProps} {onClick}>
+<Link class={c.base} navbar {component} {...$$restProps} on:click>
   <span class={c.icon}>
     <BackIcon {theme} />
   </span>

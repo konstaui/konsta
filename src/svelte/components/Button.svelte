@@ -1,12 +1,12 @@
 <script>
   import { cls } from '../../shared/cls.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
   import { ButtonColors } from '../../shared/colors/ButtonColors.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   let className = undefined;
   export { className as class };
@@ -53,8 +53,6 @@
   export let segmentedActive = false;
 
   export let touchRipple = true;
-
-  export let onClick = undefined;
 
   let theme;
   theme = useTheme({}, (v) => (theme = v));
@@ -193,7 +191,7 @@
     class={classes}
     {disabled}
     {...attrs}
-    on:click={onClick}
+    on:click
   >
     <slot />
   </svelte:element>
@@ -204,7 +202,7 @@
     class={classes}
     {disabled}
     {...attrs}
-    on:click={onClick}
+    on:click
   >
     <slot />
   </svelte:component>
