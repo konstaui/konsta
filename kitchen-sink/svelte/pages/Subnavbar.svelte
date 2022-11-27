@@ -1,9 +1,9 @@
 <script>
   import {
-    Page,
+    Block,
     Navbar,
     NavbarBackLink,
-    Block,
+    Page,
     Segmented,
     SegmentedButton,
   } from 'konsta/svelte';
@@ -15,7 +15,7 @@
   <Navbar title="Subnavbar">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
     <Segmented

@@ -1,16 +1,16 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Link,
     Block,
     BlockHeader,
     BlockTitle,
-    Radio,
-    Toggle,
+    Link,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Radio,
+    Toggle,
   } from 'konsta/svelte';
   const isPreview = document.location.href.includes('examplePreview');
 
@@ -29,7 +29,7 @@
   >
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
     <Link slot="right" navbar>Right</Link>
@@ -53,7 +53,7 @@
             component="div"
             value={v}
             checked={size === v}
-            onChange={() => (size = v)}
+            on:change={() => (size = v)}
           />
         </ListItem>
       {/each}
@@ -71,7 +71,7 @@
           slot="after"
           component="div"
           checked={isTransparent === true}
-          onChange={() => (isTransparent = !isTransparent)}
+          on:change={() => (isTransparent = !isTransparent)}
         /></ListItem
       >
     </List>

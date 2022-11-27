@@ -1,14 +1,14 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Badge,
     Block,
     BlockTitle,
     List,
     ListGroup,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
   import DemoIcon from '../components/DemoIcon.svelte';
 
@@ -19,7 +19,7 @@
   <Navbar title="List">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>

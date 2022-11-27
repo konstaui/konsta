@@ -1,12 +1,12 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Segmented,
-    SegmentedButton,
     Block,
     BlockTitle,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Segmented,
+    SegmentedButton,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -17,7 +17,7 @@
   <Navbar title="Segmented Control">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -27,19 +27,19 @@
     <Segmented>
       <SegmentedButton
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -48,19 +48,19 @@
     <Segmented rounded>
       <SegmentedButton
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -72,19 +72,19 @@
     <Segmented raised>
       <SegmentedButton
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -92,19 +92,19 @@
     <Segmented raised rounded>
       <SegmentedButton
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -116,19 +116,19 @@
     <Segmented outline>
       <SegmentedButton
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -136,19 +136,19 @@
     <Segmented rounded outline>
       <SegmentedButton
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -161,21 +161,21 @@
       <SegmentedButton
         strong
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         strong
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
       <SegmentedButton
         strong
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>
@@ -186,7 +186,7 @@
         strong
         rounded
         active={activeSegmented === 1}
-        onClick={() => (activeSegmented = 1)}
+        on:click={() => (activeSegmented = 1)}
       >
         Button
       </SegmentedButton>
@@ -194,7 +194,7 @@
         strong
         rounded
         active={activeSegmented === 2}
-        onClick={() => (activeSegmented = 2)}
+        on:click={() => (activeSegmented = 2)}
       >
         Button
       </SegmentedButton>
@@ -202,7 +202,7 @@
         strong
         rounded
         active={activeSegmented === 3}
-        onClick={() => (activeSegmented = 3)}
+        on:click={() => (activeSegmented = 3)}
       >
         Button
       </SegmentedButton>

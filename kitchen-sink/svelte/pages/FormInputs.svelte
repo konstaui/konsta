@@ -1,11 +1,11 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     BlockTitle,
     List,
     ListInput,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
 
   import DemoIcon from '../components/DemoIcon.svelte';
@@ -29,7 +29,7 @@
   <Navbar title="Form Inputs">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -261,7 +261,7 @@
       error={name.changed && !name.value.trim()
         ? 'Please specify your name'
         : ''}
-      onInput={onNameChange}
+      on:input={onNameChange}
     >
       <DemoIcon slot="media" />
     </ListInput>
@@ -276,8 +276,8 @@
       info="Type something to see clear button"
       value={demoValue}
       clearButton={demoValue.length > 0}
-      onInput={onDemoValueChange}
-      onClear={onDemoValueClear}
+      on:input={onDemoValueChange}
+      on:clear={onDemoValueClear}
     >
       <DemoIcon slot="media" />
     </ListInput>

@@ -1,10 +1,10 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Block,
     BlockTitle,
+    Navbar,
+    NavbarBackLink,
+    Page,
     Progressbar,
     Segmented,
     SegmentedButton,
@@ -18,7 +18,7 @@
   <Navbar title="Progressbar">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -31,25 +31,25 @@
     <Segmented raised>
       <SegmentedButton
         active={progress === 0.1}
-        onClick={() => (progress = 0.1)}
+        on:click={() => (progress = 0.1)}
       >
         10%
       </SegmentedButton>
       <SegmentedButton
         active={progress === 0.3}
-        onClick={() => (progress = 0.3)}
+        on:click={() => (progress = 0.3)}
       >
         30%
       </SegmentedButton>
       <SegmentedButton
         active={progress === 0.5}
-        onClick={() => (progress = 0.5)}
+        on:click={() => (progress = 0.5)}
       >
         50%
       </SegmentedButton>
       <SegmentedButton
         active={progress === 1.0}
-        onClick={() => (progress = 1.0)}
+        on:click={() => (progress = 1.0)}
       >
         100%
       </SegmentedButton>

@@ -1,11 +1,11 @@
 <script>
   import {
-    Page,
+    Block,
+    Button,
     Navbar,
     NavbarBackLink,
-    Button,
+    Page,
     Toast,
-    Block,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -26,7 +26,7 @@
   <Navbar title="Toast">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -37,7 +37,7 @@
         slot="button"
         clear
         inline
-        onClick={() => (toastLeftOpened = false)}
+        on:click={() => (toastLeftOpened = false)}
       >
         Close
       </Button>
@@ -48,7 +48,7 @@
         slot="button"
         clear
         inline
-        onClick={() => (toastCenterOpened = false)}
+        on:click={() => (toastCenterOpened = false)}
       >
         Close
       </Button>
@@ -59,7 +59,7 @@
         slot="button"
         clear
         inline
-        onClick={() => (toastRightOpened = false)}
+        on:click={() => (toastRightOpened = false)}
       >
         Close
       </Button>
@@ -70,17 +70,17 @@
       screen.
     </p>
     <p>
-      <Button onClick={() => openToast(() => (toastLeftOpened = true))}>
+      <Button on:click={() => openToast(() => (toastLeftOpened = true))}>
         Toast on Left
       </Button>
     </p>
     <p>
-      <Button onClick={() => openToast(() => (toastCenterOpened = true))}>
+      <Button on:click={() => openToast(() => (toastCenterOpened = true))}>
         Toast on Center
       </Button>
     </p>
     <p>
-      <Button onClick={() => openToast(() => (toastRightOpened = true))}>
+      <Button on:click={() => openToast(() => (toastRightOpened = true))}>
         Toast on Right
       </Button>
     </p>

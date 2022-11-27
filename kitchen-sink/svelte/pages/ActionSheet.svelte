@@ -1,15 +1,15 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    BlockTitle,
-    Block,
-    Button,
     Actions,
     ActionsButton,
-    ActionsLabel,
     ActionsGroup,
+    ActionsLabel,
+    Block,
+    BlockTitle,
+    Button,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -22,7 +22,7 @@
   <Navbar title="Action Sheet">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -35,23 +35,23 @@
   </Block>
   <BlockTitle>Open Action Sheet</BlockTitle>
   <Block strong inset class="flex space-x-4">
-    <Button onClick={() => (actionsOneOpened = true)}>One group</Button>
-    <Button onClick={() => (actionsTwoOpened = true)}>Two groups</Button>
+    <Button on:click={() => (actionsOneOpened = true)}>One group</Button>
+    <Button on:click={() => (actionsTwoOpened = true)}>Two groups</Button>
   </Block>
 
   <Actions
     opened={actionsOneOpened}
-    onBackdropClick={() => (actionsOneOpened = false)}
+    on:backdropClick={() => (actionsOneOpened = false)}
   >
     <ActionsGroup>
       <ActionsLabel>Do something</ActionsLabel>
-      <ActionsButton onClick={() => (actionsOneOpened = false)} bold>
+      <ActionsButton on:click={() => (actionsOneOpened = false)} bold>
         Button 1
       </ActionsButton>
-      <ActionsButton onClick={() => (actionsOneOpened = false)}>
+      <ActionsButton on:click={() => (actionsOneOpened = false)}>
         Button 2
       </ActionsButton>
-      <ActionsButton onClick={() => (actionsOneOpened = false)}>
+      <ActionsButton on:click={() => (actionsOneOpened = false)}>
         Cancel
       </ActionsButton>
     </ActionsGroup>
@@ -59,19 +59,19 @@
 
   <Actions
     opened={actionsTwoOpened}
-    onBackdropClick={() => (actionsTwoOpened = false)}
+    on:backdropClick={() => (actionsTwoOpened = false)}
   >
     <ActionsGroup>
       <ActionsLabel>Do something</ActionsLabel>
-      <ActionsButton onClick={() => (actionsTwoOpened = false)} bold>
+      <ActionsButton on:click={() => (actionsTwoOpened = false)} bold>
         Button 1
       </ActionsButton>
-      <ActionsButton onClick={() => (actionsTwoOpened = false)}>
+      <ActionsButton on:click={() => (actionsTwoOpened = false)}>
         Button 2
       </ActionsButton>
     </ActionsGroup>
     <ActionsGroup>
-      <ActionsButton onClick={() => (actionsTwoOpened = false)}>
+      <ActionsButton on:click={() => (actionsTwoOpened = false)}>
         Cancel
       </ActionsButton>
     </ActionsGroup>

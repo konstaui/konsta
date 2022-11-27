@@ -1,11 +1,11 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Chip,
     Block,
     BlockTitle,
+    Chip,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -15,7 +15,7 @@
   <Navbar title="Chips">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -74,14 +74,14 @@
     <Chip
       class="m-0.5"
       deleteButton
-      onDelete={() => console.log('Delete Chip')}
+      on:delete={() => console.log('Delete Chip')}
     >
       Example Chip
     </Chip>
     <Chip
       class="m-0.5"
       deleteButton
-      onDelete={() => console.log('Delete Chip')}
+      on:delete={() => console.log('Delete Chip')}
     >
       <img
         slot="media"

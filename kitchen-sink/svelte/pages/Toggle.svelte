@@ -1,10 +1,10 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
     Toggle,
   } from 'konsta/svelte';
 
@@ -19,7 +19,7 @@
   <Navbar title="Toggle">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -31,7 +31,7 @@
         component="div"
         class="-my-1"
         checked={checked1}
-        onChange={() => (checked1 = !checked1)}
+        on:change={() => (checked1 = !checked1)}
       />
     </ListItem>
     <ListItem label title="Item 2">
@@ -40,7 +40,7 @@
         component="div"
         class="-my-1 k-color-brand-red"
         checked={checked2}
-        onChange={() => (checked2 = !checked2)}
+        on:change={() => (checked2 = !checked2)}
       />
     </ListItem>
     <ListItem label title="Item 3">
@@ -49,7 +49,7 @@
         component="div"
         class="-my-1 k-color-brand-green"
         checked={checked3}
-        onChange={() => (checked3 = !checked3)}
+        on:change={() => (checked3 = !checked3)}
       />
     </ListItem>
     <ListItem label title="Item 4">
@@ -58,7 +58,7 @@
         component="div"
         class="-my-1 k-color-brand-yellow"
         checked={checked4}
-        onChange={() => (checked4 = !checked4)}
+        on:change={() => (checked4 = !checked4)}
       />
     </ListItem>
   </List>

@@ -1,27 +1,27 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
+    Calendar,
+    CloudUploadFill,
+    EnvelopeFill,
+    PersonCircleFill,
+  } from 'framework7-icons/svelte';
+  import {
     Badge,
     Icon,
     Link,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
     Tabbar,
     TabbarLink,
   } from 'konsta/svelte';
-  import {
-    PersonCircleFill,
-    EnvelopeFill,
-    Calendar,
-    CloudUploadFill,
-  } from 'framework7-icons/svelte';
-  import MdPerson from '../components/MdPerson.svelte';
-  import MdEmail from '../components/MdEmail.svelte';
-  import MdToday from '../components/MdToday.svelte';
-  import MdFileUpload from '../components/MdFileUpload.svelte';
   import DemoIcon from '../components/DemoIcon.svelte';
+  import MdEmail from '../components/MdEmail.svelte';
+  import MdFileUpload from '../components/MdFileUpload.svelte';
+  import MdPerson from '../components/MdPerson.svelte';
+  import MdToday from '../components/MdToday.svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
 </script>
@@ -30,7 +30,7 @@
   <Navbar title="Badge">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
 

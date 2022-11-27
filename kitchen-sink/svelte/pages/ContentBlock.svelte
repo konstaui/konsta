@@ -1,12 +1,12 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Block,
     BlockFooter,
     BlockHeader,
     BlockTitle,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -16,7 +16,7 @@
   <Navbar title="Content Block">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>

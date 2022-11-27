@@ -1,13 +1,13 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Checkbox,
-    BlockTitle,
     Block,
+    BlockTitle,
+    Checkbox,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -54,7 +54,7 @@
   <Navbar title="Checkbox">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -66,14 +66,14 @@
       <Checkbox
         name="checkbox-1"
         checked={checked1}
-        onChange={(e) => (checked1 = e.target.checked)}
+        on:change={(e) => (checked1 = e.target.checked)}
       />{' '}
       ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae illo nihil
       aut eius commodi sint eveniet aliquid eligendi{' '}
       <Checkbox
         name="checkbox-2"
         checked={checked2}
-        onChange={(e) => (checked2 = e.target.checked)}
+        on:change={(e) => (checked2 = e.target.checked)}
       />{' '}
       ad delectus impedit tempore nemo, enim vel praesentium consequatur nulla mollitia!
     </p>
@@ -87,7 +87,7 @@
         component="div"
         name="demo-checkbox"
         checked={group.includes('Books')}
-        onChange={() => toggleGroupValue('Books')}
+        on:change={() => toggleGroupValue('Books')}
       />
     </ListItem>
     <ListItem label title="Movies">
@@ -96,7 +96,7 @@
         component="div"
         name="demo-checkbox"
         checked={group.includes('Movies')}
-        onChange={() => toggleGroupValue('Movies')}
+        on:change={() => toggleGroupValue('Movies')}
       />
     </ListItem>
     <ListItem label title="Food">
@@ -105,7 +105,7 @@
         component="div"
         name="demo-checkbox"
         checked={group.includes('Food')}
-        onChange={() => toggleGroupValue('Food')}
+        on:change={() => toggleGroupValue('Food')}
       />
     </ListItem>
     <ListItem label title="Drinks">
@@ -114,7 +114,7 @@
         component="div"
         name="demo-checkbox"
         checked={group.includes('Drinks')}
-        onChange={() => toggleGroupValue('Drinks')}
+        on:change={() => toggleGroupValue('Drinks')}
       />
     </ListItem>
   </List>
@@ -126,7 +126,7 @@
         slot="media"
         checked={movies.length === 2}
         indeterminate={movies.length === 1}
-        onChange={onMoviesChange}
+        on:change={onMoviesChange}
       />
       <ul class="pl-12">
         <ListItem label title="Movie 1">
@@ -135,7 +135,7 @@
             name="demo-checkbox"
             value="Movie 1"
             checked={movies.indexOf('Movie 1') >= 0}
-            onChange={onMovieChange}
+            on:change={onMovieChange}
           />
         </ListItem>
         <ListItem label title="Movie 2">
@@ -144,7 +144,7 @@
             name="demo-checkbox"
             value="Movie 2"
             checked={movies.indexOf('Movie 2') >= 0}
-            onChange={onMovieChange}
+            on:change={onMovieChange}
           />
         </ListItem>
       </ul>
@@ -165,7 +165,7 @@
         component="div"
         name="demo-media-checkbox"
         checked={media.includes('Item 1')}
-        onChange={() => toggleMediaValue('Item 1')}
+        on:change={() => toggleMediaValue('Item 1')}
       />
     </ListItem>
     <ListItem
@@ -180,7 +180,7 @@
         component="div"
         name="demo-media-checkbox"
         checked={media.includes('Item 2')}
-        onChange={() => toggleMediaValue('Item 2')}
+        on:change={() => toggleMediaValue('Item 2')}
       />
     </ListItem>
   </List>

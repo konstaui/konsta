@@ -1,14 +1,14 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Block,
     Button,
     Dialog,
     DialogButton,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
     Radio,
   } from 'konsta/svelte';
 
@@ -24,7 +24,7 @@
   <Navbar title="Dialog">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -37,47 +37,47 @@
   </Block>
   <Block strong inset>
     <p class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <Button rounded onClick={() => (basicOpened = true)}>Basic</Button>
-      <Button rounded onClick={() => (alertOpened = true)}>Alert</Button>
-      <Button rounded onClick={() => (confirmOpened = true)}>Confirm</Button>
-      <Button rounded onClick={() => (listOpened = true)}>List</Button>
+      <Button rounded on:click={() => (basicOpened = true)}>Basic</Button>
+      <Button rounded on:click={() => (alertOpened = true)}>Alert</Button>
+      <Button rounded on:click={() => (confirmOpened = true)}>Confirm</Button>
+      <Button rounded on:click={() => (listOpened = true)}>List</Button>
     </p>
   </Block>
-  <Dialog opened={basicOpened} onBackdropClick={() => (basicOpened = false)}>
+  <Dialog opened={basicOpened} on:backdropClick={() => (basicOpened = false)}>
     <svelte:fragment slot="title">Dialog Title</svelte:fragment>
     Dialog is a type of modal window that appears in front of app content to provide
     critical information, or prompt for a decision to be made.
 
     <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (basicOpened = false)}>
+      <DialogButton on:click={() => (basicOpened = false)}>
         Action 2
       </DialogButton>
-      <DialogButton onClick={() => (basicOpened = false)}>
+      <DialogButton on:click={() => (basicOpened = false)}>
         Action 1
       </DialogButton>
     </svelte:fragment>
   </Dialog>
-  <Dialog opened={alertOpened} onBackdropClick={() => (alertOpened = false)}>
+  <Dialog opened={alertOpened} on:backdropClick={() => (alertOpened = false)}>
     <svelte:fragment slot="title">Konsta UI</svelte:fragment>
     Hello world!
     <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (alertOpened = false)}>Ok</DialogButton>
+      <DialogButton on:click={() => (alertOpened = false)}>Ok</DialogButton>
     </svelte:fragment>
   </Dialog>
   <Dialog
     opened={confirmOpened}
-    onBackdropClick={() => (confirmOpened = false)}
+    on:backdropClick={() => (confirmOpened = false)}
   >
     <svelte:fragment slot="title">Konsta UI</svelte:fragment>
     All good today?
     <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (confirmOpened = false)}>No</DialogButton>
-      <DialogButton strong onClick={() => (confirmOpened = false)}>
+      <DialogButton on:click={() => (confirmOpened = false)}>No</DialogButton>
+      <DialogButton strong on:click={() => (confirmOpened = false)}>
         Yes
       </DialogButton>
     </svelte:fragment>
   </Dialog>
-  <Dialog opened={listOpened} onBackdropClick={() => (listOpened = false)}>
+  <Dialog opened={listOpened} on:backdropClick={() => (listOpened = false)}>
     <svelte:fragment slot="title">Your super hero</svelte:fragment>
     <List nested class="-mx-4">
       <ListItem label title="Batman">
@@ -86,7 +86,7 @@
             component="div"
             value="batman"
             checked={radioValue === 'batman'}
-            onChange={() => (radioValue = 'batman')}
+            on:change={() => (radioValue = 'batman')}
           />
         </svelte:fragment>
       </ListItem>
@@ -96,7 +96,7 @@
             component="div"
             value="spiderman"
             checked={radioValue === 'spiderman'}
-            onChange={() => (radioValue = 'spiderman')}
+            on:change={() => (radioValue = 'spiderman')}
           />
         </svelte:fragment>
       </ListItem>
@@ -106,13 +106,13 @@
             component="div"
             value="hulk"
             checked={radioValue === 'hulk'}
-            onChange={() => (radioValue = 'hulk')}
+            on:change={() => (radioValue = 'hulk')}
           />
         </svelte:fragment>
       </ListItem>
     </List>
     <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (listOpened = false)}>Confirm</DialogButton>
+      <DialogButton on:click={() => (listOpened = false)}>Confirm</DialogButton>
     </svelte:fragment>
   </Dialog>
 </Page>

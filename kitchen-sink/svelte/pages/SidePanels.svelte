@@ -1,13 +1,13 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Panel,
     Block,
     BlockTitle,
-    Link,
     Button,
+    Link,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Panel,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -21,7 +21,7 @@
   <Navbar title="Panel / Side Panel">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -34,14 +34,15 @@
     </p>
   </Block>
   <Block strongIos outlineIos class="flex space-x-4">
-    <Button onClick={() => (leftPanelOpened = true)}>Left Panel</Button>
-    <Button onClick={() => (rightPanelOpened = true)}>Right Panel</Button>
+    <Button on:click={() => (leftPanelOpened = true)}>Left Panel</Button>
+    <Button on:click={() => (rightPanelOpened = true)}>Right Panel</Button>
   </Block>
 
   <BlockTitle>Floating Panels</BlockTitle>
   <Block strongIos outlineIos class="flex space-x-4">
-    <Button onClick={() => (leftFloatingPanelOpened = true)}>Left Panel</Button>
-    <Button onClick={() => (rightFloatingPanelOpened = true)}
+    <Button on:click={() => (leftFloatingPanelOpened = true)}>Left Panel</Button
+    >
+    <Button on:click={() => (rightFloatingPanelOpened = true)}
       >Right Panel</Button
     >
   </Block>
@@ -49,11 +50,11 @@
   <Panel
     side="left"
     opened={leftPanelOpened}
-    onBackdropClick={() => (leftPanelOpened = false)}
+    on:backdropClick={() => (leftPanelOpened = false)}
   >
     <Page>
       <Navbar title="Left Panel">
-        <Link slot="right" navbar onClick={() => (leftPanelOpened = false)}>
+        <Link slot="right" navbar on:click={() => (leftPanelOpened = false)}>
           Close
         </Link>
       </Navbar>
@@ -78,11 +79,11 @@
   <Panel
     side="right"
     opened={rightPanelOpened}
-    onBackdropClick={() => (rightPanelOpened = false)}
+    on:backdropClick={() => (rightPanelOpened = false)}
   >
     <Page>
       <Navbar title="Right Panel">
-        <Link slot="right" navbar onClick={() => (rightPanelOpened = false)}>
+        <Link slot="right" navbar on:click={() => (rightPanelOpened = false)}>
           Close
         </Link>
       </Navbar>
@@ -107,14 +108,14 @@
     side="left"
     floating
     opened={leftFloatingPanelOpened}
-    onBackdropClick={() => (leftFloatingPanelOpened = false)}
+    on:backdropClick={() => (leftFloatingPanelOpened = false)}
   >
     <Page class="no-safe-areas-top no-safe-areas-bottom">
       <Navbar title="Left Panel">
         <Link
           slot="right"
           navbar
-          onClick={() => (leftFloatingPanelOpened = false)}
+          on:click={() => (leftFloatingPanelOpened = false)}
         >
           Close
         </Link>
@@ -141,14 +142,14 @@
     side="right"
     floating
     opened={rightFloatingPanelOpened}
-    onBackdropClick={() => (rightFloatingPanelOpened = false)}
+    on:backdropClick={() => (rightFloatingPanelOpened = false)}
   >
     <Page className="no-safe-areas-top no-safe-areas-bottom">
       <Navbar title="Right Panel">
         <Link
           slot="right"
           navbar
-          onClick={() => (rightFloatingPanelOpened = false)}
+          on:click={() => (rightFloatingPanelOpened = false)}
         >
           Close
         </Link>

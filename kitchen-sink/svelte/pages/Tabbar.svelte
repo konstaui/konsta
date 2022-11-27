@@ -1,24 +1,24 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Tabbar,
-    TabbarLink,
+    Calendar,
+    CloudUploadFill,
+    EnvelopeFill,
+  } from 'framework7-icons/svelte';
+  import {
     Block,
     Icon,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Tabbar,
+    TabbarLink,
     Toggle,
   } from 'konsta/svelte';
-  import {
-    EnvelopeFill,
-    Calendar,
-    CloudUploadFill,
-  } from 'framework7-icons/svelte';
   import MdEmail from '../components/MdEmail.svelte';
-  import MdToday from '../components/MdToday.svelte';
   import MdFileUpload from '../components/MdFileUpload.svelte';
+  import MdToday from '../components/MdToday.svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
   let activeTab = 'tab-1';
@@ -30,7 +30,7 @@
   <Navbar title="Tabbar">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -43,7 +43,7 @@
     {#if isTabbarIcons}
       <TabbarLink
         active={activeTab === 'tab-1'}
-        onClick={() => (activeTab = 'tab-1')}
+        on:click={() => (activeTab = 'tab-1')}
         label={isTabbarLabels ? 'Tab 1' : undefined}
       >
         <svelte:fragment slot="icon">
@@ -55,7 +55,7 @@
       </TabbarLink>
       <TabbarLink
         active={activeTab === 'tab-2'}
-        onClick={() => (activeTab = 'tab-2')}
+        on:click={() => (activeTab = 'tab-2')}
         label={isTabbarLabels ? 'Tab 2' : undefined}
       >
         <svelte:fragment slot="icon">
@@ -67,7 +67,7 @@
       </TabbarLink>
       <TabbarLink
         active={activeTab === 'tab-3'}
-        onClick={() => (activeTab = 'tab-3')}
+        on:click={() => (activeTab = 'tab-3')}
         label={isTabbarLabels ? 'Tab 3' : undefined}
       >
         <svelte:fragment slot="icon">
@@ -80,17 +80,17 @@
     {:else}
       <TabbarLink
         active={activeTab === 'tab-1'}
-        onClick={() => (activeTab = 'tab-1')}
+        on:click={() => (activeTab = 'tab-1')}
         label={isTabbarLabels ? 'Tab 1' : undefined}
       />
       <TabbarLink
         active={activeTab === 'tab-2'}
-        onClick={() => (activeTab = 'tab-2')}
+        on:click={() => (activeTab = 'tab-2')}
         label={isTabbarLabels ? 'Tab 2' : undefined}
       />
       <TabbarLink
         active={activeTab === 'tab-3'}
-        onClick={() => (activeTab = 'tab-3')}
+        on:click={() => (activeTab = 'tab-3')}
         label={isTabbarLabels ? 'Tab 3' : undefined}
       />
     {/if}
@@ -101,14 +101,14 @@
       <Toggle
         slot="after"
         checked={isTabbarLabels}
-        onChange={() => (isTabbarLabels = !isTabbarLabels)}
+        on:change={() => (isTabbarLabels = !isTabbarLabels)}
       />
     </ListItem>
     <ListItem title="Tabbar Icons">
       <Toggle
         slot="after"
         checked={isTabbarIcons}
-        onChange={() => (isTabbarIcons = !isTabbarIcons)}
+        on:change={() => (isTabbarIcons = !isTabbarIcons)}
       />
     </ListItem>
   </List>

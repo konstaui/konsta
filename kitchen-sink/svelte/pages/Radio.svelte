@@ -1,13 +1,13 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Radio,
-    BlockTitle,
     Block,
+    BlockTitle,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Radio,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -20,7 +20,7 @@
   <Navbar title="Radio">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -33,7 +33,7 @@
         name="demo-radio-inline"
         value="inline-1"
         checked={inlineValue === 'inline-1'}
-        onChange={() => (inlineValue = 'inline-1')}
+        on:change={() => (inlineValue = 'inline-1')}
       />{' '}
       ipsum dolor sit amet, consectetur adipisicing elit. Alias beatae illo nihil
       aut eius commodi sint eveniet aliquid eligendi{' '}
@@ -41,7 +41,7 @@
         name="demo-radio-inline"
         value="inline-2"
         checked={inlineValue === 'inline-2'}
-        onChange={() => (inlineValue = 'inline-2')}
+        on:change={() => (inlineValue = 'inline-2')}
       />{' '}
       ad delectus impedit tempore nemo, enim vel praesentium consequatur nulla mollitia!
     </p>
@@ -55,7 +55,7 @@
         component="div"
         value="Books"
         checked={groupValue === 'Books'}
-        onChange={() => (groupValue = 'Books')}
+        on:change={() => (groupValue = 'Books')}
       />
     </ListItem>
     <ListItem label title="Movies">
@@ -64,7 +64,7 @@
         component="div"
         value="Movies"
         checked={groupValue === 'Movies'}
-        onChange={() => (groupValue = 'Movies')}
+        on:change={() => (groupValue = 'Movies')}
       />
     </ListItem>
     <ListItem label title="Food">
@@ -73,7 +73,7 @@
         component="div"
         value="Food"
         checked={groupValue === 'Food'}
-        onChange={() => (groupValue = 'Food')}
+        on:change={() => (groupValue = 'Food')}
       />
     </ListItem>
     <ListItem label title="Drinks">
@@ -82,7 +82,7 @@
         component="div"
         value="Drinks"
         checked={groupValue === 'Drinks'}
-        onChange={() => (groupValue = 'Drinks')}
+        on:change={() => (groupValue = 'Drinks')}
       />
     </ListItem>
   </List>
@@ -94,7 +94,7 @@
         component="div"
         value="Books"
         checked={groupValue === 'Books'}
-        onChange={() => (groupValue = 'Books')}
+        on:change={() => (groupValue = 'Books')}
       />
     </ListItem>
     <ListItem label title="Movies">
@@ -103,7 +103,7 @@
         component="div"
         value="Movies"
         checked={groupValue === 'Movies'}
-        onChange={() => (groupValue = 'Movies')}
+        on:change={() => (groupValue = 'Movies')}
       />
     </ListItem>
     <ListItem label title="Food">
@@ -112,7 +112,7 @@
         component="div"
         value="Food"
         checked={groupValue === 'Food'}
-        onChange={() => (groupValue = 'Food')}
+        on:change={() => (groupValue = 'Food')}
       />
     </ListItem>
     <ListItem label title="Drinks">
@@ -121,7 +121,7 @@
         component="div"
         value="Drinks"
         checked={groupValue === 'Drinks'}
-        onChange={() => (groupValue = 'Drinks')}
+        on:change={() => (groupValue = 'Drinks')}
       />
     </ListItem>
   </List>
@@ -139,7 +139,7 @@
         slot="media"
         component="div"
         checked={mediaValue === 'Item 1'}
-        onChange={() => (mediaValue = 'Item 1')}
+        on:change={() => (mediaValue = 'Item 1')}
       />
     </ListItem>
     <ListItem
@@ -153,7 +153,7 @@
         slot="media"
         component="div"
         checked={mediaValue === 'Item 2'}
-        onChange={() => (mediaValue = 'Item 2')}
+        on:change={() => (mediaValue = 'Item 2')}
       />
     </ListItem>
   </List>

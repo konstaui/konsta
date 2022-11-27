@@ -1,12 +1,12 @@
 <script>
   import {
-    Page,
+    Block,
+    Button,
+    Link,
     Navbar,
     NavbarBackLink,
+    Page,
     Popup,
-    Block,
-    Link,
-    Button,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -17,7 +17,7 @@
   <Navbar title="Popup">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -29,14 +29,14 @@
       Views".
     </p>
     <p>
-      <Button onClick={() => (popupOpened = true)}>Open Popup</Button>
+      <Button on:click={() => (popupOpened = true)}>Open Popup</Button>
     </p>
   </Block>
 
-  <Popup opened={popupOpened} onBackdropClick={() => (popupOpened = false)}>
+  <Popup opened={popupOpened} on:backdropClick={() => (popupOpened = false)}>
     <Page>
       <Navbar title="Popup">
-        <Link slot="right" navbar onClick={() => (popupOpened = false)}>
+        <Link slot="right" navbar on:click={() => (popupOpened = false)}>
           Close
         </Link>
       </Navbar>

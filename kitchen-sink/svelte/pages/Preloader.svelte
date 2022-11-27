@@ -1,10 +1,10 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Block,
     BlockTitle,
+    Navbar,
+    NavbarBackLink,
+    Page,
     Preloader,
   } from 'konsta/svelte';
 
@@ -15,7 +15,7 @@
   <Navbar title="Preloader">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>

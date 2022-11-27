@@ -1,5 +1,5 @@
 <script>
-  import { Page as PageComponent, Navbar, NavbarBackLink } from 'konsta/svelte';
+  import { Navbar, NavbarBackLink, Page as PageComponent } from 'konsta/svelte';
 
   export let title;
   export let backLink = true;
@@ -14,7 +14,7 @@
   {#if title}
     <Navbar {title}>
       {#if backLink && !isPreview}
-        <NavbarBackLink slot="left" onClick={goBack} />
+        <NavbarBackLink slot="left" on:click={goBack} />
       {/if}
       <slot name="right" slot="right" />
     </Navbar>

@@ -1,11 +1,11 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Block,
     MenuList,
     MenuListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
   } from 'konsta/svelte';
   import DemoIcon from '../components/DemoIcon.svelte';
 
@@ -18,7 +18,7 @@
   <Navbar title="Menu List">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -34,21 +34,21 @@
     <MenuListItem
       title="Home"
       active={selected === 'home'}
-      onClick={() => (selected = 'home')}
+      on:click={() => (selected = 'home')}
     >
       <DemoIcon slot="media" />
     </MenuListItem>
     <MenuListItem
       title="Profile"
       active={selected === 'profile'}
-      onClick={() => (selected = 'profile')}
+      on:click={() => (selected = 'profile')}
     >
       <DemoIcon slot="media" />
     </MenuListItem>
     <MenuListItem
       title="Settings"
       active={selected === 'settings'}
-      onClick={() => (selected = 'settings')}
+      on:click={() => (selected = 'settings')}
     >
       <DemoIcon slot="media" />
     </MenuListItem>
@@ -59,7 +59,7 @@
       title="Home"
       subtitle="Home subtitle"
       active={selectedMedia === 'home'}
-      onClick={() => (selectedMedia = 'home')}
+      on:click={() => (selectedMedia = 'home')}
     >
       <DemoIcon slot="media" />
     </MenuListItem>
@@ -67,7 +67,7 @@
       title="Profile"
       subtitle="Profile subtitle"
       active={selectedMedia === 'profile'}
-      onClick={() => (selectedMedia = 'profile')}
+      on:click={() => (selectedMedia = 'profile')}
     >
       <DemoIcon slot="media" />
     </MenuListItem>
@@ -75,7 +75,7 @@
       title="Settings"
       subtitle="Settings subtitle"
       active={selectedMedia === 'settings'}
-      onClick={() => (selectedMedia = 'settings')}
+      on:click={() => (selectedMedia = 'settings')}
     >
       <DemoIcon slot="media" />
     </MenuListItem>

@@ -1,19 +1,19 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    BlockTitle,
-    BlockHeader,
     Block,
+    BlockHeader,
+    BlockTitle,
     Breadcrumbs,
+    BreadcrumbsCollapsed,
     BreadcrumbsItem,
     BreadcrumbsSeparator,
-    BreadcrumbsCollapsed,
-    Popover,
+    Link,
     List,
     ListItem,
-    Link,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Popover,
   } from 'konsta/svelte';
 
   let popoverOpened = false;
@@ -25,7 +25,7 @@
   <Navbar title="Breadcrumbs">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -88,7 +88,7 @@
       <BreadcrumbsSeparator />
       <BreadcrumbsCollapsed
         class="breadcrumbs-popover-link"
-        onClick={() => (popoverOpened = true)}
+        on:click={() => (popoverOpened = true)}
       />
       <BreadcrumbsSeparator />
       <BreadcrumbsItem active>iPhone 12</BreadcrumbsItem>
@@ -96,17 +96,21 @@
     <Popover
       target=".breadcrumbs-popover-link"
       style="width: 120px"
-      onBackdropClick={() => (popoverOpened = false)}
+      on:backdropClick={() => (popoverOpened = false)}
       opened={popoverOpened}
     >
       <List nested>
         <ListItem
           link
           title="Catalog"
-          onClick={() => (popoverOpened = false)}
+          on:click={() => (popoverOpened = false)}
         />
-        <ListItem link title="Phones" onClick={() => (popoverOpened = false)} />
-        <ListItem link title="Apple" onClick={() => (popoverOpened = false)} />
+        <ListItem
+          link
+          title="Phones"
+          on:click={() => (popoverOpened = false)}
+        />
+        <ListItem link title="Apple" on:click={() => (popoverOpened = false)} />
       </List>
     </Popover>
   </Block>

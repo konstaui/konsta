@@ -1,13 +1,13 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Stepper,
     Block,
     BlockTitle,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Stepper,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -42,7 +42,7 @@
   <Navbar title="Stepper">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -52,40 +52,46 @@
     <div class="grid grid-cols-2 gap-4">
       <div>
         <div class="block text-xs mb-1">Default</div>
-        <Stepper {value} onPlus={increase} onMinus={decrease} />
+        <Stepper {value} on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Round</div>
-        <Stepper {value} rounded onPlus={increase} onMinus={decrease} />
+        <Stepper {value} rounded on:plus={increase} on:minus={decrease} />
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Outline</div>
-        <Stepper {value} outline onPlus={increase} onMinus={decrease} />
+        <Stepper {value} outline on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Rounded Outline</div>
-        <Stepper {value} outline rounded onPlus={increase} onMinus={decrease} />
+        <Stepper
+          {value}
+          outline
+          rounded
+          on:plus={increase}
+          on:minus={decrease}
+        />
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Small</div>
-        <Stepper {value} onPlus={increase} onMinus={decrease} small />
+        <Stepper {value} on:plus={increase} on:minus={decrease} small />
       </div>
       <div>
         <div class="block text-xs mb-1">Small Round</div>
-        <Stepper {value} small rounded onPlus={increase} onMinus={decrease} />
+        <Stepper {value} small rounded on:plus={increase} on:minus={decrease} />
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Small Outline</div>
-        <Stepper {value} small outline onPlus={increase} onMinus={decrease} />
+        <Stepper {value} small outline on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Small Rounded Outline</div>
@@ -94,8 +100,8 @@
           small
           rounded
           outline
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -103,18 +109,18 @@
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Large</div>
-        <Stepper {value} onPlus={increase} onMinus={decrease} large />
+        <Stepper {value} on:plus={increase} on:minus={decrease} large />
       </div>
       <div>
         <div class="block text-xs mb-1">Large Round</div>
-        <Stepper {value} large rounded onPlus={increase} onMinus={decrease} />
+        <Stepper {value} large rounded on:plus={increase} on:minus={decrease} />
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Large Outline</div>
-        <Stepper {value} large outline onPlus={increase} onMinus={decrease} />
+        <Stepper {value} large outline on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Large Rounded Outline</div>
@@ -123,8 +129,8 @@
           large
           rounded
           outline
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -135,18 +141,30 @@
     <div class="grid grid-cols-2 gap-4">
       <div>
         <div class="block text-xs mb-1">Default</div>
-        <Stepper {value} raised onPlus={increase} onMinus={decrease} />
+        <Stepper {value} raised on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Round</div>
-        <Stepper {value} raised rounded onPlus={increase} onMinus={decrease} />
+        <Stepper
+          {value}
+          raised
+          rounded
+          on:plus={increase}
+          on:minus={decrease}
+        />
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Outline</div>
-        <Stepper {value} raised outline onPlus={increase} onMinus={decrease} />
+        <Stepper
+          {value}
+          raised
+          outline
+          on:plus={increase}
+          on:minus={decrease}
+        />
       </div>
       <div>
         <div class="block text-xs mb-1">Round Outline</div>
@@ -155,8 +173,8 @@
           raised
           outline
           rounded
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -164,7 +182,7 @@
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Small</div>
-        <Stepper {value} raised small onPlus={increase} onMinus={decrease} />
+        <Stepper {value} raised small on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Small Round</div>
@@ -173,8 +191,8 @@
           raised
           small
           rounded
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -187,8 +205,8 @@
           raised
           small
           outline
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
       <div>
@@ -199,8 +217,8 @@
           small
           rounded
           outline
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -208,7 +226,7 @@
     <div class="grid grid-cols-2 gap-4 margin-top">
       <div>
         <div class="block text-xs mb-1">Large</div>
-        <Stepper {value} raised large onPlus={increase} onMinus={decrease} />
+        <Stepper {value} raised large on:plus={increase} on:minus={decrease} />
       </div>
       <div>
         <div class="block text-xs mb-1">Large Round</div>
@@ -217,8 +235,8 @@
           raised
           large
           rounded
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -231,8 +249,8 @@
           raised
           large
           outline
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
       <div>
@@ -243,8 +261,8 @@
           large
           rounded
           outline
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -255,10 +273,10 @@
       <Stepper
         value={inputValue}
         input
-        onChange={onInputChange}
-        onBlur={onInputBlur}
-        onPlus={increaseInput}
-        onMinus={decreaseInput}
+        on:change={onInputChange}
+        on:blur={onInputBlur}
+        on:plus={increaseInput}
+        on:minus={decreaseInput}
       />
     </div>
     <div>
@@ -266,10 +284,10 @@
         value={inputValue}
         outline
         input
-        onChange={onInputChange}
-        onBlur={onInputBlur}
-        onPlus={increaseInput}
-        onMinus={decreaseInput}
+        on:change={onInputChange}
+        on:blur={onInputBlur}
+        on:plus={increaseInput}
+        on:minus={decreaseInput}
       />
     </div>
   </Block>
@@ -280,8 +298,8 @@
         slot="after"
         {value}
         buttonsOnly
-        onPlus={increase}
-        onMinus={decrease}
+        on:plus={increase}
+        on:minus={decrease}
       />
     </ListItem>
     <ListItem title={`Value is ${value}`}>
@@ -290,8 +308,8 @@
         {value}
         outline
         buttonsOnly
-        onPlus={increase}
-        onMinus={decrease}
+        on:plus={increase}
+        on:minus={decrease}
       />
     </ListItem>
     <ListItem title={`Value is ${value}`}>
@@ -301,8 +319,8 @@
         raised
         outline
         buttonsOnly
-        onPlus={increase}
-        onMinus={decrease}
+        on:plus={increase}
+        on:minus={decrease}
       />
     </ListItem>
   </List>
@@ -314,8 +332,8 @@
         <Stepper
           {value}
           class="k-color-brand-red"
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
       <div>
@@ -323,8 +341,8 @@
           {value}
           rounded
           class="k-color-brand-green"
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>
@@ -334,8 +352,8 @@
         <Stepper
           {value}
           class="k-color-brand-yellow"
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
       <div>
@@ -343,8 +361,8 @@
           {value}
           rounded
           class="k-color-brand-purple"
-          onPlus={increase}
-          onMinus={decrease}
+          on:plus={increase}
+          on:minus={decrease}
         />
       </div>
     </div>

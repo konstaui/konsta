@@ -1,13 +1,13 @@
 <script>
+  import { Plus } from 'framework7-icons/svelte';
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
     Block,
     Fab,
+    Navbar,
+    NavbarBackLink,
+    Page,
     useTheme,
   } from 'konsta/svelte';
-  import { Plus } from 'framework7-icons/svelte';
   import MdAdd from '../components/MdAdd.svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -21,7 +21,7 @@
   <Navbar title="FAB">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>

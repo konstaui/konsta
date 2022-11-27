@@ -1,19 +1,19 @@
 <script>
   import {
-    Page,
-    Navbar,
     BlockTitle,
+    Link,
     List,
     ListItem,
+    Navbar,
+    Page,
+    Popover,
     Radio,
     Toggle,
-    Link,
-    Popover,
   } from 'konsta/svelte';
 
   import { afterUpdate } from 'svelte';
-  import routes from '../routes.js';
   import DemoIcon from '../components/DemoIcon.svelte';
+  import routes from '../routes.js';
 
   export let theme;
   export let setTheme;
@@ -40,7 +40,7 @@
     <ListItem label title="iOS Theme">
       <Radio
         slot="media"
-        onChange={() => setTheme('ios')}
+        on:change={() => setTheme('ios')}
         component="div"
         checked={theme === 'ios'}
       />
@@ -48,7 +48,7 @@
     <ListItem label title="Material Theme">
       <Radio
         slot="media"
-        onChange={() => setTheme('material')}
+        on:change={() => setTheme('material')}
         component="div"
         checked={theme === 'material'}
       />
@@ -59,7 +59,7 @@
       <Toggle
         slot="after"
         component="div"
-        onChange={() => toggleDarkMode()}
+        on:change={() => toggleDarkMode()}
         checked={darkMode}
       />
     </ListItem>
@@ -67,7 +67,7 @@
     <ListItem
       title="Color Theme"
       link
-      onClick={() => (colorPickerOpened = true)}
+      on:click={() => (colorPickerOpened = true)}
     >
       <div
         slot="after"
@@ -77,7 +77,7 @@
   </List>
   <Popover
     opened={colorPickerOpened}
-    onBackdropClick={() => (colorPickerOpened = false)}
+    on:backdropClick={() => (colorPickerOpened = false)}
     size="w-36"
     target=".home-color-picker"
   >
@@ -85,35 +85,35 @@
       <Link
         touchRipple
         class="overflow-hidden h-12"
-        onClick={() => setColorTheme('')}
+        on:click={() => setColorTheme('')}
       >
         <span class="bg-brand-primary w-6 h-6 rounded-full" />
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
-        onClick={() => setColorTheme('k-color-brand-red')}
+        on:click={() => setColorTheme('k-color-brand-red')}
       >
         <span class="bg-brand-red w-6 h-6 rounded-full" />
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
-        onClick={() => setColorTheme('k-color-brand-green')}
+        on:click={() => setColorTheme('k-color-brand-green')}
       >
         <span class="bg-brand-green w-6 h-6 rounded-full" />
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
-        onClick={() => setColorTheme('k-color-brand-yellow')}
+        on:click={() => setColorTheme('k-color-brand-yellow')}
       >
         <span class="bg-brand-yellow w-6 h-6 rounded-full" />
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
-        onClick={() => setColorTheme('k-color-brand-purple')}
+        on:click={() => setColorTheme('k-color-brand-purple')}
       >
         <span class="bg-brand-purple w-6 h-6 rounded-full" />
       </Link>

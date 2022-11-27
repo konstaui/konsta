@@ -1,12 +1,12 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    BlockTitle,
     BlockHeader,
+    BlockTitle,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
     Range,
   } from 'konsta/svelte';
 
@@ -22,7 +22,7 @@
   <Navbar title="Range Slider">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
   </Navbar>
@@ -36,7 +36,7 @@
         <Range
           value={volume}
           step={10}
-          onInput={(e) => (volume = e.target.value)}
+          on:input={(e) => (volume = e.target.value)}
         />
         <span>100</span>
       </svelte:fragment>
@@ -54,7 +54,7 @@
           step={1}
           min={0}
           max={1000}
-          onInput={(e) => (price = e.target.value)}
+          on:input={(e) => (price = e.target.value)}
         />
         <span>$1000</span>
       </svelte:fragment>
@@ -73,7 +73,7 @@
         step={1}
         min={0}
         max={255}
-        onInput={(e) => (red = e.target.value)}
+        on:input={(e) => (red = e.target.value)}
       /></ListItem
     >
     <ListItem>
@@ -84,7 +84,7 @@
         step={1}
         min={0}
         max={255}
-        onInput={(e) => (green = e.target.value)}
+        on:input={(e) => (green = e.target.value)}
       /></ListItem
     >
     <ListItem>
@@ -95,7 +95,7 @@
         step={1}
         min={0}
         max={255}
-        onInput={(e) => (blue = e.target.value)}
+        on:input={(e) => (blue = e.target.value)}
       /></ListItem
     >
   </List>

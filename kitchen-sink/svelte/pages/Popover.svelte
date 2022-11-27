@@ -1,14 +1,14 @@
 <script>
   import {
-    Page,
-    Navbar,
-    NavbarBackLink,
-    Popover,
     Block,
-    Link,
     Button,
+    Link,
     List,
     ListItem,
+    Navbar,
+    NavbarBackLink,
+    Page,
+    Popover,
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -25,14 +25,14 @@
   <Navbar title="Popover">
     <svelte:fragment slot="left">
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink on:click={() => history.back()} />
       {/if}
     </svelte:fragment>
     <Link
       slot="right"
       class="popover-navbar-link"
       navbar
-      onClick={() => openPopover('.popover-navbar-link')}
+      on:click={() => openPopover('.popover-navbar-link')}
     >
       Popover
     </Link>
@@ -41,7 +41,7 @@
     <p>
       <Button
         class="popover-button"
-        onClick={() => openPopover('.popover-button')}
+        on:click={() => openPopover('.popover-button')}
       >
         Open popover on me
       </Button>
@@ -56,7 +56,7 @@
       rutrum enim. Nam a odio facilisis, elementum tellus non,{' '}
       <Link
         class="popover-link-1"
-        onClick={() => openPopover('.popover-link-1')}
+        on:click={() => openPopover('.popover-link-1')}
       >
         popover
       </Link>{' '}
@@ -68,7 +68,7 @@
       velit massa rutrum dolor, ac porta magna magna lacinia nunc. Curabitur{' '}
       <Link
         class="popover-link-2"
-        onClick={() => openPopover('.popover-link-2')}
+        on:click={() => openPopover('.popover-link-2')}
       >
         popover!
       </Link>{' '}
@@ -88,7 +88,7 @@
       Aliquam quis convallis tortor, quis semper ligula. Morbi ullamcorper{' '}
       <Link
         class="popover-link-3"
-        onClick={() => openPopover('.popover-link-3')}
+        on:click={() => openPopover('.popover-link-3')}
       >
         one more popover
       </Link>{' '}
@@ -103,22 +103,22 @@
   <Popover
     opened={popoverOpened}
     target={popoverTargetEl}
-    onBackdropClick={() => (popoverOpened = false)}
+    on:backdropClick={() => (popoverOpened = false)}
   >
     <List nested>
-      <ListItem title="Item 1" link onClick={() => (popoverOpened = false)} />
+      <ListItem title="Item 1" link on:click={() => (popoverOpened = false)} />
       <ListItem
         title="List Item 2"
         link
-        onClick={() => (popoverOpened = false)}
+        on:click={() => (popoverOpened = false)}
       />
-      <ListItem title="Item 3" link onClick={() => (popoverOpened = false)} />
+      <ListItem title="Item 3" link on:click={() => (popoverOpened = false)} />
       <ListItem
         title="List Item 4"
         link
-        onClick={() => (popoverOpened = false)}
+        on:click={() => (popoverOpened = false)}
       />
-      <ListItem title="Item 5" link onClick={() => (popoverOpened = false)} />
+      <ListItem title="Item 5" link on:click={() => (popoverOpened = false)} />
     </List>
   </Popover>
 </Page>
