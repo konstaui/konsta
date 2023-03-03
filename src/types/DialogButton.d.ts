@@ -6,6 +6,10 @@ interface Props {
    */
   component?: string;
   /**
+   * DialogButton click handler
+   */
+  onClick?: (e: any) => void;
+  /**
    * Object with Tailwind CSS colors classes
    * */
   colors?: {
