@@ -23,7 +23,7 @@ export const RadioClasses = (props, colors, classes, darkClasses) => {
     },
     icon: {
       ios: 'text-primary',
-      material: `w-3/5 h-3/5 rounded-full ${colors.bgCheckedMaterial}`,
+      material: `w-3 h-3 rounded-full ${colors.bgCheckedMaterial}`,
       notChecked: 'opacity-0',
       checked: 'opacity-100',
     },
