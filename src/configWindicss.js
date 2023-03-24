@@ -1,4 +1,4 @@
-const plugin = require('tailwindcss/plugin');
+const plugin = require('windicss/plugin');
 const path = require('path');
 const configExtend = require('./config/config-extend.js');
 const extendTheme = require('./config/extend-theme.js');

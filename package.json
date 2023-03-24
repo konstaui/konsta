@@ -69,7 +69,8 @@
     "tailwindcss": "^3.1.8",
     "vite": "^3.1.0",
     "vue": "^3.2.37",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
+    "windicss": "^3.5.6"
   },
   "dependencies": {
     "konsta": "file:src"
