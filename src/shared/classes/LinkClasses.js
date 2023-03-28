@@ -11,7 +11,7 @@ export const LinkClasses = (
     base: {
       common: cls(
         !tabbar && textColor,
-        `inline-flex space-x-1 justify-center items-center cursor-pointer select-none`,
+        `inline-flex space-x-1 rtl:space-x-reverse justify-center items-center cursor-pointer select-none`,
         needsTouchRipple &&
           `touch-ripple-primary ${positionClass('relative', classes)} z-10`
       ),
