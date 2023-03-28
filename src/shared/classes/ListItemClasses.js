@@ -111,7 +111,7 @@ export const ListItemClasses = (
       ios: colors.secondaryTextIos,
       material: cls(colors.secondaryTextMaterial, 'text-sm'),
     },
-    chevron: 'opacity-20 shrink-0 ltr:ml-3 rtl:mr-3',
+    chevron: 'opacity-20 shrink-0 ltr:ml-3 rtl:mr-3 rtl:rotate-180',
     subtitle: 'text-sm',
     text: {
       common: cls(`text-sm line-clamp-2`),
