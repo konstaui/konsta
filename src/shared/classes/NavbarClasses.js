@@ -93,7 +93,7 @@ export const NavbarClasses = (props, colors, classes) => {
         'flex justify-center items-center h-full',
         leftClassName || leftClass
       ),
-      ios: 'mr-2 transform transform-gpu',
+      ios: 'ltr:mr-2 rtl:ml-2 transform transform-gpu',
       material: 'mx-1',
     },
     title: {
@@ -103,7 +103,7 @@ export const NavbarClasses = (props, colors, classes) => {
         (large || medium || transparent) && 'opacity-0',
         centerTitle
           ? `absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center`
-          : 'text-left'
+          : 'ltr:text-left rtl:text-right'
       ),
       ios: cls(
         `${titleFontSizeIos} font-semibold`,
@@ -128,8 +128,8 @@ export const NavbarClasses = (props, colors, classes) => {
         'flex justify-center items-center h-full',
         rightClassName || rightClass
       ),
-      ios: cls('transform transform-gpu', centerTitle ? 'ml-2' : 'ml-auto'),
-      material: 'ml-auto mr-1',
+      ios: cls('transform transform-gpu', centerTitle ? 'ltr:ml-2 rtl:mr-2' : 'ltr:ml-auto rtl:mr-auto'),
+      material: 'ltr:ml-auto rtl:mr-auto ltr:mr-1 rtl:ml-1',
     },
   };
 };

@@ -31,9 +31,9 @@ export const ToastClasses = (props, colors, classes) => {
       material: 'pl-6-safe pr-6-safe py-3.5 pb-3.5-safe sm:px-6 sm:py-3.5',
     },
     button: {
-      common: '-my-2 shrink-0 ml-4',
+      common: '-my-2 shrink-0 ltr:ml-4 rtl:mr-4',
       ios: '',
-      material: '-mr-2',
+      material: 'ltr:-mr-2 rtl:-ml-2',
     },
   };
 };
