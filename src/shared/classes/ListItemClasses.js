@@ -34,16 +34,16 @@ export const ListItemClasses = (
     itemContent: {
       common: cls(`flex items-center ${contentClassName || contentClass}`),
       ios: cls(
-        !menuListItem && cls(colors.primaryTextIos, 'ltr:pl-4-safe rtl:pr-4-safe'),
-        menuListItem && 'rounded-lg ml-2-safe mr-2-safe ltr:pl-2 rtl:pr-2'
+        !menuListItem && cls(colors.primaryTextIos, 'ps-4-safe'),
+        menuListItem && 'rounded-lg ml-2-safe mr-2-safe ps-2'
       ),
       material: cls(
         !menuListItem &&
           cls(
             colors.primaryTextMaterial,
-            isMediaItem ? 'ml-2-safe mr-2-safe rounded-2xl ltr:pl-2 rtl:pr-2' : 'ltr:pl-4-safe rtl:pr-4-safe'
+            isMediaItem ? 'ml-2-safe mr-2-safe rounded-2xl ps-2' : 'ps-4-safe'
           ),
-        menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe ltr:pl-4 rtl:pr-4'
+        menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe ps-4'
       ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
@@ -68,8 +68,8 @@ export const ListItemClasses = (
 
     media: {
       common: `shrink-0 flex ${mediaClassName || mediaClass}`,
-      ios: 'py-2 ltr:mr-4 rtl:ml-4',
-      material: cls('py-3', menuListItem ? 'ltr:mr-3 rtl:' : 'ltr:mr-4 rtl:ml-3'),
+      ios: 'py-2 me-4',
+      material: cls('py-3', menuListItem ? 'me-3' : 'me-4'),
     },
     inner: {
       common: cls(
@@ -77,10 +77,10 @@ export const ListItemClasses = (
         !menuListItem && dividers && 'hairline-b',
         innerClassName || innerClass
       ),
-      ios: 'py-2.5 ltr:pr-4-safe rtl:pl-4-safe',
+      ios: 'py-2.5 pe-4-safe',
       material: cls(
         'py-3',
-        isMediaItem && !menuListItem ? 'ltr:pr-2 rtl:pl-2' : 'ltr:pr-4-safe rtl:pl-4-safe'
+        isMediaItem && !menuListItem ? 'pe-2' : 'pe-4-safe'
       ),
     },
     titleWrap: {
@@ -107,11 +107,11 @@ export const ListItemClasses = (
       },
     },
     after: {
-      common: cls(`shrink-0 ltr:ml-auto ltr:pl-1 rtl:mr-auto rtl:pr-1 flex items-center space-x-1`),
+      common: cls(`shrink-0 ms-auto ps-1 flex items-center space-x-1`),
       ios: colors.secondaryTextIos,
       material: cls(colors.secondaryTextMaterial, 'text-sm'),
     },
-    chevron: 'opacity-20 shrink-0 ltr:ml-3 rtl:mr-3 rtl:rotate-180',
+    chevron: 'opacity-20 shrink-0 ms-3 rtl:rotate-180',
     subtitle: 'text-sm',
     text: {
       common: cls(`text-sm line-clamp-2`),

@@ -31,7 +31,7 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
     },
     strongHighlight: {
       common: cls(
-        'absolute left-0.5 top-0.5 bottom-0.5 ltr:!ml-0 rtl:!mr-0 pointer-events-none duration-200',
+        'absolute left-0.5 top-0.5 bottom-0.5 !ms-0 pointer-events-none duration-200',
         rounded && 'rounded-full',
         `bg-white shadow`,
         darkClasses('dark:bg-opacity-15 dark:touch-ripple-white')

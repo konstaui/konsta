@@ -29,11 +29,11 @@ export const ChipClasses = (props, colors) => {
       },
     },
     media: {
-      common: '-my-1 ltr:mr-1 rtl:ml-1 select-none',
-      ios: 'ltr:-ml-3 rtl:-mr-3',
-      material: 'ltr:-ml-2 rtl:-mr-2',
+      common: '-my-1 me-1 select-none',
+      ios: '-ms-3',
+      material: '-ms-2',
     },
     deleteButton:
-      'ltr:-mr-2 rtl:-ml-2 -my-1 ltr:ml-1 rtl:mr-1 h-full flex items-center justify-center w-6 cursor-pointer opacity-50 active:opacity-100 select-none',
+      '-me-2 -my-1 ms-1 h-full flex items-center justify-center w-6 cursor-pointer opacity-50 active:opacity-100 select-none',
   };
 };

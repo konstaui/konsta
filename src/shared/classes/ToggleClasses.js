@@ -32,17 +32,17 @@ export const ToggleClasses = (props, colors, classes, dark) => {
     },
     thumbWrap: {
       common: 'rounded-full absolute duration-300 transform',
-      ios: 'w-7 h-7 ltr:left-0.5 rtl:right-0.5 top-0.5',
-      material: 'w-6 h-6 ltr:left-0.5 rtl:right-0.5 top-0.5',
+      ios: 'w-7 h-7 start-0.5 top-0.5',
+      material: 'w-6 h-6 start-0.5 top-0.5',
       checked: {
-        ios: cls('ltr:translate-x-5 rtl:-translate-x-5'),
-        material: cls(`ltr:translate-x-5 rtl:-translate-x-5`),
+        ios: cls('translate-x-5 rtl:!-translate-x-5'),
+        material: cls(`translate-x-5 rtl:!-translate-x-5`),
       },
       notChecked: '',
     },
     thumb: {
       common:
-        'w-full h-full rounded-full absolute duration-300 transform ltr:left-0 rtl:right-0 top-0',
+        'w-full h-full rounded-full absolute duration-300 transform start-0 top-0',
       ios: 'shadow-ios-toggle',
       material: 'group-active:scale-[1.1]',
       checked: {
