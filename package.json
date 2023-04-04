@@ -1,8 +1,8 @@
 {
   "name": "@capgo/konsta",
   "description": "Mobile UI components made with Tailwind CSS",
-  "version": "1.0.2",
-  "private": true,
+  "version": "1.0.3",
+  "private": false,
   "license": "MIT",
   "author": "Vladimir Kharlampidi",
   "scripts": {
