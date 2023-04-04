@@ -1,5 +1,5 @@
 {
-  "name": "konsta",
+  "name": "@capgo/konsta",
   "version": "1.0.2",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
@@ -16,7 +16,7 @@
   "engines": {
     "node": ">= 4.7.0"
   },
-  "releaseDate": "September 16, 2022",
+  "releaseDate": "April 4, 2023",
   "svelte": "./svelte/konsta-svelte.js",
   "exports": {
     "./package.json": "./package.json",
