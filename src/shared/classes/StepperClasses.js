@@ -30,17 +30,17 @@ export const StepperClasses = (props, colors) => {
     },
     buttonLeftShape: {
       square: {
-        ios: 'rounded-l rtl:rounded-l-none rtl:rounded-r',
-        material: 'rounded-l-lg rtl:rounded-l-none rtl:rounded-r-lg',
+        ios: 'rounded-s',
+        material: 'rounded-s-lg',
       },
-      rounded: 'rounded-l-full rtl:rounded-l-none rtl:rounded-r-full',
+      rounded: 'rounded-s-full',
     },
     buttonRightShape: {
       square: {
-        ios: 'rounded-r rtl:rounded-r-none rtl:rounded-l',
-        material: 'rounded-r-lg rtl:rounded-r-none rtl:rounded-l-lg',
+        ios: 'rounded-e',
+        material: 'rounded-e-lg',
       },
-      rounded: 'rounded-r-full rtl:rounded-r-none rtl:rounded-l-full',
+      rounded: 'rounded-e-full',
     },
     buttonStyle: {
       fill: {
