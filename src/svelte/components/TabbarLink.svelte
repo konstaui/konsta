@@ -41,9 +41,12 @@
     {/if}
     {#if hasLabel}
       <span class={c.label}>
-        {label}
-        <slot name="label" />
-        <slot />
+        {#if $$slots.label}
+          <slot name="label" />
+        {:else}
+          {label}
+          <slot />
+        {/if}
       </span>
     {/if}
   </span>
