@@ -29,18 +29,25 @@ export const StepperClasses = (props, colors) => {
         'relative flex items-center justify-center w-10 cursor-pointer overflow-hidden z-10 select-none',
     },
     buttonLeftShape: {
-      square: { ios: 'rounded-l', material: 'rounded-l-lg' },
-      rounded: 'rounded-l-full',
+      square: {
+        ios: 'rounded-l rtl:rounded-l-none rtl:rounded-r',
+        material: 'rounded-l-lg rtl:rounded-l-none rtl:rounded-r-lg',
+      },
+      rounded: 'rounded-l-full rtl:rounded-l-none rtl:rounded-r-full',
     },
     buttonRightShape: {
-      square: { ios: 'rounded-r', material: 'rounded-r-lg' },
-      rounded: 'rounded-r-full',
+      square: {
+        ios: 'rounded-r rtl:rounded-r-none rtl:rounded-l',
+        material: 'rounded-r-lg rtl:rounded-r-none rtl:rounded-l-lg',
+      },
+      rounded: 'rounded-r-full rtl:rounded-r-none rtl:rounded-l-full',
     },
     buttonStyle: {
       fill: {
         common: cls(
           colors.fillTouchRipple,
-          buttonsOnly && 'first:border-r border-black border-opacity-10'
+          buttonsOnly &&
+            'first:border-r border-black border-opacity-10 rtl:first:border-l rtl:first:border-r-0'
         ),
         ios: cls(colors.fillBgIos, colors.fillTextIos, colors.fillActiveBgIos),
         material: cls(
@@ -53,24 +60,26 @@ export const StepperClasses = (props, colors) => {
         common: cls(
           colors.touchRipple,
           'active:bg-opacity-15',
-          buttonsOnly && 'first:border-r-0'
+          buttonsOnly && 'first:border-r-0 rtl:last:border-r-0'
         ),
         ios: cls(
           'border-2',
           colors.textIos,
           colors.activeBgIos,
-          colors.outlineBorderIos
+          colors.outlineBorderIos,
+          buttonsOnly && 'rtl:first:border-r-2'
         ),
         material: cls(
           'border',
           colors.textMaterial,
           colors.activeBgMaterial,
-          colors.outlineBorderMaterial
+          colors.outlineBorderMaterial,
+          buttonsOnly && 'rtl:first:border-r'
         ),
       },
 
       clear: {
-        common: `${colors.touchRipple} active:bg-opacity-15 last:border-l border-black border-opacity-10`,
+        common: `${colors.touchRipple} active:bg-opacity-15 last:border-l rtl:last:border-l-0 rtl:first:border-l border-black border-opacity-10`,
         ios: cls(colors.textIos, colors.activeBgIos),
         material: cls(colors.textMaterial, colors.activeBgMaterial),
       },
@@ -95,6 +104,6 @@ export const StepperClasses = (props, colors) => {
       clear: 'border-l border-black border-opacity-10',
     },
     hBar: 'w-4 h-0.5 bg-current block',
-    vBar: 'w-0.5 h-4 bg-current block absolute inset-1/2 transform -translate-x-1/2 -translate-y-1/2',
+    vBar: 'w-0.5 h-4 bg-current block absolute inset-1/2 transform -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2',
   };
 };

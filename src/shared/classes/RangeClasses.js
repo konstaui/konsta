@@ -16,7 +16,7 @@ export const RangeClasses = (props, colors, darkClasses) => {
       material: 'h-0.5',
     },
     trackValue: {
-      common: `absolute top-1/2 left-0 w-full transform -translate-y-1/2`,
+      common: `absolute top-1/2 start-0 w-full transform -translate-y-1/2`,
       ios: `h-1 rounded-full ${colors.valueBgIos}`,
       material: `h-0.5 ${colors.valueBgMaterial}`,
     },

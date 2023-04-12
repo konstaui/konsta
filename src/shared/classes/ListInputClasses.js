@@ -33,7 +33,7 @@ export const ListInputClasses = (
       stacked: '',
       floating: {
         common: cls(
-          `pointer-events-none duration-200 transform origin-left max-w-[66%]`,
+          `pointer-events-none duration-200 transform origin-left rtl:origin-right max-w-[66%]`,
           isFloatingTransformed && 'scale-133'
         ),
         ios: isFloatingTransformed

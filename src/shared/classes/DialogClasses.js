@@ -47,7 +47,7 @@ export const DialogClasses = (props, colors, classes, { hasButtons }) => {
     buttons: {
       common: 'flex items-center',
       ios: cls('justify-center last-child-hairline-r-none'),
-      material: cls('justify-end pt-6 space-x-2'),
+      material: cls('justify-end pt-6 space-x-2 rtl:space-x-reverse'),
     },
     backdrop: {
       common:

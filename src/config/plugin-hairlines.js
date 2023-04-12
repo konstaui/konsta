@@ -118,10 +118,10 @@ module.exports = () =>
         '&::after': {
           display: 'none',
         },
-        ':not(.hairline-b):after': {
+        ':not(.hairline-b)::after': {
           display: 'none',
         },
-        '> * > *:after': {
+        '> * > *::after': {
           display: 'none',
         },
       },
@@ -130,10 +130,10 @@ module.exports = () =>
           '&::after': {
             display: 'none',
           },
-          ':not(.hairline-b):after': {
+          ':not(.hairline-b)::after': {
             display: 'none',
           },
-          '> * > *:after': {
+          '> * > *::after': {
             display: 'none',
           },
           '> *:after': {
@@ -146,7 +146,23 @@ module.exports = () =>
           '&::after': {
             display: 'none',
           },
-          ':not(.hairline-b):after': {
+          ':not(.hairline-b)::after': {
+            display: 'none',
+          },
+          '> * > *:after': {
+            display: 'none',
+          },
+          '> *:after': {
+            display: 'none',
+          },
+        },
+      },
+      '.first-child-hairline-r-none': {
+        '> *:first-child': {
+          '&::after': {
+            display: 'none',
+          },
+          ':not(.hairline-b)::after': {
             display: 'none',
           },
           '> * > *:after': {

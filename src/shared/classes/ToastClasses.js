@@ -7,7 +7,7 @@ export const ToastClasses = (props, colors, classes) => {
     base: {
       common: cls(
         positionClass('fixed', classes),
-        'z-50 transform transition-transform-opacity w-full sm:w-auto left-0 bottom-0 sm:max-w-lg',
+        'z-50 transform transition-transform-opacity w-full sm:w-auto start-0 bottom-0 sm:max-w-lg',
         !opened && 'translate-y-full opacity-0 pointer-events-none'
       ),
       ios: cls(
@@ -21,8 +21,8 @@ export const ToastClasses = (props, colors, classes) => {
         colors.textMaterial,
         colors.bgMaterial
       ),
-      left: 'sm:left-4-safe sm:bottom-4-safe',
-      right: 'sm:right-4-safe sm:bottom-4-safe sm:left-auto',
+      left: 'sm:start-4-safe sm:bottom-4-safe',
+      right: 'sm:end-4-safe sm:bottom-4-safe sm:start-auto',
       center: 'sm:left-1/2 sm:bottom-4-safe sm:-translate-x-1/2',
     },
     content: {

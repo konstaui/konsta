@@ -4,8 +4,6 @@ module.exports = () =>
   plugin(({ addUtilities, addBase, theme, e }) => {
     const base = {
       ':root': {
-        '--k-safe-area-start': '0px',
-        '--k-safe-area-end': '0px',
         '--k-safe-area-left': '0px',
         '--k-safe-area-right': '0px',
         '--k-safe-area-top': '0px',
@@ -14,8 +12,6 @@ module.exports = () =>
 
       '@supports (left: env(safe-area-inset-left))': {
         '.safe-areas': {
-          '--k-safe-area-start': 'env(safe-area-inset-left)',
-          '--k-safe-area-end': 'env(safe-area-inset-right)',
           '--k-safe-area-left': 'env(safe-area-inset-left)',
           '--k-safe-area-right': 'env(safe-area-inset-right)',
           '--k-safe-area-top': 'env(safe-area-inset-top)',
@@ -25,8 +21,6 @@ module.exports = () =>
     };
     const safe = {
       '.no-safe-areas': {
-        '--k-safe-area-start': '0px',
-        '--k-safe-area-end': '0px',
         '--k-safe-area-left': '0px',
         '--k-safe-area-right': '0px',
         '--k-safe-area-top': '0px',
@@ -43,12 +37,6 @@ module.exports = () =>
       },
       '.no-safe-areas-bottom': {
         '--k-safe-area-bottom': '0px',
-      },
-      '.no-safe-areas-start': {
-        '--k-safe-area-start': '0px',
-      },
-      '.no-safe-areas-left': {
-        '--k-safe-area-left': '0px',
       },
     };
     const spacing = theme('spacing');
@@ -81,28 +69,27 @@ module.exports = () =>
     });
     ['start', 'end'].forEach((side) => {
       const first = side[0];
-      const upper = `${side[0].toUpperCase()}${side.slice(1)}`;
-
+      const areaSide = side === 'start' ? 'left' : 'right';
       safe[`.p${first}-safe`] = {
-        [`padding-inline${upper}`]: `var(--k-safe-area-${side})`,
+        [`padding-inline-${side}`]: `var(--k-safe-area-${areaSide})`,
       };
       safe[`.m${first}-safe`] = {
-        [`margin-inline${upper}`]: `var(--k-safe-area-${side})`,
+        [`margin-inline-${side}`]: `var(--k-safe-area-${areaSide})`,
       };
       safe[`.${side}-safe`] = {
-        [side]: `var(--k-safe-area-${side})`,
+        [`inset-inline-${side}`]: `var(--k-safe-area-${areaSide})`,
       };
 
       Object.keys(spacing).forEach((key) => {
         const value = spacing[key];
         safe[`.p${first}-${e(key)}-safe`] = {
-          [`padding-inline${upper}`]: `calc(var(--k-safe-area-${side}) + ${value})`,
+          [`padding-inline-${side}`]: `calc(var(--k-safe-area-${areaSide}) + ${value})`,
         };
         safe[`.m${first}-${e(key)}-safe`] = {
-          [`margin-inline${upper}`]: `calc(var(--k-safe-area-${side}) + ${value})`,
+          [`margin-inline-${side}`]: `calc(var(--k-safe-area-${areaSide}) + ${value})`,
         };
         safe[`.${side}-${e(key)}-safe`] = {
-          [side]: `calc(var(--k-safe-area-${side}) + ${value})`,
+          [`inset-inline-${side}`]: `calc(var(--k-safe-area-${areaSide}) + ${value})`,
         };
       });
     });
