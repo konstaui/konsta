@@ -128,7 +128,7 @@
         indeterminate={movies.length === 1}
         onChange={onMoviesChange}
       />
-      <ul class="pl-12">
+      <ul class="ps-12">
         <ListItem label title="Movie 1">
           <Checkbox
             slot="media"

@@ -33,13 +33,13 @@
       etc.
     </p>
   </Block>
-  <Block strongIos outlineIos class="flex space-x-4">
+  <Block strongIos outlineIos class="flex space-x-4 rtl:space-x-reverse">
     <Button onClick={() => (leftPanelOpened = true)}>Left Panel</Button>
     <Button onClick={() => (rightPanelOpened = true)}>Right Panel</Button>
   </Block>
 
   <BlockTitle>Floating Panels</BlockTitle>
-  <Block strongIos outlineIos class="flex space-x-4">
+  <Block strongIos outlineIos class="flex space-x-4 rtl:space-x-reverse">
     <Button onClick={() => (leftFloatingPanelOpened = true)}>Left Panel</Button>
     <Button onClick={() => (rightFloatingPanelOpened = true)}
       >Right Panel</Button

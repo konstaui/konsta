@@ -32,7 +32,11 @@ export default function SidePanelsPage() {
           custom content, etc.
         </p>
       </Block>
-      <Block strongIos outlineIos className="flex space-x-4">
+      <Block
+        strongIos
+        outlineIos
+        className="flex space-x-4 rtl:space-x-reverse"
+      >
         <Button rounded onClick={() => setLeftPanelOpened(true)}>
           Left Panel
         </Button>
@@ -41,7 +45,11 @@ export default function SidePanelsPage() {
         </Button>
       </Block>
       <BlockTitle>Floating Panels</BlockTitle>
-      <Block strongIos outlineIos className="flex space-x-4">
+      <Block
+        strongIos
+        outlineIos
+        className="flex space-x-4 rtl:space-x-reverse"
+      >
         <Button rounded onClick={() => setLeftFloatingPanelOpened(true)}>
           Left Panel
         </Button>
