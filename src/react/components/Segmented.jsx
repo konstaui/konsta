@@ -82,7 +82,7 @@ const Segmented = forwardRef((props, ref) => {
       setHighlightStyle({
         ...highlightStyle,
         width: `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`,
-        transform: `translateX(calc(${activeIndex} * 100% + ${activeIndex} * ${between}))`,
+        transform: `translateX(calc((${activeIndex} * 100% + ${activeIndex} * ${between}) * var(--k-rtl-reverse)))`,
       });
     }
   }, [children]);

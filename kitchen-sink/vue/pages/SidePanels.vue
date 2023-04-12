@@ -13,13 +13,13 @@
         content, etc.
       </p>
     </k-block>
-    <k-block strong-ios outline-ios class="flex space-x-4">
+    <k-block strong-ios outline-ios class="flex space-x-4 rtl:space-x-reverse">
       <k-button @click="() => (leftPanelOpened = true)">Left Panel</k-button>
       <k-button @click="() => (rightPanelOpened = true)">Right Panel</k-button>
     </k-block>
 
     <k-block-title>Floating Panels</k-block-title>
-    <k-block strong-ios outline-ios class="flex space-x-4">
+    <k-block strong-ios outline-ios class="flex space-x-4 rtl:space-x-reverse">
       <k-button @click="() => (leftFloatingPanelOpened = true)"
         >Left Panel</k-button
       >

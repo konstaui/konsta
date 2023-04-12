@@ -102,7 +102,7 @@ export default function CardsPage() {
                 <Link>Like</Link>
                 <Link>Read more</Link>
               </div>
-              <div className="flex justify-start ios:hidden space-x-2">
+              <div className="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse">
                 <Button rounded inline>
                   Like
                 </Button>
@@ -135,7 +135,7 @@ export default function CardsPage() {
                 <Link>Like</Link>
                 <Link>Read more</Link>
               </div>
-              <div className="flex justify-start ios:hidden space-x-2">
+              <div className="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse">
                 <Button rounded inline>
                   Like
                 </Button>

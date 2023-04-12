@@ -59,7 +59,7 @@
       const padding = '2px';
 
       const width = `calc((100% - ${padding} * 2 - ${between} * (${buttonsLength} - 1)) / ${buttonsLength})`;
-      const transform = `translateX(calc(${activeIndex} * 100% + ${activeIndex} * ${between}))`;
+      const transform = `translateX(calc((${activeIndex} * 100% + ${activeIndex} * ${between}) * var(--k-rtl-reverse)))`;
 
       if (
         width !== highlightStyle.width ||
