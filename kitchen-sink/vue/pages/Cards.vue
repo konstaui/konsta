@@ -82,7 +82,9 @@
             <k-link>Like</k-link>
             <k-link>Read more</k-link>
           </div>
-          <div className="flex justify-start ios:hidden space-x-2">
+          <div
+            className="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
+          >
             <k-button rounded inline> Like </k-button>
             <k-button rounded inline outline> Read more </k-button>
           </div>
@@ -108,7 +110,9 @@
             <k-link>Like</k-link>
             <k-link>Read more</k-link>
           </div>
-          <div className="flex justify-start ios:hidden space-x-2">
+          <div
+            className="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
+          >
             <k-button rounded inline> Like </k-button>
             <k-button rounded inline outline> Read more </k-button>
           </div>

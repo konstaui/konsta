@@ -19,11 +19,11 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
       square: {
         ios:
           segmented && !segmentedStrong
-            ? 'first:rounded-l last:rounded-r'
+            ? 'first:rounded-s last:rounded-e'
             : 'rounded',
         material:
           segmented && !segmentedStrong
-            ? 'first:rounded-lg-l last:rounded-lg-r'
+            ? 'first:rounded-lg-s last:rounded-lg-e'
             : 'rounded-lg',
       },
 

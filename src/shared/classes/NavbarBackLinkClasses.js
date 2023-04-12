@@ -4,6 +4,6 @@ export const NavbarBackLinkClasses = () => {
       common: 'cursor-pointer',
       material: 'min-w-12 k-touch-ripple-inset',
     },
-    icon: '',
+    icon: 'rtl:rotate-180',
   };
 };

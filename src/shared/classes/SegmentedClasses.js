@@ -13,14 +13,14 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
     },
     raised: outline
       ? 'shadow'
-      : `shadow divide-x divide-black divide-opacity-10`,
+      : `shadow divide-x divide-black divide-opacity-10 rtl:divide-x-reverse`,
     outline: {
       common: ``,
       ios: `${colors.borderIos} border-2`,
       material: `${colors.borderMaterial} border`,
     },
     outlineInner: {
-      common: `-m-0.5 flex w-full justify-center items-center`,
+      common: `-m-0.5 flex w-full justify-center items-center rtl:divide-x-reverse`,
       ios: `divide-x-2 ${colors.divideIos}`,
       material: `divide-x ${colors.divideMaterial}`,
     },
@@ -31,7 +31,7 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
     },
     strongHighlight: {
       common: cls(
-        'absolute left-0.5 top-0.5 bottom-0.5 !ml-0 pointer-events-none duration-200',
+        'absolute start-0.5 top-0.5 bottom-0.5 !ms-0 pointer-events-none duration-200',
         rounded && 'rounded-full',
         `bg-white shadow`,
         darkClasses('dark:bg-opacity-15 dark:touch-ripple-white')

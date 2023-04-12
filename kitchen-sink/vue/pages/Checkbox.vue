@@ -81,7 +81,7 @@
             @change="onMoviesChange"
           />
         </template>
-        <ul class="pl-12">
+        <ul class="ps-12">
           <k-list-item label title="Movie 1">
             <template #media>
               <k-checkbox

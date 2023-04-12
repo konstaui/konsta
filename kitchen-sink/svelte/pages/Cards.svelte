@@ -110,7 +110,9 @@
           <Link>Like</Link>
           <Link>Read more</Link>
         </div>
-        <div class="flex justify-start ios:hidden space-x-2">
+        <div
+          class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
+        >
           <Button rounded inline>Like</Button>
           <Button rounded inline outline>Read more</Button>
         </div>
@@ -134,7 +136,9 @@
           <Link>Like</Link>
           <Link>Read more</Link>
         </div>
-        <div class="flex justify-start ios:hidden space-x-2">
+        <div
+          class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
+        >
           <Button rounded inline>Like</Button>
           <Button rounded inline outline>Read more</Button>
         </div>

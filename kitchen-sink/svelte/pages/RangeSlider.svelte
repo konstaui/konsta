@@ -30,7 +30,7 @@
   <BlockTitle>Volume: {volume}</BlockTitle>
   <BlockHeader>From 0 to 100 with step 10</BlockHeader>
   <List strong insetMaterial outlineIos>
-    <ListItem innerClass="flex space-x-4">
+    <ListItem innerClass="flex space-x-4 rtl:space-x-reverse">
       <svelte:fragment slot="inner">
         <span>0</span>
         <Range
@@ -46,7 +46,7 @@
   <BlockTitle>Price: ${price}</BlockTitle>
   <BlockHeader>From 0 to 1000 with step 1</BlockHeader>
   <List strong insetMaterial outlineIos>
-    <ListItem innerClass="flex space-x-4">
+    <ListItem innerClass="flex space-x-4 rtl:space-x-reverse">
       <svelte:fragment slot="inner">
         <span>$0</span>
         <Range

@@ -9,7 +9,7 @@
     <k-block-title>Volume: {{ volume }}</k-block-title>
     <k-block-header>From 0 to 100 with step 10</k-block-header>
     <k-list strong inset-material outline-ios>
-      <k-list-item inner-class="flex space-x-4">
+      <k-list-item inner-class="flex space-x-4 rtl:space-x-reverse">
         <template #inner>
           <span>0</span>
           <k-range
@@ -25,7 +25,7 @@
     <k-block-title>Price: ${{ price }}</k-block-title>
     <k-block-header>From 0 to 1000 with step 1</k-block-header>
     <k-list strong inset-material outline-ios>
-      <k-list-item inner-class="flex space-x-4">
+      <k-list-item inner-class="flex space-x-4 rtl:space-x-reverse">
         <template #inner>
           <span>$0</span>
           <k-range
