@@ -8,7 +8,7 @@
   export let material = undefined;
 
   export let fontSizeIos = 'text-[17px]';
-  export let fontSizeMaterial = 'text-[16px]';
+  export let fontSizeMaterial = 'text-[14px]';
 
   $: c = useThemeClasses(
     { ios, material },
