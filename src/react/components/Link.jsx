@@ -18,6 +18,7 @@ const Link = forwardRef((props, ref) => {
     toolbar,
 
     iconOnly,
+    linkProps = {},
 
     tabbar,
     tabbarActive,
@@ -44,6 +45,7 @@ const Link = forwardRef((props, ref) => {
   const Component = component;
 
   const attrs = {
+    ...linkProps,
     ...rest,
   };
 

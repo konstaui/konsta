@@ -15,6 +15,7 @@
   export let material = undefined;
 
   export let component = 'a';
+  export let linkProps = {};
 
   // Toolbar/navbar link
   export let navbar = false;
@@ -85,6 +86,7 @@
   bind:this={rippleEl.current}
   class={classes}
   {...$$restProps}
+  {...linkProps}
   on:click={onClick}
 >
   <slot />
