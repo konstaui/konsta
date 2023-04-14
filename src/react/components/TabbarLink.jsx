@@ -14,6 +14,7 @@ const TabbarLink = forwardRef((props, ref) => {
     ios,
     material,
     colors: colorsProp,
+    linkProps = {},
 
     icon,
     label,
@@ -29,6 +30,7 @@ const TabbarLink = forwardRef((props, ref) => {
   }));
 
   const attrs = {
+    ...linkProps,
     ...rest,
   };
   const dark = useDarkClasses();

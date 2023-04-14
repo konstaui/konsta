@@ -12,6 +12,7 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
+  export let linkProps = {};
 
   export let active = false;
   export let label = undefined;
@@ -31,7 +32,13 @@
   );
 </script>
 
-<Link tabbar tabbarActive={active} class={className} {...$$restProps}>
+<Link
+  tabbar
+  tabbarActive={active}
+  class={className}
+  {...$$restProps}
+  {...linkProps}
+>
   <span class={c.content}>
     {#if hasIcon}
       <span class={c.iconContainer}>

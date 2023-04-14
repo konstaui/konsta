@@ -5,6 +5,7 @@
     :component="component"
     :colors="colors"
     :touch-ripple="touchRipple"
+    v-bind="linkProps"
   >
     <span :class="c.content">
       <template v-if="slots.icon">
@@ -45,6 +46,7 @@
         type: Object,
       },
       touchRipple: { type: Boolean, default: true },
+      linkProps: { type: Object, default: () => ({}) },
       active: {
         type: Boolean,
         default: false,
