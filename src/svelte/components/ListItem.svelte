@@ -8,6 +8,7 @@
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
   import { ListItemColors } from '../../shared/colors/ListItemColors.js';
   import { getReactiveContext } from '../shared/get-reactive-context.js';
+  import { printText } from '../shared/print-text.js';
 
   let className = undefined;
   export { className as class };
@@ -199,19 +200,21 @@
         {/if}
         <div class={c.inner}>
           {#if header || $$slots.header}
-            <div class={c.header}>{header}<slot name="header" /></div>
+            <div class={c.header}>
+              {printText(header)}<slot name="header" />
+            </div>
           {/if}
           {#if ((title || $$slots.title) && withTitle !== false) || after || $$slots.after}
             <div class={c.titleWrap}>
               {#if (title || $$slots.title) && withTitle !== false}
                 <div class={titleClasses}>
-                  {title}
+                  {printText(title)}
                   <slot name="title" />
                 </div>
               {/if}
               {#if after || $$slots.after}
                 <div class={c.after}>
-                  {after}
+                  {printText(after)}
                   <slot name="after" />
                 </div>
               {/if}
@@ -221,13 +224,17 @@
             </div>
           {/if}
           {#if subtitle || $$slots.subtitle}
-            <div class={c.subtitle}>{subtitle}<slot name="subtitle" /></div>
+            <div class={c.subtitle}>
+              {printText(subtitle)}<slot name="subtitle" />
+            </div>
           {/if}
           {#if text || $$slots.text}
-            <div class={c.text}>{text}<slot name="text" /></div>
+            <div class={c.text}>{printText(text)}<slot name="text" /></div>
           {/if}
           {#if footer || $$slots.footer}
-            <div class={c.footer}>{footer}<slot name="footer" /></div>
+            <div class={c.footer}>
+              {printText(footer)}<slot name="footer" />
+            </div>
           {/if}
           <slot name="inner" />
         </div>
@@ -245,19 +252,21 @@
         {/if}
         <div class={c.inner}>
           {#if header || $$slots.header}
-            <div class={c.header}>{header}<slot name="header" /></div>
+            <div class={c.header}>
+              {printText(header)}<slot name="header" />
+            </div>
           {/if}
           {#if ((title || $$slots.title) && withTitle !== false) || after || $$slots.after}
             <div class={c.titleWrap}>
               {#if (title || $$slots.title) && withTitle !== false}
                 <div class={titleClasses}>
-                  {title}
+                  {printText(title)}
                   <slot name="title" />
                 </div>
               {/if}
               {#if after || $$slots.after}
                 <div class={c.after}>
-                  {after}
+                  {printText(after)}
                   <slot name="after" />
                 </div>
               {/if}
@@ -267,13 +276,17 @@
             </div>
           {/if}
           {#if subtitle || $$slots.subtitle}
-            <div class={c.subtitle}>{subtitle}<slot name="subtitle" /></div>
+            <div class={c.subtitle}>
+              {printText(subtitle)}<slot name="subtitle" />
+            </div>
           {/if}
           {#if text || $$slots.text}
-            <div class={c.text}>{text}<slot name="text" /></div>
+            <div class={c.text}>{printText(text)}<slot name="text" /></div>
           {/if}
           {#if footer || $$slots.footer}
-            <div class={c.footer}>{footer}<slot name="footer" /></div>
+            <div class={c.footer}>
+              {printText(footer)}<slot name="footer" />
+            </div>
           {/if}
           <slot name="inner" />
         </div>

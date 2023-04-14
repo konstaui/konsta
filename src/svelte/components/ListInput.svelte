@@ -8,6 +8,7 @@
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
   import { ListInputColors } from '../../shared/colors/ListInputColors.js';
   import { cls } from '../../shared/cls.js';
+  import { printText } from '../shared/print-text.js';
 
   let className = undefined;
   export { className as class };
@@ -181,7 +182,7 @@
     {#if label || $$slots.label}
       <div class={c.label[labelStyle]}>
         <div class={c.labelText}>
-          {label}
+          {printText(label)}
           <slot name="label" />
         </div>
       </div>

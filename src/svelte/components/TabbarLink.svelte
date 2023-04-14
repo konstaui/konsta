@@ -3,6 +3,7 @@
   import { TabbarLinkColors } from '../../shared/colors/TabbarLinkColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { printText } from '../shared/print-text.js';
 
   import Link from './Link.svelte';
 
@@ -51,7 +52,7 @@
         {#if $$slots.label}
           <slot name="label" />
         {:else}
-          {label}
+          {printText(label)}
           <slot />
         {/if}
       </span>

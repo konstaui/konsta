@@ -4,6 +4,7 @@
   import BackIcon from './icons/BackIcon.svelte';
   import Link from './Link.svelte';
   import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
+  import { printText } from '../shared/print-text.js';
 
   let className = undefined;
   export { className as class };
@@ -34,7 +35,7 @@
     <BackIcon {theme} />
   </span>
   {#if shouldShowText}
-    <span>{text}</span>
+    <span>{printText(text)}</span>
   {/if}
   <slot />
 </Link>

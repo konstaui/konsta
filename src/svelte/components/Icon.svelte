@@ -3,6 +3,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import Badge from './Badge.svelte';
   import { IconClasses } from '../../shared/classes/IconClasses.js';
+  import { printText } from '../shared/print-text.js';
 
   let className = undefined;
   export { className as class };
@@ -25,16 +26,16 @@
 
 <i class={c.base} {...$$restProps}>
   {#if theme === 'ios'}
-    {ios || ''}
+    {printText(ios || '')}
     <slot name="ios" />
   {:else}
-    {material || ''}
+    {printText(material || '')}
     <slot name="material" />
   {/if}
 
   {#if typeof badge !== 'undefined' && badge !== null && badge !== ''}
     <Badge small class={c.badge} colors={badgeColors}>
-      {badge}
+      {printText(badge)}
     </Badge>
   {/if}
   <slot />

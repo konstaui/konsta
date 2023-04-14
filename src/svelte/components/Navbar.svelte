@@ -5,6 +5,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
   import { NavbarColors } from '../../shared/colors/NavbarColors.js';
+  import { printText } from '../shared/print-text.js';
 
   let className = undefined;
   export { className as class };
@@ -215,11 +216,11 @@
     {/if}
     {#if $$slots.title || $$slots.subtitle || title || subtitle}
       <div class={c.title} bind:this={titleElRef}>
-        {title}
+        {printText(title)}
         <slot name="title" />
         {#if subtitle || $$slots.subtitle}
           <div class={c.subtitle}>
-            {subtitle}<slot name="subtitle" />
+            {printText(subtitle)}<slot name="subtitle" />
           </div>
         {/if}
       </div>
@@ -231,7 +232,7 @@
   </div>
   {#if large || medium}
     <div class={c.titleContainer} bind:this={titleContainerElRef}>
-      {title}
+      {printText(title)}
       <slot name="title" />
     </div>
   {/if}
