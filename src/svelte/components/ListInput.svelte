@@ -36,6 +36,7 @@
 
   export let name = undefined;
   export let value = undefined;
+  export let defaultValue = undefined;
   export let type = 'text';
   export let inputmode = undefined;
   export let readonly = undefined;
@@ -223,6 +224,7 @@
             {pattern}
             {tabindex}
             {value}
+            {defaultValue}
             on:input={onInput}
             on:change={onChange}
             on:focus={onFocusInternal}
@@ -261,6 +263,7 @@
             {pattern}
             {tabindex}
             {value}
+            {defaultValue}
             on:input={onInput}
             on:change={onChange}
             on:focus={onFocusInternal}
