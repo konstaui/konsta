@@ -25,7 +25,7 @@
   export let tabbar = false;
   export let tabbarActive = false;
 
-  export let touchRipple = true;
+  export let touchRipple = false;
 
   export let onClick = undefined;
 
