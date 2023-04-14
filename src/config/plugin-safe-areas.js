@@ -29,8 +29,8 @@ module.exports = () =>
       '.no-safe-areas-top': {
         '--k-safe-area-top': '0px',
       },
-      '.no-safe-areas-end': {
-        '--k-safe-area-end': '0px',
+      '.no-safe-areas-left': {
+        '--k-safe-area-left': '0px',
       },
       '.no-safe-areas-right': {
         '--k-safe-area-right': '0px',
