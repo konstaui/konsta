@@ -1,5 +1,29 @@
 # Changelog
 
+# [2.0.0](https://github.com/konstaui/konsta/compare/v1.0.2...v2.0.0) (2023-04-21)
+
+### Breaking
+
+- now it requires Tailwind CSS 3.3+
+
+### Bug Fixes
+
+- RadioClasses material icon ([#128](https://github.com/konstaui/konsta/issues/128)) ([b92714f](https://github.com/konstaui/konsta/commit/b92714fa138103c663248fdcb1643d25493fc4e6))
+- **react:** added React.PropsWithChildren ([#132](https://github.com/konstaui/konsta/issues/132)) ([72ffa4e](https://github.com/konstaui/konsta/commit/72ffa4e6ed5fb9ea1205c8aec050fb53f2eecaa8))
+- **svelte:** checks for null or undefined where printing a text ([8c6ff6f](https://github.com/konstaui/konsta/commit/8c6ff6f11c4f036821bc9afd990f41038f360fca)), closes [#126](https://github.com/konstaui/konsta/issues/126)
+- **svelte:** fix default font size in breadcrumbs ([03935c5](https://github.com/konstaui/konsta/commit/03935c5ace9f1d1bd2a67a8087f7df8b6e56231e))
+- **svelte:** link should have touch ripple disabled by default ([2b8822c](https://github.com/konstaui/konsta/commit/2b8822c20eb06ebe8787c292e5d96669be4f4167)), closes [#112](https://github.com/konstaui/konsta/issues/112)
+- **svelte:** TabbarLink label ([#129](https://github.com/konstaui/konsta/issues/129)) ([18d76bf](https://github.com/konstaui/konsta/commit/18d76bf6c2c827838b75a543c2bf916979e084b4))
+- **svelte:** use <a> if button has `href` ([5c6defd](https://github.com/konstaui/konsta/commit/5c6defd1fd5df27f5390a1c3b6665d1caf123a4c)), closes [#141](https://github.com/konstaui/konsta/issues/141)
+
+### Features
+
+- **breadcrumbs:** breadcrumbs-item now has overflow-hidden ([5c30bb7](https://github.com/konstaui/konsta/commit/5c30bb7b892caafcec700103f1c17f1d4a0bc1fd))
+- **link:** add `linkProps` property ([328bd1e](https://github.com/konstaui/konsta/commit/328bd1e1ca5778cde6df7680a9d23590c6497afe))
+- RTL support with logical properties ([#133](https://github.com/konstaui/konsta/issues/133)) ([870258a](https://github.com/konstaui/konsta/commit/870258aee643198013a10fb181b3714e74ea0f81))
+- **svelte:** add `component` prop support to FAB component ([#83](https://github.com/konstaui/konsta/issues/83)) ([9841840](https://github.com/konstaui/konsta/commit/9841840aa6c0181da23bcff37db755324952551e))
+- **tabbarlink:** add `linkProps` property ([e026847](https://github.com/konstaui/konsta/commit/e026847eb6ad983a67444b031a74277b46d9de42)), closes [#123](https://github.com/konstaui/konsta/issues/123)
+
 # [1.0.2](https://github.com/konstaui/konsta/compare/v1.0.1...v1.0.2) (2022-09-16)
 
 - **block:** new `padding` prop
