@@ -1,3 +1,4 @@
+/* eslint-disable */
 const { defineConfig } = require('vite');
 
 module.exports = defineConfig(async ({ command, mode }) => {

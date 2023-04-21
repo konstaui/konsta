@@ -22,7 +22,9 @@ interface KonstaProviderProps {
    */
   touchRipple?: boolean;
 }
-declare const KonstaProvider: React.FunctionComponent<React.PropsWithChildren<KonstaProviderProps>>;
+declare const KonstaProvider: React.FunctionComponent<
+  React.PropsWithChildren<KonstaProviderProps>
+>;
 
 // HELPERS
 declare const useTheme: () => 'material' | 'ios';
