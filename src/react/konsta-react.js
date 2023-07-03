@@ -38,6 +38,7 @@ import Preloader from './components/Preloader.jsx';
 import Progressbar from './components/Progressbar.jsx';
 import Radio from './components/Radio.jsx';
 import Range from './components/Range.jsx';
+import Searchbar from './components/Searchbar.jsx';
 import Segmented from './components/Segmented.jsx';
 import SegmentedButton from './components/SegmentedButton.jsx';
 import Sheet from './components/Sheet.jsx';
@@ -98,6 +99,7 @@ export {
   Progressbar,
   Radio,
   Range,
+  Searchbar,
   Segmented,
   SegmentedButton,
   Sheet,
