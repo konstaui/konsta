@@ -56,7 +56,7 @@ const Searchbar = forwardRef((props, ref) => {
   }));
 
   const [isFocused, setIsFocused] = useState(false);
-  const [showCancel, setShowCancel] = useState(false);
+  // const [showCancel, setShowCancel] = useState(false);
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
@@ -73,30 +73,26 @@ const Searchbar = forwardRef((props, ref) => {
 
   const onFocusInternal = (e) => {
     setIsFocused(true);
-    setShowCancel(true);
+    // setShowCancel(true);
     if (onFocus) onFocus(e);
+    // console.log('focus');
   };
 
   const onBlurInternal = (e) => {
     if (!searchElRef.current.value) {
-      setIsFocused(false);
-      setShowCancel(false);
+      setIsFocused(true);
+      // setShowCancel(false);
     }
     if (onBlur) onBlur(e);
   };
 
   const handleCancel = (e) => {
     e.preventDefault();
-
     if (onCancel) {
       onCancel();
       setIsFocused(false);
-      setShowCancel(false);
-    }
-    if (searchElRef.current) {
-      setIsFocused(false);
-      setShowCancel(false);
-      // searchElRef.current.value = '';
+      // console.log('click');
+      // setShowCancel(false);
     }
   };
 
@@ -112,7 +108,7 @@ const Searchbar = forwardRef((props, ref) => {
       <BackIcon
         theme={theme}
         onClick={handleCancel}
-        className={cls(c.cancelButton, c.icon)}
+        className={cls(c.cancelButton)}
       />
     );
   const Component = component;
@@ -156,7 +152,7 @@ const Searchbar = forwardRef((props, ref) => {
           </span>
         </span>
       </div>
-      {showCancel && !disableButton && CancelButton}
+      {!disableButton && CancelButton}
     </Component>
   );
 });

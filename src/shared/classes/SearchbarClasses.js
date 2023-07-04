@@ -1,6 +1,6 @@
 import { cls } from '../cls.js';
 
-export const SearchbarClasses = (props, colors, { isFocused }) => {
+export const SearchbarClasses = (props, colors, { isFocused, darkClasses }) => {
   return {
     root: {
       ios: cls(isFocused ? colors.activeBgIos : colors.bgIos),
@@ -31,7 +31,10 @@ export const SearchbarClasses = (props, colors, { isFocused }) => {
     },
     input: {
       common: 'block appearance-none  w-full py-2  focus:outline-none z-30',
-      ios: 'h-8 bg-borderbg pl-9 pr-3 rounded-lg text-base',
+      ios: cls(
+        'h-8 bg-borderbg pl-7 pr-7 rounded-lg text-base',
+        darkClasses('dark:placeholder-white dark:placeholder-opacity-30')
+      ),
       material:
         'h-10 placeholder-textColorM pl-14 pr-4 bg-searchbgM rounded-full',
     },
@@ -43,28 +46,27 @@ export const SearchbarClasses = (props, colors, { isFocused }) => {
     },
     searchIcon: {
       common: '',
-      ios: cls('w-5 h-5 opacity-45', colors.labelTextIos),
+      ios: cls('w-4 h-4 opacity-45 -ml-2', colors.labelTextIos),
       material: cls(
-        'w-6 h-6 transition-all duration-300',
-        isFocused ? 'hidden' : 'block'
+        'w-6 h-6 z-30',
+        isFocused
+          ? 'opacity-0 transform rotate-90 scale-50 transition-transform-opacity  duration-400 '
+          : 'block transform transition-transform-opacity scale-100 rotate-0 duration-400'
       ),
     },
     cancelButton: {
       ios: cls(
-        'px-2 py-1 cursor-pointer z-40 absolute top-1/2 -translate-y-1/2 right-2 bg-transparent rounded-lg text-brand-blue',
+        'px-2 py-1 cursor-pointer  absolute top-1/2 -translate-y-1/2 bg-transparent rounded-lg text-brand-blue',
         isFocused
-          ? 'block transform translate-x-0 transition-all duration-300 ease-in-out'
-          : 'hidden transition-all duration-300 ease-in-out transform translate-x-full'
+          ? 'z-40 transform transition-transform-opacity end-0 duration-300'
+          : 'translate-x-full opacity-0'
       ),
       material: cls(
-        'absolute left-8 transition-all duration-300 ease-in-out cursor-pointer',
+        'absolute left-8 cursor-pointer',
         isFocused
-          ? 'block  scale-100 rotate-0'
-          : 'hidden -rotate-90deg scale-50'
+          ? 'z-40 transform scale-100 rotate-0 transition-transform-opacity  duration-400'
+          : 'opacity-0 transform -rotate-90 scale-50 transition-transform-opacity duration-400'
       ),
-
-      // ios: 'bg-transparent rounded-lg text-brand-blue',
-      // material: 'bg-transparent rounded text-links',
     },
     border: {
       common:
