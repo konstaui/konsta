@@ -1,86 +1,62 @@
 import { cls } from '../cls.js';
 
-export const SearchbarClasses = (props, colors, { isFocused, darkClasses }) => {
+export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
   return {
-    root: {
-      ios: cls(isFocused ? colors.activeBgIos : colors.bgIos),
-    },
     base: {
-      common: 'relative w-full flex overflow-hidden box-border items-center',
-      ios: 'px-2 py-2',
-      material: 'px-3 py-2',
+      common: 'relative flex overflow-hidden items-center',
+      ios: 'px-2 w-full',
+      material: 'px-0 py-2 -mx-2 w-[calc(100%+32px)]',
     },
-    inputWrap: {
-      common: 'relative',
-      ios: '-mt-1',
-      material: '-mt-0.5',
-    },
+
     inner: {
-      common: 'w-full shrink-1',
-      ios: cls(
-        isFocused
-          ? 'mr-18 w-full transition-all duration-300'
-          : 'w-full transition-all duration-300 shrink-1'
-      ),
+      common: 'w-full shrink-1 relative',
+      ios: 'transition-all duration-300',
     },
     iconSearch: {
-      common: 'absolute inset-y-0 left-2 flex items-center pl-2 z-40',
+      common: 'absolute inset-y-0 flex items-center z-40',
+      ios: 'start-2',
+      material: 'start-4',
     },
     iconDelete: {
-      common: 'absolute inset-y-0 right-2 flex items-center pr-4 z-40',
+      common:
+        'absolute justify-center inset-y-0 flex items-center z-40 cursor-pointer end-0',
+      ios: 'w-8 h-8',
+      material: 'w-12 h-12',
     },
     input: {
       common: 'block appearance-none  w-full py-2  focus:outline-none z-30',
       ios: cls(
-        'h-8 bg-borderbg pl-7 pr-7 rounded-lg text-base',
+        'h-8 bg-black/10 dark:bg-white/10 pl-7 pr-7 rounded-lg text-base',
         darkClasses('dark:placeholder-white dark:placeholder-opacity-30')
       ),
       material:
-        'h-10 placeholder-textColorM pl-14 pr-4 bg-searchbgM rounded-full',
+        'h-12 placeholder-md-light-on-surface-variant dark:placeholder-md-dark-on-surface-variant ps-12 pe-4 bg-md-light-secondary-container dark:bg-md-dark-secondary-container rounded-full',
     },
     clearButton: {
-      common:
-        'absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer',
+      common: '',
       ios: 'w-3.5 h-3.5 opacity-45',
-      material: 'w-6 h-6',
+      material: 'w-6 h-6 active:opacity-20',
     },
     searchIcon: {
       common: '',
-      ios: cls('w-4 h-4 opacity-45 -ml-2', colors.labelTextIos),
+      ios: cls('w-4 h-4 opacity-45', colors.labelTextIos),
       material: cls(
-        'w-6 h-6 z-30',
-        isFocused
+        'w-5 h-5 z-30',
+        isEnabled
           ? 'opacity-0 transform rotate-90 scale-50 transition-transform-opacity  duration-400 '
           : 'block transform transition-transform-opacity scale-100 rotate-0 duration-400'
       ),
     },
     cancelButton: {
       ios: cls(
-        'px-2 py-1 cursor-pointer  absolute top-1/2 -translate-y-1/2 bg-transparent rounded-lg text-brand-blue',
-        isFocused
-          ? 'z-40 transform transition-transform-opacity end-0 duration-300'
-          : 'translate-x-full opacity-0'
+        'ps-2 flex items-center h-8 cursor-pointer bg-transparent text-primary shrink-0 z-40 transition-all duration-300 active:opacity-30',
+        isEnabled ? '' : 'opacity-0'
       ),
       material: cls(
-        'absolute left-8 cursor-pointer',
-        isFocused
+        'absolute left-4 cursor-pointer',
+        isEnabled
           ? 'z-40 transform scale-100 rotate-0 transition-transform-opacity  duration-400'
           : 'opacity-0 transform -rotate-90 scale-50 transition-transform-opacity duration-400'
-      ),
-    },
-    border: {
-      common:
-        'pointer-events-none absolute left-0 bottom-0 duration-200 w-full',
-      ios: cls(
-        isFocused ? colors.outlineBorderFocusIos : colors.outlineBorderIos,
-        'h-full border rounded-lg -z-10'
-      ),
-      material: cls(
-        isFocused
-          ? colors.outlineBorderFocusMaterial
-          : colors.outlineBorderMaterial,
-        'h-full border rounded -z-10',
-        isFocused && 'border-2'
       ),
     },
   };

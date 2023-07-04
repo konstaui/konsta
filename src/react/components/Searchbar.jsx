@@ -4,6 +4,7 @@ import React, {
   useState,
   forwardRef,
   useImperativeHandle,
+  useEffect,
 } from 'react';
 import { SearchbarClasses } from '../../shared/classes/SearchbarClasses.js';
 import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
@@ -18,27 +19,27 @@ import BackIcon from './icons/BackIcon.jsx';
 
 const Searchbar = forwardRef((props, ref) => {
   const {
-    component = 'label',
+    component = 'div',
     className,
     colors: colorsProp,
 
-    // inputID,
     placeholder = 'Search',
     value,
+    inputId,
     inputStyle,
     items,
 
     // form='true',
     disableButton = false,
     disableButtonText = 'Cancel',
-    clearButton,
+    clearButton = true,
 
     onInput,
     onChange,
     onFocus,
     onBlur,
     onClear,
-    onCancel,
+    onDisable,
 
     ios,
     material,
@@ -49,14 +50,17 @@ const Searchbar = forwardRef((props, ref) => {
 
   const searchElRef = useRef(null);
   const elRef = useRef(null);
+  const disableButtonRef = useRef(null);
+  const [disableButtonWidth, setDisableButtonWidth] = useState(0);
+  const disableTimeout = useRef(null);
+  const allowTransition = useRef(false);
 
   useImperativeHandle(ref, () => ({
     el: elRef.current,
     searchEl: searchElRef.current,
   }));
 
-  const [isFocused, setIsFocused] = useState(false);
-  // const [showCancel, setShowCancel] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
@@ -72,43 +76,71 @@ const Searchbar = forwardRef((props, ref) => {
   };
 
   const onFocusInternal = (e) => {
-    setIsFocused(true);
-    // setShowCancel(true);
+    setIsEnabled(true);
     if (onFocus) onFocus(e);
-    // console.log('focus');
   };
 
   const onBlurInternal = (e) => {
-    if (!searchElRef.current.value) {
-      setIsFocused(true);
-      // setShowCancel(false);
-    }
     if (onBlur) onBlur(e);
   };
 
-  const handleCancel = (e) => {
-    e.preventDefault();
-    if (onCancel) {
-      onCancel();
-      setIsFocused(false);
-      // console.log('click');
-      // setShowCancel(false);
+  const onGlobalBlur = () => {
+    if (!value) {
+      disableTimeout.current = setTimeout(() => {
+        setIsEnabled(false);
+      });
     }
   };
+  const onGlobalFocus = () => {
+    clearTimeout(disableTimeout.current);
+  };
+
+  const handleDisableButton = (e) => {
+    e.preventDefault();
+    setIsEnabled(false);
+    if (searchElRef.current) {
+      searchElRef.current.blur();
+    }
+    if (onDisable) onDisable();
+    if (onClear) onClear();
+  };
+
+  useEffect(() => {
+    if (disableButtonRef.current) {
+      setDisableButtonWidth(disableButtonRef.current.offsetWidth);
+    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        allowTransition.current = true;
+      });
+    });
+  }, []);
 
   const c = themeClasses(
-    SearchbarClasses({ ...props }, colors, { isFocused, darkClasses: dark })
+    SearchbarClasses({ ...props }, colors, { isEnabled, darkClasses: dark })
   );
+
   const CancelButton =
     theme === 'ios' ? (
-      <div className={c.cancelButton} onClick={handleCancel}>
+      <button
+        type="button"
+        ref={disableButtonRef}
+        style={{
+          marginRight: isEnabled ? 0 : `-${disableButtonWidth}px`,
+          transitionDuration: !allowTransition.current ? '0ms' : '',
+        }}
+        className={c.cancelButton}
+        onClick={handleDisableButton}
+        onPointerDown={(e) => e.preventDefault()}
+      >
         {disableButtonText}
-      </div>
+      </button>
     ) : (
       <BackIcon
         theme={theme}
-        onClick={handleCancel}
+        onClick={handleDisableButton}
         className={cls(c.cancelButton)}
+        onPointerDown={(e) => e.preventDefault()}
       />
     );
   const Component = component;
@@ -118,41 +150,38 @@ const Searchbar = forwardRef((props, ref) => {
   };
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={elRef}
+      className={c.base}
+      {...attrs}
+      onBlurCapture={onGlobalBlur}
+      onFocusCapture={onGlobalFocus}
+    >
       <div className={c.inner}>
-        <span className={c.inputWrap}>
-          <span className={c.iconSearch}>
-            <SearchIcon
-              ios={ios}
-              material={material}
-              className={c.searchIcon}
-            />
-          </span>
-          <input
-            ref={searchElRef}
-            className={cls(c.input)}
-            style={inputStyle}
-            type="text"
-            name="search"
-            placeholder={placeholder}
-            value={value}
-            onInput={handleInput}
-            onChange={handleChange}
-            onFocus={onFocusInternal}
-            onBlur={onBlurInternal}
-          />
-          <span className={c.iconDelete}>
-            {value && (
-              <DeleteIcon
-                theme={theme}
-                onClick={onClear}
-                className={cls(c.clearButton, c.icon)}
-              />
-            )}
-          </span>
+        <span className={c.iconSearch}>
+          <SearchIcon ios={ios} material={material} className={c.searchIcon} />
         </span>
+        <input
+          id={inputId}
+          ref={searchElRef}
+          className={cls(c.input)}
+          style={inputStyle}
+          type="text"
+          name="search"
+          placeholder={placeholder}
+          value={value}
+          onInput={handleInput}
+          onChange={handleChange}
+          onFocus={onFocusInternal}
+          onBlur={onBlurInternal}
+        />
+        {value && clearButton && (
+          <button className={c.iconDelete} onClick={onClear} type="button">
+            <DeleteIcon theme={theme} className={cls(c.clearButton, c.icon)} />
+          </button>
+        )}
       </div>
-      {!disableButton && CancelButton}
+      {disableButton && CancelButton}
     </Component>
   );
 });

@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-use-before-define */
 import React, { useState } from 'react';
 import {
   Page,
@@ -20,8 +18,8 @@ export default function SearchbarPage() {
   const handleClear = () => {
     setSearchQuery('');
   };
-  const handleCancel = () => {
-    setSearchQuery('');
+  const handleDisable = () => {
+    console.log('Disable');
   };
   const filteredItems = searchQuery
     ? items.filter((item) =>
@@ -39,12 +37,13 @@ export default function SearchbarPage() {
             onInput={handleSearch}
             value={searchQuery}
             onClear={handleClear}
+            disableButton
             disableButtonText="Cancel"
-            onCancel={handleCancel}
+            onDisable={handleDisable}
           />
         }
       />
-      <List>
+      <List strong insetMaterial outlineIos>
         {filteredItems.map((item) => (
           <ListItem key={item.title} title={item.title} />
         ))}
