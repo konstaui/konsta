@@ -21,7 +21,6 @@ import Preloader from './pages/Preloader.vue';
 import Progressbar from './pages/Progressbar.vue';
 import Radio from './pages/Radio.vue';
 import RangeSlider from './pages/RangeSlider.vue';
-import Searchbar from './pages/Searchbar.vue';
 import SegmentedControl from './pages/SegmentedControl.vue';
 import SheetModal from './pages/SheetModal.vue';
 import Stepper from './pages/Stepper.vue';
@@ -55,7 +54,6 @@ const routes = [
   Progressbar,
   Radio,
   RangeSlider,
-  Searchbar,
   SegmentedControl,
   SheetModal,
   Stepper,

@@ -27,7 +27,9 @@ const Searchbar = forwardRef((props, ref) => {
     value,
     inputId,
     inputStyle,
+    items,
 
+    // form='true',
     disableButton = false,
     disableButtonText = 'Cancel',
     clearButton = true,
@@ -156,7 +158,7 @@ const Searchbar = forwardRef((props, ref) => {
       onFocusCapture={onGlobalFocus}
     >
       <div className={c.inner}>
-        <span className={c.icon}>
+        <span className={c.iconSearch}>
           <SearchIcon ios={ios} material={material} className={c.searchIcon} />
         </span>
         <input
@@ -174,8 +176,8 @@ const Searchbar = forwardRef((props, ref) => {
           onBlur={onBlurInternal}
         />
         {value && clearButton && (
-          <button className={c.clearButton} onClick={onClear} type="button">
-            <DeleteIcon theme={theme} className={c.deleteIcon} />
+          <button className={c.iconDelete} onClick={onClear} type="button">
+            <DeleteIcon theme={theme} className={cls(c.clearButton, c.icon)} />
           </button>
         )}
       </div>

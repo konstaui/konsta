@@ -38,7 +38,6 @@ import kPreloader from './components/Preloader.vue';
 import kProgressbar from './components/Progressbar.vue';
 import kRadio from './components/Radio.vue';
 import kRange from './components/Range.vue';
-import kSearchbar from './components/Searchbar.vue';
 import kSegmented from './components/Segmented.vue';
 import kSegmentedButton from './components/SegmentedButton.vue';
 import kSheet from './components/Sheet.vue';
@@ -140,8 +139,6 @@ export {
   kRadio as Radio,
   kRange,
   kRange as Range,
-  kSearchbar,
-  kSearchbar as Searchbar,
   kSegmented,
   kSegmented as Segmented,
   kSegmentedButton,

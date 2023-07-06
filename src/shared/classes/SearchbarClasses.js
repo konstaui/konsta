@@ -12,12 +12,12 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
       common: 'w-full shrink-1 relative',
       ios: 'transition-all duration-300',
     },
-    icon: {
+    iconSearch: {
       common: 'absolute inset-y-0 flex items-center z-40',
       ios: 'start-2',
       material: 'start-4',
     },
-    clearButton: {
+    iconDelete: {
       common:
         'absolute justify-center inset-y-0 flex items-center z-40 cursor-pointer end-0',
       ios: 'w-8 h-8',
@@ -29,13 +29,10 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
         'h-8 bg-black/10 dark:bg-white/10 pl-7 pr-7 rounded-lg text-base',
         darkClasses('dark:placeholder-white dark:placeholder-opacity-30')
       ),
-      material: cls(
-        'h-12 ps-12 pe-4 rounded-full',
-        colors.bgMaterial,
-        colors.placeholderMaterial
-      ),
+      material:
+        'h-12 placeholder-md-light-on-surface-variant dark:placeholder-md-dark-on-surface-variant ps-12 pe-4 bg-md-light-secondary-container dark:bg-md-dark-secondary-container rounded-full',
     },
-    deleteIcon: {
+    clearButton: {
       common: '',
       ios: 'w-3.5 h-3.5 opacity-45',
       material: 'w-6 h-6 active:opacity-20',
