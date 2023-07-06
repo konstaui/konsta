@@ -3,47 +3,15 @@ import { cls } from '../cls.js';
 export const SearchbarColors = (colorsProp = {}, dark) => {
   return {
     bgIos: '',
-    activeBgIos: cls(
-      'active:bg-black active:bg-opacity-10',
-      dark('dark:active:bg-white dark:active:bg-opacity-10')
-    ),
     bgMaterial: cls(
-      'bg-md-light-surface-variant',
-      dark('dark:bg-md-dark-surface-variant')
+      'bg-md-light-secondary-container',
+      dark('dark:bg-md-dark-secondary-container')
     ),
-    outlineBorderIos: cls(
-      'border-black border-opacity-30',
-      dark('dark:border-white dark:border-opacity-30')
-    ),
-    outlineBorderFocusIos: 'border-primary',
-    outlineBorderMaterial: cls(
-      'border-md-light-on-surface',
-      dark('dark:border-md-dark-on-surface')
-    ),
-    outlineBorderFocusMaterial: cls(
-      'border-md-light-primary',
-      dark('dark:border-md-dark-primary')
-    ),
-    outlineLabelBgIos: cls(
-      'bg-ios-light-surface-1',
-      dark('dark:bg-ios-dark-surface-1')
-    ),
-    outlineLabelBgMaterial: cls(
-      'bg-md-light-surface',
-      dark('dark:bg-md-dark-surface')
+    placeholderMaterial: cls(
+      'placeholder-md-light-on-surface-variant',
+      dark('dark:placeholder-md-dark-on-surface-variant')
     ),
     labelTextIos: '',
-    labelTextFocusIos: '',
-    labelTextMaterial: cls(
-      'text-md-light-on-surface-variant',
-      dark('dark:text-md-dark-on-surface-variant')
-    ),
-    labelTextFocusMaterial: cls(
-      'text-md-light-primary',
-      dark('dark:text-md-dark-primary')
-    ),
-    errorText: 'text-red-500',
-    errorBorder: 'border-red-500',
     ...colorsProp,
   };
 };

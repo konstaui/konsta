@@ -8,6 +8,27 @@ import {
   ListItem,
 } from 'konsta/react';
 
+const items = [
+  { title: 'FC Ajax' },
+  { title: 'FC Arsenal' },
+  { title: 'FC Athletic' },
+  { title: 'FC Barcelona' },
+  { title: 'FC Bayern München' },
+  { title: 'FC Bordeaux' },
+  { title: 'FC Borussia Dortmund' },
+  { title: 'FC Chelsea' },
+  { title: 'FC Galatasaray' },
+  { title: 'FC Juventus' },
+  { title: 'FC Liverpool' },
+  { title: 'FC Manchester City' },
+  { title: 'FC Manchester United' },
+  { title: 'FC Paris Saint-Germain' },
+  { title: 'FC Real Madrid' },
+  { title: 'FC Tottenham Hotspur' },
+  { title: 'FC Valencia' },
+  { title: 'FC West Ham United' },
+];
+
 export default function SearchbarPage() {
   const isPreview = document.location.href.includes('examplePreview');
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,24 +73,3 @@ export default function SearchbarPage() {
   );
 }
 SearchbarPage.displayName = 'SearchbarPage';
-
-const items = [
-  { title: 'FC Ajax' },
-  { title: 'FC Arsenal' },
-  { title: 'FC Athletic' },
-  { title: 'FC Barcelona' },
-  { title: 'FC Bayern München' },
-  { title: 'FC Bordeaux' },
-  { title: 'FC Borussia Dortmund' },
-  { title: 'FC Chelsea' },
-  { title: 'FC Galatasaray' },
-  { title: 'FC Juventus' },
-  { title: 'FC Liverpool' },
-  { title: 'FC Manchester City' },
-  { title: 'FC Manchester United' },
-  { title: 'FC Paris Saint-Germain' },
-  { title: 'FC Real Madrid' },
-  { title: 'FC Tottenham Hotspur' },
-  { title: 'FC Valencia' },
-  { title: 'FC West Ham United' },
-];
