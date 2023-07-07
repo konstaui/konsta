@@ -20,6 +20,7 @@ import Preloader from './pages/Preloader.svelte';
 import Progressbar from './pages/Progressbar.svelte';
 import Radio from './pages/Radio.svelte';
 import RangeSlider from './pages/RangeSlider.svelte';
+import Searchbar from './pages/Searchbar.svelte';
 import SegmentedControl from './pages/SegmentedControl.svelte';
 import SheetModal from './pages/SheetModal.svelte';
 import Stepper from './pages/Stepper.svelte';
@@ -52,6 +53,7 @@ const pages = {
   Progressbar,
   Radio,
   RangeSlider,
+  Searchbar,
   SegmentedControl,
   SheetModal,
   Stepper,

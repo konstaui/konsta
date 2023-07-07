@@ -38,6 +38,7 @@ import Preloader from './components/Preloader.svelte';
 import Progressbar from './components/Progressbar.svelte';
 import Radio from './components/Radio.svelte';
 import Range from './components/Range.svelte';
+import Searchbar from './components/Searchbar.svelte';
 import Segmented from './components/Segmented.svelte';
 import SegmentedButton from './components/SegmentedButton.svelte';
 import Sheet from './components/Sheet.svelte';
@@ -96,6 +97,7 @@ export {
   Progressbar,
   Radio,
   Range,
+  Searchbar,
   Segmented,
   SegmentedButton,
   Sheet,
