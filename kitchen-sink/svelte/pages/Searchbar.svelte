@@ -72,6 +72,9 @@
     />
   </Navbar>
   <List strong insetMaterial outlineIos>
+    {#if filteredItems.length === 0}
+      <ListItem title="Nothing found" />
+    {/if}
     {#each filteredItems as item (item.title)}
       <ListItem key={item.title} title={item.title} />
     {/each}

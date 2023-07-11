@@ -18,6 +18,7 @@
       </template>
     </k-navbar>
     <k-list strong insetMaterial outlineIos>
+      <k-list-item v-if="filteredItems.length === 0" title="Nothing found" />
       <k-list-item
         v-for="item in filteredItems"
         :key="item.title"
