@@ -28,6 +28,9 @@ import ListItem from './components/ListItem.jsx';
 import ListInput from './components/ListInput.jsx';
 import MenuList from './components/MenuList.jsx';
 import MenuListItem from './components/MenuListItem.jsx';
+import Message from './components/Message.jsx';
+import Messagebar from './components/Messagebar.jsx';
+import Messages from './components/Messages.jsx';
 import Navbar from './components/Navbar.jsx';
 import NavbarBackLink from './components/NavbarBackLink.jsx';
 import Page from './components/Page.jsx';
@@ -88,6 +91,9 @@ export {
   ListInput,
   MenuList,
   MenuListItem,
+  Message,
+  Messagebar,
+  Messages,
   Navbar,
   NavbarBackLink,
   Page,

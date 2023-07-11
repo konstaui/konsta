@@ -12,6 +12,7 @@ import FormInputs from './pages/FormInputs.jsx';
 import List from './pages/List.jsx';
 import ListButton from './pages/ListButton.jsx';
 import MenuList from './pages/MenuList.jsx';
+import Messages from './pages/Messages.jsx';
 import Navbar from './pages/Navbar.jsx';
 import Panel from './pages/SidePanels';
 import Popover from './pages/Popover.jsx';
@@ -44,6 +45,7 @@ const routes = [
   List,
   ListButton,
   MenuList,
+  Messages,
   Navbar,
   Panel,
   Popover,
