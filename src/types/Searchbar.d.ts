@@ -13,38 +13,38 @@ interface Props {
      *
      * @default ''
      */
-    bgIos?: string;
+    inputBgIos?: string;
     /**
      *
      * @default 'bg-md-light-secondary-container dark:bg-md-dark-secondary-container'
      */
-    bgMaterial?: string;
+    inputBgMaterial?: string;
+    /**
+     *
+     * @default ''
+     */
+    placeholderIos?: string;
     /**
      *
      * @default 'placeholder-md-light-on-surface-variant dark:placeholder-md-dark-on-surface-variant'
      */
     placeholderMaterial?: string;
-    /**
-     *
-     * @default ''
-     */
-    labelTextIos?: string;
   };
-   /**
+  /**
    * Searchbar placeholder
    *
    * @default 'Search'
    */
-   placeholder?: string | number;
+  placeholder?: string | number;
   /**
    * Searchbar value
    */
   value?: any;
-   /**
+  /**
    * Input id attribute
    */
-   inputId?: string;
-    /**
+  inputId?: string;
+  /**
    * Additional input classes
    */
   inputStyle?: React.CSSProperties;
@@ -55,17 +55,18 @@ interface Props {
    */
   disableButton?: boolean;
   /**
+   * Disable button text
    *
    * @default 'Cancel'
    */
   disableButtonText?: string;
-   /**
+  /**
    * Adds input clear button
    *
    * @default true
    */
-   clearButton?: boolean;
-   /**
+  clearButton?: boolean;
+  /**
    * `input` event handler
    */
   onInput?: (e: any) => void;
@@ -82,11 +83,11 @@ interface Props {
    */
   onBlur?: (e: any) => void;
   /**
-   * `clear` event handler
+   * Fired on clear button click
    */
   onClear?: (e: any) => void;
   /**
-   * `disable` event handler
+   * Fired on searchbar disable
    */
   onDisable?: (e: any) => void;
 }

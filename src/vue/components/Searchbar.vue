@@ -7,8 +7,8 @@
     @focus-capture="onGlobalFocus"
   >
     <div :class="c.inner">
-      <span :class="c.icon">
-        <SearchIcon :ios="ios" :material="material" :class="c.searchIcon" />
+      <span :class="c.searchIconWrap">
+        <SearchIcon :theme="theme" :class="c.searchIcon" />
       </span>
       <input
         :id="inputId"
@@ -21,8 +21,8 @@
         :value="value"
         @input="handleInput"
         @change="handleChange"
-        @focus="onFocusInternal"
-        @blur="onBlurInternal"
+        @focus="handleFocus"
+        @blur="handleBlur"
       />
       <button
         v-if="value && clearButton"
@@ -44,7 +44,6 @@
         }"
         :class="c.cancelButton"
         @click="handleDisableButton"
-        @disable="onDisable"
         @pointerdown.prevent
       >
         {{ disableButtonText }}
@@ -54,7 +53,6 @@
         :class="cls(c.cancelButton)"
         :theme="theme"
         @click="handleDisableButton"
-        @disable="onDisable"
         @pointerdown.prevent
       />
     </template>
@@ -151,12 +149,12 @@
         ctx.emit('clear', e);
       };
 
-      const onFocusInternal = (e) => {
+      const handleFocus = (e) => {
         isEnabled.value = true;
         ctx.emit('focus', e);
       };
 
-      const onBlurInternal = (e) => {
+      const handleBlur = (e) => {
         ctx.emit('blur', e);
       };
 
@@ -208,8 +206,8 @@
         onGlobalFocus,
         handleInput,
         handleChange,
-        onFocusInternal,
-        onBlurInternal,
+        handleFocus,
+        handleBlur,
         onClear,
         handleDisableButton,
         disableButtonRef,

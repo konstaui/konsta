@@ -7,12 +7,11 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
       ios: 'px-2 w-full',
       material: 'px-0 py-2 -mx-2 w-[calc(100%+32px)]',
     },
-
     inner: {
       common: 'w-full shrink-1 relative',
       ios: 'transition-all duration-300',
     },
-    icon: {
+    searchIconWrap: {
       common: 'absolute inset-y-0 flex items-center z-40',
       ios: 'start-2',
       material: 'start-4',
@@ -26,13 +25,17 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
     input: {
       common: 'block appearance-none  w-full py-2  focus:outline-none z-30',
       ios: cls(
-        'h-8 bg-black/10 dark:bg-white/10 pl-7 pr-7 rounded-lg text-base',
-        darkClasses('dark:placeholder-white dark:placeholder-opacity-30')
+        'h-8 bg-black/10 pl-7 pr-7 rounded-lg text-base',
+        darkClasses(
+          'dark:placeholder-white dark:placeholder-opacity-30 dark:bg-white/10'
+        ),
+        colors.placeholderIos,
+        colors.inputBgIos
       ),
       material: cls(
         'h-12 ps-12 pe-4 rounded-full',
-        colors.bgMaterial,
-        colors.placeholderMaterial
+        colors.placeholderMaterial,
+        colors.inputBgMaterial
       ),
     },
     deleteIcon: {
@@ -42,7 +45,7 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
     },
     searchIcon: {
       common: '',
-      ios: cls('w-4 h-4 opacity-45', colors.labelTextIos),
+      ios: cls('w-4 h-4 opacity-45'),
       material: cls(
         'w-5 h-5 z-30',
         isEnabled

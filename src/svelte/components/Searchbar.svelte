@@ -8,7 +8,6 @@
   import { SearchbarClasses } from '../../shared/classes/SearchbarClasses.js';
   import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
   import { cls } from '../../shared/cls.js';
-  import { printText } from '../shared/print-text.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { onMount } from 'svelte';
 
@@ -63,12 +62,12 @@
     if (onChange) onChange(e);
   };
 
-  const onFocusInternal = (e) => {
+  const handleFocus = (e) => {
     isEnabled = true;
     if (onFocus) onFocus(e);
   };
 
-  const onBlurInternal = (e) => {
+  const handleBlur = (e) => {
     if (onBlur) onBlur(e);
   };
 
@@ -96,7 +95,7 @@
 
   onMount(() => {
     if (disableButtonRef) {
-      disableButtonWidth =disableButtonRef.offsetWidth;
+      disableButtonWidth = disableButtonRef.offsetWidth;
     }
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -107,20 +106,14 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    SearchbarClasses(
-      {},
-      colors,
-      {
-        isEnabled,
-        darkClasses: dark,
-      }
-    ),
+    SearchbarClasses({}, colors, {
+      isEnabled,
+      darkClasses: dark,
+    }),
     className,
     (v) => (c = v)
   );
-
 </script>
-
 
 <svelte:element
   this={component}
@@ -131,8 +124,8 @@
   {...$$restProps}
 >
   <div class={c.inner}>
-    <span class={c.icon}>
-      <SearchIcon {theme} class={c.searchIcon}/>
+    <span class={c.searchIconWrap}>
+      <SearchIcon {theme} class={c.searchIcon} />
     </span>
     <input
       id={inputId}
@@ -145,8 +138,8 @@
       {value}
       on:input={handleInput}
       on:change={handleChange}
-      on:focus={onFocusInternal}
-      on:blur={onBlurInternal}
+      on:focus={handleFocus}
+      on:blur={handleBlur}
     />
     {#if value && clearButton}
       <button class={c.clearButton} on:click={onClear} type="button">
@@ -155,28 +148,30 @@
     {/if}
   </div>
   {#if disableButton}
-  {#if theme === 'ios'}
-    <button
-      type="button"
-      bind:this={disableButtonRef}
-      style="margin-right: {isEnabled ? 0 : `-${disableButtonWidth}px`}; transition-duration: {!allowTransition ? '0ms' : ''};"
-      class={c.cancelButton}
-      on:click={handleDisableButton}
-      on:pointerdown|preventDefault
-    >
-      {disableButtonText}
-    </button>
-  {:else}
-    <button type="button" on:click={handleDisableButton}  on:pointerdown|preventDefault class={cls(c.cancelButton)}>
-      <BackIcon
-      {theme}
-      on:click={handleDisableButton}
-
-
-    />
-    </button>
-
+    {#if theme === 'ios'}
+      <button
+        type="button"
+        bind:this={disableButtonRef}
+        style="margin-right: {isEnabled
+          ? 0
+          : `-${disableButtonWidth}px`}; transition-duration: {!allowTransition
+          ? '0ms'
+          : ''};"
+        class={c.cancelButton}
+        on:click={handleDisableButton}
+        on:pointerdown|preventDefault
+      >
+        {disableButtonText}
+      </button>
+    {:else}
+      <button
+        type="button"
+        on:click={handleDisableButton}
+        on:pointerdown|preventDefault
+        class={cls(c.cancelButton)}
+      >
+        <BackIcon {theme} on:click={handleDisableButton} />
+      </button>
+    {/if}
   {/if}
-{/if}
-
 </svelte:element>

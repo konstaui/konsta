@@ -73,12 +73,12 @@ const Searchbar = forwardRef((props, ref) => {
     if (onChange) onChange(e);
   };
 
-  const onFocusInternal = (e) => {
+  const handleFocus = (e) => {
     setIsEnabled(true);
     if (onFocus) onFocus(e);
   };
 
-  const onBlurInternal = (e) => {
+  const handleBlur = (e) => {
     if (onBlur) onBlur(e);
   };
 
@@ -156,7 +156,7 @@ const Searchbar = forwardRef((props, ref) => {
       onFocusCapture={onGlobalFocus}
     >
       <div className={c.inner}>
-        <span className={c.icon}>
+        <span className={c.searchIconWrap}>
           <SearchIcon ios={ios} material={material} className={c.searchIcon} />
         </span>
         <input
@@ -170,8 +170,8 @@ const Searchbar = forwardRef((props, ref) => {
           value={value}
           onInput={handleInput}
           onChange={handleChange}
-          onFocus={onFocusInternal}
-          onBlur={onBlurInternal}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         {value && clearButton && (
           <button className={c.clearButton} onClick={onClear} type="button">

@@ -28,9 +28,7 @@
   export default {
     name: 'k-searchbar-icon',
     props: {
-      ios: { type: Boolean, default: undefined },
-      material: { type: Boolean, default: undefined },
-      fill: Boolean,
+      theme: { type: String, default: undefined },
     },
   };
 </script>
