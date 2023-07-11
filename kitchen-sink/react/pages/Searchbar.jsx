@@ -65,9 +65,13 @@ export default function SearchbarPage() {
         }
       />
       <List strong insetMaterial outlineIos>
-        {filteredItems.map((item) => (
-          <ListItem key={item.title} title={item.title} />
-        ))}
+        {filteredItems.length === 0 ? (
+          <ListItem title="Nothing found" className="text-center" />
+        ) : (
+          filteredItems.map((item) => (
+            <ListItem key={item.title} title={item.title} />
+          ))
+        )}
       </List>
     </Page>
   );
