@@ -1,5 +1,5 @@
 <script>
-  export let onClick;
+  export let onClick = undefined;
   export let theme;
 </script>
 
