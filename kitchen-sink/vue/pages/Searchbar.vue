@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <k-page>
     <k-navbar title="Searchbar">
@@ -8,8 +7,8 @@
       <template #subnavbar>
         <k-searchbar
           :value="searchQuery"
-          disableButton
-          disableButtonText="Cancel"
+          disable-button
+          disable-button-text="Cancel"
           @clear="handleClear"
           @disable="handleDisable"
           @input="handleSearch"
@@ -17,7 +16,7 @@
         </k-searchbar>
       </template>
     </k-navbar>
-    <k-list strong insetMaterial outlineIos>
+    <k-list strong inset-material outline-ios>
       <k-list-item v-if="filteredItems.length === 0" title="Nothing found" />
       <k-list-item
         v-for="item in filteredItems"
