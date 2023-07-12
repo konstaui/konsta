@@ -15,8 +15,6 @@ import { MdCameraAlt, MdSend } from 'react-icons/md';
 
 export default function MessagesPage() {
   const isPreview = document.location.href.includes('examplePreview');
-  // const theme = useTheme();
-  // const CameraIcon = theme === 'ios' ? Camera : MdCameraAlt;
   const [messageText, setMessageText] = useState('');
   const [messagesData, setMessagesData] = useState([
     {
@@ -31,11 +29,13 @@ export default function MessagesPage() {
       name: 'Kate',
       type: 'received',
       text: 'Hi, I am good!',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-9.jpg',
     },
     {
       name: 'Blue Ninja',
       type: 'received',
       text: 'Hi there, I am also fine, thanks! And how are you?',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
     },
     {
       type: 'sent',
@@ -43,7 +43,25 @@ export default function MessagesPage() {
     },
     {
       type: 'sent',
-      text: 'Hey, look, cutest kitten ever!',
+      text: 'How do you feel about going to the movies today?',
+    },
+    {
+      name: 'Kate',
+      type: 'received',
+      text: ' Oh, great idea!',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-9.jpg',
+    },
+    {
+      name: 'Kate',
+      type: 'received',
+      text: ' What cinema are we going to?',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-9.jpg',
+    },
+    {
+      name: 'Blue Ninja',
+      type: 'received',
+      text: 'Great. And what movie?',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
     },
   ]);
   const isFirstMessage = (message, index) => {
@@ -82,11 +100,15 @@ export default function MessagesPage() {
 
   const handleSendClick = () => {
     const text = messageText.replace(/\n/g, '<br>').trim();
+    const type = 'sent';
     const messagesToSend = [];
     if (text.length) {
       messagesToSend.push({
         text,
+        type,
       });
+
+      console.log(messagesToSend);
     }
     if (messagesToSend.length === 0) {
       return;
@@ -113,13 +135,13 @@ export default function MessagesPage() {
             type={message.type}
             name={message.name}
             text={message.text}
+            avatar={message.avatar}
             first={isFirstMessage(message, index)}
             last={isLastMessage(message, index)}
             tail={isTailMessage(message, index)}
           />
         ))}
       </Messages>
-
       <Messagebar
         placeholder="Message"
         value={messageText}

@@ -28,6 +28,9 @@ const Messagebar = forwardRef((props, ref) => {
     disabled,
     size,
     sendLink,
+    isOutline = true,
+
+    messagebarLeftIcon,
 
     ios,
     material,
@@ -50,6 +53,7 @@ const Messagebar = forwardRef((props, ref) => {
   }));
 
   const [isFocused, setIsFocused] = useState(false);
+  const [isTop, setIsTop] = useState(false);
 
   // const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
@@ -82,7 +86,10 @@ const Messagebar = forwardRef((props, ref) => {
 
   return (
     <Component ref={elRef} id={id} style={style} className={c.base} {...attrs}>
-      <Toolbar colors={{ ...colors, bgMaterial: 'transparent' }}>
+      <Toolbar
+        colors={{ ...colors, bgMaterial: 'transparent' }}
+        outline={!isOutline}
+      >
         {children && children.length > 0 && (
           <div className={c.messagebarLeft}>{children[0]}</div>
         )}

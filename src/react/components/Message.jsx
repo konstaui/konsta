@@ -29,6 +29,7 @@ const Message = forwardRef((props, ref) => {
     first,
     last,
     tail,
+    avatar,
     sameName,
     sameHeader,
     sameFooter,
@@ -74,6 +75,12 @@ const Message = forwardRef((props, ref) => {
 
   return (
     <Component id={id} ref={elRef} className={classes} {...attrs}>
+      {avatar && (
+        <div
+          className={c.messageAvatar}
+          style={{ backgroundImage: avatar && `url(${avatar})` }}
+        />
+      )}
       <div className={c.messageContent}>
         {name && <div className={c.messageName}>{name}</div>}
         {header && <div className={c.messageHeader}>{header}</div>}

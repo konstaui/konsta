@@ -12,7 +12,7 @@ export const MessagebarColors = (colorsProp = {}, dark) => {
     ),
     placeholderMd: cls(
       'placeholder-md-light-on-surface-variant',
-      dark('dark:bg-md-dark-on-surface-variant')
+      dark('dark:placeholder-md-dark-on-surface-variant')
     ),
     ...colorsProp,
   };
