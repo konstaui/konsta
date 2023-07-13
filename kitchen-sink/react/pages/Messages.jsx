@@ -7,6 +7,7 @@ import {
   Messagebar,
   Messages,
   Message,
+  MessagesTitle,
   Link,
   Icon,
 } from 'konsta/react';
@@ -129,6 +130,9 @@ export default function MessagesPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
       <Messages>
+        <MessagesTitle>
+          <b>Thursday, July 13,</b> 11:03
+        </MessagesTitle>
         {messagesData.map((message, index) => (
           <Message
             key={index}
@@ -146,20 +150,27 @@ export default function MessagesPage() {
         placeholder="Message"
         value={messageText}
         onInput={(e) => setMessageText(e.target.value)}
-      >
-        <Link onClick={() => console.log('click')} toolbar iconOnly>
-          <Icon
-            ios={<CameraFill className="w-7 h-7" />}
-            material={<MdCameraAlt className="w-6 h-6 fill-black" />}
-          />
-        </Link>
-        <Link onClick={handleSendClick} toolbar>
-          <Icon
-            ios={<ArrowUpCircleFill className="w-7 h-7" />}
-            material={<MdSend className="w-6 h-6 fill-black" />}
-          />
-        </Link>
-      </Messagebar>
+        leftIcon={
+          <Link onClick={() => console.log('click')} toolbar iconOnly>
+            <Icon
+              ios={<CameraFill className="w-7 h-7" />}
+              material={
+                <MdCameraAlt className="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+              }
+            />
+          </Link>
+        }
+        rightIcon={
+          <Link onClick={handleSendClick} toolbar>
+            <Icon
+              ios={<ArrowUpCircleFill className="w-7 h-7" />}
+              material={
+                <MdSend className="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+              }
+            />
+          </Link>
+        }
+      />
     </Page>
   );
 }

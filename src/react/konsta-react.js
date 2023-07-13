@@ -31,6 +31,7 @@ import MenuListItem from './components/MenuListItem.jsx';
 import Message from './components/Message.jsx';
 import Messagebar from './components/Messagebar.jsx';
 import Messages from './components/Messages.jsx';
+import MessagesTitle from './components/MessagesTitle.jsx';
 import Navbar from './components/Navbar.jsx';
 import NavbarBackLink from './components/NavbarBackLink.jsx';
 import Page from './components/Page.jsx';
@@ -94,6 +95,7 @@ export {
   Message,
   Messagebar,
   Messages,
+  MessagesTitle,
   Navbar,
   NavbarBackLink,
   Page,

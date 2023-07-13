@@ -30,10 +30,6 @@ const Message = forwardRef((props, ref) => {
     last,
     tail,
     avatar,
-    sameName,
-    sameHeader,
-    sameFooter,
-    sameAvatar,
 
     ios,
     material,
@@ -67,10 +63,6 @@ const Message = forwardRef((props, ref) => {
     [c.messageFirst]: first,
     [c.messageLast]: last,
     [c.messageTail]: tail,
-    [c.messageSameName]: sameName,
-    [c.messageSameHeader]: sameHeader,
-    [c.messageSameFooter]: sameFooter,
-    [c.messageSameAvatar]: sameAvatar,
   });
 
   return (

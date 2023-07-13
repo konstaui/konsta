@@ -4,15 +4,16 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagesClasses } from '../../shared/classes/MessagesClasses.js';
 import { MessagesColors } from '../../shared/colors/MessagesColors.js';
 
-const Messages = forwardRef((props, ref) => {
+const MessagesTitle = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
 
-    id,
     ios,
     material,
+
+    id,
 
     children,
     ...rest
@@ -38,12 +39,13 @@ const Messages = forwardRef((props, ref) => {
   const attrs = {
     ...rest,
   };
+
   return (
-    <Component id={id} className={c.base} ref={elRef} {...attrs}>
+    <Component id={id} className={c.messagesTitle} ref={elRef} {...attrs}>
       {children}
     </Component>
   );
 });
 
-Messages.displayName = 'Messages';
-export default Messages;
+MessagesTitle.displayName = 'MessagesTitle';
+export default MessagesTitle;

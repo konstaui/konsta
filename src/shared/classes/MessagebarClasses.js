@@ -1,10 +1,12 @@
 import { cls } from '../cls.js';
 
-export const MessagebarClasses = (
-  props,
-  colors,
-  { darkClasses }
-) => {
+export const MessagebarClasses = (props, colors) => {
+  const {
+    rightIconClassName = '',
+    rightIconClass = '',
+    leftIconClassName = '',
+    leftIconClass,
+  } = props;
   return {
     base: {
       common: '',
@@ -14,13 +16,13 @@ export const MessagebarClasses = (
     toolbar: {
       material: colors.bgMessage,
     },
-    messagebarLeft: {
-      common: 'mt-1',
+    leftIcon: {
+      common: cls('mt-1', leftIconClassName || leftIconClass),
       ios: cls('px-3', colors.toolbarIcon),
       material: cls('', colors.toolbarIcon),
     },
-    messagebarRight: {
-      common: 'mt-1',
+    rightIcon: {
+      common: cls('mt-1', rightIconClassName || rightIconClass),
       ios: cls('px-3 ', colors.toolbarIcon),
     },
     messagebarArea: {

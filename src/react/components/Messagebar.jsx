@@ -5,7 +5,6 @@ import React, {
   useState,
 } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
-// import { useTheme } from '../shared/use-theme.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
 import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
@@ -29,8 +28,11 @@ const Messagebar = forwardRef((props, ref) => {
     size,
     sendLink,
     isOutline = true,
+    leftIconClassName = '',
+    rightIconClassName = '',
 
-    messagebarLeftIcon,
+    leftIcon,
+    rightIcon,
 
     ios,
     material,
@@ -53,9 +55,7 @@ const Messagebar = forwardRef((props, ref) => {
   }));
 
   const [isFocused, setIsFocused] = useState(false);
-  const [isTop, setIsTop] = useState(false);
 
-  // const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
@@ -74,6 +74,8 @@ const Messagebar = forwardRef((props, ref) => {
   const c = themeClasses(
     MessagebarClasses({ ...props }, colors, {
       isFocused,
+      leftIconClassName,
+      rightIconClassName,
       darkClasses: dark,
     })
   );
@@ -90,9 +92,7 @@ const Messagebar = forwardRef((props, ref) => {
         colors={{ ...colors, bgMaterial: 'transparent' }}
         outline={!isOutline}
       >
-        {children && children.length > 0 && (
-          <div className={c.messagebarLeft}>{children[0]}</div>
-        )}
+        {leftIcon && <div className={c.leftIcon}>{leftIcon}</div>}
         <div className={c.messagebarArea}>
           <input
             id={textareaId}
@@ -110,9 +110,7 @@ const Messagebar = forwardRef((props, ref) => {
             value={value}
           />
         </div>
-        {children && children.length > 1 && (
-          <div className={c.messagebarRight}>{children[1]}</div>
-        )}
+        {rightIcon && <div className={c.rightIcon}>{rightIcon}</div>}
       </Toolbar>
     </Component>
   );

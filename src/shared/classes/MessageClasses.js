@@ -24,10 +24,7 @@ export const MessageClasses = (props, colors, { darkClasses }) => {
         'mb-0.5 ml-4 text-black text-opacity-45',
         darkClasses('dark:text-white dark:text-opacity-45')
       ),
-      material: cls(
-        'text-md-light-on-surface-variant ml-4 mb-0.5',
-        darkClasses('dark:text-md-dark-on-surface-variant')
-      ),
+      material: cls('ml-4 mb-0.5', colors.messageNameMd),
     },
     messageAvatar: {
       common: cls(
@@ -43,8 +40,8 @@ export const MessageClasses = (props, colors, { darkClasses }) => {
           'bg-primary text-lg rounded-2xl box-border break-words flex flex-col relative rounded-2xl py-1.5 pr-4 pl-5.5  min-w-48'
         ),
         material: cls(
-          'bg-md-light-primary box-border break-words flex flex-col relative rounded-2xl py-2.5 px-4 min-w-48',
-          darkClasses('dark:bg-md-dark-primary dark:text-md-dark-on-primary')
+          'box-border break-words flex flex-col relative rounded-2xl py-2.5 px-4 min-w-48',
+          colors.bubbleMdSent
         ),
       }),
       ...(type === 'received' && {
@@ -54,7 +51,7 @@ export const MessageClasses = (props, colors, { darkClasses }) => {
         ),
         material: cls(
           'bg-[#e5e5ea] box-border break-words flex flex-col relative rounded-2xl py-2.5 px-4  min-w-48',
-          darkClasses('dark:bg-md-dark-surface-variant')
+          colors.bubbleMdReceived
         ),
       }),
     },
