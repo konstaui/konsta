@@ -10,6 +10,7 @@ module.exports = konstaConfig({
       'brand-yellow': '#ffcc00',
       'brand-purple': '#9c27b0',
       'brand-blue': '#2196f3',
+      'ios-contacts': '#323234',
     },
   },
   content: [
