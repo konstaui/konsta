@@ -6,6 +6,8 @@ import {
   Block,
   Notification,
   Button,
+  Dialog,
+  DialogButton,
 } from 'konsta/react';
 import { XmarkCircleFill } from 'framework7-icons/react';
 import DemoIcon from '../components/DemoIcon';
@@ -18,6 +20,7 @@ export default function NotificationPage() {
     useState(false);
   const [notificationCallbackOnClose, setNotificationCallbackOnClose] =
     useState(false);
+  const [alertOpened, setAlertOpened] = useState(false);
 
   const openNotification = (setter) => {
     setNotificationFull(false);
@@ -33,7 +36,6 @@ export default function NotificationPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
       <Notification
-        condition="full"
         opened={notificationFull}
         icon={<DemoIcon />}
         title="Konsta UI"
@@ -43,7 +45,6 @@ export default function NotificationPage() {
         <div className="shrink">This is a simple notification message</div>
       </Notification>
       <Notification
-        condition="withButton"
         opened={notificationWithButton}
         icon={<DemoIcon />}
         title="Konsta UI"
@@ -60,7 +61,6 @@ export default function NotificationPage() {
         <div className="shrink">Click (x) button to close me</div>
       </Notification>
       <Notification
-        condition="clickToClose"
         opened={notificationCloseOnClick}
         icon={<DemoIcon />}
         title="Konsta UI"
@@ -70,7 +70,28 @@ export default function NotificationPage() {
       >
         <div className="shrink">Click me to close</div>
       </Notification>
-
+      <Notification
+        opened={notificationCallbackOnClose}
+        icon={<DemoIcon />}
+        title="Konsta UI"
+        titleRightText="now"
+        subtitle="Notification with close on click"
+        onClick={() => {
+          setNotificationCallbackOnClose(false);
+          setAlertOpened(true);
+        }}
+      >
+        <div className="shrink">Click me to close</div>
+      </Notification>
+      <Dialog
+        opened={alertOpened}
+        onBackdropClick={() => setAlertOpened(false)}
+        title="Konsta UI"
+        content="Notification closed"
+        buttons={
+          <DialogButton onClick={() => setAlertOpened(false)}>Ok</DialogButton>
+        }
+      />
       <Block strongIos outlineIos className="space-y-4">
         <p>
           Konsta UI comes with simple Notifications component that allows you to
@@ -89,6 +110,13 @@ export default function NotificationPage() {
         <p>
           <Button onClick={() => openNotification(setNotificationCloseOnClick)}>
             Click to Close
+          </Button>
+        </p>
+        <p>
+          <Button
+            onClick={() => openNotification(setNotificationCallbackOnClose)}
+          >
+            Callback on Close
           </Button>
         </p>
       </Block>
