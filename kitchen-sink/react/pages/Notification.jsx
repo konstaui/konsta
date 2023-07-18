@@ -56,7 +56,10 @@ export default function NotificationPage() {
             type="button"
             onClick={() => setNotificationWithButton(false)}
           >
-            <CloseIcon className="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500 material:w-6 material:h-6 material:fill-md-light-on-surface-variant" />
+            <CloseIcon
+              className="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500
+              material:w-6 material:h-6 material:fill-md-light-on-surface-variant material:dark:fill-md-dark-on-surface-variant"
+            />
           </button>
         }
         subtitle="Notification with close button"

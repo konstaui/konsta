@@ -10,9 +10,8 @@ export const NotificationsClasses = (props, colors, classes) => {
         'z-50 transform transition-transform-opacity w-[calc(100%-32px)] box-border start-4 top-4',
         !opened && '-translate-y-full opacity-0 pointer-events-none'
       ),
-      ios: 'bg-white shadow-[0_5px_25px_-10px_rgba(0,0,0,0.7)] rounded-xl px-2.5 py-2.5 dark:bg-[#1e1e1e]',
-      material: 'bg-md-light-surface-5 rounded-2xl py-5 px-4',
-      // ios: translucent && 'translucent',
+      ios: cls('rounded-xl px-2.5 py-2.5', colors.bgIos, colors.shadowIos),
+      material: cls('rounded-2xl py-5 px-4', colors.bgMaterial),
     },
     content: {
       common: '',
@@ -26,15 +25,18 @@ export const NotificationsClasses = (props, colors, classes) => {
       common: cls('mr-2'),
     },
     title: {
-      ios: cls('text-black tracking-wide dark:text-white'),
+      ios: cls(
+        'text-black tracking-wide dark:text-white text-[13px] uppercase'
+      ),
       material: cls('font-medium'),
     },
     titleRightText: {
       ios: cls(
-        'mr-1 ml-auto text-opacity-45 text-black dark:text-white dark:text-opacity-45'
+        'mr-1 ml-auto text-opacity-45 text-[13px] text-black dark:text-white dark:text-opacity-45'
       ),
       material: cls(
-        'ml-1 text-md-light-on-surface-variant text-xs before:w-0.75 before:h-0.75 before:rounded-full before:bg-md-light-on-surface-variant before:inline-block before:align-middle before:mr-1'
+        'ml-1 text-xs before:w-0.75 before:h-0.75 before:rounded-full before:inline-block before:align-middle before:mr-1',
+        colors.titleRightMd
       ),
     },
     button: {
@@ -42,10 +44,12 @@ export const NotificationsClasses = (props, colors, classes) => {
       material: cls('ml-auto'),
     },
     subtitle: {
-      ios: cls('text-black font-semibold dark:text-white'),
+      ios: cls('text-black text-[15px] font-semibold dark:text-white'),
+      material: cls('text-sm'),
     },
     text: {
-      material: cls('text-md-light-on-surface-variant'),
+      ios: cls('text-[15px]'),
+      material: cls('text-sm', colors.textMaterial),
     },
   };
 };
