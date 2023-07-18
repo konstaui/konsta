@@ -53,7 +53,7 @@ export default function NotificationPage() {
             type="button"
             onClick={() => setNotificationWithButton(false)}
           >
-            <XmarkCircleFill className="w-6 h-6 fill-stone-400" />
+            <XmarkCircleFill className="w-6 h-6 fill-stone-400 dark:fill-stone-500" />
           </button>
         }
         subtitle="Notification with close button"

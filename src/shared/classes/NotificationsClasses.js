@@ -10,7 +10,7 @@ export const NotificationsClasses = (props, colors, classes) => {
         'z-50 transform transition-transform-opacity w-[calc(100%-32px)] start-4 top-4 box-border',
         !opened && '-translate-y-full opacity-0 pointer-events-none'
       ),
-      ios: 'bg-white shadow-[0_5px_25px_-10px_rgba(0,0,0,0.7)] rounded-xl px-2.5 py-2.5',
+      ios: 'bg-white shadow-[0_5px_25px_-10px_rgba(0,0,0,0.7)] rounded-xl px-2.5 py-2.5 dark:bg-[#1e1e1e]',
       // ios: translucent && 'translucent',
     },
     content: {
@@ -25,13 +25,15 @@ export const NotificationsClasses = (props, colors, classes) => {
       ios: cls('mr-2'),
     },
     title: {
-      ios: cls('text-black tracking-wide'),
+      ios: cls('text-black tracking-wide dark:text-white'),
     },
     titleRightText: {
-      ios: cls('mr-1 ml-auto text-opacity-45 text-black'),
+      ios: cls(
+        'mr-1 ml-auto text-opacity-45 text-black dark:text-white dark:text-opacity-45'
+      ),
     },
     subtitle: {
-      ios: cls('text-black font-semibold'),
+      ios: cls('text-black font-semibold dark:text-white'),
     },
     button: {
       common: '-my-2 shrink-0 ms-4',
