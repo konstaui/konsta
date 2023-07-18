@@ -15,8 +15,8 @@ const Notification = forwardRef((props, ref) => {
     title,
     titleRightText,
     subtitle,
+    text,
 
-    condition,
     opened,
 
     ios,
@@ -58,11 +58,12 @@ const Notification = forwardRef((props, ref) => {
         {titleRightText && (
           <div className={c.titleRightText}>{titleRightText}</div>
         )}
+        {button && <div className={c.button}>{button}</div>}
       </div>
       <div className={c.content}>
         {subtitle && <div className={c.subtitle}>{subtitle}</div>}
+        {text && <div className={c.text}>{text}</div>}
         {children}
-        {button && <div className={c.button}>{button}</div>}
       </div>
     </Component>
   );

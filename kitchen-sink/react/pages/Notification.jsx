@@ -8,8 +8,10 @@ import {
   Button,
   Dialog,
   DialogButton,
+  useTheme,
 } from 'konsta/react';
 import { XmarkCircleFill } from 'framework7-icons/react';
+import { MdOutlineCancel } from 'react-icons/md';
 import DemoIcon from '../components/DemoIcon';
 
 export default function NotificationPage() {
@@ -21,6 +23,8 @@ export default function NotificationPage() {
   const [notificationCallbackOnClose, setNotificationCallbackOnClose] =
     useState(false);
   const [alertOpened, setAlertOpened] = useState(false);
+  const theme = useTheme();
+  const CloseIcon = theme === 'ios' ? XmarkCircleFill : MdOutlineCancel;
 
   const openNotification = (setter) => {
     setNotificationFull(false);
@@ -41,48 +45,44 @@ export default function NotificationPage() {
         title="Konsta UI"
         titleRightText="now"
         subtitle="This is a subtitle"
-      >
-        <div className="shrink">This is a simple notification message</div>
-      </Notification>
+        text="This is a simple notification message"
+      />
       <Notification
         opened={notificationWithButton}
         icon={<DemoIcon />}
         title="Konsta UI"
-        titleRightText={
+        button={
           <button
             type="button"
             onClick={() => setNotificationWithButton(false)}
           >
-            <XmarkCircleFill className="w-6 h-6 fill-stone-400 dark:fill-stone-500" />
+            <CloseIcon className="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500 material:w-6 material:h-6 material:fill-md-light-on-surface-variant" />
           </button>
         }
         subtitle="Notification with close button"
-      >
-        <div className="shrink">Click (x) button to close me</div>
-      </Notification>
+        text="Click (x) button to close me"
+      />
       <Notification
         opened={notificationCloseOnClick}
         icon={<DemoIcon />}
         title="Konsta UI"
         titleRightText="now"
         subtitle="Notification with close on click"
+        text="Click me to close"
         onClick={() => setNotificationCloseOnClick(false)}
-      >
-        <div className="shrink">Click me to close</div>
-      </Notification>
+      />
       <Notification
         opened={notificationCallbackOnClose}
         icon={<DemoIcon />}
         title="Konsta UI"
         titleRightText="now"
         subtitle="Notification with close on click"
+        text="Click me to close"
         onClick={() => {
           setNotificationCallbackOnClose(false);
           setAlertOpened(true);
         }}
-      >
-        <div className="shrink">Click me to close</div>
-      </Notification>
+      />
       <Dialog
         opened={alertOpened}
         onBackdropClick={() => setAlertOpened(false)}
