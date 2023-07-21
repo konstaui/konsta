@@ -30,6 +30,7 @@ import kMenuList from './components/MenuList.vue';
 import kMenuListItem from './components/MenuListItem.vue';
 import kNavbar from './components/Navbar.vue';
 import kNavbarBackLink from './components/NavbarBackLink.vue';
+import kNotification from './components/Notification.vue';
 import kPage from './components/Page.vue';
 import kPanel from './components/Panel.vue';
 import kPopover from './components/Popover.vue';
@@ -124,6 +125,8 @@ export {
   kNavbar as Navbar,
   kNavbarBackLink,
   kNavbarBackLink as NavbarBackLink,
+  kNotification,
+  kNotification as Notification,
   kPage,
   kPage as Page,
   kPanel,
