@@ -13,6 +13,7 @@ import List from './pages/List.svelte';
 import ListButton from './pages/ListButton.svelte';
 import MenuList from './pages/MenuList.svelte';
 import Navbar from './pages/Navbar.svelte';
+import Notification from './pages/Notification.svelte';
 import Panel from './pages/SidePanels.svelte';
 import Popover from './pages/Popover.svelte';
 import Popup from './pages/Popup.svelte';
@@ -46,6 +47,7 @@ const pages = {
   ListButton,
   MenuList,
   Navbar,
+  Notification,
   Panel,
   Popover,
   Popup,

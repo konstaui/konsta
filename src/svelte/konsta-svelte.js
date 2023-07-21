@@ -30,6 +30,7 @@ import MenuList from './components/MenuList.svelte';
 import MenuListItem from './components/MenuListItem.svelte';
 import Navbar from './components/Navbar.svelte';
 import NavbarBackLink from './components/NavbarBackLink.svelte';
+import Notification from './components/Notification.svelte';
 import Page from './components/Page.svelte';
 import Panel from './components/Panel.svelte';
 import Popover from './components/Popover.svelte';
@@ -89,6 +90,7 @@ export {
   MenuListItem,
   Navbar,
   NavbarBackLink,
+  Notification,
   Page,
   Panel,
   Popover,
