@@ -62,9 +62,10 @@ const Message = forwardRef((props, ref) => {
   return (
     <Component id={id} ref={elRef} className={classes} {...attrs}>
       {avatar && (
-        <div
+        <img
           className={c.messageAvatar}
-          style={{ backgroundImage: avatar && `url(${avatar})` }}
+          src={avatar}
+          // style={{ backgroundImage: avatar && `url(${avatar})` }}
         />
       )}
       <div className={c.messageContent}>

@@ -1,8 +1,6 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
-import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagesClasses } from '../../shared/classes/MessagesClasses.js';
-import { MessagesColors } from '../../shared/colors/MessagesColors.js';
 
 const Messages = forwardRef((props, ref) => {
   const {
@@ -24,14 +22,8 @@ const Messages = forwardRef((props, ref) => {
   }));
 
   const themeClasses = useThemeClasses({ ios, material });
-  const dark = useDarkClasses();
 
-  const colors = MessagesColors(colorsProp, dark);
-  const c = themeClasses(
-    MessagesClasses({ ...props }, colors, {
-      darkClasses: dark,
-    })
-  );
+  const c = themeClasses(MessagesClasses({ ...props }));
 
   const Component = component;
 

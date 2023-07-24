@@ -1,9 +1,4 @@
-import React, {
-  forwardRef,
-  useRef,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
@@ -23,10 +18,6 @@ const Messagebar = forwardRef((props, ref) => {
     name,
     placeholder = 'Message',
     value,
-    textareaId,
-    disabled,
-    size,
-    sendLink,
     outline = false,
     leftClassName = '',
     rightClassName = '',
@@ -54,26 +45,13 @@ const Messagebar = forwardRef((props, ref) => {
     areaElRef: areaElRef.current,
   }));
 
-  const [isFocused, setIsFocused] = useState(false);
-
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
   const colors = MessagebarColors(colorsProp, dark);
 
-  const onFocusInternal = (e) => {
-    setIsFocused(true);
-    if (onFocus) onFocus(e);
-  };
-
-  const onBlurInternal = (e) => {
-    setIsFocused(false);
-    if (onBlur) onBlur(e);
-  };
-
   const c = themeClasses(
     MessagebarClasses({ ...props }, colors, {
-      isFocused,
       leftClassName,
       rightClassName,
       darkClasses: dark,
@@ -89,24 +67,23 @@ const Messagebar = forwardRef((props, ref) => {
   return (
     <Component ref={elRef} id={id} style={style} className={c.base} {...attrs}>
       <Toolbar
-        colors={{ ...colors, bgMaterial: 'transparent' }}
+        colors={{
+          ...colors,
+          bgMaterial: 'bg-inherit',
+          bgIos: 'inherit dark:bg-ios-dark-surface-3',
+        }}
         outline={outline}
       >
         {left && <div className={c.left}>{left}</div>}
         <div className={c.messagebarArea}>
           <textarea
-            id={textareaId}
             ref={areaElRef}
             type="textarea"
             className={c.messagebarInput}
             placeholder={placeholder}
-            disabled={disabled}
             name={name}
-            size={size}
             onInput={onInput}
             onChange={onChange}
-            onFocus={onFocusInternal}
-            onBlur={onBlurInternal}
             value={value}
           />
         </div>

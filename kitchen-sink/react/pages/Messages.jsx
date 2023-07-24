@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { React, useState } from 'react';
+import { React, useEffect, useState, useRef } from 'react';
 import {
   Page,
   Navbar,
@@ -66,6 +66,17 @@ export default function MessagesPage() {
     },
   ]);
 
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messagesData]);
+
   const handleSendClick = () => {
     const text = messageText.replace(/\n/g, '<br>').trim();
     const type = 'sent';
@@ -84,6 +95,8 @@ export default function MessagesPage() {
     setMessagesData([...messagesData, ...messagesToSend]);
     setMessageText('');
   };
+  const inputOpacity = messageText ? 1 : 0.3;
+  const isClickable = messageText.trim().length > 0;
 
   return (
     <Page className="ios:bg-white ios:dark:bg-transparent ">
@@ -104,6 +117,7 @@ export default function MessagesPage() {
             avatar={message.avatar}
           />
         ))}
+        <div ref={messagesEndRef} />
       </Messages>
       <Messagebar
         placeholder="Message"
@@ -120,7 +134,14 @@ export default function MessagesPage() {
           </Link>
         }
         right={
-          <Link onClick={handleSendClick} toolbar>
+          <Link
+            onClick={isClickable ? handleSendClick : undefined}
+            toolbar
+            style={{
+              opacity: inputOpacity,
+              cursor: isClickable ? 'pointer' : 'default',
+            }}
+          >
             <Icon
               ios={<ArrowUpCircleFill className="w-7 h-7" />}
               material={

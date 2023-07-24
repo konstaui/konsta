@@ -9,7 +9,7 @@ export const MessagebarClasses = (props, colors) => {
   } = props;
   return {
     base: {
-      common: 'fixed bottom-0 left-0 w-full',
+      common: 'fixed bottom-0 start-0 w-full',
       ios: cls('pb-safe'),
       material: cls('pt-1 pb-1-safe'),
     },
@@ -30,7 +30,12 @@ export const MessagebarClasses = (props, colors) => {
     },
     messagebarInput: {
       common: 'block w-full focus:outline-none resize-none',
-      ios: cls('border h-8 rounded-3xl bg-transparent px-4 leading-4 py-1.5'),
+      ios: cls(
+        'border h-8 rounded-3xl px-4 leading-4 py-1.5',
+        colors.inputBgIos,
+        colors.borderIos,
+        colors.placeholderIos
+      ),
       material: cls(
         'rounded-3xl h-12 px-4 py-4 leading-4 ',
         colors.inputBgMd,

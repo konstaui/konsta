@@ -1,6 +1,6 @@
 import { cls } from '../cls.js';
 
-export const MessageClasses = (props, colors, { darkClasses }) => {
+export const MessageClasses = (props, colors) => {
   const { type } = props;
   return {
     message: {
@@ -8,18 +8,25 @@ export const MessageClasses = (props, colors, { darkClasses }) => {
         'max-w-[70%] box-border flex relative z-1 transform translate-z-0 mb-2 first:mt-2',
     },
     messageSent: {
-      common: 'self-end text-white',
+      common: cls('self-end', colors.messageSent),
     },
     messageReceived: {
       common: '',
     },
     messageName: {
       common: 'text-xs',
-      ios: cls(
-        'mb-0.5 ml-4 text-black text-opacity-45',
-        darkClasses('dark:text-white dark:text-opacity-45')
-      ),
-      material: cls('ml-4 mb-0.5', colors.messageNameMd),
+      ios: cls('mb-0.5 ms-4', colors.messageNameIos),
+      material: cls('ms-4 mb-0.5', colors.messageNameMd),
+    },
+    messageHeader: {
+      common: 'text-xs',
+      ios: cls('mb-0.5 ms-4', colors.messageNameIos),
+      material: cls('ms-4 mb-0.5', colors.messageNameMd),
+    },
+    messageFooter: {
+      common: 'text-xs',
+      ios: cls('mb-0.5 ms-4', colors.messageNameIos),
+      material: cls('ms-4 mb-0.5', colors.messageNameMd),
     },
     messageAvatar: {
       common: cls(
@@ -32,23 +39,30 @@ export const MessageClasses = (props, colors, { darkClasses }) => {
     messageBubble: {
       ...(type === 'sent' && {
         ios: cls(
-          'bg-primary rounded-3xl box-border break-words flex flex-col relative rounded-2xl py-1.5 px-4'
+          'rounded-3xl box-border break-words flex flex-col relative rounded-2xl py-1.5 px-4',
+          colors.bubbleSentIos
         ),
         material: cls(
           'box-border break-words flex flex-col relative rounded-3xl py-2.5 px-4',
-          colors.bubbleMdSent
+          colors.bubbleSentMd
         ),
       }),
       ...(type === 'received' && {
         ios: cls(
-          'bg-[#e5e5ea] rounded-2xl box-border break-words flex flex-col relative rounded-2xl py-1.5 px-4',
-          darkClasses('dark:bg-[#252525]')
+          'rounded-2xl box-border break-words flex flex-col relative rounded-2xl py-1.5 px-4',
+          colors.bubbleReceivedIos
         ),
         material: cls(
-          'bg-[#e5e5ea] box-border break-words flex flex-col relative rounded-3xl py-2.5 px-4 ',
-          colors.bubbleMdReceived
+          'box-border break-words flex flex-col relative rounded-3xl py-2.5 px-4 ',
+          colors.bubbleReceivedMd
         ),
       }),
+    },
+    messageTextHeader: {
+      common: 'w-full text-left leading-tight text-sm opacity-80',
+    },
+    textFooter: {
+      common: 'w-full text-left leading-tight text-sm opacity-80',
     },
     messageText: {
       common: 'w-full text-left leading-tight',
