@@ -26,9 +26,6 @@ const Message = forwardRef((props, ref) => {
     footer,
     textHeader,
     textFooter,
-    first,
-    last,
-    tail,
     avatar,
 
     ios,
@@ -60,9 +57,6 @@ const Message = forwardRef((props, ref) => {
   const classes = cls(className, c.message, {
     [c.messageSent]: type === 'sent',
     [c.messageReceived]: type === 'received',
-    [c.messageFirst]: first,
-    [c.messageLast]: last,
-    [c.messageTail]: tail,
   });
 
   return (

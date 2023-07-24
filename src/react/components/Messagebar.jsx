@@ -27,12 +27,12 @@ const Messagebar = forwardRef((props, ref) => {
     disabled,
     size,
     sendLink,
-    isOutline = true,
-    leftIconClassName = '',
-    rightIconClassName = '',
+    outline = false,
+    leftClassName = '',
+    rightClassName = '',
 
-    leftIcon,
-    rightIcon,
+    left,
+    right,
 
     ios,
     material,
@@ -74,8 +74,8 @@ const Messagebar = forwardRef((props, ref) => {
   const c = themeClasses(
     MessagebarClasses({ ...props }, colors, {
       isFocused,
-      leftIconClassName,
-      rightIconClassName,
+      leftClassName,
+      rightClassName,
       darkClasses: dark,
     })
   );
@@ -90,11 +90,11 @@ const Messagebar = forwardRef((props, ref) => {
     <Component ref={elRef} id={id} style={style} className={c.base} {...attrs}>
       <Toolbar
         colors={{ ...colors, bgMaterial: 'transparent' }}
-        outline={!isOutline}
+        outline={outline}
       >
-        {leftIcon && <div className={c.leftIcon}>{leftIcon}</div>}
+        {left && <div className={c.left}>{left}</div>}
         <div className={c.messagebarArea}>
-          <input
+          <textarea
             id={textareaId}
             ref={areaElRef}
             type="textarea"
@@ -110,7 +110,7 @@ const Messagebar = forwardRef((props, ref) => {
             value={value}
           />
         </div>
-        {rightIcon && <div className={c.rightIcon}>{rightIcon}</div>}
+        {right && <div className={c.right}>{right}</div>}
       </Toolbar>
     </Component>
   );

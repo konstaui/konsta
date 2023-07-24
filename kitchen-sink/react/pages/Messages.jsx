@@ -65,39 +65,6 @@ export default function MessagesPage() {
       avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
     },
   ]);
-  const isFirstMessage = (message, index) => {
-    const previousMessage = messagesData[index - 1];
-    if (message.isTitle) return false;
-    if (
-      !previousMessage ||
-      previousMessage.type !== message.type ||
-      previousMessage.name !== message.name
-    )
-      return true;
-    return false;
-  };
-  const isLastMessage = (message, index) => {
-    const nextMessage = messagesData[index + 1];
-    if (message.isTitle) return false;
-    if (
-      !nextMessage ||
-      nextMessage.type !== message.type ||
-      nextMessage.name !== message.name
-    )
-      return true;
-    return false;
-  };
-  const isTailMessage = (message, index) => {
-    const nextMessage = messagesData[index + 1];
-    if (message.isTitle) return false;
-    if (
-      !nextMessage ||
-      nextMessage.type !== message.type ||
-      nextMessage.name !== message.name
-    )
-      return true;
-    return false;
-  };
 
   const handleSendClick = () => {
     const text = messageText.replace(/\n/g, '<br>').trim();
@@ -116,15 +83,10 @@ export default function MessagesPage() {
     }
     setMessagesData([...messagesData, ...messagesToSend]);
     setMessageText('');
-
-    // console.log('click');
-    // const value = messageText;
-    // console.log(value);
-    // setMessageText('');
   };
 
   return (
-    <Page>
+    <Page className="ios:bg-white ios:dark:bg-transparent ">
       <Navbar
         title="Messages"
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
@@ -140,9 +102,6 @@ export default function MessagesPage() {
             name={message.name}
             text={message.text}
             avatar={message.avatar}
-            first={isFirstMessage(message, index)}
-            last={isLastMessage(message, index)}
-            tail={isTailMessage(message, index)}
           />
         ))}
       </Messages>
@@ -150,7 +109,7 @@ export default function MessagesPage() {
         placeholder="Message"
         value={messageText}
         onInput={(e) => setMessageText(e.target.value)}
-        leftIcon={
+        left={
           <Link onClick={() => console.log('click')} toolbar iconOnly>
             <Icon
               ios={<CameraFill className="w-7 h-7" />}
@@ -160,7 +119,7 @@ export default function MessagesPage() {
             />
           </Link>
         }
-        rightIcon={
+        right={
           <Link onClick={handleSendClick} toolbar>
             <Icon
               ios={<ArrowUpCircleFill className="w-7 h-7" />}

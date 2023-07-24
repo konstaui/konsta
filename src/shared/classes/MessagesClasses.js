@@ -3,8 +3,9 @@ import { cls } from '../cls.js';
 export const MessagesClasses = (colors) => {
   return {
     base: {
-      common: cls('flex flex-col relative z-1 min-h-[100%] px-4 mt-2.5'),
-      ios: cls('bg-white', 'dark:bg-transparent'),
+      common: cls('flex flex-col relative z-1 px-2'),
+      ios: 'mb-12',
+      material: 'mb-16',
     },
     messagesTitle: {
       common: cls('text-center text-xs leading-none'),

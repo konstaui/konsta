@@ -2,37 +2,37 @@ import { cls } from '../cls.js';
 
 export const MessagebarClasses = (props, colors) => {
   const {
-    rightIconClassName = '',
-    rightIconClass = '',
-    leftIconClassName = '',
-    leftIconClass,
+    rightClassName = '',
+    rightClass = '',
+    leftClassName = '',
+    leftClass,
   } = props;
   return {
     base: {
-      common: '',
-      ios: cls(''),
-      material: cls('py-2'),
+      common: 'fixed bottom-0 left-0 w-full',
+      ios: cls('pb-safe'),
+      material: cls('pt-1 pb-1-safe'),
     },
     toolbar: {
       material: colors.bgMessage,
     },
-    leftIcon: {
-      common: cls('mt-1', leftIconClassName || leftIconClass),
-      ios: cls('px-3', colors.toolbarIcon),
+    left: {
+      common: cls('mt-1 -ms-2', leftClassName || leftClass),
+      ios: cls('px-2', colors.toolbarIcon),
       material: cls('', colors.toolbarIcon),
     },
-    rightIcon: {
-      common: cls('mt-1', rightIconClassName || rightIconClass),
-      ios: cls('px-3 ', colors.toolbarIcon),
+    right: {
+      common: cls('mt-1 -me-2', rightClassName || rightClass),
+      ios: cls('px-2', colors.toolbarIcon),
     },
     messagebarArea: {
       common: 'w-full',
     },
     messagebarInput: {
-      common: 'block w-full focus:outline-none  focus:outline-none',
-      ios: cls('border h-8.5 rounded-full bg-transparent px-4 py-1.5'),
+      common: 'block w-full focus:outline-none resize-none',
+      ios: cls('border h-8 rounded-3xl bg-transparent px-4 leading-4 py-1.5'),
       material: cls(
-        'rounded-full h-12 px-4 py-1.5',
+        'rounded-3xl h-12 px-4 py-4 leading-4 ',
         colors.inputBgMd,
         colors.placeholderMd
       ),
