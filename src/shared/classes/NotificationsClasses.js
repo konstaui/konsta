@@ -7,11 +7,17 @@ export const NotificationsClasses = (props, colors, classes) => {
     base: {
       common: cls(
         positionClass('absolute', classes),
-        'z-50 transform transition-transform-opacity w-[calc(100%-32px)] box-border start-4 top-4',
+        'z-50 transform transition-transform-opacity box-border',
         !opened && '-translate-y-full opacity-0 pointer-events-none'
       ),
-      ios: cls('rounded-xl px-2.5 py-2.5', colors.bgIos, colors.shadowIos),
-      material: cls('rounded-2xl py-5 px-4', colors.bgMaterial),
+      ios: cls(
+        'rounded-xl px-2.5 py-2.5 start-2 end-2 top-2 shadow-lg',
+        colors.bgIos
+      ),
+      material: cls(
+        'rounded-2xl py-5 px-4 start-4 end-4 top-4',
+        colors.bgMaterial
+      ),
     },
     content: {
       common: '',
@@ -22,7 +28,8 @@ export const NotificationsClasses = (props, colors, classes) => {
       common: cls('flex justify-start items-center'),
     },
     icon: {
-      common: cls('mr-2'),
+      ios: cls('mr-2'),
+      material: 'me-4',
     },
     title: {
       ios: cls(
