@@ -17,6 +17,7 @@
   const isPreview = document.location.href.includes('examplePreview');
   $: theme = useTheme((newValue) => (theme = newValue));
   $: CloseIcon = theme === 'ios' ? XmarkCircleFill : MdOutlineCancel;
+
   let notificationFull = false;
   let notificationWithButton = false;
   let notificationCloseOnClick = false;
@@ -47,7 +48,6 @@
     titleRightText="now"
     subtitle="This is a subtitle"
     text="This is a simple notification message"
-    onClick={() => console.log('click')}
   >
     <DemoIcon slot="icon"/>
   </Notification>
@@ -59,10 +59,9 @@
     text="Click (x) button to close me"
   >
     <DemoIcon slot="icon"/>
-    <button slot="button" type="button" onClick={() => (notificationWithButton = false)}>
-      <svelte:component this={CloseIcon} class="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500
-      material:w-6 material:h-6 material:fill-md-light-on-surface-variant material:dark:fill-md-dark-on-surface-variant"/>
-    </button>
+      <button clear inline slot="button" on:click={() => (notificationWithButton = false)}>
+        <svelte:component this={CloseIcon} class="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500 material:w-6 material:h-6 material:fill-md-light-on-surface-variant material:dark:fill-md-dark-on-surface-variant"/>
+      </button>
   </Notification>
 
   <Notification

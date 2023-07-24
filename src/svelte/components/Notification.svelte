@@ -11,6 +11,7 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
+  export let onClick = undefined;
 
 
   export let title = '';
@@ -32,7 +33,7 @@
   );
 </script>
 
-<div class={c.base} {...$$restProps}>
+<div class={c.base} {...$$restProps} on:click={onClick}>
   <div class={c.header}>
     {#if $$slots.icon}
       <div class={c.icon}><slot name="icon" /></div>
