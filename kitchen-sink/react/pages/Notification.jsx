@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Page,
   Navbar,
@@ -8,10 +8,9 @@ import {
   Button,
   Dialog,
   DialogButton,
-  useTheme,
 } from 'konsta/react';
-import { XmarkCircleFill } from 'framework7-icons/react';
-import { MdOutlineCancel } from 'react-icons/md';
+// import { XmarkCircleFill } from 'framework7-icons/react';
+// import { MdOutlineCancel } from 'react-icons/md';
 import DemoIcon from '../components/DemoIcon';
 
 export default function NotificationPage() {
@@ -23,8 +22,6 @@ export default function NotificationPage() {
   const [notificationCallbackOnClose, setNotificationCallbackOnClose] =
     useState(false);
   const [alertOpened, setAlertOpened] = useState(false);
-  const theme = useTheme();
-  const CloseIcon = theme === 'ios' ? XmarkCircleFill : MdOutlineCancel;
 
   const openNotification = (setter) => {
     setNotificationFull(false);
@@ -33,6 +30,17 @@ export default function NotificationPage() {
     setNotificationCallbackOnClose(false);
     setter(true);
   };
+
+  useEffect(() => {
+    let timer;
+    if (notificationFull) {
+      timer = setTimeout(() => {
+        setNotificationFull(false);
+      }, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [notificationFull]);
+
   return (
     <Page>
       <Navbar
@@ -42,6 +50,7 @@ export default function NotificationPage() {
       <Notification
         opened={notificationFull}
         icon={<DemoIcon />}
+        iconSize="24px"
         title="Konsta UI"
         titleRightText="now"
         subtitle="This is a subtitle"
@@ -50,24 +59,17 @@ export default function NotificationPage() {
       <Notification
         opened={notificationWithButton}
         icon={<DemoIcon />}
+        iconSize="24px"
         title="Konsta UI"
-        button={
-          <button
-            type="button"
-            onClick={() => setNotificationWithButton(false)}
-          >
-            <CloseIcon
-              className="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500
-              material:w-6 material:h-6 material:fill-md-light-on-surface-variant material:dark:fill-md-dark-on-surface-variant"
-            />
-          </button>
-        }
+        button
+        onClick={() => setNotificationWithButton(false)}
         subtitle="Notification with close button"
         text="Click (x) button to close me"
       />
       <Notification
         opened={notificationCloseOnClick}
         icon={<DemoIcon />}
+        iconSize="24px"
         title="Konsta UI"
         titleRightText="now"
         subtitle="Notification with close on click"
@@ -77,6 +79,7 @@ export default function NotificationPage() {
       <Notification
         opened={notificationCallbackOnClose}
         icon={<DemoIcon />}
+        iconSize="24px"
         title="Konsta UI"
         titleRightText="now"
         subtitle="Notification with close on click"

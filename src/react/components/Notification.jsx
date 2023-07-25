@@ -3,13 +3,14 @@ import { NotificationsClasses } from '../../shared/classes/NotificationsClasses.
 import { NotificationsColors } from '../../shared/colors/NotificationsColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
+import { useTheme } from '../shared/use-theme.js';
+import DeleteIcon from './icons/DeleteIcon.jsx';
 
 const Notification = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-    translucent = true,
     button,
     icon,
     title,
@@ -18,6 +19,9 @@ const Notification = forwardRef((props, ref) => {
     text,
 
     opened,
+    iconSize,
+
+    onClick,
 
     ios,
     material,
@@ -41,12 +45,13 @@ const Notification = forwardRef((props, ref) => {
     ...rest,
   };
 
+  const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
   const colors = NotificationsColors(colorsProp, dark);
 
   const c = themeClasses(
-    NotificationsClasses({ ...props, translucent }, colors, className),
+    NotificationsClasses({ ...props }, colors, className),
     className
   );
 
@@ -58,7 +63,11 @@ const Notification = forwardRef((props, ref) => {
         {titleRightText && (
           <div className={c.titleRightText}>{titleRightText}</div>
         )}
-        {button && <div className={c.button}>{button}</div>}
+        {button && (
+          <div className={c.button} onClick={onClick}>
+            <DeleteIcon theme={theme} className={c.deleteIcon} />
+          </div>
+        )}
       </div>
       <div className={c.content}>
         {subtitle && <div className={c.subtitle}>{subtitle}</div>}
