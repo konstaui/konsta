@@ -8,15 +8,10 @@
     Button,
     Dialog,
     DialogButton,
-    useTheme,
   } from 'konsta/svelte';
-  import { XmarkCircleFill } from 'framework7-icons/svelte';
-  import MdOutlineCancel from '../components/MdOutlineCancel.svelte';
   import DemoIcon from '../components/DemoIcon.svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  $: theme = useTheme((newValue) => (theme = newValue));
-  $: CloseIcon = theme === 'ios' ? XmarkCircleFill : MdOutlineCancel;
 
   let notificationFull = false;
   let notificationWithButton = false;
@@ -30,7 +25,14 @@
     notificationCloseOnClick = false;
     notificationCallbackOnClose = false;
     setter();
+
+    if (notificationFull) {
+      setTimeout(() => {
+        notificationFull = false;
+      }, 3000);
+    }
   };
+
 </script>
 
 <Page>
@@ -57,11 +59,10 @@
     title="Konsta UI"
     subtitle="Notification with close button"
     text="Click (x) button to close me"
+    button
+    onClose={() => (notificationWithButton = false)}
   >
     <DemoIcon slot="icon"/>
-      <button clear inline slot="button" on:click={() => (notificationWithButton = false)}>
-        <svelte:component this={CloseIcon} class="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500 material:w-6 material:h-6 material:fill-md-light-on-surface-variant material:dark:fill-md-dark-on-surface-variant"/>
-      </button>
   </Notification>
 
   <Notification

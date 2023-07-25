@@ -4,6 +4,9 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { printText } from '../shared/print-text.js';
+  import { useTheme } from '../shared/use-theme.js';
+
+  import DeleteIcon from './icons/DeleteIcon.svelte';
 
   let className = undefined;
   export { className as class };
@@ -12,8 +15,9 @@
   export let ios = undefined;
   export let material = undefined;
   export let onClick = undefined;
+  export let onClose = undefined;
 
-
+  export let button = undefined;
   export let title = '';
   export let titleRightText = '';
   export let subtitle = '';
@@ -22,6 +26,8 @@
   export let opened = false;
 
   const dark = useDarkClasses();
+  let theme;
+  theme = useTheme({}, (v) => (theme = v));
 
   $: colors = NotificationsColors(colorsProp, dark);
 
@@ -44,8 +50,10 @@
     {#if titleRightText || $$slots.titleRightText}
       <div class={c.titleRightText}>{printText(titleRightText)}<slot name="titleRightText" /></div>
     {/if}
-    {#if $$slots.button}
-      <div class={c.button}><slot name="button" /></div>
+    {#if button || $$slots.button}
+      <div class={c.button} on:click={onClose}>
+        <DeleteIcon {theme} class={c.deleteIcon}/>
+        <slot name="button" /></div>
     {/if}
   </div>
   <div class={c.content}>

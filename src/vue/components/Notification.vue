@@ -13,8 +13,9 @@
       >
         {{ titleRightText }}<slot name="titleRightText" />
       </div>
-      <div v-if="button || slots.button" :class="c.button">
-        {{ button }}<slot name="button" />
+      <div v-if="button || slots.button" :class="c.button" @click="onClose">
+        <delete-icon :theme="theme" :class="c.deleteIcon" />
+        <slot name="button" />
       </div>
     </div>
     <div :class="c.content">
@@ -35,9 +36,14 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTheme } from '../shared/use-theme.js';
+  import DeleteIcon from './icons/DeleteIcon.vue';
 
   export default {
     name: 'k-notification',
+    components: {
+      DeleteIcon,
+    },
     props: {
       component: {
         type: String,
@@ -65,7 +71,9 @@
       subtitle: { type: [String, Number] },
       text: { type: [String, Number] },
     },
+    emits: ['close'],
     setup(props, ctx) {
+      const theme = useTheme();
       const elRef = ref(null);
       useTouchRipple(elRef, props);
 
@@ -81,9 +89,14 @@
           useDarkClasses
         )
       );
+      const onClose = () => {
+        ctx.emit('close');
+      };
       return {
         elRef,
         c,
+        theme,
+        onClose,
         slots: ctx.slots,
       };
     },

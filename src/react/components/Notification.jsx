@@ -21,7 +21,7 @@ const Notification = forwardRef((props, ref) => {
     opened,
     iconSize,
 
-    onClick,
+    onClose,
 
     ios,
     material,
@@ -64,7 +64,7 @@ const Notification = forwardRef((props, ref) => {
           <div className={c.titleRightText}>{titleRightText}</div>
         )}
         {button && (
-          <div className={c.button} onClick={onClick}>
+          <div className={c.button} onClick={onClose}>
             <DeleteIcon theme={theme} className={c.deleteIcon} />
           </div>
         )}

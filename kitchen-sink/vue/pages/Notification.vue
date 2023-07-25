@@ -23,21 +23,12 @@
       title="Konsta UI"
       subtitle="Notification with close button"
       text="Click (x) button to close me"
+      @click="() => (opened.notificationWithButton = false)"
     >
       <template #icon>
         <demo-icon />
       </template>
-      <template #button>
-        <button
-          type="button"
-          @click="() => (opened.notificationWithButton = false)"
-        >
-          <component
-            :is="CloseIcon"
-            class="ios:w-6 ios:h-6 ios:fill-stone-400 ios:dark:fill-stone-500 material:w-6 material:h-6 material:fill-md-light-on-surface-variant material:dark:fill-md-dark-on-surface-variant"
-          />
-        </button>
-      </template>
+      <template #button />
     </k-notification>
 
     <k-notification
@@ -113,7 +104,7 @@
   </k-page>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { ref, watch } from 'vue';
   import {
     kPage,
     kNavbar,
@@ -125,8 +116,6 @@
     kDialogButton,
     useTheme,
   } from 'konsta/vue';
-  import { XmarkCircleFill } from 'framework7-icons/vue';
-  import MdOutlineCancel from '../components/MdOutlineCancel.vue';
   import DemoIcon from '../components/DemoIcon.vue';
 
   export default {
@@ -140,8 +129,6 @@
       kButton,
       kDialog,
       kDialogButton,
-      XmarkCircleFill,
-      MdOutlineCancel,
       DemoIcon,
     },
     setup() {
@@ -153,9 +140,6 @@
       });
       const alertOpened = ref(false);
       const theme = useTheme();
-      const CloseIcon = computed(() =>
-        theme.value === 'ios' ? XmarkCircleFill : MdOutlineCancel
-      );
       const openNotification = (setter) => {
         opened.value = {
           notificationFull: false,
@@ -166,12 +150,20 @@
         opened.value[setter] = true;
       };
 
+      const autoCloseNotificationFull = () => {
+        if (opened.value.notificationFull) {
+          setTimeout(() => {
+            opened.value.notificationFull = false;
+          }, 3000);
+        }
+      };
+      watch(() => opened.value.notificationFull, autoCloseNotificationFull);
+
       return {
         opened,
         alertOpened,
         openNotification,
         theme,
-        CloseIcon,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };
