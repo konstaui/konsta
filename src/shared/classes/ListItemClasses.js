@@ -145,14 +145,20 @@ export const ListItemClasses = (
       } ${colors.groupTitleBgIos} ${
         contacts &&
         cls(
-          'text-opacity-90 dark:text-opacity-90 font-semibold dark:bg-ios-contacts top-11-safe sticky'
+          'font-semibold top-11-safe sticky',
+          colors.contactsTextIos,
+          colors.contactsBgIos
         )
       }`,
       material: `h-12 ${titleFontSizeMaterial} ${
         colors.secondaryTextMaterial
       } ${colors.groupTitleBgMaterial} ${
         contacts &&
-        'pointer-events-none overflow-visible h-12 box-border text-md-light-primary dark:text-md-dark-primary text-xl font-medium bg-transparent dark:bg-transparent flex max-w-full items-center px-4 top-16-safe sticky'
+        cls(
+          'pointer-events-none overflow-visible h-12 box-border text-xl font-medium flex max-w-full items-center px-4 top-16-safe sticky',
+          colors.contactsTextMaterial,
+          colors.contactsBgMaterial
+        )
       }`,
     },
   };

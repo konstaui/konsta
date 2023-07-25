@@ -55,6 +55,13 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       dark('dark:bg-md-dark-secondary-container')
     ),
     touchRipple: cls('touch-ripple-black', dark('dark:touch-ripple-white')),
+    contactsTextIos: cls('text-opacity-90', dark('dark:text-opacity-90')),
+    contactsTextMaterial: cls(
+      'text-md-light-primary',
+      dark('dark:text-md-dark-primary')
+    ),
+    contactsBgIos: cls(dark('dark:bg-[#323234]')),
+    contactsBgMaterial: cls('bg-transparent', dark('dark:bg-transparent')),
     ...colorsProp,
   };
 };
