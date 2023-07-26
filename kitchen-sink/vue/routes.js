@@ -13,6 +13,7 @@ import FormInputs from './pages/FormInputs.vue';
 import List from './pages/List.vue';
 import ListButton from './pages/ListButton.vue';
 import MenuList from './pages/MenuList.vue';
+import Messages from './pages/Messages.vue';
 import Navbar from './pages/Navbar.vue';
 import Panel from './pages/SidePanels.vue';
 import Popover from './pages/Popover.vue';
@@ -46,6 +47,7 @@ const routes = [
   List,
   ListButton,
   MenuList,
+  Messages,
   Navbar,
   Panel,
   Popover,
