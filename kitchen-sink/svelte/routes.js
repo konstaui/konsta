@@ -12,6 +12,7 @@ import FormInputs from './pages/FormInputs.svelte';
 import List from './pages/List.svelte';
 import ListButton from './pages/ListButton.svelte';
 import MenuList from './pages/MenuList.svelte';
+import Messages from './pages/Messages.svelte';
 import Navbar from './pages/Navbar.svelte';
 import Panel from './pages/SidePanels.svelte';
 import Popover from './pages/Popover.svelte';
@@ -44,6 +45,7 @@ const pages = {
   List,
   ListButton,
   MenuList,
+  Messages,
   Navbar,
   Panel,
   Popover,

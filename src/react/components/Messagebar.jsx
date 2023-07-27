@@ -30,8 +30,6 @@ const Messagebar = forwardRef((props, ref) => {
 
     onInput,
     onChange,
-    onFocus,
-    onBlur,
 
     children,
     ...rest
