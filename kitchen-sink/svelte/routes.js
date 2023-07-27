@@ -5,6 +5,7 @@ import Buttons from './pages/Buttons.svelte';
 import Cards from './pages/Cards.svelte';
 import Checkbox from './pages/Checkbox.svelte';
 import Chips from './pages/Chips.svelte';
+import ContactsList from './pages/ContactsList.svelte';
 import ContentBlock from './pages/ContentBlock.svelte';
 import Dialog from './pages/Dialog.svelte';
 import Fab from './pages/Fab.svelte';
@@ -38,6 +39,7 @@ const pages = {
   Cards,
   Checkbox,
   Chips,
+  ContactsList,
   ContentBlock,
   Dialog,
   Fab,

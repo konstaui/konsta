@@ -38,7 +38,7 @@ export default function ContactsListPage() {
           <ListItem title="Benjamin" contacts />
         </ListGroup>
         <ListGroup dividers={false}>
-          <ListItem title="C" groupTitle contacts="true" />
+          <ListItem title="C" groupTitle contacts />
           <ListItem title="Caiden" contacts />
           <ListItem title="Calvin" contacts />
           <ListItem title="Candy" contacts />

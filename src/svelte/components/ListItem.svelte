@@ -55,6 +55,7 @@
   export let href = undefined;
   export let target = undefined;
   export let dividers = undefined;
+  export let contacts = false;
 
   export let link = false;
   export let linkComponent = 'a';
@@ -144,6 +145,10 @@
         titleFontSizeIos,
         titleFontSizeMaterial,
         strongTitle,
+        contacts:
+        typeof contacts === 'false'
+          ? ''
+          : contacts,
       },
       colors,
       {
