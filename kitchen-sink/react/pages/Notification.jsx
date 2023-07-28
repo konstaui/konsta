@@ -50,7 +50,6 @@ export default function NotificationPage() {
       <Notification
         opened={notificationFull}
         icon={<DemoIcon />}
-        iconSize="24px"
         title="Konsta UI"
         titleRightText="now"
         subtitle="This is a subtitle"
@@ -59,7 +58,6 @@ export default function NotificationPage() {
       <Notification
         opened={notificationWithButton}
         icon={<DemoIcon />}
-        iconSize="24px"
         title="Konsta UI"
         button
         onClick={() => setNotificationWithButton(false)}
@@ -69,7 +67,6 @@ export default function NotificationPage() {
       <Notification
         opened={notificationCloseOnClick}
         icon={<DemoIcon />}
-        iconSize="24px"
         title="Konsta UI"
         titleRightText="now"
         subtitle="Notification with close on click"
@@ -79,7 +76,6 @@ export default function NotificationPage() {
       <Notification
         opened={notificationCallbackOnClose}
         icon={<DemoIcon />}
-        iconSize="24px"
         title="Konsta UI"
         titleRightText="now"
         subtitle="Notification with close on click"

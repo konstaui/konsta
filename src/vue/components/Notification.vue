@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" ref="elRef" :class="c.base">
+  <component :is="component" v-if="theme === 'ios'" ref="elRef" :class="c.base">
     <div :class="c.header">
       <div v-if="icon || slots.icon" :class="c.icon">
         {{ icon }}<slot name="icon" />
@@ -26,6 +26,39 @@
         {{ text }}<slot name="text" />
       </div>
       <slot />
+    </div>
+  </component>
+  <component :is="component" v-else ref="elRef" :class="c.base">
+    <div :class="c.header">
+      <div v-if="icon || slots.icon" :class="c.icon">
+        {{ icon }}<slot name="icon" />
+      </div>
+      <div :class="c.contentWrapper">
+        <div :class="c.contentTitle">
+          <div v-if="title || slots.title" :class="c.title">
+            {{ title }}<slot name="title" />
+          </div>
+          <div
+            v-if="titleRightText || slots.titleRightText"
+            :class="c.titleRightText"
+          >
+            {{ titleRightText }}<slot name="titleRightText" />
+          </div>
+        </div>
+        <div :class="c.content">
+          <div v-if="subtitle || slots.subtitle" :class="c.subtitle">
+            {{ subtitle }}<slot name="subtitle" />
+          </div>
+          <div v-if="text || slots.text" :class="c.text">
+            {{ text }}<slot name="text" />
+          </div>
+          <slot />
+        </div>
+      </div>
+      <div v-if="button || slots.button" :class="c.button" @click="onClose">
+        <delete-icon :theme="theme" :class="c.deleteIcon" />
+        <slot name="button" />
+      </div>
     </div>
   </component>
 </template>
@@ -66,7 +99,6 @@
       },
       button: { type: String },
       icon: { type: String },
-      iconSize: { type: [String, Number], default: undefined },
       title: { type: [String, Number] },
       titleRightText: { type: [String, Number] },
       subtitle: { type: [String, Number] },

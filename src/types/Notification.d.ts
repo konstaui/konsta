@@ -95,13 +95,6 @@ interface Props {
    */
   opened?: boolean;
   /**
-   * Tailwind CSS size classes
-   *
-   * @default undefined
-   *
-   */
-  iconSize?: string;
-  /**
    * Click handler on to close element
    */
   onClose?: (e: any) => void;

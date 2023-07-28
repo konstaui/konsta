@@ -19,7 +19,6 @@ const Notification = forwardRef((props, ref) => {
     text,
 
     opened,
-    iconSize,
 
     onClose,
 
@@ -55,24 +54,50 @@ const Notification = forwardRef((props, ref) => {
     className
   );
 
+  if (theme === 'ios')
+    return (
+      <Component ref={elRef} className={c.base} {...attrs}>
+        <div className={c.header}>
+          {icon && <div className={c.icon}>{icon}</div>}
+          {title && <div className={c.title}>{title}</div>}
+          {titleRightText && (
+            <div className={c.titleRightText}>{titleRightText}</div>
+          )}
+          {button && (
+            <div className={c.button} onClick={onClose}>
+              <DeleteIcon theme={theme} className={c.deleteIcon} />
+            </div>
+          )}
+        </div>
+        <div className={c.content}>
+          {subtitle && <div className={c.subtitle}>{subtitle}</div>}
+          {text && <div className={c.text}>{text}</div>}
+          {children}
+        </div>
+      </Component>
+    );
   return (
     <Component ref={elRef} className={c.base} {...attrs}>
       <div className={c.header}>
         {icon && <div className={c.icon}>{icon}</div>}
-        {title && <div className={c.title}>{title}</div>}
-        {titleRightText && (
-          <div className={c.titleRightText}>{titleRightText}</div>
-        )}
+        <div className={c.contentWrapper}>
+          <div className={c.contentTitle}>
+            {title && <div className={c.title}>{title}</div>}
+            {titleRightText && (
+              <div className={c.titleRightText}>{titleRightText}</div>
+            )}
+          </div>
+          <div className={c.content}>
+            {subtitle && <div className={c.subtitle}>{subtitle}</div>}
+            {text && <div className={c.text}>{text}</div>}
+            {children}
+          </div>
+        </div>
         {button && (
           <div className={c.button} onClick={onClose}>
             <DeleteIcon theme={theme} className={c.deleteIcon} />
           </div>
         )}
-      </div>
-      <div className={c.content}>
-        {subtitle && <div className={c.subtitle}>{subtitle}</div>}
-        {text && <div className={c.text}>{text}</div>}
-        {children}
       </div>
     </Component>
   );

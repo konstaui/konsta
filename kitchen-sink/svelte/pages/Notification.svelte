@@ -18,7 +18,6 @@
   let notificationCloseOnClick = false;
   let notificationCallbackOnClose = false;
   let alertOpened = false;
-  let iconSize = "24px";
 
   const openNotification = (setter) => {
     notificationFull = false;
@@ -49,7 +48,6 @@
     opened={notificationFull}
     title="Konsta UI"
     titleRightText="now"
-    iconSize={iconSize}
     subtitle="This is a subtitle"
     text="This is a simple notification message"
   >
@@ -59,7 +57,6 @@
   <Notification
     opened={notificationWithButton}
     title="Konsta UI"
-    iconSize={iconSize}
     subtitle="Notification with close button"
     text="Click (x) button to close me"
     button
@@ -72,7 +69,6 @@
     opened={notificationCloseOnClick}
     title="Konsta UI"
     titleRightText="now"
-    iconSize={iconSize}
     subtitle="Notification with close on click"
     text="Click me to close"
     onClick={() => (notificationCloseOnClick = false)}
@@ -84,7 +80,6 @@
     opened={notificationCallbackOnClose}
     title="Konsta UI"
     titleRightText="now"
-    iconSize={iconSize}
     subtitle="Notification with close on click"
     text="Click me to close"
     onClick={() => {

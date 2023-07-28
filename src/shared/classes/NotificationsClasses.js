@@ -2,7 +2,7 @@ import { cls } from '../cls.js';
 import { positionClass } from '../position-class.js';
 
 export const NotificationsClasses = (props, colors, classes) => {
-  const { opened, iconSize } = props;
+  const { opened } = props;
   return {
     base: {
       common: cls(
@@ -22,15 +22,18 @@ export const NotificationsClasses = (props, colors, classes) => {
     },
     content: {
       common: '',
-      ios: 'mt-2.5',
-      material: `mt-2 ml-[calc(${iconSize}+16px)]`,
+      ios: 'mt-2.5 ',
+      material: cls('mt-2'),
     },
     header: {
-      common: cls('flex justify-start items-center'),
+      common: cls('flex justify-start items-start'),
     },
     icon: {
       ios: cls('me-2'),
       material: 'me-4',
+    },
+    contentTitle: {
+      material: cls('flex flex-row items-center'),
     },
     title: {
       ios: cls('tracking-wide text-[13px] uppercase', colors.titleIos),
