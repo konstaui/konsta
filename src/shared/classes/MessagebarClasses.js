@@ -18,12 +18,12 @@ export const MessagebarClasses = (props, colors) => {
     },
     left: {
       common: cls('mt-1 -ms-2', leftClassName || leftClass),
-      ios: cls('px-2', colors.toolbarIcon),
-      material: cls('', colors.toolbarIcon),
+      ios: cls('px-2', colors.toolbarIconIos),
+      material: cls('', colors.toolbarIconMd),
     },
     right: {
       common: cls('mt-1 -me-2', rightClassName || rightClass),
-      ios: cls('px-2', colors.toolbarIcon),
+      ios: cls('px-2', colors.toolbarIconIos),
     },
     messagebarArea: {
       common: 'w-full',

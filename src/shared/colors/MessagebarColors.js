@@ -2,10 +2,8 @@ import { cls } from '../cls.js';
 
 export const MessagebarColors = (colorsProp = {}, dark) => {
   return {
-    toolbarIcon: {
-      ios: cls('fill-primary', dark('dark:fill-md-dark-primary')),
-      material: cls('fill-black'),
-    },
+    toolbarIconIos: cls('fill-primary', dark('dark:fill-md-dark-primary')),
+    toolbarIconMd: cls('fill-black'),
     inputBgIos: cls('bg-transparent'),
     borderIos: cls(
       'border-[#c8c8cd]',
