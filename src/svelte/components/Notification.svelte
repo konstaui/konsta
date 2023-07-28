@@ -24,6 +24,7 @@
   export let text = '';
 
   export let opened = false;
+  export let iconSize = undefined;
 
   const dark = useDarkClasses();
   let theme;
@@ -33,7 +34,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    NotificationsClasses({ opened }, colors, className),
+    NotificationsClasses({ opened, iconSize }, colors, className),
     className,
     (v) => (c = v)
   );

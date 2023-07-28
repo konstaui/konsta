@@ -66,6 +66,7 @@
       },
       button: { type: String },
       icon: { type: String },
+      iconSize: { type: [String, Number], default: undefined },
       title: { type: [String, Number] },
       titleRightText: { type: [String, Number] },
       subtitle: { type: [String, Number] },

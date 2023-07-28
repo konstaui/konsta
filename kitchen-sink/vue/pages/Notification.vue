@@ -9,6 +9,7 @@
     <k-notification
       :opened="opened.notificationFull"
       title="Konsta UI"
+      icon-size="24px"
       title-right-text="now"
       subtitle="This is a subtitle"
       text="This is a simple notification message"
@@ -21,6 +22,7 @@
     <k-notification
       :opened="opened.notificationWithButton"
       title="Konsta UI"
+      icon-size="24px"
       subtitle="Notification with close button"
       text="Click (x) button to close me"
       @click="() => (opened.notificationWithButton = false)"
@@ -34,6 +36,7 @@
     <k-notification
       :opened="opened.notificationCloseOnClick"
       title="Konsta UI"
+      icon-size="24px"
       title-right-text="now"
       subtitle="Notification with close on click"
       text="Click me to close"
@@ -48,6 +51,7 @@
       :opened="opened.notificationCallbackOnClose"
       title="Konsta UI"
       title-right-text="now"
+      icon-size="24px"
       subtitle="Notification with close on click"
       text="Click me to close"
       @click="
