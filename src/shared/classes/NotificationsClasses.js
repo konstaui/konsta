@@ -9,7 +9,8 @@ export const NotificationsClasses = (props, colors, classes) => {
         positionClass('absolute', classes),
         'z-50 transform transition-transform-opacity box-border duration-500',
         !opened &&
-          '-translate-y-full opacity-0 pointer-events-none transition duration-500'
+          '-translate-y-full opacity-0 pointer-events-none transition duration-500',
+        'md:w-[568px] md:end-auto md:start-1/2 md:-ms-[256px]'
       ),
       ios: cls(
         'rounded-xl px-2.5 py-2.5 start-2 end-2 top-2 shadow-lg',
