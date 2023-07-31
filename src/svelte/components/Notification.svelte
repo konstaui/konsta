@@ -14,6 +14,7 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
+  export let translucent = true;
   export let onClick = undefined;
   export let onClose = undefined;
 
@@ -33,7 +34,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    NotificationsClasses({ opened }, colors, className),
+    NotificationsClasses({ opened, translucent }, colors, className),
     className,
     (v) => (c = v)
   );
@@ -49,20 +50,25 @@
         <div class={c.title}>{printText(title)}<slot name="title" /></div>
       {/if}
       {#if titleRightText || $$slots.titleRightText}
-        <div class={c.titleRightText}>{printText(titleRightText)}<slot name="titleRightText" /></div>
+        <div class={c.titleRightText}>
+          {printText(titleRightText)}<slot name="titleRightText" />
+        </div>
       {/if}
       {#if button || $$slots.button}
         <div class={c.button} on:click={onClose}>
-          <DeleteIcon {theme} class={c.deleteIcon}/>
-          <slot name="button" /></div>
+          <DeleteIcon {theme} class={c.deleteIcon} />
+          <slot name="button" />
+        </div>
       {/if}
     </div>
     <div class={c.content}>
       {#if subtitle || $$slots.subtitle}
-      <div class={c.subtitle}>{printText(subtitle)}<slot name="subtitle" /></div>
+        <div class={c.subtitle}>
+          {printText(subtitle)}<slot name="subtitle" />
+        </div>
       {/if}
       {#if text || $$slots.text}
-      <div class={c.text}>{printText(text)}<slot name="text" /></div>
+        <div class={c.text}>{printText(text)}<slot name="text" /></div>
       {/if}
       <slot />
     </div>
@@ -79,23 +85,28 @@
             <div class={c.title}>{printText(title)}<slot name="title" /></div>
           {/if}
           {#if titleRightText || $$slots.titleRightText}
-            <div class={c.titleRightText}>{printText(titleRightText)}<slot name="titleRightText" /></div>
+            <div class={c.titleRightText}>
+              {printText(titleRightText)}<slot name="titleRightText" />
+            </div>
           {/if}
         </div>
         <div class={c.content}>
           {#if subtitle || $$slots.subtitle}
-          <div class={c.subtitle}>{printText(subtitle)}<slot name="subtitle" /></div>
+            <div class={c.subtitle}>
+              {printText(subtitle)}<slot name="subtitle" />
+            </div>
           {/if}
           {#if text || $$slots.text}
-          <div class={c.text}>{printText(text)}<slot name="text" /></div>
+            <div class={c.text}>{printText(text)}<slot name="text" /></div>
           {/if}
           <slot />
         </div>
       </div>
       {#if button || $$slots.button}
         <div class={c.button} on:click={onClose}>
-          <DeleteIcon {theme} class={c.deleteIcon}/>
-          <slot name="button" /></div>
+          <DeleteIcon {theme} class={c.deleteIcon} />
+          <slot name="button" />
+        </div>
       {/if}
     </div>
   </div>

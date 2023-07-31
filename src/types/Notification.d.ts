@@ -5,10 +5,10 @@ interface Props {
    * @default 'div'
    */
   component?: string;
-   /**
+  /**
    * Object with Tailwind CSS colors classes
    * */
-   colors?: {
+  colors?: {
     /**
      * Notifiaction bg color in iOS theme
      *
@@ -64,6 +64,12 @@ interface Props {
      */
     deleteIconMd?: string;
   };
+  /**
+   * Makes Notification background translucent (with `backdrop-filter: blur`) in iOS theme
+   *
+   * @default true
+   */
+  translucent?: boolean;
   /**
    * Notification button content
    */

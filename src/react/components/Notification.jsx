@@ -17,6 +17,7 @@ const Notification = forwardRef((props, ref) => {
     titleRightText,
     subtitle,
     text,
+    translucent = true,
 
     opened,
 
@@ -50,7 +51,7 @@ const Notification = forwardRef((props, ref) => {
   const colors = NotificationsColors(colorsProp, dark);
 
   const c = themeClasses(
-    NotificationsClasses({ ...props }, colors, className),
+    NotificationsClasses({ ...props, translucent }, colors, className),
     className
   );
 

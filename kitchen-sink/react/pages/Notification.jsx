@@ -9,8 +9,6 @@ import {
   Dialog,
   DialogButton,
 } from 'konsta/react';
-// import { XmarkCircleFill } from 'framework7-icons/react';
-// import { MdOutlineCancel } from 'react-icons/md';
 import DemoIcon from '../components/DemoIcon';
 
 export default function NotificationPage() {

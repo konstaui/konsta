@@ -63,12 +63,11 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { NotificationsClasses } from '../../shared/classes/NotificationsClasses.js';
   import { NotificationsColors } from '../../shared/colors/NotificationsColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useTheme } from '../shared/use-theme.js';
   import DeleteIcon from './icons/DeleteIcon.vue';
 
@@ -97,6 +96,10 @@
         type: Boolean,
         default: undefined,
       },
+      translucent: {
+        type: Boolean,
+        default: true,
+      },
       button: { type: String },
       icon: { type: String },
       title: { type: [String, Number] },
@@ -107,26 +110,18 @@
     emits: ['close'],
     setup(props, ctx) {
       const theme = useTheme();
-      const elRef = ref(null);
-      useTouchRipple(elRef, props);
 
       const colors = computed(() =>
         NotificationsColors(props.colors || {}, useDarkClasses)
       );
 
       const c = useThemeClasses(props, () =>
-        NotificationsClasses(
-          props,
-          colors.value,
-          ctx.attrs.class,
-          useDarkClasses
-        )
+        NotificationsClasses(props, colors.value, ctx.attrs.class)
       );
       const onClose = () => {
         ctx.emit('close');
       };
       return {
-        elRef,
         c,
         theme,
         onClose,
