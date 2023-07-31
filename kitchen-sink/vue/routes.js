@@ -14,6 +14,7 @@ import List from './pages/List.vue';
 import ListButton from './pages/ListButton.vue';
 import MenuList from './pages/MenuList.vue';
 import Navbar from './pages/Navbar.vue';
+import Notification from './pages/Notification.vue';
 import Panel from './pages/SidePanels.vue';
 import Popover from './pages/Popover.vue';
 import Popup from './pages/Popup.vue';
@@ -48,6 +49,7 @@ const routes = [
   ListButton,
   MenuList,
   Navbar,
+  Notification,
   Panel,
   Popover,
   Popup,

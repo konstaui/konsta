@@ -30,6 +30,7 @@ import MenuList from './components/MenuList.jsx';
 import MenuListItem from './components/MenuListItem.jsx';
 import Navbar from './components/Navbar.jsx';
 import NavbarBackLink from './components/NavbarBackLink.jsx';
+import Notification from './components/Notification.jsx';
 import Page from './components/Page.jsx';
 import Panel from './components/Panel.jsx';
 import Popover from './components/Popover.jsx';
@@ -91,6 +92,7 @@ export {
   MenuListItem,
   Navbar,
   NavbarBackLink,
+  Notification,
   Page,
   Panel,
   Popover,

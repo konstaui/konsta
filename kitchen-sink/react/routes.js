@@ -13,6 +13,7 @@ import List from './pages/List.jsx';
 import ListButton from './pages/ListButton.jsx';
 import MenuList from './pages/MenuList.jsx';
 import Navbar from './pages/Navbar.jsx';
+import Notification from './pages/Notification.jsx';
 import Panel from './pages/SidePanels';
 import Popover from './pages/Popover.jsx';
 import Popup from './pages/Popup.jsx';
@@ -46,6 +47,7 @@ const routes = [
   ListButton,
   MenuList,
   Navbar,
+  Notification,
   Panel,
   Popover,
   Popup,
