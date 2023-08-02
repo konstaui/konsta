@@ -1,20 +1,27 @@
 <template>
-  <k-page>
+  <k-page class="ios:bg-white ios:dark:bg-black">
     <k-navbar title="Messages">
       <template v-if="!isPreview" #left>
         <k-navbar-back-link @click="() => history.back()" />
       </template>
     </k-navbar>
     <k-messages>
-      <k-messages-title> <b>Thursday, July 13,</b> 11:03 </k-messages-title>
+      <k-messages-title><span v-html="formattedDate" /></k-messages-title>
       <k-message
         v-for="(message, index) in messagesData"
         :key="index"
         :type="message.type"
         :name="message.name"
         :text="message.text"
-        :avatar="message.avatar"
-      />
+      >
+        <template v-if="message.type === 'received'" #avatar>
+          <img
+            alt="avatar"
+            class="ios:h-8 material:h-8 rounded-full"
+            :src="message.avatar"
+          />
+        </template>
+      </k-message>
       <div ref="messagesEndRef" />
     </k-messages>
     <k-messagebar
@@ -150,6 +157,12 @@
           text: 'Great. And what movie?',
           avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
         },
+        {
+          name: 'Blue Ninja',
+          type: 'received',
+          text: 'What time?',
+          avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
+        },
       ]);
       const messagesEndRef = ref(null);
       const scrollToBottom = () => {
@@ -206,6 +219,31 @@
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };
+    },
+    data() {
+      return {
+        formattedDate: '',
+      };
+    },
+    mounted() {
+      const currentDate = new Intl.DateTimeFormat('en-US', {
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric',
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+        .formatToParts(new Date())
+        .map((part) => {
+          if (['weekday', 'month', 'day'].includes(part.type)) {
+            return `<b>${part.value}</b>`;
+          }
+          return part.value;
+        })
+        .join('');
+
+      this.formattedDate = currentDate;
     },
   };
 </script>

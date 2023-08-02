@@ -61,7 +61,7 @@ export const MessageClasses = (props, colors) => {
     messageTextHeader: {
       common: 'w-full text-left leading-tight text-sm opacity-80',
     },
-    textFooter: {
+    messageTextFooter: {
       common: 'w-full text-left leading-tight text-sm opacity-80',
     },
     messageText: {

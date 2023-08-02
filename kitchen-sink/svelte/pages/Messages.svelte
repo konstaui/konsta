@@ -71,6 +71,12 @@
       text: 'Great. And what movie?',
       avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
     },
+    {
+      name: 'Blue Ninja',
+      type: 'received',
+      text: 'What time?',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
+    },
   ];
 
   const isPreview = document.location.href.includes('examplePreview');
@@ -104,9 +110,29 @@
     }
   };
 
+
+  const currentDateParts = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+  }).formatToParts(new Date());
+
+  let currentDate = '';
+
+  currentDateParts.forEach((part) => {
+    if (['weekday', 'month', 'day'].includes(part.type)) {
+      currentDate += `<b>${part.value}</b>`;
+    } else {
+      currentDate += part.value;
+    }
+  });
+
 </script>
 
-<Page>
+<Page class="ios:bg-white ios:dark:bg-black">
   <Navbar title="Messages">
     <svelte:fragment slot="left">
       {#if !isPreview}
@@ -116,16 +142,26 @@
   </Navbar>
   <Messages>
     <MessagesTitle>
-      <b>Thursday, July 13,</b> 11:03
+      <span>{@html currentDate}</span>
     </MessagesTitle>
     {#each messagesData as message, index (index)}
-      <Message
-        key={index}
-        type={message.type}
-        name={message.name}
-        text={message.text}
-        avatar={message.avatar}
-      />
+      {#if message.type === 'received'}
+        <Message
+          key={index}
+          type={message.type}
+          name={message.name}
+          text={message.text}
+        >
+          <img slot="avatar" alt="avatar" class="ios:h-8 material:h-8 rounded-full" src={message.avatar}/>
+        </Message>
+      {:else}
+        <Message
+          key={index}
+          type={message.type}
+          name={message.name}
+          text={message.text}
+        />
+      {/if}
     {/each}
     <div bind:this={messagesEndRef} />
   </Messages>

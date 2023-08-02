@@ -2,7 +2,6 @@
   import { MessageClasses } from '../../shared/classes/MessageClasses.js';
   import { MessageColors } from '../../shared/colors/MessageColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { printText } from '../shared/print-text.js';
   import { cls } from '../../shared/cls.js';
@@ -24,10 +23,8 @@
   export let textHeader = '';
   export let textFooter = '';
   export let avatar = undefined;
-  export let touchRipple = true;
 
   const rippleEl = { current: null };
-  $: useTouchRipple(rippleEl, touchRipple);
 
   const dark = useDarkClasses();
 
@@ -35,7 +32,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    MessageClasses({type}, colors, dark),
+    MessageClasses({type}, colors),
     className,
     (v) => (c = v)
   );
@@ -59,7 +56,7 @@
   {...$$restProps}
 >
   {#if avatar || $$slots.avatar}
-    <img class={c.messageAvatar} src={avatar} alt="avatar"/>
+    <div class={c.messageAvatar}>{printText(avatar)}<slot name="avatar" /></div>
   {/if}
   <div class={c.messageContent}>
     {#if name || $$slots.name}

@@ -9,7 +9,6 @@
   import { MessagesTitleColors } from '../../shared/colors/MessagesTitleColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
     name: 'k-messages-title',
@@ -33,7 +32,6 @@
     },
     setup(props, ctx) {
       const elRef = ref(null);
-      useTouchRipple(elRef, props);
 
       const colors = computed(() =>
         MessagesTitleColors(props.colors || {}, useDarkClasses)
@@ -51,6 +49,7 @@
 
       return {
         c,
+        elRef,
       };
     },
   };

@@ -11,14 +11,18 @@
       <div v-if="slots.left" :class="c.left"><slot name="left" /></div>
       <div :class="c.messagebarArea">
         <textarea
+          id="textareaId"
           ref="areaElRef"
           type="textarea"
           :class="c.messagebarInput"
           :placeholder="placeholder"
           :name="name"
           :value="value"
+          :disabled="disabled"
+          :size="size"
           @input="onInput"
           @change="onChange"
+          @focus="onFocusInternal"
         />
       </div>
       <div v-if="slots.right" :class="c.right"><slot name="right" /></div>
@@ -31,7 +35,6 @@
   import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import kToolbar from './Toolbar.vue';
 
   export default {
@@ -63,18 +66,24 @@
       outline: { type: Boolean, default: false },
       rightClass: { type: String, default: '' },
       leftClass: { type: String, default: '' },
+      disabled: { type: Boolean, default: undefined },
+      textareaId: String,
+      size: { type: [Number, String], default: undefined },
     },
-    emits: ['change', 'input'],
+    emits: ['change', 'input', 'focus'],
     setup(props, ctx) {
       const elRef = ref(null);
       const areaElRef = ref(null);
-
-      useTouchRipple(elRef, props);
-      useTouchRipple(areaElRef, props);
+      const isFocused = ref(false);
 
       const colors = computed(() =>
         MessagebarColors(props.colors || {}, useDarkClasses)
       );
+
+      const onFocusInternal = (e) => {
+        isFocused.value = true;
+        ctx.emit('focus', e);
+      };
 
       const c = useThemeClasses(props, () =>
         MessagebarClasses(
@@ -82,8 +91,8 @@
             ...props,
           },
           colors.value,
-          ctx.attrs.class,
-          useDarkClasses
+          isFocused,
+          ctx.attrs.class
         )
       );
 
@@ -101,6 +110,7 @@
         c,
         onChange,
         onInput,
+        onFocusInternal,
         slots: ctx.slots,
       };
     },

@@ -66,6 +66,20 @@ interface Props {
    */
   value?: any;
   /**
+   * Textarea "id" attribute
+   */
+  textareaId?: string;
+  /**
+   * Sets "disabled" textarea attribute
+   *
+   * @default undefined
+   */
+  disabled?: boolean;
+  /**
+    * Value of textarea's native "size" attribute
+    */
+  size?: string | number;
+  /**
    * Renders outer hairlines (borders). If not specified, will be enabled for iOS theme
    *
    * @default false

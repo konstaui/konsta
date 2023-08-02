@@ -1,4 +1,9 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react';
+import React, {
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+  useState,
+} from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
@@ -21,6 +26,9 @@ const Messagebar = forwardRef((props, ref) => {
     outline = false,
     leftClassName = '',
     rightClassName = '',
+    textareaId,
+    disabled,
+    size,
 
     left,
     right,
@@ -30,6 +38,7 @@ const Messagebar = forwardRef((props, ref) => {
 
     onInput,
     onChange,
+    onFocus,
 
     children,
     ...rest
@@ -43,16 +52,23 @@ const Messagebar = forwardRef((props, ref) => {
     areaElRef: areaElRef.current,
   }));
 
+  const [isFocused, setIsFocused] = useState(false);
+
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
   const colors = MessagebarColors(colorsProp, dark);
 
+  const onFocusInternal = (e) => {
+    setIsFocused(true);
+    if (onFocus) onFocus(e);
+  };
+
   const c = themeClasses(
     MessagebarClasses({ ...props }, colors, {
       leftClassName,
       rightClassName,
-      darkClasses: dark,
+      isFocused,
     })
   );
 
@@ -75,13 +91,17 @@ const Messagebar = forwardRef((props, ref) => {
         {left && <div className={c.left}>{left}</div>}
         <div className={c.messagebarArea}>
           <textarea
+            id={textareaId}
             ref={areaElRef}
             type="textarea"
             className={c.messagebarInput}
             placeholder={placeholder}
             name={name}
+            size={size}
+            disabled={disabled}
             onInput={onInput}
             onChange={onChange}
+            onFocus={onFocusInternal}
             value={value}
           />
         </div>

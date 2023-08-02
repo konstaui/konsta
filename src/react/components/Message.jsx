@@ -61,13 +61,7 @@ const Message = forwardRef((props, ref) => {
 
   return (
     <Component id={id} ref={elRef} className={classes} {...attrs}>
-      {avatar && (
-        <img
-          className={c.messageAvatar}
-          src={avatar}
-          // style={{ backgroundImage: avatar && `url(${avatar})` }}
-        />
-      )}
+      {avatar && <div className={c.messageAvatar}>{avatar}</div>}
       <div className={c.messageContent}>
         {name && <div className={c.messageName}>{name}</div>}
         {header && <div className={c.messageHeader}>{header}</div>}
@@ -76,7 +70,9 @@ const Message = forwardRef((props, ref) => {
             <div className={c.messageTextHeader}>{textHeader}</div>
           )}
           {text && <div className={c.messageText}>{text}</div>}
-          {textFooter && <div className={c.textFooter}>{textFooter}</div>}
+          {textFooter && (
+            <div className={c.messageTextFooter}>{textFooter}</div>
+          )}
         </div>
         {footer && <div className={c.messageFooter}>{footer}</div>}
       </div>

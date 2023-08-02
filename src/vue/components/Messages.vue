@@ -7,7 +7,6 @@
   import { ref } from 'vue';
   import { MessagesClasses } from '../../shared/classes/MessagesClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
     name: 'k-messages',
@@ -31,7 +30,6 @@
     },
     setup(props, ctx) {
       const elRef = ref(null);
-      useTouchRipple(elRef, props);
 
       const c = useThemeClasses(props, () =>
         MessagesClasses(
@@ -44,6 +42,7 @@
 
       return {
         c,
+        elRef,
       };
     },
   };

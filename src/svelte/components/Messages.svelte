@@ -1,7 +1,6 @@
 <script>
   import { MessagesClasses } from '../../shared/classes/MessagesClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   let className = undefined;
   export { className as class };
@@ -11,9 +10,6 @@
   export let component = 'div';
   export let id = undefined;
   const rippleEl = { current: null };
-  export let touchRipple = true;
-
-  $: useTouchRipple(rippleEl, touchRipple);
 
   $: c = useThemeClasses(
     { ios, material },

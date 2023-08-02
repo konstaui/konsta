@@ -1,6 +1,6 @@
 import { cls } from '../cls.js';
 
-export const MessagebarClasses = (props, colors) => {
+export const MessagebarClasses = (props, colors, { isFocused }) => {
   const {
     rightClassName = '',
     rightClass = '',
@@ -29,7 +29,10 @@ export const MessagebarClasses = (props, colors) => {
       common: 'w-full',
     },
     messagebarInput: {
-      common: 'block w-full focus:outline-none resize-none',
+      common: cls(
+        'block w-full focus:outline-none resize-none',
+        isFocused && 'outline-offset-0'
+      ),
       ios: cls(
         'border h-8 rounded-3xl px-4 leading-4 py-1.5',
         colors.inputBgIos,

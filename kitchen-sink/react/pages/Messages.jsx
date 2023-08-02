@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import { React, useEffect, useState, useRef } from 'react';
+import { React, useState, useRef, useEffect } from 'react';
 import {
   Page,
   Navbar,
@@ -64,17 +64,34 @@ export default function MessagesPage() {
       text: 'Great. And what movie?',
       avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
     },
+    {
+      name: 'Blue Ninja',
+      type: 'received',
+      text: 'What time?',
+      avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
+    },
   ]);
 
-  const messagesEndRef = useRef(null);
+  const pageRef = useRef();
+  const messageRef = useRef();
+
   const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    const pageElement = pageRef.current.current || pageRef.current.el;
+    pageElement.scrollTo({
+      top: pageElement.scrollHeight - pageElement.offsetHeight,
+      behavior: 'smooth',
+    });
+  };
+  const scrollMessageToBottom = () => {
+    const messageElement = messageRef.current.current || messageRef.current.el;
+    messageElement.scrollTo({
+      top: messageElement.scrollHeight - messageElement.offsetHeight,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
-    scrollToBottom();
+    scrollMessageToBottom();
   }, [messagesData]);
 
   const handleSendClick = () => {
@@ -94,30 +111,53 @@ export default function MessagesPage() {
     }
     setMessagesData([...messagesData, ...messagesToSend]);
     setMessageText('');
+    scrollToBottom();
   };
+
   const inputOpacity = messageText ? 1 : 0.3;
   const isClickable = messageText.trim().length > 0;
 
+  const currentDate = new Intl.DateTimeFormat('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+    .formatToParts(new Date())
+    .map((part) => {
+      if (['weekday', 'month', 'day'].includes(part.type)) {
+        return <b key={part.type}>{part.value}</b>;
+      }
+      return part.value;
+    });
+
   return (
-    <Page className="ios:bg-white ios:dark:bg-transparent ">
+    <Page className="ios:bg-white ios:dark:bg-black" ref={pageRef}>
       <Navbar
         title="Messages"
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
-      <Messages>
-        <MessagesTitle>
-          <b>Thursday, July 13,</b> 11:03
-        </MessagesTitle>
+      <Messages ref={messageRef}>
+        <MessagesTitle>{currentDate}</MessagesTitle>
         {messagesData.map((message, index) => (
           <Message
             key={index}
             type={message.type}
             name={message.name}
             text={message.text}
-            avatar={message.avatar}
+            avatar={
+              message.type === 'received' && (
+                <img
+                  alt="avatar"
+                  src={message.avatar}
+                  className="ios:h-8 material:h-8 rounded-full"
+                />
+              )
+            }
           />
         ))}
-        <div ref={messagesEndRef} />
       </Messages>
       <Messagebar
         placeholder="Message"

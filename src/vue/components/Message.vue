@@ -1,11 +1,6 @@
 <template>
   <component :is="component" :id="id" ref="elRef" :class="classes">
-    <img
-      v-if="avatar || $slots.avatar"
-      :class="c.messageAvatar"
-      :src="avatar"
-    />
-    <slot name="avatar" />
+    <div v-if="avatar || $slots.avatar">{{ avatar }}<slot name="avatar" /></div>
     <div :class="c.messageContent">
       <div v-if="name || $slots.name" :class="c.messageName">
         {{ name }}<slot name="name" />
@@ -23,10 +18,13 @@
         <div v-if="text || $slots.text" :class="c.messageText">
           {{ text }}<slot name="text" />
         </div>
-        <div v-if="textFooter || $slots.textFooter" :class="c.textFooter">
+        <div
+          v-if="textFooter || $slots.textFooter"
+          :class="c.messageTextFooter"
+        >
           {{ textFooter }}<slot name="textFooter" />
         </div>
-        <div v-if="footer || $slots.footer" :class="c.footer">
+        <div v-if="footer || $slots.footer" :class="c.messageFooter">
           {{ footer }}<slot name="footer" />
         </div>
       </div>
@@ -40,7 +38,6 @@
   import { MessageColors } from '../../shared/colors/MessageColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
     name: 'k-message',
@@ -72,19 +69,13 @@
     },
     setup(props, ctx) {
       const elRef = ref(null);
-      useTouchRipple(elRef, props);
 
       const colors = computed(() =>
         MessageColors(props.colors || {}, useDarkClasses)
       );
 
       const c = useThemeClasses(props, () =>
-        MessageClasses(
-          { ...props },
-          colors.value,
-          ctx.attrs.class,
-          useDarkClasses
-        )
+        MessageClasses({ ...props }, colors.value, ctx.attrs.class)
       );
 
       const classes = computed(() =>

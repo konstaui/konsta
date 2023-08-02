@@ -2,7 +2,6 @@
   import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
   import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import Toolbar from './Toolbar.svelte';
 
@@ -22,20 +21,27 @@
   export let leftClass = '';
   export let rightClass = '';
   export let style = undefined;
+  export let textareaId = undefined;
+  export let disabled = undefined;
+  export let size = undefined;
 
   export let onInput = undefined;
   export let onChange = undefined;
-  export let touchRipple = true;
+  export let onFocus = undefined;
+
 
   const rippleEl = { current: null };
   let areaEl = null ;
-  $: useTouchRipple(rippleEl, touchRipple);
-
-
+  let isFocused = false;
 
   const dark = useDarkClasses();
 
   $: colors = MessagebarColors(colorsProp, dark);
+
+  const onFocusInternal = (e) => {
+    isFocused = true;
+    if (onFocus) onFocus(e);
+  };
 
   $: c = useThemeClasses(
     { ios, material },
@@ -45,8 +51,8 @@
         rightClass,
       },
       colors,
+      { isFocused},
       className,
-      dark,
     ),
     className,
     (v) => (c = v)
@@ -74,14 +80,18 @@
     {/if}
     <div class={c.messagebarArea}>
       <textarea
+        id={textareaId}
         bind:this={areaEl}
         type="textarea"
         class={c.messagebarInput}
         {placeholder}
         {name}
         {value}
+        {size}
+        {disabled}
         on:input={onInput}
         on:change={onChange}
+        on:focus={onFocusInternal}
       />
     </div>
     {#if $$slots.right}
