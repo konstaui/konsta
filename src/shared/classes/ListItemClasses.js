@@ -146,8 +146,8 @@ export const ListItemClasses = (
         contacts &&
         cls(
           'font-semibold top-11-safe sticky',
-          colors.contactsTextIos,
-          colors.contactsBgIos
+          colors.groupTitleContactsTextIos,
+          colors.groupTitleContactsBgIos
         )
       }`,
       material: `h-12 ${titleFontSizeMaterial} ${
@@ -156,8 +156,8 @@ export const ListItemClasses = (
         contacts &&
         cls(
           'pointer-events-none overflow-visible h-12 box-border text-xl font-medium flex max-w-full items-center px-4 top-16-safe sticky',
-          colors.contactsTextMaterial,
-          colors.contactsBgMaterial
+          colors.groupTitleContactsTextMaterial,
+          colors.groupTitleContactsBgMaterial
         )
       }`,
     },

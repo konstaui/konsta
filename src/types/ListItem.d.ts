@@ -99,22 +99,22 @@ interface Props {
      *
      * @default 'text-opacity-90 dark:text-opacity-90'
      */
-    contactsTextIos?: string;
+    groupTitleСontactsTextIos?: string;
     /**
      *
      * @default 'text-md-light-primary dark:text-md-dark-primary'
      */
-    contactsTextMaterial?: string;
+    groupTitleContactsTextMaterial?: string;
     /**
      *
      * @default 'dark:bg-[#323234]'
      */
-    contactsBgIos?: string;
+    groupTitleContactsBgIos?: string;
     /**
      *
      * @default 'bg-transparent dark:bg-transparent'
      */
-    contactsBgMaterial?: string;
+    groupTitleContactsBgMaterial?: string;
   };
 
   /**
