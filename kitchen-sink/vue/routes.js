@@ -14,6 +14,7 @@ import FormInputs from './pages/FormInputs.vue';
 import List from './pages/List.vue';
 import ListButton from './pages/ListButton.vue';
 import MenuList from './pages/MenuList.vue';
+import Messages from './pages/Messages.vue';
 import Navbar from './pages/Navbar.vue';
 import Notification from './pages/Notification.vue';
 import Panel from './pages/SidePanels.vue';
@@ -50,6 +51,7 @@ const routes = [
   List,
   ListButton,
   MenuList,
+  Messages,
   Navbar,
   Notification,
   Panel,

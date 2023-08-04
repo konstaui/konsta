@@ -13,6 +13,7 @@ import FormInputs from './pages/FormInputs.jsx';
 import List from './pages/List.jsx';
 import ListButton from './pages/ListButton.jsx';
 import MenuList from './pages/MenuList.jsx';
+import Messages from './pages/Messages.jsx';
 import Navbar from './pages/Navbar.jsx';
 import Notification from './pages/Notification.jsx';
 import Panel from './pages/SidePanels';
@@ -48,6 +49,7 @@ const routes = [
   List,
   ListButton,
   MenuList,
+  Messages,
   Navbar,
   Notification,
   Panel,

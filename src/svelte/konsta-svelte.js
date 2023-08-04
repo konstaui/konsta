@@ -28,6 +28,10 @@ import ListItem from './components/ListItem.svelte';
 import ListInput from './components/ListInput.svelte';
 import MenuList from './components/MenuList.svelte';
 import MenuListItem from './components/MenuListItem.svelte';
+import Message from './components/Message.svelte';
+import Messagebar from './components/Messagebar.svelte';
+import Messages from './components/Messages.svelte';
+import MessagesTitle from './components/MessagesTitle.svelte';
 import Navbar from './components/Navbar.svelte';
 import NavbarBackLink from './components/NavbarBackLink.svelte';
 import Notification from './components/Notification.svelte';
@@ -88,6 +92,10 @@ export {
   ListInput,
   MenuList,
   MenuListItem,
+  Message,
+  Messagebar,
+  Messages,
+  MessagesTitle,
   Navbar,
   NavbarBackLink,
   Notification,

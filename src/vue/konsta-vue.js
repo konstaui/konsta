@@ -28,6 +28,10 @@ import kListItem from './components/ListItem.vue';
 import kListInput from './components/ListInput.vue';
 import kMenuList from './components/MenuList.vue';
 import kMenuListItem from './components/MenuListItem.vue';
+import kMessage from './components/Message.vue';
+import kMessagebar from './components/Messagebar.vue';
+import kMessages from './components/Messages.vue';
+import kMessagesTitle from './components/MessagesTitle.vue';
 import kNavbar from './components/Navbar.vue';
 import kNavbarBackLink from './components/NavbarBackLink.vue';
 import kNotification from './components/Notification.vue';
@@ -121,6 +125,14 @@ export {
   kMenuList as MenuList,
   kMenuListItem,
   kMenuListItem as MenuListItem,
+  kMessage,
+  kMessage as Message,
+  kMessagebar,
+  kMessagebar as Messagebar,
+  kMessages,
+  kMessages as Messages,
+  kMessagesTitle,
+  kMessagesTitle as MessagesTitle,
   kNavbar,
   kNavbar as Navbar,
   kNavbarBackLink,
