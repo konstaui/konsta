@@ -6,6 +6,7 @@ import Buttons from './pages/Buttons.vue';
 import Cards from './pages/Cards.vue';
 import Checkbox from './pages/Checkbox.vue';
 import Chips from './pages/Chips.vue';
+import ContactsList from './pages/ContactsList.vue';
 import ContentBlock from './pages/ContentBlock.vue';
 import Dialog from './pages/Dialog.vue';
 import Fab from './pages/Fab.vue';
@@ -41,6 +42,7 @@ const routes = [
   Cards,
   Checkbox,
   Chips,
+  ContactsList,
   ContentBlock,
   Dialog,
   Fab,

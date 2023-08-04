@@ -35,7 +35,7 @@
 
   const dark = useDarkClasses();
 
-  $: hasDividers =
+  const hasDividers = () =>
     typeof dividers === 'undefined'
       ? theme === 'ios'
         ? dividersIos
@@ -60,9 +60,11 @@
         : insetMaterial
       : inset;
 
-  setReactiveContext('ListDividersContext', () => ({
-    value: hasDividers,
-  }));
+  setReactiveContext('ListDividersContext', () => {
+    return {
+      value: hasDividers(),
+    };
+  });
 
   $: colors = ListColors(colorsProp, dark);
 

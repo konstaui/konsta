@@ -94,6 +94,10 @@
         type: Boolean,
         default: undefined,
       },
+      contacts: {
+        type: Boolean,
+        default: undefined,
+      },
 
       // Content props
       title: { type: String, default: undefined },
@@ -219,6 +223,8 @@
               typeof props.dividers === 'undefined'
                 ? ListDividersContext.value
                 : props.dividers,
+            contacts:
+              typeof props.contacts === 'undefined' ? '' : props.contacts,
           },
           colors.value,
           {
