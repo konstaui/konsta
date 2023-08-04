@@ -6,7 +6,10 @@
       </template>
     </k-navbar>
     <k-messages>
-      <k-messages-title><span v-html="formattedDate" /></k-messages-title>
+      <k-messages-title
+        ><b>{{ currentDay }}</b
+        >, {{ currentTime }}</k-messages-title
+      >
       <k-message
         v-for="(message, index) in messagesData"
         :key="index"
@@ -207,6 +210,22 @@
         }
       };
 
+      const dateFormatter = new Intl.DateTimeFormat('en-US', {
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric',
+      });
+
+      const timeFormatter = new Intl.DateTimeFormat('en-US', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+
+      const currentDate = new Date();
+      const currentDay = dateFormatter.format(currentDate);
+      const currentTime = timeFormatter.format(currentDate);
+
       return {
         onClick,
         messageText,
@@ -217,32 +236,9 @@
         isClickable,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
+        currentDay,
+        currentTime,
       };
-    },
-    data() {
-      return {
-        formattedDate: '',
-      };
-    },
-    mounted() {
-      const currentDate = new Intl.DateTimeFormat('en-US', {
-        weekday: 'long',
-        month: 'short',
-        day: 'numeric',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-      })
-        .formatToParts(new Date())
-        .map((part) => {
-          if (['weekday', 'month', 'day'].includes(part.type)) {
-            return `<b>${part.value}</b>`;
-          }
-          return part.value;
-        })
-        .join('');
-
-      this.formattedDate = currentDate;
     },
   };
 </script>
