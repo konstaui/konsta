@@ -34,6 +34,7 @@ import kMessages from './components/Messages.vue';
 import kMessagesTitle from './components/MessagesTitle.vue';
 import kNavbar from './components/Navbar.vue';
 import kNavbarBackLink from './components/NavbarBackLink.vue';
+import kNotification from './components/Notification.vue';
 import kPage from './components/Page.vue';
 import kPanel from './components/Panel.vue';
 import kPopover from './components/Popover.vue';
@@ -42,6 +43,7 @@ import kPreloader from './components/Preloader.vue';
 import kProgressbar from './components/Progressbar.vue';
 import kRadio from './components/Radio.vue';
 import kRange from './components/Range.vue';
+import kSearchbar from './components/Searchbar.vue';
 import kSegmented from './components/Segmented.vue';
 import kSegmentedButton from './components/SegmentedButton.vue';
 import kSheet from './components/Sheet.vue';
@@ -135,6 +137,8 @@ export {
   kNavbar as Navbar,
   kNavbarBackLink,
   kNavbarBackLink as NavbarBackLink,
+  kNotification,
+  kNotification as Notification,
   kPage,
   kPage as Page,
   kPanel,
@@ -151,6 +155,8 @@ export {
   kRadio as Radio,
   kRange,
   kRange as Range,
+  kSearchbar,
+  kSearchbar as Searchbar,
   kSegmented,
   kSegmented as Segmented,
   kSegmentedButton,

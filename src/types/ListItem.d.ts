@@ -95,6 +95,26 @@ interface Props {
      * @default 'touch-ripple-black dark:touch-ripple-white'
      */
     touchRipple?: string;
+    /**
+     *
+     * @default 'text-opacity-90 dark:text-opacity-90'
+     */
+    groupTitleСontactsTextIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    groupTitleContactsTextMaterial?: string;
+    /**
+     *
+     * @default 'dark:bg-[#323234]'
+     */
+    groupTitleContactsBgIos?: string;
+    /**
+     *
+     * @default 'bg-transparent dark:bg-transparent'
+     */
+    groupTitleContactsBgMaterial?: string;
   };
 
   /**
@@ -181,6 +201,12 @@ interface Props {
    * @default undefined
    */
   dividers?: boolean;
+   /**
+   * Enables Contacts List by adding required additional classes for styling
+   *
+   * @default undefined
+   */
+   contacts?: boolean;
   /**
    * Renders it as a list group title
    *

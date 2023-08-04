@@ -34,6 +34,7 @@ import Messages from './components/Messages.svelte';
 import MessagesTitle from './components/MessagesTitle.svelte';
 import Navbar from './components/Navbar.svelte';
 import NavbarBackLink from './components/NavbarBackLink.svelte';
+import Notification from './components/Notification.svelte';
 import Page from './components/Page.svelte';
 import Panel from './components/Panel.svelte';
 import Popover from './components/Popover.svelte';
@@ -42,6 +43,7 @@ import Preloader from './components/Preloader.svelte';
 import Progressbar from './components/Progressbar.svelte';
 import Radio from './components/Radio.svelte';
 import Range from './components/Range.svelte';
+import Searchbar from './components/Searchbar.svelte';
 import Segmented from './components/Segmented.svelte';
 import SegmentedButton from './components/SegmentedButton.svelte';
 import Sheet from './components/Sheet.svelte';
@@ -96,6 +98,7 @@ export {
   MessagesTitle,
   Navbar,
   NavbarBackLink,
+  Notification,
   Page,
   Panel,
   Popover,
@@ -104,6 +107,7 @@ export {
   Progressbar,
   Radio,
   Range,
+  Searchbar,
   Segmented,
   SegmentedButton,
   Sheet,

@@ -55,6 +55,19 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       dark('dark:bg-md-dark-secondary-container')
     ),
     touchRipple: cls('touch-ripple-black', dark('dark:touch-ripple-white')),
+    groupTitleContactsTextIos: cls(
+      'text-opacity-90',
+      dark('dark:text-opacity-90')
+    ),
+    groupTitleContactsTextMaterial: cls(
+      'text-md-light-primary',
+      dark('dark:text-md-dark-primary')
+    ),
+    groupTitleContactsBgIos: cls(dark('dark:bg-[#323234]')),
+    groupTitleContactsBgMaterial: cls(
+      'bg-transparent',
+      dark('dark:bg-transparent')
+    ),
     ...colorsProp,
   };
 };

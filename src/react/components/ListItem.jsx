@@ -57,6 +57,7 @@ const ListItem = forwardRef((props, ref) => {
     linkProps = {},
 
     dividers: dividersProp,
+    contacts,
 
     ios,
     material,

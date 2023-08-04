@@ -34,6 +34,7 @@ import Messages from './components/Messages.jsx';
 import MessagesTitle from './components/MessagesTitle.jsx';
 import Navbar from './components/Navbar.jsx';
 import NavbarBackLink from './components/NavbarBackLink.jsx';
+import Notification from './components/Notification.jsx';
 import Page from './components/Page.jsx';
 import Panel from './components/Panel.jsx';
 import Popover from './components/Popover.jsx';
@@ -42,6 +43,7 @@ import Preloader from './components/Preloader.jsx';
 import Progressbar from './components/Progressbar.jsx';
 import Radio from './components/Radio.jsx';
 import Range from './components/Range.jsx';
+import Searchbar from './components/Searchbar.jsx';
 import Segmented from './components/Segmented.jsx';
 import SegmentedButton from './components/SegmentedButton.jsx';
 import Sheet from './components/Sheet.jsx';
@@ -98,6 +100,7 @@ export {
   MessagesTitle,
   Navbar,
   NavbarBackLink,
+  Notification,
   Page,
   Panel,
   Popover,
@@ -106,6 +109,7 @@ export {
   Progressbar,
   Radio,
   Range,
+  Searchbar,
   Segmented,
   SegmentedButton,
   Sheet,

@@ -5,6 +5,7 @@ import Buttons from './pages/Buttons.jsx';
 import Cards from './pages/Cards.jsx';
 import Checkbox from './pages/Checkbox.jsx';
 import Chips from './pages/Chips.jsx';
+import ContactsList from './pages/ContactsList.jsx';
 import ContentBlock from './pages/ContentBlock.jsx';
 import Dialog from './pages/Dialog.jsx';
 import Fab from './pages/Fab.jsx';
@@ -14,6 +15,7 @@ import ListButton from './pages/ListButton.jsx';
 import MenuList from './pages/MenuList.jsx';
 import Messages from './pages/Messages.jsx';
 import Navbar from './pages/Navbar.jsx';
+import Notification from './pages/Notification.jsx';
 import Panel from './pages/SidePanels';
 import Popover from './pages/Popover.jsx';
 import Popup from './pages/Popup.jsx';
@@ -21,6 +23,7 @@ import Preloader from './pages/Preloader.jsx';
 import Progressbar from './pages/Progressbar.jsx';
 import Radio from './pages/Radio.jsx';
 import RangeSlider from './pages/RangeSlider.jsx';
+import Searchbar from './pages/Searchbar.jsx';
 import SegmentedControl from './pages/SegmentedControl.jsx';
 import SheetModal from './pages/SheetModal.jsx';
 import Stepper from './pages/Stepper.jsx';
@@ -38,6 +41,7 @@ const routes = [
   Cards,
   Checkbox,
   Chips,
+  ContactsList,
   ContentBlock,
   Dialog,
   Fab,
@@ -47,6 +51,7 @@ const routes = [
   MenuList,
   Messages,
   Navbar,
+  Notification,
   Panel,
   Popover,
   Popup,
@@ -54,6 +59,7 @@ const routes = [
   Progressbar,
   Radio,
   RangeSlider,
+  Searchbar,
   SegmentedControl,
   SheetModal,
   Stepper,
