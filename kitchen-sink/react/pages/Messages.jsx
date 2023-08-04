@@ -73,25 +73,19 @@ export default function MessagesPage() {
   ]);
 
   const pageRef = useRef();
-  const messageRef = useRef();
+  const initiallyScrolled = useRef(false);
 
   const scrollToBottom = () => {
     const pageElement = pageRef.current.current || pageRef.current.el;
     pageElement.scrollTo({
       top: pageElement.scrollHeight - pageElement.offsetHeight,
-      behavior: 'smooth',
-    });
-  };
-  const scrollMessageToBottom = () => {
-    const messageElement = messageRef.current.current || messageRef.current.el;
-    messageElement.scrollTo({
-      top: messageElement.scrollHeight - messageElement.offsetHeight,
-      behavior: 'smooth',
+      behavior: initiallyScrolled.current ? 'smooth' : 'auto',
     });
   };
 
   useEffect(() => {
-    scrollMessageToBottom();
+    scrollToBottom();
+    initiallyScrolled.current = true;
   }, [messagesData]);
 
   const handleSendClick = () => {
@@ -103,15 +97,12 @@ export default function MessagesPage() {
         text,
         type,
       });
-
-      console.log(messagesToSend);
     }
     if (messagesToSend.length === 0) {
       return;
     }
     setMessagesData([...messagesData, ...messagesToSend]);
     setMessageText('');
-    scrollToBottom();
   };
 
   const inputOpacity = messageText ? 1 : 0.3;
@@ -139,7 +130,7 @@ export default function MessagesPage() {
         title="Messages"
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
-      <Messages ref={messageRef}>
+      <Messages>
         <MessagesTitle>{currentDate}</MessagesTitle>
         {messagesData.map((message, index) => (
           <Message
@@ -152,7 +143,7 @@ export default function MessagesPage() {
                 <img
                   alt="avatar"
                   src={message.avatar}
-                  className="ios:h-8 material:h-8 rounded-full"
+                  className="w-8 h-8 rounded-full"
                 />
               )
             }

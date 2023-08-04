@@ -80,21 +80,25 @@
   ];
 
   const isPreview = document.location.href.includes('examplePreview');
+  let shouldScrollMessages = false;
 
-  let messagesEndRef;
-
-  const scrollToBottom = () => {
-    if (messagesEndRef) {
-      messagesEndRef.scrollIntoView({ behavior: 'smooth' });
-    }
+  const scrollToBottom = (animate = true) => {
+    const pageEl = document.querySelector('.messages-page');
+    pageEl.scrollTo({
+      top: pageEl.scrollHeight - pageEl.offsetHeight,
+      behavior: animate ? 'smooth' : 'auto',
+    });
   };
 
   onMount(() => {
-    scrollToBottom();
+    scrollToBottom(false);
   });
 
   afterUpdate(() => {
-    scrollToBottom();
+    if (shouldScrollMessages) {
+      scrollToBottom();
+      shouldScrollMessages = false;
+    }
   });
 
   const handleSendClick = () => {
@@ -105,11 +109,11 @@
       messagesData = [...messagesData, messageToSend];
       messageText = '';
       inputOpacity = 0.3;
+      shouldScrollMessages = true;
     } else {
       return;
     }
   };
-
 
   const currentDateParts = new Intl.DateTimeFormat('en-US', {
     weekday: 'long',
@@ -129,10 +133,9 @@
       currentDate += part.value;
     }
   });
-
 </script>
 
-<Page class="ios:bg-white ios:dark:bg-black">
+<Page class="ios:bg-white ios:dark:bg-black messages-page">
   <Navbar title="Messages">
     <svelte:fragment slot="left">
       {#if !isPreview}
@@ -152,7 +155,12 @@
           name={message.name}
           text={message.text}
         >
-          <img slot="avatar" alt="avatar" class="ios:h-8 material:h-8 rounded-full" src={message.avatar}/>
+          <img
+            slot="avatar"
+            alt="avatar"
+            class="w-8 h-8 rounded-full"
+            src={message.avatar}
+          />
         </Message>
       {:else}
         <Message
@@ -163,7 +171,6 @@
         />
       {/if}
     {/each}
-    <div bind:this={messagesEndRef} />
   </Messages>
   <Messagebar
     placeholder="Message"
@@ -171,23 +178,29 @@
     onInput={onMessageTextChange}
   >
     <Link toolbar iconOnly slot="left">
-        <Icon>
-          <CameraFill  slot="ios" class="w-7 h-7"/>
-          <MdCameraAlt slot="material" class="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
-        </Icon>
+      <Icon>
+        <CameraFill slot="ios" class="w-7 h-7" />
+        <MdCameraAlt
+          slot="material"
+          class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
+        />
+      </Icon>
     </Link>
     <Link
       toolbar
       slot="right"
-      onClick={() => isClickable ? handleSendClick() : undefined}
-      style="opacity: {inputOpacity}; cursor: {isClickable ? 'pointer' : 'default'}"
+      onClick={() => (isClickable ? handleSendClick() : undefined)}
+      style="opacity: {inputOpacity}; cursor: {isClickable
+        ? 'pointer'
+        : 'default'}"
     >
       <Icon>
-        <ArrowUpCircleFill  slot="ios" class="w-7 h-7"/>
-        <MdSend slot="material" class="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+        <ArrowUpCircleFill slot="ios" class="w-7 h-7" />
+        <MdSend
+          slot="material"
+          class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
+        />
       </Icon>
-  </Link>
+    </Link>
   </Messagebar>
 </Page>
-
-

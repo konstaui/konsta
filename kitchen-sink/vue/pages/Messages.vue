@@ -1,5 +1,5 @@
 <template>
-  <k-page class="ios:bg-white ios:dark:bg-black">
+  <k-page class="ios:bg-white ios:dark:bg-black messages-page">
     <k-navbar title="Messages">
       <template v-if="!isPreview" #left>
         <k-navbar-back-link @click="() => history.back()" />
@@ -17,12 +17,11 @@
         <template v-if="message.type === 'received'" #avatar>
           <img
             alt="avatar"
-            class="ios:h-8 material:h-8 rounded-full"
+            class="w-8 h-8 rounded-full"
             :src="message.avatar"
           />
         </template>
       </k-message>
-      <div ref="messagesEndRef" />
     </k-messages>
     <k-messagebar
       placeholder="Message"
@@ -164,13 +163,14 @@
           avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
         },
       ]);
-      const messagesEndRef = ref(null);
-      const scrollToBottom = () => {
-        if (messagesEndRef.value) {
-          messagesEndRef.value.scrollIntoView({ behavior: 'smooth' });
-        }
+      const scrollToBottom = (animate = true) => {
+        const pageEl = document.querySelector('.messages-page');
+        pageEl.scrollTo({
+          top: pageEl.scrollHeight - pageEl.offsetHeight,
+          behavior: animate ? 'smooth' : 'auto',
+        });
       };
-      onMounted(scrollToBottom);
+      onMounted(() => scrollToBottom(false));
       watch(messagesData, () => {
         scrollToBottom();
       });
@@ -212,7 +212,6 @@
         messageText,
         messagesData,
         onMessageTextChange,
-        messagesEndRef,
         handleSendClick,
         inputOpacity,
         isClickable,
