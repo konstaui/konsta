@@ -1,6 +1,8 @@
 <template>
   <component :is="component" :id="id" ref="elRef" :class="classes">
-    <div v-if="avatar || $slots.avatar">{{ avatar }}<slot name="avatar" /></div>
+    <div v-if="avatar || $slots.avatar" :class="c.messageAvatar">
+      {{ avatar }}<slot name="avatar" />
+    </div>
     <div :class="c.messageContent">
       <div v-if="name || $slots.name" :class="c.messageName">
         {{ name }}<slot name="name" />
@@ -75,7 +77,7 @@
       );
 
       const c = useThemeClasses(props, () =>
-        MessageClasses({ ...props }, colors.value, ctx.attrs.class)
+        MessageClasses({ ...props }, colors.value)
       );
 
       const classes = computed(() =>

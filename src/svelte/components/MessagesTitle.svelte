@@ -22,7 +22,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    MessagesTitleClasses({}, colors, className),
+    MessagesTitleClasses({}, colors),
     className,
     (v) => (c = v)
   );
@@ -30,7 +30,7 @@
 
 <svelte:element
   this={component}
-  id={id}
+  {id}
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}

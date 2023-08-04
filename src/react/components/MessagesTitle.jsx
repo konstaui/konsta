@@ -28,11 +28,7 @@ const MessagesTitle = forwardRef((props, ref) => {
   const dark = useDarkClasses();
 
   const colors = MessagesTitleColors(colorsProp, dark);
-  const c = themeClasses(
-    MessagesTitleClasses({ ...props }, colors, {
-      darkClasses: dark,
-    })
-  );
+  const c = themeClasses(MessagesTitleClasses({ ...props }, colors));
 
   const Component = component;
 

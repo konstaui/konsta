@@ -5,13 +5,11 @@ export const MessagebarClasses = (props, colors, { isFocused }) => {
     rightClassName = '',
     rightClass = '',
     leftClassName = '',
-    leftClass,
+    leftClass = '',
   } = props;
   return {
     base: {
       common: 'fixed bottom-0 start-0 w-full',
-      ios: cls('pb-safe'),
-      material: cls('pt-1 pb-1-safe'),
     },
     toolbar: {
       material: colors.bgMessage,

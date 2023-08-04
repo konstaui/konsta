@@ -45,9 +45,7 @@ const Message = forwardRef((props, ref) => {
   const dark = useDarkClasses();
   const colors = MessageColors(colorsProp, dark);
 
-  const c = themeClasses(
-    MessageClasses({ ...props }, colors, { darkClasses: dark })
-  );
+  const c = themeClasses(MessageClasses({ ...props }, colors));
   const Component = component;
 
   const attrs = {

@@ -30,7 +30,7 @@
       },
       id: String,
     },
-    setup(props, ctx) {
+    setup(props) {
       const elRef = ref(null);
 
       const colors = computed(() =>
@@ -42,8 +42,7 @@
           {
             ...props,
           },
-          colors.value,
-          ctx.attrs.class
+          colors.value
         )
       );
 
