@@ -115,24 +115,22 @@
     }
   };
 
-  const currentDateParts = new Intl.DateTimeFormat('en-US', {
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
     weekday: 'long',
     month: 'short',
     day: 'numeric',
+  });
+
+  const timeFormatter = new Intl.DateTimeFormat('en-US', {
     hour12: false,
     hour: '2-digit',
     minute: '2-digit',
-  }).formatToParts(new Date());
-
-  let currentDate = '';
-
-  currentDateParts.forEach((part) => {
-    if (['weekday', 'month', 'day'].includes(part.type)) {
-      currentDate += `<b>${part.value}</b>`;
-    } else {
-      currentDate += part.value;
-    }
   });
+
+  const currentDate = new Date();
+  const currentDay = dateFormatter.format(currentDate);
+  const currentTime = timeFormatter.format(currentDate);
+
 </script>
 
 <Page class="ios:bg-white ios:dark:bg-black messages-page">
@@ -145,7 +143,7 @@
   </Navbar>
   <Messages>
     <MessagesTitle>
-      <span>{@html currentDate}</span>
+      <b>{currentDay}</b> , {currentTime}
     </MessagesTitle>
     {#each messagesData as message, index (index)}
       {#if message.type === 'received'}
