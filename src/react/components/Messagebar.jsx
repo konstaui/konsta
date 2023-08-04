@@ -24,7 +24,9 @@ const Messagebar = forwardRef((props, ref) => {
     placeholder = 'Message',
     value,
     outline = false,
+    // eslint-disable-next-line
     leftClassName = '',
+    // eslint-disable-next-line
     rightClassName = '',
     textareaId,
     disabled,
@@ -66,8 +68,6 @@ const Messagebar = forwardRef((props, ref) => {
 
   const c = themeClasses(
     MessagebarClasses({ ...props }, colors, {
-      leftClassName,
-      rightClassName,
       isFocused,
     })
   );
@@ -80,14 +80,7 @@ const Messagebar = forwardRef((props, ref) => {
 
   return (
     <Component ref={elRef} id={id} style={style} className={c.base} {...attrs}>
-      <Toolbar
-        colors={{
-          ...colors,
-          bgMaterial: 'bg-inherit',
-          bgIos: 'inherit dark:bg-ios-dark-surface-3',
-        }}
-        outline={outline}
-      >
+      <Toolbar colors={colors} outline={outline}>
         {left && <div className={c.left}>{left}</div>}
         <div className={c.messagebarArea}>
           <textarea

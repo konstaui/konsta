@@ -29,9 +29,8 @@
   export let onChange = undefined;
   export let onFocus = undefined;
 
-
   const rippleEl = { current: null };
-  let areaEl = null ;
+  let areaEl = null;
   let isFocused = false;
 
   const dark = useDarkClasses();
@@ -51,8 +50,7 @@
         rightClass,
       },
       colors,
-      { isFocused},
-      className,
+      { isFocused }
     ),
     className,
     (v) => (c = v)
@@ -61,22 +59,15 @@
 
 <svelte:element
   this={component}
-  id={id}
-  style={style}
+  {id}
+  {style}
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}
 >
-  <Toolbar
-    colors={{
-      ...colors,
-      bgMaterial: 'bg-inherit',
-      bgIos: 'inherit dark:bg-ios-dark-surface-3',
-    }}
-    outline={outline}
-  >
+  <Toolbar {colors} {outline}>
     {#if $$slots.left}
-      <div class={c.left}><slot name="left"/></div>
+      <div class={c.left}><slot name="left" /></div>
     {/if}
     <div class={c.messagebarArea}>
       <textarea
@@ -95,7 +86,7 @@
       />
     </div>
     {#if $$slots.right}
-      <div class={c.right}><slot name="right"/></div>
+      <div class={c.right}><slot name="right" /></div>
     {/if}
   </Toolbar>
 </svelte:element>

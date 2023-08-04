@@ -1,9 +1,9 @@
 interface Props {
   /**
-  * Component's HTML Element
-  *
-  * @default 'div'
-  */
+   * Component's HTML Element
+   *
+   * @default 'div'
+   */
   component?: string;
   colors?: {
     /**
@@ -31,17 +31,27 @@ interface Props {
      * @default 'bg-md-light-surface-2 dark:bg-md-dark-surface-variant'
      */
     inputBgMd?: string;
-     /**
+    /**
      *
      * @default 'dark:placeholder-white dark:placeholder-opacity-40'
      */
-     placeholderIos?: string;
+    placeholderIos?: string;
     /**
      *
      * @default 'placeholder-md-light-on-surface-variant dark:placeholder-md-dark-on-surface-variant'
      */
-      placeholderMd?: string;
-  }
+    placeholderMd?: string;
+    /**
+     *
+     * @default 'bg-white dark:bg-black'
+     */
+    bgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface dark:bg-md-dark-surface'
+     */
+    bgMaterial?: string;
+  };
   /**
    * Messagebar id attribute
    */
@@ -76,8 +86,8 @@ interface Props {
    */
   disabled?: boolean;
   /**
-    * Value of textarea's native "size" attribute
-    */
+   * Value of textarea's native "size" attribute
+   */
   size?: string | number;
   /**
    * Renders outer hairlines (borders). If not specified, will be enabled for iOS theme
@@ -94,12 +104,12 @@ interface Props {
    */
   rightClassName?: string;
   /**
-  * Content of the Messagebar's "left" area
-  */
+   * Content of the Messagebar's "left" area
+   */
   left?: string | number | React.ReactNode;
   /**
-  * Content of the Messagebar's "right" area
-  */
+   * Content of the Messagebar's "right" area
+   */
   right?: string | number | React.ReactNode;
   /**
    * `input` event handler

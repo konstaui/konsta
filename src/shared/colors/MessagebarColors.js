@@ -20,6 +20,8 @@ export const MessagebarColors = (colorsProp = {}, dark) => {
       'placeholder-md-light-on-surface-variant',
       dark('dark:placeholder-md-dark-on-surface-variant')
     ),
+    bgIos: cls('bg-white', dark('dark:bg-black')),
+    bgMaterial: cls('bg-md-light-surface', dark('dark:bg-md-dark-surface')),
     ...colorsProp,
   };
 };

@@ -1,13 +1,6 @@
 <template>
   <component :is="component" :id="id" ref="elRef" :class="c.base">
-    <k-toolbar
-      :outline="outline"
-      :colors="{
-        ...colors,
-        bgMaterial: 'bg-inherit',
-        bgIos: 'inherit dark:bg-ios-dark-surface-3',
-      }"
-    >
+    <k-toolbar :outline="outline" :colors="colors">
       <div v-if="slots.left" :class="c.left"><slot name="left" /></div>
       <div :class="c.messagebarArea">
         <textarea
@@ -91,8 +84,7 @@
             ...props,
           },
           colors.value,
-          isFocused,
-          ctx.attrs.class
+          { isFocused }
         )
       );
 
