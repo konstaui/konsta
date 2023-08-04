@@ -52,7 +52,6 @@
         default: undefined,
       },
       id: String,
-      left: { type: String, default: undefined },
       name: { type: String, default: undefined },
       value: { type: [Number, String], default: undefined },
       placeholder: { type: String, defaullt: 'Message' },
