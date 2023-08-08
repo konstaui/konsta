@@ -36,7 +36,7 @@
   );
 </script>
 
-<div class={c.base[style]} {...$$restProps} role="none" on:click={onClick}>
+<div class={c.base[style]} {...$$restProps} on:click={onClick}>
   {#if $$slots.media}
     <div class={c.media}><slot name="media" /></div>
   {/if}

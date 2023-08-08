@@ -41,7 +41,7 @@
 </script>
 
 {#if theme === 'ios'}
-  <div class={c.base} {...$$restProps} role="none" on:click={onClick}>
+  <div class={c.base} {...$$restProps} on:click={onClick}>
     <div class={c.header}>
       {#if $$slots.icon}
         <div class={c.icon}><slot name="icon" /></div>
@@ -74,7 +74,7 @@
     </div>
   </div>
 {:else}
-  <div class={c.base} {...$$restProps} role="none" on:click={onClick}>
+  <div class={c.base} {...$$restProps} on:click={onClick}>
     <div class={c.header}>
       {#if $$slots.icon}
         <div class={c.icon}><slot name="icon" /></div>

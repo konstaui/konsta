@@ -180,7 +180,6 @@
   <svelte:element
     this={component}
     class={cls(c.groupTitle, className)}
-    role="none"
     on:click={onClick}
   >
     {title}
@@ -192,7 +191,6 @@
     this={component}
     class={c.base}
     {...$$restProps}
-    role="none"
     on:click={onClick}
   >
     {#if typeof ItemContentComponent === 'string'}
