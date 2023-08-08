@@ -13,7 +13,7 @@
       >
         {{ titleRightText }}<slot name="titleRightText" />
       </div>
-      <div v-if="button || slots.button" :class="c.button" @click="onClose">
+      <div v-if="button || slots.button" :class="c.button" role="button" tabindex="0" @click="onClose">
         <delete-icon :theme="theme" :class="c.deleteIcon" />
         <slot name="button" />
       </div>
@@ -55,7 +55,7 @@
           <slot />
         </div>
       </div>
-      <div v-if="button || slots.button" :class="c.button" @click="onClose">
+      <div v-if="button || slots.button" :class="c.button" role="button" tabindex="0" @click="onClose">
         <delete-icon :theme="theme" :class="c.deleteIcon" />
         <slot name="button" />
       </div>

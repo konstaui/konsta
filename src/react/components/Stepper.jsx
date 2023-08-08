@@ -153,6 +153,8 @@ const Stepper = forwardRef((props, ref) => {
       <span
         ref={buttonLeftElRef}
         className={buttonLeftClasses}
+        role="button"
+        tabindex="0"
         onClick={onMinus}
       >
         <span className={c.hBar} />
@@ -177,6 +179,8 @@ const Stepper = forwardRef((props, ref) => {
       <span
         ref={buttonRightElRef}
         className={buttonRightClasses}
+        role="button"
+        tabindex="0"
         onClick={onPlus}
       >
         <span className={c.hBar} />

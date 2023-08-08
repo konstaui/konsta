@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="c.base">
+  <component :is="component" :class="c.base" role="button" tabindex="0" >
     <span :class="c.dot" />
     <span :class="c.dot" />
     <span :class="c.dot" />

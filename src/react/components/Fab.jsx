@@ -56,6 +56,7 @@ const Fab = forwardRef((props, ref) => {
       className={text ? c.base.withText : c.base.iconOnly}
       href={href}
       ref={rippleElRef}
+      role="button" tabindex="0"
       {...attrs}
     >
       {text && textPosition === 'before' && (

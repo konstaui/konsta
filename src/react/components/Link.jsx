@@ -96,6 +96,8 @@ const Link = forwardRef((props, ref) => {
       ref={rippleElRef}
       className={classes}
       {...attrs}
+      role="link"
+      tabindex="0"
       onClick={onClick}
     >
       {children}

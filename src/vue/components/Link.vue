@@ -4,6 +4,8 @@
     ref="rippleElRef"
     :class="classes"
     v-bind="linkProps"
+    role="link"
+    tabindex="0"
   >
     <slot />
   </component>

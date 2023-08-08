@@ -1,5 +1,5 @@
 <template>
-  <component :is="component" :class="c.base">
+  <component :is="component" :class="c.base" role="menuitem" tabindex="0">
     <slot />
   </component>
 </template>
