@@ -26,6 +26,6 @@
   );
 </script>
 
-<span class={c.base[size]} {...$$restProps} on:click={onClick}>
+<span class={c.base[size]} role="none" {...$$restProps} on:click={onClick}>
   <slot />
 </span>

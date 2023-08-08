@@ -195,6 +195,8 @@
     class={classes}
     {disabled}
     {...attrs}
+    role="button"
+    tabindex="0"
     on:click={onClick}
   >
     <slot />

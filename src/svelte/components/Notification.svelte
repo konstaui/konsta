@@ -41,7 +41,7 @@
 </script>
 
 {#if theme === 'ios'}
-  <div class={c.base} {...$$restProps} on:click={onClick}>
+  <div class={c.base} {...$$restProps} role="none" on:click={onClick}>
     <div class={c.header}>
       {#if $$slots.icon}
         <div class={c.icon}><slot name="icon" /></div>
@@ -55,7 +55,7 @@
         </div>
       {/if}
       {#if button || $$slots.button}
-        <div class={c.button} on:click={onClose}>
+        <div class={c.button} role="button" tabindex="0" on:click={onClose}>
           <DeleteIcon {theme} class={c.deleteIcon} />
           <slot name="button" />
         </div>
@@ -74,7 +74,7 @@
     </div>
   </div>
 {:else}
-  <div class={c.base} {...$$restProps} on:click={onClick}>
+  <div class={c.base} {...$$restProps} role="none" on:click={onClick}>
     <div class={c.header}>
       {#if $$slots.icon}
         <div class={c.icon}><slot name="icon" /></div>
@@ -103,7 +103,7 @@
         </div>
       </div>
       {#if button || $$slots.button}
-        <div class={c.button} on:click={onClose}>
+        <div class={c.button} role="button" tabindex="0" on:click={onClose}>
           <DeleteIcon {theme} class={c.deleteIcon} />
           <slot name="button" />
         </div>
