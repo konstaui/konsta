@@ -14,7 +14,8 @@ import * as React from 'react';
 ${propsContent}
 
 interface ${componentName}Props {}
-interface ${componentName}Props extends React.HTMLAttributes<HTMLElement> {}
+export interface Props extends Omit<React.HTMLAttributes<HTMLElement>, keyof Props> {}
+
 interface ${componentName}Props extends Props {}
 
 declare const ${componentName}: React.FunctionComponent<${componentName}Props>;
