@@ -130,6 +130,8 @@
   <span
     bind:this={buttonLeftEl.current}
     class={buttonLeftClasses}
+    role="button"
+    tabindex="0"
     on:click={onMinus}
   >
     <span class={c.hBar} />
@@ -155,6 +157,8 @@
   <span
     bind:this={buttonRightEl.current}
     class={buttonRightClasses}
+    role="button"
+    tabindex="0"
     on:click={onPlus}
   >
     <span class={c.hBar} />

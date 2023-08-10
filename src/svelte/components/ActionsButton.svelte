@@ -74,6 +74,8 @@
   this={Component}
   bind:this={rippleEl.current}
   class={c.base}
+  role="button"
+  tabindex="0"
   on:click={onClick}
   {...attrs}
 >

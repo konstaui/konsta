@@ -5,6 +5,8 @@
     ref="rippleElRef"
     :class="c.base"
     :disabled="disabled"
+    role="button"
+    tabindex="0"
   >
     <slot />
   </component>

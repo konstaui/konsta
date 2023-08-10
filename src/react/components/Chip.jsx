@@ -56,7 +56,7 @@ const Chip = forwardRef((props, ref) => {
       {media && <div className={c.media}>{media}</div>}
       {children}
       {deleteButton && (
-        <div className={c.deleteButton} onClick={onDelete}>
+        <div className={c.deleteButton} role="button" tabindex="0" onClick={onDelete}>
           <DeleteIcon theme={theme} className="h-4 w-4" />
         </div>
       )}

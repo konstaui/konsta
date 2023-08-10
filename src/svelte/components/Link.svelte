@@ -87,6 +87,8 @@
   class={classes}
   {...$$restProps}
   {...linkProps}
+  role="link"
+  tabindex="0"
   on:click={onClick}
 >
   <slot />

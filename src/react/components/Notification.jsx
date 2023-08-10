@@ -65,7 +65,7 @@ const Notification = forwardRef((props, ref) => {
             <div className={c.titleRightText}>{titleRightText}</div>
           )}
           {button && (
-            <div className={c.button} onClick={onClose}>
+            <div className={c.button} role="button" tabindex="0" onClick={onClose}>
               <DeleteIcon theme={theme} className={c.deleteIcon} />
             </div>
           )}
@@ -95,7 +95,7 @@ const Notification = forwardRef((props, ref) => {
           </div>
         </div>
         {button && (
-          <div className={c.button} onClick={onClose}>
+          <div className={c.button} role="button" tabindex="0" onClick={onClose}>
             <DeleteIcon theme={theme} className={c.deleteIcon} />
           </div>
         )}

@@ -28,6 +28,6 @@
   );
 </script>
 
-<div class={c.base} {...$$restProps} on:click={onClick}>
+<div class={c.base} {...$$restProps} role="menuitem" tabindex="0" on:click={onClick}>
   <slot />
 </div>

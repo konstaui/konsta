@@ -44,6 +44,8 @@
     class={text ? c.base.withText : c.base.iconOnly}
     {href}
     bind:this={rippleEl.current}
+    role="button"
+    tabindex="0"
     on:click={onClick}
     {...$$restProps}
   >
