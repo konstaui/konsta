@@ -1,4 +1,4 @@
-import { SvelteComponentTyped } from 'svelte';
+import { SvelteComponent } from 'svelte';
 // IMPORT_COMPONENTS
 
 // PROVIDER
@@ -22,7 +22,7 @@ interface KonstaProviderProps {
    */
   touchRipple?: boolean;
 }
-declare class KonstaProvider extends SvelteComponentTyped<
+declare class KonstaProvider extends SvelteComponent<
   KonstaProviderProps,
   {},
   { default: {} }
