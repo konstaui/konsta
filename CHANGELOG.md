@@ -1,5 +1,19 @@
 # Changelog
 
+# [3.0.0](https://github.com/konstaui/konsta/compare/v2.0.0...v3.0.0) (2023-08-23)
+
+### Bug Fixes
+
+- **types:** omit props in HTMLElement extension ([#162](https://github.com/konstaui/konsta/issues/162)) ([ce2576d](https://github.com/konstaui/konsta/commit/ce2576d939ad86f0b77c57ad17b8df035ba537a3)), closes [#159](https://github.com/konstaui/konsta/issues/159)
+
+### Features
+
+- add aria role attributes ([#161](https://github.com/konstaui/konsta/issues/161)) ([59216a6](https://github.com/konstaui/konsta/commit/59216a6f4daa5b438eab0a477e2853f5195dc117)), closes [#155](https://github.com/konstaui/konsta/issues/155)
+- add Notification component ([#154](https://github.com/konstaui/konsta/issues/154)) ([9724f7c](https://github.com/konstaui/konsta/commit/9724f7cfaa069424f8b0abf7094e7ffb7a1345f5))
+- Contacts component ([#153](https://github.com/konstaui/konsta/issues/153)) ([de8e0b2](https://github.com/konstaui/konsta/commit/de8e0b22de66dbf04b42e7dc878891dea5469638))
+- Messages Component ([#152](https://github.com/konstaui/konsta/issues/152)) ([3e7ae5b](https://github.com/konstaui/konsta/commit/3e7ae5b060905bd8c295978cb2dc034552424a05))
+- Searchbar component ([#150](https://github.com/konstaui/konsta/issues/150)) ([5fedde6](https://github.com/konstaui/konsta/commit/5fedde6fd9d32f059ec34c0799a262172b2968ef))
+
 # [2.0.0](https://github.com/konstaui/konsta/compare/v1.0.2...v2.0.0) (2023-04-21)
 
 ### Breaking
