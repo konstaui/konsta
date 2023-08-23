@@ -35,13 +35,14 @@
 
   const dark = useDarkClasses();
 
-  // eslint-disable-next-line
+  /* eslint-disable */
   const hasDividers = () =>
     typeof dividers === 'undefined'
       ? theme === 'ios'
         ? dividersIos
         : dividersMaterial
       : dividers;
+  /* eslint-enable */
   $: isStrong =
     typeof strong === 'undefined'
       ? theme === 'ios'
@@ -54,13 +55,14 @@
         ? outlineIos
         : outlineMaterial
       : outline;
-  // eslint-disable-next-line
+  /* eslint-disable */
   $: isInset =
     typeof inset === 'undefined'
       ? theme === 'ios'
         ? insetIos
         : insetMaterial
       : inset;
+  /* eslint-enable */
 
   // eslint-disable-next-line
   setReactiveContext('ListDividersContext', () => {

@@ -44,8 +44,7 @@
   }
 
   let filteredItems = [];
-
-  // eslint-disable-next-line
+  /* eslint-disable */
   $: {
     filteredItems = searchQuery
       ? items.filter((item) =>
@@ -53,6 +52,7 @@
         )
       : items;
   }
+  /* eslint-enable */
 </script>
 
 <Page>
