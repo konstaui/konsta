@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import DeleteIcon from './icons/DeleteIcon.svelte';
@@ -9,7 +10,6 @@
   import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
   import { cls } from '../../shared/cls.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import { onMount } from 'svelte';
 
   let className = undefined;
   export { className as class };

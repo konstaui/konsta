@@ -35,6 +35,7 @@
 
   const dark = useDarkClasses();
 
+  // eslint-disable-next-line
   const hasDividers = () =>
     typeof dividers === 'undefined'
       ? theme === 'ios'
@@ -60,6 +61,7 @@
         : insetMaterial
       : inset;
 
+  // eslint-disable-next-line
   setReactiveContext('ListDividersContext', () => {
     return {
       value: hasDividers(),

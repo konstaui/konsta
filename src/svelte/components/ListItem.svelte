@@ -145,7 +145,7 @@
         titleFontSizeIos,
         titleFontSizeMaterial,
         strongTitle,
-        contacts: typeof contacts === 'false' ? '' : contacts,
+        contacts: contacts === 'false' ? '' : contacts,
       },
       colors,
       {

@@ -45,6 +45,7 @@
 
   let filteredItems = [];
 
+  // eslint-disable-next-line
   $: {
     filteredItems = searchQuery
       ? items.filter((item) =>

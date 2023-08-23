@@ -10,10 +10,10 @@
     Icon,
     Link,
   } from 'konsta/svelte';
+  import { onMount, afterUpdate } from 'svelte';
   import { CameraFill, ArrowUpCircleFill } from 'framework7-icons/svelte';
   import MdCameraAlt from '../components/MdCameraAlt.svelte';
   import MdSend from '../components/MdSend.svelte';
-  import { onMount, afterUpdate } from 'svelte';
 
   let messageText = '';
   let isClickable;
@@ -110,8 +110,6 @@
       messageText = '';
       inputOpacity = 0.3;
       shouldScrollMessages = true;
-    } else {
-      return;
     }
   };
 
