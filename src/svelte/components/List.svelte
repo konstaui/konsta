@@ -54,6 +54,7 @@
         ? outlineIos
         : outlineMaterial
       : outline;
+  // eslint-disable-next-line
   $: isInset =
     typeof inset === 'undefined'
       ? theme === 'ios'
