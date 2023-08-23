@@ -21,7 +21,7 @@
 
 <svelte:element
   this={component}
-  id={id}
+  {id}
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}

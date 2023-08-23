@@ -201,12 +201,12 @@ interface Props {
    * @default undefined
    */
   dividers?: boolean;
-   /**
+  /**
    * Enables Contacts List by adding required additional classes for styling
    *
    * @default undefined
    */
-   contacts?: boolean;
+  contacts?: boolean;
   /**
    * Renders it as a list group title
    *

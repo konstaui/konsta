@@ -21,7 +21,7 @@
   </Navbar>
   <List strongIos>
     <ListGroup dividers={false}>
-      <ListItem title="A" groupTitle contacts/>
+      <ListItem title="A" groupTitle contacts />
       <ListItem title="Aaron" contacts />
       <ListItem title="Abbie" contacts />
       <ListItem title="Adam" contacts />

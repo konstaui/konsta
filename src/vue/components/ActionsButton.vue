@@ -1,5 +1,11 @@
 <template>
-  <component :is="Component" ref="rippleElRef" role="button" tabindex="0" :class="c.base">
+  <component
+    :is="Component"
+    ref="rippleElRef"
+    role="button"
+    tabindex="0"
+    :class="c.base"
+  >
     <slot />
   </component>
 </template>

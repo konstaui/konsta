@@ -46,7 +46,7 @@
   let filteredItems = [];
 
   $: {
-     filteredItems = searchQuery
+    filteredItems = searchQuery
       ? items.filter((item) =>
           item.title.toLowerCase().includes(searchQuery.toLowerCase())
         )

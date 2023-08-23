@@ -1,9 +1,9 @@
 interface Props {
   /**
-  * Component's HTML Element
-  *
-  * @default 'div'
-  */
+   * Component's HTML Element
+   *
+   * @default 'div'
+   */
   component?: string;
   colors?: {
     /**
@@ -41,7 +41,7 @@ interface Props {
      * @default 'dark:bg-md-dark-surface-variant bg-[#e5e5ea]'
      */
     bubbleReceivedMd?: string;
-  }
+  };
   /**
    * Message id attribute
    */

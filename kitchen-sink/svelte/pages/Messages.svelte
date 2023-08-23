@@ -130,7 +130,6 @@
   const currentDate = new Date();
   const currentDay = dateFormatter.format(currentDate);
   const currentTime = timeFormatter.format(currentDate);
-
 </script>
 
 <Page class="ios:bg-white ios:dark:bg-black messages-page">

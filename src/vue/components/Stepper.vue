@@ -1,6 +1,12 @@
 <template>
   <component :is="component" :class="classes">
-    <span ref="buttonLeftElRef" :class="buttonLeftClasses" role="button" tabindex="0" @click="onMinus">
+    <span
+      ref="buttonLeftElRef"
+      :class="buttonLeftClasses"
+      role="button"
+      tabindex="0"
+      @click="onMinus"
+    >
       <span :class="c.hBar" />
     </span>
     <input
@@ -18,7 +24,13 @@
     />
     <span v-if="!input && !buttonsOnly" :class="valueClasses">{{ value }}</span>
 
-    <span ref="buttonRightElRef" :class="buttonRightClasses" role="button" tabindex="0" @click="onPlus">
+    <span
+      ref="buttonRightElRef"
+      :class="buttonRightClasses"
+      role="button"
+      tabindex="0"
+      @click="onPlus"
+    >
       <span :class="c.hBar" />
       <span :class="c.vBar" />
     </span>

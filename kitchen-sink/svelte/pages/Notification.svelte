@@ -32,7 +32,6 @@
       }, 3000);
     }
   };
-
 </script>
 
 <Page>
@@ -51,7 +50,7 @@
     subtitle="This is a subtitle"
     text="This is a simple notification message"
   >
-    <DemoIcon slot="icon"/>
+    <DemoIcon slot="icon" />
   </Notification>
 
   <Notification
@@ -62,7 +61,7 @@
     button
     onClose={() => (notificationWithButton = false)}
   >
-    <DemoIcon slot="icon"/>
+    <DemoIcon slot="icon" />
   </Notification>
 
   <Notification
@@ -73,7 +72,7 @@
     text="Click me to close"
     onClick={() => (notificationCloseOnClick = false)}
   >
-    <DemoIcon slot="icon"/>
+    <DemoIcon slot="icon" />
   </Notification>
 
   <Notification
@@ -87,19 +86,14 @@
       alertOpened = true;
     }}
   >
-    <DemoIcon slot="icon"/>
+    <DemoIcon slot="icon" />
   </Notification>
-  <Dialog
-    opened={alertOpened}
-    onBackdropClick={() => (alertOpened = false)}
-  >
+  <Dialog opened={alertOpened} onBackdropClick={() => (alertOpened = false)}>
     <svelte:fragment slot="title">Konsta UI</svelte:fragment>
     Notification closed
 
     <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (alertOpened = false)}>
-        Ок
-      </DialogButton>
+      <DialogButton onClick={() => (alertOpened = false)}>Ок</DialogButton>
     </svelte:fragment>
   </Dialog>
   <Block strongIos outlineIos class="space-y-4">
@@ -113,17 +107,25 @@
       </Button>
     </p>
     <p>
-      <Button onClick={() => openNotification(() => (notificationWithButton = true))}>
+      <Button
+        onClick={() => openNotification(() => (notificationWithButton = true))}
+      >
         With Close Button
       </Button>
     </p>
     <p>
-      <Button onClick={() => openNotification(() => (notificationCloseOnClick = true))}>
+      <Button
+        onClick={() =>
+          openNotification(() => (notificationCloseOnClick = true))}
+      >
         Click to Close
       </Button>
     </p>
     <p>
-      <Button onClick={() => openNotification(() => (notificationCallbackOnClose = true))}>
+      <Button
+        onClick={() =>
+          openNotification(() => (notificationCallbackOnClose = true))}
+      >
         Callback on Close
       </Button>
     </p>

@@ -32,7 +32,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    MessageClasses({type}, colors),
+    MessageClasses({ type }, colors),
     className,
     (v) => (c = v)
   );
@@ -50,7 +50,7 @@
 
 <svelte:element
   this={component}
-  id={id}
+  {id}
   bind:this={rippleEl.current}
   class={classes}
   {...$$restProps}
@@ -60,24 +60,32 @@
   {/if}
   <div class={c.messageContent}>
     {#if name || $$slots.name}
-      <div class={c.messageName}>{printText(name)}<slot name="name"/></div>
+      <div class={c.messageName}>{printText(name)}<slot name="name" /></div>
     {/if}
     {#if header || $$slots.header}
-      <div class={c.messageHeader}>{printText(header)}<slot name="header"/></div>
+      <div class={c.messageHeader}>
+        {printText(header)}<slot name="header" />
+      </div>
     {/if}
     <div class={c.messageBubble}>
       {#if textHeader || $$slots.textHeader}
-        <div class={c.messageTextHeader}>{printText(textHeader)}<slot name="textHeader"/></div>
+        <div class={c.messageTextHeader}>
+          {printText(textHeader)}<slot name="textHeader" />
+        </div>
       {/if}
       {#if text || $$slots.text}
-        <div class={c.messageText}>{printText(text)}<slot name="text"/></div>
+        <div class={c.messageText}>{printText(text)}<slot name="text" /></div>
       {/if}
       {#if textFooter || $$slots.textFooter}
-        <div class={c.messageTextFooter}>{printText(textFooter)}<slot name="textFooter"/></div>
+        <div class={c.messageTextFooter}>
+          {printText(textFooter)}<slot name="textFooter" />
+        </div>
       {/if}
     </div>
     {#if footer || $$slots.footer}
-      <div class={c.messageFooter}>{printText(footer)}<slot name="footer"/></div>
+      <div class={c.messageFooter}>
+        {printText(footer)}<slot name="footer" />
+      </div>
     {/if}
   </div>
 </svelte:element>
