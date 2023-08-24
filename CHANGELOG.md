@@ -34,7 +34,7 @@
 - **svelte:** fix default font size in breadcrumbs ([03935c5](https://github.com/konstaui/konsta/commit/03935c5ace9f1d1bd2a67a8087f7df8b6e56231e))
 - **svelte:** link should have touch ripple disabled by default ([2b8822c](https://github.com/konstaui/konsta/commit/2b8822c20eb06ebe8787c292e5d96669be4f4167)), closes [#112](https://github.com/konstaui/konsta/issues/112)
 - **svelte:** TabbarLink label ([#129](https://github.com/konstaui/konsta/issues/129)) ([18d76bf](https://github.com/konstaui/konsta/commit/18d76bf6c2c827838b75a543c2bf916979e084b4))
-- **svelte:** use <a> if button has `href` ([5c6defd](https://github.com/konstaui/konsta/commit/5c6defd1fd5df27f5390a1c3b6665d1caf123a4c)), closes [#141](https://github.com/konstaui/konsta/issues/141)
+- **svelte:** use `<a>` if button has `href` ([5c6defd](https://github.com/konstaui/konsta/commit/5c6defd1fd5df27f5390a1c3b6665d1caf123a4c)), closes [#141](https://github.com/konstaui/konsta/issues/141)
 
 ### Features
 
