@@ -1,5 +1,11 @@
 # Changelog
 
+# [3.0.1](https://github.com/konstaui/konsta/compare/v3.0.0...v3.0.1) (2023-08-24)
+
+### Bug Fixes
+
+- **package:** fix wrong config paths in package ([d935fbb](https://github.com/konstaui/konsta/commit/d935fbb4fd629b28d484172afa0e2fe5dd647f5f))
+
 # [3.0.0](https://github.com/konstaui/konsta/compare/v2.0.0...v3.0.0) (2023-08-23)
 
 ### Bug Fixes
