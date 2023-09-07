@@ -97,7 +97,7 @@ const Link = forwardRef((props, ref) => {
       className={classes}
       {...attrs}
       role="link"
-      tabindex="0"
+      tabIndex="0"
       onClick={onClick}
     >
       {children}
