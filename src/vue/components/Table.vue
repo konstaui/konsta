@@ -1,8 +1,6 @@
 <template>
   <component :is="component" ref="elRef" :class="c.base">
-    <table :class="c.table">
-      <slot />
-    </table>
+    <slot />
   </component>
 </template>
 <script>
@@ -15,7 +13,7 @@
     props: {
       component: {
         type: String,
-        default: 'div',
+        default: 'table',
       },
       ios: {
         type: Boolean,

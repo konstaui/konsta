@@ -2,7 +2,7 @@
   import { TableClasses } from '../../shared/classes/TableClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let component = 'div';
+  export let component = 'table';
   let className = undefined;
   export {className as class};
 
@@ -24,8 +24,5 @@
   class={c.base}
   {...$$restProps}
 >
-  <table class={c.table}>
-    <slot />
-  </table>
-
+  <slot />
 </svelte:element>

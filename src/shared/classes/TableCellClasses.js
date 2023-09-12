@@ -4,7 +4,7 @@ export const TableCellClasses = (props, colors) => {
   const { header } = props;
   return {
     base: {
-      common: 'table-cell align-middle ',
+      common: 'table-cell align-middle text-right first:text-left',
       ios: cls(
         header
           ? `text-xs font-semibold overflow-hidden text-ellipsis whitespace-nowrap leading-4 h-11 bg-transparent ${colors.textIos} p-4`

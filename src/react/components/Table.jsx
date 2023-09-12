@@ -4,7 +4,7 @@ import { TableClasses } from '../../shared/classes/TableClasses.js';
 
 const Table = forwardRef((props, ref) => {
   const {
-    component = 'div',
+    component = 'table',
     className,
 
     ios,
@@ -32,7 +32,7 @@ const Table = forwardRef((props, ref) => {
 
   return (
     <Component className={c.base} ref={elRef} {...attrs}>
-      <table className={c.table}>{children}</table>
+      {children}
     </Component>
   );
 });
