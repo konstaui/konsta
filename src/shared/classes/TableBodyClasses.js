@@ -1,8 +1,8 @@
 export const TableBodyClasses = () => {
   return {
     base: {
-      common: '',
-      ios: 'text-sm',
+      common: 'text-sm',
+      ios: '',
       material: ``,
     },
   };

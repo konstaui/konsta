@@ -50,6 +50,11 @@ import Sheet from './components/Sheet.svelte';
 import Stepper from './components/Stepper.svelte';
 import Tabbar from './components/Tabbar.svelte';
 import TabbarLink from './components/TabbarLink.svelte';
+import Table from './components/Table.svelte';
+import TableBody from './components/TableBody.svelte';
+import TableCell from './components/TableCell.svelte';
+import TableHead from './components/TableHead.svelte';
+import TableRow from './components/TableRow.svelte';
 import Toast from './components/Toast.svelte';
 import Toggle from './components/Toggle.svelte';
 import Toolbar from './components/Toolbar.svelte';
@@ -114,6 +119,11 @@ export {
   Stepper,
   Tabbar,
   TabbarLink,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
   Toast,
   Toggle,
   Toolbar,

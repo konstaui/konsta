@@ -7,6 +7,7 @@ import Checkbox from './pages/Checkbox.svelte';
 import Chips from './pages/Chips.svelte';
 import ContactsList from './pages/ContactsList.svelte';
 import ContentBlock from './pages/ContentBlock.svelte';
+import DataTable from './pages/DataTable.svelte';
 import Dialog from './pages/Dialog.svelte';
 import Fab from './pages/Fab.svelte';
 import FormInputs from './pages/FormInputs.svelte';
@@ -43,6 +44,7 @@ const pages = {
   Chips,
   ContactsList,
   ContentBlock,
+  DataTable,
   Dialog,
   Fab,
   FormInputs,

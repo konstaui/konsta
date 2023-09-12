@@ -1,14 +1,11 @@
 import React, { useRef, forwardRef, useImperativeHandle } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
-import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { TableClasses } from '../../shared/classes/TableClasses.js';
-import { TableColors } from '../../shared/colors/TableColors.js';
 
 const Table = forwardRef((props, ref) => {
   const {
     component = 'div',
     className,
-    colors: colorsProp,
 
     ios,
     material,
@@ -27,10 +24,7 @@ const Table = forwardRef((props, ref) => {
   const Component = component;
 
   const themeClasses = useThemeClasses({ ios, material });
-  const dark = useDarkClasses();
-  const colors = TableColors(colorsProp, dark);
-
-  const c = themeClasses(TableClasses({ ...props }, colors));
+  const c = themeClasses(TableClasses({ ...props }));
 
   const attrs = {
     ...rest,
