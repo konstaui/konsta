@@ -47,7 +47,7 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
     <Component
       ref={elRef}
       role="button"
-      tabindex="0"
+      tabIndex="0"
       className={c.base}
       {...attrs}
     >

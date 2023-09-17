@@ -65,7 +65,7 @@ const DialogButton = forwardRef((props, ref) => {
         className={c.base}
         disabled={disabled}
         role="button"
-        tabindex="0"
+        tabIndex="0"
         {...attrs}
       >
         {children}
