@@ -57,7 +57,7 @@ const Fab = forwardRef((props, ref) => {
       href={href}
       ref={rippleElRef}
       role="button"
-      tabindex="0"
+      tabIndex="0"
       {...attrs}
     >
       {text && textPosition === 'before' && (

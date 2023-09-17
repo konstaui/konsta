@@ -88,7 +88,7 @@ const ActionsButton = forwardRef((props, ref) => {
     <Component
       ref={rippleElRef}
       role="button"
-      tabindex="0"
+      tabIndex="0"
       className={c.base}
       {...attrs}
     >

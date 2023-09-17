@@ -153,7 +153,7 @@ const Button = forwardRef((props, ref) => {
       className={classes}
       disabled={disabled}
       role="button"
-      tabindex="0"
+      tabIndex="0"
       {...attrs}
     >
       {children}
