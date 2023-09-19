@@ -1,10 +1,10 @@
 import { cls } from '../cls.js';
 
-export const TableCellClasses = (props, colors) => {
-  const { header, left } = props;
+export const TableCellClasses = (props, colors, classes) => {
+  const { header } = props;
   return {
     base: {
-      common: cls('align-middle text-right', left && 'first:text-left'),
+      common: cls('align-middle', classes),
       ios: cls(
         header
           ? `text-xs font-semibold overflow-hidden whitespace-nowrap leading-4 h-11 bg-transparent ${colors.textHeaderIos} py-0 px-4`

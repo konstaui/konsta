@@ -28,10 +28,6 @@
         type: Boolean,
         default: false,
       },
-      left: {
-        type: Boolean,
-        default: false,
-      },
     },
     setup(props, ctx) {
       const elRef = ref(null);

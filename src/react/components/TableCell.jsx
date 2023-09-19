@@ -10,7 +10,6 @@ const TableCell = forwardRef((props, ref) => {
     colors: colorsProp,
 
     header,
-    left,
 
     ios,
     material,
@@ -32,7 +31,7 @@ const TableCell = forwardRef((props, ref) => {
   const dark = useDarkClasses();
   const colors = TableCellColors(colorsProp, dark);
 
-  const c = themeClasses(TableCellClasses({ ...props }, colors));
+  const c = themeClasses(TableCellClasses({ ...props }, colors, className));
 
   const attrs = {
     ...rest,

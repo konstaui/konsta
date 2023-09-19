@@ -5,7 +5,6 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export let header = false;
-  export let left = false;
   export let component = header ? 'th' : 'td';
   let className = undefined;
   export {className as class};
@@ -21,7 +20,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    TableCellClasses({ header, left }, colors),
+    TableCellClasses({ header }, colors),
     className,
     (v) => (c = v)
   );

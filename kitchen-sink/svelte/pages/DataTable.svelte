@@ -27,41 +27,49 @@
     <Table>
       <TableHead>
         <TableRow header>
-          <TableCell header left>Dessert (100g serving)</TableCell>
-          <TableCell header>Calories</TableCell>
-          <TableCell header>Fat (g)</TableCell>
-          <TableCell header>Carbs</TableCell>
-          <TableCell header>Protein (g)</TableCell>
+          <TableCell header>Dessert (100g serving)</TableCell>
+          <TableCell header class="text-right">
+            Calories
+          </TableCell>
+          <TableCell header class="text-right">
+            Fat (g)
+          </TableCell>
+          <TableCell header class="text-right">
+            Carbs
+          </TableCell>
+          <TableCell header class="text-right">
+            Protein (g)
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         <TableRow>
-          <TableCell left>Frozen yogurt</TableCell>
-          <TableCell>159</TableCell>
-          <TableCell>6.0</TableCell>
-          <TableCell>24</TableCell>
-          <TableCell>4.0</TableCell>
+          <TableCell>Frozen yogurt</TableCell>
+          <TableCell class="text-right">159</TableCell>
+          <TableCell class="text-right">6.0</TableCell>
+          <TableCell class="text-right">24</TableCell>
+          <TableCell class="text-right">4.0</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell left>Ice cream sandwich</TableCell>
-          <TableCell>237</TableCell>
-          <TableCell>9.0</TableCell>
-          <TableCell>37</TableCell>
-          <TableCell>4.4</TableCell>
+          <TableCell>Ice cream sandwich</TableCell>
+          <TableCell class="text-right">237</TableCell>
+          <TableCell class="text-right">9.0</TableCell>
+          <TableCell class="text-right">37</TableCell>
+          <TableCell class="text-right">4.4</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell left>Eclair</TableCell>
-          <TableCell>262</TableCell>
-          <TableCell>16.0</TableCell>
-          <TableCell>24</TableCell>
-          <TableCell>6.0</TableCell>
+          <TableCell>Eclair</TableCell>
+          <TableCell class="text-right">262</TableCell>
+          <TableCell class="text-right">16.0</TableCell>
+          <TableCell class="text-right">24</TableCell>
+          <TableCell class="text-right">6.0</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell left>Cupcake</TableCell>
-          <TableCell>305</TableCell>
-          <TableCell>3.7</TableCell>
-          <TableCell>67</TableCell>
-          <TableCell>4.3</TableCell>
+          <TableCell>Cupcake</TableCell>
+          <TableCell class="text-right">305</TableCell>
+          <TableCell class="text-right">3.7</TableCell>
+          <TableCell class="text-right">67</TableCell>
+          <TableCell class="text-right">4.3</TableCell>
         </TableRow>
       </TableBody>
     </Table>
@@ -71,41 +79,49 @@
     <Table>
       <TableHead>
         <TableRow header>
-          <TableCell header left>Dessert (100g serving)</TableCell>
-          <TableCell header>Calories</TableCell>
-          <TableCell header>Fat (g)</TableCell>
-          <TableCell header>Carbs</TableCell>
-          <TableCell header>Protein (g)</TableCell>
+          <TableCell header>Dessert (100g serving)</TableCell>
+          <TableCell header class="text-right">
+            Calories
+          </TableCell>
+          <TableCell header class="text-right">
+            Fat (g)
+          </TableCell>
+          <TableCell header class="text-right">
+            Carbs
+          </TableCell>
+          <TableCell header class="text-right">
+            Protein (g)
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
         <TableRow>
-          <TableCell left>Frozen yogurt</TableCell>
-          <TableCell>159</TableCell>
-          <TableCell>6.0</TableCell>
-          <TableCell>24</TableCell>
-          <TableCell>4.0</TableCell>
+          <TableCell>Frozen yogurt</TableCell>
+          <TableCell class="text-right">159</TableCell>
+          <TableCell class="text-right">6.0</TableCell>
+          <TableCell class="text-right">24</TableCell>
+          <TableCell class="text-right">4.0</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell left>Ice cream sandwich</TableCell>
-          <TableCell>237</TableCell>
-          <TableCell>9.0</TableCell>
-          <TableCell>37</TableCell>
-          <TableCell>4.4</TableCell>
+          <TableCell>Ice cream sandwich</TableCell>
+          <TableCell class="text-right">237</TableCell>
+          <TableCell class="text-right">9.0</TableCell>
+          <TableCell class="text-right">37</TableCell>
+          <TableCell class="text-right">4.4</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell left>Eclair</TableCell>
-          <TableCell>262</TableCell>
-          <TableCell>16.0</TableCell>
-          <TableCell>24</TableCell>
-          <TableCell>6.0</TableCell>
+          <TableCell>Eclair</TableCell>
+          <TableCell class="text-right">262</TableCell>
+          <TableCell class="text-right">16.0</TableCell>
+          <TableCell class="text-right">24</TableCell>
+          <TableCell class="text-right">6.0</TableCell>
         </TableRow>
         <TableRow>
-          <TableCell left>Cupcake</TableCell>
-          <TableCell>305</TableCell>
-          <TableCell>3.7</TableCell>
-          <TableCell>67</TableCell>
-          <TableCell>4.3</TableCell>
+          <TableCell>Cupcake</TableCell>
+          <TableCell class="text-right">305</TableCell>
+          <TableCell class="text-right">3.7</TableCell>
+          <TableCell class="text-right">67</TableCell>
+          <TableCell class="text-right">4.3</TableCell>
         </TableRow>
       </TableBody>
     </Table>
