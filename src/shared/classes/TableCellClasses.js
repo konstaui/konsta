@@ -13,7 +13,7 @@ export const TableCellClasses = (props, colors, classes) => {
       material: cls(
         header
           ? `${colors.textHeaderMaterial} px-6 py-0  text-xs font-medium overflow-hidden text-ellipsis whitespace-nowrap leading-4 h-14 bg-transparent`
-          : `py-0 first:px-6 px-7 h-12 border-t ${colors.dividerMaterial}`
+          : `py-0 first:px-6 px-7 h-12`
       ),
     },
   };

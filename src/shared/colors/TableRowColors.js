@@ -7,6 +7,10 @@ export const TableRowColors = (colorsProp = {}, dark) => {
       'hover:bg-md-light-secondary-container',
       dark('dark:hover:bg-md-dark-secondary-container')
     ),
+    dividerMaterial: cls(
+      'border-md-light-outline',
+      dark('dark:border-md-dark-outline')
+    ),
     ...colorsProp,
   };
 };

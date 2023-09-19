@@ -7,10 +7,6 @@ export const TableCellColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface-variant',
       dark('dark:text-md-dark-on-surface-variant')
     ),
-    dividerMaterial: cls(
-      'border-md-light-outline',
-      dark('dark:border-md-dark-outline')
-    ),
     ...colorsProp,
   };
 };

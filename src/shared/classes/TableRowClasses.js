@@ -8,7 +8,9 @@ export const TableRowClasses = (props, colors) => {
       ios: header
         ? ''
         : cls(colors.bgIos, 'hairline-b last:hairline-transparent'),
-      material: header ? '' : colors.bgMaterial,
+      material: header
+        ? ''
+        : cls(colors.bgMaterial, `border-t ${colors.dividerMaterial}`),
     },
   };
 };
