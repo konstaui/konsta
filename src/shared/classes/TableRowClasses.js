@@ -1,10 +1,14 @@
+import { cls } from '../cls.js';
+
 export const TableRowClasses = (props, colors) => {
   const { header } = props;
   return {
     base: {
-      common: 'table-row align-middle border-inherit',
-      ios: header ? '' : `${colors.bgIos}`,
-      material: header ? '' : `${colors.bgMaterial}`,
+      common: 'align-middle relative',
+      ios: header
+        ? ''
+        : cls(colors.bgIos, 'hairline-b last:hairline-transparent'),
+      material: header ? '' : colors.bgMaterial,
     },
   };
 };

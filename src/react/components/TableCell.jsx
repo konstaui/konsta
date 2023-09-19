@@ -10,6 +10,7 @@ const TableCell = forwardRef((props, ref) => {
     colors: colorsProp,
 
     header,
+    left,
 
     ios,
     material,

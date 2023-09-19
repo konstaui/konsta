@@ -4,7 +4,8 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let header = undefined;
+  export let header = false;
+  export let left = false;
   export let component = header ? 'th' : 'td';
   let className = undefined;
   export {className as class};
@@ -20,7 +21,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    TableCellClasses({ header }, colors),
+    TableCellClasses({ header, left }, colors),
     className,
     (v) => (c = v)
   );

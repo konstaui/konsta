@@ -1,19 +1,19 @@
 import { cls } from '../cls.js';
 
 export const TableCellClasses = (props, colors) => {
-  const { header } = props;
+  const { header, left } = props;
   return {
     base: {
-      common: 'table-cell align-middle text-right first:text-left',
+      common: cls('align-middle text-right', left && 'first:text-left'),
       ios: cls(
         header
-          ? `text-xs font-semibold overflow-hidden text-ellipsis whitespace-nowrap leading-4 h-11 bg-transparent ${colors.textIos} p-4`
-          : `h-11 relative  before:absolute  before:block before:z-15 before:h-px before:w-full before:left-0 before:right-auto before:bottom-auto before:top-0 ${colors.cellBorderIos} p-4`
+          ? `text-xs font-semibold overflow-hidden whitespace-nowrap leading-4 h-11 bg-transparent ${colors.textHeaderIos} py-0 px-4`
+          : `h-11 relative py-0 px-4`
       ),
       material: cls(
         header
-          ? `${colors.textMaterial} p-6 text-xs font-medium overflow-hidden text-ellipsis whitespace-nowrap leading-4 h-14 bg-transparent`
-          : `p-6 h-12 relative  before:absolute  before:block before:z-15 before:h-px before:w-full before:left-0 before:right-auto before:bottom-auto before:top-0 ${colors.cellBorderMaterial}`
+          ? `${colors.textHeaderMaterial} px-6 py-0  text-xs font-medium overflow-hidden text-ellipsis whitespace-nowrap leading-4 h-14 bg-transparent`
+          : `py-0 first:px-6 px-7 h-12 border-t ${colors.dividerMaterial}`
       ),
     },
   };

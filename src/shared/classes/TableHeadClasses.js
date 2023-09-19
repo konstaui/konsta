@@ -1,9 +1,9 @@
 export const TableHeadClasses = () => {
   return {
     base: {
-      common: 'table-header-group align-middle border-inherit',
-      ios: '',
-      material: ``,
+      common: 'align-middle relative',
+      ios: 'hairline-b',
+      material: '',
     },
   };
 };
