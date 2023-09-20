@@ -6,7 +6,7 @@
 
   export let header = false;
   let className = undefined;
-  export {className as class};
+  export { className as class };
   let colorsProp = undefined;
   export { colorsProp as colors };
 
@@ -25,6 +25,7 @@
     (v) => (c = v)
   );
 </script>
+
 <svelte:element
   this={component}
   bind:this={rippleEl.current}

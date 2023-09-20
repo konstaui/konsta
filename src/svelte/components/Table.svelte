@@ -3,7 +3,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
-  export {className as class};
+  export { className as class };
 
   export let ios = undefined;
   export let material = undefined;
@@ -17,10 +17,7 @@
     (v) => (c = v)
   );
 </script>
-<table
-  bind:this={rippleEl.current}
-  class={c.base}
-  {...$$restProps}
->
+
+<table bind:this={rippleEl.current} class={c.base} {...$$restProps}>
   <slot />
 </table>

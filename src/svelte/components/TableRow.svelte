@@ -5,7 +5,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let className = undefined;
-  export {className as class};
+  export { className as class };
   let colorsProp = undefined;
   export { colorsProp as colors };
 
@@ -25,10 +25,7 @@
     (v) => (c = v)
   );
 </script>
-<tr
-  bind:this={rippleEl.current}
-  class={c.base}
-  {...$$restProps}
->
+
+<tr bind:this={rippleEl.current} class={c.base} {...$$restProps}>
   <slot />
 </tr>

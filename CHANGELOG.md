@@ -1,5 +1,16 @@
 # Changelog
 
+# [3.1.0](https://github.com/konstaui/konsta/compare/v3.0.1...v3.1.0) (2023-09-20)
+
+### Bug Fixes
+
+- **react:** camel case `tabIndex` in Link component ([#170](https://github.com/konstaui/konsta/issues/170)) ([f16b164](https://github.com/konstaui/konsta/commit/f16b1649c518ee9b9b10fd4f859815de9ed2e98c))
+- **react:** camel case `tabIndex` in react components ([#175](https://github.com/konstaui/konsta/issues/175)) ([85a29e9](https://github.com/konstaui/konsta/commit/85a29e9f91208ad9367e29230cbabd947cc23b19))
+
+### Features
+
+- Data Table Components ([#173](https://github.com/konstaui/konsta/issues/173)) ([643973d](https://github.com/konstaui/konsta/commit/643973d63409809b0b0bb31d5b0eb2ac905d14e3))
+
 # [3.0.1](https://github.com/konstaui/konsta/compare/v3.0.0...v3.0.1) (2023-08-24)
 
 ### Bug Fixes

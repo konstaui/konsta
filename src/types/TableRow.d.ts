@@ -15,12 +15,12 @@ interface Props {
      * @default 'hover:bg-md-light-secondary-container dark:hover:bg-md-dark-secondary-container'
      */
     bgMaterial?: string;
-         /**
+    /**
      * Table Row divider color
      *
      * @default 'border-md-light-outline dark:border-md-dark-outline'
      */
-         dividerMaterial?: string;
+    dividerMaterial?: string;
   };
   /**
    * Is located inside the TableHead

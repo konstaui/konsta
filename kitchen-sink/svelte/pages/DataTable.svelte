@@ -14,6 +14,7 @@
 
   const isPreview = document.location.href.includes('examplePreview');
 </script>
+
 <Page>
   <Navbar title="Data Table">
     <svelte:fragment slot="left">
@@ -28,18 +29,10 @@
       <TableHead>
         <TableRow header>
           <TableCell header>Dessert (100g serving)</TableCell>
-          <TableCell header class="text-right">
-            Calories
-          </TableCell>
-          <TableCell header class="text-right">
-            Fat (g)
-          </TableCell>
-          <TableCell header class="text-right">
-            Carbs
-          </TableCell>
-          <TableCell header class="text-right">
-            Protein (g)
-          </TableCell>
+          <TableCell header class="text-right">Calories</TableCell>
+          <TableCell header class="text-right">Fat (g)</TableCell>
+          <TableCell header class="text-right">Carbs</TableCell>
+          <TableCell header class="text-right">Protein (g)</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -80,18 +73,10 @@
       <TableHead>
         <TableRow header>
           <TableCell header>Dessert (100g serving)</TableCell>
-          <TableCell header class="text-right">
-            Calories
-          </TableCell>
-          <TableCell header class="text-right">
-            Fat (g)
-          </TableCell>
-          <TableCell header class="text-right">
-            Carbs
-          </TableCell>
-          <TableCell header class="text-right">
-            Protein (g)
-          </TableCell>
+          <TableCell header class="text-right">Calories</TableCell>
+          <TableCell header class="text-right">Fat (g)</TableCell>
+          <TableCell header class="text-right">Carbs</TableCell>
+          <TableCell header class="text-right">Protein (g)</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
