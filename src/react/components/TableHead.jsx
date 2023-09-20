@@ -4,7 +4,6 @@ import { TableHeadClasses } from '../../shared/classes/TableHeadClasses.js';
 
 const TableHead = forwardRef((props, ref) => {
   const {
-    component = 'thead',
     className,
 
     ios,
@@ -21,8 +20,6 @@ const TableHead = forwardRef((props, ref) => {
     el: elRef.current,
   }));
 
-  const Component = component;
-
   const themeClasses = useThemeClasses({ ios, material });
   const c = themeClasses(TableHeadClasses({ ...props }));
 
@@ -31,9 +28,9 @@ const TableHead = forwardRef((props, ref) => {
   };
 
   return (
-    <Component className={c.base} ref={elRef} {...attrs}>
+    <thead className={c.base} ref={elRef} {...attrs}>
       {children}
-    </Component>
+    </thead>
   );
 });
 

@@ -2,7 +2,6 @@
   import { TableClasses } from '../../shared/classes/TableClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let component = 'table';
   let className = undefined;
   export {className as class};
 
@@ -18,11 +17,10 @@
     (v) => (c = v)
   );
 </script>
-<svelte:element
-  this={component}
+<table
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}
 >
   <slot />
-</svelte:element>
+</table>

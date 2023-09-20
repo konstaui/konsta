@@ -1,11 +1,5 @@
 interface Props {
   /**
-   * Component's HTML Element
-   *
-   * @default 'td'
-   */
-  component?: 'td' | 'th';
-  /**
    * Object with Tailwind CSS colors classes
    * */
   colors?: {

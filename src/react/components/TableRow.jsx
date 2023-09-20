@@ -6,7 +6,6 @@ import { TableRowColors } from '../../shared/colors/TableRowColors.js';
 
 const TableRow = forwardRef((props, ref) => {
   const {
-    component = 'tr',
     className,
     colors: colorsProp,
 
@@ -26,8 +25,6 @@ const TableRow = forwardRef((props, ref) => {
     el: elRef.current,
   }));
 
-  const Component = component;
-
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
   const colors = TableRowColors(colorsProp, dark);
@@ -39,9 +36,9 @@ const TableRow = forwardRef((props, ref) => {
   };
 
   return (
-    <Component className={c.base} ref={elRef} {...attrs}>
+    <tr className={c.base} ref={elRef} {...attrs}>
       {children}
-    </Component>
+    </tr>
   );
 });
 

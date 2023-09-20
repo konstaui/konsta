@@ -1,7 +1,7 @@
 <template>
-  <component :is="component" ref="elRef" :class="c.base">
+  <table ref="elRef" :class="c.base">
     <slot />
-  </component>
+  </table>
 </template>
 <script>
   import { ref } from 'vue';
@@ -11,10 +11,6 @@
   export default {
     name: 'k-table',
     props: {
-      component: {
-        type: String,
-        default: 'table',
-      },
       ios: {
         type: Boolean,
         default: undefined,

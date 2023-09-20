@@ -4,7 +4,6 @@ import { TableBodyClasses } from '../../shared/classes/TableBodyClasses.js';
 
 const TableBody = forwardRef((props, ref) => {
   const {
-    component = 'tbody',
     className,
 
     ios,
@@ -21,8 +20,6 @@ const TableBody = forwardRef((props, ref) => {
     el: elRef.current,
   }));
 
-  const Component = component;
-
   const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(TableBodyClasses({ ...props }));
@@ -32,9 +29,9 @@ const TableBody = forwardRef((props, ref) => {
   };
 
   return (
-    <Component className={c.base} ref={elRef} {...attrs}>
+    <tbody className={c.base} ref={elRef} {...attrs}>
       {children}
-    </Component>
+    </tbody>
   );
 });
 

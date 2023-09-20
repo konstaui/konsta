@@ -1,7 +1,7 @@
 <template>
-  <component :is="component" ref="elRef" :class="c.base">
+  <thead ref="elRef" :class="c.base">
     <slot />
-  </component>
+  </thead>
 </template>
 <script>
   import { ref } from 'vue';
@@ -11,10 +11,6 @@
   export default {
     name: 'k-table-head',
     props: {
-      component: {
-        type: String,
-        default: 'thead',
-      },
       ios: {
         type: Boolean,
         default: undefined,

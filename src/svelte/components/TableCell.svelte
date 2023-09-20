@@ -5,7 +5,6 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export let header = false;
-  export let component = header ? 'th' : 'td';
   let className = undefined;
   export {className as class};
   let colorsProp = undefined;
@@ -14,6 +13,7 @@
   export let ios = undefined;
   export let material = undefined;
 
+  const component = header ? 'th' : 'td';
   const rippleEl = { current: null };
   const dark = useDarkClasses();
   $: colors = TableCellColors(colorsProp, dark);

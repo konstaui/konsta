@@ -2,7 +2,6 @@
   import { TableHeadClasses } from '../../shared/classes/TableHeadClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let component = 'thead';
   let className = undefined;
   export {className as class};
 
@@ -19,11 +18,10 @@
   );
 </script>
 
-<svelte:element
-  this={component}
+<thead
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}
 >
   <slot />
-</svelte:element>
+</thead>

@@ -2,7 +2,6 @@
   import { TableBodyClasses } from '../../shared/classes/TableBodyClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let component = 'tbody';
   let className = undefined;
   export {className as class};
 
@@ -19,11 +18,10 @@
   );
 </script>
 
-<svelte:element
-  this={component}
+<tbody
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}
 >
   <slot />
-</svelte:element>
+</tbody>

@@ -4,7 +4,6 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let component = 'tr';
   let className = undefined;
   export {className as class};
   let colorsProp = undefined;
@@ -26,11 +25,10 @@
     (v) => (c = v)
   );
 </script>
-<svelte:element
-  this={component}
+<tr
   bind:this={rippleEl.current}
   class={c.base}
   {...$$restProps}
 >
   <slot />
-</svelte:element>
+</tr>
