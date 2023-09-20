@@ -50,6 +50,11 @@ import kSheet from './components/Sheet.vue';
 import kStepper from './components/Stepper.vue';
 import kTabbar from './components/Tabbar.vue';
 import kTabbarLink from './components/TabbarLink.vue';
+import kTable from './components/Table.vue';
+import kTableBody from './components/TableBody.vue';
+import kTableCell from './components/TableCell.vue';
+import kTableHead from './components/TableHead.vue';
+import kTableRow from './components/TableRow.vue';
 import kToast from './components/Toast.vue';
 import kToggle from './components/Toggle.vue';
 import kToolbar from './components/Toolbar.vue';
@@ -169,6 +174,16 @@ export {
   kTabbar as Tabbar,
   kTabbarLink,
   kTabbarLink as TabbarLink,
+  kTable,
+  kTable as Table,
+  kTableBody,
+  kTableBody as TableBody,
+  kTableCell,
+  kTableCell as TableCell,
+  kTableHead,
+  kTableHead as TableHead,
+  kTableRow,
+  kTableRow as TableRow,
   kToast,
   kToast as Toast,
   kToggle,

@@ -7,6 +7,7 @@ import Checkbox from './pages/Checkbox.jsx';
 import Chips from './pages/Chips.jsx';
 import ContactsList from './pages/ContactsList.jsx';
 import ContentBlock from './pages/ContentBlock.jsx';
+import DataTable from './pages/DataTable.jsx';
 import Dialog from './pages/Dialog.jsx';
 import Fab from './pages/Fab.jsx';
 import FormInputs from './pages/FormInputs.jsx';
@@ -43,6 +44,7 @@ const routes = [
   Chips,
   ContactsList,
   ContentBlock,
+  DataTable,
   Dialog,
   Fab,
   FormInputs,

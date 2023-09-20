@@ -8,6 +8,7 @@ import Checkbox from './pages/Checkbox.vue';
 import Chips from './pages/Chips.vue';
 import ContactsList from './pages/ContactsList.vue';
 import ContentBlock from './pages/ContentBlock.vue';
+import DataTable from './pages/DataTable.vue';
 import Dialog from './pages/Dialog.vue';
 import Fab from './pages/Fab.vue';
 import FormInputs from './pages/FormInputs.vue';
@@ -45,6 +46,7 @@ const routes = [
   Chips,
   ContactsList,
   ContentBlock,
+  DataTable,
   Dialog,
   Fab,
   FormInputs,
