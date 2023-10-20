@@ -1,5 +1,12 @@
 # Changelog
 
+# [3.1.1](https://github.com/konstaui/konsta/compare/v3.1.0...v3.1.1) (2023-10-20)
+
+### Features
+
+- **message:** add onClick handler ([4df47e3](https://github.com/konstaui/konsta/commit/4df47e3de71c97f16b395d07ab30ae972284f3a7)), closes [#177](https://github.com/konstaui/konsta/issues/177)
+- **messages:** add `messageReceived` to colors ([6b51367](https://github.com/konstaui/konsta/commit/6b5136790a0c18c9a0e6aa633745646c02b1491d)), closes [#176](https://github.com/konstaui/konsta/issues/176)
+
 # [3.1.0](https://github.com/konstaui/konsta/compare/v3.0.1...v3.1.0) (2023-09-20)
 
 ### Bug Fixes
