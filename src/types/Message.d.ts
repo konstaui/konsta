@@ -80,4 +80,9 @@ interface Props {
    * Message user's avatar URL
    */
   avatar?: string | React.ReactNode;
+
+  /**
+   * Message click handler
+   */
+  onClick?: (e: any) => void;
 }

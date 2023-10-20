@@ -24,6 +24,8 @@
   export let textFooter = '';
   export let avatar = undefined;
 
+  export let onClick = undefined;
+
   const rippleEl = { current: null };
 
   const dark = useDarkClasses();
@@ -53,6 +55,7 @@
   {id}
   bind:this={rippleEl.current}
   class={classes}
+  on:click={onClick}
   {...$$restProps}
 >
   {#if avatar || $$slots.avatar}
