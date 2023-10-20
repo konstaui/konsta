@@ -3,6 +3,7 @@ import { cls } from '../cls.js';
 export const MessageColors = (colorsProp = {}, dark) => {
   return {
     messageSent: 'text-white',
+    messageReceived: 'text-inherit',
     messageNameIos: cls(
       'text-black text-opacity-45',
       dark('dark:text-white dark:text-opacity-45')

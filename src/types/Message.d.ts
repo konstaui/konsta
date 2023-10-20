@@ -25,12 +25,12 @@ interface Props {
      *
      * @default 'bg-primary'
      */
-    messageSentIos?: string;
+    bubbleSentIos?: string;
     /**
      *
      * @default 'bg-md-light-primary dark:bg-md-dark-primary dark:text-md-dark-on-primary'
      */
-    messageSentMd?: string;
+    bubbleSentMd?: string;
     /**
      *
      * @default 'bg-[#e5e5ea] dark:bg-[#252525]'

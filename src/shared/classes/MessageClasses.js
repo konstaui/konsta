@@ -11,7 +11,7 @@ export const MessageClasses = (props, colors) => {
       common: cls('self-end', colors.messageSent),
     },
     messageReceived: {
-      common: '',
+      common: colors.messageReceived,
     },
     messageName: {
       common: 'text-xs',
