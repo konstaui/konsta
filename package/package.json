@@ -21,14 +21,17 @@
   "exports": {
     "./package.json": "./package.json",
     "./react": {
+      "types": "./react/konsta-react.d.ts",
       "require": "./react/cjs/konsta-react.js",
       "import": "./react/esm/konsta-react.js"
     },
     "./vue": {
+      "types": "./vue/konsta-vue.d.ts",
       "require": "./vue/konsta-vue.js",
       "import": "./vue/konsta-vue.js"
     },
     "./svelte": {
+      "types": "./svelte/konsta-svelte.d.ts",
       "import": "./svelte/konsta-svelte.js"
     },
     "./config": "./config.js",
