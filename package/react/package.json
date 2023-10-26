@@ -8,6 +8,7 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./konsta-react.d.ts",
       "import": "./esm/konsta-react.js",
       "require": "./cjs/konsta-react.js"
     }
