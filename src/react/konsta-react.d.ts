@@ -31,3 +31,4 @@ declare const useTheme: () => 'material' | 'ios';
 
 // EXPORT_COMPONENTS
 export { useTheme, KonstaProvider };
+export { KonstaProviderProps }
