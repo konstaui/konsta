@@ -33,7 +33,7 @@ export const RadioClasses = (props, colors, classes, darkClasses) => {
       material: 'h-0.5',
     },
     input: {
-      common: 'hidden',
+      common: 'sr-only',
     },
   };
 };
