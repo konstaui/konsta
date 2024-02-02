@@ -13,4 +13,8 @@ interface Props {
    * Content of the chip media area (e.g. icon)
    */
   media?: React.ReactNode;
+  /**
+   * Content of the menu list item "subtitle" area
+   */
+  subtitle?: string | number | React.ReactNode;
 }
