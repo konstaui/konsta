@@ -28,7 +28,7 @@ export default function RangeSliderPage() {
       <BlockHeader>From 0 to 100 with step 10</BlockHeader>
       <List strong insetMaterial outlineIos>
         <ListItem
-          innerClassName="flex space-x-4"
+          innerClassName="flex space-x-4 rtl:space-x-reverse"
           innerChildren={
             <>
               <span>0</span>
@@ -47,7 +47,7 @@ export default function RangeSliderPage() {
       <BlockHeader>From 0 to 1000 with step 1</BlockHeader>
       <List strong insetMaterial outlineIos>
         <ListItem
-          innerClassName="flex space-x-4"
+          innerClassName="flex space-x-4 rtl:space-x-reverse"
           innerChildren={
             <>
               <span>$0</span>

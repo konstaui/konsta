@@ -12,6 +12,10 @@ interface Props {
    */
   component?: string;
   /**
+   * Object with additional props (attributes) to pass to the Link/Button
+   */
+  linkProps?: any;
+  /**
    * Link icon content
    */
   icon?: React.ReactNode;

@@ -47,7 +47,13 @@ const BreadcrumbsItem = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={elRef}
+      className={c.base}
+      role="menuitem"
+      tabIndex="0"
+      {...attrs}
+    >
       {children}
     </Component>
   );

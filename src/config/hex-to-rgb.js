@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 module.exports = (hex) => {
   // prettier-ignore
   // eslint-disable-next-line

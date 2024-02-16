@@ -2,6 +2,7 @@
   "name": "konsta/svelte",
   "private": true,
   "jsnext:main": "./konsta-svelte.js",
+  "types": "./konsta-svelte.d.ts",
   "module": "./konsta-svelte.js",
   "svelte": "./konsta-svelte.js"
 }

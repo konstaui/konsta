@@ -7,7 +7,7 @@ export const PanelClasses = (props, colors, classes) => {
     base: {
       common: cls(
         'transition-transform transform duration-400 z-40 max-w-full overflow-hidden',
-        floating ? 'top-2-safe bottom-2-safe h-auto' : 'top-0 max-h-full',
+        floating ? 'top-2-safe bottom-2-safe !h-auto' : 'top-0 max-h-full',
         colors.bg,
         positionClass('fixed', classes),
         size

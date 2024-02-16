@@ -27,14 +27,14 @@ module.exports = (plugin) =>
       '.no-safe-areas-top': {
         '--k-safe-area-top': '0px',
       },
+      '.no-safe-areas-left': {
+        '--k-safe-area-left': '0px',
+      },
       '.no-safe-areas-right': {
         '--k-safe-area-right': '0px',
       },
       '.no-safe-areas-bottom': {
         '--k-safe-area-bottom': '0px',
-      },
-      '.no-safe-areas-left': {
-        '--k-safe-area-left': '0px',
       },
     };
     const spacing = theme('spacing');
@@ -62,6 +62,32 @@ module.exports = (plugin) =>
         };
         safe[`.${side}-${e(key)}-safe`] = {
           [side]: `calc(var(--k-safe-area-${side}) + ${value})`,
+        };
+      });
+    });
+    ['start', 'end'].forEach((side) => {
+      const first = side[0];
+      const areaSide = side === 'start' ? 'left' : 'right';
+      safe[`.p${first}-safe`] = {
+        [`padding-inline-${side}`]: `var(--k-safe-area-${areaSide})`,
+      };
+      safe[`.m${first}-safe`] = {
+        [`margin-inline-${side}`]: `var(--k-safe-area-${areaSide})`,
+      };
+      safe[`.${side}-safe`] = {
+        [`inset-inline-${side}`]: `var(--k-safe-area-${areaSide})`,
+      };
+
+      Object.keys(spacing).forEach((key) => {
+        const value = spacing[key];
+        safe[`.p${first}-${e(key)}-safe`] = {
+          [`padding-inline-${side}`]: `calc(var(--k-safe-area-${areaSide}) + ${value})`,
+        };
+        safe[`.m${first}-${e(key)}-safe`] = {
+          [`margin-inline-${side}`]: `calc(var(--k-safe-area-${areaSide}) + ${value})`,
+        };
+        safe[`.${side}-${e(key)}-safe`] = {
+          [`inset-inline-${side}`]: `calc(var(--k-safe-area-${areaSide}) + ${value})`,
         };
       });
     });

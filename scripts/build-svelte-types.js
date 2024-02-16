@@ -126,17 +126,18 @@ const createComponentTypes = (componentName, propsContent) => {
     .join('\n');
   const slotsContent = slots.map((slot) => `'${slot}': {};`).join('\n    ');
   return `
-import { SvelteComponentTyped } from 'svelte';
+import { SvelteComponent } from 'svelte';
+import { HTMLAttributes } from 'svelte/elements';
 
 ${propsContent}
 
 interface ${componentName}Props {}
 interface ${componentName}Props extends Props {}
 
-declare class ${componentName} extends SvelteComponentTyped<
+declare class ${componentName} extends SvelteComponent<
   ${componentName}Props${
     componentNativeElementInheritance[componentName]
-      ? ` & HTMLProps<${componentNativeElementInheritance[componentName]}>`
+      ? ` & HTMLAttributes<${componentNativeElementInheritance[componentName]}>`
       : ''
   },
   {  },

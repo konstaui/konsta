@@ -44,7 +44,13 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={elRef}
+      role="button"
+      tabIndex="0"
+      className={c.base}
+      {...attrs}
+    >
       <span className={c.dot} />
       <span className={c.dot} />
       <span className={c.dot} />

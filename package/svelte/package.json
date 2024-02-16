@@ -9,6 +9,7 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./konsta-svelte.d.ts",
       "import": "./konsta-svelte.js"
     }
   }

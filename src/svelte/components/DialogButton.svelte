@@ -61,6 +61,8 @@
       class={c.base}
       {disabled}
       {...attrs}
+      role="button"
+      tabindex="0"
       on:click={onClick}
     >
       <slot />

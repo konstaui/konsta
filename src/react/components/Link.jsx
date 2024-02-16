@@ -18,6 +18,7 @@ const Link = forwardRef((props, ref) => {
     toolbar,
 
     iconOnly,
+    linkProps = {},
 
     tabbar,
     tabbarActive,
@@ -44,6 +45,7 @@ const Link = forwardRef((props, ref) => {
   const Component = component;
 
   const attrs = {
+    ...linkProps,
     ...rest,
   };
 
@@ -94,6 +96,8 @@ const Link = forwardRef((props, ref) => {
       ref={rippleElRef}
       className={classes}
       {...attrs}
+      role="link"
+      tabIndex="0"
       onClick={onClick}
     >
       {children}

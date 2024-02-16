@@ -86,7 +86,8 @@ async function release() {
   );
 
   const cleanPackage = [
-    "find **/*.js -type f -not -name 'postinstall.js' -print0 | xargs -0  -I {} rm -v {}",
+    'rm -rf **/*.js',
+    'rm -rf *.js',
     'rm -rf **/*.ts',
     'rm -rf *.ts',
     'rm -rf **/*.css',
@@ -106,7 +107,7 @@ async function release() {
   await exec.promise(`cd ./package && ${cleanPackage.join(' && ')}`);
   await exec.promise(`npm run build`);
   await exec.promise('git add .');
-  await exec.promise(`git commit -m "${pkg.version} release"`);
+  await exec.promise(`git commit -m ${pkg.version}`);
   await exec.promise('git push');
   await exec.promise(`git tag v${pkg.version}`);
   await exec.promise('git push origin --tags');

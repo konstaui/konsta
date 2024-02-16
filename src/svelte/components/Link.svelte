@@ -15,6 +15,7 @@
   export let material = undefined;
 
   export let component = 'a';
+  export let linkProps = {};
 
   // Toolbar/navbar link
   export let navbar = false;
@@ -25,7 +26,7 @@
   export let tabbar = false;
   export let tabbarActive = false;
 
-  export let touchRipple = true;
+  export let touchRipple = false;
 
   export let onClick = undefined;
 
@@ -85,6 +86,9 @@
   bind:this={rippleEl.current}
   class={classes}
   {...$$restProps}
+  {...linkProps}
+  role="link"
+  tabindex="0"
   on:click={onClick}
 >
   <slot />

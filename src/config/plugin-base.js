@@ -72,7 +72,11 @@ module.exports = (userConfig = {}, konstConfig = {}, plugin) => {
       ':root': {
         '--k-device-pixel-ratio': '1',
         '--k-hairline-color': 'rgba(0, 0, 0, 0.2)',
+        '--k-rtl-reverse': '1',
         ...primaryColorVars,
+      },
+      '[dir="rtl"]': {
+        '--k-rtl-reverse': '-1',
       },
       ...darkProps,
       '@media (min-resolution: 1.25dppx)': {

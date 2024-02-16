@@ -2,7 +2,13 @@
   <component :is="component" :class="c.base[style]">
     <div v-if="slots.media" :class="c.media"><slot name="media" /></div>
     <slot />
-    <div v-if="deleteButton" :class="c.deleteButton" @click="onDelete">
+    <div
+      v-if="deleteButton"
+      :class="c.deleteButton"
+      role="button"
+      tabindex="0"
+      @click="onDelete"
+    >
       <delete-icon :theme="theme" class="h-4 w-4" />
     </div>
   </component>

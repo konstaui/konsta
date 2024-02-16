@@ -7,6 +7,8 @@ const rules = {
   'react/react-in-jsx-scope': ['off'],
   'react/no-string-refs': ['off'],
   'react/prop-types': ['off'],
+  'react/function-component-definition': ['off'],
+  'react/jsx-no-constructed-context-values': ['off'],
   'no-restricted-globals': ['error', 'window', 'document'],
   'import/prefer-default-export': 'off',
   'react/jsx-one-expression-per-line': 'off',
@@ -14,6 +16,8 @@ const rules = {
   'react/jsx-props-no-spreading': ['off'],
   'import/no-extraneous-dependencies': ['off'],
   'import/no-relative-packages': ['off'],
+  'no-constructor-return': ['off'],
+  'default-param-last': ['off'],
   'import/extensions': [
     'error',
     'never',
@@ -74,6 +78,7 @@ module.exports = {
       files: ['kitchen-sink/react/**/*.jsx', 'kitchen-sink/react/**/*.js'],
       rules: {
         ...rules,
+
         'react/display-name': ['off'],
         'react/jsx-no-target-blank': ['off'],
         'react/no-unescaped-entities': ['off'],

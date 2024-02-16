@@ -184,15 +184,19 @@
 
     className
   );
+
+  const Component = component === 'button' && href ? 'a' : component;
 </script>
 
 {#if typeof component === 'string'}
   <svelte:element
-    this={component}
+    this={Component}
     bind:this={rippleEl.current}
     class={classes}
     {disabled}
     {...attrs}
+    role="button"
+    tabindex="0"
     on:click={onClick}
   >
     <slot />

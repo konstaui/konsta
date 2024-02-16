@@ -4,6 +4,8 @@
     ref="rippleElRef"
     :class="classes"
     :disabled="disabled"
+    role="button"
+    tabindex="0"
   >
     <slot />
   </component>

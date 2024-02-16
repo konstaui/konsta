@@ -4,6 +4,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { printText } from '../shared/print-text.js';
 
   export let component = 'div';
   let className = undefined;
@@ -72,7 +73,7 @@
 {#if typeof component === 'string'}
   <svelte:element this={component} class={c.base[style]} {...$$restProps}>
     {#if header || $$slots.header}
-      <div class={c.header}>{header}<slot name="header" /></div>
+      <div class={c.header}>{printText(header)}<slot name="header" /></div>
     {/if}
     {#if contentWrap}
       <div class={c.content}><slot /></div>
@@ -80,13 +81,13 @@
       <slot />
     {/if}
     {#if footer || $$slots.footer}
-      <div class={c.footer}>{footer}<slot name="footer" /></div>
+      <div class={c.footer}>{printText(footer)}<slot name="footer" /></div>
     {/if}
   </svelte:element>
 {:else}
   <svelte:component this={component} class={c.base[style]} {...$$restProps}>
     {#if header || $$slots.header}
-      <div class={c.header}>{header}<slot name="header" /></div>
+      <div class={c.header}>{printText(header)}<slot name="header" /></div>
     {/if}
     {#if contentWrap}
       <div class={c.content}><slot /></div>
@@ -94,7 +95,7 @@
       <slot />
     {/if}
     {#if footer || $$slots.footer}
-      <div class={c.footer}>{footer}<slot name="footer" /></div>
+      <div class={c.footer}>{printText(footer)}<slot name="footer" /></div>
     {/if}
   </svelte:component>
 {/if}

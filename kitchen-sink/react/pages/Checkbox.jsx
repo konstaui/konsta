@@ -145,7 +145,7 @@ export default function CheckboxPage() {
             />
           }
         >
-          <ul className="pl-12">
+          <ul className="ps-12">
             <ListItem
               label
               title="Movie 1"

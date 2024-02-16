@@ -28,22 +28,27 @@ export const ListItemClasses = (
     titleFontSizeIos,
     titleFontSizeMaterial,
     strongTitle,
+    contacts,
   } = props;
   return {
-    base: menuListItem ? `${textColor} py-1` : '',
+    base: {
+      common: menuListItem ? `${textColor} py-1` : '',
+      material: contacts && '[&:nth-child(2)]:-mt-12',
+    },
     itemContent: {
       common: cls(`flex items-center ${contentClassName || contentClass}`),
       ios: cls(
-        !menuListItem && cls(colors.primaryTextIos, 'pl-4-safe'),
-        menuListItem && 'rounded-lg ml-2-safe mr-2-safe pl-2'
+        !menuListItem && cls(colors.primaryTextIos, 'ps-4-safe'),
+        menuListItem && 'rounded-lg ml-2-safe mr-2-safe ps-2'
       ),
       material: cls(
         !menuListItem &&
           cls(
             colors.primaryTextMaterial,
-            isMediaItem ? 'ml-2-safe mr-2-safe rounded-2xl pl-2' : 'pl-4-safe'
+            isMediaItem ? 'ml-2-safe mr-2-safe rounded-2xl ps-2' : 'ps-4-safe',
+            contacts && 'ml-10'
           ),
-        menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe pl-4'
+        menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe ps-4'
       ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
@@ -68,8 +73,8 @@ export const ListItemClasses = (
 
     media: {
       common: `shrink-0 flex ${mediaClassName || mediaClass}`,
-      ios: 'py-2 mr-4',
-      material: cls('py-3', menuListItem ? 'mr-3' : 'mr-4'),
+      ios: 'py-2 me-4',
+      material: cls('py-3', menuListItem ? 'me-3' : 'me-4'),
     },
     inner: {
       common: cls(
@@ -77,10 +82,10 @@ export const ListItemClasses = (
         !menuListItem && dividers && 'hairline-b',
         innerClassName || innerClass
       ),
-      ios: 'py-2.5 pr-4-safe',
+      ios: 'py-2.5 pe-4-safe',
       material: cls(
         'py-3',
-        isMediaItem && !menuListItem ? 'pr-2' : 'pr-4-safe'
+        isMediaItem && !menuListItem ? 'pe-2' : 'pe-4-safe'
       ),
     },
     titleWrap: {
@@ -107,11 +112,11 @@ export const ListItemClasses = (
       },
     },
     after: {
-      common: cls(`shrink-0 ml-auto pl-1 flex items-center space-x-1`),
+      common: cls(`shrink-0 ms-auto ps-1 flex items-center space-x-1`),
       ios: colors.secondaryTextIos,
       material: cls(colors.secondaryTextMaterial, 'text-sm'),
     },
-    chevron: 'opacity-20 shrink-0 ml-3',
+    chevron: 'opacity-20 shrink-0 ms-3 rtl:rotate-180',
     subtitle: 'text-sm',
     text: {
       common: cls(`text-sm line-clamp-2`),
@@ -137,8 +142,24 @@ export const ListItemClasses = (
       ),
       ios: `h-8${dividers ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${
         colors.secondaryTextIos
-      } ${colors.groupTitleBgIos}`,
-      material: `h-12 ${titleFontSizeMaterial} ${colors.secondaryTextMaterial} ${colors.groupTitleBgMaterial}`,
+      } ${colors.groupTitleBgIos} ${
+        contacts &&
+        cls(
+          'font-semibold top-11-safe sticky',
+          colors.groupTitleContactsTextIos,
+          colors.groupTitleContactsBgIos
+        )
+      }`,
+      material: `h-12 ${titleFontSizeMaterial} ${
+        colors.secondaryTextMaterial
+      } ${colors.groupTitleBgMaterial} ${
+        contacts &&
+        cls(
+          'pointer-events-none overflow-visible h-12 box-border text-xl font-medium flex max-w-full items-center px-4 top-16-safe sticky',
+          colors.groupTitleContactsTextMaterial,
+          colors.groupTitleContactsBgMaterial
+        )
+      }`,
     },
   };
 };

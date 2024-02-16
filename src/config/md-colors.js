@@ -340,25 +340,6 @@ function labInvf(ft) {
  */
 class ViewingConditions {
     /**
-     * Parameters are intermediate values of the CAM16 conversion process. Their
-     * names are shorthand for technical color science terminology, this class
-     * would not benefit from documenting them individually. A brief overview
-     * is available in the CAM16 specification, and a complete overview requires
-     * a color science textbook, such as Fairchild's Color Appearance Models.
-     */
-    constructor(n, aw, nbb, ncb, c, nc, rgbD, fl, fLRoot, z) {
-        this.n = n;
-        this.aw = aw;
-        this.nbb = nbb;
-        this.ncb = ncb;
-        this.c = c;
-        this.nc = nc;
-        this.rgbD = rgbD;
-        this.fl = fl;
-        this.fLRoot = fLRoot;
-        this.z = z;
-    }
-    /**
      * Create ViewingConditions from a simple, physically relevant, set of
      * parameters.
      *
@@ -419,6 +400,25 @@ class ViewingConditions {
         ];
         const aw = (2.0 * rgbA[0] + rgbA[1] + 0.05 * rgbA[2]) * nbb;
         return new ViewingConditions(n, aw, nbb, ncb, c, nc, rgbD, fl, Math.pow(fl, 0.25), z);
+    }
+    /**
+     * Parameters are intermediate values of the CAM16 conversion process. Their
+     * names are shorthand for technical color science terminology, this class
+     * would not benefit from documenting them individually. A brief overview
+     * is available in the CAM16 specification, and a complete overview requires
+     * a color science textbook, such as Fairchild's Color Appearance Models.
+     */
+    constructor(n, aw, nbb, ncb, c, nc, rgbD, fl, fLRoot, z) {
+        this.n = n;
+        this.aw = aw;
+        this.nbb = nbb;
+        this.ncb = ncb;
+        this.c = c;
+        this.nc = nc;
+        this.rgbD = rgbD;
+        this.fl = fl;
+        this.fLRoot = fLRoot;
+        this.z = z;
     }
 }
 /** sRGB-like viewing conditions.  */
@@ -699,9 +699,9 @@ class Cam16 {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// libmonet is designed to have a consistent API across platforms
-// and modular components that can be moved around easily. Using a class as a
-// namespace facilitates this.
+// material_color_utilities is designed to have a consistent API across
+// platforms and modular components that can be moved around easily. Using a
+// class as a namespace facilitates this.
 //
 // tslint:disable:class-as-namespace
 /**
@@ -1215,14 +1215,6 @@ HctSolver.CRITICAL_PLANES = [
  * will appear as in different lighting environments.
  */
 class Hct {
-    constructor(argb) {
-        this.argb = argb;
-        const cam = Cam16.fromInt(argb);
-        this.internalHue = cam.hue;
-        this.internalChroma = cam.chroma;
-        this.internalTone = lstarFromArgb(argb);
-        this.argb = argb;
-    }
     static from(hue, chroma, tone) {
         return new Hct(HctSolver.solveToInt(hue, chroma, tone));
     }
@@ -1274,6 +1266,14 @@ class Hct {
     set tone(newTone) {
         this.setInternalState(HctSolver.solveToInt(this.internalHue, this.internalChroma, newTone));
     }
+    constructor(argb) {
+        this.argb = argb;
+        const cam = Cam16.fromInt(argb);
+        this.internalHue = cam.hue;
+        this.internalChroma = cam.chroma;
+        this.internalTone = lstarFromArgb(argb);
+        this.argb = argb;
+    }
     setInternalState(argb) {
         const cam = Cam16.fromInt(argb);
         this.internalHue = cam.hue;
@@ -1299,9 +1299,9 @@ class Hct {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// libmonet is designed to have a consistent API across platforms
-// and modular components that can be moved around easily. Using a class as a
-// namespace facilitates this.
+// material_color_utilities is designed to have a consistent API across
+// platforms and modular components that can be moved around easily. Using a
+// class as a namespace facilitates this.
 //
 // tslint:disable:class-as-namespace
 /**
@@ -1391,11 +1391,6 @@ class Blend {
  *  chroma, but vary in tone.
  */
 class TonalPalette {
-    constructor(hue, chroma) {
-        this.hue = hue;
-        this.chroma = chroma;
-        this.cache = new Map();
-    }
     /**
      * @param argb ARGB representation of a color
      * @return Tones matching that color's hue and chroma.
@@ -1411,6 +1406,11 @@ class TonalPalette {
      */
     static fromHueAndChroma(hue, chroma) {
         return new TonalPalette(hue, chroma);
+    }
+    constructor(hue, chroma) {
+        this.hue = hue;
+        this.chroma = chroma;
+        this.cache = new Map();
     }
     /**
      * @param tone HCT tone, measured from 0 to 100.
@@ -1448,6 +1448,54 @@ class TonalPalette {
  * as the key color, and all vary in chroma.
  */
 class CorePalette {
+    /**
+     * @param argb ARGB representation of a color
+     */
+    static of(argb) {
+        return new CorePalette(argb, false);
+    }
+    /**
+     * @param argb ARGB representation of a color
+     */
+    static contentOf(argb) {
+        return new CorePalette(argb, true);
+    }
+    /**
+     * Create a [CorePalette] from a set of colors
+     */
+    static fromColors(colors) {
+        return CorePalette.createPaletteFromColors(false, colors);
+    }
+    /**
+     * Create a content [CorePalette] from a set of colors
+     */
+    static contentFromColors(colors) {
+        return CorePalette.createPaletteFromColors(true, colors);
+    }
+    static createPaletteFromColors(content, colors) {
+        const palette = new CorePalette(colors.primary, content);
+        if (colors.secondary) {
+            const p = new CorePalette(colors.secondary, content);
+            palette.a2 = p.a1;
+        }
+        if (colors.tertiary) {
+            const p = new CorePalette(colors.tertiary, content);
+            palette.a3 = p.a1;
+        }
+        if (colors.error) {
+            const p = new CorePalette(colors.error, content);
+            palette.error = p.a1;
+        }
+        if (colors.neutral) {
+            const p = new CorePalette(colors.neutral, content);
+            palette.n1 = p.n1;
+        }
+        if (colors.neutralVariant) {
+            const p = new CorePalette(colors.neutralVariant, content);
+            palette.n2 = p.n2;
+        }
+        return palette;
+    }
     constructor(argb, isContent) {
         const hct = Hct.fromInt(argb);
         const hue = hct.hue;
@@ -1467,18 +1515,6 @@ class CorePalette {
             this.n2 = TonalPalette.fromHueAndChroma(hue, 8);
         }
         this.error = TonalPalette.fromHueAndChroma(25, 84);
-    }
-    /**
-     * @param argb ARGB representation of a color
-     */
-    static of(argb) {
-        return new CorePalette(argb, false);
-    }
-    /**
-     * @param argb ARGB representation of a color
-     */
-    static contentOf(argb) {
-        return new CorePalette(argb, true);
     }
 }
 
@@ -1502,9 +1538,6 @@ class CorePalette {
  * Represents a Material color scheme, a mapping of color roles to colors.
  */
 class Scheme {
-    constructor(props) {
-        this.props = props;
-    }
     get primary() {
         return this.props.primary;
     }
@@ -1692,8 +1725,13 @@ class Scheme {
             inversePrimary: core.a1.tone(40)
         });
     }
+    constructor(props) {
+        this.props = props;
+    }
     toJSON() {
-        return Object.assign({}, this.props);
+        return {
+            ...this.props
+        };
     }
 }
 
@@ -1720,7 +1758,7 @@ class Scheme {
  * @param argb ARGB representation of a color.
  * @return Hex string representing color, ex. #ff0000 for red.
  */
-const hexFromArgb = (argb) => {
+function hexFromArgb(argb) {
     const r = redFromArgb(argb);
     const g = greenFromArgb(argb);
     const b = blueFromArgb(argb);
@@ -1732,14 +1770,14 @@ const hexFromArgb = (argb) => {
         }
     }
     return '#' + outParts.join('');
-};
+}
 /**
  * @param hex String representing color as hex code. Accepts strings with or
  *     without leading #, and string representing the color using 3, 6, or 8
  *     hex characters.
  * @return ARGB representation of color.
  */
-const argbFromHex = (hex) => {
+function argbFromHex(hex) {
     hex = hex.replace('#', '');
     const isThree = hex.length === 3;
     const isSix = hex.length === 6;
@@ -1767,7 +1805,7 @@ const argbFromHex = (hex) => {
     }
     return (((255 << 24) | ((r & 0x0ff) << 16) | ((g & 0x0ff) << 8) | (b & 0x0ff)) >>>
         0);
-};
+}
 function parseIntHex(value) {
     // tslint:disable-next-line:ban
     return parseInt(value, 16);

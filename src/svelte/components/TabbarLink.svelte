@@ -3,6 +3,7 @@
   import { TabbarLinkColors } from '../../shared/colors/TabbarLinkColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { printText } from '../shared/print-text.js';
 
   import Link from './Link.svelte';
 
@@ -12,6 +13,7 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
+  export let linkProps = {};
 
   export let active = false;
   export let label = undefined;
@@ -31,7 +33,13 @@
   );
 </script>
 
-<Link tabbar tabbarActive={active} class={className} {...$$restProps}>
+<Link
+  tabbar
+  tabbarActive={active}
+  class={className}
+  {...$$restProps}
+  {...linkProps}
+>
   <span class={c.content}>
     {#if hasIcon}
       <span class={c.iconContainer}>
@@ -41,9 +49,12 @@
     {/if}
     {#if hasLabel}
       <span class={c.label}>
-        {label}
-        <slot name="label" />
-        <slot />
+        {#if $$slots.label}
+          <slot name="label" />
+        {:else}
+          {printText(label)}
+          <slot />
+        {/if}
       </span>
     {/if}
   </span>

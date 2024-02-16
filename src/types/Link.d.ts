@@ -61,6 +61,10 @@ interface Props {
    */
   tabbarActive?: boolean;
   /**
+   * Object with additional props (attributes) to pass to the Link/Button
+   */
+  linkProps?: any;
+  /**
    * Click handler
    */
   onClick?: (e: any) => void;

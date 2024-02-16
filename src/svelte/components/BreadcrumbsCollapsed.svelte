@@ -26,7 +26,13 @@
   );
 </script>
 
-<div class={c.base} {...$$restProps} on:click={onClick}>
+<div
+  class={c.base}
+  {...$$restProps}
+  role="button"
+  tabindex="0"
+  on:click={onClick}
+>
   <span class={c.dot} />
   <span class={c.dot} />
   <span class={c.dot} />

@@ -1,6 +1,7 @@
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+/* eslint-disable */
+const { defineConfig } = require('vite');
 
-export default {
-  base: '',
-  plugins: [svelte()],
-};
+module.exports = defineConfig(async ({ command, mode }) => {
+  const { svelte } = await import('@sveltejs/vite-plugin-svelte');
+  return { base: '', plugins: [svelte()] };
+});

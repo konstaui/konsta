@@ -28,8 +28,13 @@ import kListItem from './components/ListItem.vue';
 import kListInput from './components/ListInput.vue';
 import kMenuList from './components/MenuList.vue';
 import kMenuListItem from './components/MenuListItem.vue';
+import kMessage from './components/Message.vue';
+import kMessagebar from './components/Messagebar.vue';
+import kMessages from './components/Messages.vue';
+import kMessagesTitle from './components/MessagesTitle.vue';
 import kNavbar from './components/Navbar.vue';
 import kNavbarBackLink from './components/NavbarBackLink.vue';
+import kNotification from './components/Notification.vue';
 import kPage from './components/Page.vue';
 import kPanel from './components/Panel.vue';
 import kPopover from './components/Popover.vue';
@@ -38,12 +43,18 @@ import kPreloader from './components/Preloader.vue';
 import kProgressbar from './components/Progressbar.vue';
 import kRadio from './components/Radio.vue';
 import kRange from './components/Range.vue';
+import kSearchbar from './components/Searchbar.vue';
 import kSegmented from './components/Segmented.vue';
 import kSegmentedButton from './components/SegmentedButton.vue';
 import kSheet from './components/Sheet.vue';
 import kStepper from './components/Stepper.vue';
 import kTabbar from './components/Tabbar.vue';
 import kTabbarLink from './components/TabbarLink.vue';
+import kTable from './components/Table.vue';
+import kTableBody from './components/TableBody.vue';
+import kTableCell from './components/TableCell.vue';
+import kTableHead from './components/TableHead.vue';
+import kTableRow from './components/TableRow.vue';
 import kToast from './components/Toast.vue';
 import kToggle from './components/Toggle.vue';
 import kToolbar from './components/Toolbar.vue';
@@ -119,10 +130,20 @@ export {
   kMenuList as MenuList,
   kMenuListItem,
   kMenuListItem as MenuListItem,
+  kMessage,
+  kMessage as Message,
+  kMessagebar,
+  kMessagebar as Messagebar,
+  kMessages,
+  kMessages as Messages,
+  kMessagesTitle,
+  kMessagesTitle as MessagesTitle,
   kNavbar,
   kNavbar as Navbar,
   kNavbarBackLink,
   kNavbarBackLink as NavbarBackLink,
+  kNotification,
+  kNotification as Notification,
   kPage,
   kPage as Page,
   kPanel,
@@ -139,6 +160,8 @@ export {
   kRadio as Radio,
   kRange,
   kRange as Range,
+  kSearchbar,
+  kSearchbar as Searchbar,
   kSegmented,
   kSegmented as Segmented,
   kSegmentedButton,
@@ -151,6 +174,16 @@ export {
   kTabbar as Tabbar,
   kTabbarLink,
   kTabbarLink as TabbarLink,
+  kTable,
+  kTable as Table,
+  kTableBody,
+  kTableBody as TableBody,
+  kTableCell,
+  kTableCell as TableCell,
+  kTableHead,
+  kTableHead as TableHead,
+  kTableRow,
+  kTableRow as TableRow,
   kToast,
   kToast as Toast,
   kToggle,

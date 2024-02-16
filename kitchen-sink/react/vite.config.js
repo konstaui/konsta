@@ -1,6 +1,6 @@
-import reactRefresh from '@vitejs/plugin-react-refresh';
+import react from '@vitejs/plugin-react';
 
 export default {
   base: '',
-  plugins: [reactRefresh()],
+  plugins: [react()],
 };

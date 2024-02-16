@@ -1,5 +1,73 @@
 # Changelog
 
+# [3.1.2](https://github.com/konstaui/konsta/compare/v3.1.1...v3.1.2) (2023-11-09)
+
+### Features
+
+- add `types` to package exports
+
+# [3.1.1](https://github.com/konstaui/konsta/compare/v3.1.0...v3.1.1) (2023-10-20)
+
+### Features
+
+- **message:** add onClick handler ([4df47e3](https://github.com/konstaui/konsta/commit/4df47e3de71c97f16b395d07ab30ae972284f3a7)), closes [#177](https://github.com/konstaui/konsta/issues/177)
+- **messages:** add `messageReceived` to colors ([6b51367](https://github.com/konstaui/konsta/commit/6b5136790a0c18c9a0e6aa633745646c02b1491d)), closes [#176](https://github.com/konstaui/konsta/issues/176)
+
+# [3.1.0](https://github.com/konstaui/konsta/compare/v3.0.1...v3.1.0) (2023-09-20)
+
+### Bug Fixes
+
+- **react:** camel case `tabIndex` in Link component ([#170](https://github.com/konstaui/konsta/issues/170)) ([f16b164](https://github.com/konstaui/konsta/commit/f16b1649c518ee9b9b10fd4f859815de9ed2e98c))
+- **react:** camel case `tabIndex` in react components ([#175](https://github.com/konstaui/konsta/issues/175)) ([85a29e9](https://github.com/konstaui/konsta/commit/85a29e9f91208ad9367e29230cbabd947cc23b19))
+
+### Features
+
+- Data Table Components ([#173](https://github.com/konstaui/konsta/issues/173)) ([643973d](https://github.com/konstaui/konsta/commit/643973d63409809b0b0bb31d5b0eb2ac905d14e3))
+
+# [3.0.1](https://github.com/konstaui/konsta/compare/v3.0.0...v3.0.1) (2023-08-24)
+
+### Bug Fixes
+
+- **package:** fix wrong config paths in package ([d935fbb](https://github.com/konstaui/konsta/commit/d935fbb4fd629b28d484172afa0e2fe5dd647f5f))
+
+# [3.0.0](https://github.com/konstaui/konsta/compare/v2.0.0...v3.0.0) (2023-08-23)
+
+### Bug Fixes
+
+- **types:** omit props in HTMLElement extension ([#162](https://github.com/konstaui/konsta/issues/162)) ([ce2576d](https://github.com/konstaui/konsta/commit/ce2576d939ad86f0b77c57ad17b8df035ba537a3)), closes [#159](https://github.com/konstaui/konsta/issues/159)
+
+### Features
+
+- add aria role attributes ([#161](https://github.com/konstaui/konsta/issues/161)) ([59216a6](https://github.com/konstaui/konsta/commit/59216a6f4daa5b438eab0a477e2853f5195dc117)), closes [#155](https://github.com/konstaui/konsta/issues/155)
+- add Notification component ([#154](https://github.com/konstaui/konsta/issues/154)) ([9724f7c](https://github.com/konstaui/konsta/commit/9724f7cfaa069424f8b0abf7094e7ffb7a1345f5))
+- Contacts component ([#153](https://github.com/konstaui/konsta/issues/153)) ([de8e0b2](https://github.com/konstaui/konsta/commit/de8e0b22de66dbf04b42e7dc878891dea5469638))
+- Messages Component ([#152](https://github.com/konstaui/konsta/issues/152)) ([3e7ae5b](https://github.com/konstaui/konsta/commit/3e7ae5b060905bd8c295978cb2dc034552424a05))
+- Searchbar component ([#150](https://github.com/konstaui/konsta/issues/150)) ([5fedde6](https://github.com/konstaui/konsta/commit/5fedde6fd9d32f059ec34c0799a262172b2968ef))
+
+# [2.0.0](https://github.com/konstaui/konsta/compare/v1.0.2...v2.0.0) (2023-04-21)
+
+### Breaking
+
+- now it requires Tailwind CSS 3.3+
+
+### Bug Fixes
+
+- RadioClasses material icon ([#128](https://github.com/konstaui/konsta/issues/128)) ([b92714f](https://github.com/konstaui/konsta/commit/b92714fa138103c663248fdcb1643d25493fc4e6))
+- **react:** added React.PropsWithChildren ([#132](https://github.com/konstaui/konsta/issues/132)) ([72ffa4e](https://github.com/konstaui/konsta/commit/72ffa4e6ed5fb9ea1205c8aec050fb53f2eecaa8))
+- **svelte:** checks for null or undefined where printing a text ([8c6ff6f](https://github.com/konstaui/konsta/commit/8c6ff6f11c4f036821bc9afd990f41038f360fca)), closes [#126](https://github.com/konstaui/konsta/issues/126)
+- **svelte:** fix default font size in breadcrumbs ([03935c5](https://github.com/konstaui/konsta/commit/03935c5ace9f1d1bd2a67a8087f7df8b6e56231e))
+- **svelte:** link should have touch ripple disabled by default ([2b8822c](https://github.com/konstaui/konsta/commit/2b8822c20eb06ebe8787c292e5d96669be4f4167)), closes [#112](https://github.com/konstaui/konsta/issues/112)
+- **svelte:** TabbarLink label ([#129](https://github.com/konstaui/konsta/issues/129)) ([18d76bf](https://github.com/konstaui/konsta/commit/18d76bf6c2c827838b75a543c2bf916979e084b4))
+- **svelte:** use `<a>` if button has `href` ([5c6defd](https://github.com/konstaui/konsta/commit/5c6defd1fd5df27f5390a1c3b6665d1caf123a4c)), closes [#141](https://github.com/konstaui/konsta/issues/141)
+
+### Features
+
+- **breadcrumbs:** breadcrumbs-item now has overflow-hidden ([5c30bb7](https://github.com/konstaui/konsta/commit/5c30bb7b892caafcec700103f1c17f1d4a0bc1fd))
+- **link:** add `linkProps` property ([328bd1e](https://github.com/konstaui/konsta/commit/328bd1e1ca5778cde6df7680a9d23590c6497afe))
+- RTL support with logical properties ([#133](https://github.com/konstaui/konsta/issues/133)) ([870258a](https://github.com/konstaui/konsta/commit/870258aee643198013a10fb181b3714e74ea0f81))
+- **svelte:** add `component` prop support to FAB component ([#83](https://github.com/konstaui/konsta/issues/83)) ([9841840](https://github.com/konstaui/konsta/commit/9841840aa6c0181da23bcff37db755324952551e))
+- **tabbarlink:** add `linkProps` property ([e026847](https://github.com/konstaui/konsta/commit/e026847eb6ad983a67444b031a74277b46d9de42)), closes [#123](https://github.com/konstaui/konsta/issues/123)
+
 # [1.0.2](https://github.com/konstaui/konsta/compare/v1.0.1...v1.0.2) (2022-09-16)
 
 - **block:** new `padding` prop

@@ -61,7 +61,13 @@ const DialogButton = forwardRef((props, ref) => {
 
   if (theme === 'ios')
     return (
-      <Component className={c.base} disabled={disabled} {...attrs}>
+      <Component
+        className={c.base}
+        disabled={disabled}
+        role="button"
+        tabIndex="0"
+        {...attrs}
+      >
         {children}
       </Component>
     );

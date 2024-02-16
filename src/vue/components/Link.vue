@@ -1,5 +1,12 @@
 <template>
-  <component :is="component" ref="rippleElRef" :class="classes">
+  <component
+    :is="component"
+    ref="rippleElRef"
+    :class="classes"
+    v-bind="linkProps"
+    role="link"
+    tabindex="0"
+  >
     <slot />
   </component>
 </template>
@@ -31,6 +38,7 @@
         type: Boolean,
         default: undefined,
       },
+      linkProps: { type: Object, default: () => ({}) },
 
       // Toolbar/navbar link
       navbar: Boolean,

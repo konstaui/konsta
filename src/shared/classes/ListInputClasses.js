@@ -33,7 +33,7 @@ export const ListInputClasses = (
       stacked: '',
       floating: {
         common: cls(
-          `pointer-events-none duration-200 transform origin-left max-w-[66%]`,
+          `pointer-events-none duration-200 transform origin-left rtl:origin-right max-w-[66%]`,
           isFloatingTransformed && 'scale-133'
         ),
         ios: isFloatingTransformed
@@ -96,15 +96,15 @@ export const ListInputClasses = (
     info: 'opacity-50',
     clearButton: {
       common:
-        'absolute right-0 top-1/2 transform -translate-y-1/2 cursor-pointer',
+        'absolute end-0 top-1/2 transform -translate-y-1/2 cursor-pointer',
       ios: cls('w-3.5 h-3.5 opacity-45 active:opacity-30', colors.labelTextIos),
       material: cls('w-6 h-6 active:opacity-55', colors.labelTextMaterial),
     },
     dropdown:
-      'absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none opacity-50',
+      'absolute end-0 top-1/2 transform -translate-y-1/2 pointer-events-none opacity-50',
     border: {
       common:
-        'pointer-events-none absolute left-0 bottom-0 duration-200 w-full',
+        'pointer-events-none absolute start-0 bottom-0 duration-200 w-full',
       ios:
         outline &&
         cls(

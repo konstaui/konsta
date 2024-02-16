@@ -1,6 +1,6 @@
 {
   "name": "konsta",
-  "version": "1.0.2",
+  "version": "3.1.2",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
@@ -16,19 +16,22 @@
   "engines": {
     "node": ">= 4.7.0"
   },
-  "releaseDate": "September 16, 2022",
+  "releaseDate": "November 9, 2023",
   "svelte": "./svelte/konsta-svelte.js",
   "exports": {
     "./package.json": "./package.json",
     "./react": {
+      "types": "./react/konsta-react.d.ts",
       "require": "./react/cjs/konsta-react.js",
       "import": "./react/esm/konsta-react.js"
     },
     "./vue": {
+      "types": "./vue/konsta-vue.d.ts",
       "require": "./vue/konsta-vue.js",
       "import": "./vue/konsta-vue.js"
     },
     "./svelte": {
+      "types": "./svelte/konsta-svelte.d.ts",
       "import": "./svelte/konsta-svelte.js"
     },
     "./config": "./config.js",

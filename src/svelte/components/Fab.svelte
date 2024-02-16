@@ -4,6 +4,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { FabClasses } from '../../shared/classes/FabClasses.js';
   import { FabColors } from '../../shared/colors/FabColors.js';
+  import { printText } from '../shared/print-text.js';
 
   let className = undefined;
   export { className as class };
@@ -43,17 +44,19 @@
     class={text ? c.base.withText : c.base.iconOnly}
     {href}
     bind:this={rippleEl.current}
+    role="button"
+    tabindex="0"
     on:click={onClick}
     {...$$restProps}
   >
     {#if (text || $$slots.text) && textPosition === 'before'}
-      <span class={c.text}>{text}<slot name="text" /></span>
+      <span class={c.text}>{printText(text)}<slot name="text" /></span>
     {/if}
     {#if $$slots.icon}
       <span class={c.icon}><slot name="icon" /></span>
     {/if}
     {#if (text || $$slots.text) && textPosition === 'after'}
-      <span class={c.text}>{text}<slot name="text" /></span>
+      <span class={c.text}>{printText(text)}<slot name="text" /></span>
     {/if}
     <slot />
   </svelte:element>
@@ -67,13 +70,13 @@
     {...$$restProps}
   >
     {#if (text || $$slots.text) && textPosition === 'before'}
-      <span class={c.text}>{text}<slot name="text" /></span>
+      <span class={c.text}>{printText(text)}<slot name="text" /></span>
     {/if}
     {#if $$slots.icon}
       <span class={c.icon}><slot name="icon" /></span>
     {/if}
     {#if (text || $$slots.text) && textPosition === 'after'}
-      <span class={c.text}>{text}<slot name="text" /></span>
+      <span class={c.text}>{printText(text)}<slot name="text" /></span>
     {/if}
     <slot />
   </svelte:component>

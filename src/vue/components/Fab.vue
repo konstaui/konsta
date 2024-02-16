@@ -3,6 +3,8 @@
     :is="component"
     ref="rippleElRef"
     :class="text || slots.text ? c.base.withText : c.base.iconOnly"
+    role="button"
+    tabindex="0"
     :href="href"
   >
     <span

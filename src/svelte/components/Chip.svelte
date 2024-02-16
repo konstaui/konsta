@@ -42,7 +42,7 @@
   {/if}
   <slot />
   {#if deleteButton}
-    <div class={c.deleteButton} on:click={onDelete}>
+    <div class={c.deleteButton} role="button" tabindex="0" on:click={onDelete}>
       <DeleteIcon {theme} class="h-4 w-4" />
     </div>
   {/if}

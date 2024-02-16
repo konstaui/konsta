@@ -13,7 +13,7 @@
       </p>
     </k-block>
     <k-block-title>Open Action Sheet</k-block-title>
-    <k-block strong inset class="flex space-x-4">
+    <k-block strong inset class="flex space-x-4 rtl:space-x-reverse">
       <k-button @click="() => (actionsOneOpened = true)">One group</k-button>
       <k-button @click="() => (actionsTwoOpened = true)">Two groups</k-button>
     </k-block>
