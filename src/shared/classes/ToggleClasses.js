@@ -55,7 +55,7 @@ export const ToggleClasses = (props, colors, classes, dark) => {
       },
     },
     input: {
-      common: 'hidden',
+      common: 'sr-only',
     },
   };
 };
