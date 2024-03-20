@@ -72,6 +72,7 @@
     "vue-router": "^4.1.6"
   },
   "dependencies": {
-    "konsta": "file:src"
+    "konsta": "file:src",
+    "windicss": "^3.5.6"
   }
 }
