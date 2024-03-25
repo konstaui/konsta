@@ -9,9 +9,9 @@
 
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
   import { cls } from '../../shared/cls.js';
 
@@ -52,11 +52,13 @@
     },
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const colors = computed(() =>
         BlockColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme(context);
+      const theme = useTheme({}, context);
 
       const isStrong = computed(() =>
         typeof props.strong === 'undefined'

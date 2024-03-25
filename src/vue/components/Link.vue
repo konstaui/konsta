@@ -17,11 +17,11 @@
 
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
 
@@ -60,8 +60,10 @@
     },
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const rippleElRef = ref(null);
-      const theme = useTheme(props);
+      const theme = useTheme(props, context);
 
       const needsTouchRipple = computed(
         () =>

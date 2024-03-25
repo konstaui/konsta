@@ -4,7 +4,6 @@
   </k-toolbar>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
   import kToolbar from './Toolbar.vue';
 
@@ -22,8 +21,7 @@
         type: Boolean,
       },
     },
-    setup(props, ctx) {
-      const context = useContext();
+    setup(props) {
       const toolbarProps = computed(() => {
         return {
           ...props,

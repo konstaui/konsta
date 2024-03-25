@@ -9,8 +9,8 @@
 
   import { ActionsLabelClasses } from '../../shared/classes/ActionsLabelClasses.js';
   import { ActionsLabelColors } from '../../shared/colors/ActionsLabelColors.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
 
   export default {
@@ -35,13 +35,15 @@
       fontSizeIos: { type: String, default: 'text-sm' },
       fontSizeMaterial: { type: String, default: 'text-sm' },
     },
-    setup(props, ctx) {
+    setup(props) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const colors = computed(() =>
         ActionsLabelColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme(context);
+      const theme = useTheme({}, context);
 
       const isDividers = computed(() =>
         typeof props.dividers === 'undefined'

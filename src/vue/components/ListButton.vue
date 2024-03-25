@@ -20,9 +20,9 @@
 
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
@@ -60,6 +60,8 @@
     },
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props, { context });
 
@@ -71,7 +73,7 @@
         ListButtonColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme(props);
+      const theme = useTheme(props, context);
 
       const c = useThemeClasses(props, () =>
         ListButtonClasses(

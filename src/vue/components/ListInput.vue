@@ -90,13 +90,13 @@
 
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
   import DeleteIcon from './icons/DeleteIcon.vue';
   import DropdownIcon from './icons/DropdownIcon.vue';
   import kListItem from './ListItem.vue';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
 
@@ -177,9 +177,11 @@
     emits: ['change', 'input', 'focus', 'blur', 'clear'],
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const inputElRef = ref(null);
       const isFocused = ref(false);
-      const theme = useTheme(props);
+      const theme = useTheme(props, context);
       const isOutline = computed(() =>
         typeof props.outline === 'undefined'
           ? theme.value === 'ios'

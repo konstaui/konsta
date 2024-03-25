@@ -8,12 +8,12 @@
   </k-link>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
 
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
   import kBackIcon from './icons/BackIcon.vue';
   import kLink from './Link.vue';
 
@@ -50,9 +50,10 @@
         default: 'auto',
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const context = useContext();
-      const theme = useTheme(props);
+      const useThemeClasses = themeClasses(context);
+      const theme = useTheme(props, context);
       const shouldShowText = computed(
         () =>
           (props.showText === 'auto' && theme.value === 'ios') ||

@@ -15,9 +15,9 @@
 
   import { ListColors } from '../../shared/colors/ListColors.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
   import { useTheme } from '../shared/use-theme.js';
 
@@ -57,7 +57,9 @@
     },
     setup(props, ctx) {
       const context = useContext();
-      const theme = useTheme(context);
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
+      const theme = useTheme({}, context);
 
       const hasDividers = computed(() =>
         typeof props.dividers === 'undefined'

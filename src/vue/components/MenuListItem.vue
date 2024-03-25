@@ -31,7 +31,6 @@
   </k-list-item>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
   import kListItem from './ListItem.vue';
 
@@ -46,7 +45,6 @@
       active: Boolean,
     },
     setup(props, ctx) {
-      const context = useContext();
       const listItemProps = computed(() => ({
         ...props,
         menuListItem: true,

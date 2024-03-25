@@ -25,16 +25,16 @@
   </k-link>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed, ref, onBeforeUpdate } from 'vue';
+  import { useContext } from '../shared/use-context.js';
 
   import { TabbarLinkClasses } from '../../shared/classes/TabbarLinkClasses.js';
 
   import { TabbarLinkColors } from '../../shared/colors/TabbarLinkColors.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
   import kLink from './Link.vue';
 
   export default {
@@ -60,6 +60,8 @@
     },
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const colors = computed(() =>
         TabbarLinkColors(props.colors, useDarkClasses)
       );

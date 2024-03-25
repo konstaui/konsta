@@ -7,7 +7,7 @@
   import { useContext } from '../shared/use-context.js';
   import { ActionsGroupClasses } from '../../shared/classes/ActionsGroupClasses.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {
     name: 'k-actions-group',
@@ -28,6 +28,7 @@
     },
     setup(props, ctx) {
       const context = useContext();
+      const useThemeClasses = themeClasses(context);
       const c = useThemeClasses(props, () =>
         ActionsGroupClasses(props, ctx.attrs.class)
       );

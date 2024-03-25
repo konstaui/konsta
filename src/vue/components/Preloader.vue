@@ -7,14 +7,14 @@
   </component>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
 
   import { useTheme } from '../shared/use-theme.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
   import PreloaderIOS from './icons/PreloaderIOS.vue';
   import PreloaderMaterial from './icons/PreloaderMaterial.vue';
@@ -46,9 +46,11 @@
         default: 'w-8 h-8',
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const context = useContext();
-      const theme = useTheme(props);
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
+      const theme = useTheme(props, context);
 
       const colors = computed(() =>
         PreloaderColors(props.colors || {}, useDarkClasses)

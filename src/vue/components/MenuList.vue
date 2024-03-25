@@ -4,7 +4,6 @@
   </k-list>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
   import kList from './List.vue';
 
@@ -16,8 +15,7 @@
     props: {
       ...kList.props,
     },
-    setup(props, ctx) {
-      const context = useContext();
+    setup(props) {
       const listProps = computed(() => ({
         ...props,
         menuList: true,

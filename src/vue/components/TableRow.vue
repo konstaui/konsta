@@ -11,9 +11,9 @@
 
   import { TableRowColors } from '../../shared/colors/TableRowColors.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {
     name: 'k-table-row',
@@ -36,6 +36,8 @@
     },
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const elRef = ref(null);
 
       const colors = computed(() =>

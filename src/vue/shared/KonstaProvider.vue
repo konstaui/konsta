@@ -2,7 +2,6 @@
   <slot />
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed, provide } from 'vue';
 
   import { useAutoTheme } from './use-auto-theme.js';
@@ -27,8 +26,7 @@
         default: true,
       },
     },
-    setup(props, ctx) {
-      const context = useContext();
+    setup(props) {
       const currentTheme = useAutoTheme(props, props.autoThemeDetection);
 
       const KonstaContext = computed(() => ({

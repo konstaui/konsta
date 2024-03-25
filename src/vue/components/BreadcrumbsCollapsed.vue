@@ -14,9 +14,9 @@
 
   import { BreadcrumbsCollapsedColors } from '../../shared/colors/BreadcrumbsCollapsedColors.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
 
   export default {
     name: 'k-breadcrumbs-collapsed',
@@ -37,8 +37,10 @@
         type: Object,
       },
     },
-    setup(props, ctx) {
+    setup(props) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const colors = computed(() =>
         BreadcrumbsCollapsedColors(props.colors, useDarkClasses)
       );

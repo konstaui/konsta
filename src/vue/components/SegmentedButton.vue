@@ -4,7 +4,6 @@
   </k-button>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
   import kButton from './Button.vue';
 
@@ -21,8 +20,7 @@
       clear: { type: Boolean, default: false },
       rounded: { type: Boolean, default: false },
     },
-    setup(props, ctx) {
-      const context = useContext();
+    setup(props) {
       const buttonProps = computed(() => {
         return {
           ...props,

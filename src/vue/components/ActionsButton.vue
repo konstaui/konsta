@@ -14,9 +14,9 @@
   import { useContext } from '../shared/use-context.js';
 
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
   import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
   import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
 
@@ -56,6 +56,8 @@
     },
     setup(props) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const rippleElRef = ref(null);
       const Component = computed(() => {
         let c = props.component;
@@ -74,7 +76,7 @@
         ActionsButtonColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme(context);
+      const theme = useTheme({}, context);
 
       const isDividers = computed(() =>
         typeof props.dividers === 'undefined'

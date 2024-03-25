@@ -26,9 +26,9 @@
 
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
-  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { darkClasses } from '../shared/use-dark-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
 
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
@@ -66,8 +66,10 @@
     emits: ['change'],
     setup(props, ctx) {
       const context = useContext();
+      const useDarkClasses = darkClasses(context);
+      const useThemeClasses = themeClasses(context);
       const elRef = ref(null);
-      const theme = useTheme(props);
+      const theme = useTheme(props, context);
 
       useTouchRipple(elRef, props, { context });
 

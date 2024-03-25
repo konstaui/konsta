@@ -8,7 +8,7 @@
   import { useContext } from '../shared/use-context.js';
   import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
   import { BadgeColors } from '../../shared/colors/BadgeColors.js';
-  import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {
     name: 'k-badge',
@@ -35,6 +35,7 @@
     },
     setup(props) {
       const context = useContext();
+      const useThemeClasses = themeClasses(context);
       const colors = computed(() => BadgeColors(props.colors || {}));
 
       const size = computed(() => (props.small ? 'sm' : 'md'));

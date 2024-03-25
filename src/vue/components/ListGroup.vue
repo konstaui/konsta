@@ -6,7 +6,6 @@
   </li>
 </template>
 <script>
-  import { useContext } from '../shared/use-context.js';
   import kList from './List.vue';
 
   export default {
@@ -30,8 +29,7 @@
       outlineMaterial: { type: Boolean, default: false },
       menuList: { type: Boolean, default: false },
     },
-    setup(props, ctx) {
-      const context = useContext();
+    setup(props) {
       return {
         props,
       };
