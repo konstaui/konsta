@@ -1,5 +1,16 @@
 # Changelog
 
+# [3.1.3](https://github.com/konstaui/konsta/compare/v3.1.2...v3.1.3) (2024-03-25)
+
+### Bug Fixes
+
+- **vue:** useContext ([5206ae0](https://github.com/konstaui/konsta/commit/5206ae0532a230ae7a2150981da964a80f9ff91b))
+- **vue:** useContext util ([cc543a3](https://github.com/konstaui/konsta/commit/cc543a398c9cd315698f68c1586abf2847d4c12e)), closes [#196](https://github.com/konstaui/konsta/issues/196)
+
+### Features
+
+- [export konsta-react types KonstaProviderProps] ([#183](https://github.com/konstaui/konsta/issues/183)) ([9e79848](https://github.com/konstaui/konsta/commit/9e79848dae7976188c4e339912d30c80e3655b7f))
+
 # [3.1.2](https://github.com/konstaui/konsta/compare/v3.1.1...v3.1.2) (2023-11-09)
 
 ### Features
