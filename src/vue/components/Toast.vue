@@ -7,10 +7,15 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+
   import { ToastClasses } from '../../shared/classes/ToastClasses.js';
+
   import { ToastColors } from '../../shared/colors/ToastColors.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -36,6 +41,7 @@
       translucent: { type: Boolean, default: true },
     },
     setup(props, ctx) {
+      const context = useContext();
       const colors = computed(() =>
         ToastColors(props.colors || {}, useDarkClasses)
       );

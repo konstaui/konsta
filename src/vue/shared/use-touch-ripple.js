@@ -1,13 +1,12 @@
-import { ref, onMounted, onBeforeUnmount, inject, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';
 
 export const useTouchRipple = (
   elRef,
   props,
-  { addCondition, eventsElRef } = {}
+  { addCondition, eventsElRef, context } = {}
 ) => {
   if (!eventsElRef) eventsElRef = elRef;
-  const context = inject('KonstaContext');
   const ripple = ref(null);
   let eventsAttached = false;
 

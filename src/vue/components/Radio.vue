@@ -20,12 +20,19 @@
 </template>
 <script>
   import { computed, ref } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
+
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
+
   import { RadioColors } from '../../shared/colors/RadioColors.js';
 
   export default {
@@ -58,10 +65,11 @@
     },
     emits: ['change'],
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
       const theme = useTheme(props);
 
-      useTouchRipple(elRef, props);
+      useTouchRipple(elRef, props, { context });
 
       const colors = computed(() =>
         RadioColors(props.colors || {}, useDarkClasses)

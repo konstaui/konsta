@@ -5,10 +5,16 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { BlockFooterClasses } from '../../shared/classes/BlockFooterClasses.js';
+
   import { BlockFooterColors } from '../../shared/colors/BlockFooterColors.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -33,8 +39,9 @@
       insetIos: { type: Boolean, default: false },
       insetMaterial: { type: Boolean, default: false },
     },
-    setup(props) {
-      const theme = useTheme();
+    setup(props, ctx) {
+      const context = useContext();
+      const theme = useTheme(context);
       const isInset = computed(() =>
         typeof props.inset === 'undefined'
           ? theme.value === 'ios'

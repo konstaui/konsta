@@ -37,13 +37,21 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ref, computed } from 'vue';
+
   import { cls } from '../../shared/cls.js';
+
   import { StepperClasses } from '../../shared/classes/StepperClasses.js';
+
   import { StepperColors } from '../../shared/colors/StepperColors.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
@@ -94,11 +102,12 @@
     },
     emits: ['input', 'change', 'focus', 'blur', 'minus', 'plus'],
     setup(props, ctx) {
-      const theme = useTheme();
+      const context = useContext();
+      const theme = useTheme(context);
       const buttonLeftElRef = ref(null);
       const buttonRightElRef = ref(null);
-      useTouchRipple(buttonLeftElRef, props);
-      useTouchRipple(buttonRightElRef, props);
+      useTouchRipple(buttonLeftElRef, props, { context });
+      useTouchRipple(buttonRightElRef, props, { context });
 
       const colors = computed(() =>
         StepperColors(props.colors || {}, useDarkClasses)

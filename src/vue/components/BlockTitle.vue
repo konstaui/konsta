@@ -5,9 +5,14 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
+
   import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -42,6 +47,7 @@
       },
     },
     setup(props) {
+      const context = useContext();
       const colors = computed(() =>
         BlockTitleColors(props.colors || {}, useDarkClasses)
       );

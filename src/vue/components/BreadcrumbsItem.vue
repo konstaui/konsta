@@ -5,9 +5,14 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { BreadcrumbsItemClasses } from '../../shared/classes/BreadcrumbsItemClasses.js';
+
   import { BreadcrumbsItemColors } from '../../shared/colors/BreadcrumbsItemColors.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -33,7 +38,8 @@
         default: false,
       },
     },
-    setup(props) {
+    setup(props, ctx) {
+      const context = useContext();
       const colors = computed(() =>
         BreadcrumbsItemColors(props.colors, useDarkClasses)
       );

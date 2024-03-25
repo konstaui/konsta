@@ -34,11 +34,17 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ref, computed } from 'vue';
+
   import { cls } from '../../shared/cls.js';
+
   import { MessageClasses } from '../../shared/classes/MessageClasses.js';
+
   import { MessageColors } from '../../shared/colors/MessageColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -70,6 +76,7 @@
       avatar: { type: String, default: null },
     },
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
 
       const colors = computed(() =>

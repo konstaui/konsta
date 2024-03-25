@@ -4,7 +4,9 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ActionsGroupClasses } from '../../shared/classes/ActionsGroupClasses.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -25,10 +27,9 @@
       dividers: { type: Boolean, default: true },
     },
     setup(props, ctx) {
-      const c = useThemeClasses(
-        props,
-        () => ActionsGroupClasses(props),
-        ctx.attrs.class
+      const context = useContext();
+      const c = useThemeClasses(props, () =>
+        ActionsGroupClasses(props, ctx.attrs.class)
       );
 
       return {

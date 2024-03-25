@@ -8,11 +8,15 @@
   </k-link>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kBackIcon from './icons/BackIcon.vue';
   import kLink from './Link.vue';
+
   import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 
   export default {
@@ -46,7 +50,8 @@
         default: 'auto',
       },
     },
-    setup(props) {
+    setup(props, ctx) {
+      const context = useContext();
       const theme = useTheme(props);
       const shouldShowText = computed(
         () =>

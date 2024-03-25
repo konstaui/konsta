@@ -13,11 +13,17 @@
   </component>
 </template>
 <script>
-  import { computed, ref, onUpdated, onMounted } from 'vue';
+  import { computed, onMounted, onUpdated, ref } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
+
   import { ToolbarColors } from '../../shared/colors/ToolbarColors.js';
 
   export default {
@@ -52,12 +58,13 @@
       top: { type: Boolean, default: false },
     },
     setup(props, ctx) {
+      const context = useContext();
       const highlightElRef = ref(null);
       const highlightStyle = ref({
         transform: '',
         width: '',
       });
-      const theme = useTheme();
+      const theme = useTheme(context);
       const hasHighlight = computed(
         () => theme.value === 'material' && props.tabbar && !props.tabbarIcons
       );

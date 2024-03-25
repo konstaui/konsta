@@ -4,8 +4,11 @@
   </tbody>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ref } from 'vue';
+
   import { TableBodyClasses } from '../../shared/classes/TableBodyClasses.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -21,6 +24,7 @@
       },
     },
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
 
       const c = useThemeClasses(props, () =>

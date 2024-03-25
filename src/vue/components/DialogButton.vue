@@ -23,10 +23,16 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { DialogButtonClasses } from '../../shared/classes/DialogButtonClasses.js';
+
   import { DialogButtonColors } from '../../shared/colors/DialogButtonColors.js';
   import Button from './Button.vue';
 
@@ -60,8 +66,9 @@
       },
     },
     setup(props) {
+      const context = useContext();
       const Component = computed(() => props.component);
-      const theme = useTheme();
+      const theme = useTheme(context);
 
       const isStrong = computed(() =>
         typeof props.strong === 'undefined'

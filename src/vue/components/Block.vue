@@ -5,11 +5,18 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { cls } from '../../shared/cls.js';
+
   import { BlockClasses } from '../../shared/classes/BlockClasses.js';
+
   import { BlockColors } from '../../shared/colors/BlockColors.js';
 
   export default {
@@ -44,11 +51,12 @@
       nested: { type: Boolean, default: false },
     },
     setup(props, ctx) {
+      const context = useContext();
       const colors = computed(() =>
         BlockColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme();
+      const theme = useTheme(context);
 
       const isStrong = computed(() =>
         typeof props.strong === 'undefined'

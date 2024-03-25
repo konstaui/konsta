@@ -11,6 +11,8 @@
 </template>
 <script>
   import { ref, computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
@@ -52,7 +54,8 @@
       fontSizeIos: { type: String, default: 'text-xl' },
       fontSizeMaterial: { type: String, default: 'text-base' },
     },
-    setup(props, ctx) {
+    setup(props) {
+      const context = useContext();
       const rippleElRef = ref(null);
       const Component = computed(() => {
         let c = props.component;
@@ -65,13 +68,13 @@
         return c;
       });
 
-      useTouchRipple(rippleElRef, props);
+      useTouchRipple(rippleElRef, props, { context });
 
       const colors = computed(() =>
         ActionsButtonColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme();
+      const theme = useTheme(context);
 
       const isDividers = computed(() =>
         typeof props.dividers === 'undefined'
@@ -87,15 +90,12 @@
           : props.bold
       );
 
-      const c = useThemeClasses(
-        props,
-        () =>
-          ActionsButtonClasses(
-            { ...props, bold: isBold.value, dividers: isDividers.value },
-            colors.value,
-            useDarkClasses
-          ),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        ActionsButtonClasses(
+          { ...props, bold: isBold.value, dividers: isDividers.value },
+          colors.value,
+          useDarkClasses
+        )
       );
 
       return {

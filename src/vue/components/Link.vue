@@ -11,13 +11,20 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed, ref } from 'vue';
   import { cls } from '../../shared/cls.js';
+  import { useContext } from '../shared/use-context.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+
   import { LinkColors } from '../../shared/colors/LinkColors.js';
 
   export default {
@@ -52,6 +59,7 @@
       touchRipple: { type: Boolean, default: undefined },
     },
     setup(props, ctx) {
+      const context = useContext();
       const rippleElRef = ref(null);
       const theme = useTheme(props);
 
@@ -63,14 +71,13 @@
               (props.toolbar || props.tabbar || props.navbar)))
       );
 
-      useTouchRipple(
-        rippleElRef,
-        props,
-        () =>
+      useTouchRipple(rippleElRef, props, {
+        context,
+        addCondition: () =>
           props.touchRipple ||
           (typeof props.touchRipple === 'undefined' &&
-            (props.toolbar || props.tabbar || props.navbar))
-      );
+            (props.toolbar || props.tabbar || props.navbar)),
+      });
 
       const colors = computed(() =>
         LinkColors(props.colors || {}, useDarkClasses)

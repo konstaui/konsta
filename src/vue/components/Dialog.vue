@@ -12,9 +12,14 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { DialogClasses } from '../../shared/classes/DialogClasses.js';
+
   import { DialogColors } from '../../shared/colors/DialogColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -48,6 +53,7 @@
     },
     emits: ['backdropclick'],
     setup(props, ctx) {
+      const context = useContext();
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
       const colors = computed(() =>
         DialogColors(props.colors || {}, useDarkClasses)

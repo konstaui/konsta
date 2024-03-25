@@ -8,10 +8,15 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+
   import { ProgressbarClasses } from '../../shared/classes/ProgressbarClasses.js';
+
   import { ProgressbarColors } from '../../shared/colors/ProgressbarColors.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -37,7 +42,8 @@
         default: 0,
       },
     },
-    setup(props) {
+    setup(props, ctx) {
+      const context = useContext();
       const colors = computed(() =>
         ProgressbarColors(props.colors || {}, useDarkClasses)
       );

@@ -1,4 +1,4 @@
-import { inject, computed } from 'vue';
+import { computed } from 'vue';
 import { cls } from '../../shared/cls.js';
 
 const propClasses = (classesObj, theme, state) => {
@@ -42,10 +42,12 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
   return c;
 };
 
-const useThemeClasses = (props, classesObj) =>
+const useThemeClasses = (props, classesObj, ctx) =>
   computed(() => {
-    const context = inject('KonstaContext');
-    let theme = context.value.theme || 'ios';
+    let theme;
+    if (ctx) {
+      theme = ctx.value.theme || 'ios';
+    }
     if (props.ios) theme = 'ios';
     if (props.material) theme = 'material';
     return themeClasses(
@@ -54,4 +56,6 @@ const useThemeClasses = (props, classesObj) =>
     );
   });
 
-export { useThemeClasses };
+const createUseThemeClasses = (context) => (props, classesObj) =>
+  useThemeClasses(props, classesObj, context);
+export { useThemeClasses, createUseThemeClasses as themeClasses };

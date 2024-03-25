@@ -6,6 +6,8 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { ActionsClasses } from '../../shared/classes/ActionsClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -29,6 +31,7 @@
     },
     emits: ['backdropclick'],
     setup(props, ctx) {
+      const context = useContext();
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
 
       const c = useThemeClasses(props, () =>

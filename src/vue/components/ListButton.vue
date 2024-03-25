@@ -11,12 +11,19 @@
   </component>
 </template>
 <script>
-  import { ref, computed, inject } from 'vue';
+  import { computed, inject, ref } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
+
   import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
@@ -52,8 +59,9 @@
       touchRipple: { type: Boolean, default: true },
     },
     setup(props, ctx) {
+      const context = useContext();
       const rippleElRef = ref(null);
-      useTouchRipple(rippleElRef, props);
+      useTouchRipple(rippleElRef, props, { context });
 
       const ListDividersContext = inject('ListDividersContext', {
         value: false,

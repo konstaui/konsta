@@ -22,11 +22,17 @@
   </component>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed, ref } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { FabClasses } from '../../shared/classes/FabClasses.js';
+
   import { FabColors } from '../../shared/colors/FabColors.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -53,8 +59,9 @@
       touchRipple: { type: Boolean, default: true },
     },
     setup(props, ctx) {
+      const context = useContext();
       const rippleElRef = ref(null);
-      useTouchRipple(rippleElRef, props);
+      useTouchRipple(rippleElRef, props, { context });
 
       const colors = computed(() =>
         FabColors(props.colors || {}, useDarkClasses)

@@ -6,6 +6,8 @@
 </template>
 <script>
   import { BreadcrumbsSeparatorClasses } from '../../shared/classes/BreadcrumbsSeparatorClasses.js';
+  import { useContext } from '../shared/use-context.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import ChevronIcon from './icons/ChevronIcon.vue';
 
@@ -27,6 +29,7 @@
       },
     },
     setup(props) {
+      const context = useContext();
       const c = useThemeClasses(props, () =>
         BreadcrumbsSeparatorClasses(props)
       );

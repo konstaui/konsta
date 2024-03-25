@@ -83,16 +83,23 @@
   </k-list-item>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed, ref } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { cls } from '../../shared/cls.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   import DeleteIcon from './icons/DeleteIcon.vue';
   import DropdownIcon from './icons/DropdownIcon.vue';
   import kListItem from './ListItem.vue';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
+
   import { ListInputColors } from '../../shared/colors/ListInputColors.js';
 
   export default {
@@ -169,6 +176,7 @@
     },
     emits: ['change', 'input', 'focus', 'blur', 'clear'],
     setup(props, ctx) {
+      const context = useContext();
       const inputElRef = ref(null);
       const isFocused = ref(false);
       const theme = useTheme(props);

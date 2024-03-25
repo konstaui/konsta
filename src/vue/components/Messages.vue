@@ -4,8 +4,11 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ref } from 'vue';
+
   import { MessagesClasses } from '../../shared/classes/MessagesClasses.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -29,6 +32,7 @@
       id: String,
     },
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
 
       const c = useThemeClasses(props, () =>

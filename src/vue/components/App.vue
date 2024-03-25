@@ -12,8 +12,10 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import { useAutoTheme } from '../shared/use-auto-theme.js';
+
   import KonstaProvider from '../shared/KonstaProvider.vue';
+  import { useAutoTheme } from '../shared/use-auto-theme.js';
+
   import { AppClasses } from '../../shared/classes/AppClasses.js';
 
   export default {

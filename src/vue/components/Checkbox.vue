@@ -24,11 +24,17 @@
   </component>
 </template>
 <script>
-  import { ref, computed, watch, onMounted } from 'vue';
+  import { computed, onMounted, ref, watch } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { CheckboxClasses } from '../../shared/classes/CheckboxClasses.js';
+
   import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
 
@@ -64,10 +70,11 @@
     },
     emits: ['change'],
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
       const inputElRef = ref(null);
 
-      useTouchRipple(elRef, props);
+      useTouchRipple(elRef, props, { context });
 
       const colors = computed(() =>
         CheckboxColors(props.colors || {}, useDarkClasses)

@@ -32,12 +32,17 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { computed, onMounted, onBeforeUnmount, onUpdated, ref } from 'vue';
 
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
+
   import { NavbarColors } from '../../shared/colors/NavbarColors.js';
 
   export default {
@@ -92,6 +97,7 @@
       subtitle: String,
     },
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
       const titleContainerHeight = ref(0);
       const bgElRef = ref(null);

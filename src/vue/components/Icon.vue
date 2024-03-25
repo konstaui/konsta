@@ -13,9 +13,12 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kBadge from './Badge.vue';
+
   import { IconClasses } from '../../shared/classes/IconClasses.js';
 
   export default {
@@ -32,7 +35,8 @@
       badgeColors: Object,
     },
     setup(props, ctx) {
-      const theme = useTheme();
+      const context = useContext();
+      const theme = useTheme(context);
 
       const c = useThemeClasses(props, () =>
         IconClasses(props, ctx.attrs.class)

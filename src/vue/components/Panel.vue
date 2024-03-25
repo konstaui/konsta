@@ -5,11 +5,17 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+
   import { cls } from '../../shared/cls.js';
+
   import { PanelClasses } from '../../shared/classes/PanelClasses.js';
+
   import { PanelColors } from '../../shared/colors/PanelColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -38,6 +44,7 @@
     },
     emits: ['backdropclick'],
     setup(props, ctx) {
+      const context = useContext();
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
       const colors = computed(() =>
         PanelColors(props.colors || {}, useDarkClasses)

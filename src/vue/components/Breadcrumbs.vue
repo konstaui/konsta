@@ -4,7 +4,9 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { BreadcrumbsClasses } from '../../shared/classes/BreadcrumbsClasses.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -32,6 +34,7 @@
       },
     },
     setup(props) {
+      const context = useContext();
       const c = useThemeClasses(props, () => BreadcrumbsClasses(props));
       return {
         c,

@@ -4,10 +4,15 @@
   </tr>
 </template>
 <script>
-  import { ref, computed } from 'vue';
+  import { computed, ref } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { TableRowClasses } from '../../shared/classes/TableRowClasses.js';
+
   import { TableRowColors } from '../../shared/colors/TableRowColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -30,6 +35,7 @@
       },
     },
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
 
       const colors = computed(() =>

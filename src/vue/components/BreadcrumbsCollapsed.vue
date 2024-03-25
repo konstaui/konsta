@@ -8,9 +8,14 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { BreadcrumbsCollapsedClasses } from '../../shared/classes/BreadcrumbsCollapsedClasses.js';
+
   import { BreadcrumbsCollapsedColors } from '../../shared/colors/BreadcrumbsCollapsedColors.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   export default {
@@ -32,7 +37,8 @@
         type: Object,
       },
     },
-    setup(props) {
+    setup(props, ctx) {
+      const context = useContext();
       const colors = computed(() =>
         BreadcrumbsCollapsedColors(props.colors, useDarkClasses)
       );

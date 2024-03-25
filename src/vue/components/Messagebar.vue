@@ -23,10 +23,15 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ref, computed } from 'vue';
+
   import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
+
   import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import kToolbar from './Toolbar.vue';
 
@@ -64,6 +69,7 @@
     },
     emits: ['change', 'input', 'focus'],
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
       const areaElRef = ref(null);
       const isFocused = ref(false);

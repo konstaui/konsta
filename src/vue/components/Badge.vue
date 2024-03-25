@@ -5,6 +5,7 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
   import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
   import { BadgeColors } from '../../shared/colors/BadgeColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -33,6 +34,7 @@
       },
     },
     setup(props) {
+      const context = useContext();
       const colors = computed(() => BadgeColors(props.colors || {}));
 
       const size = computed(() => (props.small ? 'sm' : 'md'));

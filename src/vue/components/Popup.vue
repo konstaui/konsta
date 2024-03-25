@@ -5,11 +5,17 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { computed } from 'vue';
+
   import { cls } from '../../shared/cls.js';
+
   import { PopupClasses } from '../../shared/classes/PopupClasses.js';
+
   import { PopupColors } from '../../shared/colors/PopupColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -36,6 +42,7 @@
     },
     emits: ['backdropclick'],
     setup(props, ctx) {
+      const context = useContext();
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
       const colors = computed(() =>
         PopupColors(props.colors || {}, useDarkClasses)

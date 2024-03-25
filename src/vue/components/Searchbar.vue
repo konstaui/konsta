@@ -59,14 +59,21 @@
   </component>
 </template>
 <script>
+  import { useContext } from '../shared/use-context.js';
   import { ref, computed, onMounted } from 'vue';
+
   import { cls } from '../../shared/cls.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
   import { SearchbarClasses } from '../../shared/classes/SearchbarClasses.js';
+
   import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
+
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import DeleteIcon from './icons/DeleteIcon.vue';
   import SearchIcon from './icons/SearchIcon.vue';
@@ -122,6 +129,7 @@
       'disable',
     ],
     setup(props, ctx) {
+      const context = useContext();
       const elRef = ref(null);
       const searchElRef = ref(null);
       const disableButtonRef = ref(null);
@@ -131,7 +139,7 @@
       const isEnabled = ref(false);
       const theme = useTheme(props);
 
-      useTouchRipple(elRef, props);
+      useTouchRipple(elRef, props, { context });
 
       const colors = computed(() =>
         SearchbarColors(props.colors || {}, useDarkClasses)

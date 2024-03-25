@@ -16,10 +16,16 @@
 </template>
 <script>
   import { computed } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useTheme } from '../shared/use-theme.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { CardClasses } from '../../shared/classes/CardClasses.js';
+
   import { CardColors } from '../../shared/colors/CardColors.js';
 
   export default {
@@ -56,11 +62,12 @@
       footerDivider: { type: Boolean, default: false },
     },
     setup(props, ctx) {
+      const context = useContext();
       const colors = computed(() =>
         CardColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme();
+      const theme = useTheme(context);
 
       const isOutline = computed(() =>
         typeof props.outline === 'undefined'

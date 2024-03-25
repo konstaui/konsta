@@ -7,11 +7,18 @@
 </template>
 <script>
   import { computed, provide } from 'vue';
+  import { useContext } from '../shared/use-context.js';
+
   import { cls } from '../../shared/cls.js';
+
   import { ListClasses } from '../../shared/classes/ListClasses.js';
+
   import { ListColors } from '../../shared/colors/ListColors.js';
+
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+
   import { useTheme } from '../shared/use-theme.js';
 
   export default {
@@ -49,7 +56,8 @@
       menuList: { type: Boolean, default: false },
     },
     setup(props, ctx) {
-      const theme = useTheme();
+      const context = useContext();
+      const theme = useTheme(context);
 
       const hasDividers = computed(() =>
         typeof props.dividers === 'undefined'

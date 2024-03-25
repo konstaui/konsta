@@ -1,9 +1,8 @@
-import { inject } from 'vue';
-
-const useDarkClasses = (classNames) => {
-  const context = inject('KonstaContext');
-  if (!context.value.dark) return '';
+const useDarkClasses = (classNames, context) => {
+  if (!context || !context.value.dark) return '';
   return classNames;
 };
+const createUseDarkClasses = (context) => (classNames) =>
+  useDarkClasses(classNames, context);
 
-export { useDarkClasses };
+export { createUseDarkClasses as darkClasses, useDarkClasses };
