@@ -49,7 +49,7 @@ interface Props {
   /**
    * Message text
    */
-  text?: string;
+  text?: string | React.ReactNode;
   /**
    * Message name
    */
