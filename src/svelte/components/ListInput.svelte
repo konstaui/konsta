@@ -260,7 +260,7 @@
             {required}
             {pattern}
             {tabindex}
-            bind:value={value}
+            bind:value
             on:input={onInput}
             on:change={onChange}
             on:focus={onFocusInternal}
