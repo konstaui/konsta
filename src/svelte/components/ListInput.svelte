@@ -193,7 +193,7 @@
       {:else}
         <!-- svelte-ignore a11y-autofocus -->
         {#if type === 'select'}
-          <svelte:element
+          <select
             this={InputComponent}
             id={inputId}
             bind:this={inputEl}
@@ -217,28 +217,28 @@
             {min}
             {minlength}
             {step}
-            {multiple}
+            {...{multiple}}
             {readonly}
             {required}
             {pattern}
             {tabindex}
-            {value}
+            bind:value
             on:input={onInput}
             on:change={onChange}
             on:focus={onFocusInternal}
             on:blur={onBlurInternal}
           >
             <slot />
-          </svelte:element>
+          </select>
         {:else}
-          <svelte:element
+          <input
             this={InputComponent}
             id={inputId}
             bind:this={inputEl}
             class={c.input[labelStyleIsFloating]}
             style={inputStyle}
             {name}
-            type={needsType ? type : undefined}
+            {...{type}}
             {placeholder}
             {inputmode}
             {size}
@@ -260,7 +260,7 @@
             {required}
             {pattern}
             {tabindex}
-            {value}
+            bind:value={value}
             on:input={onInput}
             on:change={onChange}
             on:focus={onFocusInternal}
