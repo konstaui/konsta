@@ -174,9 +174,12 @@
 </script>
 
 {#if groupTitle}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svelte:element
     this={component}
     class={cls(c.groupTitle, className)}
+    role="button"
+    tabindex="0"
     on:click={onClick}
   >
     {title}
@@ -184,9 +187,12 @@
     <slot />
   </svelte:element>
 {:else}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svelte:element
     this={component}
     class={c.base}
+    role="button"
+    tabindex="0"
     {...$$restProps}
     on:click={onClick}
   >

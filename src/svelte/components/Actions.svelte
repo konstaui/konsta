@@ -22,7 +22,8 @@
 </script>
 
 {#if backdrop}
-  <div class={c.backdrop[state]} on:click={onBackdropClick} />
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <div class={c.backdrop[state]} role="button" tabindex="0" on:click={onBackdropClick} />
 {/if}
 <div class={c.base[state]} {...$$restProps}>
   <slot />

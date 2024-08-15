@@ -50,11 +50,14 @@
   );
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <svelte:element
   this={component}
   {id}
   bind:this={rippleEl.current}
   class={classes}
+  role="button"
+  tabindex="0"
   on:click={onClick}
   {...$$restProps}
 >

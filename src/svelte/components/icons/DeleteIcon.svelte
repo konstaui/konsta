@@ -4,12 +4,15 @@
 </script>
 
 {#if theme === 'ios'}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="28"
     height="28"
     viewBox="0 0 28 28"
     fill="currentcolor"
+    role="button"
+    tabindex="0"
     on:click={onClick}
     {...$$restProps}
   >
@@ -18,12 +21,15 @@
     />
   </svg>
 {:else}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svg
     width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    role="button"
+    tabindex="0"
     on:click={onClick}
     {...$$restProps}
   >
