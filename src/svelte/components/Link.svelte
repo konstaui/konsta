@@ -26,7 +26,7 @@
   export let tabbar = false;
   export let tabbarActive = false;
 
-  export let touchRipple = false;
+  export let touchRipple = undefined;
 
   export let onClick = undefined;
 
@@ -42,7 +42,7 @@
     (touchRipple ||
       (typeof touchRipple === 'undefined' && (toolbar || tabbar || navbar)));
 
-  $: useTouchRipple(rippleEl, needsTouchRipple);
+  $: useTouchRipple(rippleEl, toolbar || tabbar || navbar);
 
   $: colors = LinkColors(colorsProp, dark);
 
