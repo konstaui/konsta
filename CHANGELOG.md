@@ -1,5 +1,14 @@
 # Changelog
 
+# [3.1.4](https://github.com/konstaui/konsta/compare/v3.1.3...v3.1.4) (2024-08-21)
+
+### Bug Fixes
+
+- **svelte:** don't remove text slot from svelte types ([#208](https://github.com/konstaui/konsta/issues/208)) ([ad6a0bd](https://github.com/konstaui/konsta/commit/ad6a0bdaa2844e925987e4ca228e0138a4fd5047))
+- **svelte:** fix missing touch ripple on links ([11496d6](https://github.com/konstaui/konsta/commit/11496d64e9ab31c59b9ae095a677b0ef02e16256))
+- **svelte:** fix vite-plugin warning ([#217](https://github.com/konstaui/konsta/issues/217)) ([927cb6f](https://github.com/konstaui/konsta/commit/927cb6f4a0b034abf27e33bbff3a5d71c0e2797c))
+- **svelte:** ignore svelte a11y warnings ([#215](https://github.com/konstaui/konsta/issues/215)) ([667c7a0](https://github.com/konstaui/konsta/commit/667c7a045a2e4db7e78cf966b9094fd49140f747)), closes [/svelte.dev/docs/accessibility-warnings#a11](https://github.com//svelte.dev/docs/accessibility-warnings/issues/a11)
+
 # [3.1.3](https://github.com/konstaui/konsta/compare/v3.1.2...v3.1.3) (2024-03-25)
 
 ### Bug Fixes

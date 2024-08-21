@@ -103,7 +103,7 @@ async function release() {
   ];
 
   await exec.promise('git pull');
-  await exec.promise('npm i');
+  await exec.promise('npm i -force');
   await exec.promise(`cd ./package && ${cleanPackage.join(' && ')}`);
   await exec.promise(`npm run build`);
   await exec.promise('git add .');
