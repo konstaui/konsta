@@ -244,10 +244,10 @@
         let value = isOutline.value
           ? 'outline'
           : isClear.value || (props.segmented && !props.segmentedActive)
-          ? 'clear'
-          : isTonal.value
-          ? 'tonal'
-          : 'fill';
+            ? 'clear'
+            : isTonal.value
+              ? 'tonal'
+              : 'fill';
         if (props.segmentedStrong) value = 'segmentedStrong';
         if (props.segmentedStrong && props.segmentedActive)
           value = 'segmentedStrongActive';

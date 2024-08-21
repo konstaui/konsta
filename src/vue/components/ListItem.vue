@@ -169,8 +169,8 @@
               isMenuListItemActive.value
                 ? 'menuListItemActiveText'
                 : props.menuListItem
-                ? 'menuListItemText'
-                : 'text'
+                  ? 'menuListItemText'
+                  : 'text'
             }${theme.value === 'ios' ? 'Ios' : 'Material'}`
           ]
       );
@@ -261,8 +261,8 @@
         props.menuListItem
           ? c.value.title.menuListItem
           : props.strongTitle === true || autoStrongTitle.value
-          ? c.value.title.strong
-          : c.value.title.default
+            ? c.value.title.strong
+            : c.value.title.default
       );
 
       return {

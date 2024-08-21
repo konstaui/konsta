@@ -158,8 +158,8 @@
         isOutline.value && isRaised.value
           ? 'clear'
           : isOutline.value
-          ? 'outline'
-          : 'fill'
+            ? 'outline'
+            : 'fill'
       );
       const shape = computed(() => (isRounded.value ? 'rounded' : 'square'));
 
