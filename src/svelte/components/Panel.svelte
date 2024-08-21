@@ -36,6 +36,7 @@
 </script>
 
 {#if backdrop}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class={c.backdrop[state]} on:click={onBackdropClick} />
 {/if}
 <div class={classes} {...$$restProps}>

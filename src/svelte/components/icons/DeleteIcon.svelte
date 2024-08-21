@@ -4,6 +4,7 @@
 </script>
 
 {#if theme === 'ios'}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="28"
@@ -18,6 +19,7 @@
     />
   </svg>
 {:else}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svg
     width="24"
     height="24"

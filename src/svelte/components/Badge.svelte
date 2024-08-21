@@ -26,6 +26,7 @@
   );
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <span class={c.base[size]} {...$$restProps} on:click={onClick}>
   <slot />
 </span>
