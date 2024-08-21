@@ -128,7 +128,7 @@
 
 {#if backdrop}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <div class={c.backdrop[state]} role="button" tabindex="0" on:click={onBackdropClick} />
+  <div class={c.backdrop[state]} on:click={onBackdropClick} />
 {/if}
 <div bind:this={el} class={classes} style={popoverStyle} {...$$restProps}>
   {#if angle}

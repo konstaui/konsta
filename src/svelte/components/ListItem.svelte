@@ -178,8 +178,6 @@
   <svelte:element
     this={component}
     class={cls(c.groupTitle, className)}
-    role="button"
-    tabindex="0"
     on:click={onClick}
   >
     {title}
@@ -191,8 +189,6 @@
   <svelte:element
     this={component}
     class={c.base}
-    role="button"
-    tabindex="0"
     {...$$restProps}
     on:click={onClick}
   >

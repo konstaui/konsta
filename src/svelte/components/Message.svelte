@@ -56,8 +56,6 @@
   {id}
   bind:this={rippleEl.current}
   class={classes}
-  role="button"
-  tabindex="0"
   on:click={onClick}
   {...$$restProps}
 >

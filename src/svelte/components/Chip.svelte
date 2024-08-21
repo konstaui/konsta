@@ -37,7 +37,7 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class={c.base[style]} {...$$restProps} role="button" tabindex="0" on:click={onClick}>
+<div class={c.base[style]} {...$$restProps} on:click={onClick}>
   {#if $$slots.media}
     <div class={c.media}><slot name="media" /></div>
   {/if}

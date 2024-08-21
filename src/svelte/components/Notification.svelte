@@ -42,7 +42,7 @@
 
 {#if theme === 'ios'}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <div class={c.base} {...$$restProps} role="button" tabindex="0" on:click={onClick}>
+  <div class={c.base} {...$$restProps} on:click={onClick}>
     <div class={c.header}>
       {#if $$slots.icon}
         <div class={c.icon}><slot name="icon" /></div>
@@ -77,7 +77,7 @@
   </div>
 {:else}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <div class={c.base} {...$$restProps} role="button" tabindex="0" on:click={onClick}>
+  <div class={c.base} {...$$restProps} on:click={onClick}>
     <div class={c.header}>
       {#if $$slots.icon}
         <div class={c.icon}><slot name="icon" /></div>
