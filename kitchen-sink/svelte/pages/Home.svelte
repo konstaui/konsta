@@ -72,7 +72,7 @@
       <div
         slot="after"
         class="w-6 h-6 rounded-full bg-primary home-color-picker"
-      />
+      ></div>
     </ListItem>
   </List>
   <Popover
@@ -87,35 +87,35 @@
         class="overflow-hidden h-12"
         onClick={() => setColorTheme('')}
       >
-        <span class="bg-brand-primary w-6 h-6 rounded-full" />
+        <span class="bg-brand-primary w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
         onClick={() => setColorTheme('k-color-brand-red')}
       >
-        <span class="bg-brand-red w-6 h-6 rounded-full" />
+        <span class="bg-brand-red w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
         onClick={() => setColorTheme('k-color-brand-green')}
       >
-        <span class="bg-brand-green w-6 h-6 rounded-full" />
+        <span class="bg-brand-green w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
         onClick={() => setColorTheme('k-color-brand-yellow')}
       >
-        <span class="bg-brand-yellow w-6 h-6 rounded-full" />
+        <span class="bg-brand-yellow w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
         class="overflow-hidden h-12"
         onClick={() => setColorTheme('k-color-brand-purple')}
       >
-        <span class="bg-brand-purple w-6 h-6 rounded-full" />
+        <span class="bg-brand-purple w-6 h-6 rounded-full"></span>
       </Link>
     </div>
   </Popover>

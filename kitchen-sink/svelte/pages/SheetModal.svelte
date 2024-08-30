@@ -39,7 +39,7 @@
     onBackdropClick={() => (sheetOpened = false)}
   >
     <Toolbar top>
-      <div class="left" />
+      <div class="left"></div>
       <div class="right">
         <Link toolbar onClick={() => (sheetOpened = false)}>Done</Link>
       </div>
