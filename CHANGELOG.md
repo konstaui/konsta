@@ -1,16 +1,12 @@
-# [Unreleased](https://github.com/konstaui/konsta/compare/v3.1.4...b01a8ed681e013837126e9d5428fc9cc3ee58868) (2024-08-30)
-
+# [4.0.0](https://github.com/konstaui/konsta/compare/v3.1.4...v4.0.0) (2024-08-30)
 
 ### Bug Fixes
 
-* **svelte:** fix svelte5 warnings ([cd0ae6f](https://github.com/konstaui/konsta/commit/cd0ae6feadef0773aaa466644ea437a1e7c195df)), closes [#207](https://github.com/konstaui/konsta/issues/207)
-
+- **svelte:** fix svelte5 warnings ([cd0ae6f](https://github.com/konstaui/konsta/commit/cd0ae6feadef0773aaa466644ea437a1e7c195df)), closes [#207](https://github.com/konstaui/konsta/issues/207)
 
 ### Features
 
-* **svelte:** types support with Svelte5 ([b01a8ed](https://github.com/konstaui/konsta/commit/b01a8ed681e013837126e9d5428fc9cc3ee58868)), closes [#207](https://github.com/konstaui/konsta/issues/207)
-
-
+- **svelte:** types support with Svelte5 ([b01a8ed](https://github.com/konstaui/konsta/commit/b01a8ed681e013837126e9d5428fc9cc3ee58868)), closes [#207](https://github.com/konstaui/konsta/issues/207)
 
 # Changelog
 

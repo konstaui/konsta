@@ -1,6 +1,6 @@
 {
   "name": "konsta",
-  "version": "4.0.0-next.1",
+  "version": "4.0.0",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
