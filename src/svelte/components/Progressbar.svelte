@@ -29,6 +29,6 @@
   <span
     class={c.inner}
     style={`transform: translateX(-${100 - (progress / 1) * 100}%)`}
-  />
+  ></span>
   <slot />
 </span>

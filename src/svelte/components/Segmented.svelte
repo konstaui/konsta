@@ -92,6 +92,6 @@
         width: ${highlightStyle.width};
         transform: ${highlightStyle.transform};
       `}
-    />
+    ></span>
   {/if}
 </div>

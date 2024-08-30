@@ -83,7 +83,7 @@
         on:input={onInput}
         on:change={onChange}
         on:focus={onFocusInternal}
-      />
+      ></textarea>
     </div>
     {#if $$slots.right}
       <div class={c.right}><slot name="right" /></div>

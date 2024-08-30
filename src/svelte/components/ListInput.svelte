@@ -169,7 +169,7 @@
 >
   <svelte:fragment slot="content">
     {#if isOutline || theme === 'material'}
-      <span class={c.border} />
+      <span class={c.border}></span>
     {/if}
   </svelte:fragment>
   <svelte:fragment slot="media">

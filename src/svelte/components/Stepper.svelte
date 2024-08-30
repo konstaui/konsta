@@ -135,7 +135,7 @@
     tabindex="0"
     on:click={onMinus}
   >
-    <span class={c.hBar} />
+    <span class={c.hBar}></span>
   </span>
   {#if input && !buttonsOnly}
     <input
@@ -163,7 +163,7 @@
     tabindex="0"
     on:click={onPlus}
   >
-    <span class={c.hBar} />
-    <span class={c.vBar} />
+    <span class={c.hBar}></span>
+    <span class={c.vBar}></span>
   </span>
 </svelte:element>

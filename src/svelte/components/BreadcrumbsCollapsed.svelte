@@ -33,8 +33,8 @@
   tabindex="0"
   on:click={onClick}
 >
-  <span class={c.dot} />
-  <span class={c.dot} />
-  <span class={c.dot} />
+  <span class={c.dot}></span>
+  <span class={c.dot}></span>
+  <span class={c.dot}></span>
   <slot />
 </div>

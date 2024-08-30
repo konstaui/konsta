@@ -40,8 +40,8 @@
 </script>
 
 <div class={c.base} {...$$restProps}>
-  <span class={c.trackBg} />
-  <span class={c.trackValue} style={`width: ${valueWidth}%`} />
+  <span class={c.trackBg}></span>
+  <span class={c.trackValue} style={`width: ${valueWidth}%`}></span>
   <input
     class={cls(c.input, c.inputThumb, c.inputTrack)}
     type="range"

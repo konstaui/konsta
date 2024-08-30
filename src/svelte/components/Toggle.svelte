@@ -57,9 +57,9 @@
     on:change={onChange}
     class={c.input}
   />
-  <span class={c.inner[state]} />
+  <span class={c.inner[state]}></span>
   <span bind:this={rippleTargetElRef.current} class={c.thumbWrap[state]}>
-    <span class={c.thumb[state]} />
+    <span class={c.thumb[state]}></span>
   </span>
   <slot />
 </svelte:element>

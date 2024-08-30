@@ -43,7 +43,7 @@
   <span class={c.content}>
     {#if hasIcon}
       <span class={c.iconContainer}>
-        <span class={c.iconBg} />
+        <span class={c.iconBg}></span>
         <slot name="icon" />
       </span>
     {/if}

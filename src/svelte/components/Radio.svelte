@@ -66,7 +66,7 @@
     {#if theme === 'ios'}
       <CheckboxIcon class={c.icon[state]} />
     {:else}
-      <span class={c.icon[state]} />
+      <span class={c.icon[state]}></span>
     {/if}
   </i>
   <slot />

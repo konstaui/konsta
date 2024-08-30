@@ -90,7 +90,7 @@
 </script>
 
 <div class={c.base} {...$$restProps}>
-  <div class={c.bg} />
+  <div class={c.bg}></div>
   <div class={c.inner}>
     <slot />
   </div>
@@ -99,6 +99,6 @@
       class={c.highlight}
       style={`width: ${highlightStyle.width} ; transform: ${highlightStyle.transform}`}
       bind:this={highlightElRef}
-    />
+    ></span>
   {/if}
 </div>

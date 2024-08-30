@@ -70,7 +70,7 @@
   />
   <i class={c.iconWrap[state]}>
     {#if indeterminate}
-      <span class={c.indeterminateIcon} />
+      <span class={c.indeterminateIcon}></span>
     {:else}
       <CheckboxIcon {ios} {material} class={c.icon[state]} />
     {/if}

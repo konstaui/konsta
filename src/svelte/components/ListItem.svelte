@@ -175,6 +175,7 @@
 
 {#if groupTitle}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
   <svelte:element
     this={component}
     class={cls(c.groupTitle, className)}
@@ -186,6 +187,7 @@
   </svelte:element>
 {:else}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
   <svelte:element
     this={component}
     class={c.base}

@@ -209,7 +209,7 @@
 </script>
 
 <div class={c.base} bind:this={elRef} {...$$restProps}>
-  <div class={c.bg} bind:this={bgElRef} />
+  <div class={c.bg} bind:this={bgElRef}></div>
   <div class={c.inner} bind:this={innerElRef}>
     {#if $$slots.left}
       <div class={c.left}><slot name="left" /></div>
