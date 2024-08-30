@@ -133,6 +133,7 @@ ${propsContent}
 
 interface ${componentName}Props {}
 interface ${componentName}Props extends Props {}
+interface ${componentName}Events extends Record<'',{}>{}
 
 declare class ${componentName} extends SvelteComponent<
   ${componentName}Props${
@@ -140,7 +141,7 @@ declare class ${componentName} extends SvelteComponent<
       ? ` & HTMLAttributes<${componentNativeElementInheritance[componentName]}>`
       : ''
   },
-  {  },
+  ${componentName}Events,
   {
     ${slotsContent}
   }
