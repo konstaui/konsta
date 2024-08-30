@@ -1,4 +1,5 @@
 import { onMount, onDestroy, beforeUpdate } from 'svelte';
+// eslint-disable-next-line
 import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 import { TouchRipple } from '../../shared/touch-ripple-class.js';

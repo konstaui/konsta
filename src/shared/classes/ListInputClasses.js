@@ -111,16 +111,16 @@ export const ListInputClasses = (
           error
             ? colors.errorBorder
             : isFocused
-            ? colors.outlineBorderFocusIos
-            : colors.outlineBorderIos,
+              ? colors.outlineBorderFocusIos
+              : colors.outlineBorderIos,
           'h-full border rounded-lg -z-10'
         ),
       material: cls(
         error
           ? colors.errorBorder
           : isFocused
-          ? colors.outlineBorderFocusMaterial
-          : colors.outlineBorderMaterial,
+            ? colors.outlineBorderFocusMaterial
+            : colors.outlineBorderMaterial,
         outline && cls('h-full border rounded -z-10', isFocused && 'border-2'),
         !outline &&
           cls('border-b h-px origin-bottom', isFocused && 'scale-y-[2]')

@@ -107,15 +107,15 @@ const Button = forwardRef((props, ref) => {
   const size = themeProps.large
     ? 'large'
     : themeProps.small
-    ? 'small'
-    : 'medium';
+      ? 'small'
+      : 'medium';
   let style = themeProps.outline
     ? 'outline'
     : themeProps.clear || (segmented && !segmentedActive)
-    ? 'clear'
-    : themeProps.tonal
-    ? 'tonal'
-    : 'fill';
+      ? 'clear'
+      : themeProps.tonal
+        ? 'tonal'
+        : 'fill';
   if (segmentedStrong) style = 'segmentedStrong';
   if (segmentedStrong && segmentedActive) style = 'segmentedStrongActive';
 

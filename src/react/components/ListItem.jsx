@@ -107,8 +107,8 @@ const ListItem = forwardRef((props, ref) => {
         isMenuListItemActive
           ? 'menuListItemActiveText'
           : menuListItem
-          ? 'menuListItemText'
-          : 'text'
+            ? 'menuListItemText'
+            : 'text'
       }${theme === 'ios' ? 'Ios' : 'Material'}`
     ];
 
@@ -127,8 +127,8 @@ const ListItem = forwardRef((props, ref) => {
   const ItemContentComponent = isLink
     ? linkComponent
     : isLabel
-    ? 'label'
-    : 'div';
+      ? 'label'
+      : 'div';
   const linkPropsComputed = isLink
     ? { href: hrefComputed, target, ...linkProps }
     : {};
@@ -170,8 +170,8 @@ const ListItem = forwardRef((props, ref) => {
   const titleClasses = menuListItem
     ? c.title.menuListItem
     : strongTitle === true || autoStrongTitle
-    ? c.title.strong
-    : c.title.default;
+      ? c.title.strong
+      : c.title.default;
 
   if (groupTitle) {
     return (

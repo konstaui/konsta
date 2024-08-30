@@ -62,12 +62,14 @@ export const ListItemClasses = (
                 : colors.menuListItemActiveBgMaterial
             )
           : menuListItem
-          ? cls(
-              theme === 'ios'
-                ? colors.menuListItemBgIos
-                : colors.menuListItemBgMaterial
-            )
-          : cls(theme === 'ios' ? colors.activeBgIos : colors.activeBgMaterial)
+            ? cls(
+                theme === 'ios'
+                  ? colors.menuListItemBgIos
+                  : colors.menuListItemBgMaterial
+              )
+            : cls(
+                theme === 'ios' ? colors.activeBgIos : colors.activeBgMaterial
+              )
       ),
     },
 

@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { get } from 'svelte/store';
 import { KonstaStore } from './KonstaStore.js';
 
