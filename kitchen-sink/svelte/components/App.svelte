@@ -1,8 +1,6 @@
 <script>
-  import { onMount, beforeUpdate } from 'svelte';
+  import { onMount, onDestroy, beforeUpdate } from 'svelte';
   import { App } from 'konsta/svelte';
-  import { Router, Route, createHistory } from 'svelte-navigator';
-  import createHashSource from '../hashHistory.js';
 
   import routes from '../routes.js';
   import HomePage from '../pages/Home.svelte';
@@ -42,29 +40,36 @@
     }
   };
 
+  let hash = '';
+  function updateHash() {
+    hash = window.location.hash;
+  }
+
   onMount(() => {
     calcSafeAreas();
+    window.addEventListener('popstate', updateHash);
   });
 
   beforeUpdate(() => {
     calcSafeAreas();
   });
 
-  const hash = createHistory(createHashSource());
+  onDestroy(() => {
+    window.removeEventListener('popstate', updateHash);
+  });
+
+  $: component = routes.find(route => route.path === hash.slice(1))?.component;
 </script>
 
 <App {theme} safeAreas={!inIFrame}>
-  <Router history={hash} primary={false}>
-    <Route path="/">
-      <HomePage
-        {theme}
-        {setTheme}
-        colorTheme={currentColorTheme}
-        {setColorTheme}
-      />
-    </Route>
-    {#each routes as route}
-      <Route path={route.path} component={route.component} />
-    {/each}
-  </Router>
+  {#if component}
+    <svelte:component this={component} />
+  {:else}
+    <HomePage
+      {theme}
+      {setTheme}
+      colorTheme={currentColorTheme}
+      {setColorTheme}
+    />
+  {/if}
 </App>
