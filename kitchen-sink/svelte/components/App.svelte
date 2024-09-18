@@ -5,7 +5,7 @@
   import routes from '../routes.js';
   import HomePage from '../pages/Home.svelte';
 
-  let theme = 'ios';
+  let theme = window.location.search.includes('theme=material') ? 'material' : 'ios';
   const setTheme = (t) => {
     theme = t;
   };
@@ -40,7 +40,7 @@
     }
   };
 
-  let hash = '';
+  let hash = window.location.hash || '';
   function updateHash() {
     hash = window.location.hash;
   }
