@@ -1,3 +1,13 @@
+# Changelog
+
+# [4.0.1](https://github.com/konstaui/konsta/compare/v4.0.0...v4.0.1) (2024-09-18)
+
+### Bug Fixes
+
+- **svelte:** prevent double onClick attribute on Svelte Link ([6c5b7eb](https://github.com/konstaui/konsta/commit/6c5b7eb02af3960e6706e78e6c82fbd7d48e0885)), closes [#222](https://github.com/konstaui/konsta/issues/222)
+- **svelte:** remove `svelte-navigator` from repository ([#221](https://github.com/konstaui/konsta/issues/221)) ([ebe0b80](https://github.com/konstaui/konsta/commit/ebe0b8085e8addc2adb36ab81d80ebd86b8a9f16))
+- **svelte:** Svelte Button and Link types ([#220](https://github.com/konstaui/konsta/issues/220)) ([db621ab](https://github.com/konstaui/konsta/commit/db621ab3eab019f2d9bf0f6f737f6e96c35be7ab))
+
 # [4.0.0](https://github.com/konstaui/konsta/compare/v3.1.4...v4.0.0) (2024-08-30)
 
 ### Bug Fixes
@@ -7,8 +17,6 @@
 ### Features
 
 - **svelte:** types support with Svelte5 ([b01a8ed](https://github.com/konstaui/konsta/commit/b01a8ed681e013837126e9d5428fc9cc3ee58868)), closes [#207](https://github.com/konstaui/konsta/issues/207)
-
-# Changelog
 
 # [3.1.4](https://github.com/konstaui/konsta/compare/v3.1.3...v3.1.4) (2024-08-21)
 
