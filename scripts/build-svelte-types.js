@@ -58,7 +58,6 @@ const addOnClick = [
   'Button',
   'Chip',
   'Fab',
-  'Link',
   'ListItem',
   'NavbarBackLink',
   'ListButton',
