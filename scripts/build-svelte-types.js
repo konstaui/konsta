@@ -72,7 +72,8 @@ const addOnClick = [
   'ActionsButton',
 ];
 
-const addOnClickProp = (componentName) => {
+const addOnClickProp = (componentName, content) => {
+  if (content.includes(' onClick?: ')) return '';
   if (addOnClick.includes(componentName))
     return `\n  onClick?: (e: any) => void;\n`;
   return '';
@@ -98,7 +99,8 @@ const createComponentTypes = (componentName, propsContent) => {
     .replace(
       'interface Props {',
       `export interface Props {\n  class?: string;${addOnClickProp(
-        componentName
+        componentName,
+        propsContent
       )}`
     )
     .replace(/ClassName/g, 'Class')
