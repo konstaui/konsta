@@ -12,7 +12,9 @@
       kApp,
     },
     setup() {
-      const theme = ref('ios');
+      const theme = ref(
+        window.location.search.includes('theme=material') ? 'material' : 'ios'
+      );
       const currentColorTheme = ref('');
       const setColorTheme = (color) => {
         const htmlEl = document.documentElement;

@@ -6,7 +6,9 @@ import routes from '../routes.js';
 import HomePage from '../pages/Home.jsx';
 
 function App() {
-  const [theme, setTheme] = useState('ios');
+  const [theme, setTheme] = useState(
+    window.location.search.includes('theme=material') ? 'material' : 'ios'
+  );
   const [currentColorTheme, setCurrentColorTheme] = useState('');
   const setColorTheme = (color) => {
     const htmlEl = document.documentElement;
