@@ -217,7 +217,7 @@
             {min}
             {minlength}
             {step}
-            {...{multiple}}
+            {...{ multiple }}
             {readonly}
             {required}
             {pattern}
@@ -230,7 +230,7 @@
           >
             <slot />
           </select>
-        {:else}
+        {:else if type !== 'textarea'}
           <input
             this={InputComponent}
             id={inputId}
@@ -238,7 +238,42 @@
             class={c.input[labelStyleIsFloating]}
             style={inputStyle}
             {name}
-            {...{type}}
+            {...{ type }}
+            {placeholder}
+            {inputmode}
+            {size}
+            {accept}
+            {autocomplete}
+            {autocorrect}
+            {autocapitalize}
+            {spellcheck}
+            {autofocus}
+            {autosave}
+            {disabled}
+            {max}
+            {maxlength}
+            {min}
+            {minlength}
+            {step}
+            {multiple}
+            {readonly}
+            {required}
+            {pattern}
+            {tabindex}
+            bind:value
+            on:input={onInput}
+            on:change={onChange}
+            on:focus={onFocusInternal}
+            on:blur={onBlurInternal}
+          />
+        {:else}
+          <textarea
+            this={InputComponent}
+            id={inputId}
+            bind:this={inputEl}
+            class={c.input[labelStyleIsFloating]}
+            style={inputStyle}
+            {name}
             {placeholder}
             {inputmode}
             {size}
