@@ -149,9 +149,6 @@
     className,
     (v) => (c = v)
   );
-
-  $: InputComponent = type === 'select' || type === 'textarea' ? type : 'input';
-  $: needsType = InputComponent === 'input';
 </script>
 
 <ListItem
@@ -194,13 +191,11 @@
         <!-- svelte-ignore a11y-autofocus -->
         {#if type === 'select'}
           <select
-            this={InputComponent}
             id={inputId}
             bind:this={inputEl}
             class={c.input[labelStyleIsFloating]}
             style={inputStyle}
             {name}
-            type={needsType ? type : undefined}
             {placeholder}
             {inputmode}
             {size}
@@ -230,15 +225,13 @@
           >
             <slot />
           </select>
-        {:else if type !== 'textarea'}
-          <input
-            this={InputComponent}
+        {:else if type === 'textarea'}
+          <textarea
             id={inputId}
             bind:this={inputEl}
             class={c.input[labelStyleIsFloating]}
             style={inputStyle}
             {name}
-            {...{ type }}
             {placeholder}
             {inputmode}
             {size}
@@ -265,15 +258,15 @@
             on:change={onChange}
             on:focus={onFocusInternal}
             on:blur={onBlurInternal}
-          />
+          ></textarea>
         {:else}
-          <textarea
-            this={InputComponent}
+          <input
             id={inputId}
             bind:this={inputEl}
             class={c.input[labelStyleIsFloating]}
             style={inputStyle}
             {name}
+            {...{ type }}
             {placeholder}
             {inputmode}
             {size}
