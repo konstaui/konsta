@@ -11,7 +11,7 @@ export const BlockClasses = (props, colors, classes) => {
         !inset && !nested && outline && 'hairline-t hairline-b',
         inset && outline && 'border',
         inset && 'px-4',
-        !inset && 'pl-4-safe pr-4-safe',
+        !inset && 'pl-safe-4 pr-safe-4',
         !nested && margin,
         (strong || outline) && padding
       ),
@@ -27,7 +27,7 @@ export const BlockClasses = (props, colors, classes) => {
       ),
     },
     inset: {
-      common: `ml-4-safe mr-4-safe overflow-hidden`,
+      common: `ml-safe-4 mr-safe-4 overflow-hidden`,
       ios: `rounded-lg`,
       material: `rounded-2xl`,
     },

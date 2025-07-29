@@ -2,10 +2,7 @@ import { cls } from '../cls.js';
 
 export const BreadcrumbsCollapsedColors = (colorsProp = {}, dark) => {
   return {
-    bgIos: cls(
-      'bg-black bg-opacity-15',
-      dark('dark:bg-white dark:bg-opacity-15')
-    ),
+    bgIos: cls('bg-black/15', dark('dark:bg-white/15')),
     bgMaterial: cls(
       'bg-md-light-secondary-container',
       dark('dark:bg-md-dark-secondary-container')

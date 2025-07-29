@@ -30,7 +30,6 @@ export default function HomePage({ theme, setTheme, setColorTheme }) {
   return (
     <Page>
       <Navbar title="Konsta UI" large transparent centerTitle />
-
       <BlockTitle>Theme</BlockTitle>
       <List strong inset>
         <ListItem

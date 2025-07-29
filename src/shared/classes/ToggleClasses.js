@@ -23,7 +23,7 @@ export const ToggleClasses = (props, colors, classes, dark) => {
     inner: {
       ios: cls(
         'w-full h-full bg-white rounded-full block duration-300 transform',
-        dark('dark:bg-opacity-0')
+        dark('dark:bg-transparent')
       ),
       notChecked: {},
       checked: {

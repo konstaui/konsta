@@ -2,10 +2,7 @@ import { cls } from '../cls.js';
 
 export const ListColors = (colorsProp = {}, dark) => {
   return {
-    outlineIos: cls(
-      'border-black border-opacity-20',
-      dark('dark:border-white dark:border-opacity-15')
-    ),
+    outlineIos: cls('border-black/20', dark('dark:border-white/15')),
     outlineMaterial: cls(
       'border-md-light-outline',
       dark('border-md-dark-outline')

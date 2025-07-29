@@ -21,7 +21,7 @@ interface Props {
     primaryTextMaterial?: string;
     /**
      *
-     * @default 'text-black text-opacity-55 dark:text-white dark:text-opacity-55'
+     * @default 'text-black/55 dark:text-white/55'
      */
     secondaryTextIos?: string;
     /**
@@ -31,7 +31,7 @@ interface Props {
     secondaryTextMaterial?: string;
     /**
      *
-     * @default 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
+     * @default 'active:bg-black/10 dark:active:bg-white/10'
      */
     activeBgIos?: string;
     /**
@@ -61,7 +61,7 @@ interface Props {
     menuListItemTextMaterial?: string;
     /**
      *
-     * @default 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
+     * @default 'active:bg-black/10 dark:active:bg-white/10'
      */
     menuListItemBgIos?: string;
     /**
@@ -81,7 +81,7 @@ interface Props {
     menuListItemActiveTextMaterial?: string;
     /**
      *
-     * @default 'bg-primary bg-opacity-15 dark:bg-primary'
+     * @default 'bg-primary/15 dark:bg-primary'
      */
     menuListItemActiveBgIos?: string;
     /**
@@ -95,11 +95,12 @@ interface Props {
      * @default 'touch-ripple-black dark:touch-ripple-white'
      */
     touchRipple?: string;
+    // TODO:
     /**
      *
      * @default 'text-opacity-90 dark:text-opacity-90'
      */
-    groupTitleСontactsTextIos?: string;
+    groupTitleContactsTextIos?: string;
     /**
      *
      * @default 'text-md-light-primary dark:text-md-dark-primary'

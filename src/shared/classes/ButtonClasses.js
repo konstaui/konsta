@@ -52,7 +52,8 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
         common: cls(
           disabled
             ? cls(colors.disabledText, colors.disabledBorder)
-            : cls('active:bg-opacity-15', colors.touchRipple)
+            : // TODO
+              cls('active:bg-opacity-15', colors.touchRipple)
         ),
         ios: cls(
           !segmented && 'border-2',
@@ -69,7 +70,8 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
         common: cls(
           disabled
             ? colors.disabledText
-            : `active:bg-opacity-15 ${colors.touchRipple}`
+            : // TODO
+              `active:bg-opacity-15 ${colors.touchRipple}`
         ),
         ios: !disabled && cls(colors.textIos, colors.activeBgIos),
         material:
@@ -85,6 +87,7 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
             colors.tonalTextIos,
             colors.tonalBgIos,
             colors.activeBgIos,
+            // TODO
             'bg-opacity-15 active:bg-opacity-25'
           ),
         material:
@@ -96,10 +99,8 @@ export const ButtonClasses = (props, colors, classes, darkClasses) => {
           ),
       },
       segmentedStrong: cls(
-        `active:bg-black active:bg-opacity-10`,
-        darkClasses(
-          'dark:active:bg-white dark:active:bg-opacity-5 dark:touch-ripple-white'
-        )
+        'active:bg-black/10',
+        darkClasses('dark:active:bg-white/5 dark:touch-ripple-white')
       ),
       segmentedStrongActive: 'duration-0',
     },

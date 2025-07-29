@@ -7,10 +7,7 @@ export const ChipColors = (colorsProp = {}, dark) => {
       'text-md-light-on-secondary-container',
       dark('dark:text-md-dark-on-secondary-container')
     ),
-    fillBgIos: cls(
-      `bg-black bg-opacity-10`,
-      dark('dark:bg-white dark:bg-opacity-10')
-    ),
+    fillBgIos: cls(`bg-black/10`, dark('dark:bg-white/10')),
     fillBgMaterial: cls(
       'bg-md-light-secondary-container',
       dark('dark:bg-md-dark-secondary-container')
@@ -20,10 +17,7 @@ export const ChipColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface',
       dark('dark:text-md-dark-on-surface')
     ),
-    outlineBorderIos: cls(
-      `border-black border-opacity-20`,
-      dark('dark:border-white dark:border-opacity-20')
-    ),
+    outlineBorderIos: cls(`border-black/20`, dark('dark:border-white/20')),
     outlineBorderMaterial: cls(
       `border-md-light-outline`,
       dark('dark:border-md-dark-outline')

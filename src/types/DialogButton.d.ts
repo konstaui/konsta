@@ -16,7 +16,7 @@ interface Props {
     /**
      * Active/pressed state bg color in iOS theme
      *
-     * @default 'active:bg-black active:bg-opacity-10 dark:active:bg-white dark:active:bg-opacity-10'
+     * @default 'active:bg-black/10 dark:active:bg-white/10'
      */
     activeBgIos?: string;
     /**
@@ -28,7 +28,7 @@ interface Props {
     /**
      * Disabled button text color in iOS theme
      *
-     * @default 'text-black text-opacity-30 dark:text-white dark:text-opacity-30'
+     * @default 'text-black/30 dark:text-white/30'
      */
     disabledTextIos?: string;
   };

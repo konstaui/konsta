@@ -6,7 +6,7 @@ export const PopoverClasses = (props, colors, classes) => {
   return {
     base: {
       common: cls(
-        'transition-transform-opacity z-40 no-safe-areas',
+        'transition-(--transition-transform-opacity) z-40 no-safe-areas',
         positionClass('fixed', classes),
         size
       ),
@@ -46,8 +46,7 @@ export const PopoverClasses = (props, colors, classes) => {
       right: '-left-4.75',
     },
     backdrop: {
-      common:
-        'fixed z-40 w-full h-full left-0 top-0 bg-black bg-opacity-50 duration-300',
+      common: 'fixed z-40 w-full h-full left-0 top-0 bg-black/50 duration-300',
       opened: '',
       closed: 'opacity-0 pointer-events-none',
     },

@@ -1,0 +1,178 @@
+:root {
+  --k-safe-area-left: 0px;
+  --k-safe-area-right: 0px;
+  --k-safe-area-top: 0px;
+  --k-safe-area-bottom: 0px;
+}
+
+@supports (left: env(safe-area-inset-left)) {
+  .safe-areas {
+    --k-safe-area-left: env(safe-area-inset-left);
+    --k-safe-area-right: env(safe-area-inset-right);
+    --k-safe-area-top: env(safe-area-inset-top);
+    --k-safe-area-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@utility no-safe-areas {
+  --k-safe-area-left: 0px;
+  --k-safe-area-right: 0px;
+  --k-safe-area-top: 0px;
+  --k-safe-area-bottom: 0px;
+}
+@utility no-safe-areas-top {
+  --k-safe-area-top: 0px;
+}
+@utility no-safe-areas-left {
+  --k-safe-area-left: 0px;
+}
+@utility no-safe-areas-right {
+  --k-safe-area-right: 0px;
+}
+@utility no-safe-areas-bottom {
+  --k-safe-area-bottom: 0px;
+}
+
+/* SINGLE VALUES */
+
+@utility pl-safe {
+  padding-left: var(--k-safe-area-left);
+}
+@utility ps-safe {
+  padding-inline-start: var(--k-safe-area-left);
+}
+@utility pr-safe {
+  padding-right: var(--k-safe-area-right);
+}
+@utility pe-safe {
+  padding-inline-end: var(--k-safe-area-right);
+}
+@utility pt-safe {
+  padding-top: var(--k-safe-area-top);
+}
+@utility pb-safe {
+  padding-bottom: var(--k-safe-area-bottom);
+}
+@utility ml-safe {
+  margin-left: var(--k-safe-area-left);
+}
+@utility ms-safe {
+  margin-inline-start: var(--k-safe-area-left);
+}
+@utility mr-safe {
+  margin-right: var(--k-safe-area-right);
+}
+@utility me-safe {
+  margin-inline-end: var(--k-safe-area-right);
+}
+@utility mt-safe {
+  margin-top: var(--k-safe-area-top);
+}
+@utility mb-safe {
+  margin-bottom: var(--k-safe-area-bottom);
+}
+
+/* INSET */
+
+@utility left-safe {
+  left: var(--k-safe-area-left);
+}
+@utility start-safe {
+  inset-inline-start: var(--k-safe-area-left);
+}
+@utility right-safe {
+  right: var(--k-safe-area-right);
+}
+@utility end-safe {
+  inset-inline-end: var(--k-safe-area-right);
+}
+@utility top-safe {
+  top: var(--k-safe-area-top);
+}
+@utility bottom-safe {
+  bottom: var(--k-safe-area-bottom);
+}
+
+/* WITH VALUES */
+
+@utility ml-safe-* {
+  margin-left: calc(var(--k-safe-area-left) + var(--spacing) * --value(number));
+}
+@utility ms-safe-* {
+  margin-inline-start: calc(
+    var(--k-safe-area-left) + var(--spacing) * --value(number)
+  );
+}
+@utility mr-safe-* {
+  margin-right: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility me-safe-* {
+  margin-inline-end: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility mx-safe-* {
+  margin-left: calc(var(--k-safe-area-left) + var(--spacing) * --value(number));
+  margin-right: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility mt-safe-* {
+  margin-top: calc(var(--k-safe-area-top) + var(--spacing) * --value(number));
+}
+@utility mb-safe-* {
+  margin-bottom: calc(
+    var(--k-safe-area-bottom) + var(--spacing) * --value(number)
+  );
+}
+@utility my-safe-* {
+  margin-top: calc(var(--k-safe-area-top) + var(--spacing) * --value(number));
+  margin-bottom: calc(
+    var(--k-safe-area-bottom) + var(--spacing) * --value(number)
+  );
+}
+
+@utility pl-safe-* {
+  padding-left: calc(
+    var(--k-safe-area-left) + var(--spacing) * --value(number)
+  );
+}
+@utility ps-safe-* {
+  padding-inline-start: calc(
+    var(--k-safe-area-left) + var(--spacing) * --value(number)
+  );
+}
+@utility pr-safe-* {
+  margin-right: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility pe-safe-* {
+  padding-inline-end: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility px-safe-* {
+  padding-left: calc(
+    var(--k-safe-area-left) + var(--spacing) * --value(number)
+  );
+  padding-right: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility pt-safe-* {
+  padding-top: calc(var(--k-safe-area-top) + var(--spacing) * --value(number));
+}
+@utility pb-safe-* {
+  margin-bottom: calc(
+    var(--k-safe-area-bottom) + var(--spacing) * --value(number)
+  );
+}
+@utility py-safe-* {
+  padding-top: calc(var(--k-safe-area-top) + var(--spacing) * --value(number));
+  padding-bottom: calc(
+    var(--k-safe-area-bottom) + var(--spacing) * --value(number)
+  );
+}

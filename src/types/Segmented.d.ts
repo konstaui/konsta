@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-black bg-opacity-5 dark:bg-white dark:bg-opacity-10'
+     * @default 'bg-black/5 dark:bg-white/10'
      */
     strongBgIos?: string;
     /**

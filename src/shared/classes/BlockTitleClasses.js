@@ -4,7 +4,7 @@ export const BlockTitleClasses = (props, colors) => {
   const { withBlock, medium, large } = props;
   return {
     base: {
-      common: `pl-4-safe pr-4-safe mt-8 flex justify-between items-center ${
+      common: `pl-safe-4 pr-safe-4 mt-8 flex justify-between items-center ${
         withBlock ? '-mb-6' : 'mb-2'
       }`,
       ios: cls(

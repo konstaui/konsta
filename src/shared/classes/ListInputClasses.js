@@ -73,8 +73,8 @@ export const ListInputClasses = (
       material: 'h-6',
       notFloating: {
         common: cls(
-          'placeholder-black placeholder-opacity-30',
-          darkClasses('dark:placeholder-white dark:placeholder-opacity-30')
+          'placeholder-black/30',
+          darkClasses('dark:placeholder-white/30')
         ),
         material: cls(type === 'textarea' && 'py-1'),
         ios: cls(type === 'textarea' && 'py-2'),
@@ -82,10 +82,7 @@ export const ListInputClasses = (
 
       floating: isFloatingTransformed
         ? 'placeholder-transparent'
-        : cls(
-            `placeholder-black placeholder-opacity-30`,
-            darkClasses('dark:placeholder-white dark:placeholder-opacity-30')
-          ),
+        : cls(`placeholder-black/30`, darkClasses('dark:placeholder-white/30')),
     },
     errorInfo: {
       common: 'text-xs relative z-10',

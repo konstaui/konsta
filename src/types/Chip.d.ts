@@ -21,7 +21,7 @@ interface Props {
     fillTextMaterial?: string;
     /**
      *
-     * @default 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10'
+     * @default 'bg-black/10 dark:bg-white/10'
      */
     fillBgIos?: string;
     /**
@@ -41,7 +41,7 @@ interface Props {
     outlineTextMaterial?: string;
     /**
      *
-     * @default 'border-black border-opacity-20 dark:border-white dark:border-opacity-20'
+     * @default 'border-black/20 dark:border-white/20'
      */
     outlineBorderIos?: string;
     /**

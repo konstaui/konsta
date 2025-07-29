@@ -35,9 +35,9 @@ export const ToolbarClasses = (props, colors, classes) => {
         `flex relative justify-between items-center w-full overflow-hidden`,
         innerClassName || innerClass
       ),
-      ios: cls('pl-2-safe pr-2-safe', tabbarIcons ? 'h-12.5' : 'h-11'),
+      ios: cls('pl-safe-2 pr-safe-2', tabbarIcons ? 'h-12.5' : 'h-11'),
       material: cls(
-        !tabbar ? 'pl-2-safe pr-2-safe' : '',
+        !tabbar ? 'pl-safe-2 pr-safe-2' : '',
         tabbarIcons ? 'h-20' : 'h-14'
       ),
     },

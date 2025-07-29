@@ -6,7 +6,7 @@ export const BlockHeaderClasses = (props, colors) => {
     base: {
       common: cls(
         `mt-8 flex items-center -mb-6 text-sm`,
-        inset ? 'pl-8-safe pr-8-safe' : 'pl-4-safe pr-4-safe'
+        inset ? 'pl-safe-8 pr-safe-8' : 'pl-safe-4 pr-safe-4'
       ),
       ios: colors.textIos,
       material: colors.textMaterial,

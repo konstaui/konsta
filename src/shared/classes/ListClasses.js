@@ -25,7 +25,7 @@ export const ListClasses = (props, colors, classes) => {
       common: cls(inset && 'no-safe-areas', 'last-child-hairline-b-none'),
     },
     inset: {
-      common: `ml-4-safe mr-4-safe overflow-hidden`,
+      common: `ml-safe-4 mr-safe-4 overflow-hidden`,
       ios: `rounded-lg`,
       material: `rounded-2xl`,
     },

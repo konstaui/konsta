@@ -63,18 +63,13 @@ const Button = forwardRef((props, ref) => {
 
   const rippleElRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: rippleElRef.current,
-  }));
+  useImperativeHandle(ref, () => ({ el: rippleElRef.current }));
 
   let Component = component;
   if (typeof props.component === 'undefined' && (href || href === ''))
     Component = 'a';
 
-  const attrs = {
-    href,
-    ...rest,
-  };
+  const attrs = { href, ...rest };
 
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
@@ -122,15 +117,7 @@ const Button = forwardRef((props, ref) => {
   const colors = ButtonColors(colorsProp, dark);
 
   const c = themeClasses(
-    ButtonClasses(
-      {
-        ...props,
-        ...themeProps,
-      },
-      colors,
-      className,
-      dark
-    )
+    ButtonClasses({ ...props, ...themeProps }, colors, className, dark)
   );
 
   const classes = cls(
@@ -150,7 +137,7 @@ const Button = forwardRef((props, ref) => {
   return (
     <Component
       ref={rippleElRef}
-      className={classes}
+      className={''}
       disabled={disabled}
       role="button"
       tabIndex="0"

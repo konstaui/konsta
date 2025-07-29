@@ -7,7 +7,7 @@ export const PanelClasses = (props, colors, classes) => {
     base: {
       common: cls(
         'transition-transform transform duration-400 z-40 max-w-full overflow-hidden',
-        floating ? 'top-2-safe bottom-2-safe !h-auto' : 'top-0 max-h-full',
+        floating ? 'top-safe-2 bottom-safe-2 !h-auto' : 'top-0 max-h-full',
         colors.bg,
         positionClass('fixed', classes),
         size
@@ -34,8 +34,7 @@ export const PanelClasses = (props, colors, classes) => {
       closed: 'translate-x-2',
     },
     backdrop: {
-      common:
-        'fixed z-40 w-full h-full left-0 top-0 bg-black bg-opacity-50 duration-400',
+      common: 'fixed z-40 w-full h-full left-0 top-0 bg-black/50 duration-400',
       opened: '',
       closed: 'opacity-0 pointer-events-none',
     },

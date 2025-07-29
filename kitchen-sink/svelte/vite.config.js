@@ -1,7 +1,4 @@
-/* eslint-disable */
-const { defineConfig } = require('vite');
+import tailwindcss from '@tailwindcss/vite';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
 
-module.exports = defineConfig(async ({ command, mode }) => {
-  const { svelte } = await import('@sveltejs/vite-plugin-svelte');
-  return { base: '', plugins: [svelte()] };
-});
+export default { base: '', plugins: [svelte(), tailwindcss()] };

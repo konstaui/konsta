@@ -101,17 +101,17 @@ interface Props {
     touchRipple?: string;
     /**
      *
-     * @default 'text-black text-opacity-30 dark:text-white dark:text-opacity-30'
+     * @default 'text-black/30 dark:text-white/30'
      */
     disabledText?: string;
     /**
      *
-     * @default 'bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10'
+     * @default 'bg-black/10 dark:bg-white/10'
      */
     disabledBg?: string;
     /**
      *
-     * @default 'border-black border-opacity-10 dark:border-white dark:border-opacity-10'
+     * @default 'border-black/10 dark:border-white/10'
      */
     disabledBorder?: string;
   };

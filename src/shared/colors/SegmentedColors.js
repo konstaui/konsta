@@ -2,10 +2,7 @@ import { cls } from '../cls.js';
 
 export const SegmentedColors = (colorsProp = {}, dark) => {
   return {
-    strongBgIos: cls(
-      'bg-black bg-opacity-5',
-      dark('dark:bg-white dark:bg-opacity-10')
-    ),
+    strongBgIos: cls('bg-black/5', dark('dark:bg-white/10')),
     strongBgMaterial: cls(
       'bg-md-light-surface-variant',
       dark('dark:bg-md-dark-surface-variant')

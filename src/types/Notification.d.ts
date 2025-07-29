@@ -30,7 +30,7 @@ interface Props {
     /**
      * Notification right text color in IOS theme
      *
-     * @default 'text-opacity-45 text-black dark:text-white dark:text-opacity-45'
+     * @default 'text-black/45 dark:text-white/45'
      */
     titleRightIos?: string;
     /**

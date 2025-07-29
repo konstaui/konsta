@@ -59,8 +59,8 @@ export const NavbarClasses = (props, colors, classes) => {
         subnavbarClassName || subnavbarClass,
         (large || medium) && 'pointer-events-auto'
       ),
-      ios: 'h-11 pl-2-safe pr-2-safe',
-      material: 'h-14 pl-4-safe pr-4-safe',
+      ios: 'h-11 pl-safe-2 pr-safe-2',
+      material: 'h-14 pl-safe-4 pr-safe-4',
     },
     inner: {
       common: cls(
@@ -69,7 +69,7 @@ export const NavbarClasses = (props, colors, classes) => {
         (large || medium) && 'pointer-events-auto z-10'
       ),
       ios: cls(
-        'pl-2-safe pr-2-safe h-11',
+        'pl-safe-2 pr-safe-2 h-11',
         !left && right ? 'justify-end' : 'justify-between'
       ),
       material: 'justify-start h-16 pl-safe pr-safe',

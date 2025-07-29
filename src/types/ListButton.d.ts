@@ -19,9 +19,10 @@ interface Props {
      * @default 'text-md-light-primary dark:text-md-dark-primary'
      */
     textMaterial?: string;
+    // TODO
     /**
      *
-     * @default 'active:bg-primary active:bg-opacity-15'
+     * @default 'active:bg-primary/15'
      */
     activeBgIos?: string;
     /**

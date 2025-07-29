@@ -1,4 +1,6 @@
-export function cls(...args) {
+import { twMerge } from 'tailwind-merge';
+
+export function classes(...args) {
   const classes = [];
   args.forEach((arg) => {
     if (typeof arg === 'object' && arg.constructor === Object) {
@@ -18,4 +20,7 @@ export function cls(...args) {
     if (uniqueClasses.indexOf(c) < 0) uniqueClasses.push(c);
   });
   return uniqueClasses.filter((c) => !!c).join(' ');
+}
+export function cls(...args) {
+  return twMerge(classes(...args));
 }

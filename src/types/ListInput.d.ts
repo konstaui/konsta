@@ -21,7 +21,7 @@ interface Props {
     bgMaterial?: string;
     /**
      *
-     * @default 'border-black border-opacity-30 dark:border-white dark:border-opacity-30'
+     * @default 'border-black/30 dark:border-white/30'
      */
     outlineBorderIos?: string;
     /**

@@ -9,8 +9,8 @@ export const RangeClasses = (props, colors, darkClasses) => {
     },
     trackBg: {
       common: cls(
-        'absolute top-1/2 left-0 w-full transform -translate-y-1/2 bg-black bg-opacity-20',
-        darkClasses('dark:bg-white dark:bg-opacity-20')
+        'absolute top-1/2 left-0 w-full transform -translate-y-1/2 bg-black/20',
+        darkClasses('dark:bg-white/20')
       ),
       ios: 'h-1 rounded-full',
       material: 'h-0.5',

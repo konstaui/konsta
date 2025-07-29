@@ -1,0 +1,83 @@
+@theme {
+  --font-ios:
+    -apple-system, SF Pro Text, SF UI Text, system-ui, Helvetica Neue,
+    Helvetica, Arial, sans-serif;
+  --font-material: Roboto, system-ui, Noto, Helvetica, Arial, sans-serif;
+  --text-2xs: 0.625rem;
+  --text-icon-ios: 28px;
+  --text-icon-material: 24px;
+  --shadow-ios-toggle: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --ease-material-in: cubic-bezier(0, 0.8, 0.34, 1);
+  --ease-material-in-popup: cubic-bezier(0, 1, 0.2, 1);
+  --transition-transform-opacity: transform, translate, scale, opacity, rotate;
+}
+@layer base {
+  :root {
+    --k-device-pixel-ratio: 1;
+    --k-hairline-color: rgba(0, 0, 0, 0.2);
+    --k-rtl-reverse: 1;
+    /* ...primaryColorVars, */
+  }
+
+  [dir='rtl'] {
+    --k-rtl-reverse: -1;
+  }
+
+  .dark {
+    background-color: #000;
+    color: #fff;
+    --k-hairline-color: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (min-resolution: 1.25dppx) {
+    :root {
+      --k-device-pixel-ratio: 1.25;
+    }
+  }
+  @media (min-resolution: 1.5dppx) {
+    :root {
+      --k-device-pixel-ratio: 1.5;
+    }
+  }
+  @media (min-resolution: 1.75dppx) {
+    :root {
+      --k-device-pixel-ratio: 1.75;
+    }
+  }
+  @media (min-resolution: 2dppx) {
+    :root {
+      --k-device-pixel-ratio: 2;
+    }
+  }
+  @media (min-resolution: 2.25dppx) {
+    :root {
+      --k-device-pixel-ratio: 2.25;
+    }
+  }
+  @media (min-resolution: 2.5dppx) {
+    :root {
+      --k-device-pixel-ratio: 2.5;
+    }
+  }
+  @media (min-resolution: 3dppx) {
+    :root {
+      --k-device-pixel-ratio: 3;
+    }
+  }
+  * {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .k-ios,
+  .ios {
+    @apply font-ios;
+  }
+  .k-material,
+  .md {
+    @apply font-material;
+  }
+}

@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'border-black border-opacity-20 dark:border-white dark:border-opacity-15'
+     * @default 'border-black/20 dark:border-white/15'
      */
     outlineIos?: string;
     /**

@@ -38,17 +38,17 @@ export const ListItemClasses = (
     itemContent: {
       common: cls(`flex items-center ${contentClassName || contentClass}`),
       ios: cls(
-        !menuListItem && cls(colors.primaryTextIos, 'ps-4-safe'),
-        menuListItem && 'rounded-lg ml-2-safe mr-2-safe ps-2'
+        !menuListItem && cls(colors.primaryTextIos, 'ps-safe-4'),
+        menuListItem && 'rounded-lg ml-safe-2 mr-safe-2 ps-2'
       ),
       material: cls(
         !menuListItem &&
           cls(
             colors.primaryTextMaterial,
-            isMediaItem ? 'ml-2-safe mr-2-safe rounded-2xl ps-2' : 'ps-4-safe',
+            isMediaItem ? 'ml-safe-2 mr-safe-2 rounded-2xl ps-2' : 'ps-safe-4',
             contacts && 'ml-10'
           ),
-        menuListItem && 'rounded-full min-h-[3.5rem] ml-4-safe mr-4-safe ps-4'
+        menuListItem && 'rounded-full min-h-[3.5rem] ml-safe-4 mr-safe-4 ps-4'
       ),
       link: cls(
         'duration-300 active:duration-0 cursor-pointer select-none',
@@ -84,10 +84,10 @@ export const ListItemClasses = (
         !menuListItem && dividers && 'hairline-b',
         innerClassName || innerClass
       ),
-      ios: 'py-2.5 pe-4-safe',
+      ios: 'py-2.5 pe-safe-4',
       material: cls(
         'py-3',
-        isMediaItem && !menuListItem ? 'pe-2' : 'pe-4-safe'
+        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4'
       ),
     },
     titleWrap: {
@@ -138,7 +138,7 @@ export const ListItemClasses = (
 
     groupTitle: {
       common: cls(
-        `pl-4-safe pr-4-safe py-1 flex items-center z-20`,
+        `pl-safe-4 pr-safe-4 py-1 flex items-center z-20`,
         positionClass('relative', className)
         // divider ? 'relative' : 'sticky top-0'
       ),
@@ -147,7 +147,7 @@ export const ListItemClasses = (
       } ${colors.groupTitleBgIos} ${
         contacts &&
         cls(
-          'font-semibold top-11-safe sticky',
+          'font-semibold top-safe-11 sticky',
           colors.groupTitleContactsTextIos,
           colors.groupTitleContactsBgIos
         )
@@ -157,7 +157,7 @@ export const ListItemClasses = (
       } ${colors.groupTitleBgMaterial} ${
         contacts &&
         cls(
-          'pointer-events-none overflow-visible h-12 box-border text-xl font-medium flex max-w-full items-center px-4 top-16-safe sticky',
+          'pointer-events-none overflow-visible h-12 box-border text-xl font-medium flex max-w-full items-center px-4 top-safe-16 sticky',
           colors.groupTitleContactsTextMaterial,
           colors.groupTitleContactsBgMaterial
         )

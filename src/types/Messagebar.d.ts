@@ -23,7 +23,7 @@ interface Props {
     inputBgIos?: string;
     /**
      *
-     * @default 'border-[#c8c8cd] dark:border-white dark:border-opacity-30'
+     * @default 'border-[#c8c8cd] dark:border-white/30'
      */
     borderIos?: string;
     /**
@@ -33,7 +33,7 @@ interface Props {
     inputBgMd?: string;
     /**
      *
-     * @default 'dark:placeholder-white dark:placeholder-opacity-40'
+     * @default 'dark:placeholder-white/40'
      */
     placeholderIos?: string;
     /**

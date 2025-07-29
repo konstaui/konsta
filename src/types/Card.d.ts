@@ -31,7 +31,7 @@ interface Props {
     bgMaterial?: string;
     /**
      *
-     * @default 'text-black text-opacity-55 dark:text-white dark:text-opacity-55'
+     * @default 'text-black/55 dark:text-white/55'
      */
     footerTextIos?: string;
     /**
@@ -41,7 +41,7 @@ interface Props {
     footerTextMaterial?: string;
     /**
      *
-     * @default 'border-black border-opacity-20 dark:border-white dark:border-opacity-20'
+     * @default 'border-black/20 dark:border-white/20'
      */
     outlineIos?: string;
     /**

@@ -7,10 +7,7 @@ export const ListInputColors = (colorsProp = {}, dark) => {
       'bg-md-light-surface-variant',
       dark('dark:bg-md-dark-surface-variant')
     ),
-    outlineBorderIos: cls(
-      'border-black border-opacity-30',
-      dark('dark:border-white dark:border-opacity-30')
-    ),
+    outlineBorderIos: cls('border-black/30', dark('dark:border-white/30')),
     outlineBorderFocusIos: 'border-primary',
     outlineBorderMaterial: cls(
       'border-md-light-on-surface',

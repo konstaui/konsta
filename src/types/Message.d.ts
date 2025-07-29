@@ -13,7 +13,7 @@ interface Props {
     messageSent?: string;
     /**
      *
-     * @default 'text-black text-opacity-45 dark:text-white dark:text-opacity-45'
+     * @default 'text-black/45 dark:text-white/45'
      */
     messageNameIos?: string;
     /**

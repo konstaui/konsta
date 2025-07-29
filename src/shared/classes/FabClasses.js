@@ -19,7 +19,7 @@ export const FabClasses = (props, colors) => {
       material: 'font-medium',
     },
     icon: {
-      common: 'h-1em w-1em',
+      common: 'h-[1em] w-[1em]',
       ios: 'text-icon-ios',
       material: 'text-icon-material',
     },

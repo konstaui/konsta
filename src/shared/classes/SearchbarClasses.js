@@ -26,9 +26,7 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
       common: 'block appearance-none  w-full py-2  focus:outline-none z-30',
       ios: cls(
         'h-8 bg-black/10 pl-7 pr-7 rounded-lg text-base',
-        darkClasses(
-          'dark:placeholder-white dark:placeholder-opacity-30 dark:bg-white/10'
-        ),
+        darkClasses('dark:placeholder-white/30 dark:bg-white/10'),
         colors.placeholderIos,
         colors.inputBgIos
       ),
@@ -49,8 +47,8 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
       material: cls(
         'w-5 h-5 z-30',
         isEnabled
-          ? 'opacity-0 transform rotate-90 scale-50 transition-transform-opacity  duration-400 '
-          : 'block transform transition-transform-opacity scale-100 rotate-0 duration-400'
+          ? 'opacity-0 transform rotate-90 scale-50 transition-(--transition-transform-opacity)  duration-400 '
+          : 'block transform transition-(--transition-transform-opacity) scale-100 rotate-0 duration-400'
       ),
     },
     cancelButton: {
@@ -61,8 +59,8 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
       material: cls(
         'absolute left-4 cursor-pointer',
         isEnabled
-          ? 'z-40 transform scale-100 rotate-0 transition-transform-opacity  duration-400'
-          : 'opacity-0 transform -rotate-90 scale-50 transition-transform-opacity duration-400'
+          ? 'z-40 transform scale-100 rotate-0 transition-(--transition-transform-opacity)  duration-400'
+          : 'opacity-0 transform -rotate-90 scale-50 transition-(--transition-transform-opacity) duration-400'
       ),
     },
   };

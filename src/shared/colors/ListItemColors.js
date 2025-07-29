@@ -7,18 +7,12 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       `text-md-light-on-surface`,
       dark('dark:text-md-dark-on-surface')
     ),
-    secondaryTextIos: cls(
-      'text-black text-opacity-55',
-      dark('dark:text-white dark:text-opacity-55')
-    ),
+    secondaryTextIos: cls('text-black/55', dark('dark:text-white/55')),
     secondaryTextMaterial: cls(
       'text-md-light-on-surface-variant',
       dark('dark:text-md-dark-on-surface-variant')
     ),
-    activeBgIos: cls(
-      `active:bg-black active:bg-opacity-10`,
-      dark('dark:active:bg-white dark:active:bg-opacity-10')
-    ),
+    activeBgIos: cls('active:bg-black/10', dark('dark:active:bg-white/10')),
     activeBgMaterial: '',
     groupTitleBgIos: cls(
       'bg-ios-light-surface-variant',
@@ -34,8 +28,8 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       dark('dark:text-md-dark-on-surface-variant')
     ),
     menuListItemBgIos: cls(
-      `active:bg-black active:bg-opacity-10`,
-      dark('dark:active:bg-white dark:active:bg-opacity-10')
+      'active:bg-black/10',
+      dark('dark:active:bg-white/10')
     ),
     menuListItemBgMaterial: cls(
       'bg-md-light-surface-1',
@@ -46,15 +40,13 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       `text-md-light-on-secondary-container`,
       dark('dark:text-md-dark-on-secondary-container')
     ),
-    menuListItemActiveBgIos: cls(
-      `bg-primary bg-opacity-15`,
-      dark('dark:bg-primary')
-    ),
+    menuListItemActiveBgIos: cls(`bg-primary/15`, dark('dark:bg-primary')),
     menuListItemActiveBgMaterial: cls(
       `bg-md-light-secondary-container`,
       dark('dark:bg-md-dark-secondary-container')
     ),
     touchRipple: cls('touch-ripple-black', dark('dark:touch-ripple-white')),
+    // TODO
     groupTitleContactsTextIos: cls(
       'text-opacity-90',
       dark('dark:text-opacity-90')

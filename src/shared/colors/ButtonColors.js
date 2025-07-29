@@ -32,18 +32,9 @@ export const ButtonColors = (colorsProp = {}, dark) => {
       dark('dark:text-md-dark-on-secondary-container')
     ),
     touchRipple: 'touch-ripple-primary',
-    disabledText: cls(
-      'text-black text-opacity-30',
-      dark('dark:text-white dark:text-opacity-30')
-    ),
-    disabledBg: cls(
-      'bg-black bg-opacity-10',
-      dark('dark:bg-white dark:bg-opacity-10')
-    ),
-    disabledBorder: cls(
-      'border-black border-opacity-10',
-      dark('dark:border-white dark:border-opacity-10')
-    ),
+    disabledText: cls('text-black/30', dark('dark:text-white/30')),
+    disabledBg: cls('bg-black/10', dark('dark:bg-white/10')),
+    disabledBorder: cls('border-black/10', dark('dark:border-white/10')),
     ...colorsProp,
   };
 };

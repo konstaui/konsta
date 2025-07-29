@@ -1,0 +1,10 @@
+@custom-variant ios {
+  &:where(.k-ios *) {
+    @slot;
+  }
+}
+@custom-variant material {
+  &:where(.k-material *) {
+    @slot;
+  }
+}

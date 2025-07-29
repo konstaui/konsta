@@ -22,7 +22,7 @@ interface Props {
     bgMaterial?: string;
     /**
      *
-     * @default 'text-black text-opacity-55 dark:text-white dark:text-opacity-55'
+     * @default 'text-black/55 dark:text-white/55'
      */
     textIos?: string;
     /**
