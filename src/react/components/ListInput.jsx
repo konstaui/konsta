@@ -1,9 +1,4 @@
-import React, {
-  useRef,
-  useState,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
+import React, { useRef, useState } from 'react';
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -15,12 +10,12 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
 import { ListInputColors } from '../../shared/colors/ListInputColors.js';
 
-const ListInput = forwardRef((props, ref) => {
+const ListInput = (props) => {
   const {
     component = 'li',
     className,
     colors: colorsProp,
-
+    ref,
     label,
     floatingLabel,
     outline,
@@ -79,11 +74,6 @@ const ListInput = forwardRef((props, ref) => {
 
   const inputElRef = useRef(null);
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-    inputEl: inputElRef.current,
-  }));
 
   const [isFocused, setIsFocused] = useState(false);
 
@@ -234,7 +224,11 @@ const ListInput = forwardRef((props, ref) => {
 
   return (
     <ListItem
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       component={component}
       media={media}
       className={c.base}
@@ -253,7 +247,7 @@ const ListInput = forwardRef((props, ref) => {
       {type !== 'select' ? children : null}
     </ListItem>
   );
-});
+};
 
 ListInput.displayName = 'ListInput';
 

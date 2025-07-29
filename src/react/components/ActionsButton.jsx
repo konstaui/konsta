@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -6,7 +6,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ActionsButtonClasses } from '../../shared/classes/ActionsButtonClasses.js';
 import { ActionsButtonColors } from '../../shared/colors/ActionsButtonColors.js';
 
-const ActionsButton = forwardRef((props, ref) => {
+const ActionsButton = (props) => {
   const {
     component = 'button',
     className,
@@ -29,6 +29,8 @@ const ActionsButton = forwardRef((props, ref) => {
 
     dividers = undefined,
 
+    ref,
+
     // Children
     children,
 
@@ -37,10 +39,6 @@ const ActionsButton = forwardRef((props, ref) => {
   } = props;
 
   const rippleElRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: rippleElRef.current,
-  }));
 
   let Component = component;
   if (typeof props.component === 'undefined' && (href || href === '')) {
@@ -86,7 +84,11 @@ const ActionsButton = forwardRef((props, ref) => {
 
   return (
     <Component
-      ref={rippleElRef}
+      ref={(el) => {
+        rippleElRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       role="button"
       tabIndex="0"
       className={c.base}
@@ -95,7 +97,7 @@ const ActionsButton = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 ActionsButton.displayName = 'ActionsButton';
 

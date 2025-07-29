@@ -1,16 +1,16 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../../shared/cls.js';
 import { RangeClasses } from '../../shared/classes/RangeClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { RangeColors } from '../../shared/colors/RangeColors.js';
 
-const Range = forwardRef((props, ref) => {
+const Range = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     ios,
     material,
 
@@ -37,10 +37,6 @@ const Range = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const Component = component;
 
   const attrs = {
@@ -57,7 +53,15 @@ const Range = forwardRef((props, ref) => {
   const valueWidth = (((value || 0) - min) / (max - min)) * 100;
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       <span className={c.trackBg} />
       <span className={c.trackValue} style={{ width: `${valueWidth}%` }} />
       <input
@@ -79,7 +83,7 @@ const Range = forwardRef((props, ref) => {
       />
     </Component>
   );
-});
+};
 
 Range.displayName = 'Range';
 

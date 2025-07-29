@@ -1,8 +1,8 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { ActionsClasses } from '../../shared/classes/ActionsClasses.js';
 
-const Actions = forwardRef((props, ref) => {
+const Actions = (props) => {
   const {
     component = 'div',
     className,
@@ -14,6 +14,8 @@ const Actions = forwardRef((props, ref) => {
     backdrop = true,
     onBackdropClick,
 
+    ref,
+
     // Children
     children,
 
@@ -22,10 +24,6 @@ const Actions = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -44,12 +42,20 @@ const Actions = forwardRef((props, ref) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component ref={elRef} className={c.base[state]} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={c.base[state]}
+        {...attrs}
+      >
         {children}
       </Component>
     </>
   );
-});
+};
 
 Actions.displayName = 'Actions';
 

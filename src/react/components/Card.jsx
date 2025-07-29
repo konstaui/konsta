@@ -1,11 +1,11 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { CardClasses } from '../../shared/classes/CardClasses.js';
 import { CardColors } from '../../shared/colors/CardColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 
-const Card = forwardRef((props, ref) => {
+const Card = (props) => {
   const {
     component = 'div',
     className,
@@ -32,6 +32,7 @@ const Card = forwardRef((props, ref) => {
     outlineMaterial,
     headerDivider = false,
     footerDivider = false,
+    ref,
 
     // Children
     children,
@@ -41,10 +42,6 @@ const Card = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -92,13 +89,21 @@ const Card = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base[style]} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base[style]}
+      {...attrs}
+    >
       {header && <div className={c.header}>{header}</div>}
       {contentWrap ? <div className={c.content}>{children}</div> : children}
       {footer && <div className={c.footer}>{footer}</div>}
     </Component>
   );
-});
+};
 
 Card.displayName = 'Card';
 

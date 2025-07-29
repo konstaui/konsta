@@ -1,33 +1,35 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import List from './List.jsx';
 
-const ListGroup = forwardRef((props, ref) => {
+const ListGroup = (props) => {
   const {
     // Children
     children,
-
+    ref,
     // Rest
     ...rest
   } = props;
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const attrs = {
     ...rest,
   };
 
   return (
-    <li ref={elRef}>
+    <li
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+    >
       <List nested {...attrs}>
         {children}
       </List>
     </li>
   );
-});
+};
 
 ListGroup.displayName = 'ListGroup';
 

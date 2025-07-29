@@ -1,11 +1,11 @@
-import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import React, { useRef } from 'react';
 import { BlockFooterClasses } from '../../shared/classes/BlockFooterClasses.js';
 import { BlockFooterColors } from '../../shared/colors/BlockFooterColors.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const BlockFooter = forwardRef((props, ref) => {
+const BlockFooter = (props) => {
   const {
     component = 'div',
     className,
@@ -18,6 +18,8 @@ const BlockFooter = forwardRef((props, ref) => {
     insetIos,
     insetMaterial,
 
+    ref,
+
     // Children
     children,
 
@@ -26,10 +28,6 @@ const BlockFooter = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const theme = useTheme();
 
@@ -57,11 +55,19 @@ const BlockFooter = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 BlockFooter.displayName = 'BlockFooter';
 

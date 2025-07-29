@@ -1,4 +1,4 @@
-import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -6,12 +6,12 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { FabClasses } from '../../shared/classes/FabClasses.js';
 import { FabColors } from '../../shared/colors/FabColors.js';
 
-const Fab = forwardRef((props, ref) => {
+const Fab = (props) => {
   const {
     component = 'a',
     className,
     colors: colorsProp,
-
+    ref,
     href,
     text,
     textPosition = 'after',
@@ -30,10 +30,6 @@ const Fab = forwardRef((props, ref) => {
   } = props;
 
   const rippleElRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: rippleElRef.current,
-  }));
 
   const Component = component;
 
@@ -55,7 +51,11 @@ const Fab = forwardRef((props, ref) => {
     <Component
       className={text ? c.base.withText : c.base.iconOnly}
       href={href}
-      ref={rippleElRef}
+      ref={(el) => {
+        rippleElRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       role="button"
       tabIndex="0"
       {...attrs}
@@ -70,7 +70,7 @@ const Fab = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 Fab.displayName = 'Fab';
 

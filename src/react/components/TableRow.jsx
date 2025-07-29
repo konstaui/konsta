@@ -1,14 +1,14 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { TableRowClasses } from '../../shared/classes/TableRowClasses.js';
 import { TableRowColors } from '../../shared/colors/TableRowColors.js';
 
-const TableRow = forwardRef((props, ref) => {
+const TableRow = (props) => {
   const {
     className,
     colors: colorsProp,
-
+    ref,
     header,
 
     ios,
@@ -21,10 +21,6 @@ const TableRow = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
   const colors = TableRowColors(colorsProp, dark);
@@ -36,11 +32,19 @@ const TableRow = forwardRef((props, ref) => {
   };
 
   return (
-    <tr className={c.base} ref={elRef} {...attrs}>
+    <tr
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </tr>
   );
-});
+};
 
 TableRow.displayName = 'TableRow';
 export default TableRow;

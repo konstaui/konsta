@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { BlockClasses } from '../../shared/classes/BlockClasses.js';
 import { cls } from '../../shared/cls.js';
 import { BlockColors } from '../../shared/colors/BlockColors.js';
@@ -6,7 +6,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 
-const Block = forwardRef((props, ref) => {
+const Block = (props) => {
   const {
     component = 'div',
     className,
@@ -29,6 +29,8 @@ const Block = forwardRef((props, ref) => {
     ios,
     material,
 
+    ref,
+
     // Children
     children,
 
@@ -37,10 +39,6 @@ const Block = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -100,11 +98,19 @@ const Block = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={classes} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={classes}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 Block.displayName = 'Block';
 

@@ -1,11 +1,5 @@
 /* eslint-disable no-console */
-import React, {
-  useRef,
-  useState,
-  forwardRef,
-  useImperativeHandle,
-  useEffect,
-} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { SearchbarClasses } from '../../shared/classes/SearchbarClasses.js';
 import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -17,12 +11,12 @@ import DeleteIcon from './icons/DeleteIcon.jsx';
 import SearchIcon from './icons/SearchIcon.jsx';
 import BackIcon from './icons/BackIcon.jsx';
 
-const Searchbar = forwardRef((props, ref) => {
+const Searchbar = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     placeholder = 'Search',
     value,
     inputId,
@@ -52,11 +46,6 @@ const Searchbar = forwardRef((props, ref) => {
   const [disableButtonWidth, setDisableButtonWidth] = useState(0);
   const disableTimeout = useRef(null);
   const allowTransition = useRef(false);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-    searchEl: searchElRef.current,
-  }));
 
   const [isEnabled, setIsEnabled] = useState(false);
   const theme = useTheme({ ios, material });
@@ -149,7 +138,11 @@ const Searchbar = forwardRef((props, ref) => {
 
   return (
     <Component
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       className={c.base}
       {...attrs}
       onBlurCapture={onGlobalBlur}
@@ -182,7 +175,7 @@ const Searchbar = forwardRef((props, ref) => {
       {disableButton && CancelButton}
     </Component>
   );
-});
+};
 
 Searchbar.displayName = 'Searchbar';
 

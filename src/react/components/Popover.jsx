@@ -1,11 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cls } from '../../shared/cls.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
@@ -14,7 +8,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
 import { PopoverColors } from '../../shared/colors/PopoverColors.js';
 
-const Popover = forwardRef((props, ref) => {
+const Popover = (props) => {
   const {
     component = 'div',
     className,
@@ -31,7 +25,7 @@ const Popover = forwardRef((props, ref) => {
     targetWidth,
     targetHeight,
     translucent = true,
-
+    ref,
     ios,
     material,
 
@@ -54,10 +48,6 @@ const Popover = forwardRef((props, ref) => {
     popoverLeft: 0,
     popoverPosition: 'top-left',
   });
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -154,7 +144,11 @@ const Popover = forwardRef((props, ref) => {
       )}
 
       <Component
-        ref={elRef}
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
         className={classes}
         style={popoverStyle}
         {...attrs}
@@ -172,7 +166,7 @@ const Popover = forwardRef((props, ref) => {
       </Component>
     </>
   );
-});
+};
 
 Popover.displayName = 'Popover';
 

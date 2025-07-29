@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { ChipClasses } from '../../shared/classes/ChipClasses.js';
 import { ChipColors } from '../../shared/colors/ChipColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -7,7 +7,7 @@ import { useTheme } from '../shared/use-theme.js';
 
 import DeleteIcon from './icons/DeleteIcon.jsx';
 
-const Chip = forwardRef((props, ref) => {
+const Chip = (props) => {
   const {
     component = 'div',
     className,
@@ -15,6 +15,7 @@ const Chip = forwardRef((props, ref) => {
     media,
     deleteButton,
     onDelete,
+    ref,
 
     ios,
     material,
@@ -30,10 +31,6 @@ const Chip = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -52,7 +49,15 @@ const Chip = forwardRef((props, ref) => {
   const c = themeClasses(ChipClasses(props, colors), className);
 
   return (
-    <Component ref={elRef} className={c.base[style]} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base[style]}
+      {...attrs}
+    >
       {media && <div className={c.media}>{media}</div>}
       {children}
       {deleteButton && (
@@ -67,7 +72,7 @@ const Chip = forwardRef((props, ref) => {
       )}
     </Component>
   );
-});
+};
 
 Chip.displayName = 'Chip';
 

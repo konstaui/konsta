@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
@@ -7,12 +7,12 @@ import { DialogButtonClasses } from '../../shared/classes/DialogButtonClasses.js
 import { DialogButtonColors } from '../../shared/colors/DialogButtonColors.js';
 import Button from './Button.jsx';
 
-const DialogButton = forwardRef((props, ref) => {
+const DialogButton = (props) => {
   const {
     component = 'button',
     className,
     colors: colorsProp,
-
+    ref,
     ios,
     material,
 
@@ -30,10 +30,6 @@ const DialogButton = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const attrs = {
     ...rest,
@@ -62,6 +58,11 @@ const DialogButton = forwardRef((props, ref) => {
   if (theme === 'ios')
     return (
       <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
         className={c.base}
         disabled={disabled}
         role="button"
@@ -84,7 +85,7 @@ const DialogButton = forwardRef((props, ref) => {
       {children}
     </Button>
   );
-});
+};
 
 DialogButton.displayName = 'DialogButton';
 

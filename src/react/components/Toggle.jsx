@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { ToggleClasses } from '../../shared/classes/ToggleClasses.js';
 import { ToggleColors } from '../../shared/colors/ToggleColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -6,12 +6,12 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
-const Toggle = forwardRef((props, ref) => {
+const Toggle = (props) => {
   const {
     component = 'label',
     className,
     colors: colorsProp,
-
+    ref,
     defaultChecked,
     checked,
     name,
@@ -33,10 +33,6 @@ const Toggle = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
   const rippleTargetElRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -61,7 +57,15 @@ const Toggle = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base[state]} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base[state]}
+      {...attrs}
+    >
       <input
         type="checkbox"
         name={name}
@@ -80,7 +84,7 @@ const Toggle = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 Toggle.displayName = 'Toggle';
 

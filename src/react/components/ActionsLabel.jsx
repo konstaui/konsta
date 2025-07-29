@@ -1,11 +1,11 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ActionsLabelClasses } from '../../shared/classes/ActionsLabelClasses.js';
 import { ActionsLabelColors } from '../../shared/colors/ActionsLabelColors.js';
 
-const ActionsLabel = forwardRef((props, ref) => {
+const ActionsLabel = (props) => {
   const {
     component = 'div',
     className,
@@ -19,6 +19,8 @@ const ActionsLabel = forwardRef((props, ref) => {
 
     dividers = undefined,
 
+    ref,
+
     // Children
     children,
 
@@ -27,10 +29,6 @@ const ActionsLabel = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -56,11 +54,19 @@ const ActionsLabel = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 ActionsLabel.displayName = 'ActionsLabel';
 

@@ -1,17 +1,11 @@
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  forwardRef,
-  useImperativeHandle,
-} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
 import { ToolbarColors } from '../../shared/colors/ToolbarColors.js';
 
-const Toolbar = forwardRef((props, ref) => {
+const Toolbar = (props) => {
   const {
     component = 'div',
     className,
@@ -28,7 +22,7 @@ const Toolbar = forwardRef((props, ref) => {
     tabbarLabels,
 
     top,
-
+    ref,
     ios,
     material,
 
@@ -38,10 +32,6 @@ const Toolbar = forwardRef((props, ref) => {
 
   const highlightElRef = useRef(null);
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -95,7 +85,15 @@ const Toolbar = forwardRef((props, ref) => {
   }, [children]);
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       <div className={c.bg} />
       <div className={c.inner}>{children}</div>
       {hasHighlight && (
@@ -107,7 +105,7 @@ const Toolbar = forwardRef((props, ref) => {
       )}
     </Component>
   );
-});
+};
 
 Toolbar.displayName = 'Toolbar';
 

@@ -1,31 +1,35 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import List from './List.jsx';
 
-const MenuList = forwardRef((props, ref) => {
+const MenuList = (props) => {
   const {
     // Children
     children,
-
+    ref,
     // Rest
     ...rest
   } = props;
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const attrs = {
     ...rest,
   };
 
   return (
-    <List ref={elRef} menuList {...attrs}>
+    <List
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      menuList
+      {...attrs}
+    >
       {children}
     </List>
   );
-});
+};
 
 MenuList.displayName = 'MenuList';
 

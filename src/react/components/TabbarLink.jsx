@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { TabbarLinkClasses } from '../../shared/classes/TabbarLinkClasses.js';
 import { TabbarLinkColors } from '../../shared/colors/TabbarLinkColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -6,11 +6,11 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import Link from './Link.jsx';
 
-const TabbarLink = forwardRef((props, ref) => {
+const TabbarLink = (props) => {
   const {
     className,
     active,
-
+    ref,
     ios,
     material,
     colors: colorsProp,
@@ -24,10 +24,6 @@ const TabbarLink = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const attrs = {
     ...linkProps,
@@ -45,7 +41,11 @@ const TabbarLink = forwardRef((props, ref) => {
 
   return (
     <Link
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       tabbar
       tabbarActive={active}
       className={className}
@@ -67,7 +67,7 @@ const TabbarLink = forwardRef((props, ref) => {
       </span>
     </Link>
   );
-});
+};
 
 TabbarLink.displayName = 'TabbarLink';
 

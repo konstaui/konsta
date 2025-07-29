@@ -1,11 +1,11 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { TableBodyClasses } from '../../shared/classes/TableBodyClasses.js';
 
-const TableBody = forwardRef((props, ref) => {
+const TableBody = (props) => {
   const {
     className,
-
+    ref,
     ios,
     material,
 
@@ -16,10 +16,6 @@ const TableBody = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const themeClasses = useThemeClasses({ ios, material });
 
   const c = themeClasses(TableBodyClasses({ ...props }));
@@ -29,11 +25,19 @@ const TableBody = forwardRef((props, ref) => {
   };
 
   return (
-    <tbody className={c.base} ref={elRef} {...attrs}>
+    <tbody
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </tbody>
   );
-});
+};
 
 TableBody.displayName = 'TableBody';
 export default TableBody;

@@ -1,15 +1,15 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { SheetClasses } from '../../shared/classes/SheetClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { SheetColors } from '../../shared/colors/SheetColors.js';
 
-const Sheet = forwardRef((props, ref) => {
+const Sheet = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     opened,
     backdrop = true,
     onBackdropClick,
@@ -25,10 +25,6 @@ const Sheet = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -55,7 +51,7 @@ const Sheet = forwardRef((props, ref) => {
       </Component>
     </>
   );
-});
+};
 
 Sheet.displayName = 'Sheet';
 

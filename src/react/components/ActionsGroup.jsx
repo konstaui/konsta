@@ -1,8 +1,8 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { ActionsGroupClasses } from '../../shared/classes/ActionsGroupClasses.js';
 
-const ActionsGroup = forwardRef((props, ref) => {
+const ActionsGroup = (props) => {
   const {
     component = 'div',
     className,
@@ -15,15 +15,13 @@ const ActionsGroup = forwardRef((props, ref) => {
     // Children
     children,
 
+    ref,
+
     // Rest
     ...rest
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -39,11 +37,19 @@ const ActionsGroup = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 ActionsGroup.displayName = 'ActionsGroup';
 

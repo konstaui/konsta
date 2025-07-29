@@ -1,10 +1,10 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import ListItem from './ListItem.jsx';
 
-const MenuListItem = forwardRef((props, ref) => {
+const MenuListItem = (props) => {
   const {
     active,
-
+    ref,
     href,
 
     // Children
@@ -16,17 +16,17 @@ const MenuListItem = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const attrs = {
     ...rest,
   };
 
   return (
     <ListItem
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       menuListItem
       menuListItemActive={active}
       href={href || false}
@@ -35,7 +35,7 @@ const MenuListItem = forwardRef((props, ref) => {
       {children}
     </ListItem>
   );
-});
+};
 
 MenuListItem.displayName = 'MenuListItem';
 

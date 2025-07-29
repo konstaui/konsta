@@ -1,15 +1,15 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import BackIcon from './icons/BackIcon.jsx';
 import Link from './Link.jsx';
 import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 
-const NavbarBackLink = forwardRef((props, ref) => {
+const NavbarBackLink = (props) => {
   const {
     component = 'a',
     className,
-
+    ref,
     text = 'Back',
 
     showText = 'auto',
@@ -28,10 +28,6 @@ const NavbarBackLink = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const attrs = {
     ...rest,
   };
@@ -46,7 +42,11 @@ const NavbarBackLink = forwardRef((props, ref) => {
 
   return (
     <Link
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       component={component}
       className={c.base}
       navbar
@@ -60,7 +60,7 @@ const NavbarBackLink = forwardRef((props, ref) => {
       {children}
     </Link>
   );
-});
+};
 
 NavbarBackLink.displayName = 'NavbarBackLink';
 

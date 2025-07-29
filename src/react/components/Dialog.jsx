@@ -1,14 +1,15 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { DialogClasses } from '../../shared/classes/DialogClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { DialogColors } from '../../shared/colors/DialogColors.js';
 
-const Dialog = forwardRef((props, ref) => {
+const Dialog = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
+    ref,
 
     opened,
     backdrop = true,
@@ -35,10 +36,6 @@ const Dialog = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -75,7 +72,15 @@ const Dialog = forwardRef((props, ref) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component ref={elRef} className={c.base[state]} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={c.base[state]}
+        {...attrs}
+      >
         <div className={c.contentWrap}>
           {title && <div className={c.title}>{title}</div>}
           {(content || children) && (
@@ -90,7 +95,7 @@ const Dialog = forwardRef((props, ref) => {
       </Component>
     </>
   );
-});
+};
 
 Dialog.displayName = 'Dialog';
 

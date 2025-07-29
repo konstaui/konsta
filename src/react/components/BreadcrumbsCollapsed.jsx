@@ -1,10 +1,10 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { BreadcrumbsCollapsedClasses } from '../../shared/classes/BreadcrumbsCollapsedClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { BreadcrumbsCollapsedColors } from '../../shared/colors/BreadcrumbsCollapsedColors.js';
 
-const BreadcrumbsCollapsed = forwardRef((props, ref) => {
+const BreadcrumbsCollapsed = (props) => {
   const {
     component = 'div',
     className,
@@ -12,6 +12,8 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
 
     ios,
     material,
+
+    ref,
 
     // Children
     children,
@@ -21,10 +23,6 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const dark = useDarkClasses();
 
@@ -45,7 +43,11 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
 
   return (
     <Component
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       role="button"
       tabIndex="0"
       className={c.base}
@@ -57,7 +59,7 @@ const BreadcrumbsCollapsed = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 BreadcrumbsCollapsed.displayName = 'BreadcrumbsCollapsed';
 

@@ -1,20 +1,15 @@
-import React, {
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  useEffect,
-} from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
 import { NavbarColors } from '../../shared/colors/NavbarColors.js';
 
-const Navbar = forwardRef((props, ref) => {
+const Navbar = (props) => {
   const {
     component = 'div',
     className,
-
+    ref,
     bgClassName = '',
     innerClassName = '',
     leftClassName = '',
@@ -66,10 +61,6 @@ const Navbar = forwardRef((props, ref) => {
   const subnavbarElRef = useRef(null);
 
   const wasScrollable = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -200,7 +191,15 @@ const Navbar = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       <div className={c.bg} ref={bgElRef} />
       <div className={c.inner} ref={innerElRef}>
         {left && <div className={c.left}>{left}</div>}
@@ -225,7 +224,7 @@ const Navbar = forwardRef((props, ref) => {
       )}
     </Component>
   );
-});
+};
 
 Navbar.displayName = 'Navbar';
 

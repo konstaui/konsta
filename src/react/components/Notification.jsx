@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { NotificationsClasses } from '../../shared/classes/NotificationsClasses.js';
 import { NotificationsColors } from '../../shared/colors/NotificationsColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -6,7 +6,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import DeleteIcon from './icons/DeleteIcon.jsx';
 
-const Notification = forwardRef((props, ref) => {
+const Notification = (props) => {
   const {
     component = 'div',
     className,
@@ -18,7 +18,7 @@ const Notification = forwardRef((props, ref) => {
     subtitle,
     text,
     translucent = true,
-
+    ref,
     opened,
 
     onClose,
@@ -34,10 +34,6 @@ const Notification = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -57,7 +53,15 @@ const Notification = forwardRef((props, ref) => {
 
   if (theme === 'ios')
     return (
-      <Component ref={elRef} className={c.base} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={c.base}
+        {...attrs}
+      >
         <div className={c.header}>
           {icon && <div className={c.icon}>{icon}</div>}
           {title && <div className={c.title}>{title}</div>}
@@ -83,7 +87,15 @@ const Notification = forwardRef((props, ref) => {
       </Component>
     );
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       <div className={c.header}>
         {icon && <div className={c.icon}>{icon}</div>}
         <div className={c.contentWrapper}>
@@ -112,7 +124,7 @@ const Notification = forwardRef((props, ref) => {
       </div>
     </Component>
   );
-});
+};
 
 Notification.displayName = 'Notification';
 

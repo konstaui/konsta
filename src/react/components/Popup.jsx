@@ -1,15 +1,15 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { PopupClasses } from '../../shared/classes/PopupClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { PopupColors } from '../../shared/colors/PopupColors.js';
 
-const Popup = forwardRef((props, ref) => {
+const Popup = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     size = 'w-screen h-screen md:w-160 md:h-160',
     opened,
     backdrop = true,
@@ -26,10 +26,6 @@ const Popup = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const state = opened ? 'opened' : 'closed';
 
@@ -54,12 +50,20 @@ const Popup = forwardRef((props, ref) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component ref={elRef} className={c.base[state]} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={c.base[state]}
+        {...attrs}
+      >
         {children}
       </Component>
     </>
   );
-});
+};
 
 Popup.displayName = 'Popup';
 

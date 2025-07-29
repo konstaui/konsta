@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
@@ -7,12 +7,12 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { RadioClasses } from '../../shared/classes/RadioClasses.js';
 import { RadioColors } from '../../shared/colors/RadioColors.js';
 
-const Radio = forwardRef((props, ref) => {
+const Radio = (props) => {
   const {
     component = 'label',
     className,
     colors: colorsProp,
-
+    ref,
     defaultChecked,
     checked,
     name,
@@ -34,10 +34,6 @@ const Radio = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -62,7 +58,15 @@ const Radio = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       <input
         type="radio"
         name={name}
@@ -85,7 +89,7 @@ const Radio = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 Radio.displayName = 'Radio';
 

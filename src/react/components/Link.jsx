@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -7,12 +7,12 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { LinkClasses } from '../../shared/classes/LinkClasses.js';
 import { LinkColors } from '../../shared/colors/LinkColors.js';
 
-const Link = forwardRef((props, ref) => {
+const Link = (props) => {
   const {
     component = 'a',
     className,
     colors: colorsProp,
-
+    ref,
     // Toolbar/navbar link
     navbar,
     toolbar,
@@ -37,10 +37,6 @@ const Link = forwardRef((props, ref) => {
   } = props;
 
   const rippleElRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: rippleElRef.current,
-  }));
 
   const Component = component;
 
@@ -93,7 +89,11 @@ const Link = forwardRef((props, ref) => {
 
   return (
     <Component
-      ref={rippleElRef}
+      ref={(el) => {
+        rippleElRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       className={classes}
       {...attrs}
       role="link"
@@ -103,7 +103,7 @@ const Link = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 Link.displayName = 'Link';
 

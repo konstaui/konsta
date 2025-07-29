@@ -1,18 +1,19 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import Button from './Button.jsx';
 
-const SegmentedButton = forwardRef((props, ref) => {
-  const { active, children, outline, strong, clear, rounded, ...rest } = props;
+const SegmentedButton = (props) => {
+  const { active, children, outline, strong, clear, rounded, ref, ...rest } =
+    props;
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   return (
     <Button
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       segmented
       segmentedActive={active}
       segmentedStrong={strong}
@@ -22,7 +23,7 @@ const SegmentedButton = forwardRef((props, ref) => {
       {children}
     </Button>
   );
-});
+};
 
 SegmentedButton.displayName = 'SegmentedButton';
 

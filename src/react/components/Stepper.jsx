@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -7,12 +7,12 @@ import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { StepperClasses } from '../../shared/classes/StepperClasses.js';
 import { StepperColors } from '../../shared/colors/StepperColors.js';
 
-const Stepper = forwardRef((props, ref) => {
+const Stepper = (props) => {
   const {
     component = 'span',
     className,
     colors: colorsProp,
-
+    ref,
     value = 0,
     defaultValue,
     input = false,
@@ -57,10 +57,6 @@ const Stepper = forwardRef((props, ref) => {
   const elRef = useRef(null);
   const buttonLeftElRef = useRef(null);
   const buttonRightElRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -149,7 +145,15 @@ const Stepper = forwardRef((props, ref) => {
   const valueClasses = cls(input && c.input, c.value[style]);
 
   return (
-    <Component ref={elRef} className={classes} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={classes}
+      {...attrs}
+    >
       <span
         ref={buttonLeftElRef}
         className={buttonLeftClasses}
@@ -188,7 +192,7 @@ const Stepper = forwardRef((props, ref) => {
       </span>
     </Component>
   );
-});
+};
 
 Stepper.displayName = 'Stepper';
 

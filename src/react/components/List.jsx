@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../../shared/cls.js';
 import { ListClasses } from '../../shared/classes/ListClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -7,12 +7,12 @@ import { useTheme } from '../shared/use-theme.js';
 import { ListColors } from '../../shared/colors/ListColors.js';
 import { ListDividersContext } from '../shared/ListDividersContext.js';
 
-const List = forwardRef((props, ref) => {
+const List = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     margin = 'my-8',
     nested,
     menuList,
@@ -42,10 +42,6 @@ const List = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -109,12 +105,20 @@ const List = forwardRef((props, ref) => {
 
   return (
     <ListDividersContext.Provider value={hasDividers}>
-      <Component ref={elRef} className={classes} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={classes}
+        {...attrs}
+      >
         <ul className={c.ul}>{children}</ul>
       </Component>
     </ListDividersContext.Provider>
   );
-});
+};
 
 List.displayName = 'List';
 

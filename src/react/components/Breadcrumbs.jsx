@@ -1,8 +1,8 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { BreadcrumbsClasses } from '../../shared/classes/BreadcrumbsClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-const Breadcrumbs = forwardRef((props, ref) => {
+const Breadcrumbs = (props) => {
   const {
     component = 'div',
     className,
@@ -13,6 +13,8 @@ const Breadcrumbs = forwardRef((props, ref) => {
     ios,
     material,
 
+    ref,
+
     // Children
     children,
 
@@ -21,10 +23,6 @@ const Breadcrumbs = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -40,11 +38,19 @@ const Breadcrumbs = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 Breadcrumbs.displayName = 'Breadcrumbs';
 

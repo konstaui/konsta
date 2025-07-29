@@ -1,11 +1,11 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { BlockHeaderClasses } from '../../shared/classes/BlockHeaderClasses.js';
 import { BlockHeaderColors } from '../../shared/colors/BlockHeaderColors.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const BlockHeader = forwardRef((props, ref) => {
+const BlockHeader = (props) => {
   const {
     component = 'div',
     className,
@@ -18,6 +18,8 @@ const BlockHeader = forwardRef((props, ref) => {
     insetIos,
     insetMaterial,
 
+    ref,
+
     // Children
     children,
 
@@ -26,10 +28,6 @@ const BlockHeader = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -57,11 +55,19 @@ const BlockHeader = forwardRef((props, ref) => {
   );
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 BlockHeader.displayName = 'BlockHeader';
 

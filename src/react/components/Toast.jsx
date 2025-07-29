@@ -1,17 +1,17 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { ToastClasses } from '../../shared/classes/ToastClasses.js';
 import { ToastColors } from '../../shared/colors/ToastColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-const Toast = forwardRef((props, ref) => {
+const Toast = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
     translucent = true,
     button,
-
+    ref,
     position = 'left',
     opened,
 
@@ -26,10 +26,6 @@ const Toast = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -54,7 +50,7 @@ const Toast = forwardRef((props, ref) => {
       </div>
     </Component>
   );
-});
+};
 
 Toast.displayName = 'Toast';
 

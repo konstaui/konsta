@@ -1,22 +1,16 @@
-import React, {
-  useRef,
-  forwardRef,
-  useImperativeHandle,
-  useEffect,
-  useState,
-} from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { cls } from '../../shared/cls.js';
 import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { SegmentedColors } from '../../shared/colors/SegmentedColors.js';
 
-const Segmented = forwardRef((props, ref) => {
+const Segmented = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     ios,
     material,
 
@@ -35,10 +29,6 @@ const Segmented = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
   const highlightElRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const [highlightStyle, setHighlightStyle] = useState({
     transform: '',
@@ -88,7 +78,15 @@ const Segmented = forwardRef((props, ref) => {
   }, [children]);
 
   return (
-    <Component ref={elRef} className={classes} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={classes}
+      {...attrs}
+    >
       {outline ? <span className={c.outlineInner}>{children}</span> : children}
       {strong && (
         <span
@@ -99,7 +97,7 @@ const Segmented = forwardRef((props, ref) => {
       )}
     </Component>
   );
-});
+};
 
 Segmented.displayName = 'Segmented';
 

@@ -1,9 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, { useRef } from 'react';
 import { KonstaProvider } from '../shared/KonstaProvider.jsx';
 import { useAutoTheme } from '../shared/use-auto-theme.js';
 import { AppClasses } from '../../shared/classes/AppClasses.js';
 
-const App = forwardRef((props, ref) => {
+const App = (props) => {
   const {
     component = 'div',
     className,
@@ -13,6 +13,8 @@ const App = forwardRef((props, ref) => {
     touchRipple = true,
     safeAreas = true,
 
+    ref,
+
     // Children
     children,
 
@@ -21,10 +23,6 @@ const App = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -43,12 +41,20 @@ const App = forwardRef((props, ref) => {
       touchRipple={touchRipple}
       autoThemeDetection={false}
     >
-      <Component ref={elRef} className={classes} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={classes}
+        {...attrs}
+      >
         {children}
       </Component>
     </KonstaProvider>
   );
-});
+};
 
 App.displayName = 'App';
 

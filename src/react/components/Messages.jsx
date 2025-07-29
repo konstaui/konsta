@@ -1,13 +1,13 @@
-import React, { forwardRef, useRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { MessagesClasses } from '../../shared/classes/MessagesClasses.js';
 
-const Messages = forwardRef((props, ref) => {
+const Messages = (props) => {
   const {
     component = 'div',
     className,
     colors: colorsProp,
-
+    ref,
     id,
     ios,
     material,
@@ -17,9 +17,6 @@ const Messages = forwardRef((props, ref) => {
   } = props;
 
   const elRef = useRef(null);
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const themeClasses = useThemeClasses({ ios, material });
 
@@ -31,11 +28,20 @@ const Messages = forwardRef((props, ref) => {
     ...rest,
   };
   return (
-    <Component id={id} className={c.base} ref={elRef} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      id={id}
+      className={c.base}
+      {...attrs}
+    >
       {children}
     </Component>
   );
-});
+};
 
 Messages.displayName = 'Messages';
 export default Messages;

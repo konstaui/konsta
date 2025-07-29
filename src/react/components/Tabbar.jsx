@@ -1,11 +1,11 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import Toolbar from './Toolbar.jsx';
 
-const Tabbar = forwardRef((props, ref) => {
+const Tabbar = (props) => {
   const {
     labels,
     icons,
-
+    ref,
     children,
 
     ...rest
@@ -13,17 +13,17 @@ const Tabbar = forwardRef((props, ref) => {
 
   const elRef = useRef(null);
 
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
-
   const attrs = {
     ...rest,
   };
 
   return (
     <Toolbar
-      ref={elRef}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       tabbar
       tabbarIcons={icons}
       tabbarLabels={labels}
@@ -32,7 +32,7 @@ const Tabbar = forwardRef((props, ref) => {
       {children}
     </Toolbar>
   );
-});
+};
 
 Tabbar.displayName = 'Tabbar';
 

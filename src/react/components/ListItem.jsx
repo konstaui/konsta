@@ -1,4 +1,4 @@
-import React, { useRef, forwardRef, useImperativeHandle } from 'react';
+import React, { useRef } from 'react';
 import { cls } from '../../shared/cls.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
@@ -9,7 +9,7 @@ import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
 import { ListItemColors } from '../../shared/colors/ListItemColors.js';
 import { useListDividers } from '../shared/use-list-dividers.js';
 
-const ListItem = forwardRef((props, ref) => {
+const ListItem = (props) => {
   const {
     component = 'li',
     colors: colorsProp,
@@ -32,7 +32,7 @@ const ListItem = forwardRef((props, ref) => {
     media,
     header,
     footer,
-
+    ref,
     menuListItem,
     menuListItemActive,
 
@@ -73,10 +73,6 @@ const ListItem = forwardRef((props, ref) => {
 
   const rippleElRef = useRef(null);
   const elRef = useRef(null);
-
-  useImperativeHandle(ref, () => ({
-    el: elRef.current,
-  }));
 
   const Component = component;
 
@@ -183,7 +179,15 @@ const ListItem = forwardRef((props, ref) => {
   }
 
   return (
-    <Component ref={elRef} className={c.base} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base}
+      {...attrs}
+    >
       <ItemContentComponent
         ref={rippleElRef}
         className={itemContentClasses}
@@ -212,7 +216,7 @@ const ListItem = forwardRef((props, ref) => {
       {children}
     </Component>
   );
-});
+};
 
 ListItem.displayName = 'ListItem';
 
