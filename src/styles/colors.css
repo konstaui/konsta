@@ -1,12 +1,7 @@
-@plugin "../plugin-material-colors.js";
+@plugin "../plugin-colors.js";
 
 @theme {
-  --color-brand-primary: #000;
-  --color-brand-red: #ff3b30;
-  --color-brand-green: #4cd964;
-  --color-brand-yellow: #ffcc00;
-  --color-brand-purple: #9c27b0;
-  --color-brand-blue: #2196f3;
+  --color-brand-primary: #007aff;
 
   --color-primary: var(--k-color-primary);
   --color-md-light-primary: var(--k-color-md-light-primary);

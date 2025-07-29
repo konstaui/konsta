@@ -1,8 +1,8 @@
-const hexToRgb = require('./color-utils/hex-to-rgb');
-const iosColors = require('./color-utils/ios-colors');
-const mdColors = require('./color-utils/md-colors');
+import hexToRgb from './color-utils/hex-to-rgb';
+import iosColors from './color-utils/ios-colors';
+import mdColors from './color-utils/md-colors';
 
-module.exports = (config) => {
+export default (config) => {
   const colors = config.config().theme.colors;
   const brandColors = Object.keys(colors).filter((color) =>
     color.startsWith('brand-')

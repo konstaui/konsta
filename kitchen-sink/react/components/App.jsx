@@ -7,9 +7,11 @@ import HomePage from '../pages/Home.jsx';
 
 function App() {
   const [theme, setTheme] = useState(
-    window.location.search.includes('theme=material') ? 'material' : 'ios'
+    window.location.search.includes('theme=material') ? 'material' : 'material'
   );
-  const [currentColorTheme, setCurrentColorTheme] = useState('');
+  const [currentColorTheme, setCurrentColorTheme] = useState(
+    'k-color-brand-purple'
+  );
   const setColorTheme = (color) => {
     const htmlEl = document.documentElement;
     htmlEl.classList.forEach((c) => {

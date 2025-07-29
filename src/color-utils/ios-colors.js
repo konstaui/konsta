@@ -49,7 +49,7 @@ function colorHslToRgb(h, s, l) {
   return rgb1.map((n) => Math.max(0, Math.min(255, Math.round(255 * (n + m)))));
 }
 
-function iosColors(...args) {
+export default function iosColors(...args) {
   let hex;
   let rgb;
   if (args.length === 1) {
@@ -71,5 +71,3 @@ function iosColors(...args) {
     'ios-primary-shade': shade,
   };
 }
-
-module.exports = iosColors;
