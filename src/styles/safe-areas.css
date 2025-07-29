@@ -145,7 +145,7 @@
   );
 }
 @utility pr-safe-* {
-  margin-right: calc(
+  padding-right: calc(
     var(--k-safe-area-right) + var(--spacing) * --value(number)
   );
 }
@@ -166,7 +166,7 @@
   padding-top: calc(var(--k-safe-area-top) + var(--spacing) * --value(number));
 }
 @utility pb-safe-* {
-  margin-bottom: calc(
+  padding-bottom: calc(
     var(--k-safe-area-bottom) + var(--spacing) * --value(number)
   );
 }

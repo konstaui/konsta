@@ -1,4 +1,5 @@
 @import './styles/base.css';
+@import './styles/colors.css';
 @import './styles/touch-ripple.css';
 @import './styles/no-scrollbar.css';
 @import './styles/ios-material.css';
