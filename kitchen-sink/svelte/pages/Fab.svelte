@@ -28,24 +28,24 @@
 
   <!-- Right Top -->
   <Fab
-    class="fixed right-4-safe ios:top-15-safe material:top-18-safe z-20 k-color-brand-red"
+    class="fixed right-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-red"
   >
     <svelte:component this={PlusIcon} slot="icon" />
   </Fab>
 
   <!-- Right Bottom -->
-  <Fab class="fixed right-4-safe bottom-4-safe z-20">
+  <Fab class="fixed right-safe-4 bottom-safe-4 z-20">
     <svelte:component this={PlusIcon} slot="icon" />
   </Fab>
 
   <!-- Left Bottom -->
-  <Fab class="fixed left-4-safe bottom-4-safe z-20 k-color-brand-green">
+  <Fab class="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green">
     <svelte:component this={PlusIcon} slot="icon" />
   </Fab>
 
   <!-- Left Top -->
   <Fab
-    class="fixed left-4-safe ios:top-15-safe material:top-18-safe z-20 k-color-brand-yellow"
+    class="fixed left-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-yellow"
   >
     <svelte:component this={PlusIcon} slot="icon" />
   </Fab>
@@ -59,7 +59,7 @@
 
   <!-- Center Bottom -->
   <Fab
-    class="fixed left-1/2 bottom-4-safe transform -translate-x-1/2 z-20"
+    class="fixed left-1/2 bottom-safe-4 transform -translate-x-1/2 z-20"
     text="Create"
     t
     extPosition="after"

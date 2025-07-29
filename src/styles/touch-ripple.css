@@ -1,14 +1,9 @@
 @utility touch-ripple-* {
-  --k-touch-ripple-color: --value(--color-*);
-}
-@utility touch-ripple-black {
-  --k-touch-ripple-color: var(--k-touch-ripple-black);
-}
-@utility touch-ripple-white {
-  --k-touch-ripple-color: var(--k-touch-ripple-white);
-}
-@utility touch-ripple-current {
-  --k-touch-ripple-color: currentColor;
+  --k-touch-ripple-color: color-mix(
+    in oklab,
+    --value(--color-*) 15%,
+    transparent 0%
+  );
 }
 
 :root {

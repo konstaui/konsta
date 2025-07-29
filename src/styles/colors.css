@@ -70,3 +70,62 @@
   --color-ios-primary-tint: var(--k-color-ios-primary-tint);
   --color-ios-primary-shade: var(--k-color-ios-primary-shade);
 }
+
+[class*='k-color-brand-'] {
+  --color-primary: var(--k-color-primary);
+  --color-md-light-primary: var(--k-color-md-light-primary);
+  --color-md-light-on-primary: var(--k-color-md-light-on-primary);
+  --color-md-light-primary-container: var(--k-color-md-light-primary-container);
+  --color-md-light-on-primary-container: var(
+    --k-color-md-light-on-primary-container
+  );
+  --color-md-light-secondary: var(--k-color-md-light-secondary);
+  --color-md-light-on-secondary: var(--k-color-md-light-on-secondary);
+  --color-md-light-secondary-container: var(
+    --k-color-md-light-secondary-container
+  );
+  --color-md-light-on-secondary-container: var(
+    --k-color-md-light-on-secondary-container
+  );
+  --color-md-light-surface: var(--k-color-md-light-surface);
+  --color-md-light-on-surface: var(--k-color-md-light-on-surface);
+  --color-md-light-surface-variant: var(--k-color-md-light-surface-variant);
+  --color-md-light-on-surface-variant: var(
+    --k-color-md-light-on-surface-variant
+  );
+  --color-md-light-outline: var(--k-color-md-light-outline);
+  --color-md-light-outline-variant: var(--k-color-md-light-outline-variant);
+  --color-md-light-surface-1: var(--k-color-md-light-surface-1);
+  --color-md-light-surface-2: var(--k-color-md-light-surface-2);
+  --color-md-light-surface-3: var(--k-color-md-light-surface-3);
+  --color-md-light-surface-4: var(--k-color-md-light-surface-4);
+  --color-md-light-surface-5: var(--k-color-md-light-surface-5);
+  --color-md-dark-primary: var(--k-color-md-dark-primary);
+  --color-md-dark-on-primary: var(--k-color-md-dark-on-primary);
+  --color-md-dark-primary-container: var(--k-color-md-dark-primary-container);
+  --color-md-dark-on-primary-container: var(
+    --k-color-md-dark-on-primary-container
+  );
+  --color-md-dark-secondary: var(--k-color-md-dark-secondary);
+  --color-md-dark-on-secondary: var(--k-color-md-dark-on-secondary);
+  --color-md-dark-secondary-container: var(
+    --k-color-md-dark-secondary-container
+  );
+  --color-md-dark-on-secondary-container: var(
+    --k-color-md-dark-on-secondary-container
+  );
+  --color-md-dark-surface: var(--k-color-md-dark-surface);
+  --color-md-dark-on-surface: var(--k-color-md-dark-on-surface);
+  --color-md-dark-surface-variant: var(--k-color-md-dark-surface-variant);
+  --color-md-dark-on-surface-variant: var(--k-color-md-dark-on-surface-variant);
+  --color-md-dark-outline: var(--k-color-md-dark-outline);
+  --color-md-dark-outline-variant: var(--k-color-md-dark-outline-variant);
+  --color-md-dark-surface-1: var(--k-color-md-dark-surface-1);
+  --color-md-dark-surface-2: var(--k-color-md-dark-surface-2);
+  --color-md-dark-surface-3: var(--k-color-md-dark-surface-3);
+  --color-md-dark-surface-4: var(--k-color-md-dark-surface-4);
+  --color-md-dark-surface-5: var(--k-color-md-dark-surface-5);
+  --color-ios-primary: var(--k-color-ios-primary);
+  --color-ios-primary-tint: var(--k-color-ios-primary-tint);
+  --color-ios-primary-shade: var(--k-color-ios-primary-shade);
+}

@@ -137,7 +137,7 @@ const Button = forwardRef((props, ref) => {
   return (
     <Component
       ref={rippleElRef}
-      className={''}
+      className={classes}
       disabled={disabled}
       role="button"
       tabIndex="0"

@@ -93,6 +93,29 @@
   bottom: var(--k-safe-area-bottom);
 }
 
+@utility left-safe-* {
+  left: calc(var(--k-safe-area-left) + var(--spacing) * --value(number));
+}
+@utility start-safe-* {
+  inset-inline-start: calc(
+    var(--k-safe-area-left) + var(--spacing) * --value(number)
+  );
+}
+@utility right-safe-* {
+  right: calc(var(--k-safe-area-right) + var(--spacing) * --value(number));
+}
+@utility end-safe-* {
+  inset-inline-end: calc(
+    var(--k-safe-area-right) + var(--spacing) * --value(number)
+  );
+}
+@utility top-safe-* {
+  top: calc(var(--k-safe-area-top) + var(--spacing) * --value(number));
+}
+@utility bottom-safe-* {
+  bottom: calc(var(--k-safe-area-bottom) + var(--spacing) * --value(number));
+}
+
 /* WITH VALUES */
 
 @utility ml-safe-* {

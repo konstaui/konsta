@@ -72,22 +72,18 @@ export const ListItemClasses = (
               )
       ),
     },
-
     media: {
       common: `shrink-0 flex ${mediaClassName || mediaClass}`,
       ios: 'py-2 me-4',
       material: cls('py-3', menuListItem ? 'me-3' : 'me-4'),
     },
     inner: {
-      common: cls(
-        'w-full relative',
-        !menuListItem && dividers && 'hairline-b',
-        innerClassName || innerClass
-      ),
-      ios: 'py-2.5 pe-safe-4',
+      common: cls('w-full relative', !menuListItem && dividers && 'hairline-b'),
+      ios: cls('py-2.5 pe-safe-4', innerClassName || innerClass),
       material: cls(
         'py-3',
-        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4'
+        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4',
+        innerClassName || innerClass
       ),
     },
     titleWrap: {

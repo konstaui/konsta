@@ -13,7 +13,7 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
     },
     raised: outline
       ? 'shadow'
-      : `shadow divide-x divide-black divide-opacity-10 rtl:divide-x-reverse`,
+      : `shadow divide-x divide-black/10 rtl:divide-x-reverse`,
     outline: {
       common: ``,
       ios: `${colors.borderIos} border-2`,

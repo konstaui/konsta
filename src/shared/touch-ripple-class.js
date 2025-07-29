@@ -38,7 +38,6 @@ export class TouchRipple {
     // eslint-disable-next-line
     ripple.rippleWaveEl = document.createElement('span');
     ripple.rippleWaveEl.classList.add('k-touch-ripple-wave');
-    ripple.rippleWaveEl.setAttribute('hidden', '');
 
     ripple.rippleWaveEl.style = `
       width: ${diameter}px;
@@ -66,6 +65,7 @@ export class TouchRipple {
   }
 
   destroy() {
+    return;
     let ripple = this;
     if (ripple.rippleWaveEl) {
       ripple.el.removeChild(ripple.rippleWaveEl);
