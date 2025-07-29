@@ -80,32 +80,38 @@ const mdColors = (hexColor = '') => {
   lightScheme.colors.allColors.forEach((color) => {
     let name = color.name;
     if (name === 'surface_dim') name = 'surface_variant';
+    if (name === 'surface_container_low') name = 'surface_1';
+    if (name === 'surface_container') name = 'surface_2';
+    if (name === 'surface_container_high') name = 'surface_3';
+    if (name === 'surface_container_highest') name = 'surface_4';
     const argb = color.getArgb(lightScheme);
     theme.light[name] = argb;
   });
   darkScheme.colors.allColors.forEach((color) => {
     let name = color.name;
     if (name === 'surface_dim') name = 'surface_variant';
+    if (name === 'surface_dim') name = 'surface_variant';
+    if (name === 'surface_container_low') name = 'surface_1';
+    if (name === 'surface_container') name = 'surface_2';
+    if (name === 'surface_container_high') name = 'surface_3';
+    if (name === 'surface_container_highest') name = 'surface_4';
     const argb = color.getArgb(darkScheme);
     theme.dark[name] = argb;
   });
-  const levels = [0.05, 0.08, 0.11, 0.12, 0.14];
-  levels.forEach((amount, index) => {
-    theme.light[`surface_${index + 1}`] = argbFromHex(
-      blend(
-        hexFromArgb(theme.light.surface),
-        hexFromArgb(theme.light.primary),
-        amount
-      )
-    );
-    theme.dark[`surface_${index + 1}`] = argbFromHex(
-      blend(
-        hexFromArgb(theme.dark.surface),
-        hexFromArgb(theme.dark.primary),
-        amount
-      )
-    );
-  });
+  theme.light.surface_5 = argbFromHex(
+    blend(
+      hexFromArgb(theme.light.surface_4),
+      hexFromArgb(theme.light.primary),
+      0.05
+    )
+  );
+  theme.dark.surface_5 = argbFromHex(
+    blend(
+      hexFromArgb(theme.dark.surface_4),
+      hexFromArgb(theme.dark.primary),
+      0.05
+    )
+  );
 
   const colors = {};
   const name = (n) => {
@@ -136,6 +142,7 @@ const mdColors = (hexColor = '') => {
     ];
     return keep.includes(prop);
   };
+
   Object.keys(theme.light).forEach((prop) => {
     if (!shouldKeep(prop)) return;
     colors[name(`md-light-${prop}`)] = hexFromArgb(theme.light[prop]);
