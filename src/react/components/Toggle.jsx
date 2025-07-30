@@ -74,7 +74,6 @@ const Toggle = (props) => {
         onChange={onChange}
         className={c.input}
       />
-      <span className={c.inner[state]} />
       <span ref={rippleTargetElRef} className={c.thumbWrap[state]}>
         <span className={c.thumb[state]} />
       </span>

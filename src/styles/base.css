@@ -8,7 +8,8 @@
   --text-2xs: 0.625rem;
   --text-icon-ios: 28px;
   --text-icon-material: 24px;
-  --shadow-ios-toggle: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-ios-toggle:
+    0 0.5px 4px rgba(0, 0, 0, 0.12), 0 6px 13px rgba(0, 0, 0, 0.12);
   --ease-material-in: cubic-bezier(0, 0.8, 0.34, 1);
   --ease-material-in-popup: cubic-bezier(0, 1, 0.2, 1);
   --transition-transform-opacity: transform, translate, scale, opacity, rotate;

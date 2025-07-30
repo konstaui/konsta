@@ -7,7 +7,7 @@ export const ToggleClasses = (props, colors, dark) => {
         `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full group`,
         dark('dark:touch-ripple-white')
       ),
-      ios: 'h-8 w-13 p-0.5',
+      ios: 'h-7 w-16 p-0.5',
       material: 'w-13 h-8 border-2',
       notChecked: {
         ios: colors.bgIos,
@@ -18,22 +18,13 @@ export const ToggleClasses = (props, colors, dark) => {
         material: cls(colors.checkedBgMaterial, colors.checkedBorderMaterial),
       },
     },
-    inner: {
-      ios: cls(
-        'w-full h-full bg-white rounded-full block duration-300 transform',
-        dark('dark:bg-transparent')
-      ),
-      notChecked: {},
-      checked: {
-        ios: 'scale-0',
-      },
-    },
+
     thumbWrap: {
       common: 'rounded-full absolute duration-300 transform',
-      ios: 'w-7 h-7 start-0.5 top-0.5',
+      ios: 'w-9.5 h-6 start-0.5 top-0.5',
       material: 'w-6 h-6 start-0.5 top-0.5',
       checked: {
-        ios: cls('translate-x-5 rtl:!-translate-x-5'),
+        ios: cls('translate-x-5.5 rtl:!-translate-x-5.5'),
         material: cls(`translate-x-5 rtl:!-translate-x-5`),
       },
       notChecked: '',

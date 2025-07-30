@@ -9,7 +9,6 @@
       :checked="checked"
       :class="c.input"
     />
-    <span :class="c.inner[state]" />
     <span ref="rippleTargetElRef" :class="c.thumbWrap[state]">
       <span :class="c.thumb[state]" />
     </span>
