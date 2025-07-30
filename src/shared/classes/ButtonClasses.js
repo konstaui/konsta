@@ -11,7 +11,7 @@ export const ButtonClasses = (props, colors, darkClasses) => {
         disabled && 'pointer-events-none',
         segmentedStrong && segmentedActive && 'k-segmented-strong-button-active'
       ),
-      ios: `uppercase duration-100 font-semibold px-2`,
+      ios: `duration-100 font-medium px-2`,
       material: `duration-300 font-medium px-4`,
 
       square: {
@@ -83,16 +83,16 @@ export const ButtonClasses = (props, colors, darkClasses) => {
     },
     size: {
       small: {
-        ios: `text-xs h-7`,
+        ios: `text-sm h-7`,
         material: `text-sm h-8`,
       },
       medium: {
         common: 'text-sm',
-        ios: `h-7`,
+        ios: `h-8.5 text-[15px]`,
         material: `h-10`,
       },
       large: {
-        ios: `h-11`,
+        ios: `h-12 text-[17px] font-semibold`,
         material: `h-12`,
       },
     },
