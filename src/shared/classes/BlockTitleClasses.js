@@ -9,14 +9,14 @@ export const BlockTitleClasses = (props, colors) => {
       }`,
       ios: cls(
         `font-semibold ${colors.textIos}`,
-        large && 'text-[1.5rem]',
-        medium && 'text-[1.125rem]',
-        !medium && !large && 'text-[1rem]'
+        large && cls(colors.largeTextIos, 'text-[1.375rem]'),
+        medium && cls(colors.mediumTextIos, 'text-[1.25rem]'),
+        !medium && !large && 'text-[17px]'
       ),
       material: cls(
         `font-medium ${colors.textMaterial}`,
-        large && 'text-[1.375rem]',
-        medium && 'text-[1rem]',
+        large && cls(colors.largeTextMaterial, 'text-[1.375rem]'),
+        medium && cls(colors.mediumTextMaterial, 'text-[1rem]'),
         !medium && !large && 'text-[0.875rem]'
       ),
     },

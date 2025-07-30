@@ -32,7 +32,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default ''
+     * @default 'text-black/60 dark:text-white/60'
      */
     textIos?: string;
     /**
@@ -40,5 +40,29 @@ interface Props {
      * @default 'text-md-light-primary dark:text-md-dark-primary'
      */
     textMaterial?: string;
+
+    /**
+     *
+     * @default 'text-black dark:text-white'
+     */
+    mediumTextIos?: string;
+
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    mediumTextMaterial?: string;
+
+    /**
+     *
+     * @default 'text-black dark:text-white'
+     */
+    largeTextIos?: string;
+
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    largeTextMaterial?: string;
   };
 }

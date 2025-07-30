@@ -33,7 +33,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'text-black dark:text-white'
+     * @default 'text-black/60 dark:text-white/60'
      */
     textIos?: string;
     /**

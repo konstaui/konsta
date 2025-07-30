@@ -26,7 +26,7 @@ export const BlockClasses = (props, colors) => {
     },
     inset: {
       common: `ml-safe-4 mr-safe-4 overflow-hidden`,
-      ios: `rounded-lg`,
+      ios: `rounded-3xl`,
       material: `rounded-2xl`,
     },
   };
