@@ -7,12 +7,12 @@ export const CheckboxClasses = (props, colors, darkClasses) => {
       darkClasses('dark:touch-ripple-white')
     ),
     iconWrap: {
-      common: cls(
-        `flex items-center justify-center text-white`,
+      common: cls(`flex items-center justify-center text-white`),
+      ios: 'w-5.5 h-5.5 rounded-full border',
+      material: cls(
+        'w-4.5 h-4.5 rounded-sm border-2',
         darkClasses('dark:text-black')
       ),
-      ios: 'w-5.5 h-5.5 rounded-full border',
-      material: 'w-4.5 h-4.5 rounded-sm border-2',
       notChecked: {
         ios: colors.borderIos,
         material: colors.borderMaterial,
@@ -27,9 +27,9 @@ export const CheckboxClasses = (props, colors, darkClasses) => {
       checked: 'opacity-100',
     },
     indeterminateIcon: {
-      common: cls(`bg-white w-3/4`, darkClasses('dark:bg-black')),
+      common: cls(`bg-white w-3/4`),
       ios: 'h-0.5 rounded-full',
-      material: 'h-0.5',
+      material: cls('h-0.5', darkClasses('dark:bg-black')),
     },
     input: 'hidden',
   };
