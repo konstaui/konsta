@@ -1,11 +1,9 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
 export const ListItemClasses = (
   props,
   colors,
   {
-    className,
     isMediaItem,
     theme,
     textColor,
@@ -110,7 +108,7 @@ export const ListItemClasses = (
       },
     },
     after: {
-      common: cls(`shrink-0 ms-auto ps-1 flex items-center space-x-1`),
+      common: cls(`shrink-0 ms-auto ps-1 flex items-center gap-1`),
       ios: colors.secondaryTextIos,
       material: cls(colors.secondaryTextMaterial, 'text-sm'),
     },
@@ -134,8 +132,7 @@ export const ListItemClasses = (
 
     groupTitle: {
       common: cls(
-        `pl-safe-4 pr-safe-4 py-1 flex items-center z-20`,
-        positionClass('relative', className)
+        `pl-safe-4 pr-safe-4 py-1 flex items-center z-20 relative`
         // divider ? 'relative' : 'sticky top-0'
       ),
       ios: `h-8${dividers ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${

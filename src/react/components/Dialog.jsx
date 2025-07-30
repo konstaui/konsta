@@ -61,7 +61,6 @@ const Dialog = (props) => {
         sizeMaterial,
       },
       colors,
-      className,
       { hasButtons: !!buttons }
     ),
     className

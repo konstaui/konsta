@@ -1,12 +1,10 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const SheetClasses = (props, colors, classes) => {
+export const SheetClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        'left-0 top-full transition-transform duration-400 z-40 overflow-hidden',
-        positionClass('fixed', classes)
+        'left-0 top-full transition-transform duration-400 z-40 overflow-hidden fixed'
       ),
       ios: '',
       material: `rounded-t-2xl ease-material-in ${colors.bgIos}`,

@@ -50,8 +50,10 @@
         SheetColors(props.colors || {}, useDarkClasses)
       );
 
-      const c = useThemeClasses(props, () =>
-        SheetClasses(props, colors.value, ctx.attrs.class)
+      const c = useThemeClasses(
+        props,
+        () => SheetClasses(props, colors.value),
+        ctx.attrs.class
       );
 
       const onBackdropClick = (e) => {

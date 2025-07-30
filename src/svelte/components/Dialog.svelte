@@ -38,7 +38,6 @@
         titleFontSizeMaterial,
       },
       colors,
-      className,
       { hasButtons: $$slots.buttons }
     ),
     className,

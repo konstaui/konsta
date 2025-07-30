@@ -4,7 +4,7 @@ export const BreadcrumbsItemClasses = (props, colors) => {
   const { active } = props;
   return {
     base: {
-      common: cls(`flex items-center overflow-hidden`),
+      common: cls(`flex items-center overflow-hidden shrink-0`),
       ios: cls(
         colors.textIos,
         colors.bgIos,

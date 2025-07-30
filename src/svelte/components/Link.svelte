@@ -61,7 +61,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    LinkClasses({ iconOnly }, { textColor, needsTouchRipple }, className),
+    LinkClasses({ iconOnly }, { textColor, needsTouchRipple }),
     '',
     (v) => (c = v)
   );

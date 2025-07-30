@@ -39,7 +39,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    RadioClasses({}, colors, className, dark),
+    RadioClasses({}, colors, dark),
     className,
     (v) => (c = v)
   );

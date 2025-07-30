@@ -1,13 +1,11 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const NotificationsClasses = (props, colors, classes) => {
+export const NotificationsClasses = (props, colors) => {
   const { opened, translucent } = props;
   return {
     base: {
       common: cls(
-        positionClass('absolute', classes),
-        'z-50 transform transition-(--transition-transform-opacity) box-border duration-500',
+        'z-50 transform transition-(--transition-transform-opacity) box-border duration-500 absolute',
         !opened &&
           '-translate-y-full opacity-0 pointer-events-none transition duration-500',
         'md:w-[568px] md:end-auto md:start-1/2 md:-ms-[256px]'

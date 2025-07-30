@@ -54,7 +54,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    PopoverClasses({ size, angleClass, translucent }, colors, className),
+    PopoverClasses({ size, angleClass, translucent }, colors),
     className,
     (v) => (c = v)
   );

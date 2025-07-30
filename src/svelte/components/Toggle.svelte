@@ -35,7 +35,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    ToggleClasses({}, colors, className, dark),
+    ToggleClasses({}, colors, dark),
     className,
     (v) => (c = v)
   );

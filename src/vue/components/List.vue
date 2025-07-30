@@ -105,8 +105,7 @@
             strong: isStrong.value,
             outline: isOutline.value,
           },
-          colors.value,
-          ctx.attrs.class
+          colors.value
         )
       );
 

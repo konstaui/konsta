@@ -35,7 +35,7 @@ const Actions = (props) => {
 
   const themeClasses = useThemeClasses({ ios, material });
 
-  const c = themeClasses(ActionsClasses(props, className), className);
+  const c = themeClasses(ActionsClasses(props), className);
 
   return (
     <>

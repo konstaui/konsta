@@ -1,13 +1,11 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const ToastClasses = (props, colors, classes) => {
+export const ToastClasses = (props, colors) => {
   const { translucent, opened } = props;
   return {
     base: {
       common: cls(
-        positionClass('fixed', classes),
-        'z-50 transform transition-(--transition-transform-opacity) w-full sm:w-auto start-0 bottom-0 sm:max-w-lg',
+        'z-50 transform transition-(--transition-transform-opacity) w-full sm:w-auto start-0 bottom-0 sm:max-w-lg fixed',
         !opened && 'translate-y-full opacity-0 pointer-events-none'
       ),
       ios: cls(

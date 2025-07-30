@@ -1,19 +1,13 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const LinkClasses = (
-  props,
-  { textColor, needsTouchRipple },
-  classes
-) => {
+export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
   const { iconOnly, tabbar } = props;
   return {
     base: {
       common: cls(
         !tabbar && textColor,
-        `inline-flex space-x-1 rtl:!space-x-reverse justify-center items-center cursor-pointer select-none`,
-        needsTouchRipple &&
-          `touch-ripple-primary ${positionClass('relative', classes)} z-10`
+        `inline-flex gap-1 justify-center items-center cursor-pointer select-none`,
+        needsTouchRipple && `touch-ripple-primary relative z-10`
       ),
       notTabbar: {
         ios: `active:opacity-30 duration-300 active:duration-0`,
@@ -21,10 +15,7 @@ export const LinkClasses = (
       },
     },
     tabbar: {
-      common: cls(
-        positionClass('relative', classes),
-        `w-full h-full duration-300`
-      ),
+      common: cls(`w-full h-full duration-300 relative`),
       material: 'font-medium text-sm z-10',
       active: 'k-tabbar-link-active',
       inactive: '',

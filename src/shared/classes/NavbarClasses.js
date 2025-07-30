@@ -1,7 +1,6 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const NavbarClasses = (props, colors, classes) => {
+export const NavbarClasses = (props, colors) => {
   const {
     outline,
     translucent,
@@ -37,9 +36,8 @@ export const NavbarClasses = (props, colors, classes) => {
   return {
     base: {
       common: cls(
-        `w-full z-20 top-0 pt-safe`,
-        (large || medium) && 'pointer-events-none',
-        positionClass('sticky', classes)
+        `w-full z-20 top-0 pt-safe sticky`,
+        (large || medium) && 'pointer-events-none'
       ),
       ios: cls(fontSizeIos, colors.textIos),
       material: cls(fontSizeMaterial, colors.textMaterial),

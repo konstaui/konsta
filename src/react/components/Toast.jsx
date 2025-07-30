@@ -38,7 +38,7 @@ const Toast = (props) => {
   const colors = ToastColors(colorsProp, dark);
 
   const c = themeClasses(
-    ToastClasses({ ...props, translucent }, colors, className),
+    ToastClasses({ ...props, translucent }, colors),
     className
   );
 

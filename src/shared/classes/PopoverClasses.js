@@ -1,13 +1,11 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const PopoverClasses = (props, colors, classes) => {
+export const PopoverClasses = (props, colors) => {
   const { size, translucent, angleClassName, angleClass } = props;
   return {
     base: {
       common: cls(
-        'transition-(--transition-transform-opacity) z-40 no-safe-areas',
-        positionClass('fixed', classes),
+        'transition-(--transition-transform-opacity) z-40 no-safe-areas fixed',
         size
       ),
       ios: 'duration-300',

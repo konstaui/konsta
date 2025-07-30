@@ -1,11 +1,9 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const CheckboxClasses = (props, colors, classes, darkClasses) => {
+export const CheckboxClasses = (props, colors, darkClasses) => {
   return {
     base: cls(
-      `cursor-pointer inline-flex align-middle`,
-      positionClass('relative', classes),
+      `cursor-pointer inline-flex align-middle relative`,
       darkClasses('dark:touch-ripple-white')
     ),
     iconWrap: {

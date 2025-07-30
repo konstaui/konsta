@@ -47,8 +47,10 @@
       const colors = computed(() =>
         ToastColors(props.colors || {}, useDarkClasses)
       );
-      const c = useThemeClasses(props, () =>
-        ToastClasses(props, colors.value, ctx.attrs.class)
+      const c = useThemeClasses(
+        props,
+        () => ToastClasses(props, colors.value),
+        ctx.attrs.class
       );
 
       return {

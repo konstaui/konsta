@@ -18,7 +18,7 @@
 
   $: c = useThemeClasses(
     {},
-    IconClasses({}, className),
+    IconClasses(),
     className,
     (v) => (c = v)
   );

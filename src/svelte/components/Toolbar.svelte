@@ -82,7 +82,6 @@
         tabbarLabels,
       },
       colors,
-      className
     ),
     className,
     (v) => (c = v)

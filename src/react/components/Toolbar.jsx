@@ -60,8 +60,7 @@ const Toolbar = (props) => {
         bgClassName,
         innerClassName,
       },
-      colors,
-      className
+      colors
     ),
     className
   );

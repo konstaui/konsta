@@ -1,13 +1,8 @@
-import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
-
-export const ActionsClasses = (props, classes) => {
+export const ActionsClasses = () => {
   return {
     base: {
-      common: cls(
-        'transition-transform z-40 left-1/2 bottom-0 transform -translate-x-1/2 max-w-md w-full overflow-hidden',
-        positionClass('fixed', classes)
-      ),
+      common:
+        'transition-transform z-40 left-1/2 bottom-0 transform -translate-x-1/2 max-w-md w-full overflow-hidden fixed',
       ios: 'pt-2 px-2 pb-safe-2 duration-300',
       material:
         'pb-safe last-child-hairline-b-none rounded-t-2xl duration-400 ease-material-in',

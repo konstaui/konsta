@@ -1,11 +1,9 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const ToggleClasses = (props, colors, classes, dark) => {
+export const ToggleClasses = (props, colors, dark) => {
   return {
     base: {
       common: cls(
-        positionClass('relative', classes),
         `cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full group`,
         dark('dark:touch-ripple-white')
       ),

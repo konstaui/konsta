@@ -56,7 +56,7 @@ const ListButton = (props) => {
   const colors = ListButtonColors(colorsProp, dark);
 
   const c = themeClasses(
-    ListButtonClasses({ ...props, dividers }, colors, className, theme),
+    ListButtonClasses({ ...props, dividers }, colors, theme),
     className
   );
 

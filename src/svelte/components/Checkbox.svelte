@@ -37,7 +37,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    CheckboxClasses({}, colors, className, dark),
+    CheckboxClasses({}, colors, dark),
     className,
     (v) => (c = v)
   );

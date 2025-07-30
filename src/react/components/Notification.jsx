@@ -47,7 +47,7 @@ const Notification = (props) => {
   const colors = NotificationsColors(colorsProp, dark);
 
   const c = themeClasses(
-    NotificationsClasses({ ...props, translucent }, colors, className),
+    NotificationsClasses({ ...props, translucent }, colors),
     className
   );
 

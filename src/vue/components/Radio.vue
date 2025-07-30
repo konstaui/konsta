@@ -79,8 +79,10 @@
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 
-      const c = useThemeClasses(props, () =>
-        RadioClasses(props, colors.value, ctx.attrs.class, useDarkClasses)
+      const c = useThemeClasses(
+        props,
+        () => RadioClasses(props, colors.value, useDarkClasses),
+        ctx.attrs.class
       );
 
       const onChange = (e) => {

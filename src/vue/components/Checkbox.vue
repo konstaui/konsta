@@ -87,7 +87,7 @@
       );
 
       const c = useThemeClasses(props, () =>
-        CheckboxClasses(props, colors.value, ctx.attrs.class, useDarkClasses)
+        CheckboxClasses(props, colors.value, useDarkClasses)
       );
 
       watch(

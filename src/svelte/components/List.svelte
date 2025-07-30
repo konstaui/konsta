@@ -78,7 +78,6 @@
     ListClasses(
       { nested, margin, inset: isInset, outline: isOutline, strong: isStrong },
       colors,
-      className
     ),
     '',
     (v) => (c = v)

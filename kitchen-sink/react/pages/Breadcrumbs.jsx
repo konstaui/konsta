@@ -44,8 +44,6 @@ export default function BreadcrumbsPage() {
           <BreadcrumbsItem>
             <Link>Catalog</Link>
           </BreadcrumbsItem>
-          <BreadcrumbsSeparator />
-          <BreadcrumbsItem active>Phones</BreadcrumbsItem>
         </Breadcrumbs>
       </Block>
 

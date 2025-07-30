@@ -95,7 +95,6 @@
           typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
       },
       colors,
-      className
     ),
     className,
     (v) => (c = v)

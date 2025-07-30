@@ -270,7 +270,6 @@
             raised: isRaised.value,
           },
           colors.value,
-          ctx.attrs.class,
           useDarkClasses
         )
       );

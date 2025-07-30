@@ -49,8 +49,10 @@
       const colors = computed(() =>
         PopupColors(props.colors || {}, useDarkClasses)
       );
-      const c = useThemeClasses(props, () =>
-        PopupClasses(props, colors.value, ctx.attrs.class)
+      const c = useThemeClasses(
+        props,
+        () => PopupClasses(props, colors.value),
+        ctx.attrs.class
       );
 
       const onBackdropClick = (e) => {

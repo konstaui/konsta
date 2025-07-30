@@ -24,7 +24,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    PopupClasses({ size }, colors, className),
+    PopupClasses({ size }, colors),
     className,
     (v) => (c = v)
   );

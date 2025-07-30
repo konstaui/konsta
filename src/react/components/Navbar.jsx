@@ -184,8 +184,7 @@ const Navbar = (props) => {
         rightClassName,
         subnavbarClassName,
       },
-      colors,
-      className
+      colors
     ),
     className
   );

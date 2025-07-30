@@ -1,15 +1,13 @@
-import { positionClass } from '../position-class.js';
 import { cls } from '../cls.js';
 
-export const ButtonClasses = (props, colors, classes, darkClasses) => {
+export const ButtonClasses = (props, colors, darkClasses) => {
   const { inline, segmented, segmentedStrong, segmentedActive, disabled } =
     props;
   return {
     base: {
       common: cls(
-        'flex text-center justify-center items-center appearance-none py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10',
+        'flex text-center justify-center items-center appearance-none py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10 relative',
         inline ? 'inline-flex' : 'w-full flex',
-        positionClass('relative', classes),
         disabled && 'pointer-events-none',
         segmentedStrong && segmentedActive && 'k-segmented-strong-button-active'
       ),

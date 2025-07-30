@@ -1,7 +1,6 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const ToolbarClasses = (props, colors, classes) => {
+export const ToolbarClasses = (props, colors) => {
   const {
     bgClassName = '',
     bgClass = '',
@@ -15,11 +14,7 @@ export const ToolbarClasses = (props, colors, classes) => {
   } = props;
   return {
     base: {
-      common: cls(
-        `w-full z-20`,
-        positionClass('relative', classes),
-        !top && 'pb-safe'
-      ),
+      common: cls(`w-full z-20 relative`, !top && 'pb-safe'),
     },
     bg: {
       common: cls(

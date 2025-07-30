@@ -1,14 +1,12 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const PopupClasses = (props, colors, classes) => {
+export const PopupClasses = (props, colors) => {
   const { size } = props;
   return {
     base: {
       common: cls(
-        'left-1/2 top-1/2 transition-transform transform -translate-x-1/2 z-40 max-w-full max-h-full overflow-hidden md:no-safe-areas',
+        'left-1/2 top-1/2 transition-transform transform -translate-x-1/2 z-40 max-w-full max-h-full overflow-hidden md:no-safe-areas fixed',
         colors.bg,
-        positionClass('fixed', classes),
         size
       ),
       ios: 'duration-400 md:rounded-lg',

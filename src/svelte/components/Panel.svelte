@@ -27,7 +27,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    PanelClasses({ size, floating }, colors, className),
+    PanelClasses({ size, floating }, colors),
     className,
     (v) => (c = v)
   );

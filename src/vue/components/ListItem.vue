@@ -226,29 +226,31 @@
         value: false,
       });
 
-      const c = useThemeClasses(props, () =>
-        ListItemClasses(
-          {
-            ...props,
-            dividers:
-              typeof props.dividers === 'undefined'
-                ? ListDividersContext.value
-                : props.dividers,
-            contacts:
-              typeof props.contacts === 'undefined' ? '' : props.contacts,
-          },
-          colors.value,
-          {
-            isMediaItem: isMediaItem.value,
-            theme: theme.value,
-            textColor: textColor.value,
-            needsTouchRipple: needsTouchRipple.value,
-            isMenuListItemActive: isMenuListItemActive.value,
-            darkClasses: useDarkClasses,
-            autoStrongTitle: autoStrongTitle.value,
-            className: ctx.attrs.class,
-          }
-        )
+      const c = useThemeClasses(
+        props,
+        () =>
+          ListItemClasses(
+            {
+              ...props,
+              dividers:
+                typeof props.dividers === 'undefined'
+                  ? ListDividersContext.value
+                  : props.dividers,
+              contacts:
+                typeof props.contacts === 'undefined' ? '' : props.contacts,
+            },
+            colors.value,
+            {
+              isMediaItem: isMediaItem.value,
+              theme: theme.value,
+              textColor: textColor.value,
+              needsTouchRipple: needsTouchRipple.value,
+              isMenuListItemActive: isMenuListItemActive.value,
+              darkClasses: useDarkClasses,
+              autoStrongTitle: autoStrongTitle.value,
+            }
+          ),
+        ctx.attrs.class
       );
 
       const itemContentClasses = computed(() =>

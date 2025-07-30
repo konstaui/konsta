@@ -44,7 +44,7 @@ const Panel = (props) => {
   const colors = PanelColors(colorsProp, dark);
 
   const c = themeClasses(
-    PanelClasses({ ...props, size, floating }, colors, className),
+    PanelClasses({ ...props, size, floating }, colors),
     className
   );
 

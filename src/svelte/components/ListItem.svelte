@@ -156,7 +156,6 @@
         isMenuListItemActive,
         darkClasses: dark,
         autoStrongTitle,
-        className,
       }
     ),
     className,

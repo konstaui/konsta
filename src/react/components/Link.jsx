@@ -70,9 +70,7 @@ const Link = (props) => {
     tabbar && !tabbarActive ? colors.tabbarInactive : themeTextColor;
   const tabbarState = tabbarActive ? 'active' : 'inactive';
 
-  const c = themeClasses(
-    LinkClasses(props, { textColor, needsTouchRipple }, className)
-  );
+  const c = themeClasses(LinkClasses(props, { textColor, needsTouchRipple }));
 
   const classes = cls(
     // base

@@ -34,7 +34,7 @@ const Icon = (props) => {
   const themeClasses = useThemeClasses();
   const theme = useTheme();
 
-  const c = themeClasses(IconClasses(props, className), className);
+  const c = themeClasses(IconClasses(), className);
 
   return (
     <Component

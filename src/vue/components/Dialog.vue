@@ -61,7 +61,7 @@
         DialogColors(props.colors || {}, useDarkClasses)
       );
       const c = useThemeClasses(props, () =>
-        DialogClasses(props, colors.value, ctx.attrs.class, {
+        DialogClasses(props, colors.value, {
           hasButtons: ctx.slots.buttons,
         })
       );

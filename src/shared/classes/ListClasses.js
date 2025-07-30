@@ -1,7 +1,6 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const ListClasses = (props, colors, classes) => {
+export const ListClasses = (props, colors) => {
   const { nested, margin, inset, strong, outline } = props;
   return {
     base: {
@@ -9,8 +8,7 @@ export const ListClasses = (props, colors, classes) => {
         !nested && margin,
         !inset && !nested && outline && 'hairline-t hairline-b',
         inset && outline && 'border',
-        positionClass('relative', classes),
-        'z-10'
+        'z-10 relative'
       ),
       ios: cls(
         strong && colors.strongBgIos,

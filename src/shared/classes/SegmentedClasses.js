@@ -25,7 +25,7 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
       material: `divide-x ${colors.divideMaterial}`,
     },
     strong: {
-      common: cls('p-0.5 space-x-1 relative'),
+      common: cls('p-0.5 gap-1 relative'),
       ios: colors.strongBgIos,
       material: colors.strongBgMaterial,
     },

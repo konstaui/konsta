@@ -154,7 +154,6 @@ const ListItem = (props) => {
         isMenuListItemActive,
         darkClasses: dark,
         autoStrongTitle,
-        className,
       }
     ),
     className

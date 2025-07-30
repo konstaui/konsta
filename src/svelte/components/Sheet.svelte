@@ -23,7 +23,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    SheetClasses({}, colors, className),
+    SheetClasses({}, colors),
     className,
     (v) => (c = v)
   );

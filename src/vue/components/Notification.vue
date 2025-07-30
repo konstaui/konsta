@@ -136,8 +136,10 @@
         NotificationsColors(props.colors || {}, useDarkClasses)
       );
 
-      const c = useThemeClasses(props, () =>
-        NotificationsClasses(props, colors.value, ctx.attrs.class)
+      const c = useThemeClasses(
+        props,
+        () => NotificationsClasses(props, colors.value),
+        ctx.attrs.class
       );
       const onClose = () => {
         ctx.emit('close');

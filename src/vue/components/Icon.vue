@@ -39,9 +39,7 @@
       const useThemeClasses = themeClasses(context);
       const theme = useTheme({}, context);
 
-      const c = useThemeClasses(props, () =>
-        IconClasses(props, ctx.attrs.class)
-      );
+      const c = useThemeClasses(props, () => IconClasses(), ctx.attrs.class);
       return {
         theme,
         c,

@@ -51,7 +51,6 @@
     ListButtonClasses(
       { dividers: ListDividersContext.value },
       colors,
-      className,
       theme
     ),
     className,

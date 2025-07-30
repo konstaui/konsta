@@ -70,8 +70,10 @@
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 
-      const c = useThemeClasses(props, () =>
-        ToggleClasses(props, colors.value, ctx.attrs.class, useDarkClasses)
+      const c = useThemeClasses(
+        props,
+        () => ToggleClasses(props, colors.value, useDarkClasses),
+        ctx.attrs.class
       );
 
       return {

@@ -39,7 +39,7 @@ const Sheet = (props) => {
 
   const colors = SheetColors(colorsProp, dark);
 
-  const c = themeClasses(SheetClasses(props, colors, className), className);
+  const c = themeClasses(SheetClasses(props, colors), className);
 
   return (
     <>

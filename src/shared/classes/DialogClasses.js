@@ -1,7 +1,6 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const DialogClasses = (props, colors, classes, { hasButtons }) => {
+export const DialogClasses = (props, colors, { hasButtons }) => {
   const {
     titleFontSizeMaterial,
     titleFontSizeIos,
@@ -12,8 +11,7 @@ export const DialogClasses = (props, colors, classes, { hasButtons }) => {
   return {
     base: {
       common: cls(
-        'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400',
-        positionClass('fixed', classes)
+        'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed'
       ),
       ios: cls(
         'rounded-xl max-w-full',
@@ -31,8 +29,8 @@ export const DialogClasses = (props, colors, classes, { hasButtons }) => {
     },
     contentWrap: {
       common: 'flex flex-col items-center justify-center',
-      material: 'space-y-3',
-      ios: cls('p-4 space-y-1 relative', hasButtons && 'hairline-b'),
+      material: 'gap-3',
+      ios: cls('p-4 gap-1 relative', hasButtons && 'hairline-b'),
     },
     title: {
       common: cls('w-full'),
@@ -47,7 +45,7 @@ export const DialogClasses = (props, colors, classes, { hasButtons }) => {
     buttons: {
       common: 'flex items-center',
       ios: cls('justify-center last-child-hairline-r-none'),
-      material: cls('justify-end pt-6 space-x-2 rtl:space-x-reverse'),
+      material: cls('justify-end pt-6 gap-2'),
     },
     backdrop: {
       common: 'fixed z-40 w-full h-full left-0 top-0 bg-black/50 duration-400',

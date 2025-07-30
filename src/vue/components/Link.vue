@@ -104,14 +104,10 @@
         props.tabbarActive ? 'active' : 'inactive'
       );
       const c = useThemeClasses(props, () =>
-        LinkClasses(
-          props,
-          {
-            textColor: textColor.value,
-            needsTouchRipple: needsTouchRipple.value,
-          },
-          ctx.attrs.class
-        )
+        LinkClasses(props, {
+          textColor: textColor.value,
+          needsTouchRipple: needsTouchRipple.value,
+        })
       );
 
       const classes = computed(() =>

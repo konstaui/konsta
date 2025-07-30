@@ -21,7 +21,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    ToastClasses({ opened, translucent }, colors, className),
+    ToastClasses({ opened, translucent }, colors),
     className,
     (v) => (c = v)
   );

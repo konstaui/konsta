@@ -59,10 +59,7 @@ const Checkbox = (props) => {
       ? 'checked'
       : 'notChecked';
 
-  const c = themeClasses(
-    CheckboxClasses(props, colors, className, dark),
-    className
-  );
+  const c = themeClasses(CheckboxClasses(props, colors, dark), className);
 
   useEffect(() => {
     if (inputElRef.current) {

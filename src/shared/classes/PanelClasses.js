@@ -1,15 +1,13 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const PanelClasses = (props, colors, classes) => {
+export const PanelClasses = (props, colors) => {
   const { size, floating } = props;
   return {
     base: {
       common: cls(
-        'transition-transform transform duration-400 z-40 max-w-full overflow-hidden',
+        'transition-transform transform duration-400 z-40 max-w-full overflow-hidden fixed',
         floating ? 'top-safe-2 bottom-safe-2 !h-auto' : 'top-0 max-h-full',
         colors.bg,
-        positionClass('fixed', classes),
         size
       ),
       ios: '',

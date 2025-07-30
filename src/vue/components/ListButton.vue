@@ -79,7 +79,6 @@
         ListButtonClasses(
           { ...props, dividers: ListDividersContext.value },
           colors.value,
-          ctx.attrs.class,
           theme.value
         )
       );

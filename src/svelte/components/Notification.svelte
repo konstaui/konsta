@@ -34,7 +34,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    NotificationsClasses({ opened, translucent }, colors, className),
+    NotificationsClasses({ opened, translucent }, colors),
     className,
     (v) => (c = v)
   );

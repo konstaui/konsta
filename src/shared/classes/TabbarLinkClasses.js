@@ -10,7 +10,7 @@ export const TabbarLinkClasses = (
       ios: cls('py-1', active ? colors.textActiveIos : colors.textIos),
       material: cls(
         'py-2',
-        hasIcon && hasLabel && 'space-y-1',
+        hasIcon && hasLabel && 'gap-1',
         active ? colors.textActiveMaterial : colors.textMaterial
       ),
     },

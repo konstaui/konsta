@@ -1,13 +1,11 @@
 import { cls } from '../cls.js';
-import { positionClass } from '../position-class.js';
 
-export const BlockClasses = (props, colors, classes) => {
+export const BlockClasses = (props, colors) => {
   const { inset, nested, margin, padding, strong, outline } = props;
   return {
     base: {
       common: cls(
-        `text-sm z-10`,
-        positionClass('relative', classes),
+        `text-sm z-10 relative`,
         !inset && !nested && outline && 'hairline-t hairline-b',
         inset && outline && 'border',
         inset && 'px-4',

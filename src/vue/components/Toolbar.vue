@@ -80,12 +80,11 @@
           : props.outline
       );
 
-      const c = useThemeClasses(props, () =>
-        ToolbarClasses(
-          { ...props, outline: isOutline.value },
-          colors.value,
-          ctx.attrs.class
-        )
+      const c = useThemeClasses(
+        props,
+        () =>
+          ToolbarClasses({ ...props, outline: isOutline.value }, colors.value),
+        ctx.attrs.class
       );
       const setHighlight = () => {
         if (hasHighlight.value && highlightElRef.value) {

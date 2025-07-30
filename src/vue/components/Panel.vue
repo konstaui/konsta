@@ -52,9 +52,7 @@
         PanelColors(props.colors || {}, useDarkClasses)
       );
 
-      const c = useThemeClasses(props, () =>
-        PanelClasses(props, colors.value, ctx.attrs.class)
-      );
+      const c = useThemeClasses(props, () => PanelClasses(props, colors.value));
 
       const classes = computed(() =>
         cls(c.value.base, c.value[props.side][state.value], ctx.attrs.class)

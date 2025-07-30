@@ -164,7 +164,6 @@
         raised: isRaised,
       },
       colors,
-      className,
       dark
     ),
     '',

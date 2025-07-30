@@ -124,21 +124,23 @@
           : props.outline
       );
 
-      const c = useThemeClasses(props, () =>
-        NavbarClasses(
-          {
-            ...props,
-            outline: isOutline.value,
-            left: ctx.slots.left,
-            right: ctx.slots.right,
-            centerTitle:
-              typeof props.centerTitle === 'undefined'
-                ? theme.value === 'ios'
-                : props.centerTitle,
-          },
-          colors.value,
-          ctx.attrs.class
-        )
+      const c = useThemeClasses(
+        props,
+        () =>
+          NavbarClasses(
+            {
+              ...props,
+              outline: isOutline.value,
+              left: ctx.slots.left,
+              right: ctx.slots.right,
+              centerTitle:
+                typeof props.centerTitle === 'undefined'
+                  ? theme.value === 'ios'
+                  : props.centerTitle,
+            },
+            colors.value
+          ),
+        ctx.attrs.class
       );
 
       const getScrollEl = () => {

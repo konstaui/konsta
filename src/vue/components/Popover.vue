@@ -86,8 +86,10 @@
         PopoverColors(props.colors || {}, useDarkClasses)
       );
 
-      const c = useThemeClasses(props, () =>
-        PopoverClasses(props, colors.value, ctx.attrs.class)
+      const c = useThemeClasses(
+        props,
+        () => PopoverClasses(props, colors.value),
+        ctx.attrs.class
       );
 
       const setPopover = () => {
