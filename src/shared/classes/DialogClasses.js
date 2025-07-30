@@ -1,23 +1,18 @@
 import { cls } from '../cls.js';
 
-export const DialogClasses = (props, colors, { hasButtons }) => {
-  const {
-    titleFontSizeMaterial,
-    titleFontSizeIos,
-    translucent,
-    sizeIos,
-    sizeMaterial,
-  } = props;
+export const DialogClasses = (props, colors, dark) => {
+  const { titleFontSizeMaterial, titleFontSizeIos, sizeIos, sizeMaterial } =
+    props;
   return {
     base: {
       common: cls(
         'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed'
       ),
       ios: cls(
-        'rounded-4xl max-w-full',
+        'rounded-4xl max-w-full backdrop-blur-lg shadow-ios-light-liquid-glass',
+        dark('dark:shadow-ios-dark-liquid-glass'),
         sizeIos,
-        colors.bgIos,
-        translucent && 'translucent'
+        colors.bgIos
       ),
       material: cls(
         'rounded-[1.75rem] p-6 max-w-[90%]',
@@ -30,7 +25,7 @@ export const DialogClasses = (props, colors, { hasButtons }) => {
     contentWrap: {
       common: 'flex flex-col items-center justify-center',
       material: 'gap-3',
-      ios: cls('p-6 gap-1 relative'),
+      ios: cls('p-6 gap-3 relative'),
     },
     title: {
       common: cls('w-full'),

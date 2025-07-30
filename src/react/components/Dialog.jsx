@@ -14,7 +14,6 @@ const Dialog = (props) => {
     opened,
     backdrop = true,
     onBackdropClick,
-    translucent = true,
 
     sizeIos = 'w-75',
     sizeMaterial = 'w-78',
@@ -56,12 +55,11 @@ const Dialog = (props) => {
         ...props,
         titleFontSizeIos,
         titleFontSizeMaterial,
-        translucent,
         sizeIos,
         sizeMaterial,
       },
       colors,
-      { hasButtons: !!buttons }
+      dark
     ),
     className
   );

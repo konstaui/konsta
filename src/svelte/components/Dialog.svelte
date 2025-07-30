@@ -10,7 +10,6 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
-  export let translucent = true;
 
   export let sizeIos = 'w-[16.875rem]';
   export let sizeMaterial = 'w-[19.5rem]';
@@ -31,14 +30,13 @@
     { ios, material },
     DialogClasses(
       {
-        translucent,
         sizeIos,
         sizeMaterial,
         titleFontSizeIos,
         titleFontSizeMaterial,
       },
       colors,
-      { hasButtons: $$slots.buttons }
+      dark
     ),
     className,
     (v) => (c = v)

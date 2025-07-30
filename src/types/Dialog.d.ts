@@ -12,7 +12,7 @@ interface Props {
     /**
      * Dialog bg color in iOS theme
      *
-     * @default 'bg-white dark:bg-neutral-800'
+     * @default 'bg-ios-light-liquid-glass dark:bg-ios-dark-liquid-glass'
      */
     bgIos?: string;
     /**
@@ -71,12 +71,6 @@ interface Props {
    * @default 'text-[24px]'
    * */
   titleFontSizeMaterial?: string;
-  /**
-   * Makes Dialog background translucent (with `backdrop-filter: blur`) in iOS theme
-   *
-   * @default true
-   */
-  translucent?: boolean;
 
   /**
    * Dialog title content

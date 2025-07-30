@@ -40,10 +40,6 @@
         type: Boolean,
         default: undefined,
       },
-      translucent: {
-        type: Boolean,
-        default: true,
-      },
       titleFontSizeIos: { type: String, default: 'text-[18px]' },
       titleFontSizeMaterial: { type: String, default: 'text-[24px]' },
       sizeIos: { type: String, default: 'w-[16.875rem]' },
@@ -61,9 +57,7 @@
         DialogColors(props.colors || {}, useDarkClasses)
       );
       const c = useThemeClasses(props, () =>
-        DialogClasses(props, colors.value, {
-          hasButtons: ctx.slots.buttons,
-        })
+        DialogClasses(props, colors.value, useDarkClasses)
       );
 
       const onBackdropClick = (e) => {
