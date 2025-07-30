@@ -49,20 +49,20 @@ interface Props {
   /**
    * Tailwind CSS size classes for iOS theme
    *
-   * @default 'w-[16.875rem]'
+   * @default 'w-75'
    * */
   sizeIos?: string;
   /**
    * Tailwind CSS size classes for Material theme
    *
-   * @default 'w-[19.5rem]'
+   * @default 'w-78'
    * */
   sizeMaterial?: string;
 
   /**
    * Tailwind CSS classes for title font size iOS theme
    *
-   * @default 'text-[18px]'
+   * @default 'text-[17px]'
    * */
   titleFontSizeIos?: string;
   /**
