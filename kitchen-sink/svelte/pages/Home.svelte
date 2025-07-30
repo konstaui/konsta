@@ -19,6 +19,10 @@
   export let setTheme;
   export let setColorTheme;
   export let colorPickerOpened;
+  export let vibrant;
+  export let setVibrant;
+  export let monochrome;
+  export let setMonochrome;
 
   let darkMode = false;
 
@@ -74,6 +78,14 @@
         class="w-6 h-6 rounded-full bg-primary home-color-picker"
       ></div>
     </ListItem>
+    {#if theme === 'material'}
+      <ListItem title="Vibrant Colors" label>
+        <Toggle slot="after" component="div" checked={vibrant} onChange={() => setVibrant(!vibrant)} />
+      </ListItem>
+      <ListItem title="Monochrome" label>
+        <Toggle slot="after" component="div" checked={monochrome} onChange={() => setMonochrome(!monochrome)} />
+      </ListItem>
+    {/if}
   </List>
   <Popover
     opened={colorPickerOpened}

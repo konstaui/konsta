@@ -43,6 +43,27 @@
           <div class="w-6 h-6 rounded-full bg-primary home-color-picker" />
         </template>
       </k-list-item>
+
+      <template v-if="theme === 'material'">
+        <k-list-item title="Vibrant Colors" label>
+          <template #after>
+            <k-toggle
+              component="div"
+              :checked="vibrant"
+              @change="() => setVibrant(!vibrant)"
+            />
+          </template>
+        </k-list-item>
+        <k-list-item title="Monochrome" label>
+          <template #after>
+            <k-toggle
+              component="div"
+              :checked="monochrome"
+              @change="() => setMonochrome(!monochrome)"
+            />
+          </template>
+        </k-list-item>
+      </template>
     </k-list>
     <k-popover
       :opened="colorPickerOpened"
@@ -158,6 +179,18 @@
       const setTheme = (t) => {
         AppContext.value.setTheme(t);
       };
+      const vibrant = computed(() => {
+        return AppContext.value.vibrant;
+      });
+      const setVibrant = (v) => {
+        AppContext.value.setVibrant(v);
+      };
+      const monochrome = computed(() => {
+        return AppContext.value.monochrome;
+      });
+      const setMonochrome = (m) => {
+        AppContext.value.setMonochrome(m);
+      };
       const colorTheme = computed(() => {
         return AppContext.value.colorTheme;
       });
@@ -173,6 +206,10 @@
         setColorTheme,
         theme,
         setTheme,
+        vibrant,
+        setVibrant,
+        monochrome,
+        setMonochrome,
         routes: routes.filter((r) => r.path !== '/'),
       };
     },

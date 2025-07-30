@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import 'konsta/theme.css';
+
+@source '../../../src/shared';
+@source '../../../src/react';
+@source '../../../src/styles';
+
+@theme {
+  --color-brand-primary: #007aff;
+  --color-brand-red: #ff3b30;
+  --color-brand-green: #4cd964;
+  --color-brand-yellow: #ffcc00;
+  --color-brand-purple: #9c27b0;
+  --color-brand-blue: #2196f3;
+}

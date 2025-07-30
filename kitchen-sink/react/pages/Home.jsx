@@ -14,7 +14,15 @@ import { Link as RouterLink } from 'react-router-dom';
 import routes from '../routes.js';
 import DemoIcon from '../components/DemoIcon';
 
-export default function HomePage({ theme, setTheme, setColorTheme }) {
+export default function HomePage({
+  theme,
+  setTheme,
+  setColorTheme,
+  vibrant,
+  setVibrant,
+  monochrome,
+  setMonochrome,
+}) {
   const [darkMode, setDarkMode] = useState(false);
   const [colorPickerOpened, setColorPickerOpened] = useState(false);
 
@@ -75,6 +83,32 @@ export default function HomePage({ theme, setTheme, setColorTheme }) {
             <div className="w-6 h-6 rounded-full bg-primary home-color-picker" />
           }
         />
+        {theme === 'material' && (
+          <>
+            <ListItem
+              title="Vibrant Colors"
+              label
+              after={
+                <Toggle
+                  component="div"
+                  onChange={() => setVibrant(!vibrant)}
+                  checked={vibrant}
+                />
+              }
+            />
+            <ListItem
+              title="Monochrome"
+              label
+              after={
+                <Toggle
+                  component="div"
+                  onChange={() => setMonochrome(!monochrome)}
+                  checked={monochrome}
+                />
+              }
+            />
+          </>
+        )}
       </List>
       <Popover
         opened={colorPickerOpened}

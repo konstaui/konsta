@@ -9,9 +9,27 @@ function App() {
   const [theme, setTheme] = useState(
     window.location.search.includes('theme=material') ? 'material' : 'material'
   );
-  const [currentColorTheme, setCurrentColorTheme] = useState(
-    'k-color-brand-purple'
-  );
+  const [currentColorTheme, setCurrentColorTheme] = useState('');
+  const [currentVibrant, setCurrentVibrant] = useState(false);
+  const [currentMonochrome, setCurrentMonochrome] = useState(false);
+  const setVibrant = (value) => {
+    const htmlEl = document.documentElement;
+    if (value) {
+      htmlEl.classList.add('k-md-vibrant');
+    } else {
+      htmlEl.classList.remove('k-md-vibrant');
+    }
+    setCurrentVibrant(value);
+  };
+  const setMonochrome = (value) => {
+    const htmlEl = document.documentElement;
+    if (value) {
+      htmlEl.classList.add('k-md-monochrome');
+    } else {
+      htmlEl.classList.remove('k-md-monochrome');
+    }
+    setCurrentMonochrome(value);
+  };
   const setColorTheme = (color) => {
     const htmlEl = document.documentElement;
     htmlEl.classList.forEach((c) => {
@@ -59,6 +77,10 @@ function App() {
                 setTheme={setTheme}
                 colorTheme={currentColorTheme}
                 setColorTheme={setColorTheme}
+                vibrant={currentVibrant}
+                setVibrant={setVibrant}
+                monochrome={currentMonochrome}
+                setMonochrome={setMonochrome}
               />
             }
           />

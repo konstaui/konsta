@@ -10,6 +10,26 @@
     theme = t;
   };
   let currentColorTheme = '';
+  let currentVibrant = false;
+  let currentMonochrome = false;
+  const setVibrant = (value) => {
+    const htmlEl = document.documentElement;
+    if (value) {
+      htmlEl.classList.add('k-md-vibrant');
+    } else {
+      htmlEl.classList.remove('k-md-vibrant');
+    }
+    currentVibrant = value;
+  };
+  const setMonochrome = (value) => {
+    const htmlEl = document.documentElement;
+    if (value) {
+      htmlEl.classList.add('k-md-monochrome');
+    } else {
+      htmlEl.classList.remove('k-md-monochrome');
+    }
+    currentMonochrome = value;
+  };
   const setColorTheme = (color) => {
     const htmlEl = document.documentElement;
     htmlEl.classList.forEach((c) => {
@@ -70,6 +90,10 @@
       {setTheme}
       colorTheme={currentColorTheme}
       {setColorTheme}
+      vibrant={currentVibrant}
+      {setVibrant}
+      monochrome={currentMonochrome}
+      {setMonochrome}
     />
   {/if}
 </App>

@@ -1,5 +1,5 @@
 <template>
-  <k-app :theme="theme" :safe-areas="!inIFrame" data-foo="test">
+  <k-app :theme="theme" :safe-areas="!inIFrame">
     <router-view />
   </k-app>
 </template>
@@ -15,6 +15,26 @@
       const theme = ref(
         window.location.search.includes('theme=material') ? 'material' : 'ios'
       );
+      const vibrant = ref(false);
+      const monochrome = ref(false);
+      const setVibrant = (value) => {
+        const htmlEl = document.documentElement;
+        if (value) {
+          htmlEl.classList.add('k-md-vibrant');
+        } else {
+          htmlEl.classList.remove('k-md-vibrant');
+        }
+        vibrant.value = value;
+      };
+      const setMonochrome = (value) => {
+        const htmlEl = document.documentElement;
+        if (value) {
+          htmlEl.classList.add('k-md-monochrome');
+        } else {
+          htmlEl.classList.remove('k-md-monochrome');
+        }
+        monochrome.value = value;
+      };
       const currentColorTheme = ref('');
       const setColorTheme = (color) => {
         const htmlEl = document.documentElement;
@@ -35,6 +55,10 @@
         setTheme,
         colorTheme: currentColorTheme.value,
         setColorTheme,
+        vibrant: vibrant.value,
+        setVibrant,
+        monochrome: monochrome.value,
+        setMonochrome,
       }));
 
       provide('AppContext', AppContext);
