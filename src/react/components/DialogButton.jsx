@@ -3,7 +3,6 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import { useDarkClasses } from '../shared/use-dark-classes.js';
-import { DialogButtonClasses } from '../../shared/classes/DialogButtonClasses.js';
 import { DialogButtonColors } from '../../shared/colors/DialogButtonColors.js';
 import Button from './Button.jsx';
 
@@ -48,29 +47,24 @@ const DialogButton = (props) => {
         : strongMaterial
       : strong;
 
-  const c = themeClasses(
-    DialogButtonClasses({ ...props, strong: isStrong }, colors, dark),
-    className
-  );
-
-  const Component = component;
-
   if (theme === 'ios')
     return (
-      <Component
+      <Button
+        component={component}
         ref={(el) => {
           elRef.current = el;
           if (ref && typeof ref === 'function') ref(el);
           else if (ref) ref.current = el;
         }}
-        className={c.base}
+        large
+        rounded
+        tonal={!isStrong}
+        className={className}
         disabled={disabled}
-        role="button"
-        tabIndex="0"
         {...attrs}
       >
         {children}
-      </Component>
+      </Button>
     );
   return (
     <Button
@@ -80,6 +74,11 @@ const DialogButton = (props) => {
       disabled={disabled}
       clear={!isStrong}
       className={className}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
       {...attrs}
     >
       {children}

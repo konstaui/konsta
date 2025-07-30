@@ -14,7 +14,7 @@ export const DialogClasses = (props, colors, { hasButtons }) => {
         'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed'
       ),
       ios: cls(
-        'rounded-xl max-w-full',
+        'rounded-4xl max-w-full',
         sizeIos,
         colors.bgIos,
         translucent && 'translucent'
@@ -30,21 +30,21 @@ export const DialogClasses = (props, colors, { hasButtons }) => {
     contentWrap: {
       common: 'flex flex-col items-center justify-center',
       material: 'gap-3',
-      ios: cls('p-4 gap-1 relative', hasButtons && 'hairline-b'),
+      ios: cls('p-6 gap-1 relative'),
     },
     title: {
       common: cls('w-full'),
-      ios: cls(colors.titleIos, titleFontSizeIos, 'font-semibold text-center'),
+      ios: cls(colors.titleIos, titleFontSizeIos, 'font-semibold'),
       material: cls(colors.titleMaterial, titleFontSizeMaterial),
     },
     content: {
       common: cls('text-sm w-full'),
-      ios: cls(colors.contentTextIos, 'text-center'),
+      ios: cls(colors.contentTextIos),
       material: cls(colors.contentTextMaterial),
     },
     buttons: {
       common: 'flex items-center',
-      ios: cls('justify-center last-child-hairline-r-none'),
+      ios: cls('justify-center p-3.5 pt-0 gap-2'),
       material: cls('justify-end pt-6 gap-2'),
     },
     backdrop: {

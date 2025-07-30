@@ -16,10 +16,10 @@ const Dialog = (props) => {
     onBackdropClick,
     translucent = true,
 
-    sizeIos = 'w-[16.875rem]',
-    sizeMaterial = 'w-[19.5rem]',
+    sizeIos = 'w-75',
+    sizeMaterial = 'w-78',
 
-    titleFontSizeIos = 'text-[18px]',
+    titleFontSizeIos = 'text-[17px]',
     titleFontSizeMaterial = 'text-[24px]',
     title,
     content,
