@@ -14,7 +14,7 @@ export const ActionsButtonClasses = (props, colors, darkClasses) => {
         colors.bgIos,
         colors.activeBgIos,
         fontSizeIos,
-        'first:rounded-t-xl last:rounded-b-xl justify-center',
+        'first:rounded-t-4xl last:rounded-b-4xl justify-center',
         bold && 'font-semibold'
       ),
       material: cls(

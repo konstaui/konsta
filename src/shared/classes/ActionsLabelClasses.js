@@ -13,7 +13,7 @@ export const ActionsLabelClasses = (props, colors) => {
         colors.bgIos,
         colors.textIos,
         fontSizeIos,
-        'first:rounded-t-xl last:rounded-b-xl justify-center'
+        'first:rounded-t-4xl last:rounded-b-4xl justify-center'
       ),
       material: cls(
         `h-12`,
