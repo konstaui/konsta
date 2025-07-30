@@ -10,24 +10,24 @@ export const PanelClasses = (props, colors) => {
         colors.bg,
         size
       ),
-      ios: '',
+      ios: cls(floating && 'rounded-[20px] shadow-xl'),
       material: 'ease-material-in',
     },
     left: {
       common: cls(
         'no-safe-areas-right',
-        floating ? 'right-full -mr-2 rounded-2xl' : 'right-full'
+        floating ? 'right-full -mr-2' : 'right-full'
       ),
-      material: cls(!floating && 'rounded-r-2xl'),
+      material: cls(!floating ? 'rounded-r-2xl' : 'rounded-2xl'),
       opened: 'translate-x-full',
       closed: '-translate-x-2',
     },
     right: {
       common: cls(
         'no-safe-areas-left',
-        floating ? 'left-full -ml-2 rounded-2xl' : 'left-full'
+        floating ? 'left-full -ml-2' : 'left-full'
       ),
-      material: cls(!floating && 'rounded-l-2xl'),
+      material: cls(!floating ? 'rounded-l-2xl' : 'rounded-2xl'),
       opened: '-translate-x-full',
       closed: 'translate-x-2',
     },
