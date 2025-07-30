@@ -89,8 +89,7 @@ const mdColors = (hexColor = '') => {
   });
   darkScheme.colors.allColors.forEach((color) => {
     let name = color.name;
-    if (name === 'surface_dim') name = 'surface_variant';
-    if (name === 'surface_dim') name = 'surface_variant';
+    if (name === 'surface_bright') name = 'surface_variant';
     if (name === 'surface_container_low') name = 'surface_1';
     if (name === 'surface_container') name = 'surface_2';
     if (name === 'surface_container_high') name = 'surface_3';
