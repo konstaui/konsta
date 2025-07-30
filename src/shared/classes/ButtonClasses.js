@@ -33,7 +33,7 @@ export const ButtonClasses = (props, colors, darkClasses) => {
         ios: cls(
           disabled
             ? cls(colors.disabledBg, colors.disabledText)
-            : `${colors.fillTextIos} ${colors.fillBgIos} ${colors.fillActiveBgIos}`
+            : `${colors.fillTextIos} ${colors.fillBgIos}`
         ),
         material: cls(
           disabled
@@ -41,7 +41,6 @@ export const ButtonClasses = (props, colors, darkClasses) => {
             : cls(
                 colors.fillTextMaterial,
                 colors.fillBgMaterial,
-                colors.fillActiveBgMaterial,
                 colors.fillTouchRipple
               )
         ),
@@ -50,51 +49,31 @@ export const ButtonClasses = (props, colors, darkClasses) => {
         common: cls(
           disabled
             ? cls(colors.disabledText, colors.disabledBorder)
-            : // TODO
-              cls('active:bg-opacity-15', colors.touchRipple)
+            : colors.touchRipple
         ),
         ios: cls(
           !segmented && 'border-2',
           !disabled && !segmented && colors.outlineBorderIos,
-          !disabled && cls(colors.textIos, colors.activeBgIos)
+          !disabled && cls(colors.textIos, colors.outlineBgIos)
         ),
         material: cls(
           !segmented && 'border',
           !disabled && !segmented && colors.outlineBorderMaterial,
-          !disabled && cls(colors.textMaterial, colors.activeBgMaterial)
+          !disabled && cls(colors.textMaterial, colors.outlineBgMaterial)
         ),
       },
       clear: {
-        common: cls(
-          disabled
-            ? colors.disabledText
-            : // TODO
-              `active:bg-opacity-15 ${colors.touchRipple}`
-        ),
-        ios: !disabled && cls(colors.textIos, colors.activeBgIos),
-        material:
-          !disabled && cls(colors.textMaterial, colors.activeBgMaterial),
+        common: cls(disabled ? colors.disabledText : colors.touchRipple),
+        ios: !disabled && cls(colors.textIos, colors.clearBgIos),
+        material: !disabled && cls(colors.textMaterial, colors.clearBgMaterial),
       },
       tonal: {
         common: disabled
           ? cls(colors.disabledBg, colors.disabledText)
           : cls(colors.touchRipple),
-        ios:
-          !disabled &&
-          cls(
-            colors.tonalTextIos,
-            colors.tonalBgIos,
-            colors.activeBgIos,
-            // TODO
-            'bg-opacity-15 active:bg-opacity-25'
-          ),
+        ios: !disabled && cls(colors.tonalTextIos, colors.tonalBgIos),
         material:
-          !disabled &&
-          cls(
-            colors.tonalTextMaterial,
-            colors.tonalBgMaterial,
-            colors.activeBgMaterial
-          ),
+          !disabled && cls(colors.tonalTextMaterial, colors.tonalBgMaterial),
       },
       segmentedStrong: cls(
         'active:bg-black/10',

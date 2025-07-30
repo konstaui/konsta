@@ -2,8 +2,6 @@ import { cls } from '../cls.js';
 
 export const ButtonColors = (colorsProp = {}, dark) => {
   return {
-    activeBgIos: 'active:bg-primary',
-    activeBgMaterial: '',
     textIos: 'text-primary',
     textMaterial: cls('text-md-light-primary', 'dark:text-md-dark-primary'),
     fillTextIos: cls('text-white'),
@@ -11,17 +9,19 @@ export const ButtonColors = (colorsProp = {}, dark) => {
       'text-md-light-on-primary',
       dark('dark:text-md-dark-on-primary')
     ),
-    fillActiveBgIos: 'active:bg-ios-primary-shade',
-    fillActiveBgMaterial: '',
-    fillBgIos: 'bg-primary',
+    fillBgIos: 'bg-primary active:bg-ios-primary-shade',
     fillBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),
     fillTouchRipple: cls('touch-ripple-white', 'dark:touch-ripple-primary'),
+    clearBgIos: 'bg-transparent active:bg-primary/15',
+    clearBgMaterial: 'bg-transparent',
+    outlineBgIos: 'bg-transparent active:bg-primary/15',
+    outlineBgMaterial: 'bg-transparent',
     outlineBorderIos: 'border-primary',
     outlineBorderMaterial: cls(
       'border-md-light-outline',
       dark('dark:border-md-dark-outline')
     ),
-    tonalBgIos: 'bg-primary',
+    tonalBgIos: 'bg-primary/15 active:bg-primary/25',
     tonalBgMaterial: cls(
       'bg-md-light-secondary-container',
       dark('dark:bg-md-dark-secondary-container')

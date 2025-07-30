@@ -11,16 +11,6 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'active:bg-primary'
-     */
-    activeBgIos?: string;
-    /**
-     *
-     * @default ''
-     */
-    activeBgMaterial?: string;
-    /**
-     *
      * @default 'text-primary'
      */
     textIos?: string;
@@ -41,7 +31,7 @@ interface Props {
     fillTextMaterial?: string;
     /**
      *
-     * @default 'bg-primary'
+     * @default 'bg-primary active:bg-ios-primary-shade''
      */
     fillBgIos?: string;
     /**
@@ -51,19 +41,29 @@ interface Props {
     fillBgMaterial?: string;
     /**
      *
-     * @default 'active:bg-ios-primary-shade'
-     */
-    fillActiveBgIos?: string;
-    /**
-     *
-     * @default ''
-     */
-    fillActiveBgMaterial?: string;
-    /**
-     *
      * @default 'touch-ripple-white dark:touch-ripple-primary'
      */
     fillTouchRipple?: string;
+    /**
+     *
+     * @default 'bg-transparent active:bg-primary/15'
+     */
+    clearBgIos?: string;
+    /**
+     *
+     * @default 'bg-transparent'
+     */
+    clearBgMaterial?: string;
+    /**
+     *
+     * @default 'bg-transparent active:bg-primary/15'
+     */
+    outlineBgIos?: string;
+    /**
+     *
+     * @default 'bg-transparent'
+     */
+    outlineBgMaterial?: string;
     /**
      *
      * @default 'border-primary'

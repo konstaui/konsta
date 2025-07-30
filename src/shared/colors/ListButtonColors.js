@@ -7,8 +7,8 @@ export const ListButtonColors = (colorsProp = {}, dark) => {
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')
     ),
-    activeBgIos: 'active:bg-primary/15',
-    activeBgMaterial: '',
+    bgIos: 'active:bg-primary/15',
+    bgMaterial: '',
     touchRipple: 'touch-ripple-primary',
     ...colorsProp,
   };

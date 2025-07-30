@@ -46,11 +46,7 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       dark('dark:bg-md-dark-secondary-container')
     ),
     touchRipple: cls('touch-ripple-black', dark('dark:touch-ripple-white')),
-    // TODO
-    groupTitleContactsTextIos: cls(
-      'text-opacity-90',
-      dark('dark:text-opacity-90')
-    ),
+    groupTitleContactsTextIos: cls('text-black/90', dark('dark:text-white/90')),
     groupTitleContactsTextMaterial: cls(
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')

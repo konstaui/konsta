@@ -19,6 +19,17 @@ interface Props {
      * @default 'bg-md-light-surface-variant dark:bg-md-dark-surface-variant'
      */
     strongBgMaterial?: string;
+
+    /**
+     *
+     * @default 'bg-white dark:bg-white/15'
+     */
+    strongHighlightBgIos?: string;
+    /**
+     *
+     * @default 'bg-white dark:bg-white/15'
+     */
+    strongHighlightBgMaterial?: string;
     /**
      *
      * @default 'border-primary'

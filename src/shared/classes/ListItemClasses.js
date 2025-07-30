@@ -76,12 +76,15 @@ export const ListItemClasses = (
       material: cls('py-3', menuListItem ? 'me-3' : 'me-4'),
     },
     inner: {
-      common: cls('w-full relative', !menuListItem && dividers && 'hairline-b'),
-      ios: cls('py-2.5 pe-safe-4', innerClassName || innerClass),
+      common: cls(
+        'w-full relative',
+        !menuListItem && dividers && 'hairline-b',
+        innerClassName || innerClass
+      ),
+      ios: cls('py-2.5 pe-safe-4'),
       material: cls(
         'py-3',
-        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4',
-        innerClassName || innerClass
+        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4'
       ),
     },
     titleWrap: {
@@ -132,7 +135,7 @@ export const ListItemClasses = (
 
     groupTitle: {
       common: cls(
-        `pl-safe-4 pr-safe-4 py-1 flex items-center z-20 relative`
+        `pl-safe-4 pr-safe-4 py-1 flex items-center z-20`
         // divider ? 'relative' : 'sticky top-0'
       ),
       ios: `h-8${dividers ? ' hairline-t' : ''} -mt-px ${titleFontSizeIos} ${

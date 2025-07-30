@@ -95,10 +95,9 @@ interface Props {
      * @default 'touch-ripple-black dark:touch-ripple-white'
      */
     touchRipple?: string;
-    // TODO:
     /**
      *
-     * @default 'text-opacity-90 dark:text-opacity-90'
+     * @default 'text-black/90 dark:text-white/90'
      */
     groupTitleContactsTextIos?: string;
     /**

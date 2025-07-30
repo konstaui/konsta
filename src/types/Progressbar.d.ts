@@ -11,14 +11,24 @@ interface Props {
   colors?: {
     /**
      *
+     * @default 'bg-primary/30'
+     */
+    trackBgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-primary/30 dark:bg-md-dark-primary/30'
+     */
+    trackBgMaterial?: string;
+    /**
+     *
      * @default 'bg-primary'
      */
-    bgIos?: string;
+    activeBgIos?: string;
     /**
      *
      * @default 'bg-md-light-primary dark:bg-md-dark-primary'
      */
-    bgMaterial?: string;
+    activeBgMaterial?: string;
   };
   /**
    * Determinate progress (from 0 to 1)
