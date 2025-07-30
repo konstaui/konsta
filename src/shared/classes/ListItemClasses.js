@@ -37,7 +37,7 @@ export const ListItemClasses = (
       common: cls(`flex items-center ${contentClassName || contentClass}`),
       ios: cls(
         !menuListItem && cls(colors.primaryTextIos, 'ps-safe-4'),
-        menuListItem && 'rounded-lg ml-safe-2 mr-safe-2 ps-2'
+        menuListItem && 'rounded-2xl ml-safe-2 mr-safe-2 ps-2'
       ),
       material: cls(
         !menuListItem &&
@@ -81,7 +81,7 @@ export const ListItemClasses = (
         !menuListItem && dividers && 'hairline-b',
         innerClassName || innerClass
       ),
-      ios: cls('py-2.5 pe-safe-4'),
+      ios: cls('py-3 pe-safe-4'),
       material: cls(
         'py-3',
         isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4'
@@ -93,7 +93,7 @@ export const ListItemClasses = (
           titleWrapClassName || titleWrapClass
         }`
       ),
-      ios: cls(!menuListItem && titleFontSizeIos),
+      ios: cls(!menuListItem && titleFontSizeIos, !menuListItem && 'min-h-7'),
       material: cls(!menuListItem && titleFontSizeMaterial),
     },
     title: {
