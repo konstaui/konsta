@@ -1,22 +1,22 @@
 import { cls } from '../cls.js';
 
 export const StepperClasses = (props, colors) => {
-  const { buttonsOnly } = props;
+  const { buttonsOnly, size } = props;
 
   return {
     base: `${colors.text} inline-flex items-stretch`,
     raised: 'shadow',
     size: {
       small: {
-        ios: `h-6`,
+        ios: `h-7`,
         material: `h-8`,
       },
       medium: {
-        ios: `h-7`,
+        ios: `h-8.5`,
         material: `h-10`,
       },
       large: {
-        ios: `h-11`,
+        ios: `h-12`,
         material: `h-12`,
       },
     },
@@ -27,6 +27,7 @@ export const StepperClasses = (props, colors) => {
     button: {
       common:
         'relative flex items-center justify-center w-10 cursor-pointer overflow-hidden z-10 select-none',
+      ios: 'duration-100',
     },
     buttonLeftShape: {
       square: {
@@ -84,7 +85,11 @@ export const StepperClasses = (props, colors) => {
     },
     value: {
       common: `w-11 flex items-center justify-center font-medium`,
-      ios: `text-base ${colors.textIos}`,
+      ios: cls(
+        `text-[15px] ${colors.textIos}`,
+        props.small && 'text-sm',
+        props.large && 'text-[17px]'
+      ),
       material: `text-sm ${colors.textMaterial}`,
       fill: {
         common: ``,
