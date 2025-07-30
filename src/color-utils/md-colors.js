@@ -3,6 +3,8 @@ import {
   Hct,
   SchemeTonalSpot,
   hexFromArgb,
+  SchemeVibrant,
+  SchemeMonochrome,
 } from './material-color-utilities/index.js';
 
 /* eslint-disable */
@@ -62,38 +64,41 @@ function blend(from, to, p = 0.5) {
 }
 /* eslint-enable */
 
-const mdColors = (hexColor = '') => {
+const mdColors = (hexColor = '', type = 'default') => {
   const sourceColor = argbFromHex(`#${hexColor.replace('#', '')}`);
-  const lightScheme = new SchemeTonalSpot(
-    Hct.fromInt(sourceColor),
-    false,
-    0,
-    '2025'
-  );
-  const darkScheme = new SchemeTonalSpot(
-    Hct.fromInt(sourceColor),
-    true,
-    0,
-    '2025'
-  );
-  const theme = { light: {}, dark: {} };
-  lightScheme.colors.allColors.forEach((color) => {
-    let name = color.name;
+  let lightScheme;
+  let darkScheme;
+  const hctColor = Hct.fromInt(sourceColor);
+
+  if (type === 'default') {
+    lightScheme = new SchemeTonalSpot(hctColor, false, 0, '2025');
+    darkScheme = new SchemeTonalSpot(hctColor, true, 0, '2025');
+  }
+  if (type === 'vibrant') {
+    lightScheme = new SchemeVibrant(hctColor, false, 0, '2025');
+    darkScheme = new SchemeVibrant(hctColor, true, 0, '2025');
+  }
+  if (type === 'monochrome') {
+    lightScheme = new SchemeMonochrome(hctColor, false, 0, '2025');
+    darkScheme = new SchemeMonochrome(hctColor, true, 0, '2025');
+  }
+
+  const getColorName = (name) => {
     if (name === 'surface_dim') name = 'surface_variant';
     if (name === 'surface_container_low') name = 'surface_1';
     if (name === 'surface_container') name = 'surface_2';
     if (name === 'surface_container_high') name = 'surface_3';
     if (name === 'surface_container_highest') name = 'surface_4';
+    return name;
+  };
+  const theme = { light: {}, dark: {} };
+  lightScheme.colors.allColors.forEach((color) => {
+    let name = getColorName(color.name);
     const argb = color.getArgb(lightScheme);
     theme.light[name] = argb;
   });
   darkScheme.colors.allColors.forEach((color) => {
-    let name = color.name;
-    if (name === 'surface_bright') name = 'surface_variant';
-    if (name === 'surface_container_low') name = 'surface_1';
-    if (name === 'surface_container') name = 'surface_2';
-    if (name === 'surface_container_high') name = 'surface_3';
-    if (name === 'surface_container_highest') name = 'surface_4';
+    let name = getColorName(color.name);
     const argb = color.getArgb(darkScheme);
     theme.dark[name] = argb;
   });
@@ -118,7 +123,7 @@ const mdColors = (hexColor = '') => {
   };
 
   const shouldKeep = (prop) => {
-    const keep = [
+    const foreground = [
       'primary',
       'on_primary',
       'primary_container',
@@ -127,18 +132,26 @@ const mdColors = (hexColor = '') => {
       'on_secondary',
       'secondary_container',
       'on_secondary_container',
-      'surface',
-      'on_surface',
-      'surface_variant',
-      'on_surface_variant',
       'outline',
       'outline_variant',
+    ];
+    const background = [
+      'on_surface',
+      'on_surface_variant',
+      'surface',
+      'surface_variant',
       'surface_1',
       'surface_2',
       'surface_3',
       'surface_4',
       'surface_5',
     ];
+    const keep =
+      type === 'default'
+        ? [...foreground, ...background]
+        : type === 'vibrant'
+          ? [...foreground, ...background]
+          : background;
     return keep.includes(prop);
   };
 

@@ -71,7 +71,13 @@
   --color-ios-primary-shade: var(--k-color-ios-primary-shade);
 }
 
-[class*='k-color-brand-'] {
+[class*='k-color-brand-'],
+[class*='k-color-brand-'].k-md-vibrant,
+[class*='k-color-brand-'] .k-md-vibrant,
+.k-md-vibrant [class*='k-color-brand-'],
+[class*='k-color-brand-'].k-md-monochrome,
+[class*='k-color-brand-'] .k-md-monochrome,
+.k-md-monochrome [class*='k-color-brand-'] {
   --color-primary: var(--k-color-primary);
   --color-md-light-primary: var(--k-color-md-light-primary);
   --color-md-light-on-primary: var(--k-color-md-light-on-primary);
