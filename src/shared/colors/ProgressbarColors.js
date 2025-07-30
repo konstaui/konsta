@@ -2,7 +2,7 @@ import { cls } from '../cls.js';
 
 export const ProgressbarColors = (colorsProp = {}, dark) => {
   return {
-    trackBgIos: 'bg-primary/30',
+    trackBgIos: cls('bg-black/10', dark('dark:bg-primary/10')),
     trackBgMaterial: cls(
       'bg-md-light-primary/30',
       dark('dark:bg-md-dark-primary/30')

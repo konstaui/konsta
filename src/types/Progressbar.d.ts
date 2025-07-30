@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-primary/30'
+     * @default 'bg-black/10 dark:bg-primary/10'
      */
     trackBgIos?: string;
     /**
