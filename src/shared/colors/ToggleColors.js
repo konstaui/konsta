@@ -2,7 +2,10 @@ import { cls } from '../cls.js';
 
 export const ToggleColors = (colorsProp = {}, dark) => {
   return {
-    bgIos: cls('bg-black/10', dark('dark:bg-white/20')),
+    bgIos: cls(
+      'bg-ios-light-surface-1-shade',
+      dark('dark:bg-ios-dark-surface-1-tint')
+    ),
     checkedBgIos: 'bg-primary',
     thumbBgIos: 'bg-white',
     checkedThumbBgIos: 'bg-white',

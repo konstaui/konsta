@@ -12,7 +12,10 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface-variant',
       dark('dark:text-md-dark-on-surface-variant')
     ),
-    activeBgIos: cls('active:bg-black/10', dark('dark:active:bg-white/10')),
+    activeBgIos: cls(
+      'active:not-[:has(.k-toggle:active)]:bg-black/10',
+      dark('dark:active:not-[:has(.k-toggle:active)]:bg-white/10')
+    ),
     activeBgMaterial: '',
     groupTitleBgIos: cls(
       'bg-ios-light-surface-variant',
