@@ -10,6 +10,7 @@ import {
   List,
   ListItem,
   Toggle,
+  ToolbarPane,
 } from 'konsta/react';
 import {
   EnvelopeFill,
@@ -35,45 +36,47 @@ export default function TabbarPage() {
         icons={isTabbarIcons}
         className="left-0 bottom-0 fixed"
       >
-        <TabbarLink
-          active={activeTab === 'tab-1'}
-          onClick={() => setActiveTab('tab-1')}
-          icon={
-            isTabbarIcons && (
-              <Icon
-                ios={<EnvelopeFill className="w-7 h-7" />}
-                material={<MdEmail className="w-6 h-6" />}
-              />
-            )
-          }
-          label={isTabbarLabels && 'Tab 1'}
-        />
-        <TabbarLink
-          active={activeTab === 'tab-2'}
-          onClick={() => setActiveTab('tab-2')}
-          icon={
-            isTabbarIcons && (
-              <Icon
-                ios={<Calendar className="w-7 h-7" />}
-                material={<MdToday className="w-6 h-6" />}
-              />
-            )
-          }
-          label={isTabbarLabels && 'Tab 2'}
-        />
-        <TabbarLink
-          active={activeTab === 'tab-3'}
-          onClick={() => setActiveTab('tab-3')}
-          icon={
-            isTabbarIcons && (
-              <Icon
-                ios={<CloudUploadFill className="w-7 h-7" />}
-                material={<MdFileUpload className="w-6 h-6" />}
-              />
-            )
-          }
-          label={isTabbarLabels && 'Tab 3'}
-        />
+        <ToolbarPane>
+          <TabbarLink
+            active={activeTab === 'tab-1'}
+            onClick={() => setActiveTab('tab-1')}
+            icon={
+              isTabbarIcons && (
+                <Icon
+                  ios={<EnvelopeFill className="w-7 h-7" />}
+                  material={<MdEmail className="w-6 h-6" />}
+                />
+              )
+            }
+            label={isTabbarLabels && 'Tab 1'}
+          />
+          <TabbarLink
+            active={activeTab === 'tab-2'}
+            onClick={() => setActiveTab('tab-2')}
+            icon={
+              isTabbarIcons && (
+                <Icon
+                  ios={<Calendar className="w-7 h-7" />}
+                  material={<MdToday className="w-6 h-6" />}
+                />
+              )
+            }
+            label={isTabbarLabels && 'Tab 2'}
+          />
+          <TabbarLink
+            active={activeTab === 'tab-3'}
+            onClick={() => setActiveTab('tab-3')}
+            icon={
+              isTabbarIcons && (
+                <Icon
+                  ios={<CloudUploadFill className="w-7 h-7" />}
+                  material={<MdFileUpload className="w-6 h-6" />}
+                />
+              )
+            }
+            label={isTabbarLabels && 'Tab 3'}
+          />
+        </ToolbarPane>
       </Tabbar>
 
       <List strong inset>

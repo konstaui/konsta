@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
-  const { iconOnly, tabbar } = props;
+  const { iconOnly, tabbar, tabbarLabels, tabbarIcons } = props;
   return {
     base: {
       common: cls(
@@ -15,13 +15,20 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
       },
     },
     tabbar: {
-      common: cls(`w-full h-full duration-300 relative`),
+      common: cls(`w-full h-full duration-300 transition-colors relative`),
+      ios: cls(
+        'px-3 truncate',
+        tabbarIcons && 'px-0',
+        tabbarIcons && tabbarLabels && 'md:min-w-16',
+        tabbarIcons && !tabbarLabels && 'md:min-w-12'
+      ),
       material: 'font-medium text-sm z-10',
       active: 'k-tabbar-link-active',
       inactive: '',
     },
     toolbar: {
       common: cls(`h-full max-h-12`, iconOnly && 'k-touch-ripple-inset'),
+      ios: cls(!iconOnly && 'px-4 truncate'),
       material: 'px-3 text-sm font-medium',
     },
     navbar: {

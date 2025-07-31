@@ -5,33 +5,42 @@ export const ToolbarClasses = (props, colors) => {
     bgClassName = '',
     bgClass = '',
     outline,
-    translucent,
     innerClassName = '',
     innerClass = '',
     tabbar,
     tabbarIcons,
+    tabbarLabels,
     top,
   } = props;
   return {
     base: {
-      common: cls(`w-full z-20 relative`, !top && 'pb-safe'),
+      common: cls(`w-full z-20 relative`),
+      ios: cls(!top && 'pb-safe-4', 'px-safe-4 flex justify-center'),
+      material: cls(!top && 'pb-safe'),
     },
     bg: {
       common: cls(
         'absolute w-full h-full left-0 top-0',
-        outline && (top ? 'hairline-b' : 'hairline-t'),
         bgClassName || bgClass
       ),
-      ios: cls(colors.bgIos, translucent && 'translucent'),
-      material: cls(`${colors.bgMaterial}`),
+      ios: cls(''),
+      material: cls(
+        `${colors.bgMaterial}`,
+        outline && (top ? 'hairline-b' : 'hairline-t')
+      ),
     },
     inner: {
       common: cls(
-        `flex relative justify-between items-center w-full overflow-hidden`,
+        `flex relative justify-between items-center`,
         innerClassName || innerClass
       ),
-      ios: cls('pl-safe-2 pr-safe-2', tabbarIcons ? 'h-12.5' : 'h-11'),
+      ios: cls(
+        'gap-4',
+        tabbarIcons && tabbarLabels ? 'h-16' : 'h-12',
+        tabbar ? 'w-full md:w-auto' : 'w-auto'
+      ),
       material: cls(
+        'w-full overflow-hidden',
         !tabbar ? 'pl-safe-2 pr-safe-2' : '',
         tabbarIcons ? 'h-20' : 'h-14'
       ),

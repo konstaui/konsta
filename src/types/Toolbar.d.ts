@@ -32,12 +32,6 @@ interface Props {
   };
 
   /**
-   * Makes Toolbar background translucent (with `backdrop-filter: blur`) in iOS theme
-   *
-   * @default true
-   */
-  translucent?: boolean;
-  /**
    * Additional class to add on Toolbar's "background" element
    */
   bgClassName?: string;

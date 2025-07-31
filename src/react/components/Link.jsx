@@ -22,6 +22,8 @@ const Link = (props) => {
 
     tabbar,
     tabbarActive,
+    tabbarLabels,
+    tabbarIcons,
 
     touchRipple = undefined,
     ios,

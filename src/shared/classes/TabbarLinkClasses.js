@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const TabbarLinkClasses = (
-  { hasIcon, hasLabel, active } = {},
+  { active, hasIcon, hasLabel } = {},
   colors = {}
 ) => {
   return {

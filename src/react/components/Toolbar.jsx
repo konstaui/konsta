@@ -10,7 +10,6 @@ const Toolbar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    translucent = true,
 
     bgClassName = '',
     innerClassName = '',
@@ -56,7 +55,6 @@ const Toolbar = (props) => {
       {
         ...props,
         outline: isOutline,
-        translucent,
         bgClassName,
         innerClassName,
       },
@@ -82,7 +80,6 @@ const Toolbar = (props) => {
       });
     }
   }, [children]);
-
   return (
     <Component
       ref={(el) => {

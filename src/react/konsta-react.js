@@ -58,6 +58,7 @@ import TableRow from './components/TableRow.jsx';
 import Toast from './components/Toast.jsx';
 import Toggle from './components/Toggle.jsx';
 import Toolbar from './components/Toolbar.jsx';
+import ToolbarPane from './components/ToolbarPane.jsx';
 // eslint-disable-next-line
 import { KonstaProvider } from './shared/KonstaProvider.jsx';
 import { useTheme } from './shared/use-theme.js';
@@ -129,4 +130,5 @@ export {
   Toast,
   Toggle,
   Toolbar,
+  ToolbarPane,
 };

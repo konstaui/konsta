@@ -5,6 +5,8 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import Link from './Link.jsx';
+import { cls } from '../../shared/cls.js';
+import { useTabbarContext } from './TabbarContext.jsx';
 
 const TabbarLink = (props) => {
   const {
@@ -36,8 +38,9 @@ const TabbarLink = (props) => {
   const hasIcon = !!icon;
   const hasLabel = label || (children && children.length);
   const c = themeClasses(
-    TabbarLinkClasses({ hasLabel, hasIcon, active }, colors)
+    TabbarLinkClasses({ active, hasIcon, hasLabel }, colors)
   );
+  const tabbarContext = useTabbarContext();
 
   return (
     <Link
@@ -48,7 +51,9 @@ const TabbarLink = (props) => {
       }}
       tabbar
       tabbarActive={active}
-      className={className}
+      tabbarLabels={tabbarContext.labels}
+      tabbarIcons={tabbarContext.icons}
+      className={cls(c.base, className)}
       {...attrs}
     >
       <span className={c.content}>
