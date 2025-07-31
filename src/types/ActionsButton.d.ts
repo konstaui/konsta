@@ -11,17 +11,17 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-white dark:bg-neutral-800'
+     * @default ''
      */
     bgIos?: string;
     /**
      *
-     * @default 'bg-md-light-surface-3 dark:bg-md-dark-surface-3'
+     * @default ''
      */
     bgMaterial?: string;
     /**
      *
-     * @default 'active:bg-neutral-200 dark:active:bg-neutral-700'
+     * @default 'active:bg-black/10 dark:active:bg-white/5'
      */
     activeBgIos?: string;
     /**

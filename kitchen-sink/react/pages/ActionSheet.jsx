@@ -31,8 +31,12 @@ export default function ActionSheetPage() {
       </Block>
       <BlockTitle>Open Action Sheet</BlockTitle>
       <Block strong inset className="flex space-x-4 rtl:space-x-reverse">
-        <Button onClick={() => setActionsOneOpened(true)}>One group</Button>
-        <Button onClick={() => setActionsTwoOpened(true)}>Two groups</Button>
+        <Button rounded onClick={() => setActionsOneOpened(true)}>
+          One group
+        </Button>
+        <Button rounded onClick={() => setActionsTwoOpened(true)}>
+          Two groups
+        </Button>
       </Block>
 
       <Actions

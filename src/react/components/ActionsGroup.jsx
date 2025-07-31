@@ -1,11 +1,15 @@
 import React, { useRef } from 'react';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { ActionsGroupClasses } from '../../shared/classes/ActionsGroupClasses.js';
+import Glass from './Glass.jsx';
+import { ActionsGroupColors } from '../../shared/colors/ActionsGroupColors.js';
+import { useDarkClasses } from '../shared/use-dark-classes.js';
 
 const ActionsGroup = (props) => {
   const {
     component = 'div',
     className,
+    colors: colorsProp,
 
     ios,
     material,
@@ -30,14 +34,18 @@ const ActionsGroup = (props) => {
   };
 
   const themeClasses = useThemeClasses({ ios, material });
+  const dark = useDarkClasses({ ios, material });
+
+  const colors = ActionsGroupColors(colorsProp, dark);
 
   const c = themeClasses(
-    ActionsGroupClasses({ dividers, ...props }),
+    ActionsGroupClasses({ dividers, ...props }, colors),
     className
   );
 
   return (
-    <Component
+    <Glass
+      component={Component}
       ref={(el) => {
         elRef.current = el;
         if (ref && typeof ref === 'function') ref(el);
@@ -47,7 +55,7 @@ const ActionsGroup = (props) => {
       {...attrs}
     >
       {children}
-    </Component>
+    </Glass>
   );
 };
 

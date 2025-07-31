@@ -12,4 +12,20 @@ interface Props {
    * @default true
    */
   dividers?: boolean;
+
+  /**
+   * Object with Tailwind CSS colors classes
+   * */
+  colors?: {
+    /**
+     *
+     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
+     */
+    bgIos?: string;
+    /**
+     *
+     * @default 'bg-md-light-surface-3 dark:bg-md-dark-surface-3'
+     */
+    bgMaterial?: string;
+  };
 }

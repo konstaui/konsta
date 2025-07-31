@@ -2,12 +2,9 @@ import { cls } from '../cls.js';
 
 export const ActionsButtonColors = (colorsProp = {}, dark) => {
   return {
-    bgIos: cls('bg-white', dark('dark:bg-neutral-800')),
-    bgMaterial: cls('bg-md-light-surface-3', dark('dark:bg-md-dark-surface-3')),
-    activeBgIos: cls(
-      'active:bg-neutral-200',
-      dark('dark:active:bg-neutral-700')
-    ),
+    bgIos: '',
+    bgMaterial: '',
+    activeBgIos: cls('active:bg-black/10', dark('dark:active:bg-white/5')),
     activeBgMaterial: '',
     textIos: 'text-primary',
     textMaterial: cls(

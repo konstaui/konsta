@@ -12,12 +12,12 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-white dark:bg-neutral-800'
+     * @default ''
      */
     bgIos?: string;
     /**
      *
-     * @default 'bg-md-light-surface-3 dark:bg-md-dark-surface-3'
+     * @default ''
      */
     bgMaterial?: string;
     /**
