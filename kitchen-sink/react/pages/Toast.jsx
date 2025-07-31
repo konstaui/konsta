@@ -28,7 +28,7 @@ export default function ToastPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Block strongIos outlineIos className="space-y-4">
+      <Block inset strong className="flex flex-col gap-4">
         <Toast
           position="left"
           opened={toastLeftOpened}
@@ -85,17 +85,17 @@ export default function ToastPage() {
           the screen.
         </p>
         <p>
-          <Button onClick={() => openToast(setToastLeftOpened)}>
+          <Button rounded onClick={() => openToast(setToastLeftOpened)}>
             Toast on Left
           </Button>
         </p>
         <p>
-          <Button onClick={() => openToast(setToastCenterOpened)}>
+          <Button rounded onClick={() => openToast(setToastCenterOpened)}>
             Toast on Center
           </Button>
         </p>
         <p>
-          <Button onClick={() => openToast(setToastRightOpened)}>
+          <Button rounded onClick={() => openToast(setToastRightOpened)}>
             Toast on Right
           </Button>
         </p>

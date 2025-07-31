@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-black'
+     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
      */
     bgIos?: string;
     /**
@@ -30,12 +30,6 @@ interface Props {
      */
     textMaterial?: string;
   };
-  /**
-   * Makes Toast background translucent (with `backdrop-filter: blur`) in iOS theme
-   *
-   * @default true
-   */
-  translucent?: boolean;
   /**
    * Toast button content
    */

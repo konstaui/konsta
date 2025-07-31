@@ -1,27 +1,29 @@
 import { cls } from '../cls.js';
 
-export const ToastClasses = (props, colors) => {
-  const { translucent, opened } = props;
+export const ToastClasses = (props, colors, dark) => {
+  const { opened } = props;
   return {
     base: {
       common: cls(
-        'z-50 transform transition-(--transition-transform-opacity) w-full sm:w-auto start-0 bottom-0 sm:max-w-lg fixed',
+        'z-50 transform transition-(--transition-transform-opacity) w-auto start-0 bottom-0 fixed left-safe-4 right-safe-4 bottom-safe-4 flex',
         !opened && 'translate-y-full opacity-0 pointer-events-none'
       ),
+      left: 'justify-start',
+      right: 'justify-end',
+      center: 'justify-center',
+    },
+    inner: {
+      common: '',
       ios: cls(
-        `sm:rounded-lg duration-300`,
+        `rounded-2xl duration-300 max-w-lg `,
         colors.textIos,
-        colors.bgIos,
-        translucent && 'translucent'
+        colors.bgIos
       ),
       material: cls(
-        `sm:rounded-2xl duration-200`,
+        `rounded-2xl duration-200 max-w-lg`,
         colors.textMaterial,
         colors.bgMaterial
       ),
-      left: 'sm:start-safe-4 sm:bottom-safe-4',
-      right: 'sm:end-safe-4 sm:bottom-safe-4 sm:start-auto',
-      center: 'sm:left-1/2 sm:bottom-safe-4 sm:-translate-x-1/2',
     },
     content: {
       common: 'flex items-center justify-between',
