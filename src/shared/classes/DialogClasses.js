@@ -9,8 +9,8 @@ export const DialogClasses = (props, colors, dark) => {
         'left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed'
       ),
       ios: cls(
-        'rounded-4xl max-w-full backdrop-blur-lg shadow-ios-light-liquid-glass',
-        dark('dark:shadow-ios-dark-liquid-glass'),
+        'rounded-4xl max-w-full backdrop-blur-lg shadow-ios-light-glass',
+        dark('dark:shadow-ios-dark-glass'),
         sizeIos,
         colors.bgIos
       ),

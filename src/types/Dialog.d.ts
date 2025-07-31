@@ -12,7 +12,7 @@ interface Props {
     /**
      * Dialog bg color in iOS theme
      *
-     * @default 'bg-ios-light-liquid-glass dark:bg-ios-dark-liquid-glass'
+     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
      */
     bgIos?: string;
     /**
