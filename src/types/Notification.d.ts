@@ -12,7 +12,7 @@ interface Props {
     /**
      * Notifiaction bg color in iOS theme
      *
-     * @default 'bg-white dark:bg-[#1e1e1e]'
+     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
      */
     bgIos?: string;
     /**
@@ -64,12 +64,7 @@ interface Props {
      */
     deleteIconMd?: string;
   };
-  /**
-   * Makes Notification background translucent (with `backdrop-filter: blur`) in iOS theme
-   *
-   * @default true
-   */
-  translucent?: boolean;
+
   /**
    * Notification button content
    */

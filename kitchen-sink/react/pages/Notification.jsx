@@ -92,33 +92,34 @@ export default function NotificationPage() {
           <DialogButton onClick={() => setAlertOpened(false)}>Ok</DialogButton>
         }
       />
-      <Block strongIos outlineIos className="space-y-4">
+      <Block inset strong className="space-y-4">
         <p>
           Konsta UI comes with simple Notifications component that allows you to
           show some useful messages to user and request basic actions.
         </p>
-        <p>
-          <Button onClick={() => openNotification(setNotificationFull)}>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Button rounded onClick={() => openNotification(setNotificationFull)}>
             Full layout notification
           </Button>
-        </p>
-        <p>
-          <Button onClick={() => openNotification(setNotificationWithButton)}>
+          <Button
+            rounded
+            onClick={() => openNotification(setNotificationWithButton)}
+          >
             With Close Button
           </Button>
-        </p>
-        <p>
-          <Button onClick={() => openNotification(setNotificationCloseOnClick)}>
+          <Button
+            rounded
+            onClick={() => openNotification(setNotificationCloseOnClick)}
+          >
             Click to Close
           </Button>
-        </p>
-        <p>
           <Button
+            rounded
             onClick={() => openNotification(setNotificationCallbackOnClose)}
           >
             Callback on Close
           </Button>
-        </p>
+        </div>
       </Block>
     </Page>
   );

@@ -5,6 +5,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import DeleteIcon from './icons/DeleteIcon.jsx';
+import Glass from './Glass.jsx';
 
 const Notification = (props) => {
   const {
@@ -17,7 +18,6 @@ const Notification = (props) => {
     titleRightText,
     subtitle,
     text,
-    translucent = true,
     ref,
     opened,
 
@@ -46,45 +46,43 @@ const Notification = (props) => {
   const dark = useDarkClasses();
   const colors = NotificationsColors(colorsProp, dark);
 
-  const c = themeClasses(
-    NotificationsClasses({ ...props, translucent }, colors),
-    className
-  );
+  const c = themeClasses(NotificationsClasses({ ...props }, colors), className);
 
   if (theme === 'ios')
     return (
-      <Component
+      <Glass
         ref={(el) => {
           elRef.current = el;
           if (ref && typeof ref === 'function') ref(el);
           else if (ref) ref.current = el;
         }}
+        component={component}
         className={c.base}
         {...attrs}
       >
-        <div className={c.header}>
-          {icon && <div className={c.icon}>{icon}</div>}
-          {title && <div className={c.title}>{title}</div>}
-          {titleRightText && (
-            <div className={c.titleRightText}>{titleRightText}</div>
-          )}
-          {button && (
-            <div
-              className={c.button}
-              role="button"
-              tabIndex="0"
-              onClick={onClose}
-            >
-              <DeleteIcon theme={theme} className={c.deleteIcon} />
-            </div>
-          )}
-        </div>
+        {icon && <div className={c.icon}>{icon}</div>}
         <div className={c.content}>
+          <div className={c.header}>
+            {title && <div className={c.title}>{title}</div>}
+            {titleRightText && (
+              <div className={c.titleRightText}>{titleRightText}</div>
+            )}
+            {button && (
+              <div
+                className={c.button}
+                role="button"
+                tabIndex="0"
+                onClick={onClose}
+              >
+                <DeleteIcon theme={theme} className={c.deleteIcon} />
+              </div>
+            )}
+          </div>
           {subtitle && <div className={c.subtitle}>{subtitle}</div>}
           {text && <div className={c.text}>{text}</div>}
           {children}
         </div>
-      </Component>
+      </Glass>
     );
   return (
     <Component

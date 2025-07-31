@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const NotificationsClasses = (props, colors) => {
-  const { opened, translucent } = props;
+  const { opened } = props;
   return {
     base: {
       common: cls(
@@ -11,9 +11,8 @@ export const NotificationsClasses = (props, colors) => {
         'md:w-[568px] md:end-auto md:start-1/2 md:-ms-[256px]'
       ),
       ios: cls(
-        'rounded-xl px-2.5 py-2.5 start-2 end-2 top-2 shadow-lg',
-        colors.bgIos,
-        translucent && 'translucent'
+        'rounded-xl p-4 start-2 end-2 top-2 rounded-3xl flex gap-4 items-center',
+        colors.bgIos
       ),
       material: cls(
         'rounded-2xl py-5 px-4 start-4 end-4 top-4',
@@ -21,8 +20,8 @@ export const NotificationsClasses = (props, colors) => {
       ),
     },
     content: {
-      common: '',
-      ios: 'mt-2.5 ',
+      common: 'w-full shrink',
+      ios: '',
       material: cls('mt-2'),
     },
     header: {
@@ -31,18 +30,18 @@ export const NotificationsClasses = (props, colors) => {
       material: 'items-start',
     },
     icon: {
-      ios: cls('me-2'),
+      ios: 'shrink-0',
       material: 'me-4',
     },
     contentTitle: {
       material: cls('flex flex-row items-center'),
     },
     title: {
-      ios: cls('tracking-wide text-[13px] uppercase', colors.titleIos),
+      ios: cls('text-sm font-bold', colors.titleIos),
       material: cls('font-medium'),
     },
     titleRightText: {
-      ios: cls('me-1 ms-auto text-[13px]', colors.titleRightIos),
+      ios: cls('me-1 ms-auto text-sm', colors.titleRightIos),
       material: cls(
         'ms-1 text-xs before:w-0.75 before:h-0.75 before:rounded-full before:inline-block before:align-middle before:me-1',
         colors.titleRightMd
@@ -57,11 +56,11 @@ export const NotificationsClasses = (props, colors) => {
       material: cls('w-6 h-6', colors.deleteIconMd),
     },
     subtitle: {
-      ios: cls('text-[15px] font-semibold', colors.subtitleIos),
+      ios: cls('text-sm font-semibold', colors.subtitleIos),
       material: cls('text-sm'),
     },
     text: {
-      ios: cls('text-[15px]'),
+      ios: cls('text-sm'),
       material: cls('text-sm', colors.textMaterial),
     },
   };

@@ -2,7 +2,7 @@ import { cls } from '../cls.js';
 
 export const NotificationsColors = (colorsProp, dark) => {
   return {
-    bgIos: cls('bg-white', dark('dark:bg-[#1e1e1e]')),
+    bgIos: '',
     bgMaterial: cls('bg-md-light-surface-5', dark('dark:bg-md-dark-surface-5')),
     titleIos: cls('text-black', dark('dark:text-white')),
     titleRightIos: cls('text-black/45', dark('dark:text-white/45')),
