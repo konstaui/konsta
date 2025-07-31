@@ -79,7 +79,9 @@ const Toggle = (props) => {
           <span className={c.thumbSide[state]} />
           <span className={c.thumbBg[state]} />
           <span className={c.thumbShadow[state]} />
-          <span ref={rippleTargetElRef} className={c.thumbWrap[state]}></span>
+          <span ref={rippleTargetElRef} className={c.thumbWrap[state]}>
+            <span className={c.thumb[state]} />
+          </span>
         </>
       ) : (
         <span ref={rippleTargetElRef} className={c.thumbWrap[state]}>

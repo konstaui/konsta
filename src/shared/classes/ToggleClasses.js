@@ -22,14 +22,17 @@ export const ToggleClasses = (props, colors, dark) => {
     thumbSide: {
       common: '',
       material: '',
-      ios: 'absolute w-8 h-7 rounded-full top-0 duration-300 left-0',
+      ios: 'absolute w-7 h-7 rounded-full top-0 duration-300 left-0',
       notChecked: cls('translate-x-8', colors.bgIos),
       checked: cls(colors.checkedBgIos),
     },
     thumbShadow: {
       common: '',
       material: '',
-      ios: 'absolute w-px h-px rounded-full top-1/2 duration-300 left-0 group-active:shadow-[0_0_40px_15px_var(--color-primary)]',
+      ios: cls(
+        'absolute w-px h-px rounded-full top-1/2 duration-300 opacity-0 group-active:opacity-100 left-0 shadow-[0_0_40px_10px] shadow-primary/75',
+        dark('dark:shadow-[0_0_40px_15px] dark:shadow-primary')
+      ),
       notChecked: cls('translate-x-5'),
       checked: cls('translate-x-10.5'),
     },
@@ -42,24 +45,26 @@ export const ToggleClasses = (props, colors, dark) => {
     },
     thumbWrap: {
       common: 'rounded-full absolute duration-300 transform',
-      ios: 'w-9.5 h-6 start-0.5 top-0.5 group-active:scale-[1.3] shadow-ios-toggle group-active:shadow-ios-light-glass dark:group-active:shadow-ios-dark-glass group-active:bg-transparent',
+      ios: cls(
+        'w-9.5 h-6 start-0.5 top-0.5 group-active:scale-[1.4] shadow-ios-toggle group-active:bg-transparent',
+        colors.thumbBgIos
+      ),
       material: 'w-6 h-6 start-0.5 top-0.5',
       checked: {
-        ios: cls(
-          'translate-x-5.5 rtl:!-translate-x-5.5',
-          colors.checkedThumbBgIos
-        ),
+        ios: cls('translate-x-5.5 rtl:!-translate-x-5.5'),
         material: cls(`translate-x-5 rtl:!-translate-x-5`),
       },
       notChecked: {
-        ios: colors.thumbBgIos,
+        // ios: colors.thumbBgIos,
       },
     },
     thumb: {
-      common: '',
-      ios: '',
-      material:
-        'w-full h-full rounded-full absolute duration-300 transform start-0 top-0 group-active:scale-[1.1]',
+      common: 'w-full h-full rounded-full absolute duration-300 start-0 top-0 ',
+      ios: cls(
+        'opacity-0 group-active:opacity-100 shadow-ios-light-glass-thumb',
+        dark('dark:bg-white/10 dark:shadow-ios-dark-glass-thumb')
+      ),
+      material: 'transform group-active:scale-[1.1]',
       checked: {
         material: cls(colors.checkedThumbBgMaterial),
       },
