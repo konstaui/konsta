@@ -2,7 +2,7 @@ import { cls } from '../cls.js';
 
 export const DialogColors = (colorsProp = {}, dark) => {
   return {
-    bgIos: cls('bg-ios-light-glass', dark('dark:bg-ios-dark-glass')),
+    bgIos: '',
     bgMaterial: cls('bg-md-light-surface-3', dark('dark:bg-md-dark-surface-3')),
     titleIos: '',
     titleMaterial: cls(

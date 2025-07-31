@@ -3,6 +3,7 @@ import { DialogClasses } from '../../shared/classes/DialogClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { DialogColors } from '../../shared/colors/DialogColors.js';
+import Glass from './Glass.jsx';
 
 const Dialog = (props) => {
   const {
@@ -69,7 +70,8 @@ const Dialog = (props) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component
+      <Glass
+        component={Component}
         ref={(el) => {
           elRef.current = el;
           if (ref && typeof ref === 'function') ref(el);
@@ -89,7 +91,7 @@ const Dialog = (props) => {
         </div>
 
         {buttons && <div className={c.buttons}>{buttons}</div>}
-      </Component>
+      </Glass>
     </>
   );
 };
