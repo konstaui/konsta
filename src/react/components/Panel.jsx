@@ -4,6 +4,8 @@ import { PanelClasses } from '../../shared/classes/PanelClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { PanelColors } from '../../shared/colors/PanelColors.js';
+import Glass from './Glass.jsx';
+import { useTheme } from '../shared/use-theme.js';
 
 const Panel = (props) => {
   const {
@@ -38,6 +40,8 @@ const Panel = (props) => {
     ...rest,
   };
 
+  const theme = useTheme({ ios, material });
+
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
@@ -50,22 +54,31 @@ const Panel = (props) => {
 
   const classes = cls(c.base, c[side][state]);
 
+  const setRef = (el) => {
+    elRef.current = el;
+    if (ref && typeof ref === 'function') ref(el);
+    else if (ref) ref.current = el;
+  };
+
   return (
     <>
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component
-        ref={(el) => {
-          elRef.current = el;
-          if (ref && typeof ref === 'function') ref(el);
-          else if (ref) ref.current = el;
-        }}
-        className={classes}
-        {...attrs}
-      >
-        {children}
-      </Component>
+      {theme === 'ios' && floating ? (
+        <Glass
+          component={component}
+          ref={setRef}
+          className={classes}
+          {...attrs}
+        >
+          {children}
+        </Glass>
+      ) : (
+        <Component ref={setRef} className={classes} {...attrs}>
+          {children}
+        </Component>
+      )}
     </>
   );
 };

@@ -7,11 +7,16 @@ export const PanelClasses = (props, colors) => {
       common: cls(
         'transition-transform transform duration-400 z-40 max-w-full overflow-hidden fixed',
         floating ? 'top-safe-2 bottom-safe-2 !h-auto' : 'top-0 max-h-full',
-        colors.bg,
         size
       ),
-      ios: cls(floating && 'rounded-[20px] shadow-xl'),
-      material: 'ease-material-in',
+      ios: cls(
+        floating && cls('rounded-4xl', colors.floatingBgIos),
+        !floating && colors.bgIos
+      ),
+      material: cls(
+        'ease-material-in',
+        floating ? colors.floatingBgMaterial : colors.bgMaterial
+      ),
     },
     left: {
       common: cls(

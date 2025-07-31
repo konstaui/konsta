@@ -14,7 +14,25 @@ interface Props {
      *
      * @default 'bg-white dark:bg-black'
      */
-    bg?: string;
+    bgIos?: string;
+    /**
+     * Panel bg color
+     *
+     * @default 'bg-md-light-surface dark:bg-md-dark-surface'
+     */
+    bgMaterial?: string;
+    /**
+     * Panel bg color
+     *
+     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
+     */
+    floatingBgIos?: string;
+    /**
+     * Panel bg color
+     *
+     * @default 'bg-md-light-surface dark:bg-md-dark-surface'
+     */
+    floatingBgMaterial?: string;
   };
   /**
    * Tailwind CSS size classes

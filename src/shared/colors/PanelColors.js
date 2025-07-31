@@ -2,7 +2,13 @@ import { cls } from '../cls.js';
 
 export const PanelColors = (colorsProp = {}, dark) => {
   return {
-    bg: cls('bg-white', dark('dark:bg-black')),
+    bgIos: cls('bg-white', dark('dark:bg-black')),
+    bgMaterial: cls('bg-md-light-surface', dark('dark:bg-md-dark-surface')),
+    floatingBgIos: '',
+    floatingBgMaterial: cls(
+      'bg-md-light-surface',
+      dark('dark:bg-md-dark-surface')
+    ),
     ...colorsProp,
   };
 };
