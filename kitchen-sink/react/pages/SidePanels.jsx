@@ -25,18 +25,14 @@ export default function SidePanelsPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <Block strongIos outlineIos className="space-y-4">
+      <Block inset strong className="space-y-4">
         <p>
           Konsta UI comes with 2 panels (on left and on right), both are
           optional. You can put absolutely anything inside: data lists, forms,
           custom content, etc.
         </p>
       </Block>
-      <Block
-        strongIos
-        outlineIos
-        className="flex space-x-4 rtl:space-x-reverse"
-      >
+      <Block inset strong className="flex space-x-4 rtl:space-x-reverse">
         <Button rounded onClick={() => setLeftPanelOpened(true)}>
           Left Panel
         </Button>
@@ -45,11 +41,7 @@ export default function SidePanelsPage() {
         </Button>
       </Block>
       <BlockTitle>Floating Panels</BlockTitle>
-      <Block
-        strongIos
-        outlineIos
-        className="flex space-x-4 rtl:space-x-reverse"
-      >
+      <Block inset strong className="flex space-x-4 rtl:space-x-reverse">
         <Button rounded onClick={() => setLeftFloatingPanelOpened(true)}>
           Left Panel
         </Button>
@@ -128,7 +120,10 @@ export default function SidePanelsPage() {
         opened={leftFloatingPanelOpened}
         onBackdropClick={() => setLeftFloatingPanelOpened(false)}
       >
-        <Page className="no-safe-areas-top no-safe-areas-bottom">
+        <Page
+          colors={{ bgIos: 'bg-transparent' }}
+          className="no-safe-areas-top no-safe-areas-bottom"
+        >
           <Navbar
             title="Left Panel"
             right={
@@ -161,7 +156,10 @@ export default function SidePanelsPage() {
         opened={rightFloatingPanelOpened}
         onBackdropClick={() => setRightFloatingPanelOpened(false)}
       >
-        <Page className="no-safe-areas-top no-safe-areas-bottom">
+        <Page
+          colors={{ bgIos: 'bg-transparent' }}
+          className="no-safe-areas-top no-safe-areas-bottom"
+        >
           <Navbar
             title="Right Panel"
             right={
