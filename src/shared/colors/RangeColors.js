@@ -7,10 +7,10 @@ export const RangeColors = (colorsProp = {}, dark) => {
       'bg-md-light-primary',
       dark('dark:bg-md-dark-primary')
     ),
-    thumbBgIos: 'range-thumb:bg-white',
+    thumbBgIos: 'bg-white',
     thumbBgMaterial: cls(
-      'range-thumb:bg-md-light-primary',
-      dark('dark:range-thumb:bg-md-dark-primary')
+      'bg-md-light-primary',
+      dark('dark:bg-md-dark-primary')
     ),
     ...colorsProp,
   };

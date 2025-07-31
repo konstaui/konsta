@@ -21,12 +21,12 @@ interface Props {
     valueBgMaterial?: string;
     /**
      *
-     * @default 'range-thumb:bg-white'
+     * @default 'bg-white'
      */
     thumbBgIos?: string;
     /**
      *
-     * @default 'range-thumb:bg-md-light-primary dark:range-thumb:bg-md-dark-primary'
+     * @default 'bg-md-light-primary dark:bg-md-dark-primary'
      */
     thumbBgMaterial?: string;
   };

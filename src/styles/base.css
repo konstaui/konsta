@@ -8,10 +8,12 @@
   --text-2xs: 0.625rem;
   --text-icon-ios: 28px;
   --text-icon-material: 24px;
+
+  --transition-ios-range-thumb:
+    transform, translate, scale, opacity, rotate, background-color, box-shadow;
   --shadow-ios-toggle:
     0 0.5px 4px rgba(0, 0, 0, 0.12), 0 6px 13px rgba(0, 0, 0, 0.12);
   /* prettier-ignore */
-
   --shadow-ios-light-glass-thumb:
     inset -3px -3px 0px -3.5px rgba(255, 255, 255, 1),
     inset 3px 3px 0px -3.5px rgba(255, 255, 255, 1),
@@ -19,6 +21,7 @@
     inset 3px 3px 10px -2px #eee,
     inset -3px -3px 10px -2px #eee,
     inset 0 0 5px 1px #fff;
+  /* prettier-ignore */
   --shadow-ios-dark-glass-thumb:
     inset 3px 3px 0px -3.5px rgba(255, 255, 255, 1),
     inset -3px -3px 0px -3.5px rgba(255, 255, 255, 1),

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { cls } from '../../shared/cls.js';
 import { RangeClasses } from '../../shared/classes/RangeClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -36,8 +36,11 @@ const Range = (props) => {
   } = props;
 
   const elRef = useRef(null);
-
+  const thumbWrapRef = useRef(null);
+  const trackBgRef = useRef(null);
   const Component = component;
+  const [thumbOffset, setThumbOffset] = useState(0);
+  const [thumbPercentOffset, setThumbPercentOffset] = useState(0);
 
   const attrs = {
     ...rest,
@@ -52,6 +55,34 @@ const Range = (props) => {
 
   const valueWidth = (((value || 0) - min) / (max - min)) * 100;
 
+  const calcThumbOffset = () => {
+    if (!thumbWrapRef.current) return;
+    const thumbWidth = thumbWrapRef.current.offsetWidth;
+    const trackWidth = trackBgRef.current.offsetWidth;
+    const percentOffset = thumbWidth / trackWidth;
+    setThumbPercentOffset(percentOffset);
+  };
+  const updateThumbOffset = () => {
+    const percent = (value - min) / (max - min);
+    setThumbOffset(percent * (1 - thumbPercentOffset));
+  };
+  const onResize = () => {
+    calcThumbOffset();
+    updateThumbOffset();
+  };
+  useEffect(() => {
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  });
+  useLayoutEffect(() => {
+    calcThumbOffset();
+  }, []);
+  useLayoutEffect(() => {
+    updateThumbOffset();
+  }, [value]);
+
   return (
     <Component
       ref={(el) => {
@@ -62,7 +93,7 @@ const Range = (props) => {
       className={c.base}
       {...attrs}
     >
-      <span className={c.trackBg} />
+      <span ref={trackBgRef} className={c.trackBg} />
       <span className={c.trackValue} style={{ width: `${valueWidth}%` }} />
       <input
         className={cls(c.input, c.inputThumb, c.inputTrack)}
@@ -81,6 +112,14 @@ const Range = (props) => {
         onFocus={onFocus}
         onBlur={onBlur}
       />
+      <span
+        style={{ insetInlineStart: `${thumbOffset * 100}%` }}
+        className={c.thumbWrap}
+        ref={thumbWrapRef}
+      >
+        <span className={c.thumbShadow} />
+        <span className={c.thumb} />
+      </span>
     </Component>
   );
 };
