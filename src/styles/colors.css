@@ -58,10 +58,14 @@
   --color-md-dark-surface-5: var(--k-color-md-dark-surface-5);
   --color-ios-light-surface: #efeff4;
   --color-ios-light-surface-1: #fff;
+  --color-ios-light-surface-1-shade: #f1f1f5;
+  --color-ios-light-surface-1-tint: #fff;
   --color-ios-light-surface-2: #f7f7f8;
   --color-ios-light-surface-3: #fff;
   --color-ios-dark-surface: #000;
   --color-ios-dark-surface-1: #1c1c1d;
+  --color-ios-dark-surface-1-shade: #060606;
+  --color-ios-dark-surface-1-tint: #444447;
   --color-ios-dark-surface-2: #121212;
   --color-ios-dark-surface-3: #1c1c1d;
   --color-ios-light-surface-variant: #f4f4f4;
@@ -70,8 +74,8 @@
   --color-ios-primary-tint: var(--k-color-ios-primary-tint);
   --color-ios-primary-shade: var(--k-color-ios-primary-shade);
 
-  --color-ios-light-liquid-glass: rgba(255, 255, 255, 0.8);
-  --color-ios-dark-liquid-glass: rgba(50, 50, 50, 0.5);
+  --color-ios-light-glass: rgba(255, 255, 255, 0.8);
+  --color-ios-dark-glass: rgba(50, 50, 50, 0.5);
 }
 
 [class*='k-color-brand-'],

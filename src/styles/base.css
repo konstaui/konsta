@@ -11,9 +11,9 @@
   --shadow-ios-toggle:
     0 0.5px 4px rgba(0, 0, 0, 0.12), 0 6px 13px rgba(0, 0, 0, 0.12);
   /* prettier-ignore */
-  --shadow-ios-light-liquid-glass:
-    inset -3px -3px 0px -2.5px rgba(255, 255, 255, 1),
-    inset 4px 4.5px 0.5px -3.5px rgba(255, 255, 255, 1),
+  --shadow-ios-light-glass:
+    inset -2px -2px 0px -2.5px rgba(255, 255, 255, 1),
+    inset 3px 3.5px 0.5px -3.5px rgba(255, 255, 255, 1),
     inset 3px 3px 10px -2px #ccc,
     inset -3px -3px 10px -2px #ccc,
     inset 0 0 5px 1px #fff,
@@ -22,7 +22,7 @@
     inset 0 0 24px 0 rgba(0, 0, 0, 0.1),
     0 0 25px 0 rgba(0, 0, 0, 0.15);
   /* prettier-ignore */
-  --shadow-ios-dark-liquid-glass:
+  --shadow-ios-dark-glass:
     inset -2px -2px 0.5px -2.5px rgba(255, 255, 255, 0.4),
     inset 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.4),
     inset 2px 2px 0.5px -2px #262626,
