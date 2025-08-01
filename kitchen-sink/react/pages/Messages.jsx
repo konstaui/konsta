@@ -10,6 +10,7 @@ import {
   MessagesTitle,
   Link,
   Icon,
+  ToolbarPane,
 } from 'konsta/react';
 import { CameraFill, ArrowUpCircleFill } from 'framework7-icons/react';
 import { MdCameraAlt, MdSend } from 'react-icons/md';
@@ -151,35 +152,44 @@ export default function MessagesPage() {
         ))}
       </Messages>
       <Messagebar
+        className="z-20"
         placeholder="Message"
         value={messageText}
         onInput={(e) => setMessageText(e.target.value)}
         left={
-          <Link onClick={() => console.log('click')} toolbar iconOnly>
-            <Icon
-              ios={<CameraFill className="w-7 h-7" />}
-              material={
-                <MdCameraAlt className="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
-              }
-            />
-          </Link>
+          <ToolbarPane className="ios:h-10">
+            <Link onClick={() => console.log('click')} iconOnly>
+              <Icon
+                ios={<CameraFill className="w-5 h-5" />}
+                material={
+                  <MdCameraAlt className="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+                }
+              />
+            </Link>
+          </ToolbarPane>
         }
         right={
-          <Link
-            onClick={isClickable ? handleSendClick : undefined}
-            toolbar
-            style={{
-              opacity: inputOpacity,
-              cursor: isClickable ? 'pointer' : 'default',
-            }}
-          >
-            <Icon
-              ios={<ArrowUpCircleFill className="w-7 h-7" />}
-              material={
-                <MdSend className="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
-              }
-            />
-          </Link>
+          <ToolbarPane className="ios:h-10">
+            <Link
+              onClick={isClickable ? handleSendClick : undefined}
+              iconOnly
+              style={{
+                opacity: inputOpacity,
+                cursor: isClickable ? 'pointer' : 'default',
+              }}
+            >
+              <Icon
+                ios={
+                  <ArrowUpCircleFill
+                    className={`w-7 h-7${isClickable ? ' text-primary' : ''}`}
+                  />
+                }
+                material={
+                  <MdSend className="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+                }
+              />
+            </Link>
+          </ToolbarPane>
         }
       />
     </Page>

@@ -3,9 +3,11 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
 import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
+import { cls } from '../../shared/cls.js';
 
 // import Link from './Link.jsx';
 import Toolbar from './Toolbar.jsx';
+import Glass from './Glass.jsx';
 
 const Messagebar = (props) => {
   const {
@@ -77,12 +79,17 @@ const Messagebar = (props) => {
       }}
       id={id}
       style={style}
-      className={c.base}
+      className={cls(c.base, className)}
       {...attrs}
     >
-      <Toolbar colors={colors} outline={outline}>
+      <Toolbar
+        colors={colors}
+        outline={outline}
+        className={c.toolbar}
+        innerClassName={c.toolbarInner}
+      >
         {left && <div className={c.left}>{left}</div>}
-        <div className={c.messagebarArea}>
+        <Glass className={c.messagebarArea}>
           <textarea
             id={textareaId}
             ref={areaElRef}
@@ -97,7 +104,7 @@ const Messagebar = (props) => {
             onFocus={onFocusInternal}
             value={value}
           />
-        </div>
+        </Glass>
         {right && <div className={c.right}>{right}</div>}
       </Toolbar>
     </Component>

@@ -14,17 +14,22 @@ export const MessagebarClasses = (props, colors, { isFocused }) => {
     toolbar: {
       material: colors.bgMessage,
     },
+    toolbarInner: {
+      ios: 'w-full items-center gap-3',
+    },
     left: {
-      common: cls('mt-1 -ms-2', leftClassName || leftClass),
-      ios: cls('px-2', colors.toolbarIconIos),
-      material: cls('', colors.toolbarIconMd),
+      common: cls('', leftClassName || leftClass),
+      ios: cls('', colors.toolbarIconIos),
+      material: cls('mt-1 -ms-2', colors.toolbarIconMd),
     },
     right: {
-      common: cls('mt-1 -me-2', rightClassName || rightClass),
-      ios: cls('px-2', colors.toolbarIconIos),
+      common: cls('', rightClassName || rightClass),
+      ios: cls('', colors.toolbarIconIos),
+      material: cls('mt-1 -me-2'),
     },
     messagebarArea: {
       common: 'w-full',
+      ios: 'rounded-3xl self-center',
     },
     messagebarInput: {
       common: cls(
@@ -32,9 +37,8 @@ export const MessagebarClasses = (props, colors, { isFocused }) => {
         isFocused && 'outline-offset-0'
       ),
       ios: cls(
-        'border h-8 rounded-3xl px-4 leading-4 py-1.5',
+        'border-transparent h-10 px-4 leading-4 pt-3 pb-1 rounded-3xl',
         colors.inputBgIos,
-        colors.borderIos,
         colors.placeholderIos
       ),
       material: cls(

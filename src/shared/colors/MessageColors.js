@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const MessageColors = (colorsProp = {}, dark) => {
   return {
@@ -19,6 +20,6 @@ export const MessageColors = (colorsProp = {}, dark) => {
       dark('dark:bg-md-dark-surface-variant'),
       'bg-[#e5e5ea]'
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };
