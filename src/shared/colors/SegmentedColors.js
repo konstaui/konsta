@@ -5,7 +5,7 @@ export const SegmentedColors = (colorsProp = {}, dark) => {
     strongBgIos: cls('bg-black/5', dark('dark:bg-white/10')),
     strongBgMaterial: cls(
       'bg-md-light-surface-variant',
-      dark('dark:bg-md-dark-surface-variant')
+      dark('dark:bg-md-dark-surface-3')
     ),
 
     strongHighlightBgIos: cls('bg-white', dark('dark:bg-white/15')),

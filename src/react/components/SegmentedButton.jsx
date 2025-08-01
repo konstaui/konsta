@@ -1,11 +1,21 @@
 import React, { useRef } from 'react';
 import Button from './Button.jsx';
+import { useSegmentedContext } from './SegmentedContext.jsx';
 
 const SegmentedButton = (props) => {
-  const { active, children, outline, strong, clear, rounded, ref, ...rest } =
-    props;
+  const {
+    active,
+    children,
+    outline,
+    strong: buttonStrong,
+    rounded: buttonRounded,
+    raised: buttonRaised,
+    ref,
+    ...rest
+  } = props;
 
   const elRef = useRef(null);
+  const { strong, rounded } = useSegmentedContext();
 
   return (
     <Button

@@ -21,7 +21,7 @@ export default function SegmentedControlPage() {
       />
 
       <BlockTitle>Default Segmented</BlockTitle>
-      <Block strongIos outlineIos className="space-y-4">
+      <Block strong inset className="space-y-4">
         <Segmented>
           <SegmentedButton
             active={activeSegmented === 1}
@@ -66,7 +66,7 @@ export default function SegmentedControlPage() {
       </Block>
 
       <BlockTitle>Raised Segmented</BlockTitle>
-      <Block strongIos outlineIos className="space-y-4">
+      <Block strong inset className="space-y-4">
         <Segmented raised>
           <SegmentedButton
             active={activeSegmented === 1}
@@ -110,7 +110,7 @@ export default function SegmentedControlPage() {
       </Block>
 
       <BlockTitle>Outline</BlockTitle>
-      <Block strongIos outlineIos className="space-y-4">
+      <Block strong inset className="space-y-4">
         <Segmented outline>
           <SegmentedButton
             active={activeSegmented === 1}
@@ -154,24 +154,21 @@ export default function SegmentedControlPage() {
       </Block>
 
       <BlockTitle>Strong Segmented</BlockTitle>
-      <Block strongIos outlineIos className="space-y-4">
+      <Block strong inset className="space-y-4">
         <Segmented strong>
           <SegmentedButton
-            strong
             active={activeSegmented === 1}
             onClick={() => setActiveSegmented(1)}
           >
             Button
           </SegmentedButton>
           <SegmentedButton
-            strong
             active={activeSegmented === 2}
             onClick={() => setActiveSegmented(2)}
           >
             Button
           </SegmentedButton>
           <SegmentedButton
-            strong
             active={activeSegmented === 3}
             onClick={() => setActiveSegmented(3)}
           >
@@ -181,24 +178,18 @@ export default function SegmentedControlPage() {
 
         <Segmented strong rounded>
           <SegmentedButton
-            strong
-            rounded
             active={activeSegmented === 1}
             onClick={() => setActiveSegmented(1)}
           >
             Button
           </SegmentedButton>
           <SegmentedButton
-            strong
-            rounded
             active={activeSegmented === 2}
             onClick={() => setActiveSegmented(2)}
           >
             Button
           </SegmentedButton>
           <SegmentedButton
-            strong
-            rounded
             active={activeSegmented === 3}
             onClick={() => setActiveSegmented(3)}
           >

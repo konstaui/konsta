@@ -7,6 +7,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
 import { ButtonColors } from '../../shared/colors/ButtonColors.js';
+import { getThemeSpecificProps } from '../shared/get-theme-specific-props.js';
 
 const Button = (props) => {
   const {
@@ -77,27 +78,19 @@ const Button = (props) => {
 
   useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
 
-  const getThemeSpecificProps = (obj) => {
-    const res = {};
-    Object.keys(obj).forEach((key) => {
-      res[key] =
-        typeof obj[key] === 'undefined'
-          ? theme === 'ios'
-            ? props[`${key}Ios`]
-            : props[`${key}Material`]
-          : obj[key];
-    });
-    return res;
-  };
-  const themeProps = getThemeSpecificProps({
-    outline,
-    clear,
-    tonal,
-    rounded,
-    small,
-    large,
-    raised,
-  });
+  const themeProps = getThemeSpecificProps(
+    theme,
+    {
+      outline,
+      clear,
+      tonal,
+      rounded,
+      small,
+      large,
+      raised,
+    },
+    props
+  );
 
   const size = themeProps.large
     ? 'large'
