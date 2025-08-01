@@ -6,8 +6,6 @@
     Helvetica, Arial, sans-serif;
   --font-material: Roboto, system-ui, Noto, Helvetica, Arial, sans-serif;
   --text-2xs: 0.625rem;
-  --text-icon-ios: 28px;
-  --text-icon-material: 24px;
 
   --transition-ios-range-thumb:
     transform, translate, scale, opacity, rotate, background-color, box-shadow;
@@ -21,6 +19,7 @@
     inset 3px 3px 10px -2px #eee,
     inset -3px -3px 10px -2px #eee,
     inset 0 0 5px 1px #fff;
+
   /* prettier-ignore */
   --shadow-ios-dark-glass-thumb:
     inset 3px 3px 0px -3.5px rgba(255, 255, 255, 1),
@@ -30,6 +29,27 @@
     inset -3px 3px 0px -3.5px rgba(255, 255, 255, 0.25),
     inset 0px -5px 0px -3.5px rgba(255, 255, 255, 0.25),
     inset 0px -5px 5px rgba(255, 255, 255, 0.25);
+
+  /* prettier-ignore */
+  --shadow-ios-light-glass-fab:
+    inset -3px -3px 0px -3.5px #fff,
+    inset 3px 3px 0px -3.5px #fff,
+    inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 10px -2px color-mix(in oklab, var(--color-primary) 100%, black),
+    inset -3px -3px 10px -2px color-mix(in oklab, var(--color-primary) 100%, black),
+    inset 0 0 5px 1px #fff,
+    0 0 15px 4px rgba(0, 0, 0, 0.2);
+
+  /* prettier-ignore */
+  --shadow-ios-dark-glass-fab:
+    inset 3px 3px 0px -3.5px var(--color-primary),
+    inset -3px -3px 0px -3.5px var(--color-primary),
+    inset -0.5px -0.5px 0px rgba(255, 255, 255, 0.5),
+    inset 0.5px 0.5px 0px rgba(255, 255, 255, 0.1),
+    inset -3px 3px 0px -3.5px rgba(255, 255, 255, 0.25),
+    inset 0px -5px 0px -3.5px color-mix(in oklab, var(--color-primary) 50%, transparent 10%),
+    inset 0px -5px 5px color-mix(in oklab, var(--color-primary) 50%, transparent 10%),
+    0 0 15px 4px rgba(0, 0, 0, 0.2);
   /* prettier-ignore */
   --shadow-ios-light-glass:
     inset -1.5px -1.5px 0px -0.5px rgba(255, 255, 255, 1),

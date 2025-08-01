@@ -5,6 +5,7 @@ import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { FabClasses } from '../../shared/classes/FabClasses.js';
 import { FabColors } from '../../shared/colors/FabColors.js';
+import Glass from './Glass.jsx';
 
 const Fab = (props) => {
   const {
@@ -45,10 +46,11 @@ const Fab = (props) => {
 
   const colors = FabColors(colorsProp, dark);
 
-  const c = themeClasses(FabClasses(props, colors), className);
+  const c = themeClasses(FabClasses(props, colors, dark), className);
 
   return (
-    <Component
+    <Glass
+      component={Component}
       className={text ? c.base.withText : c.base.iconOnly}
       href={href}
       ref={(el) => {
@@ -68,7 +70,7 @@ const Fab = (props) => {
         <span className={c.text}>{text}</span>
       )}
       {children}
-    </Component>
+    </Glass>
   );
 };
 

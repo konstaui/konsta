@@ -13,7 +13,12 @@ import { MdAdd } from 'react-icons/md';
 export default function FabPage() {
   const isPreview = document.location.href.includes('examplePreview');
   const theme = useTheme();
-  const PlusIcon = theme === 'ios' ? Plus : MdAdd;
+  const PlusIcon =
+    theme === 'ios' ? (
+      <Plus className="w-6 h-6" />
+    ) : (
+      <MdAdd className="w-6 h-6" />
+    );
 
   return (
     <Page>
@@ -24,38 +29,35 @@ export default function FabPage() {
 
       {/* Right Top */}
       <Fab
-        className="fixed right-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-red"
-        icon={<PlusIcon />}
+        className="fixed right-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-red"
+        icon={PlusIcon}
       />
 
       {/* Right Bottom */}
-      <Fab
-        className="fixed right-safe-4 bottom-safe-4 z-20"
-        icon={<PlusIcon />}
-      />
+      <Fab className="fixed right-safe-4 bottom-safe-4 z-20" icon={PlusIcon} />
 
       {/* Left Bottom */}
       <Fab
         className="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green"
-        icon={<PlusIcon />}
+        icon={PlusIcon}
       />
 
       {/* Left Top */}
       <Fab
-        className="fixed left-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-yellow"
-        icon={<PlusIcon />}
+        className="fixed left-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-yellow"
+        icon={PlusIcon}
       />
 
       {/* Center Center */}
       <Fab
         className="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-        icon={<PlusIcon />}
+        icon={PlusIcon}
       />
 
       {/* Center Bottom */}
       <Fab
         className="fixed left-1/2 bottom-safe-4 transform -translate-x-1/2 z-20"
-        icon={<PlusIcon />}
+        icon={PlusIcon}
         text="Create"
         textPosition="after"
       />

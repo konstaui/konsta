@@ -2,12 +2,12 @@ import { cls } from '../cls.js';
 
 export const FabColors = (colorsProp = {}, dark) => {
   return {
-    bgIos: 'bg-primary',
+    bgIos: cls('bg-primary', dark('dark:bg-ios-primary-shade/50')),
     bgMaterial: cls(
       'bg-md-light-primary-container',
       dark('dark:bg-md-dark-primary-container')
     ),
-    activeBgIos: 'active:bg-ios-primary-shade',
+    activeBgIos: '',
     activeBgMaterial: '',
     textIos: 'text-white',
     textMaterial: cls(
