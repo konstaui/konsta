@@ -9,7 +9,7 @@ export const PopupClasses = (props, colors) => {
         colors.bg,
         size
       ),
-      ios: 'duration-400 md:rounded-lg',
+      ios: 'duration-400 md:rounded-4xl',
       material: ' md:rounded-[1.75rem]',
       opened: {
         common: '-translate-y-1/2',
