@@ -21,11 +21,11 @@ export default function ProgressbarPage() {
       />
 
       <BlockTitle>Determinate Progress Bar</BlockTitle>
-      <Block strong insetMaterial outlineIos>
+      <Block strong inset>
         <div className="my-4">
           <Progressbar progress={progress} />
         </div>
-        <Segmented raised>
+        <Segmented roundedIos strongIos outlineMaterial>
           <SegmentedButton
             active={progress === 0.1}
             onClick={() => setProgress(0.1)}
@@ -54,7 +54,7 @@ export default function ProgressbarPage() {
       </Block>
 
       <BlockTitle>Colors</BlockTitle>
-      <Block strong insetMaterial outlineIos className="space-y-4">
+      <Block strong inset className="space-y-4">
         <Progressbar className="k-color-brand-red" progress={0.25} />
         <Progressbar className="k-color-brand-green" progress={0.5} />
         <Progressbar className="k-color-brand-yellow" progress={0.75} />
