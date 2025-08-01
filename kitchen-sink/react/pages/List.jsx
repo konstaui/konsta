@@ -128,7 +128,7 @@ export default function ListPage() {
           <ListItem
             title="A"
             groupTitle
-            className="ios:top-11-safe material:top-16-safe sticky"
+            className="ios:top-safe-15 material:top-16-safe sticky"
           />
           <ListItem title="Aaron " />
           <ListItem title="Abbie" />
@@ -138,7 +138,7 @@ export default function ListPage() {
           <ListItem
             title="B"
             groupTitle
-            className="ios:top-11-safe material:top-16-safe  sticky"
+            className="ios:top-safe-15 material:top-16-safe  sticky"
           />
           <ListItem title="Bailey" />
           <ListItem title="Barclay" />
@@ -148,7 +148,7 @@ export default function ListPage() {
           <ListItem
             title="C"
             groupTitle
-            className="ios:top-11-safe material:top-16-safe  sticky"
+            className="ios:top-safe-15 material:top-16-safe  sticky"
           />
           <ListItem title="Caiden" />
           <ListItem title="Calvin" />

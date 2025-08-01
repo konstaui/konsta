@@ -36,15 +36,16 @@ export default function PopoverPage() {
           </Link>
         }
       />
-      <Block className="space-y-4">
-        <p>
-          <Button
-            className="popover-button"
-            onClick={() => openPopover('.popover-button')}
-          >
-            Open popover on me
-          </Button>
-        </p>
+      <Block strong inset className="space-y-4">
+        <Button
+          rounded
+          className="popover-button"
+          onClick={() => openPopover('.popover-button')}
+        >
+          Open popover on me
+        </Button>
+      </Block>
+      <Block strong inset className="space-y-4">
         <p>
           Mauris fermentum neque et luctus venenatis. Vivamus a sem rhoncus,
           ornare tellus eu, euismod mauris. In porta turpis at semper convallis.

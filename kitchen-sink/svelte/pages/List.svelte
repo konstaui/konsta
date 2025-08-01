@@ -126,7 +126,7 @@
       <ListItem
         title="A"
         groupTitle
-        class="ios:top-11-safe material:top-16-safe sticky"
+        class="ios:top-safe-15 material:top-16-safe sticky"
       />
       <ListItem title="Aaron " />
       <ListItem title="Abbie" />
@@ -136,7 +136,7 @@
       <ListItem
         title="B"
         groupTitle
-        class="ios:top-11-safe material:top-16-safe sticky"
+        class="ios:top-safe-15 material:top-16-safe sticky"
       />
       <ListItem title="Bailey" />
       <ListItem title="Barclay" />
@@ -146,7 +146,7 @@
       <ListItem
         title="C"
         groupTitle
-        class="ios:top-11-safe material:top-16-safe sticky"
+        class="ios:top-safe-15 material:top-16-safe sticky"
       />
       <ListItem title="Caiden" />
       <ListItem title="Calvin" />

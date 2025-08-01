@@ -138,7 +138,7 @@
         <k-list-item
           title="A"
           group-title
-          class="ios:top-11-safe material:top-16-safe sticky"
+          class="ios:top-safe-15 material:top-16-safe sticky"
         />
         <k-list-item title="Aaron " />
         <k-list-item title="Abbie" />
@@ -148,7 +148,7 @@
         <k-list-item
           title="B"
           group-title
-          class="ios:top-11-safe material:top-16-safe sticky"
+          class="ios:top-safe-15 material:top-16-safe sticky"
         />
         <k-list-item title="Bailey" />
         <k-list-item title="Barclay" />
@@ -158,7 +158,7 @@
         <k-list-item
           title="C"
           group-title
-          class="ios:top-11-safe material:top-16-safe sticky"
+          class="ios:top-safe-15 material:top-16-safe sticky"
         />
         <k-list-item title="Caiden" />
         <k-list-item title="Calvin" />
