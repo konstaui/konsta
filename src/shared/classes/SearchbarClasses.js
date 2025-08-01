@@ -3,30 +3,30 @@ import { cls } from '../cls.js';
 export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
   return {
     base: {
-      common: 'relative flex overflow-hidden items-center',
-      ios: 'px-2 w-full',
-      material: 'px-0 py-2 -mx-2 w-[calc(100%+32px)]',
+      common: 'relative flex items-center',
+      ios: 'w-full',
+      material: 'px-0 py-2 -mx-2 w-[calc(100%+32px)] overflow-hidden ',
     },
     inner: {
       common: 'w-full shrink-1 relative',
-      ios: 'transition-all duration-300',
+      ios: 'transition-all duration-300 rounded-full',
     },
     searchIconWrap: {
       common: 'absolute inset-y-0 flex items-center z-40',
-      ios: 'start-2',
+      ios: 'start-4',
       material: 'start-4',
     },
     clearButton: {
       common:
-        'absolute justify-center inset-y-0 flex items-center z-40 cursor-pointer end-0',
-      ios: 'w-8 h-8',
-      material: 'w-12 h-12',
+        'absolute justify-center top-1/2 -translate-y-1/2 flex items-center z-40 cursor-pointer active:opacity-30',
+      ios: 'w-8 h-8 end-2',
+      material: 'w-12 h-12 end-0',
     },
     input: {
-      common: 'block appearance-none  w-full py-2  focus:outline-none z-30',
+      common: 'block appearance-none w-full py-2  focus:outline-none z-30',
       ios: cls(
-        'h-8 bg-black/10 pl-7 pr-7 rounded-lg text-base',
-        darkClasses('dark:placeholder-white/30 dark:bg-white/10'),
+        'h-12 pl-10.5 pr-9 text-[17px]',
+        darkClasses('dark:placeholder-white/30'),
         colors.placeholderIos,
         colors.inputBgIos
       ),
@@ -53,8 +53,8 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
     },
     cancelButton: {
       ios: cls(
-        'ps-2 flex items-center h-8 cursor-pointer bg-transparent text-primary shrink-0 z-40 transition-all duration-300 active:opacity-30',
-        isEnabled ? '' : 'opacity-0'
+        'flex justify-center items-center h-12 w-12 cursor-pointer shrink-0 z-40 transition-all duration-300 rounded-full',
+        isEnabled ? '' : 'scale-0'
       ),
       material: cls(
         'absolute left-4 cursor-pointer',

@@ -10,6 +10,9 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import DeleteIcon from './icons/DeleteIcon.jsx';
 import SearchIcon from './icons/SearchIcon.jsx';
 import BackIcon from './icons/BackIcon.jsx';
+import SearchDisableIcon from './icons/SearchDisableIcon.jsx';
+
+import Glass from './Glass.jsx';
 
 const Searchbar = (props) => {
   const {
@@ -43,9 +46,7 @@ const Searchbar = (props) => {
   const searchElRef = useRef(null);
   const elRef = useRef(null);
   const disableButtonRef = useRef(null);
-  const [disableButtonWidth, setDisableButtonWidth] = useState(0);
   const disableTimeout = useRef(null);
-  const allowTransition = useRef(false);
 
   const [isEnabled, setIsEnabled] = useState(false);
   const theme = useTheme({ ios, material });
@@ -92,36 +93,26 @@ const Searchbar = (props) => {
     if (onClear) onClear();
   };
 
-  useEffect(() => {
-    if (disableButtonRef.current) {
-      setDisableButtonWidth(disableButtonRef.current.offsetWidth);
-    }
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        allowTransition.current = true;
-      });
-    });
-  }, []);
-
   const c = themeClasses(
     SearchbarClasses({ ...props }, colors, { isEnabled, darkClasses: dark })
   );
 
   const CancelButton =
     theme === 'ios' ? (
-      <button
+      <Glass
+        component="button"
         type="button"
-        ref={disableButtonRef}
         style={{
-          marginRight: isEnabled ? 0 : `-${disableButtonWidth}px`,
-          transitionDuration: !allowTransition.current ? '0ms' : '',
+          marginRight: isEnabled ? 0 : `-${48 + 16}px`,
+          marginLeft: isEnabled ? '16px' : 0,
         }}
         className={c.cancelButton}
+        ref={disableButtonRef}
         onClick={handleDisableButton}
         onPointerDown={(e) => e.preventDefault()}
       >
-        {disableButtonText}
-      </button>
+        <SearchDisableIcon />
+      </Glass>
     ) : (
       <BackIcon
         theme={theme}
@@ -148,7 +139,7 @@ const Searchbar = (props) => {
       onBlurCapture={onGlobalBlur}
       onFocusCapture={onGlobalFocus}
     >
-      <div className={c.inner}>
+      <Glass className={c.inner}>
         <span className={c.searchIconWrap}>
           <SearchIcon ios={ios} material={material} className={c.searchIcon} />
         </span>
@@ -171,7 +162,7 @@ const Searchbar = (props) => {
             <DeleteIcon theme={theme} className={c.deleteIcon} />
           </button>
         )}
-      </div>
+      </Glass>
       {disableButton && CancelButton}
     </Component>
   );
