@@ -76,7 +76,7 @@ export default function MessagesPage() {
   const initiallyScrolled = useRef(false);
 
   const scrollToBottom = () => {
-    const pageElement = pageRef.current.current || pageRef.current.el;
+    const pageElement = pageRef.current || pageRef.current.el;
     pageElement.scrollTo({
       top: pageElement.scrollHeight - pageElement.offsetHeight,
       behavior: initiallyScrolled.current ? 'smooth' : 'auto',
