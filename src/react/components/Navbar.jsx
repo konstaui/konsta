@@ -4,6 +4,8 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
 import { NavbarColors } from '../../shared/colors/NavbarColors.js';
+import { NavbarContext } from './NavbarContext.jsx';
+import Glass from './Glass.jsx';
 
 const Navbar = (props) => {
   const {
@@ -21,7 +23,6 @@ const Navbar = (props) => {
     centerTitle,
 
     colors: colorsProp,
-    translucent = true,
     outline,
     medium,
     large,
@@ -74,9 +75,11 @@ const Navbar = (props) => {
 
   const colors = NavbarColors(colorsProp, dark);
 
+  const isTransparent = theme === 'material' && transparent;
+
   const onScroll = (e) => {
     const { scrollTop } = e.target;
-    if (!transparent && !large && !medium) {
+    if (!isTransparent && !large && !medium) {
       if (wasScrollable.current) {
         if (titleElRef.current) {
           titleElRef.current.style.opacity = '';
@@ -90,14 +93,15 @@ const Navbar = (props) => {
 
     const maxTranslate = titleContainerHeight.current;
     const scrollProgress = Math.max(Math.min(scrollTop / maxTranslate, 1), 0);
-
-    bgElRef.current.style.opacity = transparent
-      ? -0.5 + scrollProgress * 1.5
-      : '';
-    if (medium || large) {
-      bgElRef.current.style.transform = `translateY(-${
-        scrollProgress * maxTranslate
-      }px)`;
+    if (theme === 'material') {
+      bgElRef.current.style.opacity = isTransparent
+        ? -0.5 + scrollProgress * 1.5
+        : '';
+      if (medium || large) {
+        bgElRef.current.style.transform = `translateY(-${
+          scrollProgress * maxTranslate
+        }px)`;
+      }
     }
 
     if (titleContainerElRef.current) {
@@ -124,7 +128,7 @@ const Navbar = (props) => {
   };
 
   const initScroll = () => {
-    if (!large && !medium && !transparent) {
+    if (!large && !medium && !isTransparent) {
       if (wasScrollable.current) {
         onScroll({ target: { scrollTop: 0 } });
         wasScrollable.current = false;
@@ -158,16 +162,13 @@ const Navbar = (props) => {
     return destroyScroll;
   });
 
-  const isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
-
   const c = themeClasses(
     NavbarClasses(
       {
         ...props,
         centerTitle:
           typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
-        translucent,
-        outline: isOutline,
+        outline,
         fontSizeIos,
         fontSizeMaterial,
         titleFontSizeIos,
@@ -199,28 +200,31 @@ const Navbar = (props) => {
       className={c.base}
       {...attrs}
     >
-      <div className={c.bg} ref={bgElRef} />
-      <div className={c.inner} ref={innerElRef}>
-        {left && <div className={c.left}>{left}</div>}
-        {(title || subtitle) && (
-          <div className={c.title} ref={titleElRef}>
+      <NavbarContext.Provider value={{ navbar: true }}>
+        {theme === 'ios' && <div className={c.bgBlur} />}
+        <div className={c.bg} ref={bgElRef} />
+        <div className={c.inner} ref={innerElRef}>
+          {left && <Glass className={c.left}>{left}</Glass>}
+          {(title || subtitle) && (
+            <div className={c.title} ref={titleElRef}>
+              {title}
+              {subtitle && <div className={c.subtitle}>{subtitle}</div>}
+            </div>
+          )}
+          {right && <Glass className={c.right}>{right}</Glass>}
+          {children}
+        </div>
+        {(large || medium) && (
+          <div className={c.titleContainer} ref={titleContainerElRef}>
             {title}
-            {subtitle && <div className={c.subtitle}>{subtitle}</div>}
           </div>
         )}
-        {right && <div className={c.right}>{right}</div>}
-        {children}
-      </div>
-      {(large || medium) && (
-        <div className={c.titleContainer} ref={titleContainerElRef}>
-          {title}
-        </div>
-      )}
-      {subnavbar && (
-        <div className={c.subnavbar} ref={subnavbarElRef}>
-          {subnavbar}
-        </div>
-      )}
+        {subnavbar && (
+          <div className={c.subnavbar} ref={subnavbarElRef}>
+            {subnavbar}
+          </div>
+        )}
+      </NavbarContext.Provider>
     </Component>
   );
 };

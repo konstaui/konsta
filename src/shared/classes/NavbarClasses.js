@@ -3,7 +3,6 @@ import { cls } from '../cls.js';
 export const NavbarClasses = (props, colors) => {
   const {
     outline,
-    translucent,
     large,
     medium,
     transparent,
@@ -36,20 +35,28 @@ export const NavbarClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        `w-full z-20 top-0 pt-safe sticky`,
+        `w-full z-20 top-0 sticky`,
         (large || medium) && 'pointer-events-none'
       ),
-      ios: cls(fontSizeIos, colors.textIos),
-      material: cls(fontSizeMaterial, colors.textMaterial),
+      ios: cls(
+        'pt-[max(16px,var(--k-safe-area-top))]',
+        fontSizeIos,
+        colors.textIos
+      ),
+      material: cls('pt-safe', fontSizeMaterial, colors.textMaterial),
+    },
+    bgBlur: {
+      ios: cls(
+        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)] backdrop-blur-[2px] absolute left-0 top-0 w-full mask-b-from-50% mask-b-to-100%'
+      ),
     },
     bg: {
-      common: cls(
-        'absolute w-full h-full left-0 top-0',
-        outline && 'hairline-b',
-        bgClassName || bgClass
+      common: cls('absolute w-full left-0 top-0', bgClassName || bgClass),
+      ios: cls(
+        colors.bgIos,
+        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)]'
       ),
-      ios: cls(colors.bgIos, translucent && 'translucent'),
-      material: `${colors.bgMaterial}`,
+      material: cls('h-full', colors.bgMaterial, outline && 'hairline-b'),
     },
     subnavbar: {
       common: cls(
@@ -57,20 +64,20 @@ export const NavbarClasses = (props, colors) => {
         subnavbarClassName || subnavbarClass,
         (large || medium) && 'pointer-events-auto'
       ),
-      ios: 'h-11 pl-safe-2 pr-safe-2',
+      ios: 'h-11 pl-safe-4 pr-safe-4',
       material: 'h-14 pl-safe-4 pr-safe-4',
     },
     inner: {
       common: cls(
-        'flex relative items-center w-full overflow-hidden',
+        'flex relative items-center w-full',
         innerClassName || innerClass,
         (large || medium) && 'pointer-events-auto z-10'
       ),
       ios: cls(
-        'pl-safe-2 pr-safe-2 h-11',
+        'pl-safe-4 pr-safe-4 h-11',
         !left && right ? 'justify-end' : 'justify-between'
       ),
-      material: 'justify-start h-16 pl-safe pr-safe',
+      material: 'justify-start h-16 pl-safe pr-safe overflow-hidden',
     },
     titleContainer: {
       common: cls(
@@ -91,7 +98,7 @@ export const NavbarClasses = (props, colors) => {
         'flex justify-center items-center h-full',
         leftClassName || leftClass
       ),
-      ios: 'me-2 transform transform-gpu',
+      ios: 'me-2 transform transform-gpu rounded-full',
       material: 'mx-1',
     },
     title: {
@@ -114,19 +121,19 @@ export const NavbarClasses = (props, colors) => {
       ),
     },
     subtitle: {
-      common: cls(
-        'font-normal leading-none',
-        subtitleClassName || subtitleClass
-      ),
-      ios: 'text-2xs opacity-55',
-      material: 'text-sm opacity-85',
+      common: cls('leading-none', subtitleClassName || subtitleClass),
+      ios: 'text-sm opacity-75 font-medium',
+      material: 'text-sm opacity-85 font-normal',
     },
     right: {
       common: cls(
         'flex justify-center items-center h-full',
         rightClassName || rightClass
       ),
-      ios: cls('transform transform-gpu', centerTitle ? 'ms-2' : 'ms-auto'),
+      ios: cls(
+        'transform transform-gpu rounded-full',
+        centerTitle ? 'ms-2' : 'ms-auto'
+      ),
       material: 'ms-auto me-1',
     },
   };

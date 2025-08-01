@@ -12,7 +12,7 @@ const NavbarBackLink = (props) => {
     ref,
     text = 'Back',
 
-    showText = 'auto',
+    showText,
 
     ios,
     material,
@@ -35,9 +35,6 @@ const NavbarBackLink = (props) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
 
-  const shouldShowText =
-    (showText === 'auto' && theme === 'ios') || showText === true;
-
   const c = themeClasses(NavbarBackLinkClasses(), className);
 
   return (
@@ -56,7 +53,7 @@ const NavbarBackLink = (props) => {
       <span className={c.icon}>
         <BackIcon theme={theme} />
       </span>
-      {shouldShowText && <span>{text}</span>}
+      {showText && <span>{text}</span>}
       {children}
     </Link>
   );
