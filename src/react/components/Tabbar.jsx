@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import Toolbar from './Toolbar.jsx';
-import { TabbarContext } from './TabbarContext.jsx';
 
 const Tabbar = (props) => {
   const {
@@ -30,9 +29,7 @@ const Tabbar = (props) => {
       tabbarLabels={labels}
       {...attrs}
     >
-      <TabbarContext.Provider value={{ labels, icons, tabbar: true }}>
-        {children}
-      </TabbarContext.Provider>
+      {children}
     </Toolbar>
   );
 };

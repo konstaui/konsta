@@ -3,7 +3,7 @@ import { useTheme } from '../shared/use-theme.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { ToolbarPaneClasses } from '../../shared/classes/ToolbarPaneClasses.js';
 import Glass from './Glass.jsx';
-import { useTabbarContext } from './TabbarContext.jsx';
+import { useToolbarContext } from './ToolbarContext.jsx';
 
 const ToolbarPane = (props) => {
   const {
@@ -27,12 +27,12 @@ const ToolbarPane = (props) => {
   };
 
   const theme = useTheme({ ios, material });
-  const tabbar = useTabbarContext();
+  const { tabbar } = useToolbarContext();
 
   const c = themeClasses(
     ToolbarPaneClasses({
       ...props,
-      tabbar: tabbar.tabbar,
+      tabbar,
     }),
     className
   );

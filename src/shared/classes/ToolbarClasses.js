@@ -31,16 +31,16 @@ export const ToolbarClasses = (props, colors) => {
     },
     inner: {
       common: cls(
-        `flex relative justify-between items-center`,
+        `flex relative justify-between`,
         innerClassName || innerClass
       ),
       ios: cls(
-        'gap-4',
+        'gap-4 items-stretch',
         tabbarIcons && tabbarLabels ? 'h-16' : 'h-12',
         tabbar ? 'w-full md:w-auto' : 'w-auto'
       ),
       material: cls(
-        'w-full overflow-hidden',
+        'w-full overflow-hidden items-center',
         !tabbar ? 'pl-safe-2 pr-safe-2' : '',
         tabbarIcons ? 'h-20' : 'h-14'
       ),

@@ -28,11 +28,11 @@ export default function ToolbarPage() {
         } w-full`}
       >
         <ToolbarPane>
-          <Link toolbar>Link 1</Link>
-          <Link toolbar>Link 2</Link>
+          <Link>Link 1</Link>
+          <Link>Link 2</Link>
         </ToolbarPane>
         <ToolbarPane>
-          <Link toolbar>Link 3</Link>
+          <Link>Link 3</Link>
         </ToolbarPane>
       </Toolbar>
 

@@ -4,6 +4,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
 import { ToolbarColors } from '../../shared/colors/ToolbarColors.js';
+import { ToolbarContext } from './ToolbarContext.jsx';
 
 const Toolbar = (props) => {
   const {
@@ -90,15 +91,19 @@ const Toolbar = (props) => {
       className={c.base}
       {...attrs}
     >
-      <div className={c.bg} />
-      <div className={c.inner}>{children}</div>
-      {hasHighlight && (
-        <span
-          className={c.highlight}
-          style={highlightStyle}
-          ref={highlightElRef}
-        />
-      )}
+      <ToolbarContext.Provider
+        value={{ toolbar: true, tabbarLabels, tabbarIcons, tabbar }}
+      >
+        <div className={c.bg} />
+        <div className={c.inner}>{children}</div>
+        {hasHighlight && (
+          <span
+            className={c.highlight}
+            style={highlightStyle}
+            ref={highlightElRef}
+          />
+        )}
+      </ToolbarContext.Provider>
     </Component>
   );
 };

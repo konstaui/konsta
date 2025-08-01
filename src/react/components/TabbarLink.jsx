@@ -6,7 +6,6 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 
 import Link from './Link.jsx';
 import { cls } from '../../shared/cls.js';
-import { useTabbarContext } from './TabbarContext.jsx';
 
 const TabbarLink = (props) => {
   const {
@@ -40,7 +39,6 @@ const TabbarLink = (props) => {
   const c = themeClasses(
     TabbarLinkClasses({ active, hasIcon, hasLabel }, colors)
   );
-  const tabbarContext = useTabbarContext();
 
   return (
     <Link
@@ -49,10 +47,7 @@ const TabbarLink = (props) => {
         if (ref && typeof ref === 'function') ref(el);
         else if (ref) ref.current = el;
       }}
-      tabbar
       tabbarActive={active}
-      tabbarLabels={tabbarContext.labels}
-      tabbarIcons={tabbarContext.icons}
       className={cls(c.base, className)}
       {...attrs}
     >
