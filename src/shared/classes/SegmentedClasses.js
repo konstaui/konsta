@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const SegmentedClasses = (props, colors, darkClasses) => {
-  const { outline, rounded } = props;
+  const { outline, rounded, navbar } = props;
   return {
     base: {
       common: `flex justify-center items-center overflow-hidden w-full`,
@@ -25,19 +25,27 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
       material: `divide-x ${colors.divideMaterial}`,
     },
     strong: {
-      common: cls('p-0.5 gap-1 relative'),
-      ios: colors.strongBgIos,
-      material: colors.strongBgMaterial,
+      common: cls('gap-1 relative'),
+      ios: cls(!navbar && colors.strongBgIos, navbar ? 'p-1' : 'p-0.5'),
+      material: cls('p-0.5', colors.strongBgMaterial),
     },
     strongHighlight: {
       common: cls(
-        'absolute start-0.5 top-0.5 bottom-0.5 !ms-0 pointer-events-none duration-200',
+        'absolute !ms-0 pointer-events-none duration-200',
         rounded && 'rounded-full',
         `shadow`,
         darkClasses('dark:touch-ripple-white')
       ),
-      ios: cls(!rounded && 'rounded', colors.strongHighlightBgIos),
-      material: cls(!rounded && 'rounded-md', colors.strongHighlightBgMaterial),
+      ios: cls(
+        navbar ? 'start-1 top-1 bottom-1' : 'start-0.5 top-0.5 bottom-0.5',
+        !rounded && 'rounded',
+        colors.strongHighlightBgIos
+      ),
+      material: cls(
+        'start-0.5 top-0.5 bottom-0.5',
+        !rounded && 'rounded-md',
+        colors.strongHighlightBgMaterial
+      ),
     },
   };
 };

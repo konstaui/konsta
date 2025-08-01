@@ -21,6 +21,8 @@ export const ButtonColors = (colorsProp = {}, dark) => {
       'border-md-light-outline',
       dark('dark:border-md-dark-outline')
     ),
+    segmentedStrongTextIos: 'text-black',
+    segmentedStrongTextMaterial: '',
     tonalBgIos: 'bg-primary/15 active:bg-primary/25',
     tonalBgMaterial: cls(
       'bg-md-light-secondary-container',

@@ -8,7 +8,7 @@ export const SegmentedColors = (colorsProp = {}, dark) => {
       dark('dark:bg-md-dark-surface-3')
     ),
 
-    strongHighlightBgIos: cls('bg-white', dark('dark:bg-white/15')),
+    strongHighlightBgIos: cls('bg-white', dark('dark:bg-white/75')),
     strongHighlightBgMaterial: cls('bg-white', dark('dark:bg-white/15')),
 
     borderIos: 'border-primary',

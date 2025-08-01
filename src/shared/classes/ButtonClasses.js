@@ -79,7 +79,10 @@ export const ButtonClasses = (props, colors, darkClasses) => {
         'active:bg-black/10',
         darkClasses('dark:active:bg-white/5 dark:touch-ripple-white')
       ),
-      segmentedStrongActive: 'duration-0',
+      segmentedStrongActive: {
+        ios: cls('duration-200', colors.segmentedStrongTextIos),
+        material: cls('duration-0', colors.segmentedStrongTextMaterial),
+      },
     },
     size: {
       small: {

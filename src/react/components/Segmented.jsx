@@ -7,6 +7,8 @@ import { SegmentedColors } from '../../shared/colors/SegmentedColors.js';
 import { getThemeSpecificProps } from '../shared/get-theme-specific-props.js';
 import { useTheme } from '../shared/use-theme.js';
 import { SegmentedContext } from './SegmentedContext.jsx';
+import { useNavbarContext } from './NavbarContext.jsx';
+import Glass from './Glass.jsx';
 
 const Segmented = (props) => {
   const {
@@ -46,8 +48,6 @@ const Segmented = (props) => {
     width: '',
   });
 
-  const Component = component;
-
   const attrs = {
     ...rest,
   };
@@ -67,10 +67,13 @@ const Segmented = (props) => {
     },
     props
   );
+  const { navbar } = useNavbarContext();
 
   const c = themeClasses(
-    SegmentedClasses({ ...props, ...themeProps }, colors, dark)
+    SegmentedClasses({ ...props, ...themeProps, navbar }, colors, dark)
   );
+
+  const Component = theme === 'ios' && navbar ? Glass : component;
 
   const classes = cls(
     // base
@@ -91,7 +94,7 @@ const Segmented = (props) => {
       );
 
       const between = '4px';
-      const padding = '2px';
+      const padding = theme === 'ios' && navbar ? '4px' : '2px';
 
       setHighlightStyle({
         ...highlightStyle,
