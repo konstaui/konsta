@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
-  const { iconOnly, tabbar, tabbarLabels, tabbarIcons } = props;
+  const { iconOnly, tabbar, tabbarLabels, tabbarIcons, toolbar } = props;
   return {
     base: {
       common: cls(

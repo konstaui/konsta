@@ -19,11 +19,9 @@
 
   // Toolbar/navbar link
   export let navbar = false;
-  export let toolbar = false;
 
   export let iconOnly = false;
 
-  export let tabbar = false;
   export let tabbarActive = false;
 
   export let touchRipple = undefined;

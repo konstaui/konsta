@@ -49,11 +49,9 @@
 
       // Toolbar/navbar link
       navbar: Boolean,
-      toolbar: Boolean,
 
       iconOnly: Boolean,
 
-      tabbar: Boolean,
       tabbarActive: Boolean,
 
       touchRipple: { type: Boolean, default: undefined },

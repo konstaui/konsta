@@ -9,6 +9,8 @@ export const LinkColors = (colorsProp = {}, dark) => {
     ),
     navbarTextIos: 'text-primary',
     navbarTextMaterial: '',
+    toolbarTextIos: '',
+    toolbarTextMaterial: '',
     ...colorsProp,
   };
 };
