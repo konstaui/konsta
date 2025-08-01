@@ -58,7 +58,7 @@ export default function DialogPage() {
             <DialogButton onClick={() => setBasicOpened(false)}>
               Action 2
             </DialogButton>
-            <DialogButton onClick={() => setBasicOpened(false)}>
+            <DialogButton strong onClick={() => setBasicOpened(false)}>
               Action 1
             </DialogButton>
           </>
@@ -70,7 +70,9 @@ export default function DialogPage() {
         title="Konsta UI"
         content="Hello world!"
         buttons={
-          <DialogButton onClick={() => setAlertOpened(false)}>Ok</DialogButton>
+          <DialogButton strong onClick={() => setAlertOpened(false)}>
+            Ok
+          </DialogButton>
         }
       />
       <Dialog
@@ -134,7 +136,7 @@ export default function DialogPage() {
           </List>
         }
         buttons={
-          <DialogButton onClick={() => setListOpened(false)}>
+          <DialogButton strong onClick={() => setListOpened(false)}>
             Confirm
           </DialogButton>
         }

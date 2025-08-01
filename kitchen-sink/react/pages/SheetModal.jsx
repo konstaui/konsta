@@ -10,6 +10,7 @@ import {
   ToolbarPane,
   Link,
 } from 'konsta/react';
+import CloseIcon from '../components/CloseIcon';
 
 export default function SheetModalPage() {
   const isPreview = document.location.href.includes('examplePreview');
@@ -40,8 +41,11 @@ export default function SheetModalPage() {
         onBackdropClick={() => setSheetOpened(false)}
       >
         <Toolbar top className="justify-end ios:pt-4">
+          <div className="ios:hidden" />
           <ToolbarPane>
-            <Link onClick={() => setSheetOpened(false)}>Done</Link>
+            <Link iconOnly onClick={() => setSheetOpened(false)}>
+              <CloseIcon />
+            </Link>
           </ToolbarPane>
         </Toolbar>
         <Block className="ios:mt-4">

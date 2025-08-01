@@ -16,22 +16,60 @@ export default function SubnavbarPage() {
         title="Subnavbar"
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
         subnavbar={
-          <Segmented strong>
-            <SegmentedButton small strong active>
-              Button
-            </SegmentedButton>
-            <SegmentedButton small strong>
-              Button
-            </SegmentedButton>
-            <SegmentedButton small strong>
-              Button
-            </SegmentedButton>
+          <Segmented strong rounded>
+            <SegmentedButton active>Button</SegmentedButton>
+            <SegmentedButton>Button</SegmentedButton>
+            <SegmentedButton>Button</SegmentedButton>
           </Segmented>
         }
       />
       <div className="relative">
-        <Block strongIos outlineIos>
+        <Block strong inset>
           <p>
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
+            Subnavbar is useful when you need to put any additional elements
             Subnavbar is useful when you need to put any additional elements
             into Navbar, like Tab Links or Search Bar. It also remains visible
             when Navbar hidden.

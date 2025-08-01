@@ -9,6 +9,7 @@ import {
   Link,
   Button,
 } from 'konsta/react';
+import CloseIcon from '../components/CloseIcon';
 
 export default function SidePanelsPage() {
   const isPreview = document.location.href.includes('examplePreview');
@@ -59,8 +60,8 @@ export default function SidePanelsPage() {
           <Navbar
             title="Left Panel"
             right={
-              <Link navbar onClick={() => setLeftPanelOpened(false)}>
-                Close
+              <Link iconOnly onClick={() => setLeftPanelOpened(false)}>
+                <CloseIcon />
               </Link>
             }
           />
@@ -91,8 +92,8 @@ export default function SidePanelsPage() {
           <Navbar
             title="Right Panel"
             right={
-              <Link navbar onClick={() => setRightPanelOpened(false)}>
-                Close
+              <Link iconOnly onClick={() => setRightPanelOpened(false)}>
+                <CloseIcon />
               </Link>
             }
           />
@@ -127,8 +128,8 @@ export default function SidePanelsPage() {
           <Navbar
             title="Left Panel"
             right={
-              <Link navbar onClick={() => setLeftFloatingPanelOpened(false)}>
-                Close
+              <Link iconOnly onClick={() => setLeftFloatingPanelOpened(false)}>
+                <CloseIcon />
               </Link>
             }
           />
@@ -163,8 +164,8 @@ export default function SidePanelsPage() {
           <Navbar
             title="Right Panel"
             right={
-              <Link navbar onClick={() => setRightFloatingPanelOpened(false)}>
-                Close
+              <Link iconOnly onClick={() => setRightFloatingPanelOpened(false)}>
+                <CloseIcon />
               </Link>
             }
           />

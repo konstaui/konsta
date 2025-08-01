@@ -8,6 +8,7 @@ import {
   Link,
   Button,
 } from 'konsta/react';
+import CloseIcon from '../components/CloseIcon';
 
 export default function PopupPage() {
   const isPreview = document.location.href.includes('examplePreview');
@@ -37,12 +38,12 @@ export default function PopupPage() {
           <Navbar
             title="Popup"
             right={
-              <Link navbar onClick={() => setPopupOpened(false)}>
-                Close
+              <Link iconOnly onClick={() => setPopupOpened(false)}>
+                <CloseIcon />
               </Link>
             }
           />
-          <Block className="space-y-4">
+          <Block strong inset className="space-y-4">
             <p>
               Here comes popup. You can put here anything, even independent view
               with its own navigation. Also not, that by default popup looks a

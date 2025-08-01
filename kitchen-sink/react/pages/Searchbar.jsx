@@ -64,7 +64,7 @@ export default function SearchbarPage() {
           />
         }
       />
-      <List strong insetMaterial outlineIos>
+      <List strong inset>
         {filteredItems.length === 0 ? (
           <ListItem title="Nothing found" className="text-center" />
         ) : (
