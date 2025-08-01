@@ -23,17 +23,15 @@ export default function HomePage({
   monochrome,
   setMonochrome,
 }) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    document.documentElement.classList.contains('dark')
+  );
   const [colorPickerOpened, setColorPickerOpened] = useState(false);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
     document.documentElement.classList.toggle('dark');
   };
-
-  useLayoutEffect(() => {
-    setDarkMode(document.documentElement.classList.contains('dark'));
-  });
 
   return (
     <Page>
