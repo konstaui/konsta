@@ -8,6 +8,7 @@ export const NavbarClasses = (props, colors) => {
     transparent,
     left,
     right,
+    subnavbar,
     fontSizeIos,
     fontSizeMaterial,
     titleFontSizeIos,
@@ -47,14 +48,20 @@ export const NavbarClasses = (props, colors) => {
     },
     bgBlur: {
       ios: cls(
-        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)] backdrop-blur-[2px] absolute left-0 top-0 w-full mask-b-from-50% mask-b-to-100% pointer-events-none'
+        'backdrop-blur-[2px] absolute left-0 top-0 w-full  mask-b-to-100% pointer-events-none mask-b-from-50%',
+        subnavbar
+          ? 'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+70px_+_16px)]'
+          : 'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)]'
       ),
     },
     bg: {
       common: cls('absolute w-full left-0 top-0', bgClassName || bgClass),
       ios: cls(
         colors.bgIos,
-        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)] pointer-events-none'
+        'pointer-events-none',
+        subnavbar
+          ? 'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+70px_+_16px)]'
+          : 'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)]'
       ),
       material: cls('h-full', colors.bgMaterial, outline && 'hairline-b'),
     },
@@ -64,7 +71,7 @@ export const NavbarClasses = (props, colors) => {
         subnavbarClassName || subnavbarClass,
         (large || medium) && 'pointer-events-auto'
       ),
-      ios: 'h-11 pl-safe-4 pr-safe-4',
+      ios: 'h-14 pl-safe-4 pr-safe-4',
       material: 'h-14 pl-safe-4 pr-safe-4',
     },
     inner: {
