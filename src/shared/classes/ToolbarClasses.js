@@ -12,20 +12,39 @@ export const ToolbarClasses = (props, colors) => {
     tabbarLabels,
     top,
   } = props;
+  const iosToolbarHeight = tabbarIcons && tabbarLabels ? '64px' : '48px';
   return {
     base: {
       common: cls(`w-full z-20 relative`),
       ios: cls(!top && 'pb-safe-4', 'px-safe-4 flex justify-center'),
       material: cls(!top && 'pb-safe'),
     },
+    bgBlur: {
+      ios:
+        !top &&
+        cls(
+          cls(
+            tabbarIcons && tabbarLabels
+              ? 'h-[calc(var(--k-safe-area-bottom)_+16px_+_64px_+_16px)]'
+              : 'h-[calc(var(--k-safe-area-bottom)_+16px_+_48px_+_16px)]'
+          ),
+          'backdrop-blur-[2px] absolute left-0 bottom-0 w-full mask-t-from-50% mask-t-to-100%'
+        ),
+    },
     bg: {
-      common: cls(
-        'absolute w-full h-full left-0 top-0',
-        bgClassName || bgClass
-      ),
-      ios: cls(''),
+      common: cls(bgClassName || bgClass),
+      ios:
+        !top &&
+        cls(
+          colors.bgIos,
+          'bottom-0 absolute w-full left-0',
+          tabbarIcons && tabbarLabels
+            ? 'h-[calc(var(--k-safe-area-bottom)_+16px_+_64px_+_16px)]'
+            : 'h-[calc(var(--k-safe-area-bottom)_+16px_+_48px_+_16px)]'
+        ),
       material: cls(
-        `${colors.bgMaterial}`,
+        colors.bgMaterial,
+        'h-full top-0 absolute w-full left-0',
         outline && (top ? 'hairline-b' : 'hairline-t')
       ),
     },

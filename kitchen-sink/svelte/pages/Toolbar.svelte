@@ -25,7 +25,7 @@
   <Toolbar
     top={isTop}
     class={`left-0 ${
-      isTop ? 'ios:top-11-safe material:top-14-safe sticky' : 'bottom-0 fixed'
+      isTop ? 'ios:top-safe-15 material:top-safe-14 sticky' : 'bottom-0 fixed'
     } w-full`}
   >
     <Link>Link 1</Link>

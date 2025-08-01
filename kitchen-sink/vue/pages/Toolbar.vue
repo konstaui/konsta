@@ -9,7 +9,7 @@
     <k-toolbar
       :top="isTop"
       :class="`left-0 ${
-        isTop ? 'ios:top-11-safe material:top-14-safe sticky' : 'bottom-0 fixed'
+        isTop ? 'ios:top-safe-15 material:top-safe-14 sticky' : 'bottom-0 fixed'
       } w-full`"
     >
       <k-link toolbar>Link 1</k-link>

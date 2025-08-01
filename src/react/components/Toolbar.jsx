@@ -94,7 +94,8 @@ const Toolbar = (props) => {
       <ToolbarContext.Provider
         value={{ toolbar: true, tabbarLabels, tabbarIcons, tabbar }}
       >
-        <div className={c.bg} />
+        {theme === 'ios' && !top && <div className={c.bgBlur} />}
+        {(theme === 'material' || !top) && <div className={c.bg} />}
         <div className={c.inner}>{children}</div>
         {hasHighlight && (
           <span
