@@ -4,6 +4,7 @@ import { RangeClasses } from '../../shared/classes/RangeClasses.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { RangeColors } from '../../shared/colors/RangeColors.js';
+import { useTheme } from '../shared/use-theme.js';
 
 const Range = (props) => {
   const {
@@ -45,7 +46,7 @@ const Range = (props) => {
   const attrs = {
     ...rest,
   };
-
+  const theme = useTheme();
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
@@ -94,7 +95,22 @@ const Range = (props) => {
       {...attrs}
     >
       <span ref={trackBgRef} className={c.trackBg} />
-      <span className={c.trackValue} style={{ width: `${valueWidth}%` }} />
+      <span
+        className={c.trackValue}
+        style={{
+          width:
+            theme === 'ios' ? `${valueWidth}%` : `calc(${thumbOffset * 100}%)`,
+        }}
+      />
+      {theme === 'material' && (
+        <>
+          <span
+            className={c.trackEmpty}
+            style={{ width: `calc(${100 - thumbOffset * 100}% - 16px)` }}
+          />
+          <span className={c.stop} />
+        </>
+      )}
       <input
         className={cls(c.input, c.inputThumb, c.inputTrack)}
         type="range"
@@ -117,7 +133,8 @@ const Range = (props) => {
         className={c.thumbWrap}
         ref={thumbWrapRef}
       >
-        <span className={c.thumbShadow} />
+        {theme === 'ios' && <span className={c.thumbShadow} />}
+
         <span className={c.thumb} />
       </span>
     </Component>
