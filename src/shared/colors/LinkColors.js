@@ -7,10 +7,13 @@ export const LinkColors = (colorsProp = {}, dark) => {
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')
     ),
-    navbarTextIos: 'text-primary',
+    navbarTextIos: '',
     navbarTextMaterial: '',
     toolbarTextIos: '',
-    toolbarTextMaterial: '',
+    toolbarTextMaterial: cls(
+      'text-md-light-primary',
+      dark('dark:text-md-dark-primary')
+    ),
     ...colorsProp,
   };
 };

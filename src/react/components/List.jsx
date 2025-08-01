@@ -6,6 +6,7 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { ListColors } from '../../shared/colors/ListColors.js';
 import { ListDividersContext } from '../shared/ListDividersContext.js';
+import { getThemeSpecificProps } from '../shared/get-theme-specific-props.js';
 
 const List = (props) => {
   const {
@@ -52,30 +53,21 @@ const List = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const hasDividers =
-    typeof dividers === 'undefined'
-      ? theme === 'ios'
-        ? dividersIos
-        : dividersMaterial
-      : dividers;
-  const isStrong =
-    typeof strong === 'undefined'
-      ? theme === 'ios'
-        ? strongIos
-        : strongMaterial
-      : strong;
-  const isOutline =
-    typeof outline === 'undefined'
-      ? theme === 'ios'
-        ? outlineIos
-        : outlineMaterial
-      : outline;
-  const isInset =
-    typeof inset === 'undefined'
-      ? theme === 'ios'
-        ? insetIos
-        : insetMaterial
-      : inset;
+  const {
+    strong: isStrong,
+    outline: isOutline,
+    inset: isInset,
+    dividers: hasDividers,
+  } = getThemeSpecificProps(
+    theme,
+    {
+      strong,
+      outline,
+      inset,
+      dividers,
+    },
+    props
+  );
 
   const colors = ListColors(colorsProp, dark);
 

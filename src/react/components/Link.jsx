@@ -7,6 +7,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { LinkClasses } from '../../shared/classes/LinkClasses.js';
 import { LinkColors } from '../../shared/colors/LinkColors.js';
 import { useToolbarContext } from './ToolbarContext.jsx';
+import { useNavbarContext } from './NavbarContext.jsx';
 
 const Link = (props) => {
   const {
@@ -14,8 +15,6 @@ const Link = (props) => {
     className,
     colors: colorsProp,
     ref,
-    // Toolbar/navbar link
-    navbar,
 
     iconOnly,
     linkProps = {},
@@ -34,7 +33,7 @@ const Link = (props) => {
     // Rest
     ...rest
   } = props;
-
+  const { navbar } = useNavbarContext();
   const { toolbar, tabbar, tabbarLabels, tabbarIcons } = useToolbarContext();
 
   const rippleElRef = useRef(null);
@@ -60,7 +59,7 @@ const Link = (props) => {
   const colors = LinkColors(colorsProp, dark);
 
   // prettier-ignore
-  const themeTextColor = props.navbar ?
+  const themeTextColor = navbar ?
     (
       theme === 'material' ? colors.navbarTextMaterial : colors.navbarTextIos
     ) :

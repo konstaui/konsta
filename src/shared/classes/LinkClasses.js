@@ -27,12 +27,13 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
       inactive: '',
     },
     toolbar: {
-      common: cls(`h-full max-h-12`, iconOnly && 'k-touch-ripple-inset'),
+      common: cls(`h-full`, iconOnly && 'k-touch-ripple-inset'),
       ios: cls(!iconOnly && 'px-4 truncate'),
-      material: 'px-3 text-sm font-medium',
+      material: 'px-3 text-sm font-medium max-h-12',
     },
     navbar: {
       common: cls(`h-full max-h-12`, iconOnly && 'k-touch-ripple-inset'),
+      ios: 'px-4',
       material: 'px-3',
     },
   };

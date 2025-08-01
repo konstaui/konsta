@@ -30,12 +30,6 @@ interface Props {
      */
     navbarTextMaterial?: string;
   };
-  /**
-   * Should be enabled if Link is in the Navbar
-   *
-   * @default false
-   * */
-  navbar?: boolean;
 
   /**
    * Enable if Link doesn't contain anything except icon
