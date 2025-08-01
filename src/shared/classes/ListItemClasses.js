@@ -143,7 +143,7 @@ export const ListItemClasses = (
       } ${colors.groupTitleBgIos} ${
         contacts &&
         cls(
-          'font-semibold top-safe-11 sticky',
+          'font-semibold top-safe-15 sticky',
           colors.groupTitleContactsTextIos,
           colors.groupTitleContactsBgIos
         )

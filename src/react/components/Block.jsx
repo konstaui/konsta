@@ -5,6 +5,7 @@ import { BlockColors } from '../../shared/colors/BlockColors.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
+import { getThemeSpecificProps } from '../shared/get-theme-specific-props.js';
 
 const Block = (props) => {
   const {
@@ -52,25 +53,19 @@ const Block = (props) => {
 
   const colors = BlockColors(colorsProp, dark);
 
-  const isStrong =
-    typeof strong === 'undefined'
-      ? theme === 'ios'
-        ? strongIos
-        : strongMaterial
-      : strong;
-
-  const isOutline =
-    typeof outline === 'undefined'
-      ? theme === 'ios'
-        ? outlineIos
-        : outlineMaterial
-      : outline;
-  const isInset =
-    typeof inset === 'undefined'
-      ? theme === 'ios'
-        ? insetIos
-        : insetMaterial
-      : inset;
+  const {
+    strong: isStrong,
+    outline: isOutline,
+    inset: isInset,
+  } = getThemeSpecificProps(
+    theme,
+    {
+      strong,
+      outline,
+      inset,
+    },
+    props
+  );
 
   const c = themeClasses(
     BlockClasses(
