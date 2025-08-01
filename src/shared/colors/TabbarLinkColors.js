@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const TabbarLinkColors = (colorsProp = {}, dark) => {
   return {
@@ -19,6 +20,6 @@ export const TabbarLinkColors = (colorsProp = {}, dark) => {
       'bg-md-light-secondary-container',
       dark('dark:bg-md-dark-secondary-container')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

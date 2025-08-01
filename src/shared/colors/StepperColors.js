@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const StepperColors = (colorsProp = {}, dark) => {
   return {
@@ -22,6 +23,6 @@ export const StepperColors = (colorsProp = {}, dark) => {
       dark('dark:border-md-dark-outline')
     ),
     touchRipple: 'touch-ripple-primary',
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

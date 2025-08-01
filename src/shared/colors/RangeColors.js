@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const RangeColors = (colorsProp = {}, dark) => {
   return {
@@ -12,6 +13,6 @@ export const RangeColors = (colorsProp = {}, dark) => {
       'bg-md-light-primary',
       dark('dark:bg-md-dark-primary')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

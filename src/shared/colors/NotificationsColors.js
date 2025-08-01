@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const NotificationsColors = (colorsProp, dark) => {
   return {
@@ -25,6 +26,6 @@ export const NotificationsColors = (colorsProp, dark) => {
       'text-md-light-on-surface-variant',
       dark('dark:text-md-dark-on-surface-variant')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

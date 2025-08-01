@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ActionsLabelColors = (colorsProp = {}, dark) => {
   return {
@@ -9,6 +10,6 @@ export const ActionsLabelColors = (colorsProp = {}, dark) => {
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

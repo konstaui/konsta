@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const BlockColors = (colorsProp = {}, dark) => {
   return {
@@ -20,6 +21,6 @@ export const BlockColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface',
       dark('dark:text-md-dark-on-surface')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

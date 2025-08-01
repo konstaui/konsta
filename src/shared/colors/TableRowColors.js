@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const TableRowColors = (colorsProp = {}, dark) => {
   return {
@@ -11,6 +12,6 @@ export const TableRowColors = (colorsProp = {}, dark) => {
       'border-md-light-outline',
       dark('dark:border-md-dark-outline')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

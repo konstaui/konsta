@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const PreloaderColors = (colorsProp = {}, dark) => {
   return {
@@ -7,6 +8,6 @@ export const PreloaderColors = (colorsProp = {}, dark) => {
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

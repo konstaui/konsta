@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const LinkColors = (colorsProp = {}, dark) => {
   return {
@@ -14,6 +15,6 @@ export const LinkColors = (colorsProp = {}, dark) => {
       'text-md-light-primary',
       dark('dark:text-md-dark-primary')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const RadioColors = (colorsProp = {}, dark) => {
   return {
@@ -17,6 +18,6 @@ export const RadioColors = (colorsProp = {}, dark) => {
       'border-md-light-primary',
       dark('dark:border-md-dark-primary')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

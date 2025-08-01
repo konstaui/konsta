@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ButtonColors = (colorsProp = {}, dark) => {
   return {
@@ -37,6 +38,6 @@ export const ButtonColors = (colorsProp = {}, dark) => {
     disabledText: cls('text-black/30', dark('dark:text-white/30')),
     disabledBg: cls('bg-black/10', dark('dark:bg-white/10')),
     disabledBorder: cls('border-black/10', dark('dark:border-white/10')),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

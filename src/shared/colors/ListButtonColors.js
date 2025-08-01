@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ListButtonColors = (colorsProp = {}, dark) => {
   return {
@@ -10,6 +11,6 @@ export const ListButtonColors = (colorsProp = {}, dark) => {
     bgIos: 'active:bg-primary/15',
     bgMaterial: '',
     touchRipple: 'touch-ripple-primary',
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const CardColors = (colorsProp = {}, dark) => {
   return {
@@ -19,6 +20,6 @@ export const CardColors = (colorsProp = {}, dark) => {
       'border-md-light-outline',
       dark('dark:border-md-dark-outline')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ListItemColors = (colorsProp = {}, dark) => {
   return {
@@ -59,6 +60,6 @@ export const ListItemColors = (colorsProp = {}, dark) => {
       'bg-transparent',
       dark('dark:bg-transparent')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

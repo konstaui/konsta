@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const PanelColors = (colorsProp = {}, dark) => {
   return {
@@ -9,6 +10,6 @@ export const PanelColors = (colorsProp = {}, dark) => {
       'bg-md-light-surface',
       dark('dark:bg-md-dark-surface')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

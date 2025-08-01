@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ActionsButtonColors = (colorsProp = {}, dark) => {
   return {
@@ -11,6 +12,6 @@ export const ActionsButtonColors = (colorsProp = {}, dark) => {
       'text-md-light-on-surface',
       dark('dark:text-md-dark-on-surface')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

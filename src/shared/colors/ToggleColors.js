@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ToggleColors = (colorsProp = {}, dark) => {
   return {
@@ -34,6 +35,6 @@ export const ToggleColors = (colorsProp = {}, dark) => {
       dark('dark:bg-md-dark-on-primary')
     ),
 
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

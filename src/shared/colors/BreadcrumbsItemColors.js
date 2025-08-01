@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const BreadcrumbsItemColors = (colorsProp = {}, dark) => {
   return {
@@ -17,6 +18,6 @@ export const BreadcrumbsItemColors = (colorsProp = {}, dark) => {
       'text-md-light-on-secondary-container',
       dark('dark:text-md-dark-on-secondary-container')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

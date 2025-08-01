@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const FabColors = (colorsProp = {}, dark) => {
   return {
@@ -15,6 +16,6 @@ export const FabColors = (colorsProp = {}, dark) => {
       dark('dark:text-md-dark-on-primary-container')
     ),
     touchRipple: cls('touch-ripple-primary', dark('dark:touch-ripple-white')),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

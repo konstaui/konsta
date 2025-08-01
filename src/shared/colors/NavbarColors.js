@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const NavbarColors = (colorsProp, dark) => {
   return {
@@ -12,6 +13,6 @@ export const NavbarColors = (colorsProp, dark) => {
       'text-md-light-on-surface',
       dark('dark:text-md-dark-on-surface')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

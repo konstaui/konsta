@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const BreadcrumbsCollapsedColors = (colorsProp = {}, dark) => {
   return {
@@ -9,6 +10,6 @@ export const BreadcrumbsCollapsedColors = (colorsProp = {}, dark) => {
     ),
     dotBgIos: cls('bg-black', dark('dark:bg-white')),
     dotBgMaterial: cls('bg-md-light-primary', dark('dark:bg-md-dark-primary')),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

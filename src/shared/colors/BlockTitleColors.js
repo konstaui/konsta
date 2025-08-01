@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const BlockTitleColors = (colorsProp = {}, dark) => {
   return {
@@ -13,6 +14,6 @@ export const BlockTitleColors = (colorsProp = {}, dark) => {
     largeTextIos: cls('text-black', dark('dark:text-white')),
     largeTextMaterial: '',
 
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

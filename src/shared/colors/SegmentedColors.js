@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const SegmentedColors = (colorsProp = {}, dark) => {
   return {
@@ -21,6 +22,6 @@ export const SegmentedColors = (colorsProp = {}, dark) => {
       'divide-md-light-outline',
       dark('dark:divide-md-dark-outline')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

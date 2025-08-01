@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const SearchbarColors = (colorsProp = {}, dark) => {
   return {
@@ -12,6 +13,6 @@ export const SearchbarColors = (colorsProp = {}, dark) => {
       'placeholder-md-light-on-surface-variant',
       dark('dark:placeholder-md-dark-on-surface-variant')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

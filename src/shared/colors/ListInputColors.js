@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ListInputColors = (colorsProp = {}, dark) => {
   return {
@@ -37,6 +38,6 @@ export const ListInputColors = (colorsProp = {}, dark) => {
     ),
     errorText: 'text-red-500',
     errorBorder: 'border-red-500',
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };

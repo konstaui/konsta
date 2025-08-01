@@ -5,7 +5,7 @@ export const ActionsButtonClasses = (props, colors, darkClasses) => {
   return {
     base: {
       common: cls(
-        `flex items-center w-full px-4 relative z-10 overflow-hidden`,
+        `flex items-center w-full px-4 relative z-10 overflow-hidden select-none`,
         dividers && 'hairline-b'
       ),
       ios: cls(

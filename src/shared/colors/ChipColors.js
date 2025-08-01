@@ -1,4 +1,5 @@
 import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ChipColors = (colorsProp = {}, dark) => {
   return {
@@ -22,6 +23,6 @@ export const ChipColors = (colorsProp = {}, dark) => {
       `border-md-light-outline`,
       dark('dark:border-md-dark-outline')
     ),
-    ...colorsProp,
+    ...filterColors(colorsProp),
   };
 };
