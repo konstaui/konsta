@@ -28,7 +28,7 @@ export const ToolbarClasses = (props, colors) => {
               ? 'h-[calc(var(--k-safe-area-bottom)_+16px_+_64px_+_16px)]'
               : 'h-[calc(var(--k-safe-area-bottom)_+16px_+_48px_+_16px)]'
           ),
-          'backdrop-blur-[2px] absolute left-0 bottom-0 w-full mask-t-from-50% mask-t-to-100%'
+          'backdrop-blur-[2px] absolute left-0 bottom-0 w-full mask-t-from-50% mask-t-to-100% pointer-events-none'
         ),
     },
     bg: {
@@ -37,7 +37,7 @@ export const ToolbarClasses = (props, colors) => {
         !top &&
         cls(
           colors.bgIos,
-          'bottom-0 absolute w-full left-0',
+          'bottom-0 absolute w-full left-0 pointer-events-none',
           tabbarIcons && tabbarLabels
             ? 'h-[calc(var(--k-safe-area-bottom)_+16px_+_64px_+_16px)]'
             : 'h-[calc(var(--k-safe-area-bottom)_+16px_+_48px_+_16px)]'

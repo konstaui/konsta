@@ -47,14 +47,14 @@ export const NavbarClasses = (props, colors) => {
     },
     bgBlur: {
       ios: cls(
-        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)] backdrop-blur-[2px] absolute left-0 top-0 w-full mask-b-from-50% mask-b-to-100%'
+        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)] backdrop-blur-[2px] absolute left-0 top-0 w-full mask-b-from-50% mask-b-to-100% pointer-events-none'
       ),
     },
     bg: {
       common: cls('absolute w-full left-0 top-0', bgClassName || bgClass),
       ios: cls(
         colors.bgIos,
-        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)]'
+        'h-[calc(max(16px,var(--k-safe-area-top))_+_44px_+_16px)] pointer-events-none'
       ),
       material: cls('h-full', colors.bgMaterial, outline && 'hairline-b'),
     },
