@@ -1,7 +1,8 @@
 import { cls } from '../cls.js';
 
 export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
-  const { iconOnly, tabbar, tabbarLabels, tabbarIcons, toolbar } = props;
+  const { iconOnly, tabbar, tabbarLabels, tabbarIcons, toolbar, navbar } =
+    props;
   return {
     base: {
       common: cls(
@@ -9,10 +10,12 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
         `inline-flex gap-1 justify-center items-center cursor-pointer select-none`,
         needsTouchRipple && `touch-ripple-primary relative z-10`
       ),
-      notTabbar: {
-        ios: `active:opacity-30 duration-300 active:duration-0`,
-        material: needsTouchRipple ? '' : `active:opacity-55`,
-      },
+      ios: cls(
+        !toolbar &&
+          !navbar &&
+          'active:opacity-30 duration-300 active:duration-0'
+      ),
+      material: !tabbar && cls(needsTouchRipple ? '' : `active:opacity-55`),
     },
     tabbar: {
       common: cls(`w-full h-full duration-300 transition-colors relative`),
@@ -28,12 +31,12 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
     },
     toolbar: {
       common: cls(`h-full`, iconOnly && 'k-touch-ripple-inset'),
-      ios: cls(!iconOnly && 'px-4 truncate'),
+      ios: cls(!iconOnly && 'px-4 truncate', iconOnly && 'aspect-square'),
       material: 'px-3 text-sm font-medium max-h-12',
     },
     navbar: {
       common: cls(`h-full max-h-12`, iconOnly && 'k-touch-ripple-inset'),
-      ios: 'px-4',
+      ios: cls(!iconOnly && 'px-4', iconOnly && 'aspect-square'),
       material: 'px-3',
     },
   };

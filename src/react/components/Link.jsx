@@ -80,7 +80,7 @@ const Link = (props) => {
 
   const classes = cls(
     // base
-    c.base[tabbar ? 'default' : 'notTabbar'],
+    c.base,
 
     toolbar && c.toolbar,
 
