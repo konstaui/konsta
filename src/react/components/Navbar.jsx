@@ -77,7 +77,7 @@ const Navbar = (props) => {
 
   const colors = NavbarColors(colorsProp, dark);
 
-  const isTransparent = theme === 'material' && transparent;
+  const isTransparent = transparent;
 
   const onScroll = (e) => {
     const { scrollTop } = e.target;

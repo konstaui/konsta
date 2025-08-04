@@ -62,7 +62,7 @@ export default function FabPage() {
         textPosition="after"
       />
 
-      <Block className="space-y-4">
+      <Block strong inset className="space-y-4">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quo
           rem beatae, delectus eligendi est saepe molestias perferendis
@@ -94,7 +94,7 @@ export default function FabPage() {
           assumenda veniam, ipsum alias.
         </p>
       </Block>
-      <Block className="space-y-4">
+      <Block strong inset className="space-y-4">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ipsa
           debitis sed nihil eaque dolore cum iste quibusdam, accusamus

@@ -5,7 +5,7 @@ export const CardClasses = (props, colors) => {
   return {
     base: {
       common: cls(`k-card overflow-hidden m-4`),
-      ios: cls('rounded-lg', colors.bgIos, colors.textIos),
+      ios: cls('rounded-3xl', colors.bgIos, colors.textIos),
       material: cls('rounded-2xl', colors.bgMaterial, colors.textMaterial),
       plain: '',
       raised: 'shadow',

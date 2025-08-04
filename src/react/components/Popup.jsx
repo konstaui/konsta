@@ -40,7 +40,7 @@ const Popup = (props) => {
 
   const colors = PopupColors(colorsProp, dark);
 
-  const c = themeClasses(PopupClasses({ ...props, size }, colors), className);
+  const c = themeClasses(PopupClasses({ ...props }, colors), className);
 
   return (
     <>

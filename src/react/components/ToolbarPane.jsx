@@ -109,6 +109,8 @@ const ToolbarPane = (props) => {
 
   const unsetHighlightOnTouch = () => {
     if (!hasTabbarLinks) return;
+    cancelAnimationFrame(highlightData.current.raf);
+    highlightData.current.setTransform = null;
     highlightInnerRef.current.classList.remove(
       ...c.highlightInnerPressed.split(' ')
     );
@@ -119,7 +121,6 @@ const ToolbarPane = (props) => {
     if (activeIndex !== newActiveIndex) {
       linkEls[newActiveIndex].click();
     }
-
     highlightElRef.current.style.transform = `translateX(${newActiveIndex * 100}%)`;
     highlightElRef.current.style.transitionTimingFunction = '';
 
@@ -152,8 +153,8 @@ const ToolbarPane = (props) => {
   }, [children]);
 
   const onPointer = (e) => {
+    if (e.pointerType !== 'touch') return;
     const data = highlightData.current;
-    // if (e.pointerType !== 'touch') return;
 
     if (e.type === 'pointerdown') {
       data.rect = elRef.current.getBoundingClientRect();

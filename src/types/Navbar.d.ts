@@ -136,7 +136,7 @@ interface Props {
    */
   large?: boolean;
   /**
-   * Material theme only: Renders transparent navbar which becomes opaque on scroll
+   * Renders transparent navbar which becomes opaque on scroll
    *
    * @default false
    */

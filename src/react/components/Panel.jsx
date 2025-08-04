@@ -49,7 +49,7 @@ const Panel = (props) => {
   const colors = PanelColors(colorsProp, dark);
 
   const c = themeClasses(
-    PanelClasses({ ...props, size, floating }, colors),
+    PanelClasses({ ...props, floating }, colors),
     className
   );
 
@@ -71,6 +71,7 @@ const Panel = (props) => {
           component={component}
           ref={setRef}
           className={classes}
+          hoverable={false}
           {...attrs}
         >
           {children}

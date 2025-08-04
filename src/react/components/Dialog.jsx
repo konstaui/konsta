@@ -54,8 +54,6 @@ const Dialog = (props) => {
         ...props,
         titleFontSizeIos,
         titleFontSizeMaterial,
-        sizeIos,
-        sizeMaterial,
       },
       colors,
       dark
@@ -70,6 +68,7 @@ const Dialog = (props) => {
       )}
       <Glass
         component={Component}
+        hoverable={false}
         ref={(el) => {
           elRef.current = el;
           if (ref && typeof ref === 'function') ref(el);

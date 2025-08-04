@@ -42,7 +42,7 @@ const Toast = (props) => {
 
   return (
     <Component ref={elRef} className={c.base[position]} {...attrs}>
-      <Glass className={c.inner}>
+      <Glass hoverable={false} className={c.inner}>
         <div className={c.content}>
           {children}
           {button && <div className={c.button}>{button}</div>}
