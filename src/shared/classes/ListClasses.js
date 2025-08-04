@@ -5,6 +5,7 @@ export const ListClasses = (props, colors) => {
   return {
     base: {
       common: cls(
+        'k-list',
         !nested && margin,
         !inset && !nested && outline && 'hairline-t hairline-b',
         inset && outline && 'border',

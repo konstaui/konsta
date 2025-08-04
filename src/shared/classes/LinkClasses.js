@@ -6,6 +6,7 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
   return {
     base: {
       common: cls(
+        'k-link',
         !tabbar && textColor,
         `inline-flex gap-1 justify-center items-center cursor-pointer select-none`,
         needsTouchRipple && `touch-ripple-primary relative z-10`

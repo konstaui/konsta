@@ -3,7 +3,7 @@ import { cls } from '../cls.js';
 export const CheckboxClasses = (props, colors, darkClasses) => {
   return {
     base: cls(
-      `cursor-pointer inline-flex align-middle relative`,
+      `k-checkbox cursor-pointer inline-flex align-middle relative`,
       darkClasses('dark:touch-ripple-white')
     ),
     iconWrap: {

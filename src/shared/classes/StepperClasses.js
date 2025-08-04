@@ -4,7 +4,7 @@ export const StepperClasses = (props, colors) => {
   const { buttonsOnly, size } = props;
 
   return {
-    base: `${colors.text} inline-flex items-stretch`,
+    base: `k-stepper ${colors.text} inline-flex items-stretch`,
     raised: 'shadow',
     size: {
       small: {

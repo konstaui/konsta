@@ -3,7 +3,7 @@ import { cls } from '../cls.js';
 export const RadioClasses = (props, colors, darkClasses) => {
   return {
     base: cls(
-      `cursor-pointer inline-flex align-middle relative`,
+      `k-radio cursor-pointer inline-flex align-middle relative`,
       darkClasses('dark:touch-ripple-white')
     ),
     iconWrap: {

@@ -4,7 +4,7 @@ export const SegmentedClasses = (props, colors, darkClasses) => {
   const { outline, rounded, navbar } = props;
   return {
     base: {
-      common: `flex justify-center items-center overflow-hidden w-full`,
+      common: `k-segmented flex justify-center items-center overflow-hidden w-full`,
       square: {
         ios: 'rounded',
         material: 'rounded-lg',

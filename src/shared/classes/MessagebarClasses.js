@@ -9,7 +9,7 @@ export const MessagebarClasses = (props, colors, { isFocused }) => {
   } = props;
   return {
     base: {
-      common: 'fixed bottom-0 start-0 w-full',
+      common: 'k-messagebar fixed bottom-0 start-0 w-full',
     },
     toolbar: {
       material: colors.bgMessage,

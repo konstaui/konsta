@@ -36,7 +36,7 @@ export const NavbarClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        `w-full z-20 top-0 sticky`,
+        `k-navbar w-full z-20 top-0 sticky`,
         (large || medium) && 'pointer-events-none'
       ),
       ios: cls(

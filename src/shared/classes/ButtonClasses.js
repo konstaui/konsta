@@ -6,7 +6,7 @@ export const ButtonClasses = (props, colors, darkClasses) => {
   return {
     base: {
       common: cls(
-        'flex text-center justify-center items-center appearance-none py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10 relative',
+        'k-button flex text-center justify-center items-center appearance-none py-1 transition-colors focus:outline-none cursor-pointer select-none overflow-hidden z-10 relative',
         inline ? 'inline-flex' : 'w-full flex',
         disabled && 'pointer-events-none',
         segmentedStrong && segmentedActive && 'k-segmented-strong-button-active'

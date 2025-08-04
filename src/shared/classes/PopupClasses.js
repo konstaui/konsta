@@ -5,7 +5,7 @@ export const PopupClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        'left-1/2 top-1/2 transition-transform transform -translate-x-1/2 z-40 max-w-full max-h-full overflow-hidden md:no-safe-areas fixed',
+        'k-popup left-1/2 top-1/2 transition-transform transform -translate-x-1/2 z-40 max-w-full max-h-full overflow-hidden md:no-safe-areas fixed',
         colors.bg,
         size
       ),

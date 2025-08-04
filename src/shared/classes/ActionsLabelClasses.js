@@ -5,7 +5,7 @@ export const ActionsLabelClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        `flex items-center w-full px-4 relative z-10 overflow-hidden ${colors.activeBg}`,
+        `k-actions-label flex items-center w-full px-4 relative z-10 overflow-hidden ${colors.activeBg}`,
         dividers && 'hairline-b'
       ),
       ios: cls(

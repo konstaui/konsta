@@ -5,6 +5,7 @@ export const PreloaderClasses = (props, colors, theme) => {
   return {
     base: {
       common: cls(
+        'k-preloader',
         theme === 'ios' ? 'k-ios-preloader' : 'k-material-preloader',
         `inline-block ${size}`
       ),

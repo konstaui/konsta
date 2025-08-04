@@ -5,7 +5,7 @@ export const BlockClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        `text-sm z-10 relative`,
+        `k-block text-sm z-10 relative`,
         !inset && !nested && outline && 'hairline-t hairline-b',
         inset && outline && 'border',
         inset && 'px-4',

@@ -5,7 +5,7 @@ export const MessageClasses = (props, colors) => {
   return {
     message: {
       common:
-        'max-w-[70%] box-border flex relative z-1 transform translate-z-0 mb-2 first:mt-2',
+        'k-message max-w-[70%] box-border flex relative z-1 transform translate-z-0 mb-2 first:mt-2',
     },
     messageSent: {
       common: cls('self-end', colors.messageSent),

@@ -9,7 +9,6 @@ const Card = (props) => {
   const {
     component = 'div',
     className,
-    margin = 'm-4',
     colors: colorsProp,
     header,
     footer,
@@ -73,7 +72,6 @@ const Card = (props) => {
     CardClasses(
       {
         ...props,
-        margin,
         contentWrapPadding,
         headerDivider,
         footerDivider,

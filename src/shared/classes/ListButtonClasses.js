@@ -6,6 +6,7 @@ export const ListButtonClasses = (props, colors) => {
     base: ``,
     button: {
       common: cls(
+        'k-list-button',
         dividers && 'hairline-b active:hairline-transparent',
         `flex relative items-center justify-center px-4 gap-1 w-full duration-300 active:duration-0 focus:outline-none ${colors.touchRipple} overflow-hidden select-none`
       ),

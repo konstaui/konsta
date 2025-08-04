@@ -5,7 +5,7 @@ export const PopoverClasses = (props, colors, dark) => {
   return {
     base: {
       common: cls(
-        'transition-(--transition-transform-opacity) z-40 w-60 no-safe-areas fixed translate-3d transform-gpu duration-400'
+        'k-popover transition-(--transition-transform-opacity) z-40 w-60 no-safe-areas fixed translate-3d transform-gpu duration-400'
       ),
       ios: '',
       material: 'ease-material-in',

@@ -8,7 +8,7 @@ export const ListInputClasses = (
   const { error, type, outline, inputClassName = '', inputClass = '' } = props;
   return {
     base: {
-      common: '',
+      common: 'k-list-input',
       ios: cls(outline && 'my-4'),
       material: cls('py-2'),
     },

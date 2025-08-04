@@ -1,7 +1,7 @@
 export const BreadcrumbsSeparatorClasses = () => {
   return {
     base: {
-      common: `w-3 opacity-35 flex justify-center shrink-0`,
+      common: `k-breadcrumbs-separator w-3 opacity-35 flex justify-center shrink-0`,
       ios: ``,
       material: ``,
     },

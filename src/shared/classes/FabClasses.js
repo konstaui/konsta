@@ -3,7 +3,7 @@ import { cls } from '../cls';
 export const FabClasses = (props, colors, dark) => {
   return {
     base: {
-      common: `flex items-center justify-center gap-2 cursor-pointer overflow-hidden select-none`,
+      common: `k-fab flex items-center justify-center gap-2 cursor-pointer overflow-hidden select-none`,
       ios: cls(
         `h-11 duration-100 rounded-full shadow-ios-light-glass-fab ${colors.bgIos} ${colors.activeBgIos} ${colors.textIos}`,
         dark('dark:shadow-ios-dark-glass-fab')

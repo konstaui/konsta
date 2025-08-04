@@ -5,7 +5,7 @@ export const ActionsGroupClasses = (props, colors) => {
   const { dividers } = props;
   return {
     base: {
-      common: `relative`,
+      common: `k-actions-group relative`,
       ios: cls(
         `mt-2 first:mt-0 last-child-hairline-b-none rounded-4xl`,
         colors.bgIos

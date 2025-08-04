@@ -3,7 +3,7 @@ import { cls } from '../cls.js';
 export const BreadcrumbsCollapsedClasses = (props, colors) => {
   return {
     base: {
-      common: `flex items-center cursor-pointer gap-0.75 ${colors.bg}`,
+      common: `k-breadcrumbs-collapsed flex items-center cursor-pointer gap-0.75 ${colors.bg}`,
       ios: cls(
         `rounded active:opacity-30 px-1.5 h-[1em] duration-300 active:duration-0`,
         colors.bgIos

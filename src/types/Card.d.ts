@@ -50,12 +50,7 @@ interface Props {
      */
     outlineMaterial?: string;
   };
-  /**
-   * Tailwind CSS margin class
-   *
-   * @default 'm-4'
-   * */
-  margin?: string;
+
   /**
    * Content of the Card header
    */

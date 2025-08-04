@@ -5,7 +5,7 @@ export const ToastClasses = (props, colors, dark) => {
   return {
     base: {
       common: cls(
-        'z-50 transform transition-(--transition-transform-opacity) w-auto start-0 bottom-0 fixed left-safe-4 right-safe-4 bottom-safe-4 flex',
+        'k-toast z-50 transform transition-(--transition-transform-opacity) w-auto start-0 bottom-0 fixed left-safe-4 right-safe-4 bottom-safe-4 flex',
         !opened && 'translate-y-full opacity-0 pointer-events-none'
       ),
       left: 'justify-start',

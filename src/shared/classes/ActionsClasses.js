@@ -2,7 +2,7 @@ export const ActionsClasses = () => {
   return {
     base: {
       common:
-        'transition-transform z-40 left-1/2 bottom-0 transform -translate-x-1/2 max-w-md w-full overflow-hidden fixed',
+        'k-actions transition-transform z-40 left-1/2 bottom-0 transform -translate-x-1/2 max-w-md w-full overflow-hidden fixed',
       ios: 'pt-4 px-4 pb-safe-4 duration-300',
       material:
         'pb-safe last-child-hairline-b-none rounded-t-2xl duration-400 ease-material-in',

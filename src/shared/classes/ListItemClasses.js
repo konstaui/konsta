@@ -30,7 +30,7 @@ export const ListItemClasses = (
   } = props;
   return {
     base: {
-      common: menuListItem ? `${textColor} py-1` : '',
+      common: cls('k-list-item', menuListItem ? `${textColor} py-1` : ''),
       material: contacts && '[&:nth-child(2)]:-mt-12',
     },
     itemContent: {

@@ -3,7 +3,7 @@ import { cls } from '../cls.js';
 export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
   return {
     base: {
-      common: 'relative flex items-center',
+      common: 'k-searchbar relative flex items-center',
       ios: 'w-full',
       material: 'px-0 py-2 -mx-2 w-[calc(100%+32px)] overflow-hidden ',
     },

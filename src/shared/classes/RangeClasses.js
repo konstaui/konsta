@@ -4,7 +4,7 @@ export const RangeClasses = (props, colors, dark) => {
   return {
     base: {
       common:
-        'block relative select-none w-full self-center touch-pan-y group/range',
+        'k-range block relative select-none w-full self-center touch-pan-y group/range',
       ios: 'h-7',
       material: 'h-11',
     },

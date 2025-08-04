@@ -6,7 +6,7 @@ export const ToolbarPaneClasses = (props, colors, dark) => {
     base: {
       common: '',
       ios: cls(
-        'flex relative justify-between items-center h-full rounded-full group/toolbar-pane',
+        'k-toolbar-pane flex relative justify-between items-center h-full rounded-full group/toolbar-pane',
         tabbar && 'w-full md:w-auto'
       ),
       material: cls('contents'),

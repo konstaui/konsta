@@ -3,7 +3,7 @@ import { cls } from '../cls.js';
 export const ChipClasses = (props, colors) => {
   return {
     base: {
-      common: `text-sm inline-flex items-center justify-center align-middle rounded-full px-3`,
+      common: `k-chip text-sm inline-flex items-center justify-center align-middle rounded-full px-3`,
       ios: 'rounded-full h-7',
       material: 'rounded-lg h-8 font-medium',
       fill: {
