@@ -20,12 +20,7 @@ interface Props {
      */
     bgMaterial?: string;
   };
-  /**
-   * Makes Popover background translucent (with `backdrop-filter: blur`) in iOS theme
-   *
-   * @default true
-   */
-  translucent?: boolean;
+
   /**
    * Renders popover "angle"/"corner"
    *
@@ -38,12 +33,7 @@ interface Props {
    * @default undefined
    */
   angleClassName?: string;
-  /**
-   * Tailwind CSS size classes
-   *
-   * @default 'w-64'
-   * */
-  size?: string;
+
   /**
    * Allows to open/close Popover and set its initial state
    *

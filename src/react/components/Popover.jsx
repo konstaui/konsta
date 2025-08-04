@@ -7,15 +7,15 @@ import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
 import { PopoverColors } from '../../shared/colors/PopoverColors.js';
+import Glass from './Glass.jsx';
 
 const Popover = (props) => {
   const {
     component = 'div',
     className,
-    angle = true,
+    angle = false,
     angleClassName = '',
     colors: colorsProp,
-    size = 'w-64',
     opened,
     backdrop = true,
     onBackdropClick,
@@ -24,7 +24,6 @@ const Popover = (props) => {
     targetY,
     targetWidth,
     targetHeight,
-    translucent = true,
     ref,
     ios,
     material,
@@ -64,7 +63,7 @@ const Popover = (props) => {
   const colors = PopoverColors(colorsProp, dark);
 
   const c = themeClasses(
-    PopoverClasses({ ...props, size, angleClassName, translucent }, colors),
+    PopoverClasses({ ...props, angleClassName }, colors, dark),
     className
   );
 
@@ -128,10 +127,7 @@ const Popover = (props) => {
     'bottom-left': 'origin-top-right',
   };
 
-  const classes = cls(
-    c.base[state],
-    theme === 'material' && originClasses[positions.popoverPosition]
-  );
+  const classes = cls(c.base[state], originClasses[positions.popoverPosition]);
 
   return (
     <>
@@ -158,7 +154,7 @@ const Popover = (props) => {
             <div className={c.angleArrow[positions.anglePosition]} />
           </div>
         )}
-        <div className={c.inner}>{children}</div>
+        <Glass className={c.inner[state]}>{children}</Glass>
       </Component>
     </>
   );
