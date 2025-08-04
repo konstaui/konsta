@@ -10,15 +10,15 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
         `inline-flex gap-1 justify-center items-center cursor-pointer select-none`,
         needsTouchRipple && `touch-ripple-primary relative z-10`
       ),
-      ios: cls(!toolbar && 'active:opacity-50 duration-300'),
+      ios: cls(!tabbar && 'active:opacity-50 duration-300'),
       material: !tabbar && cls(needsTouchRipple ? '' : `active:opacity-55`),
     },
     tabbar: {
       common: cls(`w-full h-full duration-300 transition-colors relative`),
       ios: cls(
-        'px-3 truncate',
-        tabbarIcons && 'px-0',
-        tabbarIcons && tabbarLabels && 'md:min-w-16',
+        'px-4 truncate',
+        !tabbarIcons && tabbarLabels && 'md:px-8',
+        tabbarIcons && tabbarLabels && 'md:min-w-24',
         tabbarIcons && !tabbarLabels && 'md:min-w-12'
       ),
       material: 'font-medium text-sm z-10',

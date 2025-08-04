@@ -3,7 +3,7 @@ import { filterColors } from '../filter-colors.js';
 
 export const TabbarLinkColors = (colorsProp = {}, dark) => {
   return {
-    textIos: cls('text-black/40', dark('dark:text-white/55')),
+    textIos: cls('text-black', dark('dark:text-white')),
     textActiveIos: 'text-primary',
     textMaterial: cls(
       'text-md-light-on-surface-variant',

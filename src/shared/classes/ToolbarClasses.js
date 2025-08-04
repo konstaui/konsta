@@ -15,7 +15,7 @@ export const ToolbarClasses = (props, colors) => {
   const iosToolbarHeight = tabbarIcons && tabbarLabels ? '64px' : '48px';
   return {
     base: {
-      common: cls(`w-full z-20 relative`),
+      common: cls(`k-toolbar w-full z-20 relative`),
       ios: cls(!top && 'pb-safe-4', 'px-safe-4 flex justify-center'),
       material: cls(!top && 'pb-safe'),
     },

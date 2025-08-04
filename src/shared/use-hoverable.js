@@ -82,19 +82,19 @@ export const useHoverable = ({
     setLightPosition(e);
     lightElWrap.append(lightEl);
     el.append(lightElWrap);
-    nextTick(() => {
+    if (e.pointerType !== 'mouse') {
       if (e.pointerType !== 'mouse') {
         d.elScale = true;
         let scale = 1.25;
         if (d.rect.width > 60 || d.rect.height > 60) {
           scale = 1.05;
         }
-
         el.style.scale = scale;
         el.style.transitionDuration = '300ms';
         el.style.transitionTimingFunction = 'ease-in-out';
       }
-
+    }
+    nextTick(() => {
       lightElWrap.style.opacity = 1;
     });
   };

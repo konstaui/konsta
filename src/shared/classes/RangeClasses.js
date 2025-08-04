@@ -37,7 +37,7 @@ export const RangeClasses = (props, colors, dark) => {
     thumbWrap: {
       common: 'pointer-events-none select-none start-0 top-1/2 absolute',
       ios: cls(
-        'w-9.5 h-6 group-has-[input:active]/range:scale-[1.4] shadow-ios-toggle group-has-[input:active]/range:bg-transparent duration-300 -mt-3 rounded-full transition-(--transition-ios-range-thumb)',
+        'w-9.5 h-6 group-has-[input:active]/range:scale-[1.4] shadow-ios-thumb group-has-[input:active]/range:bg-transparent duration-300 -mt-3 rounded-full transition-(--transition-ios-range-thumb)',
         colors.thumbBgIos
       ),
       material: `w-4 h-11 transform duration-200  -mt-5.5 rounded-full transition-transform flex items-center justify-center`,

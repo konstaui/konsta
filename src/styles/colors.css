@@ -79,7 +79,7 @@
   --color-ios-hover-highlight: rgba(255, 255, 255, 0.5);
 }
 .dark {
-  --color-ios-hover-highlight: rgba(255, 255, 255, 0.2);
+  --color-ios-hover-highlight: rgba(255, 255, 255, 0.3);
 }
 
 [class*='k-color-brand-'],

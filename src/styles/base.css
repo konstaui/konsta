@@ -9,7 +9,7 @@
 
   --transition-ios-range-thumb:
     transform, translate, scale, opacity, rotate, background-color, box-shadow;
-  --shadow-ios-toggle:
+  --shadow-ios-thumb:
     0 0.5px 4px rgba(0, 0, 0, 0.12), 0 6px 13px rgba(0, 0, 0, 0.12);
   /* prettier-ignore */
   --shadow-ios-light-glass-thumb:

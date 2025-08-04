@@ -46,7 +46,7 @@ export const ToggleClasses = (props, colors, dark) => {
     thumbWrap: {
       common: 'rounded-full absolute duration-300 transform',
       ios: cls(
-        'w-9.5 h-6 start-0.5 top-0.5 group-active:scale-[1.4] shadow-ios-toggle group-active:bg-transparent',
+        'w-9.5 h-6 start-0.5 top-0.5 group-active:scale-[1.4] shadow-ios-thumb group-active:bg-transparent',
         colors.thumbBgIos
       ),
       material: 'w-6 h-6 start-0.5 top-0.5',
