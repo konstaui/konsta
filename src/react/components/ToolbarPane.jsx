@@ -5,17 +5,22 @@ import { ToolbarPaneClasses } from '../../shared/classes/ToolbarPaneClasses.js';
 import Glass from './Glass.jsx';
 import { useToolbarContext } from './ToolbarContext.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
+import { ToolbarPaneColors } from '../../shared/colors/ToolbarPaneColors.js';
 
 const ToolbarPane = (props) => {
   const {
     component = 'div',
     className,
 
-    ref,
+    colors: colorsProp,
+
     ios,
     material,
 
     children,
+
+    ref,
+
     ...rest
   } = props;
 
@@ -40,21 +45,39 @@ const ToolbarPane = (props) => {
   const hasHighlight = theme === 'ios' && tabbar;
   const dark = useDarkClasses();
 
+  const colors = ToolbarPaneColors(colorsProp, dark);
+
   const c = themeClasses(
     ToolbarPaneClasses(
       {
         ...props,
         tabbar,
       },
-      {},
+      colors,
       dark
     ),
     className
   );
 
+  const startAnimation = () => {
+    const data = highlightData.current;
+    data.raf = requestAnimationFrame(() => {
+      if (!data.setTransform) return;
+      highlightElRef.current.style.transform = data.setTransform;
+      highlightElRef.current.style.transitionTimingFunction = 'ease-out';
+      highlightData.current.setTransform = null;
+    });
+  };
+
+  const stopAnimation = () => {
+    const data = highlightData.current;
+    cancelAnimationFrame(data.raf);
+  };
+
   const setHighlightOnTouch = (e) => {
     if (!hasTabbarLinks) return;
-    const { rect, linkEls } = highlightData.current;
+    const data = highlightData.current;
+    const { rect, linkEls } = data;
     const { clientX, clientY } = e;
     const highlightWidth = rect.width / linkEls.length;
     const leftOffset = clientX - rect.left - highlightWidth / 2;
@@ -72,7 +95,7 @@ const ToolbarPane = (props) => {
         : prev;
     }, linkCenters[0]);
     const closestLinkIndex = linkCenters.indexOf(closestLinkCenter);
-    highlightData.current.newActiveIndex = closestLinkIndex;
+    data.newActiveIndex = closestLinkIndex;
 
     highlightInnerRef.current.classList.add(
       ...c.highlightInnerPressed.split(' ')
@@ -80,11 +103,8 @@ const ToolbarPane = (props) => {
     highlightThumbRef.current.classList.add(
       ...c.highlightThumbPressed.split(' ')
     );
-    setHighlightStyle({
-      ...highlightStyle,
-      transitionTimingFunction: 'ease-out',
-      transform: `translateX(${translateX}px)`,
-    });
+    data.setTransform = `translateX(${translateX}px)`;
+    startAnimation();
   };
 
   const unsetHighlightOnTouch = () => {
@@ -99,6 +119,10 @@ const ToolbarPane = (props) => {
     if (activeIndex !== newActiveIndex) {
       linkEls[newActiveIndex].click();
     }
+
+    highlightElRef.current.style.transform = `translateX(${newActiveIndex * 100}%)`;
+    highlightElRef.current.style.transitionTimingFunction = '';
+
     setHighlightStyle({
       ...highlightStyle,
       transform: `translateX(${newActiveIndex * 100}%)`,
@@ -135,6 +159,7 @@ const ToolbarPane = (props) => {
       data.rect = elRef.current.getBoundingClientRect();
       data.touched = true;
       setHighlightOnTouch(e);
+      startAnimation();
     }
     if (e.type === 'pointermove') {
       if (!data.touched) return;
@@ -146,6 +171,7 @@ const ToolbarPane = (props) => {
       data.touched = false;
       data.moved = false;
       unsetHighlightOnTouch();
+      stopAnimation();
     }
   };
 
