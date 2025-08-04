@@ -10,11 +10,7 @@ export const LinkClasses = (props, { textColor, needsTouchRipple }) => {
         `inline-flex gap-1 justify-center items-center cursor-pointer select-none`,
         needsTouchRipple && `touch-ripple-primary relative z-10`
       ),
-      ios: cls(
-        !toolbar &&
-          !navbar &&
-          'active:opacity-30 duration-300 active:duration-0'
-      ),
+      ios: cls(!toolbar && 'active:opacity-50 duration-300'),
       material: !tabbar && cls(needsTouchRipple ? '' : `active:opacity-55`),
     },
     tabbar: {

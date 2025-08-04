@@ -46,7 +46,6 @@ const NavbarBackLink = (props) => {
       }}
       component={component}
       className={c.base}
-      navbar
       {...attrs}
       onClick={onClick}
     >

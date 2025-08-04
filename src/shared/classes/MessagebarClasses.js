@@ -37,7 +37,7 @@ export const MessagebarClasses = (props, colors, { isFocused }) => {
         isFocused && 'outline-offset-0'
       ),
       ios: cls(
-        'border-transparent h-10 px-4 leading-4 pt-3 pb-1 rounded-3xl',
+        'border-transparent h-10 px-4 leading-4 pt-3 pb-1 rounded-3xl touch-none',
         colors.inputBgIos,
         colors.placeholderIos
       ),

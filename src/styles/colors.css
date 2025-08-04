@@ -74,8 +74,12 @@
   --color-ios-primary-tint: var(--k-color-ios-primary-tint);
   --color-ios-primary-shade: var(--k-color-ios-primary-shade);
 
-  --color-ios-light-glass: rgba(255, 255, 255, 0.8);
+  --color-ios-light-glass: rgba(255, 255, 255, 0.75);
   --color-ios-dark-glass: rgba(50, 50, 50, 0.5);
+  --color-ios-hover-highlight: rgba(255, 255, 255, 0.5);
+}
+.dark {
+  --color-ios-hover-highlight: rgba(255, 255, 255, 0.2);
 }
 
 [class*='k-color-brand-'],

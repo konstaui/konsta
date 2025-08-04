@@ -29,7 +29,6 @@ export default function PopoverPage() {
         right={
           <Link
             className="popover-navbar-link"
-            navbar
             onClick={() => openPopover('.popover-navbar-link')}
           >
             Popover
