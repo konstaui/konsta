@@ -54,12 +54,7 @@ interface Props {
    * @default false
    */
   disableButton?: boolean;
-  /**
-   * Disable button text
-   *
-   * @default 'Cancel'
-   */
-  disableButtonText?: string;
+
   /**
    * Adds input clear button
    *

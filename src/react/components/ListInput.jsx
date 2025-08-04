@@ -15,7 +15,7 @@ const ListInput = (props) => {
     component = 'li',
     className,
     colors: colorsProp,
-    ref,
+
     label,
     floatingLabel,
     outline,
@@ -69,6 +69,7 @@ const ListInput = (props) => {
     material,
 
     children,
+    ref,
     ...rest
   } = props;
 

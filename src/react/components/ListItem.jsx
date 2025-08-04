@@ -32,7 +32,6 @@ const ListItem = (props) => {
     media,
     header,
     footer,
-    ref,
     menuListItem,
     menuListItemActive,
 
@@ -66,6 +65,8 @@ const ListItem = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

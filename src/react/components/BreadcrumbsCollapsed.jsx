@@ -13,10 +13,10 @@ const BreadcrumbsCollapsed = (props) => {
     ios,
     material,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

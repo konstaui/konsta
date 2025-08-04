@@ -11,7 +11,6 @@ const TabbarLink = (props) => {
   const {
     className,
     active,
-    ref,
     ios,
     material,
     colors: colorsProp,
@@ -21,6 +20,9 @@ const TabbarLink = (props) => {
     label,
 
     children,
+
+    ref,
+
     ...rest
   } = props;
 

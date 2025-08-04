@@ -14,9 +14,9 @@ interface Props {
   /**
    * Defines whether to show the link text. When 'auto', it hides link text for Material theme
    *
-   * @default 'auto'
+   * @default false
    */
-  showText?: boolean | 'auto';
+  showText?: boolean;
   /**
    * Link click handler
    */

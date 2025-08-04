@@ -18,10 +18,10 @@ const BlockHeader = (props) => {
     insetIos,
     insetMaterial,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

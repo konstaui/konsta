@@ -11,7 +11,6 @@ const Toast = (props) => {
     className,
     colors: colorsProp,
     button,
-    ref,
     position = 'left',
     opened,
 
@@ -20,6 +19,8 @@ const Toast = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

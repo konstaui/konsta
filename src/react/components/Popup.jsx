@@ -10,7 +10,7 @@ const Popup = (props) => {
     className,
     colors: colorsProp,
     ref,
-    size = 'w-screen h-screen md:w-160 md:h-160',
+
     opened,
     backdrop = true,
     onBackdropClick,

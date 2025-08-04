@@ -14,10 +14,10 @@ const Actions = (props) => {
     backdrop = true,
     onBackdropClick,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

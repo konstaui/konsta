@@ -5,11 +5,12 @@ import { TableBodyClasses } from '../../shared/classes/TableBodyClasses.js';
 const TableBody = (props) => {
   const {
     className,
-    ref,
     ios,
     material,
 
     children,
+
+    ref,
 
     ...rest
   } = props;

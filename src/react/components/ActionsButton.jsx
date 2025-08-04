@@ -29,10 +29,10 @@ const ActionsButton = (props) => {
 
     dividers = undefined,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

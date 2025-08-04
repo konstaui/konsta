@@ -11,7 +11,6 @@ const DialogButton = (props) => {
     component = 'button',
     className,
     colors: colorsProp,
-    ref,
     ios,
     material,
 
@@ -23,6 +22,8 @@ const DialogButton = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

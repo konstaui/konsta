@@ -9,7 +9,6 @@ const Glass = (props) => {
   const {
     component = 'div',
     className,
-    ref,
     hoverable = true,
 
     ios,
@@ -17,6 +16,8 @@ const Glass = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest
@@ -35,9 +36,7 @@ const Glass = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  if (hoverable) {
-    useHoverable({ elRef, enabled: hoverable && theme === 'ios' });
-  }
+  useHoverable({ elRef, enabled: hoverable && theme === 'ios' });
 
   const c = themeClasses(GlassClasses({ ...props }, dark), className);
 

@@ -12,7 +12,7 @@ const ListButton = (props) => {
     component = 'li',
     className,
     colors: colorsProp,
-    ref,
+
     // Link props
     href,
     target,
@@ -31,6 +31,8 @@ const ListButton = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

@@ -13,8 +13,6 @@ const Block = (props) => {
     className,
     colors: colorsProp,
 
-    margin = 'my-8',
-    padding = 'py-4',
     inset,
     insetIos,
     insetMaterial,
@@ -71,8 +69,6 @@ const Block = (props) => {
     BlockClasses(
       {
         ...props,
-        margin,
-        padding,
         inset: isInset,
         strong: isStrong,
         outline: isOutline,

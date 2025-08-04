@@ -41,16 +41,16 @@ export default function PreloaderPage() {
       <BlockTitle>Sizes</BlockTitle>
       <Block strong inset className="grid grid-cols-4 items-center">
         <div className="text-center">
-          <Preloader size="w-4 h-4" />
+          <Preloader className="w-4 h-4" />
         </div>
         <div className="text-center">
-          <Preloader size="w-8 h-8" />
+          <Preloader className="w-8 h-8" />
         </div>
         <div className="text-center">
-          <Preloader size="w-12 h-12" />
+          <Preloader className="w-12 h-12" />
         </div>
         <div className="text-center">
-          <Preloader size="w-16 h-16" />
+          <Preloader className="w-16 h-16" />
         </div>
       </Block>
     </Page>

@@ -19,14 +19,12 @@ const Searchbar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
     placeholder = 'Search',
     value,
     inputId,
     inputStyle,
 
     disableButton = false,
-    disableButtonText = 'Cancel',
     clearButton = true,
 
     onInput,
@@ -38,6 +36,8 @@ const Searchbar = (props) => {
 
     ios,
     material,
+
+    ref,
 
     // children,
     ...rest

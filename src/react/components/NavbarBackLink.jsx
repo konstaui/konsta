@@ -9,7 +9,6 @@ const NavbarBackLink = (props) => {
   const {
     component = 'a',
     className,
-    ref,
     text = 'Back',
 
     showText,
@@ -21,6 +20,8 @@ const NavbarBackLink = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

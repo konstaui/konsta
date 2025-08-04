@@ -4,11 +4,12 @@ import ListItem from './ListItem.jsx';
 const MenuListItem = (props) => {
   const {
     active,
-    ref,
     href,
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

@@ -14,7 +14,6 @@ const Link = (props) => {
     component = 'a',
     className,
     colors: colorsProp,
-    ref,
 
     iconOnly,
     linkProps = {},
@@ -29,6 +28,8 @@ const Link = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

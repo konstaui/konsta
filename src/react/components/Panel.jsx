@@ -12,8 +12,7 @@ const Panel = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
-    size = 'w-72 h-screen',
+
     side = 'left',
     opened,
     backdrop = true,
@@ -25,6 +24,8 @@ const Panel = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

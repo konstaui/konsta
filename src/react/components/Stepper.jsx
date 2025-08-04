@@ -12,7 +12,6 @@ const Stepper = (props) => {
     component = 'span',
     className,
     colors: colorsProp,
-    ref,
     value = 0,
     defaultValue,
     input = false,
@@ -49,6 +48,8 @@ const Stepper = (props) => {
     material,
 
     touchRipple = true,
+
+    ref,
 
     children,
     ...rest

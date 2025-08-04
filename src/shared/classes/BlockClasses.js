@@ -1,7 +1,7 @@
 import { cls } from '../cls.js';
 
 export const BlockClasses = (props, colors) => {
-  const { inset, nested, margin, padding, strong, outline } = props;
+  const { inset, nested, strong, outline } = props;
   return {
     base: {
       common: cls(
@@ -10,8 +10,8 @@ export const BlockClasses = (props, colors) => {
         inset && outline && 'border',
         inset && 'px-4',
         !inset && 'pl-safe-4 pr-safe-4',
-        !nested && margin,
-        (strong || outline) && padding
+        !nested && 'my-8',
+        (strong || outline) && 'py-4'
       ),
       ios: cls(
         colors.textIos,

@@ -7,7 +7,7 @@ export const PanelClasses = (props, colors) => {
       common: cls(
         'k-panel transition-transform transform duration-400 z-40 max-w-full overflow-hidden fixed',
         floating ? 'top-safe-2 bottom-safe-2 !h-auto' : 'top-0 max-h-full',
-        size
+        'w-72 h-screen'
       ),
       ios: cls(
         floating && cls('rounded-4xl', colors.floatingBgIos),

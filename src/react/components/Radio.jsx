@@ -12,7 +12,6 @@ const Radio = (props) => {
     component = 'label',
     className,
     colors: colorsProp,
-    ref,
     defaultChecked,
     checked,
     name,
@@ -20,7 +19,6 @@ const Radio = (props) => {
     disabled,
     readOnly,
     onChange,
-
     ios,
     material,
 
@@ -28,6 +26,8 @@ const Radio = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

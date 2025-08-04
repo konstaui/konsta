@@ -9,7 +9,6 @@ const Sheet = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
     opened,
     backdrop = true,
     onBackdropClick,
@@ -19,6 +18,8 @@ const Sheet = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

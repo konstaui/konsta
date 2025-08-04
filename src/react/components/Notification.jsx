@@ -18,7 +18,6 @@ const Notification = (props) => {
     titleRightText,
     subtitle,
     text,
-    ref,
     opened,
 
     onClose,
@@ -28,6 +27,8 @@ const Notification = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

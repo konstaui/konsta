@@ -15,7 +15,6 @@ const Segmented = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
     ios,
     material,
 
@@ -35,6 +34,8 @@ const Segmented = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

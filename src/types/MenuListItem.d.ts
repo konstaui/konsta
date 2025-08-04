@@ -10,7 +10,7 @@ interface Props {
    */
   href?: string | boolean;
   /**
-   * Content of the chip media area (e.g. icon)
+   * Content of the media area (e.g. icon)
    */
   media?: React.ReactNode;
   /**

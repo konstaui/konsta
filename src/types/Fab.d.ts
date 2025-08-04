@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-primary'
+     * @default 'bg-primary dark:bg-ios-primary-shade/50'
      */
     bgIos?: string;
     /**
@@ -21,7 +21,7 @@ interface Props {
     bgMaterial?: string;
     /**
      *
-     * @default 'active:bg-ios-primary-shade'
+     * @default ''
      */
     activeBgIos?: string;
     /**

@@ -14,7 +14,6 @@ const Messagebar = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
     id,
     style,
     name,
@@ -40,6 +39,8 @@ const Messagebar = (props) => {
     onFocus,
 
     children,
+    ref,
+
     ...rest
   } = props;
 

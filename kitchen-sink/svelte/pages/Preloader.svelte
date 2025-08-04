@@ -44,16 +44,16 @@
   <BlockTitle>Sizes</BlockTitle>
   <Block strong insetMaterial outlineIos class="grid grid-cols-4 items-center">
     <div class="text-center">
-      <Preloader size="w-4 h-4" />
+      <Preloader class="w-4 h-4" />
     </div>
     <div class="text-center">
-      <Preloader size="w-8 h-8" />
+      <Preloader class="w-8 h-8" />
     </div>
     <div class="text-center">
-      <Preloader size="w-12 h-12" />
+      <Preloader class="w-12 h-12" />
     </div>
     <div class="text-center">
-      <Preloader size="w-16 h-16" />
+      <Preloader class="w-16 h-16" />
     </div>
   </Block>
 </Page>

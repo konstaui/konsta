@@ -22,7 +22,7 @@ interface Props {
 
     /**
      *
-     * @default 'bg-white dark:bg-white/15'
+     * @default 'bg-white dark:bg-white/75'
      */
     strongHighlightBgIos?: string;
     /**

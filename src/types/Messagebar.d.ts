@@ -43,7 +43,7 @@ interface Props {
     placeholderMd?: string;
     /**
      *
-     * @default 'bg-white dark:bg-black'
+     * @default ''
      */
     bgIos?: string;
     /**

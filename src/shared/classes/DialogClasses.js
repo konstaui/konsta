@@ -8,9 +8,9 @@ export const DialogClasses = (props, colors, dark) => {
       common: cls(
         'k-dialog left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed'
       ),
-      ios: cls('rounded-4xl max-w-full', sizeIos, colors.bgIos),
+      ios: cls('rounded-4xl max-w-full w-75', colors.bgIos),
       material: cls(
-        'rounded-[1.75rem] p-6 max-w-[90%]',
+        'rounded-[1.75rem] p-6 max-w-[90%] w-78',
         sizeMaterial,
         colors.bgMaterial
       ),

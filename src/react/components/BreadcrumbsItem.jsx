@@ -12,14 +12,14 @@ const BreadcrumbsItem = (props) => {
     ios,
     material,
 
-    ref,
-
     colors: colorsProp,
 
     active,
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

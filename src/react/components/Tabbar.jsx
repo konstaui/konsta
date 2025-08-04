@@ -5,8 +5,8 @@ const Tabbar = (props) => {
   const {
     labels,
     icons,
-    ref,
     children,
+    ref,
 
     ...rest
   } = props;

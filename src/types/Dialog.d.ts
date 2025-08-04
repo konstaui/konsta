@@ -46,18 +46,6 @@ interface Props {
      */
     contentTextMaterial?: string;
   };
-  /**
-   * Tailwind CSS size classes for iOS theme
-   *
-   * @default 'w-75'
-   * */
-  sizeIos?: string;
-  /**
-   * Tailwind CSS size classes for Material theme
-   *
-   * @default 'w-78'
-   * */
-  sizeMaterial?: string;
 
   /**
    * Tailwind CSS classes for title font size iOS theme

@@ -16,12 +16,7 @@ interface Props {
      */
     bg?: string;
   };
-  /**
-   * Tailwind CSS size classes
-   *
-   * @default 'w-screen h-screen md:w-160 md:h-160'
-   * */
-  size?: string;
+
   /**
    * Allows to open/close Popup and set its initial state
    *

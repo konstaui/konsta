@@ -19,10 +19,10 @@ const ActionsLabel = (props) => {
 
     dividers = undefined,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

@@ -13,8 +13,6 @@ const List = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
-    margin = 'my-8',
     nested,
     menuList,
 
@@ -37,6 +35,8 @@ const List = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest
@@ -75,7 +75,6 @@ const List = (props) => {
     ListClasses(
       {
         ...props,
-        margin,
         inset: isInset,
         strong: isStrong,
         outline: isOutline,

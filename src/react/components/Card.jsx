@@ -31,10 +31,11 @@ const Card = (props) => {
     outlineMaterial,
     headerDivider = false,
     footerDivider = false,
-    ref,
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

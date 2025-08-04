@@ -18,10 +18,10 @@ const BlockTitle = (props) => {
     ios,
     material,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

@@ -15,7 +15,6 @@ const Chip = (props) => {
     media,
     deleteButton,
     onDelete,
-    ref,
 
     ios,
     material,
@@ -25,6 +24,8 @@ const Chip = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

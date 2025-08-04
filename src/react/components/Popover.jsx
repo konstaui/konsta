@@ -24,7 +24,6 @@ const Popover = (props) => {
     targetY,
     targetWidth,
     targetHeight,
-    ref,
     ios,
     material,
 
@@ -33,6 +32,9 @@ const Popover = (props) => {
 
     // Rest
     style = {},
+
+    ref,
+
     ...rest
   } = props;
 

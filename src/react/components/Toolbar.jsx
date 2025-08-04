@@ -22,11 +22,13 @@ const Toolbar = (props) => {
     tabbarLabels,
 
     top,
-    ref,
     ios,
     material,
 
     children,
+
+    ref,
+
     ...rest
   } = props;
 

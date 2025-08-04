@@ -8,7 +8,6 @@ const Icon = (props) => {
   const {
     component = 'i',
     className,
-    ref,
 
     ios,
     material,
@@ -18,6 +17,8 @@ const Icon = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

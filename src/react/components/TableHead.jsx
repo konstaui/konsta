@@ -5,11 +5,12 @@ import { TableHeadClasses } from '../../shared/classes/TableHeadClasses.js';
 const TableHead = (props) => {
   const {
     className,
-    ref,
     ios,
     material,
 
     children,
+
+    ref,
 
     ...rest
   } = props;

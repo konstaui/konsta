@@ -11,7 +11,6 @@ const Range = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
     ios,
     material,
 
@@ -31,6 +30,7 @@ const Range = (props) => {
     onChange,
     onFocus,
     onBlur,
+    ref,
 
     // Rest
     ...rest

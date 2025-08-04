@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-ios-light-surface-2 dark:bg-ios-dark-surface-2'
+     * @default 'bg-gradient-to-t from-ios-light-surface to-transparent dark:from-ios-dark-surface/50'
      */
     bgIos?: string;
     /**
@@ -21,7 +21,7 @@ interface Props {
     bgMaterial?: string;
     /**
      *
-     * @default 'bg-primary'
+     * @default ''
      */
     tabbarHighlightBgIos?: string;
     /**

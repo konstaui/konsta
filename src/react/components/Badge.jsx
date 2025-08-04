@@ -13,10 +13,10 @@ const Badge = (props) => {
     ios,
     material,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

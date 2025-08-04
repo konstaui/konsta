@@ -21,7 +21,7 @@ interface Props {
     bgMaterial?: string;
     /**
      *
-     * @default 'text-white'
+     * @default ''
      */
     textIos?: string;
     /**

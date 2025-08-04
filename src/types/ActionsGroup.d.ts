@@ -19,7 +19,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
+     * @default ''
      */
     bgIos?: string;
     /**

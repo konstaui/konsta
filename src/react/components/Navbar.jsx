@@ -11,7 +11,6 @@ const Navbar = (props) => {
   const {
     component = 'div',
     className,
-    ref,
     bgClassName = '',
     innerClassName = '',
     leftClassName = '',
@@ -50,6 +49,9 @@ const Navbar = (props) => {
     ios,
     material,
     children,
+
+    ref,
+
     ...rest
   } = props;
 

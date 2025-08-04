@@ -77,6 +77,16 @@ interface Props {
     outlineBorderMaterial?: string;
     /**
      *
+     * @default 'text-black'
+     */
+    segmentedStrongTextIos?: string;
+    /**
+     *
+     * @default ''
+     */
+    segmentedStrongTextMaterial?: string;
+    /**
+     *
      * @default 'bg-primary/15 active:bg-primary/25'
      */
     tonalBgIos?: string;

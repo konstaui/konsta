@@ -26,12 +26,12 @@ const Checkbox = (props) => {
     ios,
     material,
 
-    ref,
-
     touchRipple = true,
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

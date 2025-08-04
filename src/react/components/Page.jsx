@@ -9,12 +9,13 @@ const Page = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
     ios,
     material,
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

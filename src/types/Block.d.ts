@@ -40,18 +40,7 @@ interface Props {
      */
     textMaterial?: string;
   };
-  /**
-   * Tailwind CSS margin class
-   *
-   * @default 'my-8'
-   * */
-  margin?: string;
-  /**
-   * Tailwind CSS padding class
-   *
-   * @default 'py-4'
-   * */
-  padding?: string;
+
   /**
    * Adds extra highlighting and padding block content. Overwrites `strongIos` and `strongMaterial` props
    *

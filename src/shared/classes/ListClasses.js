@@ -1,12 +1,12 @@
 import { cls } from '../cls.js';
 
 export const ListClasses = (props, colors) => {
-  const { nested, margin, inset, strong, outline } = props;
+  const { nested, inset, strong, outline } = props;
   return {
     base: {
       common: cls(
         'k-list',
-        !nested && margin,
+        !nested && 'my-8',
         !inset && !nested && outline && 'hairline-t hairline-b',
         inset && outline && 'border',
         'z-10 relative'

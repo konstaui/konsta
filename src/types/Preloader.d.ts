@@ -20,10 +20,4 @@ interface Props {
      */
     iconMaterial?: string;
   };
-  /**
-   * Tailwind CSS size classes
-   *
-   * @default 'w-8 h-8'
-   * */
-  size?: string;
 }

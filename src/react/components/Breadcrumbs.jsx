@@ -13,10 +13,10 @@ const Breadcrumbs = (props) => {
     ios,
     material,
 
-    ref,
-
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

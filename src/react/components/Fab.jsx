@@ -12,7 +12,6 @@ const Fab = (props) => {
     component = 'a',
     className,
     colors: colorsProp,
-    ref,
     href,
     text,
     textPosition = 'after',
@@ -25,6 +24,8 @@ const Fab = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

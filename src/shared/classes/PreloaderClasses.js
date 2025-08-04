@@ -1,13 +1,12 @@
 import { cls } from '../cls.js';
 
 export const PreloaderClasses = (props, colors, theme) => {
-  const { size } = props;
   return {
     base: {
       common: cls(
         'k-preloader',
         theme === 'ios' ? 'k-ios-preloader' : 'k-material-preloader',
-        `inline-block ${size}`
+        `inline-block w-8 h-8`
       ),
       ios: colors.iconIos,
       material: `stroke-4 ${colors.iconMaterial}`,

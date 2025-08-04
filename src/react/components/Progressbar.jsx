@@ -10,7 +10,7 @@ const Progressbar = (props) => {
     component = 'span',
     className,
     colors: colorsProp,
-    ref,
+
     ios,
     material,
 
@@ -18,6 +18,8 @@ const Progressbar = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

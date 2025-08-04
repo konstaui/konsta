@@ -10,14 +10,10 @@ const Dialog = (props) => {
     component = 'div',
     className,
     colors: colorsProp,
-    ref,
 
     opened,
     backdrop = true,
     onBackdropClick,
-
-    sizeIos = 'w-75',
-    sizeMaterial = 'w-78',
 
     titleFontSizeIos = 'text-[17px]',
     titleFontSizeMaterial = 'text-[24px]',
@@ -30,6 +26,8 @@ const Dialog = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

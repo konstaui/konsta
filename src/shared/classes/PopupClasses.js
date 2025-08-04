@@ -7,7 +7,7 @@ export const PopupClasses = (props, colors) => {
       common: cls(
         'k-popup left-1/2 top-1/2 transition-transform transform -translate-x-1/2 z-40 max-w-full max-h-full overflow-hidden md:no-safe-areas fixed',
         colors.bg,
-        size
+        'w-screen h-screen md:w-160 md:h-160'
       ),
       ios: 'duration-400 md:rounded-4xl',
       material: ' md:rounded-[1.75rem]',

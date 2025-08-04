@@ -11,7 +11,6 @@ const Toggle = (props) => {
     component = 'label',
     className,
     colors: colorsProp,
-    ref,
     defaultChecked,
     checked,
     name,
@@ -26,6 +25,8 @@ const Toggle = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

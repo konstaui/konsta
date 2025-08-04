@@ -30,12 +30,7 @@ interface Props {
      */
     strongBgMaterial?: string;
   };
-  /**
-   * Tailwind CSS margin class
-   *
-   * @default 'my-8'
-   * */
-  margin?: string;
+
   /**
    * Renders dividers (borders) between list items, overwrites `dividersIos` and `dividersMaterial`
    *

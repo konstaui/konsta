@@ -34,12 +34,6 @@ interface Props {
      */
     floatingBgMaterial?: string;
   };
-  /**
-   * Tailwind CSS size classes
-   *
-   * @default 'w-72 h-screen'
-   * */
-  size?: string;
 
   /**
    * Panel side

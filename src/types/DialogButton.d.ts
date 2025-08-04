@@ -22,7 +22,7 @@ interface Props {
     /**
      * Text color in iOS theme
      *
-     * @default ''text-primary
+     * @default 'text-primary'
      */
     textIos?: string;
     /**

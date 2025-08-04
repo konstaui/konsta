@@ -8,13 +8,14 @@ const TableRow = (props) => {
   const {
     className,
     colors: colorsProp,
-    ref,
     header,
 
     ios,
     material,
 
     children,
+
+    ref,
 
     ...rest
   } = props;

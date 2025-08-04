@@ -21,7 +21,7 @@ interface Props {
     textMaterial?: string;
     /**
      *
-     * @default 'text-primary'
+     * @default ''
      */
     navbarTextIos?: string;
     /**
@@ -29,6 +29,16 @@ interface Props {
      * @default ''
      */
     navbarTextMaterial?: string;
+    /**
+     *
+     * @default ''
+     */
+    toolbarTextIos?: string;
+    /**
+     *
+     * @default 'text-md-light-primary dark:text-md-dark-primary'
+     */
+    toolbarTextMaterial?: string;
   };
 
   /**

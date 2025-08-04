@@ -13,14 +13,14 @@ const Preloader = (props) => {
     component = 'span',
     className,
     colors: colorsProp,
-    ref,
-    size = 'w-8 h-8',
 
     ios,
     material,
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest
@@ -42,7 +42,7 @@ const Preloader = (props) => {
   const SVGComponent = theme === 'ios' ? PreloaderIOS : PreloaderMaterial;
 
   const c = themeClasses(
-    PreloaderClasses({ ...props, size }, colors, theme),
+    PreloaderClasses({ ...props }, colors, theme),
     className
   );
 

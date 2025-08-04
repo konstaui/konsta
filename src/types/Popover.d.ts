@@ -11,7 +11,7 @@ interface Props {
   colors?: {
     /**
      *
-     * @default 'bg-ios-light-surface-3 dark:bg-ios-dark-surface-3'
+     * @default 'bg-ios-light-glass dark:bg-ios-dark-glass'
      */
     bgIos?: string;
     /**
@@ -24,7 +24,7 @@ interface Props {
   /**
    * Renders popover "angle"/"corner"
    *
-   * @default true
+   * @default false
    */
   angle?: boolean;
   /**
