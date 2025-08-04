@@ -38,7 +38,6 @@
       },
       position: { type: String, default: 'left' },
       opened: Boolean,
-      translucent: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const context = useContext();

@@ -114,10 +114,6 @@
         type: Boolean,
         default: undefined,
       },
-      translucent: {
-        type: Boolean,
-        default: true,
-      },
       button: { type: String },
       icon: { type: String },
       title: { type: [String, Number] },

@@ -73,7 +73,6 @@
 
       centerTitle: { type: Boolean, default: undefined },
 
-      translucent: { type: Boolean, default: true },
       outline: { type: Boolean, default: undefined },
       medium: { type: Boolean, default: false },
       large: { type: Boolean, default: false },

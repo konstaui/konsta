@@ -13,7 +13,6 @@
   export let ios = undefined;
   export let material = undefined;
 
-  export let translucent = true;
 
   export let bgClass = '';
   export let innerClass = '';
@@ -73,7 +72,6 @@
     ToolbarClasses(
       {
         outline: isOutline,
-        translucent,
         bgClass,
         innerClass,
         tabbar,

@@ -60,7 +60,6 @@
       targetY: { type: Number, default: undefined },
       targetWidth: { type: Number, default: undefined },
       targetHeight: { type: Number, default: undefined },
-      translucent: { type: Boolean, default: true },
     },
     emits: ['backdropclick'],
     setup(props, ctx) {

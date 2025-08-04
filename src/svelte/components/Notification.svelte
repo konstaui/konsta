@@ -14,7 +14,6 @@
   export { colorsProp as colors };
   export let ios = undefined;
   export let material = undefined;
-  export let translucent = true;
   export let onClick = undefined;
   export let onClose = undefined;
 
@@ -34,7 +33,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    NotificationsClasses({ opened, translucent }, colors),
+    NotificationsClasses({ opened }, colors),
     className,
     (v) => (c = v)
   );

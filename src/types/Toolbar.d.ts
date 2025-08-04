@@ -41,7 +41,7 @@ interface Props {
   innerClassName?: string;
 
   /**
-   * Renders outer hairlines (borders). If not specified, will be enabled for iOS theme
+   * Material theme only: Renders outer hairlines (borders)
    *
    * @default undefined
    */

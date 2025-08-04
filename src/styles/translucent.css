@@ -1,6 +1,0 @@
-@supports (backdrop-filter: blur(20px)) {
-  .translucent {
-    --bg-opacity: 80%;
-    backdrop-filter: saturate(180%) blur(20px);
-  }
-}

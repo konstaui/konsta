@@ -28,7 +28,6 @@
   export let targetY = undefined;
   export let targetWidth = undefined;
   export let targetHeight = undefined;
-  export let translucent = true;
 
   let el;
   let angleEl;
@@ -54,7 +53,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    PopoverClasses({ size, angleClass, translucent }, colors),
+    PopoverClasses({ size, angleClass }, colors),
     className,
     (v) => (c = v)
   );

@@ -20,7 +20,6 @@
 
   let colorsProp = undefined;
   export { colorsProp as colors };
-  export let translucent = true;
   export let outline = undefined;
   export let centerTitle = undefined;
 
@@ -78,7 +77,6 @@
         subtitleClass,
         rightClass,
         subnavbarClass,
-        translucent,
         transparent,
         outline: isOutline,
         fontSizeIos,

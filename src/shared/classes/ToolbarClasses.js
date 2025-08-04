@@ -12,7 +12,6 @@ export const ToolbarClasses = (props, colors) => {
     tabbarLabels,
     top,
   } = props;
-  const iosToolbarHeight = tabbarIcons && tabbarLabels ? '64px' : '48px';
   return {
     base: {
       common: cls(`k-toolbar w-full z-20 relative`),

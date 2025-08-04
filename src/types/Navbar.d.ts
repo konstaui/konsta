@@ -115,14 +115,9 @@ interface Props {
    * Additional class to add on Navbar's "subnavbar" element
    */
   subnavbarClassName?: string;
+
   /**
-   * Makes Navbar background translucent (with `backdrop-filter: blur`) in iOS theme
-   *
-   * @default true
-   */
-  translucent?: boolean;
-  /**
-   * Renders outer hairlines (borders). If not specified, will be enabled for iOS theme
+   * Material theme only: Renders outer hairlines (borders)
    *
    * @default undefined
    */
@@ -141,7 +136,7 @@ interface Props {
    */
   large?: boolean;
   /**
-   * Renders transparent navbar which becomes opaque on scroll
+   * Material theme only: Renders transparent navbar which becomes opaque on scroll
    *
    * @default false
    */

@@ -11,7 +11,6 @@
   export let ios = undefined;
   export let material = undefined;
 
-  export let translucent = true;
   export let position = 'left';
   export let opened = false;
 
@@ -21,7 +20,7 @@
 
   $: c = useThemeClasses(
     { ios, material },
-    ToastClasses({ opened, translucent }, colors),
+    ToastClasses({ opened }, colors),
     className,
     (v) => (c = v)
   );

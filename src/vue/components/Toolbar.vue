@@ -44,7 +44,6 @@
         type: Boolean,
         default: undefined,
       },
-      translucent: { type: Boolean, default: true },
 
       bgClass: { type: String, default: '' },
       innerClass: { type: String, default: '' },
