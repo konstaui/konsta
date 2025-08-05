@@ -12,11 +12,11 @@ export const NotificationsClasses = (props, colors, baseClassName) => {
         baseClassName
       ),
       ios: cls(
-        'rounded-xl p-4 start-2 end-2 top-2 rounded-3xl flex gap-4 items-center',
+        'rounded-xl p-4 start-2 end-2 top-safe-2 rounded-3xl flex gap-4 items-center',
         colors.bgIos
       ),
       material: cls(
-        'rounded-2xl py-5 px-4 start-4 end-4 top-4',
+        'rounded-2xl py-5 px-4 start-4 end-4 top-safe-4',
         colors.bgMaterial
       ),
     },
