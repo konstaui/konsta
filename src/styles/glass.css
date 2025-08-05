@@ -1,0 +1,66 @@
+@theme {
+  --color-ios-light-glass: rgba(255, 255, 255, 0.75);
+  --color-ios-dark-glass: rgba(50, 50, 50, 0.5);
+
+  /* prettier-ignore */
+  --shadow-ios-light-glass-thumb:
+    inset -3px -3px 0px -3.5px rgba(255, 255, 255, 1),
+    inset 3px 3px 0px -3.5px rgba(255, 255, 255, 1),
+    inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 10px -2px #eee,
+    inset -3px -3px 10px -2px #eee,
+    inset 0 0 5px 1px #fff;
+
+  /* prettier-ignore */
+  --shadow-ios-dark-glass-thumb:
+    inset 3px 3px 0px -3.5px rgba(255, 255, 255, 1),
+    inset -3px -3px 0px -3.5px rgba(255, 255, 255, 1),
+    inset -0.5px -0.5px 0px rgba(255, 255, 255, 0.5),
+    inset 0.5px 0.5px 0px rgba(255, 255, 255, 0.1),
+    inset -3px 3px 0px -3.5px rgba(255, 255, 255, 0.25),
+    inset 0px -5px 0px -3.5px rgba(255, 255, 255, 0.25),
+    inset 0px -5px 5px rgba(255, 255, 255, 0.25);
+
+  /* prettier-ignore */
+  --shadow-ios-light-glass-fab:
+    inset -3px -3px 0px -3.5px #fff,
+    inset 3px 3px 0px -3.5px #fff,
+    inset 0px 0px 0px 0.5px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 10px -2px color-mix(in oklab, var(--color-primary) 100%, black),
+    inset -3px -3px 10px -2px color-mix(in oklab, var(--color-primary) 100%, black),
+    inset 0 0 5px 1px #fff,
+    0 0 15px 4px rgba(0, 0, 0, 0.2);
+
+  /* prettier-ignore */
+  --shadow-ios-dark-glass-fab:
+    inset 3px 3px 0px -3.5px var(--color-primary),
+    inset -3px -3px 0px -3.5px var(--color-primary),
+    inset -0.5px -0.5px 0px rgba(255, 255, 255, 0.5),
+    inset 0.5px 0.5px 0px rgba(255, 255, 255, 0.1),
+    inset -3px 3px 0px -3.5px rgba(255, 255, 255, 0.25),
+    inset 0px -5px 0px -3.5px color-mix(in oklab, var(--color-primary) 50%, transparent 10%),
+    inset 0px -5px 5px color-mix(in oklab, var(--color-primary) 50%, transparent 10%),
+    0 0 15px 4px rgba(0, 0, 0, 0.2);
+
+  /* prettier-ignore */
+  --shadow-ios-light-glass:
+    inset -1px -1px 0px -0.5px rgba(255, 255, 255, 1),
+    inset 1px 1px 0px -0.5px rgba(255, 255, 255, 1),
+    inset 3px 3px 10px -3px #ddd,
+    inset -3px -3px 10px -3px #ddd,
+    inset 0 0 5px 1px #fff,
+    inset 0 0 0 0.5px rgba(0, 0, 0, 0.25),
+    inset 0 0 24px 0 rgba(0, 0, 0, 0.1),
+    0 0 25px 0 rgba(0, 0, 0, 0.2);
+  /* prettier-ignore */
+  --shadow-ios-dark-glass:
+    inset -2px -2px 0.5px -2.5px rgba(255, 255, 255, 0.4),
+    inset 3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.4),
+    inset 2px 2px 0.5px -2px #262626,
+    inset -2px -2px 0.5px -2px #262626,
+    inset 0 0 5px 1px #141414,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 0 10px 0 rgba(255, 255, 255, 0.075),
+    inset 0 0 24px 0 rgba(255, 255, 255, 0.05),
+    0 0 25px 0 rgba(0, 0, 0, 0.15);
+}

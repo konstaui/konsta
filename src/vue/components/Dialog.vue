@@ -1,6 +1,6 @@
 <template>
   <div v-if="backdrop" :class="c.backdrop[state]" @click="onBackdropClick" />
-  <component :is="component" :class="c.base[state]">
+  <k-glass :hoverable="false" :component="component" :class="c.base[state]">
     <div :class="c.contentWrap">
       <div v-if="slots.title" :class="c.title"><slot name="title" /></div>
       <div v-if="slots.default" :class="c.content">
@@ -8,22 +8,22 @@
       </div>
     </div>
     <div v-if="slots.buttons" :class="c.buttons"><slot name="buttons" /></div>
-  </component>
+  </k-glass>
 </template>
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { DialogClasses } from '../../shared/classes/DialogClasses.js';
-
   import { DialogColors } from '../../shared/colors/DialogColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
+  import kGlass from './Glass.vue';
 
   export default {
     name: 'k-dialog',
+    components: {
+      kGlass,
+    },
     props: {
       component: {
         type: String,
@@ -40,10 +40,8 @@
         type: Boolean,
         default: undefined,
       },
-      titleFontSizeIos: { type: String, default: 'text-[18px]' },
+      titleFontSizeIos: { type: String, default: 'text-[17px]' },
       titleFontSizeMaterial: { type: String, default: 'text-[24px]' },
-      sizeIos: { type: String, default: 'w-[16.875rem]' },
-      sizeMaterial: { type: String, default: 'w-[19.5rem]' },
       opened: Boolean,
       backdrop: { type: Boolean, default: true },
     },
@@ -57,7 +55,7 @@
         DialogColors(props.colors || {}, useDarkClasses)
       );
       const c = useThemeClasses(props, () =>
-        DialogClasses(props, colors.value, useDarkClasses)
+        DialogClasses(props, colors.value, ctx.attrs.class)
       );
 
       const onBackdropClick = (e) => {

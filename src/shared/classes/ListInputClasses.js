@@ -3,12 +3,13 @@ import { cls } from '../cls.js';
 export const ListInputClasses = (
   props,
   colors,
-  { isFloatingTransformed, isFocused, darkClasses, getLabelColor, hasLabel }
+  { isFloatingTransformed, isFocused, darkClasses, getLabelColor, hasLabel },
+  baseClassName
 ) => {
   const { error, type, outline, inputClassName = '', inputClass = '' } = props;
   return {
     base: {
-      common: 'k-list-input',
+      common: cls('k-list-input', baseClassName),
       ios: cls(outline && 'my-4'),
       material: cls('py-2'),
     },

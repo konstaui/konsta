@@ -1,6 +1,6 @@
 <template>
   <k-page>
-    <k-navbar title="ActionSheet">
+    <k-navbar title="Action Sheet">
       <template v-if="!isPreview" #left>
         <k-navbar-back-link @click="() => history.back()" />
       </template>
@@ -14,8 +14,12 @@
     </k-block>
     <k-block-title>Open Action Sheet</k-block-title>
     <k-block strong inset class="flex space-x-4 rtl:space-x-reverse">
-      <k-button @click="() => (actionsOneOpened = true)">One group</k-button>
-      <k-button @click="() => (actionsTwoOpened = true)">Two groups</k-button>
+      <k-button rounded @click="() => (actionsOneOpened = true)"
+        >One group</k-button
+      >
+      <k-button rounded @click="() => (actionsTwoOpened = true)"
+        >Two groups</k-button
+      >
     </k-block>
 
     <k-actions

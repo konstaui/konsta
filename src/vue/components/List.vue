@@ -8,17 +8,11 @@
 <script>
   import { computed, provide } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { ListClasses } from '../../shared/classes/ListClasses.js';
-
   import { ListColors } from '../../shared/colors/ListColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { useTheme } from '../shared/use-theme.js';
 
   export default {
@@ -39,7 +33,6 @@
         type: Boolean,
         default: undefined,
       },
-      margin: { type: String, default: 'my-8' },
       dividers: { type: Boolean, default: undefined },
       dividersIos: { type: Boolean, default: true },
       dividersMaterial: { type: Boolean, default: false },
@@ -115,7 +108,9 @@
 
           isInset.value && c.value.inset,
 
-          props.menuList && c.value.menuList
+          props.menuList && c.value.menuList,
+
+          ctx.attrs.class
         )
       );
 

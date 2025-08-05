@@ -1,10 +1,10 @@
 import { cls } from '../cls.js';
 
-export const CardClasses = (props, colors) => {
+export const CardClasses = (props, colors, baseClassName) => {
   const { headerDivider, footerDivider, contentWrapPadding } = props;
   return {
     base: {
-      common: cls(`k-card overflow-hidden m-4`),
+      common: cls(`k-card overflow-hidden m-4`, baseClassName),
       ios: cls('rounded-3xl', colors.bgIos, colors.textIos),
       material: cls('rounded-2xl', colors.bgMaterial, colors.textMaterial),
       plain: '',

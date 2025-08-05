@@ -27,38 +27,48 @@
       </k-message>
     </k-messages>
     <k-messagebar
+      class="z-20"
       placeholder="Message"
       :value="messageText"
       @input="onMessageTextChange"
     >
       <template #left>
-        <k-link toolbar icon-only>
-          <k-icon>
-            <template #ios><CameraFill class="w-7 h-7" /></template>
-            <template #material>
-              <MdCameraAlt
-                class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
-              />
-            </template>
-          </k-icon>
-        </k-link>
+        <k-toolbar-pane class="ios:h-10">
+          <k-link icon-only>
+            <k-icon>
+              <template #ios><CameraFill class="w-5 h-5" /></template>
+              <template #material>
+                <MdCameraAlt
+                  class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
+                />
+              </template>
+            </k-icon>
+          </k-link>
+        </k-toolbar-pane>
       </template>
       <template #right>
-        <k-link
-          toolbar
-          :style="{
-            opacity: inputOpacity,
-            cursor: isClickable ? 'pointer' : 'default',
-          }"
-          @click="onClick"
-        >
-          <k-icon>
-            <template #ios><ArrowUpCircleFill class="w-7 h-7" /></template>
-            <template #material>
-              <MdSend class="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
-            </template>
-          </k-icon>
-        </k-link>
+        <k-toolbar-pane class="ios:h-10">
+          <k-link
+            icon-only
+            :style="{
+              opacity: inputOpacity,
+              cursor: isClickable ? 'pointer' : 'default',
+            }"
+            @click="onClick"
+          >
+            <k-icon>
+              <template #ios
+                ><ArrowUpCircleFill
+                  :class="`w-7 h-7 ${isClickable ? 'text-primary' : ''}`"
+              /></template>
+              <template #material>
+                <MdSend
+                  class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
+                />
+              </template>
+            </k-icon>
+          </k-link>
+        </k-toolbar-pane>
       </template>
     </k-messagebar>
   </k-page>
@@ -75,6 +85,7 @@
     kMessagesTitle,
     kIcon,
     kLink,
+    kToolbarPane,
   } from 'konsta/vue';
   import { CameraFill, ArrowUpCircleFill } from 'framework7-icons/vue';
   import MdCameraAlt from '../components/MdCameraAlt.vue';
@@ -92,7 +103,7 @@
       kMessagesTitle,
       kIcon,
       kLink,
-
+      kToolbarPane,
       CameraFill,
       ArrowUpCircleFill,
       MdCameraAlt,

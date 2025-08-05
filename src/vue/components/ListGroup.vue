@@ -14,7 +14,6 @@
       kList,
     },
     props: {
-      margin: { type: String, default: 'my-8' },
       dividers: { type: Boolean, default: undefined },
       dividersIos: { type: Boolean, default: true },
       dividersMaterial: { type: Boolean, default: false },

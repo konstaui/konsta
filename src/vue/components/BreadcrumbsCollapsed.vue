@@ -9,13 +9,9 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { BreadcrumbsCollapsedClasses } from '../../shared/classes/BreadcrumbsCollapsedClasses.js';
-
   import { BreadcrumbsCollapsedColors } from '../../shared/colors/BreadcrumbsCollapsedColors.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
 
   export default {

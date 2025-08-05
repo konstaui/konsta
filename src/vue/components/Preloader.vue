@@ -41,12 +41,8 @@
         type: Boolean,
         default: undefined,
       },
-      size: {
-        type: String,
-        default: 'w-8 h-8',
-      },
     },
-    setup(props) {
+    setup(props, ctx) {
       const context = useContext();
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
@@ -61,7 +57,7 @@
       );
 
       const c = useThemeClasses(props, () =>
-        PreloaderClasses(props, colors.value, theme.value)
+        PreloaderClasses(props, colors.value, theme.value, ctx.attrs.class)
       );
 
       return {

@@ -6,9 +6,7 @@
 <script>
   import { ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { TableClasses } from '../../shared/classes/TableClasses.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {

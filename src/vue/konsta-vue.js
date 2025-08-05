@@ -58,6 +58,7 @@ import kTableRow from './components/TableRow.vue';
 import kToast from './components/Toast.vue';
 import kToggle from './components/Toggle.vue';
 import kToolbar from './components/Toolbar.vue';
+import kToolbarPane from './components/ToolbarPane.vue';
 // eslint-disable-next-line
 import kProvider from './shared/KonstaProvider.vue';
 import { useTheme } from './shared/use-theme.js';
@@ -190,4 +191,6 @@ export {
   kToggle as Toggle,
   kToolbar,
   kToolbar as Toolbar,
+  kToolbarPane,
+  kToolbarPane as ToolbarPane,
 };

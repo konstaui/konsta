@@ -7,11 +7,11 @@
     </k-navbar>
 
     <k-block-title>Determinate Progress Bar</k-block-title>
-    <k-block strong inset-material outline-ios>
+    <k-block strong inset>
       <div class="my-4">
         <k-progressbar :progress="progress" />
       </div>
-      <k-segmented raised>
+      <k-segmented strong-ios outline-material rounded-ios>
         <k-segmented-button
           :active="progress === 0.1"
           @click="() => (progress = 0.1)"
@@ -40,7 +40,7 @@
     </k-block>
 
     <k-block-title>Colors</k-block-title>
-    <k-block strong inset-material outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <k-progressbar class="k-color-brand-red" :progress="0.25" />
       <k-progressbar class="k-color-brand-green" :progress="0.5" />
       <k-progressbar class="k-color-brand-yellow" :progress="0.75" />

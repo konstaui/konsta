@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Chips With Text</k-block-title>
-    <k-block strong-ios outline-ios>
+    <k-block strong inset>
       <k-chip class="m-0.5">Example Chip</k-chip>
       <k-chip class="m-0.5">Another Chip</k-chip>
       <k-chip class="m-0.5">One More Chip</k-chip>
@@ -16,7 +16,7 @@
     </k-block>
 
     <k-block-title>Outline Chips</k-block-title>
-    <k-block strong-ios outline-ios>
+    <k-block strong inset>
       <k-chip outline class="m-0.5"> Example Chip </k-chip>
       <k-chip outline class="m-0.5"> Another Chip </k-chip>
       <k-chip outline class="m-0.5"> One More Chip </k-chip>
@@ -25,7 +25,7 @@
     </k-block>
 
     <k-block-title>Contact Chips</k-block-title>
-    <k-block strong-ios outline-ios>
+    <k-block strong inset>
       <k-chip class="m-0.5">
         <template #media>
           <img
@@ -59,7 +59,7 @@
     </k-block>
 
     <k-block-title>Deletable Chips / Tags</k-block-title>
-    <k-block strong-ios outline-ios>
+    <k-block strong inset>
       <k-chip class="m-0.5" delete-button @delete="onDelete">
         Example Chip
       </k-chip>
@@ -75,7 +75,7 @@
       </k-chip>
     </k-block>
     <k-block-title class="bg-b bg-b">Color Chips</k-block-title>
-    <k-block strong-ios outline-ios>
+    <k-block strong inset>
       <k-chip
         class="m-0.5"
         :colors="{ fillBg: 'bg-red-500', fillText: 'text-white' }"

@@ -44,6 +44,9 @@ export default function BreadcrumbsPage() {
           <BreadcrumbsItem>
             <Link>Catalog</Link>
           </BreadcrumbsItem>
+          <BreadcrumbsItem active>
+            <Link>iPhone 12</Link>
+          </BreadcrumbsItem>
         </Breadcrumbs>
       </Block>
 

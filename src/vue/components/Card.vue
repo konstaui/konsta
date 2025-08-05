@@ -17,15 +17,10 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { CardClasses } from '../../shared/classes/CardClasses.js';
-
   import { CardColors } from '../../shared/colors/CardColors.js';
 
   export default {
@@ -46,7 +41,6 @@
         type: Boolean,
         default: undefined,
       },
-      margin: { type: String, default: 'm-4' },
       header: { type: [String, Number] },
       footer: { type: [String, Number] },
       contentWrap: { type: Boolean, default: true },
@@ -93,7 +87,7 @@
         CardClasses(
           { ...props, raised: isRaised.value, outline: isOutline.value },
           colors.value,
-          useDarkClasses
+          ctx.attrs.class
         )
       );
 

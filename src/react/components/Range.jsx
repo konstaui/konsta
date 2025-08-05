@@ -36,7 +36,6 @@ const Range = (props) => {
     ...rest
   } = props;
 
-  const elRef = useRef(null);
   const thumbWrapRef = useRef(null);
   const trackBgRef = useRef(null);
   const Component = component;
@@ -87,7 +86,6 @@ const Range = (props) => {
   return (
     <Component
       ref={(el) => {
-        elRef.current = el;
         if (ref && typeof ref === 'function') ref(el);
         else if (ref) ref.current = el;
       }}

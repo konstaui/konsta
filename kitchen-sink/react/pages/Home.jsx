@@ -111,7 +111,7 @@ export default function HomePage({
       <Popover
         opened={colorPickerOpened}
         onBackdropClick={() => setColorPickerOpened(false)}
-        size="w-36"
+        className="w-36"
         target=".home-color-picker"
       >
         <div className="grid grid-cols-3 py-2">

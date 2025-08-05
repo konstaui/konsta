@@ -11,54 +11,56 @@
       :icons="isTabbarIcons"
       class="left-0 bottom-0 fixed"
     >
-      <k-tabbar-link
-        :active="activeTab === 'tab-1'"
-        @click="() => (activeTab = 'tab-1')"
-      >
-        <template v-if="isTabbarLabels" #label> Tab 1 </template>
-        <template v-if="isTabbarIcons" #icon>
-          <k-icon>
-            <template #ios>
-              <EnvelopeFill class="w-7 h-7" />
-            </template>
-            <template #material>
-              <MdEmail class="w-6 h-6" />
-            </template>
-          </k-icon>
-        </template>
-      </k-tabbar-link>
-      <k-tabbar-link
-        :active="activeTab === 'tab-2'"
-        @click="() => (activeTab = 'tab-2')"
-      >
-        <template v-if="isTabbarLabels" #label> Tab 2 </template>
-        <template v-if="isTabbarIcons" #icon>
-          <k-icon>
-            <template #ios>
-              <Calendar class="w-7 h-7" />
-            </template>
-            <template #material>
-              <MdToday class="w-6 h-6" />
-            </template>
-          </k-icon>
-        </template>
-      </k-tabbar-link>
-      <k-tabbar-link
-        :active="activeTab === 'tab-3'"
-        @click="() => (activeTab = 'tab-3')"
-      >
-        <template v-if="isTabbarLabels" #label> Tab 3 </template>
-        <template v-if="isTabbarIcons" #icon>
-          <k-icon>
-            <template #ios>
-              <CloudUploadFill class="w-7 h-7" />
-            </template>
-            <template #material>
-              <MdFileUpload class="w-6 h-6" />
-            </template>
-          </k-icon>
-        </template>
-      </k-tabbar-link>
+      <k-toolbar-pane>
+        <k-tabbar-link
+          :active="activeTab === 'tab-1'"
+          @click="() => (activeTab = 'tab-1')"
+        >
+          <template v-if="isTabbarLabels" #label> Tab 1 </template>
+          <template v-if="isTabbarIcons" #icon>
+            <k-icon>
+              <template #ios>
+                <EnvelopeFill class="w-7 h-7" />
+              </template>
+              <template #material>
+                <MdEmail class="w-6 h-6" />
+              </template>
+            </k-icon>
+          </template>
+        </k-tabbar-link>
+        <k-tabbar-link
+          :active="activeTab === 'tab-2'"
+          @click="() => (activeTab = 'tab-2')"
+        >
+          <template v-if="isTabbarLabels" #label> Tab 2 </template>
+          <template v-if="isTabbarIcons" #icon>
+            <k-icon>
+              <template #ios>
+                <Calendar class="w-7 h-7" />
+              </template>
+              <template #material>
+                <MdToday class="w-6 h-6" />
+              </template>
+            </k-icon>
+          </template>
+        </k-tabbar-link>
+        <k-tabbar-link
+          :active="activeTab === 'tab-3'"
+          @click="() => (activeTab = 'tab-3')"
+        >
+          <template v-if="isTabbarLabels" #label> Tab 3 </template>
+          <template v-if="isTabbarIcons" #icon>
+            <k-icon>
+              <template #ios>
+                <CloudUploadFill class="w-7 h-7" />
+              </template>
+              <template #material>
+                <MdFileUpload class="w-6 h-6" />
+              </template>
+            </k-icon>
+          </template>
+        </k-tabbar-link>
+      </k-toolbar-pane>
     </k-tabbar>
 
     <k-list strong inset>
@@ -189,6 +191,7 @@
     kList,
     kListItem,
     kToggle,
+    kToolbarPane,
   } from 'konsta/vue';
   import {
     EnvelopeFill,
@@ -212,7 +215,7 @@
       kList,
       kListItem,
       kToggle,
-
+      kToolbarPane,
       EnvelopeFill,
       Calendar,
       CloudUploadFill,

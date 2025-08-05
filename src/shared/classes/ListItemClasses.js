@@ -10,7 +10,8 @@ export const ListItemClasses = (
     needsTouchRipple,
     isMenuListItemActive,
     autoStrongTitle,
-  }
+  },
+  baseClassName
 ) => {
   const {
     menuListItem,
@@ -30,7 +31,11 @@ export const ListItemClasses = (
   } = props;
   return {
     base: {
-      common: cls('k-list-item', menuListItem ? `${textColor} py-1` : ''),
+      common: cls(
+        'k-list-item',
+        menuListItem ? `${textColor} py-1` : '',
+        baseClassName
+      ),
       material: contacts && '[&:nth-child(2)]:-mt-12',
     },
     itemContent: {

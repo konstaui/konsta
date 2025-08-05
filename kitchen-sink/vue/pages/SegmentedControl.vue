@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Default Segmented</k-block-title>
-    <k-block strong-ios outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <k-segmented>
         <k-segmented-button
           :active="activeSegmented === 1"
@@ -52,7 +52,7 @@
     </k-block>
 
     <k-block-title>Raised Segmented</k-block-title>
-    <k-block strong-ios outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <k-segmented raised>
         <k-segmented-button
           :active="activeSegmented === 1"
@@ -96,7 +96,7 @@
     </k-block>
 
     <k-block-title>Outline</k-block-title>
-    <k-block strong-ios outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <k-segmented outline>
         <k-segmented-button
           :active="activeSegmented === 1"
@@ -140,24 +140,21 @@
     </k-block>
 
     <k-block-title>Strong Segmented</k-block-title>
-    <k-block strong-ios outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <k-segmented strong>
         <k-segmented-button
-          strong
           :active="activeSegmented === 1"
           @click="() => (activeSegmented = 1)"
         >
           Button
         </k-segmented-button>
         <k-segmented-button
-          strong
           :active="activeSegmented === 2"
           @click="() => (activeSegmented = 2)"
         >
           Button
         </k-segmented-button>
         <k-segmented-button
-          strong
           :active="activeSegmented === 3"
           @click="() => (activeSegmented = 3)"
         >
@@ -167,24 +164,18 @@
 
       <k-segmented strong rounded>
         <k-segmented-button
-          strong
-          rounded
           :active="activeSegmented === 1"
           @click="() => (activeSegmented = 1)"
         >
           Button
         </k-segmented-button>
         <k-segmented-button
-          strong
-          rounded
           :active="activeSegmented === 2"
           @click="() => (activeSegmented = 2)"
         >
           Button
         </k-segmented-button>
         <k-segmented-button
-          strong
-          rounded
           :active="activeSegmented === 3"
           @click="() => (activeSegmented = 3)"
         >

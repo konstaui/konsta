@@ -8,8 +8,8 @@
 
     <k-block-title>Volume: {{ volume }}</k-block-title>
     <k-block-header>From 0 to 100 with step 10</k-block-header>
-    <k-list strong inset-material outline-ios>
-      <k-list-item inner-class="flex space-x-4 rtl:space-x-reverse">
+    <k-list strong inset>
+      <k-list-item inner-class="flex gap-4 items-center">
         <template #inner>
           <span>0</span>
           <k-range
@@ -24,8 +24,8 @@
 
     <k-block-title>Price: ${{ price }}</k-block-title>
     <k-block-header>From 0 to 1000 with step 1</k-block-header>
-    <k-list strong inset-material outline-ios>
-      <k-list-item inner-class="flex space-x-4 rtl:space-x-reverse">
+    <k-list strong inset>
+      <k-list-item inner-class="flex gap-4 items-center">
         <template #inner>
           <span>$0</span>
           <k-range
@@ -43,7 +43,7 @@
     <k-block-title>
       Color: rgb({{ red }}, {{ green }}, {{ blue }})
     </k-block-title>
-    <k-list strong inset-material outline-ios>
+    <k-list strong inset>
       <k-list-item>
         <template #inner>
           <k-range

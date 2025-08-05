@@ -8,33 +8,33 @@
 
     <!-- Right Top -->
     <k-fab
-      class="fixed right-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-red"
+      class="fixed right-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-red"
     >
       <template #icon>
-        <component :is="PlusIcon" />
+        <component class="size-6" :is="PlusIcon" />
       </template>
     </k-fab>
 
     <!-- Right Bottom -->
     <k-fab class="fixed right-safe-4 bottom-safe-4 z-20">
       <template #icon>
-        <component :is="PlusIcon" />
+        <component class="size-6" :is="PlusIcon" />
       </template>
     </k-fab>
 
     <!-- Left Bottom -->
     <k-fab class="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green">
       <template #icon>
-        <component :is="PlusIcon" />
+        <component class="size-6" :is="PlusIcon" />
       </template>
     </k-fab>
 
     <!-- Left Top -->
     <k-fab
-      class="fixed left-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-yellow"
+      class="fixed left-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-yellow"
     >
       <template #icon>
-        <component :is="PlusIcon" />
+        <component class="size-6" :is="PlusIcon" />
       </template>
     </k-fab>
 
@@ -43,7 +43,7 @@
       class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
     >
       <template #icon>
-        <component :is="PlusIcon" />
+        <component class="size-6" :is="PlusIcon" />
       </template>
     </k-fab>
 
@@ -53,11 +53,11 @@
       text="Create"
       text-position="after"
       ><template #icon>
-        <component :is="PlusIcon" />
+        <component class="size-6" :is="PlusIcon" />
       </template>
     </k-fab>
 
-    <k-block class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quo rem
         beatae, delectus eligendi est saepe molestias perferendis suscipit,
@@ -88,7 +88,7 @@
         assumenda veniam, ipsum alias.
       </p>
     </k-block>
-    <k-block class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ipsa
         debitis sed nihil eaque dolore cum iste quibusdam, accusamus doloribus,

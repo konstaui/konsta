@@ -13,17 +13,11 @@
 <script>
   import { computed, inject, ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
-
   import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
 
   export default {
@@ -73,13 +67,11 @@
         ListButtonColors(props.colors || {}, useDarkClasses)
       );
 
-      const theme = useTheme(props, context);
-
       const c = useThemeClasses(props, () =>
         ListButtonClasses(
           { ...props, dividers: ListDividersContext.value },
           colors.value,
-          theme.value
+          ctx.attrs.class
         )
       );
 

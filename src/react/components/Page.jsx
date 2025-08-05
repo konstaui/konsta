@@ -34,7 +34,7 @@ const Page = (props) => {
 
   const colors = PageColors(colorsProp, dark);
 
-  const c = themeClasses(PageClasses(props, colors), className);
+  const c = themeClasses(PageClasses(props, colors, className));
 
   return (
     <Component

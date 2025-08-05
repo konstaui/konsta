@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useEffect, useRef } from 'react';
 
 const nextTick = (fn) => {
   requestAnimationFrame(() => {
@@ -8,18 +7,17 @@ const nextTick = (fn) => {
 };
 
 export const useHoverable = ({
-  elRef = {},
+  getEl,
   zIndex = 10,
   opacity = 1,
   offset = 1,
   enabled = true,
+  data = {},
 }) => {
-  const data = useRef({});
-
   const removeHoverHighlight = () => {
-    const el = elRef.current;
-    if (el && data.current.elScale) {
-      data.current.elScale = false;
+    const el = getEl();
+    if (el && data.elScale) {
+      data.elScale = false;
       el.style.scale = '';
 
       const onTransitionEnd = () => {
@@ -30,8 +28,8 @@ export const useHoverable = ({
       el.addEventListener('transitionend', onTransitionEnd);
     }
 
-    if (data.current.lightElWrap) {
-      const lightElWrap = data.current.lightElWrap;
+    if (data.lightElWrap) {
+      const lightElWrap = data.lightElWrap;
       if (lightElWrap.style.opacity === '0') {
         lightElWrap.remove();
       } else {
@@ -44,19 +42,18 @@ export const useHoverable = ({
   };
 
   const setLightPosition = (e) => {
-    if (data.current.lightEl) {
+    if (data.lightEl) {
       const { x, y } = e;
-      const offsetX = x - data.current.rect.x;
-      const offsetY = y - data.current.rect.y;
-      data.current.lightEl.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
+      const offsetX = x - data.rect.x;
+      const offsetY = y - data.rect.y;
+      data.lightEl.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0)`;
     }
   };
 
   const onPointerEnter = (e) => {
     if (!enabled) return;
-    const d = data.current;
-
-    const el = elRef.current;
+    const d = data;
+    const el = getEl();
 
     d.rect = el.getBoundingClientRect();
     const lightElWrap = document.createElement('span');
@@ -106,19 +103,24 @@ export const useHoverable = ({
   const onPointerLeave = (e) => {
     removeHoverHighlight();
   };
-  useEffect(() => {
-    const el = elRef.current;
+  const attachEvents = () => {
+    const el = getEl();
+    if (!el) return;
     el.addEventListener('pointerenter', onPointerEnter);
     el.addEventListener('pointermove', onPointerMove);
     el.addEventListener('pointerleave', onPointerLeave);
-    return () => {
-      el.removeEventListener('pointerenter', onPointerEnter);
-      el.removeEventListener('pointermove', onPointerMove);
-      el.removeEventListener('pointerleave', onPointerLeave);
-    };
-  });
+  };
+  const detachEvents = () => {
+    const el = getEl();
+    if (!el) return;
+    el.removeEventListener('pointerenter', onPointerEnter);
+    el.removeEventListener('pointermove', onPointerMove);
+    el.removeEventListener('pointerleave', onPointerLeave);
+  };
 
   return {
     removeHoverHighlight,
+    attachEvents,
+    detachEvents,
   };
 };

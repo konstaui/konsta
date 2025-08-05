@@ -1,12 +1,13 @@
 import { cls } from '../cls.js';
 
-export const DialogClasses = (props, colors, dark) => {
+export const DialogClasses = (props, colors, baseClassName) => {
   const { titleFontSizeMaterial, titleFontSizeIos, sizeIos, sizeMaterial } =
     props;
   return {
     base: {
       common: cls(
-        'k-dialog left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed'
+        'k-dialog left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 max-h-full overflow-hidden duration-400 fixed',
+        baseClassName
       ),
       ios: cls('rounded-4xl max-w-full w-75', colors.bgIos),
       material: cls(

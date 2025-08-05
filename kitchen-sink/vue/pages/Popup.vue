@@ -6,14 +6,16 @@
       </template>
     </k-navbar>
 
-    <k-block strong class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         Popup is a modal window with any HTML content that pops up over App's
         main content. Popup as all other overlays is part of so called
         "Temporary Views".
       </p>
       <p>
-        <k-button @click="() => (popupOpened = true)">Open Popup</k-button>
+        <k-button rounded @click="() => (popupOpened = true)">
+          Open Popup
+        </k-button>
       </p>
     </k-block>
 
@@ -24,7 +26,7 @@
             <k-link navbar @click="() => (popupOpened = false)"> Close </k-link>
           </template>
         </k-navbar>
-        <k-block class="space-y-4">
+        <k-block strong inset class="space-y-4">
           <p>
             Here comes popup. You can put here anything, even independent view
             with its own navigation. Also not, that by default popup looks a bit

@@ -11,20 +11,14 @@
   </component>
 </template>
 <script>
-  import { computed, ref } from 'vue';
+  import { computed, ref, inject } from 'vue';
   import { cls } from '../../shared/cls.js';
   import { useContext } from '../shared/use-context.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
-
   import { LinkColors } from '../../shared/colors/LinkColors.js';
 
   export default {
@@ -46,14 +40,8 @@
         default: undefined,
       },
       linkProps: { type: Object, default: () => ({}) },
-
-      // Toolbar/navbar link
-      navbar: Boolean,
-
       iconOnly: Boolean,
-
       tabbarActive: Boolean,
-
       touchRipple: { type: Boolean, default: undefined },
     },
     setup(props, ctx) {
@@ -62,13 +50,17 @@
       const useThemeClasses = themeClasses(context);
       const rippleElRef = ref(null);
       const theme = useTheme(props, context);
+      const ToolbarContext = inject('ToolbarContext', { value: {} });
+      const NavbarContext = inject('NavbarContext', { value: {} });
 
       const needsTouchRipple = computed(
         () =>
           theme.value === 'material' &&
           (props.touchRipple ||
             (typeof props.touchRipple === 'undefined' &&
-              (props.toolbar || props.tabbar || props.navbar)))
+              (ToolbarContext.value.toolbar ||
+                ToolbarContext.value.tabbar ||
+                NavbarContext.value.navbar)))
       );
 
       useTouchRipple(rippleElRef, props, {
@@ -76,7 +68,9 @@
         addCondition: () =>
           props.touchRipple ||
           (typeof props.touchRipple === 'undefined' &&
-            (props.toolbar || props.tabbar || props.navbar)),
+            (ToolbarContext.value.toolbar ||
+              ToolbarContext.value.tabbar ||
+              NavbarContext.value.navbar)),
       });
 
       const colors = computed(() =>
@@ -84,17 +78,17 @@
       );
 
       // prettier-ignore
-      const themeTextColor = computed(() => props.navbar ?
+      const themeTextColor = computed(() => NavbarContext.value.navbar ?
         (
           theme.value === 'material' ? colors.value.navbarTextMaterial : colors.value.navbarTextIos
-        ) :
+        ) : ToolbarContext.value.toolbar ? (theme.value === 'material' ? colors.value.toolbarTextMaterial : colors.value.toolbarTextIos) :
         (
           theme.value === 'material' ? colors.value.textMaterial : colors.value.textIos
         )
       );
 
       const textColor = computed(() =>
-        props.tabbar && !props.tabbarActive
+        ToolbarContext.value.tabbar && !props.tabbarActive
           ? colors.value.tabbarInactive
           : themeTextColor.value
       );
@@ -102,24 +96,34 @@
         props.tabbarActive ? 'active' : 'inactive'
       );
       const c = useThemeClasses(props, () =>
-        LinkClasses(props, {
-          textColor: textColor.value,
-          needsTouchRipple: needsTouchRipple.value,
-        })
+        LinkClasses(
+          {
+            ...props,
+            tabbarLabels: ToolbarContext.value.tabbarLabels,
+            tabbarIcons: ToolbarContext.value.tabbarIcons,
+            tabbar: ToolbarContext.value.tabbar,
+            toolbar: ToolbarContext.value.toolbar,
+          },
+          {
+            textColor: textColor.value,
+            needsTouchRipple: needsTouchRipple.value,
+          }
+        )
       );
 
       const classes = computed(() =>
         cls(
           // base
-          c.value.base[props.tabbar ? 'default' : 'notTabbar'],
+          c.value.base,
 
-          props.toolbar && c.value.toolbar,
+          ToolbarContext.value.toolbar && c.value.toolbar,
 
-          props.navbar && c.value.navbar,
+          NavbarContext.value.navbar && c.value.navbar,
 
-          props.tabbar && c.value.tabbar[tabbarState.value]
+          ToolbarContext.value.tabbar && c.value.tabbar[tabbarState.value]
         )
       );
+
       return {
         c,
         classes,

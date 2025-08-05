@@ -73,28 +73,35 @@
         </k-dialog-button>
       </template>
     </k-dialog>
-    <k-block strong-ios outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         Konsta UI comes with simple Notifications component that allows you to
         show some useful messages to user and request basic actions.
       </p>
       <p>
-        <k-button @click="() => openNotification('notificationFull')">
+        <k-button rounded @click="() => openNotification('notificationFull')">
           Full layout notification
         </k-button>
       </p>
       <p>
-        <k-button @click="() => openNotification('notificationWithButton')">
+        <k-button
+          rounded
+          @click="() => openNotification('notificationWithButton')"
+        >
           With Close Button
         </k-button>
       </p>
       <p>
-        <k-button @click="() => openNotification('notificationCloseOnClick')">
+        <k-button
+          rounded
+          @click="() => openNotification('notificationCloseOnClick')"
+        >
           Click to Close
         </k-button>
       </p>
       <p>
         <k-button
+          rounded
           @click="() => openNotification('notificationCallbackOnClose')"
         >
           Callback on Close

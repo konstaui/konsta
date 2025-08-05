@@ -14,15 +14,18 @@
         </k-link>
       </template>
     </k-navbar>
-    <k-block class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         <k-button
+          rounded
           class="popover-button"
           @click="() => openPopover('.popover-button')"
         >
           Open popover on me
         </k-button>
       </p>
+    </k-block>
+    <k-block strong inset class="space-y-4">
       <p>
         Mauris fermentum neque et luctus venenatis. Vivamus a sem rhoncus,
         ornare tellus eu, euismod mauris. In porta turpis at semper convallis.

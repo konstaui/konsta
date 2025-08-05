@@ -38,7 +38,7 @@ const Toast = (props) => {
   const dark = useDarkClasses();
   const colors = ToastColors(colorsProp, dark);
 
-  const c = themeClasses(ToastClasses({ ...props }, colors, dark), className);
+  const c = themeClasses(ToastClasses({ ...props }, colors), className);
 
   return (
     <Component ref={elRef} className={c.base[position]} {...attrs}>

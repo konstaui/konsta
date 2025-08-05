@@ -4,7 +4,7 @@
   </k-button>
 </template>
 <script>
-  import { computed } from 'vue';
+  import { computed, inject } from 'vue';
   import kButton from './Button.vue';
 
   export default {
@@ -15,19 +15,18 @@
     props: {
       ...kButton.props,
       active: { type: Boolean, default: false },
-      outline: { type: Boolean, default: false },
-      strong: { type: Boolean, default: false },
       clear: { type: Boolean, default: false },
-      rounded: { type: Boolean, default: false },
     },
     setup(props) {
+      const SegmentedContext = inject('SegmentedContext', { value: {} });
       const buttonProps = computed(() => {
         return {
           ...props,
           segmented: true,
           segmentedActive: props.active,
-          segmentedStrong: props.strong,
-          rounded: props.rounded && props.strong,
+          segmentedStrong: SegmentedContext.value.strong,
+          rounded:
+            SegmentedContext.value.rounded && SegmentedContext.value.strong,
         };
       });
       return {

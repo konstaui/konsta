@@ -36,14 +36,14 @@ const Message = (props) => {
   const dark = useDarkClasses();
   const colors = MessageColors(colorsProp, dark);
 
-  const c = themeClasses(MessageClasses({ ...props }, colors));
+  const c = themeClasses(MessageClasses({ ...props }, colors, className));
   const Component = component;
 
   const attrs = {
     ...rest,
   };
 
-  const classes = cls(className, c.message, {
+  const classes = cls(c.message, {
     [c.messageSent]: type === 'sent',
     [c.messageReceived]: type === 'received',
   });

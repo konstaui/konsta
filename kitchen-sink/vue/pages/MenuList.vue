@@ -6,14 +6,14 @@
       </template>
     </k-navbar>
 
-    <k-block strong>
+    <k-block strong inset>
       <p>
         Menu list unlike usual links list is designed to indicate currently
         active screen (or section) of your app. Think about it like a Tabbar but
         in a form of a list.
       </p>
     </k-block>
-    <k-menu-list>
+    <k-menu-list strong-ios outline-ios>
       <k-menu-list-item
         title="Home"
         :active="selected === 'home'"
@@ -43,7 +43,7 @@
       </k-menu-list-item>
     </k-menu-list>
 
-    <k-menu-list>
+    <k-menu-list strong-ios outline-ios>
       <k-menu-list-item
         title="Home"
         subtitle="Home subtitle"

@@ -1,10 +1,13 @@
 import { cls } from '../cls.js';
 
-export const SegmentedClasses = (props, colors, darkClasses) => {
+export const SegmentedClasses = (props, colors, darkClasses, baseClassName) => {
   const { outline, rounded, navbar } = props;
   return {
     base: {
-      common: `k-segmented flex justify-center items-center overflow-hidden w-full`,
+      common: cls(
+        `k-segmented flex justify-center items-center overflow-hidden w-full`,
+        baseClassName
+      ),
       square: {
         ios: 'rounded',
         material: 'rounded-lg',

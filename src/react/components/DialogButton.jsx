@@ -1,16 +1,11 @@
 import React, { useRef } from 'react';
 import { useTheme } from '../shared/use-theme.js';
-import { useThemeClasses } from '../shared/use-theme-classes.js';
-
-import { useDarkClasses } from '../shared/use-dark-classes.js';
-import { DialogButtonColors } from '../../shared/colors/DialogButtonColors.js';
 import Button from './Button.jsx';
 
 const DialogButton = (props) => {
   const {
     component = 'button',
     className,
-    colors: colorsProp,
     ios,
     material,
 
@@ -36,10 +31,6 @@ const DialogButton = (props) => {
   };
 
   const theme = useTheme({ ios, material });
-  const themeClasses = useThemeClasses({ ios, material });
-  const dark = useDarkClasses();
-
-  const colors = DialogButtonColors(colorsProp, dark);
 
   const isStrong =
     typeof strong === 'undefined'

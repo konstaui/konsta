@@ -26,15 +26,10 @@
 <script>
   import { computed, onMounted, ref, watch } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { CheckboxClasses } from '../../shared/classes/CheckboxClasses.js';
-
   import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
 

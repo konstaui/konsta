@@ -10,29 +10,6 @@ interface Props {
    */
   onClick?: (e: any) => void;
   /**
-   * Object with Tailwind CSS colors classes
-   * */
-  colors?: {
-    /**
-     * Active/pressed state bg color in iOS theme
-     *
-     * @default 'active:bg-black/10 dark:active:bg-white/10'
-     */
-    activeBgIos?: string;
-    /**
-     * Text color in iOS theme
-     *
-     * @default 'text-primary'
-     */
-    textIos?: string;
-    /**
-     * Disabled button text color in iOS theme
-     *
-     * @default 'text-black/30 dark:text-white/30'
-     */
-    disabledTextIos?: string;
-  };
-  /**
    * Makes button bold in iOS theme and fill in Material theme, overwrites `strongIos` and `strongMaterial`
    *
    * @default false

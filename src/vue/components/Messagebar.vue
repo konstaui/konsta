@@ -1,8 +1,12 @@
 <template>
   <component :is="component" :id="id" ref="elRef" :class="c.base">
-    <k-toolbar :outline="outline" :colors="colors">
+    <k-toolbar
+      :outline="outline"
+      :colors="colors"
+      :inner-class="c.toolbarInner"
+    >
       <div v-if="slots.left" :class="c.left"><slot name="left" /></div>
-      <div :class="c.messagebarArea">
+      <k-glass :class="c.messagebarArea">
         <textarea
           id="textareaId"
           ref="areaElRef"
@@ -17,7 +21,7 @@
           @change="onChange"
           @focus="onFocusInternal"
         />
-      </div>
+      </k-glass>
       <div v-if="slots.right" :class="c.right"><slot name="right" /></div>
     </k-toolbar>
   </component>
@@ -27,18 +31,17 @@
   import { useContext } from '../shared/use-context.js';
 
   import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
-
   import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
   import kToolbar from './Toolbar.vue';
+  import kGlass from './Glass.vue';
 
   export default {
     name: 'k-messagebar',
     components: {
       kToolbar,
+      kGlass,
     },
     props: {
       component: {
@@ -91,7 +94,8 @@
             ...props,
           },
           colors.value,
-          { isFocused }
+          { isFocused },
+          ctx.attrs.class
         )
       );
 

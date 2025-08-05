@@ -6,7 +6,6 @@
 <script>
   import { useContext } from '../shared/use-context.js';
   import { BreadcrumbsClasses } from '../../shared/classes/BreadcrumbsClasses.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {

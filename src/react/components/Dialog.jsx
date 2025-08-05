@@ -55,8 +55,7 @@ const Dialog = (props) => {
         titleFontSizeIos,
         titleFontSizeMaterial,
       },
-      colors,
-      dark
+      colors
     ),
     className
   );

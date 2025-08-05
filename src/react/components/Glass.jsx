@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { GlassClasses } from '../../shared/classes/GlassClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
@@ -36,9 +36,19 @@ const Glass = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useHoverable({ elRef, enabled: hoverable && theme === 'ios' });
+  const hoverableData = useRef({});
+  const { attachEvents, detachEvents } = useHoverable({
+    getEl: () => elRef.current,
+    enabled: hoverable && theme === 'ios',
+    data: hoverableData.current,
+  });
 
   const c = themeClasses(GlassClasses({ ...props }, dark), className);
+
+  useEffect(() => {
+    attachEvents();
+    return () => detachEvents();
+  });
 
   return (
     <Component

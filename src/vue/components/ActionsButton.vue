@@ -12,7 +12,6 @@
 <script>
   import { ref, computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import { themeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';

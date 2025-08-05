@@ -52,18 +52,12 @@
 <script>
   import { computed, inject, ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import ChevronIcon from './icons/ChevronIcon.vue';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
-
   import { ListItemColors } from '../../shared/colors/ListItemColors.js';
 
   export default {
@@ -226,31 +220,29 @@
         value: false,
       });
 
-      const c = useThemeClasses(
-        props,
-        () =>
-          ListItemClasses(
-            {
-              ...props,
-              dividers:
-                typeof props.dividers === 'undefined'
-                  ? ListDividersContext.value
-                  : props.dividers,
-              contacts:
-                typeof props.contacts === 'undefined' ? '' : props.contacts,
-            },
-            colors.value,
-            {
-              isMediaItem: isMediaItem.value,
-              theme: theme.value,
-              textColor: textColor.value,
-              needsTouchRipple: needsTouchRipple.value,
-              isMenuListItemActive: isMenuListItemActive.value,
-              darkClasses: useDarkClasses,
-              autoStrongTitle: autoStrongTitle.value,
-            }
-          ),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        ListItemClasses(
+          {
+            ...props,
+            dividers:
+              typeof props.dividers === 'undefined'
+                ? ListDividersContext.value
+                : props.dividers,
+            contacts:
+              typeof props.contacts === 'undefined' ? '' : props.contacts,
+          },
+          colors.value,
+          {
+            isMediaItem: isMediaItem.value,
+            theme: theme.value,
+            textColor: textColor.value,
+            needsTouchRipple: needsTouchRipple.value,
+            isMenuListItemActive: isMenuListItemActive.value,
+            darkClasses: useDarkClasses,
+            autoStrongTitle: autoStrongTitle.value,
+          },
+          ctx.attrs.class
+        )
       );
 
       const itemContentClasses = computed(() =>

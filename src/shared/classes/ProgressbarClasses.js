@@ -1,9 +1,12 @@
 import { cls } from '../cls';
 
-export const ProgressbarClasses = (colors) => {
+export const ProgressbarClasses = (colors, baseClassName) => {
   return {
     base: {
-      common: `k-progressbar block overflow-hidden rtl:rotate-180 rounded-full relative`,
+      common: cls(
+        'k-progressbar block overflow-hidden rtl:rotate-180 rounded-full relative',
+        baseClassName
+      ),
       ios: cls(`h-1.5`, colors.trackBgIos),
       material: cls('h-1'),
     },

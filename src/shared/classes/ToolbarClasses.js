@@ -1,6 +1,6 @@
 import { cls } from '../cls.js';
 
-export const ToolbarClasses = (props, colors) => {
+export const ToolbarClasses = (props, colors, baseClassName) => {
   const {
     bgClassName = '',
     bgClass = '',
@@ -14,7 +14,7 @@ export const ToolbarClasses = (props, colors) => {
   } = props;
   return {
     base: {
-      common: cls(`k-toolbar w-full z-20 relative`),
+      common: cls(`k-toolbar w-full z-20 relative`, baseClassName),
       ios: cls(!top && 'pb-safe-4', 'px-safe-4 flex justify-center'),
       material: cls(!top && 'pb-safe'),
     },

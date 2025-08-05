@@ -67,7 +67,7 @@
     </k-list>
     <k-popover
       :opened="colorPickerOpened"
-      size="w-36"
+      class="w-36"
       target=".home-color-picker"
       @backdropclick="() => (colorPickerOpened = false)"
     >

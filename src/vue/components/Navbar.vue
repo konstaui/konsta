@@ -1,8 +1,9 @@
 <template>
   <component :is="component" ref="elRef" :class="c.base">
+    <div v-if="theme === 'ios'" :class="c.bgBlur" />
     <div ref="bgElRef" :class="c.bg" />
     <div ref="innerElRef" :class="c.inner">
-      <div v-if="slots.left" :class="c.left"><slot name="left" /></div>
+      <k-glass v-if="slots.left" :class="c.left"><slot name="left" /></k-glass>
 
       <div
         v-if="title || subtitle || slots.title || slots.subtitle"
@@ -15,7 +16,9 @@
         </div>
       </div>
 
-      <div v-if="slots.right" :class="c.right"><slot name="right" /></div>
+      <k-glass v-if="slots.right" :class="c.right"
+        ><slot name="right"
+      /></k-glass>
       <slot />
     </div>
     <div
@@ -32,21 +35,27 @@
   </component>
 </template>
 <script>
-  import { computed, onMounted, onBeforeUnmount, onUpdated, ref } from 'vue';
+  import {
+    computed,
+    onMounted,
+    onBeforeUnmount,
+    onUpdated,
+    ref,
+    provide,
+  } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
-
   import { NavbarColors } from '../../shared/colors/NavbarColors.js';
+  import kGlass from './Glass.vue';
 
   export default {
     name: 'k-navbar',
+    components: {
+      kGlass,
+    },
     props: {
       component: {
         type: String,
@@ -117,29 +126,25 @@
         NavbarColors(props.colors || {}, useDarkClasses)
       );
 
-      const isOutline = computed(() =>
-        typeof props.outline === 'undefined'
-          ? theme.value === 'ios'
-          : props.outline
-      );
+      const NavbarContext = computed(() => ({
+        navbar: true,
+      }));
+      provide('NavbarContext', NavbarContext);
 
-      const c = useThemeClasses(
-        props,
-        () =>
-          NavbarClasses(
-            {
-              ...props,
-              outline: isOutline.value,
-              left: ctx.slots.left,
-              right: ctx.slots.right,
-              centerTitle:
-                typeof props.centerTitle === 'undefined'
-                  ? theme.value === 'ios'
-                  : props.centerTitle,
-            },
-            colors.value
-          ),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        NavbarClasses(
+          {
+            ...props,
+            left: ctx.slots.left,
+            right: ctx.slots.right,
+            centerTitle:
+              typeof props.centerTitle === 'undefined'
+                ? theme.value === 'ios'
+                : props.centerTitle,
+          },
+          colors.value,
+          ctx.attrs.class
+        )
       );
 
       const getScrollEl = () => {
@@ -174,13 +179,15 @@
           0
         );
 
-        bgElRef.value.style.opacity = props.transparent
-          ? -0.5 + scrollProgress * 1.5
-          : '';
-        if (props.medium || props.large) {
-          bgElRef.value.style.transform = `translateY(-${
-            scrollProgress * maxTranslate
-          }px)`;
+        if (theme.value === 'material') {
+          bgElRef.value.style.opacity = props.transparent
+            ? -0.5 + scrollProgress * 1.5
+            : '';
+          if (props.medium || props.large) {
+            bgElRef.value.style.transform = `translateY(-${
+              scrollProgress * maxTranslate
+            }px)`;
+          }
         }
 
         if (titleContainerElRef.value) {
@@ -267,6 +274,7 @@
         titleContainerElRef,
         titleElRef,
         subnavbarElRef,
+        theme,
       };
     },
   };

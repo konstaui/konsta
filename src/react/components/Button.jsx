@@ -46,8 +46,6 @@ const Button = (props) => {
     raisedIos,
     raisedMaterial,
 
-    ref,
-
     inline,
 
     // Segmented
@@ -59,6 +57,8 @@ const Button = (props) => {
 
     // Children
     children,
+
+    ref,
 
     // Rest
     ...rest

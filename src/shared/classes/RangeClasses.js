@@ -1,10 +1,12 @@
 import { cls } from '../cls.js';
 
-export const RangeClasses = (props, colors, dark) => {
+export const RangeClasses = (props, colors, dark, baseClassName) => {
   return {
     base: {
-      common:
+      common: cls(
         'k-range block relative select-none w-full self-center touch-pan-y group/range',
+        baseClassName
+      ),
       ios: 'h-7',
       material: 'h-11',
     },

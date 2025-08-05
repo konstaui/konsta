@@ -60,9 +60,14 @@ const Messagebar = (props) => {
   };
 
   const c = themeClasses(
-    MessagebarClasses({ ...props }, colors, {
-      isFocused,
-    })
+    MessagebarClasses(
+      { ...props },
+      colors,
+      {
+        isFocused,
+      },
+      className
+    )
   );
 
   const Component = component;
@@ -80,7 +85,7 @@ const Messagebar = (props) => {
       }}
       id={id}
       style={style}
-      className={cls(c.base, className)}
+      className={c.base}
       {...attrs}
     >
       <Toolbar

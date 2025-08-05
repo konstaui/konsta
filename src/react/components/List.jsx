@@ -66,7 +66,17 @@ const List = (props) => {
       inset,
       dividers,
     },
-    props
+    {
+      strongIos,
+      strongMaterial,
+      outlineIos,
+      outlineMaterial,
+      insetIos,
+      insetMaterial,
+      dividersIos,
+      dividersMaterial,
+      ...props,
+    }
   );
 
   const colors = ListColors(colorsProp, dark);
@@ -78,6 +88,7 @@ const List = (props) => {
         inset: isInset,
         strong: isStrong,
         outline: isOutline,
+        dividers: hasDividers,
       },
       colors
     )

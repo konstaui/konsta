@@ -36,15 +36,10 @@
 <script>
   import { ref, computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { MessageClasses } from '../../shared/classes/MessageClasses.js';
-
   import { MessageColors } from '../../shared/colors/MessageColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -86,7 +81,7 @@
       );
 
       const c = useThemeClasses(props, () =>
-        MessageClasses({ ...props }, colors.value)
+        MessageClasses({ ...props }, colors.value, ctx.attrs.class)
       );
 
       const classes = computed(() =>

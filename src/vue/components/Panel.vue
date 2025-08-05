@@ -1,25 +1,33 @@
 <template>
   <div v-if="backdrop" :class="c.backdrop[state]" @click="onBackdropClick" />
-  <component :is="component" :class="classes">
+  <k-glass
+    v-if="theme === 'ios'"
+    :component="component"
+    :class="classes"
+    :hoverable="false"
+  >
+    <slot />
+  </k-glass>
+  <component v-else :is="component" :class="classes">
     <slot />
   </component>
 </template>
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { PanelClasses } from '../../shared/classes/PanelClasses.js';
-
   import { PanelColors } from '../../shared/colors/PanelColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
+  import kGlass from './Glass.vue';
+  import { useTheme } from '../shared/use-theme.js';
 
   export default {
     name: 'k-panel',
+    components: {
+      kGlass,
+    },
     props: {
       component: {
         type: String,
@@ -48,6 +56,7 @@
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
       const state = computed(() => (props.opened ? 'opened' : 'closed'));
+      const theme = useTheme(props, context);
       const colors = computed(() =>
         PanelColors(props.colors || {}, useDarkClasses)
       );
@@ -67,6 +76,7 @@
         c,
         state,
         classes,
+        theme,
       };
     },
   };

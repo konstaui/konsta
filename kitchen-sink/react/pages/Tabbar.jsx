@@ -23,7 +23,7 @@ export default function TabbarPage() {
   const isPreview = document.location.href.includes('examplePreview');
   const [activeTab, setActiveTab] = useState('tab-1');
   const [isTabbarLabels, setIsTabbarLabels] = useState(true);
-  const [isTabbarIcons, setIsTabbarIcons] = useState(false);
+  const [isTabbarIcons, setIsTabbarIcons] = useState(true);
   return (
     <Page>
       <Navbar

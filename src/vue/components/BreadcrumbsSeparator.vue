@@ -7,7 +7,6 @@
 <script>
   import { BreadcrumbsSeparatorClasses } from '../../shared/classes/BreadcrumbsSeparatorClasses.js';
   import { useContext } from '../shared/use-context.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
   import ChevronIcon from './icons/ChevronIcon.vue';
 

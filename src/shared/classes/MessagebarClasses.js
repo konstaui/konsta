@@ -1,6 +1,11 @@
 import { cls } from '../cls.js';
 
-export const MessagebarClasses = (props, colors, { isFocused }) => {
+export const MessagebarClasses = (
+  props,
+  colors,
+  { isFocused },
+  baseClassName
+) => {
   const {
     rightClassName = '',
     rightClass = '',
@@ -9,7 +14,7 @@ export const MessagebarClasses = (props, colors, { isFocused }) => {
   } = props;
   return {
     base: {
-      common: 'k-messagebar fixed bottom-0 start-0 w-full',
+      common: cls('k-messagebar fixed bottom-0 start-0 w-full', baseClassName),
     },
     toolbar: {
       material: colors.bgMessage,

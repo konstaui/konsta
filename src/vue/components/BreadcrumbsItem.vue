@@ -6,13 +6,9 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { BreadcrumbsItemClasses } from '../../shared/classes/BreadcrumbsItemClasses.js';
-
   import { BreadcrumbsItemColors } from '../../shared/colors/BreadcrumbsItemColors.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
 
   export default {

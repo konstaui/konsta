@@ -1,12 +1,13 @@
 import { cls } from '../cls.js';
 
-export const ToastClasses = (props, colors, dark) => {
+export const ToastClasses = (props, colors, baseClassName) => {
   const { opened } = props;
   return {
     base: {
       common: cls(
         'k-toast z-50 transform transition-(--transition-transform-opacity) w-auto start-0 bottom-0 fixed left-safe-4 right-safe-4 bottom-safe-4 flex',
-        !opened && 'translate-y-full opacity-0 pointer-events-none'
+        !opened && 'translate-y-full opacity-0 pointer-events-none',
+        baseClassName
       ),
       left: 'justify-start',
       right: 'justify-end',

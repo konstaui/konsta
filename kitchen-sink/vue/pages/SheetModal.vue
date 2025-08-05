@@ -6,14 +6,16 @@
       </template>
     </k-navbar>
 
-    <k-block strong-ios outline-ios class="space-y-4">
+    <k-block strong inset class="space-y-4">
       <p>
         Sheet Modals slide up from the bottom of the screen to reveal more
         content. Such modals allow to create custom overlays with custom
         content.
       </p>
       <p>
-        <k-button @click="() => (sheetOpened = true)">Open Sheet</k-button>
+        <k-button rounded @click="() => (sheetOpened = true)"
+          >Open Sheet</k-button
+        >
       </p>
     </k-block>
 
@@ -22,11 +24,11 @@
       :opened="sheetOpened"
       @backdropclick="() => (sheetOpened = false)"
     >
-      <k-toolbar top>
-        <div class="left" />
-        <div class="right">
+      <k-toolbar top class="justify-end ios:pt-4">
+        <div class="ios:hidden" />
+        <k-toolbar-pane>
           <k-link toolbar @click="() => (sheetOpened = false)"> Done </k-link>
-        </div>
+        </k-toolbar-pane>
       </k-toolbar>
       <k-block>
         <p>
@@ -36,7 +38,9 @@
           excepturi voluptatem dolore itaque sapiente dolores!
         </p>
         <div class="mt-4">
-          <k-button @click="() => (sheetOpened = false)">Action</k-button>
+          <k-button large rounded @click="() => (sheetOpened = false)">
+            Action
+          </k-button>
         </div>
       </k-block>
     </k-sheet>
@@ -53,6 +57,7 @@
     kButton,
     kToolbar,
     kLink,
+    kToolbarPane,
   } from 'konsta/vue';
 
   export default {
@@ -66,6 +71,7 @@
       kButton,
       kToolbar,
       kLink,
+      kToolbarPane,
     },
     setup() {
       const sheetOpened = ref(false);

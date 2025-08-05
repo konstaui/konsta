@@ -37,8 +37,6 @@
         type: Boolean,
         default: undefined,
       },
-      margin: { type: String, default: 'my-8' },
-      padding: { type: String, default: 'py-4' },
       inset: { type: Boolean, default: undefined },
       insetIos: { type: Boolean, default: false },
       insetMaterial: { type: Boolean, default: false },
@@ -91,8 +89,7 @@
             strong: isStrong.value,
             outline: isOutline.value,
           },
-          colors.value,
-          ctx.attrs.class
+          colors.value
         )
       );
 
@@ -102,7 +99,10 @@
           c.value.base,
 
           // inset
-          isInset.value && c.value.inset
+          isInset.value && c.value.inset,
+
+          // className
+          ctx.attrs.class
         )
       );
       return {

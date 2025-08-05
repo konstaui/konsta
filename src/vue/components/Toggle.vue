@@ -9,7 +9,15 @@
       :checked="checked"
       :class="c.input"
     />
-    <span ref="rippleTargetElRef" :class="c.thumbWrap[state]">
+    <template v-if="theme === 'ios'">
+      <span :class="c.thumbSide[state]" />
+      <span :class="c.thumbBg[state]" />
+      <span :class="c.thumbShadow[state]" />
+      <span ref="rippleTargetElRef" :class="c.thumbWrap[state]">
+        <span :class="c.thumb[state]" />
+      </span>
+    </template>
+    <span v-else ref="rippleTargetElRef" :class="c.thumbWrap[state]">
       <span :class="c.thumb[state]" />
     </span>
     <slot />
@@ -18,17 +26,12 @@
 <script>
   import { computed, ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { ToggleClasses } from '../../shared/classes/ToggleClasses.js';
-
   import { ToggleColors } from '../../shared/colors/ToggleColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-
+  import { useTheme } from '../shared/use-theme.js';
   export default {
     name: 'k-toggle',
     props: {
@@ -60,6 +63,7 @@
       const useThemeClasses = themeClasses(context);
       const elRef = ref(null);
       const rippleTargetElRef = ref(null);
+      const theme = useTheme(props, context);
 
       useTouchRipple(rippleTargetElRef, props, { eventsElRef: elRef, context });
 
@@ -69,10 +73,8 @@
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 
-      const c = useThemeClasses(
-        props,
-        () => ToggleClasses(props, colors.value, useDarkClasses),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        ToggleClasses(props, colors.value, useDarkClasses, ctx.attrs.class)
       );
 
       return {
@@ -80,6 +82,7 @@
         rippleTargetElRef,
         c,
         state,
+        theme,
       };
     },
   };

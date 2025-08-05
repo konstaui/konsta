@@ -9,7 +9,7 @@
     >
       <div :class="c.angleArrow[positions.anglePosition]" />
     </div>
-    <div :class="c.inner"><slot /></div>
+    <k-glass :class="c.inner[state]"><slot /></k-glass>
   </component>
 </template>
 <script>
@@ -23,17 +23,17 @@
 
   import { useContext } from '../shared/use-context.js';
   import { useTheme } from '../shared/use-theme.js';
-
   import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
-
   import { PopoverColors } from '../../shared/colors/PopoverColors.js';
+  import kGlass from './Glass.vue';
 
   export default {
     name: 'k-popover',
+    components: {
+      kGlass,
+    },
     props: {
       component: {
         type: String,
@@ -50,10 +50,9 @@
         type: Boolean,
         default: undefined,
       },
-      size: { type: String, default: 'w-64' },
       opened: Boolean,
       backdrop: { type: Boolean, default: true },
-      angle: { type: Boolean, default: true },
+      angle: { type: Boolean, default: false },
       angleClass: { type: String, default: '' },
       target: { type: [Object, String], default: undefined },
       targetX: { type: Number, default: undefined },
@@ -87,7 +86,7 @@
 
       const c = useThemeClasses(
         props,
-        () => PopoverClasses(props, colors.value),
+        () => PopoverClasses(props, colors.value, useDarkClasses),
         ctx.attrs.class
       );
 

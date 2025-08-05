@@ -6,15 +6,10 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { BlockFooterClasses } from '../../shared/classes/BlockFooterClasses.js';
-
   import { BlockFooterColors } from '../../shared/colors/BlockFooterColors.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
 
   export default {

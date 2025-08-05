@@ -16,7 +16,7 @@
         </k-searchbar>
       </template>
     </k-navbar>
-    <k-list strong inset-material outline-ios>
+    <k-list strong inset>
       <k-list-item v-if="filteredItems.length === 0" title="Nothing found" />
       <k-list-item
         v-for="item in filteredItems"

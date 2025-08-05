@@ -6,7 +6,7 @@
     @blur-capture="onGlobalBlur"
     @focus-capture="onGlobalFocus"
   >
-    <div :class="c.inner">
+    <k-glass :class="c.inner">
       <span :class="c.searchIconWrap">
         <SearchIcon :theme="theme" :class="c.searchIcon" />
       </span>
@@ -32,22 +32,22 @@
       >
         <DeleteIcon :theme="theme" :class="c.deleteIcon" />
       </button>
-    </div>
+    </k-glass>
     <template v-if="disableButton">
-      <button
+      <k-glass
         v-if="theme === 'ios'"
-        ref="disableButtonRef"
+        component="button"
         type="button"
         :style="{
-          marginRight: isEnabled ? 0 : `-${disableButtonWidth}px`,
-          transitionDuration: !allowTransition ? '0ms' : '',
+          marginRight: isEnabled ? 0 : `-${48 + 16}px`,
+          marginLeft: isEnabled ? '16px' : 0,
         }"
         :class="c.cancelButton"
         @click="handleDisableButton"
         @pointerdown.prevent
       >
-        {{ disableButtonText }}
-      </button>
+        <SearchDisableIcon />
+      </k-glass>
       <BackIcon
         v-else
         :class="cls(c.cancelButton)"
@@ -59,29 +59,24 @@
   </component>
 </template>
 <script>
-  import { ref, computed, onMounted } from 'vue';
+  import { ref, computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { SearchbarClasses } from '../../shared/classes/SearchbarClasses.js';
-
   import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
   import DeleteIcon from './icons/DeleteIcon.vue';
   import SearchIcon from './icons/SearchIcon.vue';
+  import SearchDisableIcon from './icons/SearchDisableIcon.vue';
   import BackIcon from './icons/BackIcon.vue';
+  import kGlass from './Glass.vue';
 
   export default {
     name: 'k-searchbar',
-    components: { DeleteIcon, BackIcon, SearchIcon },
+    components: { DeleteIcon, BackIcon, SearchIcon, kGlass, SearchDisableIcon },
     props: {
       component: {
         type: String,
@@ -109,10 +104,6 @@
         type: Boolean,
         default: false,
       },
-      disableButtonText: {
-        type: String,
-        default: 'Cancel',
-      },
       clearButton: {
         type: Boolean,
         default: true,
@@ -134,10 +125,7 @@
       const useThemeClasses = themeClasses(context);
       const elRef = ref(null);
       const searchElRef = ref(null);
-      const disableButtonRef = ref(null);
-      const disableButtonWidth = ref(0);
       const disableTimeout = ref(null);
-      const allowTransition = ref(false);
       const isEnabled = ref(false);
       const theme = useTheme(props, context);
 
@@ -191,17 +179,6 @@
         if (onClear) onClear();
       };
 
-      onMounted(() => {
-        if (disableButtonRef.value) {
-          disableButtonWidth.value = disableButtonRef.value.offsetWidth;
-        }
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            allowTransition.value = true;
-          });
-        });
-      });
-
       const c = useThemeClasses(props, () =>
         SearchbarClasses({ ...props }, colors.value, {
           isEnabled: isEnabled.value,
@@ -220,9 +197,6 @@
         handleBlur,
         onClear,
         handleDisableButton,
-        disableButtonRef,
-        disableButtonWidth,
-        allowTransition,
         isEnabled,
         c,
         theme,

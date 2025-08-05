@@ -6,13 +6,9 @@
 <script>
   import { ref, computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { TableCellClasses } from '../../shared/classes/TableCellClasses.js';
-
   import { TableCellColors } from '../../shared/colors/TableCellColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {

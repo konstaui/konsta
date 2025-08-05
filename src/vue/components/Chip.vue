@@ -16,15 +16,10 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { ChipClasses } from '../../shared/classes/ChipClasses.js';
-
   import { ChipColors } from '../../shared/colors/ChipColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
   import DeleteIcon from './icons/DeleteIcon.vue';
 

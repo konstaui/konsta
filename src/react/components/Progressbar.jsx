@@ -36,7 +36,7 @@ const Progressbar = (props) => {
   const dark = useDarkClasses();
   const colors = ProgressbarColors(colorsProp, dark);
 
-  const c = themeClasses(ProgressbarClasses(colors), className);
+  const c = themeClasses(ProgressbarClasses(colors, className));
 
   return (
     <Component

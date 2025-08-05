@@ -1,6 +1,6 @@
 import { cls } from '../cls.js';
 
-export const NotificationsClasses = (props, colors) => {
+export const NotificationsClasses = (props, colors, baseClassName) => {
   const { opened } = props;
   return {
     base: {
@@ -8,7 +8,8 @@ export const NotificationsClasses = (props, colors) => {
         'k-notifications z-50 transform transition-(--transition-transform-opacity) box-border duration-500 absolute',
         !opened &&
           '-translate-y-full opacity-0 pointer-events-none transition duration-500',
-        'md:w-[568px] md:end-auto md:start-1/2 md:-ms-[256px]'
+        'md:w-[568px] md:end-auto md:start-1/2 md:-ms-[256px]',
+        baseClassName
       ),
       ios: cls(
         'rounded-xl p-4 start-2 end-2 top-2 rounded-3xl flex gap-4 items-center',

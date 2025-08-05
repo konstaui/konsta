@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Shape and size</k-block-title>
-    <k-block strong-ios outline-ios class="text-center space-y-4">
+    <k-block strong inset class="text-center space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
           <div class="block text-xs mb-1">Default</div>
@@ -130,7 +130,7 @@
     </k-block>
 
     <k-block-title>Raised</k-block-title>
-    <k-block strong-ios outline-ios class="text-center space-y-4">
+    <k-block strong inset class="text-center space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
           <div class="block text-xs mb-1">Default</div>
@@ -273,7 +273,7 @@
       </div>
     </k-block>
     <k-block-title>With Text Input</k-block-title>
-    <k-block strong-ios outline-ios class="text-center space-y-4">
+    <k-block strong inset class="text-center space-y-4">
       <div>
         <k-stepper
           :value="inputValue"
@@ -297,7 +297,7 @@
       </div>
     </k-block>
     <k-block-title>Only Buttons</k-block-title>
-    <k-list strong-ios outline-ios>
+    <k-list strong inset>
       <k-list-item :title="`Value is ${value}`">
         <template #after>
           <k-stepper
@@ -334,7 +334,7 @@
     </k-list>
 
     <k-block-title>Colors</k-block-title>
-    <k-block strong-ios outline-ios class="text-center space-y-4">
+    <k-block strong inset class="text-center space-y-4">
       <div class="grid grid-cols-2 gap-4">
         <div>
           <k-stepper

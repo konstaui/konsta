@@ -14,42 +14,44 @@
       </template>
     </k-navbar>
     <k-tabbar labels icons class="left-0 bottom-0 fixed">
-      <k-tabbar-link active label="Inbox">
-        <template #icon>
-          <k-icon badge="5" :badge-colors="{ bg: 'bg-green-500' }">
-            <template #ios>
-              <EnvelopeFill class="w-7 h-7" />
-            </template>
-            <template #material>
-              <MdEmail class="w-6 h-6" />
-            </template>
-          </k-icon>
-        </template>
-      </k-tabbar-link>
-      <k-tabbar-link label="Calendar">
-        <template #icon>
-          <k-icon badge="7" :badge-colors="{ bg: 'bg-red-500' }">
-            <template #ios>
-              <Calendar class="w-7 h-7" />
-            </template>
-            <template #material>
-              <MdToday class="w-6 h-6" />
-            </template>
-          </k-icon>
-        </template>
-      </k-tabbar-link>
-      <k-tabbar-link label="Upload">
-        <template #icon>
-          <k-icon badge="1" :badge-colors="{ bg: 'bg-red-500' }">
-            <template #ios>
-              <CloudUploadFill class="w-7 h-7" />
-            </template>
-            <template #material>
-              <MdFileUpload class="w-6 h-6" />
-            </template>
-          </k-icon>
-        </template>
-      </k-tabbar-link>
+      <k-toolbar-pane>
+        <k-tabbar-link active label="Inbox">
+          <template #icon>
+            <k-icon badge="5" :badge-colors="{ bg: 'bg-green-500' }">
+              <template #ios>
+                <EnvelopeFill class="w-7 h-7" />
+              </template>
+              <template #material>
+                <MdEmail class="w-6 h-6" />
+              </template>
+            </k-icon>
+          </template>
+        </k-tabbar-link>
+        <k-tabbar-link label="Calendar">
+          <template #icon>
+            <k-icon badge="7" :badge-colors="{ bg: 'bg-red-500' }">
+              <template #ios>
+                <Calendar class="w-7 h-7" />
+              </template>
+              <template #material>
+                <MdToday class="w-6 h-6" />
+              </template>
+            </k-icon>
+          </template>
+        </k-tabbar-link>
+        <k-tabbar-link label="Upload">
+          <template #icon>
+            <k-icon badge="1" :badge-colors="{ bg: 'bg-red-500' }">
+              <template #ios>
+                <CloudUploadFill class="w-7 h-7" />
+              </template>
+              <template #material>
+                <MdFileUpload class="w-6 h-6" />
+              </template>
+            </k-icon>
+          </template>
+        </k-tabbar-link>
+      </k-toolbar-pane>
     </k-tabbar>
     <k-list strong inset>
       <k-list-item title="Foo Bar">
@@ -102,6 +104,7 @@
     kListItem,
     kTabbar,
     kTabbarLink,
+    kToolbarPane,
   } from 'konsta/vue';
   import {
     PersonCircleFill,
@@ -128,7 +131,7 @@
       kListItem,
       kTabbar,
       kTabbarLink,
-
+      kToolbarPane,
       PersonCircleFill,
       EnvelopeFill,
       Calendar,

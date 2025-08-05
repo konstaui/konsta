@@ -18,7 +18,7 @@
     props: {
       component: {
         type: String,
-        default: 'button',
+        default: 'div',
       },
       colors: {
         type: Object,
@@ -51,8 +51,11 @@
           : props.dividers
       );
 
-      const c = useThemeClasses({ ...props, dividers: isDividers.value }, () =>
-        ActionsLabelClasses(props, colors.value)
+      const c = useThemeClasses(props, () =>
+        ActionsLabelClasses(
+          { ...props, dividers: isDividers.value },
+          colors.value
+        )
       );
 
       return {

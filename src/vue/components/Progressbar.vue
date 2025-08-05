@@ -42,7 +42,7 @@
         default: 0,
       },
     },
-    setup(props) {
+    setup(props, ctx) {
       const context = useContext();
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
@@ -50,7 +50,9 @@
         ProgressbarColors(props.colors || {}, useDarkClasses)
       );
 
-      const c = useThemeClasses(props, () => ProgressbarClasses(colors.value));
+      const c = useThemeClasses(props, () =>
+        ProgressbarClasses(colors.value, ctx.attrs.class)
+      );
 
       return {
         c,

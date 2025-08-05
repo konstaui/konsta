@@ -13,19 +13,12 @@
 <script>
   import { computed, ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { ButtonClasses } from '../../shared/classes/ButtonClasses.js';
-
   import { ButtonColors } from '../../shared/colors/ButtonColors.js';
 
   export default {
@@ -284,7 +277,9 @@
           // size
           c.value.size[size.value],
 
-          isRaised.value && c.value.raised
+          isRaised.value && c.value.raised,
+
+          ctx.attrs.class
         )
       );
 

@@ -1,11 +1,13 @@
 import { cls } from '../cls.js';
 
-export const MessageClasses = (props, colors) => {
+export const MessageClasses = (props, colors, baseClassName) => {
   const { type } = props;
   return {
     message: {
-      common:
+      common: cls(
         'k-message max-w-[70%] box-border flex relative z-1 transform translate-z-0 mb-2 first:mt-2',
+        baseClassName
+      ),
     },
     messageSent: {
       common: cls('self-end', colors.messageSent),

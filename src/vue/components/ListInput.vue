@@ -85,21 +85,14 @@
 <script>
   import { computed, ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import DeleteIcon from './icons/DeleteIcon.vue';
   import DropdownIcon from './icons/DropdownIcon.vue';
   import kListItem from './ListItem.vue';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { ListInputClasses } from '../../shared/classes/ListInputClasses.js';
-
   import { ListInputColors } from '../../shared/colors/ListInputColors.js';
 
   export default {
@@ -260,14 +253,19 @@
       };
 
       const c = useThemeClasses(props, () =>
-        ListInputClasses({ ...props }, colors.value, {
-          isFloatingTransformed: isFloatingTransformed.value,
-          isFocused: isFocused.value,
-          darkClasses: useDarkClasses,
-          getLabelColor,
-          outline: isOutline,
-          hasLabel: props.label || ctx.slots.label,
-        })
+        ListInputClasses(
+          { ...props },
+          colors.value,
+          {
+            isFloatingTransformed: isFloatingTransformed.value,
+            isFocused: isFocused.value,
+            darkClasses: useDarkClasses,
+            getLabelColor,
+            outline: isOutline,
+            hasLabel: props.label || ctx.slots.label,
+          },
+          ctx.attrs.class
+        )
       );
 
       const InputComponent = computed(() =>

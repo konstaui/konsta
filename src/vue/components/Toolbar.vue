@@ -13,17 +13,12 @@
   </component>
 </template>
 <script>
-  import { computed, onMounted, onUpdated, ref } from 'vue';
+  import { computed, onMounted, onUpdated, ref, provide } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { ToolbarClasses } from '../../shared/classes/ToolbarClasses.js';
-
   import { ToolbarColors } from '../../shared/colors/ToolbarColors.js';
 
   export default {
@@ -79,11 +74,21 @@
           : props.outline
       );
 
-      const c = useThemeClasses(
-        props,
-        () =>
-          ToolbarClasses({ ...props, outline: isOutline.value }, colors.value),
-        ctx.attrs.class
+      const ToolbarContext = computed(() => ({
+        toolbar: true,
+        tabbarLabels: props.tabbarLabels,
+        tabbarIcons: props.tabbarIcons,
+        tabbar: props.tabbar,
+      }));
+
+      provide('ToolbarContext', ToolbarContext);
+
+      const c = useThemeClasses(props, () =>
+        ToolbarClasses(
+          { ...props, outline: isOutline.value },
+          colors.value,
+          ctx.attrs.class
+        )
       );
       const setHighlight = () => {
         if (hasHighlight.value && highlightElRef.value) {

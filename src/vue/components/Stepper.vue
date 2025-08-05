@@ -182,7 +182,8 @@
           c.value.base,
           isRaised.value && c.value.raised,
           c.value.size[size.value],
-          c.value.shape[shape.value]
+          c.value.shape[shape.value],
+          ctx.attrs.class
         )
       );
       const buttonLeftClasses = computed(() =>

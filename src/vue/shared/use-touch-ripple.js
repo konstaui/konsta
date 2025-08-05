@@ -24,11 +24,7 @@ export const useTouchRipple = (
     return value;
   };
   const needsTouchRipple = () => {
-    return (
-      theme() === 'material' &&
-      props.touchRipple &&
-      (addCondition ? addCondition() : true)
-    );
+    return theme() === 'material' && (addCondition ? addCondition() : true);
   };
   const removeRipple = () => {
     if (ripple.value) ripple.value.remove();

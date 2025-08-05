@@ -6,10 +6,10 @@
       </template>
     </k-navbar>
 
-    <k-block strong-ios outline-ios class="flex flex-col gap-4">
+    <k-block strong inset class="flex flex-col gap-4">
       <k-toast position="left" :opened="opened.left">
         <template #button>
-          <k-button clear inline @click="() => (opened.left = false)">
+          <k-button clear rounded inline @click="() => (opened.left = false)">
             Close
           </k-button>
         </template>
@@ -17,7 +17,7 @@
       </k-toast>
       <k-toast position="center" :opened="opened.center">
         <template #button>
-          <k-button clear inline @click="() => (opened.center = false)">
+          <k-button clear rounded inline @click="() => (opened.center = false)">
             Close
           </k-button>
         </template>
@@ -25,7 +25,7 @@
       </k-toast>
       <k-toast position="right" :opened="opened.right">
         <template #button>
-          <k-button clear inline @click="() => (opened.right = false)">
+          <k-button clear rounded inline @click="() => (opened.right = false)">
             Close
           </k-button>
         </template>
@@ -36,15 +36,19 @@
         the screen.
       </p>
       <p>
-        <k-button @click="() => openToast('left')"> Toast on Left </k-button>
+        <k-button rounded @click="() => openToast('left')">
+          Toast on Left
+        </k-button>
       </p>
       <p>
-        <k-button @click="() => openToast('center')">
+        <k-button rounded @click="() => openToast('center')">
           Toast on Center
         </k-button>
       </p>
       <p>
-        <k-button @click="() => openToast('right')"> Toast on Right </k-button>
+        <k-button rounded @click="() => openToast('right')">
+          Toast on Right
+        </k-button>
       </p>
     </k-block>
   </k-page>

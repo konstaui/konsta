@@ -1,10 +1,10 @@
 import { cls } from '../cls.js';
 
-export const ToolbarPaneClasses = (props, colors, dark) => {
+export const ToolbarPaneClasses = (props, colors, dark, baseClassName) => {
   const { tabbar } = props;
   return {
     base: {
-      common: '',
+      common: cls(baseClassName),
       ios: cls(
         'k-toolbar-pane flex relative justify-between items-center h-full rounded-full group/toolbar-pane',
         tabbar && 'w-full md:w-auto'
@@ -12,7 +12,7 @@ export const ToolbarPaneClasses = (props, colors, dark) => {
       material: cls('contents'),
     },
     highlight: {
-      ios: 'absolute left-0 top-0 h-full rounded-[inherit]  duration-300',
+      ios: 'absolute left-0 top-0 h-full rounded-[inherit]  duration-300 pointer-events-none',
     },
     highlightInner: {
       ios: cls(

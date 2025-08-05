@@ -1,6 +1,6 @@
 import { cls } from '../cls.js';
 
-export const NavbarClasses = (props, colors) => {
+export const NavbarClasses = (props, colors, baseClassName) => {
   const {
     outline,
     large,
@@ -37,7 +37,8 @@ export const NavbarClasses = (props, colors) => {
     base: {
       common: cls(
         `k-navbar w-full z-20 top-0 sticky`,
-        (large || medium) && 'pointer-events-none'
+        (large || medium) && 'pointer-events-none',
+        baseClassName
       ),
       ios: cls(
         'pt-[max(16px,var(--k-safe-area-top))]',

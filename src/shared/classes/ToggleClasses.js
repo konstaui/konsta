@@ -1,11 +1,12 @@
 import { cls } from '../cls.js';
 
-export const ToggleClasses = (props, colors, dark) => {
+export const ToggleClasses = (props, colors, dark, baseClassName) => {
   return {
     base: {
       common: cls(
         `k-toggle cursor-pointer select-none inline-block align-middle relative duration-300 rounded-full group`,
-        dark('dark:touch-ripple-white')
+        dark('dark:touch-ripple-white'),
+        baseClassName
       ),
       ios: 'h-7 w-16 p-0.5',
       material: 'w-13 h-8 border-2',

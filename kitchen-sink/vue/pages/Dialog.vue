@@ -36,7 +36,7 @@
         <k-dialog-button @click="() => (basicOpened = false)">
           Action 2
         </k-dialog-button>
-        <k-dialog-button @click="() => (basicOpened = false)">
+        <k-dialog-button strong @click="() => (basicOpened = false)">
           Action 1
         </k-dialog-button>
       </template>
@@ -48,7 +48,7 @@
       <template #title>Konsta UI</template>
       Hello world!
       <template #buttons>
-        <k-dialog-button @click="() => (alertOpened = false)"
+        <k-dialog-button strong @click="() => (alertOpened = false)"
           >Ok</k-dialog-button
         >
       </template>
@@ -103,7 +103,7 @@
         </k-list-item>
       </k-list>
       <template #buttons>
-        <k-dialog-button @click="() => (listOpened = false)"
+        <k-dialog-button strong @click="() => (listOpened = false)"
           >Confirm</k-dialog-button
         >
       </template>

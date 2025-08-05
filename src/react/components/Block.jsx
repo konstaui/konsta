@@ -73,8 +73,7 @@ const Block = (props) => {
         strong: isStrong,
         outline: isOutline,
       },
-      colors,
-      className
+      colors
     )
   );
 

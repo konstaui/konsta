@@ -45,7 +45,6 @@ const Searchbar = (props) => {
 
   const searchElRef = useRef(null);
   const elRef = useRef(null);
-  const disableButtonRef = useRef(null);
   const disableTimeout = useRef(null);
 
   const [isEnabled, setIsEnabled] = useState(false);
@@ -107,7 +106,6 @@ const Searchbar = (props) => {
           marginLeft: isEnabled ? '16px' : 0,
         }}
         className={c.cancelButton}
-        ref={disableButtonRef}
         onClick={handleDisableButton}
         onPointerDown={(e) => e.preventDefault()}
       >

@@ -21,18 +21,12 @@
 <script>
   import { computed, ref } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { useTheme } from '../shared/use-theme.js';
-
   import { useTouchRipple } from '../shared/use-touch-ripple.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
   import CheckboxIcon from './icons/CheckboxIcon.vue';
-
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
-
   import { RadioColors } from '../../shared/colors/RadioColors.js';
 
   export default {
@@ -79,10 +73,8 @@
 
       const state = computed(() => (props.checked ? 'checked' : 'notChecked'));
 
-      const c = useThemeClasses(
-        props,
-        () => RadioClasses(props, colors.value, useDarkClasses),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        RadioClasses(props, colors.value, useDarkClasses, ctx.attrs.class)
       );
 
       const onChange = (e) => {

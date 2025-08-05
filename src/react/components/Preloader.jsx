@@ -41,10 +41,7 @@ const Preloader = (props) => {
 
   const SVGComponent = theme === 'ios' ? PreloaderIOS : PreloaderMaterial;
 
-  const c = themeClasses(
-    PreloaderClasses({ ...props }, colors, theme),
-    className
-  );
+  const c = themeClasses(PreloaderClasses(props, colors, theme, className));
 
   return (
     <Component

@@ -7,7 +7,7 @@
     </k-navbar>
 
     <k-block-title>Default Buttons</k-block-title>
-    <k-block strong outline-ios class="space-y-2">
+    <k-block strong inset class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
         <k-button>Button</k-button>
         <k-button class="k-color-brand-red"> Button </k-button>
@@ -31,7 +31,7 @@
     </k-block>
 
     <k-block-title>Rounded Buttons</k-block-title>
-    <k-block strong outline-ios class="space-y-2">
+    <k-block strong inset class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
         <k-button rounded>Button</k-button>
         <k-button rounded class="k-color-brand-green">Button</k-button>
@@ -52,7 +52,7 @@
     </k-block>
 
     <k-block-title>Large Buttons</k-block-title>
-    <k-block strong outline-ios class="space-y-2">
+    <k-block strong inset class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
         <k-button large>Button</k-button>
         <k-button large class="k-color-brand-yellow">Button</k-button>
@@ -73,7 +73,7 @@
     </k-block>
 
     <k-block-title>Small Buttons</k-block-title>
-    <k-block strong outline-ios class="space-y-2">
+    <k-block strong inset class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
         <k-button small>Button</k-button>
         <k-button small>Button</k-button>
@@ -92,7 +92,7 @@
     </k-block>
 
     <k-block-title>Raised Buttons</k-block-title>
-    <k-block strong outline-ios class="space-y-2">
+    <k-block strong inset class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
         <k-button raised>Button</k-button>
         <k-button raised>Button</k-button>
@@ -111,7 +111,7 @@
     </k-block>
 
     <k-block-title>Disabled Buttons</k-block-title>
-    <k-block strong outline-ios class="space-y-2">
+    <k-block strong inset class="space-y-2">
       <div class="grid grid-cols-3 gap-x-4">
         <k-button disabled>Button</k-button>
         <k-button disabled outline>Outline</k-button>

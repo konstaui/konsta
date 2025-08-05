@@ -5,15 +5,15 @@
         <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #subnavbar>
-        <k-segmented strong>
-          <k-segmented-button small strong active> Button </k-segmented-button>
-          <k-segmented-button small strong> Button </k-segmented-button>
-          <k-segmented-button small strong> Button </k-segmented-button>
+        <k-segmented strong rounded>
+          <k-segmented-button active> Button </k-segmented-button>
+          <k-segmented-button> Button </k-segmented-button>
+          <k-segmented-button> Button </k-segmented-button>
         </k-segmented>
       </template>
     </k-navbar>
     <div class="relative">
-      <k-block strong-ios outline-ios>
+      <k-block strong inset>
         <p>
           Subnavbar is useful when you need to put any additional elements into
           Navbar, like Tab Links or Search Bar. It also remains visible when

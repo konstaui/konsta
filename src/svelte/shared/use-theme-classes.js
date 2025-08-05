@@ -5,7 +5,7 @@ import { cls } from '../../shared/cls.js';
 
 const propClasses = (classesObj, theme, state) => {
   if (typeof classesObj === 'string') return classesObj;
-  const arr = [classesObj.common, classesObj[theme]];
+  const arr = [classesObj[theme], classesObj.common];
   if (state && classesObj[state]) {
     if (typeof classesObj[state] === 'string') arr.push(classesObj[state]);
     else {

@@ -81,8 +81,7 @@ const Card = (props) => {
         outline: isOutline,
         raised: isRaised,
       },
-      colors,
-      dark
+      colors
     ),
     className
   );

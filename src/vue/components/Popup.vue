@@ -7,15 +7,10 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { cls } from '../../shared/cls.js';
-
   import { PopupClasses } from '../../shared/classes/PopupClasses.js';
-
   import { PopupColors } from '../../shared/colors/PopupColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -36,7 +31,6 @@
         type: Boolean,
         default: undefined,
       },
-      size: { type: String, default: 'w-screen h-screen md:w-160 md:h-160' },
       opened: Boolean,
       backdrop: { type: Boolean, default: true },
     },
@@ -49,10 +43,8 @@
       const colors = computed(() =>
         PopupColors(props.colors || {}, useDarkClasses)
       );
-      const c = useThemeClasses(
-        props,
-        () => PopupClasses(props, colors.value),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        PopupClasses(props, colors.value, ctx.attrs.class)
       );
 
       const onBackdropClick = (e) => {

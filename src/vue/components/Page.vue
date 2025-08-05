@@ -6,13 +6,9 @@
 <script>
   import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
-
   import { PageClasses } from '../../shared/classes/PageClasses.js';
-
   import { PageColors } from '../../shared/colors/PageColors.js';
-
   import { darkClasses } from '../shared/use-dark-classes.js';
-
   import { themeClasses } from '../shared/use-theme-classes.js';
 
   export default {
@@ -41,10 +37,8 @@
       const colors = computed(() =>
         PageColors(props.colors || {}, useDarkClasses)
       );
-      const c = useThemeClasses(
-        props,
-        () => PageClasses(props, colors.value),
-        ctx.attrs.class
+      const c = useThemeClasses(props, () =>
+        PageClasses(props, colors.value, ctx.attrs.class)
       );
 
       return {

@@ -3,12 +3,11 @@
     <span :class="c.icon">
       <k-back-icon :theme="theme" />
     </span>
-    <span v-if="shouldShowText">{{ text }}</span>
+    <span v-if="showText">{{ text }}</span>
     <slot />
   </k-link>
 </template>
 <script>
-  import { computed } from 'vue';
   import { useContext } from '../shared/use-context.js';
 
   import { useTheme } from '../shared/use-theme.js';
@@ -46,23 +45,17 @@
         default: 'Back',
       },
       showText: {
-        type: [Boolean, String],
-        default: 'auto',
+        type: Boolean,
+        default: false,
       },
     },
     setup(props) {
       const context = useContext();
       const useThemeClasses = themeClasses(context);
       const theme = useTheme(props, context);
-      const shouldShowText = computed(
-        () =>
-          (props.showText === 'auto' && theme.value === 'ios') ||
-          props.showText === true
-      );
       const c = useThemeClasses(props, () => NavbarBackLinkClasses());
       return {
         c,
-        shouldShowText,
         theme,
       };
     },
