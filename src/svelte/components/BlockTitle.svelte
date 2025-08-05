@@ -4,28 +4,31 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    withBlock = true,
+    medium = false,
+    large = false,
+    children,
+    ...restProps
+  } = $props();
 
-  export let withBlock = true;
-  export let medium = false;
-  export let large = false;
   const dark = useDarkClasses();
 
-  $: colors = BlockTitleColors(colorsProp, dark);
+  const colors = $derived(BlockTitleColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    BlockTitleClasses({ withBlock, medium, large }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      BlockTitleClasses({ withBlock, medium, large }, colors),
+      className
+    )
   );
 </script>
 
-<div class={c.base} {...$$restProps}>
-  <slot />
+<div class={c.base} {...restProps}>
+  {@render children?.()}
 </div>

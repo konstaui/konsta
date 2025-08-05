@@ -3,49 +3,55 @@
   import { ToggleColors } from '../../shared/colors/ToggleColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
 
-  export let component = 'label';
-  export let elRef = { current: null };
-  export let rippleTargetElRef = { current: null };
+  let {
+    component = 'label',
+    class: className = undefined,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    checked = false,
+    name = undefined,
+    value = undefined,
+    disabled = false,
+    readonly = false,
+    onChange = undefined,
+    onchange = undefined,
+    touchRipple = true,
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+    children,
+    ...restProps
+  } = $props();
 
-  export let checked = false;
-  export let name = undefined;
-  export let value = undefined;
-  export let disabled = false;
-  export let readonly = false;
-  export let onChange = undefined;
-
-  export let touchRipple = true;
+  let elRef = $state(null);
+  let rippleTargetElRef = $state(null);
 
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleTargetElRef, touchRipple, elRef);
+  useTouchRipple(
+    () => rippleTargetElRef,
+    () => touchRipple,
+    () => elRef
+  );
 
-  $: colors = ToggleColors(colorsProp, dark);
+  const colors = $derived(ToggleColors(colorsProp, dark));
 
-  $: state = checked ? 'checked' : 'notChecked';
+  const state = $derived(checked ? 'checked' : 'notChecked');
 
-  $: c = useThemeClasses(
-    { ios, material },
-    ToggleClasses({}, colors, dark),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ToggleClasses({}, colors, dark, className)
+    )
   );
 </script>
 
 <svelte:element
   this={component}
-  bind:this={elRef.current}
+  bind:this={elRef}
   class={c.base[state]}
-  {...$$restProps}
+  {...restProps}
 >
   <input
     type="checkbox"
@@ -54,11 +60,11 @@
     {disabled}
     {readonly}
     {checked}
-    on:change={onChange}
+    onchange={onChange || onchange}
     class={c.input}
   />
-  <span bind:this={rippleTargetElRef.current} class={c.thumbWrap[state]}>
+  <span bind:this={rippleTargetElRef} class={c.thumbWrap[state]}>
     <span class={c.thumb[state]}></span>
   </span>
-  <slot />
+  {@render children?.()}
 </svelte:element>

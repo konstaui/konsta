@@ -4,27 +4,29 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-
-  export let component = 'div';
-  export let id = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    component = 'div',
+    id = undefined,
+    children,
+    ...restProps
+  } = $props();
 
   const rippleEl = { current: null };
 
   const dark = useDarkClasses();
 
-  $: colors = MessagesTitleColors(colorsProp, dark);
+  const colors = $derived(MessagesTitleColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    MessagesTitleClasses({}, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      MessagesTitleClasses({}, colors, className),
+      ''
+    )
   );
 </script>
 
@@ -33,7 +35,7 @@
   {id}
   bind:this={rippleEl.current}
   class={c.base}
-  {...$$restProps}
+  {...restProps}
 >
-  <slot />
+  {@render children?.()}
 </svelte:element>

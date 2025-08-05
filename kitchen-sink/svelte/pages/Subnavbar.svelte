@@ -13,21 +13,18 @@
 
 <Page>
   <Navbar title="Subnavbar">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
-    <Segmented
-      slot="subnavbar"
-      strong
-      activeButtonIndex={0}
-      childButtonsLength={3}
-    >
-      <SegmentedButton small strong active>Button</SegmentedButton>
-      <SegmentedButton small strong>Button</SegmentedButton>
-      <SegmentedButton small strong>Button</SegmentedButton>
-    </Segmented>
+    {/snippet}
+    {#snippet subnavbar()}
+      <Segmented strong activeButtonIndex={0} childButtonsLength={3}>
+        <SegmentedButton small strong active>Button</SegmentedButton>
+        <SegmentedButton small strong>Button</SegmentedButton>
+        <SegmentedButton small strong>Button</SegmentedButton>
+      </Segmented>
+    {/snippet}
   </Navbar>
   <div class="relative">
     <Block strongIos outlineIos>

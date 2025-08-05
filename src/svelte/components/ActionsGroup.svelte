@@ -1,22 +1,31 @@
 <script>
   import { ActionsGroupClasses } from '../../shared/classes/ActionsGroupClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
+  import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import { ActionsGroupColors } from '../../shared/colors/ActionsGroupColors.js';
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    dividers = true,
+    children,
+    ...restProps
+  } = $props();
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
+  const dark = useDarkClasses();
 
-  export let dividers = true;
+  const colors = $derived(ActionsGroupColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    ActionsGroupClasses({ dividers }),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ActionsGroupClasses({ dividers }, colors),
+      className
+    )
   );
 </script>
 
-<div class={c.base} {...$$restProps}>
-  <slot />
+<div class={c.base} {...restProps}>
+  {@render children?.()}
 </div>

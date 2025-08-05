@@ -1,50 +1,55 @@
 <script>
-  import { onMount, afterUpdate } from 'svelte';
+  import { onMount } from 'svelte';
   import { cls } from '../../shared/cls.js';
   import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
   import { SegmentedColors } from '../../shared/colors/SegmentedColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  // Style props
-  export let raised = false;
-  export let outline = false;
-  export let strong = false;
-  export let rounded = false;
+    raised = false,
+    outline = false,
+    strong = false,
+    rounded = false,
 
-  let highlightElRef = null;
+    children,
+    ...restProps
+  } = $props();
+
+  let highlightElRef = $state(null);
 
   const dark = useDarkClasses();
 
-  $: colors = SegmentedColors(colorsProp, dark);
+  const colors = $derived(SegmentedColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    SegmentedClasses({ outline, rounded }, colors, dark),
-    '',
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      SegmentedClasses({ outline, rounded }, colors, dark),
+      ''
+    )
   );
 
-  let highlightStyle = {
+  let highlightStyle = $state({
     transform: '',
     width: '',
-  };
+  });
 
-  $: classes = cls(
-    // base
-    rounded ? c.base.rounded : c.base.square,
-    raised && c.raised,
-    outline && c.outline,
-    strong && c.strong,
+  const classes = $derived(
+    cls(
+      // base
+      rounded ? c.base.rounded : c.base.square,
+      raised && c.raised,
+      outline && c.outline,
+      strong && c.strong,
 
-    className
+      className
+    )
   );
 
   const setHighlight = () => {
@@ -65,24 +70,26 @@
         width !== highlightStyle.width ||
         transform !== highlightStyle.transform
       ) {
-        highlightStyle = {
-          width,
-          transform,
-        };
+        highlightStyle.width = width;
+        highlightStyle.transform = transform;
       }
     }
   };
+
   onMount(() => setHighlight());
-  afterUpdate(() => setHighlight());
+
+  $effect(() => {
+    setHighlight();
+  });
 </script>
 
-<div class={classes} {...$$restProps}>
+<div class={classes} {...restProps}>
   {#if outline}
     <span class={c.outlineInner}>
-      <slot />
+      {@render children?.()}
     </span>
   {:else}
-    <slot />
+    {@render children?.()}
   {/if}
   {#if strong}
     <span

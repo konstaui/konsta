@@ -6,90 +6,125 @@
   import { printText } from '../shared/print-text.js';
   import { cls } from '../../shared/cls.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-
-  export let component = 'div';
-  export let id = undefined;
-  export let text = '';
-  export let name = undefined;
-  export let type = 'sent';
-  export let header = '';
-  export let footer = '';
-  export let textHeader = '';
-  export let textFooter = '';
-  export let avatar = undefined;
-
-  export let onClick = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    component = 'div',
+    id = undefined,
+    text = '',
+    name = undefined,
+    type = 'sent',
+    header = '',
+    footer = '',
+    textHeader = '',
+    textFooter = '',
+    avatar = undefined,
+    children,
+    ...restProps
+  } = $props();
 
   const rippleEl = { current: null };
 
   const dark = useDarkClasses();
 
-  $: colors = MessageColors(colorsProp, dark);
+  const colors = $derived(MessageColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    MessageClasses({ type }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      MessageClasses({ type }, colors),
+      className
+    )
   );
 
-  $: classes = cls(
-    c.message,
+  const classes = $derived(
+    cls(
+      c.message,
 
-    type === 'sent' && c.messageSent,
+      type === 'sent' && c.messageSent,
 
-    type === 'received' && c.messageReceived,
+      type === 'received' && c.messageReceived,
 
-    className
+      className
+    )
   );
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <svelte:element
   this={component}
   {id}
   bind:this={rippleEl.current}
   class={classes}
-  on:click={onClick}
-  {...$$restProps}
+  {...restProps}
 >
-  {#if avatar || $$slots.avatar}
-    <div class={c.messageAvatar}>{printText(avatar)}<slot name="avatar" /></div>
+  {#if avatar}
+    <div class={c.messageAvatar}>
+      {#if typeof avatar === 'function'}
+        {@render avatar?.()}
+      {:else}
+        {printText(avatar)}
+      {/if}
+    </div>
   {/if}
   <div class={c.messageContent}>
-    {#if name || $$slots.name}
-      <div class={c.messageName}>{printText(name)}<slot name="name" /></div>
+    {#if name}
+      <div class={c.messageName}>
+        {#if typeof name === 'function'}
+          {@render name?.()}
+        {:else}
+          {printText(name)}
+        {/if}
+      </div>
     {/if}
-    {#if header || $$slots.header}
+    {#if header}
       <div class={c.messageHeader}>
-        {printText(header)}<slot name="header" />
+        {#if typeof header === 'function'}
+          {@render header?.()}
+        {:else}
+          {printText(header)}
+        {/if}
       </div>
     {/if}
     <div class={c.messageBubble}>
-      {#if textHeader || $$slots.textHeader}
+      {#if textHeader}
         <div class={c.messageTextHeader}>
-          {printText(textHeader)}<slot name="textHeader" />
+          {#if typeof textHeader === 'function'}
+            {@render textHeader?.()}
+          {:else}
+            {printText(textHeader)}
+          {/if}
         </div>
       {/if}
-      {#if text || $$slots.text}
-        <div class={c.messageText}>{printText(text)}<slot name="text" /></div>
+      {#if text}
+        <div class={c.messageText}>
+          {#if typeof text === 'function'}
+            {@render text?.()}
+          {:else}
+            {printText(text)}
+          {/if}
+        </div>
       {/if}
-      {#if textFooter || $$slots.textFooter}
+      {#if textFooter}
         <div class={c.messageTextFooter}>
-          {printText(textFooter)}<slot name="textFooter" />
+          {#if typeof textFooter === 'function'}
+            {@render textFooter?.()}
+          {:else}
+            {printText(textFooter)}
+          {/if}
         </div>
       {/if}
     </div>
-    {#if footer || $$slots.footer}
+    {#if footer}
       <div class={c.messageFooter}>
-        {printText(footer)}<slot name="footer" />
+        {#if typeof footer === 'function'}
+          {@render footer?.()}
+        {:else}
+          {printText(footer)}
+        {/if}
       </div>
     {/if}
   </div>

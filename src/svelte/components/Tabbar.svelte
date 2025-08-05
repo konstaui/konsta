@@ -1,10 +1,9 @@
 <script>
   import Toolbar from './Toolbar.svelte';
 
-  export let labels = false;
-  export let icons = false;
+  let { labels = false, icons = false, children, ...restProps } = $props();
 </script>
 
-<Toolbar tabbar tabbarLabels={labels} tabbarIcons={icons} {...$$restProps}>
-  <slot />
+<Toolbar tabbar tabbarLabels={labels} tabbarIcons={icons} {...restProps}>
+  {@render children?.()}
 </Toolbar>

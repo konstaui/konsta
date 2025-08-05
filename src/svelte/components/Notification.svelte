@@ -8,109 +8,168 @@
 
   import DeleteIcon from './icons/DeleteIcon.svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-  export let onClick = undefined;
-  export let onClose = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    onClose = undefined,
+    onclose = undefined,
+    button = undefined,
+    title = '',
+    titleRightText = '',
+    subtitle = '',
+    text = '',
+    opened = false,
 
-  export let button = undefined;
-  export let title = '';
-  export let titleRightText = '';
-  export let subtitle = '';
-  export let text = '';
+    onclick = undefined,
+    onClick = undefined,
 
-  export let opened = false;
+    icon,
+
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
-  $: colors = NotificationsColors(colorsProp, dark);
+  const colors = $derived(NotificationsColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    NotificationsClasses({ opened }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      NotificationsClasses({ opened }, colors, className)
+    )
   );
 </script>
 
 {#if theme === 'ios'}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.base} {...$$restProps} on:click={onClick}>
+  <div class={c.base} {...restProps} onclick={onClick || onclick}>
     <div class={c.header}>
-      {#if $$slots.icon}
-        <div class={c.icon}><slot name="icon" /></div>
+      {#if icon}
+        <div class={c.icon}>{@render icon()}</div>
       {/if}
-      {#if title || $$slots.title}
-        <div class={c.title}>{printText(title)}<slot name="title" /></div>
-      {/if}
-      {#if titleRightText || $$slots.titleRightText}
-        <div class={c.titleRightText}>
-          {printText(titleRightText)}<slot name="titleRightText" />
+      {#if title}
+        <div class={c.title}>
+          {#if typeof title !== 'function'}
+            {printText(title)}
+          {:else}
+            {@render title()}
+          {/if}
         </div>
       {/if}
-      {#if button || $$slots.button}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class={c.button} role="button" tabindex="0" on:click={onClose}>
+      {#if titleRightText}
+        <div class={c.titleRightText}>
+          {#if typeof titleRightText !== 'function'}
+            {printText(titleRightText)}
+          {:else}
+            {@render titleRightText()}
+          {/if}
+        </div>
+      {/if}
+      {#if button}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <div
+          class={c.button}
+          role="button"
+          tabindex="0"
+          onclick={onClose || onclose}
+        >
           <DeleteIcon {theme} class={c.deleteIcon} />
-          <slot name="button" />
+          {#if typeof button === 'function'}
+            {@render button()}
+          {/if}
         </div>
       {/if}
     </div>
     <div class={c.content}>
-      {#if subtitle || $$slots.subtitle}
+      {#if subtitle}
         <div class={c.subtitle}>
-          {printText(subtitle)}<slot name="subtitle" />
+          {#if typeof subtitle !== 'function'}
+            {printText(subtitle)}
+          {:else}
+            {@render subtitle()}
+          {/if}
         </div>
       {/if}
-      {#if text || $$slots.text}
-        <div class={c.text}>{printText(text)}<slot name="text" /></div>
+      {#if text}
+        <div class={c.text}>
+          {#if typeof text !== 'function'}
+            {printText(text)}
+          {:else}
+            {@render text()}
+          {/if}
+        </div>
       {/if}
-      <slot />
+      {@render children?.()}
     </div>
   </div>
 {:else}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.base} {...$$restProps} on:click={onClick}>
+  <div class={c.base} {...restProps} onclick={onClick || onclick}>
     <div class={c.header}>
-      {#if $$slots.icon}
-        <div class={c.icon}><slot name="icon" /></div>
+      {#if icon}
+        <div class={c.icon}>{@render icon()}</div>
       {/if}
       <div class={c.contentWrapper}>
         <div class={c.contentTitle}>
-          {#if title || $$slots.title}
-            <div class={c.title}>{printText(title)}<slot name="title" /></div>
+          {#if title}
+            <div class={c.title}>
+              {#if typeof title !== 'function'}
+                {printText(title)}
+              {:else}
+                {@render title()}
+              {/if}
+            </div>
           {/if}
-          {#if titleRightText || $$slots.titleRightText}
+          {#if titleRightText}
             <div class={c.titleRightText}>
-              {printText(titleRightText)}<slot name="titleRightText" />
+              {#if typeof titleRightText !== 'function'}
+                {printText(titleRightText)}
+              {:else}
+                {@render titleRightText()}
+              {/if}
             </div>
           {/if}
         </div>
         <div class={c.content}>
-          {#if subtitle || $$slots.subtitle}
+          {#if subtitle}
             <div class={c.subtitle}>
-              {printText(subtitle)}<slot name="subtitle" />
+              {#if typeof subtitle !== 'function'}
+                {printText(subtitle)}
+              {:else}
+                {@render subtitle()}
+              {/if}
             </div>
           {/if}
-          {#if text || $$slots.text}
-            <div class={c.text}>{printText(text)}<slot name="text" /></div>
+          {#if text}
+            <div class={c.text}>
+              {#if typeof text !== 'function'}
+                {printText(text)}
+              {:else}
+                {@render text()}
+              {/if}
+            </div>
           {/if}
-          <slot />
+          {@render children?.()}
         </div>
       </div>
-      {#if button || $$slots.button}
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
-        <div class={c.button} role="button" tabindex="0" on:click={onClose}>
+      {#if button}
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
+        <div
+          class={c.button}
+          role="button"
+          tabindex="0"
+          onclick={onclose || onClose}
+        >
           <DeleteIcon {theme} class={c.deleteIcon} />
-          <slot name="button" />
+          {#if typeof button === 'function'}
+            {@render button()}
+          {/if}
         </div>
       {/if}
     </div>

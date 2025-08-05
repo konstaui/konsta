@@ -9,83 +9,94 @@
   import { ListInputColors } from '../../shared/colors/ListInputColors.js';
   import { cls } from '../../shared/cls.js';
   import { printText } from '../shared/print-text.js';
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+    component = 'li',
 
-  export let component = 'li';
+    label = '',
+    outline = undefined,
+    outlineIos = undefined,
+    outlineMaterial = undefined,
+    floatingLabel = false,
+    info = undefined, // string
+    error = undefined, // string or bool
+    clearButton = false,
+    dropdown = false,
 
-  export let label = '';
-  export let outline = undefined;
-  export let outlineIos = undefined;
-  export let outlineMaterial = undefined;
-  export let floatingLabel = false;
-  export let info = undefined; // string
-  export let error = undefined; // string or bool
-  export let clearButton = false;
-  export let dropdown = false;
+    // input props
+    inputId = undefined,
+    inputStyle = undefined,
+    inputClass = '',
 
-  // input props
-  export let inputId = undefined;
-  export let inputStyle = undefined;
-  export let inputClass = '';
+    name = undefined,
+    value = undefined,
+    type = 'text',
+    inputmode = undefined,
+    readonly = undefined,
+    required = undefined,
+    disabled = undefined,
+    placeholder = undefined,
+    size = undefined,
+    accept = undefined,
+    autocomplete = undefined,
+    autocorrect = undefined,
+    autocapitalize = undefined,
+    spellcheck = undefined,
+    autofocus = undefined,
+    autosave = undefined,
+    max = undefined,
+    min = undefined,
+    step = undefined,
+    maxlength = undefined,
+    minlength = undefined,
+    multiple = undefined,
+    pattern = undefined,
+    tabindex = undefined,
 
-  export let name = undefined;
-  export let value = undefined;
-  export let type = 'text';
-  export let inputmode = undefined;
-  export let readonly = undefined;
-  export let required = undefined;
-  export let disabled = undefined;
-  export let placeholder = undefined;
-  export let size = undefined;
-  export let accept = undefined;
-  export let autocomplete = undefined;
-  export let autocorrect = undefined;
-  export let autocapitalize = undefined;
-  export let spellcheck = undefined;
-  export let autofocus = undefined;
-  export let autosave = undefined;
-  export let max = undefined;
-  export let min = undefined;
-  export let step = undefined;
-  export let maxlength = undefined;
-  export let minlength = undefined;
-  export let multiple = undefined;
-  export let pattern = undefined;
-  export let tabindex = undefined;
+    onInput = undefined,
+    oninput = undefined,
+    onChange = undefined,
+    onchange = undefined,
+    onFocus = undefined,
+    onfocus = undefined,
+    onBlur = undefined,
+    onblur = undefined,
+    onClear = undefined,
+    onclear = undefined,
 
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
-  export let onBlur = undefined;
-  export let onClear = undefined;
+    input,
+    media,
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+    children,
+    ...restProps
+  } = $props();
 
-  $: isOutline =
+  const theme = $derived(useTheme({ ios, material }));
+
+  const isOutline = $derived(
     typeof outline === 'undefined'
       ? theme === 'ios'
         ? outlineIos
         : outlineMaterial
-      : outline;
+      : outline
+  );
 
-  let inputEl = null;
+  let inputEl = $state(null);
 
-  let isFocused = false;
+  let isFocused = $state(false);
 
   const dark = useDarkClasses();
 
-  $: colors = ListInputColors(colorsProp, dark);
+  const colors = $derived(ListInputColors(colorsProp, dark));
 
-  $: labelStyle = label && floatingLabel ? 'floating' : 'stacked';
-  $: labelStyleIsFloating =
-    labelStyle === 'floating' ? 'floating' : 'notFloating';
+  const labelStyle = $derived(label && floatingLabel ? 'floating' : 'stacked');
+  const labelStyleIsFloating = $derived(
+    labelStyle === 'floating' ? 'floating' : 'notFloating'
+  );
 
   const getDomValue = () => {
     if (!inputEl) return undefined;
@@ -98,14 +109,12 @@
       ? domValue || domValue === 0
       : value || value === 0;
   };
-  $: isFloatingTransformed =
-    (label || $$slots.label) &&
-    floatingLabel &&
-    !isInputHasValue() &&
-    !isFocused;
+  const isFloatingTransformed = $derived(
+    label && floatingLabel && !isInputHasValue() && !isFocused
+  );
 
   const getLabelColor = () => {
-    if (error || $$slots.error) return colors.errorText;
+    if (error) return colors.errorText;
     if (theme === 'material') {
       return isFocused
         ? colors.labelTextFocusMaterial
@@ -118,40 +127,56 @@
     return '';
   };
 
+  const onInputInternal = (e) => {
+    if (onInput) onInput(e);
+    if (oninput) oninput(e);
+  };
+
+  const onChangeInternal = (e) => {
+    if (onChange) onChange(e);
+    if (onchange) onchange(e);
+  };
+
   const onFocusInternal = (e) => {
     isFocused = true;
+
     if (onFocus) onFocus(e);
+    if (onfocus) onfocus(e);
   };
   const onBlurInternal = (e) => {
     isFocused = false;
     if (onBlur) onBlur(e);
+    if (onblur) onblur(e);
   };
 
-  $: c = useThemeClasses(
-    { ios, material },
-    ListInputClasses(
-      {
-        error,
-        type,
-        inputClass,
-        outline: isOutline,
-      },
-      colors,
-      {
-        isFloatingTransformed,
-        isFocused,
-        darkClasses: dark,
-        getLabelColor,
-        inputClass,
-        hasLabel: !!label || $$slots.label,
-      }
-    ),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ListInputClasses(
+        {
+          error,
+          type,
+          inputClass,
+          outline: isOutline,
+        },
+        colors,
+        {
+          isFloatingTransformed,
+          isFocused,
+          darkClasses: dark,
+          getLabelColor,
+          inputClass,
+          hasLabel: !!label,
+        }
+      ),
+      className
+    )
   );
 
-  $: InputComponent = type === 'select' || type === 'textarea' ? type : 'input';
-  $: needsType = InputComponent === 'input';
+  const InputComponent = $derived(
+    type === 'select' || type === 'textarea' ? type : 'input'
+  );
+  const needsType = $derived(InputComponent === 'input');
 </script>
 
 <ListItem
@@ -162,34 +187,38 @@
   innerClass={c.inner[labelStyle]}
   contentClass={c.itemContent}
   titleWrapClass={c.titleWrap}
-  withMedia={!!$$slots.media}
-  withTitle={!!$$slots.label || !!label}
+  withMedia={!!media}
+  withTitle={!!label}
   dividers={theme === 'material' || isOutline ? false : undefined}
-  {...$$restProps}
+  {...restProps}
 >
-  <svelte:fragment slot="content">
+  {#snippet content()}
     {#if isOutline || theme === 'material'}
       <span class={c.border}></span>
     {/if}
-  </svelte:fragment>
-  <svelte:fragment slot="media">
-    {#if $$slots.media}
-      <slot name="media" />
-    {/if}
-  </svelte:fragment>
+  {/snippet}
 
-  <svelte:fragment slot="inner">
-    {#if label || $$slots.label}
+  {#snippet media()}
+    {#if media}
+      {@render media()}
+    {/if}
+  {/snippet}
+
+  {#snippet inner()}
+    {#if label}
       <div class={c.label[labelStyle]}>
         <div class={c.labelText}>
-          {printText(label)}
-          <slot name="label" />
+          {#if typeof label === 'function'}
+            {@render label()}
+          {:else}
+            {printText(label)}
+          {/if}
         </div>
       </div>
     {/if}
     <div class={c.inputWrap[labelStyle]}>
-      {#if $$slots.input}
-        <slot name="input" />
+      {#if typeof input === 'function'}
+        {@render input()}
       {:else}
         <!-- svelte-ignore a11y-autofocus -->
         {#if type === 'select'}
@@ -223,12 +252,12 @@
             {pattern}
             {tabindex}
             {value}
-            on:input={onInput}
-            on:change={onChange}
-            on:focus={onFocusInternal}
-            on:blur={onBlurInternal}
+            oninput={onInputInternal}
+            onchange={onChangeInternal}
+            onfocus={onFocusInternal}
+            onblur={onBlurInternal}
           >
-            <slot />
+            {@render children?.()}
           </svelte:element>
         {:else}
           <svelte:element
@@ -261,10 +290,10 @@
             {pattern}
             {tabindex}
             {value}
-            on:input={onInput}
-            on:change={onChange}
-            on:focus={onFocusInternal}
-            on:blur={onBlurInternal}
+            oninput={onInputInternal}
+            onchange={onChangeInternal}
+            onfocus={onFocusInternal}
+            onblur={onBlurInternal}
           />
         {/if}
       {/if}
@@ -277,22 +306,28 @@
       {/if}
     </div>
     <!-- error info content -->
-    {#if (error && error !== true) || $$slots.error}
+    {#if error && error !== true}
       <div class={cls(c.errorInfo, c.error)}>
-        {#if error !== true}{error}{/if}
-        <slot name="error" />
+        {#if typeof error !== 'function'}
+          {error}
+        {:else}
+          {@render error()}
+        {/if}
       </div>
     {/if}
-    {#if (info || $$slots.info) && !error}
+    {#if info && !error}
       <div class={cls(c.errorInfo, c.info)}>
-        {info}
-        <slot name="info" />
+        {#if typeof info === 'function'}
+          {@render info()}
+        {:else}
+          {info}
+        {/if}
       </div>
     {/if}
     <!-- error info end -->
-  </svelte:fragment>
+  {/snippet}
 
   {#if type !== 'select'}
-    <slot />
+    {@render children?.()}
   {/if}
 </ListItem>

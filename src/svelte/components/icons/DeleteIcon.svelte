@@ -1,10 +1,14 @@
 <script>
-  export let onClick = undefined;
-  export let theme;
+  let {
+    onClick = undefined,
+    onclick = undefined,
+    theme,
+    ...restProps
+  } = $props();
 </script>
 
 {#if theme === 'ios'}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -12,15 +16,15 @@
     height="28"
     viewBox="0 0 28 28"
     fill="currentcolor"
-    on:click={onClick}
-    {...$$restProps}
+    onclick={onClick || onclick}
+    {...restProps}
   >
     <path
       d="M14,0 C21.7319865,0 28,6.2680135 28,14 C28,21.7319865 21.7319865,28 14,28 C6.2680135,28 0,21.7319865 0,14 C0,6.2680135 6.2680135,0 14,0 Z M18.9393398,6.93933983 L14,11.8786797 L9.06066017,6.93933983 L6.93933983,9.06066017 L11.8786797,14 L6.93933983,18.9393398 L9.06066017,21.0606602 L14,16.1213203 L18.9393398,21.0606602 L21.0606602,18.9393398 L16.1213203,14 L21.0606602,9.06066017 L18.9393398,6.93933983 Z"
     />
   </svg>
 {:else}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <svg
     width="24"
@@ -28,8 +32,8 @@
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    on:click={onClick}
-    {...$$restProps}
+    onclick={onClick || onclick}
+    {...restProps}
   >
     <path
       fill-rule="evenodd"

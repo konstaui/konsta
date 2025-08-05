@@ -15,11 +15,11 @@
 
 <Page>
   <Navbar title="Popup">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <Block strong class="space-y-4">
@@ -29,16 +29,16 @@
       Views".
     </p>
     <p>
-      <Button onClick={() => (popupOpened = true)}>Open Popup</Button>
+      <Button onclick={() => (popupOpened = true)}>Open Popup</Button>
     </p>
   </Block>
 
   <Popup opened={popupOpened} onBackdropClick={() => (popupOpened = false)}>
     <Page>
       <Navbar title="Popup">
-        <Link slot="right" navbar onClick={() => (popupOpened = false)}>
-          Close
-        </Link>
+        {#snippet right()}
+          <Link onclick={() => (popupOpened = false)}>Close</Link>
+        {/snippet}
       </Navbar>
       <Block class="space-y-4">
         <p>

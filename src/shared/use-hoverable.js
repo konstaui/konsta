@@ -14,6 +14,12 @@ export const useHoverable = ({
   enabled = true,
   data = {},
 }) => {
+  const isEnabled = () => {
+    if (typeof enabled === 'function') {
+      return enabled();
+    }
+    return enabled;
+  };
   const removeHoverHighlight = () => {
     const el = getEl();
     if (el && data.elScale) {
@@ -51,7 +57,7 @@ export const useHoverable = ({
   };
 
   const onPointerEnter = (e) => {
-    if (!enabled) return;
+    if (!isEnabled()) return;
     const d = data;
     const el = getEl();
 
@@ -97,7 +103,7 @@ export const useHoverable = ({
   };
 
   const onPointerMove = (e) => {
-    if (!enabled) return;
+    if (!isEnabled()) return;
     setLightPosition(e);
   };
   const onPointerLeave = (e) => {

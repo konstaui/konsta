@@ -7,29 +7,32 @@
 
   import Link from './Link.svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-  export let linkProps = {};
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    linkProps = {},
+    active = false,
+    label = undefined,
 
-  export let active = false;
-  export let label = undefined;
+    children,
+    icon,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
+  const colors = $derived(TabbarLinkColors(colorsProp, dark));
 
-  $: colors = TabbarLinkColors(colorsProp, dark);
+  const hasIcon = $derived(!!icon);
+  const hasLabel = $derived(label || label || children);
 
-  $: hasIcon = $$slots.icon;
-  $: hasLabel = label || $$slots.label || $$slots.default;
-
-  $: c = useThemeClasses(
-    { ios, material },
-    TabbarLinkClasses({ hasLabel, hasIcon, active }, colors),
-    '',
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      TabbarLinkClasses({ hasLabel, hasIcon, active }, colors),
+      ''
+    )
   );
 </script>
 
@@ -37,23 +40,26 @@
   tabbar
   tabbarActive={active}
   class={className}
-  {...$$restProps}
+  {...restProps}
   {...linkProps}
 >
   <span class={c.content}>
     {#if hasIcon}
       <span class={c.iconContainer}>
         <span class={c.iconBg}></span>
-        <slot name="icon" />
+        {@render icon()}
       </span>
     {/if}
     {#if hasLabel}
       <span class={c.label}>
-        {#if $$slots.label}
-          <slot name="label" />
+        {#if label}
+          {#if typeof label !== 'function'}
+            {printText(label)}
+          {:else}
+            {@render label()}
+          {/if}
         {:else}
-          {printText(label)}
-          <slot />
+          {@render children?.()}
         {/if}
       </span>
     {/if}

@@ -17,11 +17,11 @@
 
 <Page>
   <Navbar title="Data Table">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
   <BlockTitle>Plain table</BlockTitle>
   <div class="block overflow-x-auto mt-8">

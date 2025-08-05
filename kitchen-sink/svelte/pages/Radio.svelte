@@ -11,18 +11,18 @@
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let inlineValue = 'inline-1';
-  let groupValue = 'Books';
-  let mediaValue = 'Item 1';
+  let inlineValue = $state('inline-1');
+  let groupValue = $state('Books');
+  let mediaValue = $state('Item 1');
 </script>
 
 <Page>
   <Navbar title="Radio">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle>Inline</BlockTitle>
@@ -50,79 +50,87 @@
   <BlockTitle>Radio Group</BlockTitle>
   <List strongIos outlineIos>
     <ListItem label title="Books">
-      <Radio
-        slot="media"
-        component="div"
-        value="Books"
-        checked={groupValue === 'Books'}
-        onChange={() => (groupValue = 'Books')}
-      />
+      {#snippet media()}
+        <Radio
+          component="div"
+          value="Books"
+          checked={groupValue === 'Books'}
+          onChange={() => (groupValue = 'Books')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Movies">
-      <Radio
-        slot="media"
-        component="div"
-        value="Movies"
-        checked={groupValue === 'Movies'}
-        onChange={() => (groupValue = 'Movies')}
-      />
+      {#snippet media()}
+        <Radio
+          component="div"
+          value="Movies"
+          checked={groupValue === 'Movies'}
+          onChange={() => (groupValue = 'Movies')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Food">
-      <Radio
-        slot="media"
-        component="div"
-        value="Food"
-        checked={groupValue === 'Food'}
-        onChange={() => (groupValue = 'Food')}
-      />
+      {#snippet media()}
+        <Radio
+          component="div"
+          value="Food"
+          checked={groupValue === 'Food'}
+          onChange={() => (groupValue = 'Food')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Drinks">
-      <Radio
-        slot="media"
-        component="div"
-        value="Drinks"
-        checked={groupValue === 'Drinks'}
-        onChange={() => (groupValue = 'Drinks')}
-      />
+      {#snippet media()}
+        <Radio
+          component="div"
+          value="Drinks"
+          checked={groupValue === 'Drinks'}
+          onChange={() => (groupValue = 'Drinks')}
+        />
+      {/snippet}
     </ListItem>
   </List>
 
   <List strongIos outlineIos>
     <ListItem label title="Books">
-      <Radio
-        slot="after"
-        component="div"
-        value="Books"
-        checked={groupValue === 'Books'}
-        onChange={() => (groupValue = 'Books')}
-      />
+      {#snippet after()}
+        <Radio
+          component="div"
+          value="Books"
+          checked={groupValue === 'Books'}
+          onChange={() => (groupValue = 'Books')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Movies">
-      <Radio
-        slot="after"
-        component="div"
-        value="Movies"
-        checked={groupValue === 'Movies'}
-        onChange={() => (groupValue = 'Movies')}
-      />
+      {#snippet after()}
+        <Radio
+          component="div"
+          value="Movies"
+          checked={groupValue === 'Movies'}
+          onChange={() => (groupValue = 'Movies')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Food">
-      <Radio
-        slot="after"
-        component="div"
-        value="Food"
-        checked={groupValue === 'Food'}
-        onChange={() => (groupValue = 'Food')}
-      />
+      {#snippet after()}
+        <Radio
+          component="div"
+          value="Food"
+          checked={groupValue === 'Food'}
+          onChange={() => (groupValue = 'Food')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Drinks">
-      <Radio
-        slot="after"
-        component="div"
-        value="Drinks"
-        checked={groupValue === 'Drinks'}
-        onChange={() => (groupValue = 'Drinks')}
-      />
+      {#snippet after()}
+        <Radio
+          component="div"
+          value="Drinks"
+          checked={groupValue === 'Drinks'}
+          onChange={() => (groupValue = 'Drinks')}
+        />
+      {/snippet}
     </ListItem>
   </List>
 
@@ -135,12 +143,13 @@
       subtitle="New messages from John Doe"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <Radio
-        slot="media"
-        component="div"
-        checked={mediaValue === 'Item 1'}
-        onChange={() => (mediaValue = 'Item 1')}
-      />
+      {#snippet media()}
+        <Radio
+          component="div"
+          checked={mediaValue === 'Item 1'}
+          onChange={() => (mediaValue = 'Item 1')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem
       label
@@ -149,12 +158,13 @@
       subtitle="John Doe (@_johndoe) mentioned you on Twitter!"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <Radio
-        slot="media"
-        component="div"
-        checked={mediaValue === 'Item 2'}
-        onChange={() => (mediaValue = 'Item 2')}
-      />
+      {#snippet media()}
+        <Radio
+          component="div"
+          checked={mediaValue === 'Item 2'}
+          onChange={() => (mediaValue = 'Item 2')}
+        />
+      {/snippet}
     </ListItem>
   </List>
 </Page>

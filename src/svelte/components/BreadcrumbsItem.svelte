@@ -4,36 +4,37 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
-
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-
-  export let onClick = undefined;
-
-  export let active = false;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    active = false,
+    children,
+    onClick = undefined,
+    onclick = undefined,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  $: colors = BreadcrumbsItemColors(colorsProp, dark);
+  const colors = $derived(BreadcrumbsItemColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    BreadcrumbsItemClasses({ active }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      BreadcrumbsItemClasses({ active }, colors),
+      className
+    )
   );
 </script>
 
 <div
   class={c.base}
-  {...$$restProps}
+  {...restProps}
   role="menuitem"
   tabindex="0"
-  on:click={onClick}
+  onclick={onClick || onclick}
 >
-  <slot />
+  {@render children?.()}
 </div>

@@ -4,98 +4,105 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { printText } from '../shared/print-text.js';
 
-  export let component = 'div';
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    component = 'div',
+    class: className,
+    colors: colorsProp,
 
-  export let margin = 'm-4';
-  export let header = '';
-  export let footer = '';
-  export let contentWrap = true;
-  export let contentWrapPadding = 'p-4';
-  export let raised = undefined;
-  export let raisedIos = undefined;
-  export let raisedMaterial = undefined;
-  export let outline = undefined;
-  export let outlineIos = undefined;
-  export let outlineMaterial = undefined;
-  export let headerDivider = false;
-  export let footerDivider = false;
+    ios = undefined,
+    material = undefined,
+
+    margin = 'm-4',
+    header = '',
+    footer = '',
+    contentWrap = true,
+    contentWrapPadding = 'p-4',
+    raised = undefined,
+    raisedIos = undefined,
+    raisedMaterial = undefined,
+    outline = undefined,
+    outlineIos = undefined,
+    outlineMaterial = undefined,
+    headerDivider = false,
+    footerDivider = false,
+
+    children,
+
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
-  $: isOutline =
+  const isOutline = $derived(
     typeof outline === 'undefined'
       ? theme === 'ios'
         ? outlineIos
         : outlineMaterial
-      : outline;
+      : outline
+  );
 
-  $: isRaised =
+  const isRaised = $derived(
     typeof raised === 'undefined'
       ? theme === 'ios'
         ? raisedIos
         : raisedMaterial
-      : raised;
+      : raised
+  );
 
-  $: colors = CardColors(colorsProp, dark);
+  const colors = $derived(CardColors(colorsProp, dark));
 
-  $: style = isOutline ? 'outline' : isRaised ? 'raised' : 'plain';
+  const style = $derived(isOutline ? 'outline' : isRaised ? 'raised' : 'plain');
 
-  $: c = useThemeClasses(
-    { ios, material },
-    CardClasses(
-      {
-        margin,
-        outline: isOutline,
-        raised: isRaised,
-        contentWrapPadding,
-        headerDivider,
-        footerDivider,
-      },
-      colors,
-      dark
-    ),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      CardClasses(
+        {
+          margin,
+          outline: isOutline,
+          raised: isRaised,
+          contentWrapPadding,
+          headerDivider,
+          footerDivider,
+        },
+        colors,
+        dark
+      ),
+      className
+    )
   );
 </script>
 
 {#if typeof component === 'string'}
-  <svelte:element this={component} class={c.base[style]} {...$$restProps}>
-    {#if header || $$slots.header}
-      <div class={c.header}>{printText(header)}<slot name="header" /></div>
+  <svelte:element this={component} class={c.base[style]} {...restProps}>
+    {#if header}
+      <div class={c.header}>{@render header()}</div>
     {/if}
     {#if contentWrap}
-      <div class={c.content}><slot /></div>
+      <div class={c.content}>{@render children?.()}</div>
     {:else}
-      <slot />
+      {@render children?.()}
     {/if}
-    {#if footer || $$slots.footer}
-      <div class={c.footer}>{printText(footer)}<slot name="footer" /></div>
+    {#if footer}
+      <div class={c.footer}>{@render footer()}</div>
     {/if}
   </svelte:element>
 {:else}
-  <svelte:component this={component} class={c.base[style]} {...$$restProps}>
-    {#if header || $$slots.header}
-      <div class={c.header}>{printText(header)}<slot name="header" /></div>
+  {@const Component = component}
+  <Component class={c.base[style]} {...restProps}>
+    {#if header}
+      <div class={c.header}>{@render header()}</div>
     {/if}
     {#if contentWrap}
-      <div class={c.content}><slot /></div>
+      <div class={c.content}>{@render children?.()}</div>
     {:else}
-      <slot />
+      {@render children?.()}
     {/if}
-    {#if footer || $$slots.footer}
-      <div class={c.footer}>{printText(footer)}<slot name="footer" /></div>
+    {#if footer}
+      <div class={c.footer}>{@render footer()}</div>
     {/if}
-  </svelte:component>
+  </Component>
 {/if}

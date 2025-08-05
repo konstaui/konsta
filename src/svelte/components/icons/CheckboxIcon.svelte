@@ -1,12 +1,14 @@
 <script>
   import { useTheme } from '../../shared/use-theme.js';
 
-  export let ios = undefined;
-  export let material = undefined;
-  export let fill = undefined;
+  let {
+    ios = undefined,
+    material = undefined,
+    fill = undefined,
+    ...restProps
+  } = $props();
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 </script>
 
 {#if theme === 'ios'}
@@ -16,7 +18,7 @@
     height="20"
     viewBox="0 0 20 20"
     fill="currentcolor"
-    {...$$restProps}
+    {...restProps}
   >
     <path
       fill={fill || 'currentColor'}
@@ -33,7 +35,7 @@
     height="14"
     viewBox="0 0 14 14"
     fill="currentcolor"
-    {...$$restProps}
+    {...restProps}
   >
     <polygon {fill} points="6 11.17 1.83 7 .41 8.41 6 14 18 2 16.59 .59" />
   </svg>

@@ -1,11 +1,9 @@
 // eslint-disable-next-line
-import { get } from 'svelte/store';
-import { KonstaStore } from './KonstaStore.js';
+import { KonstaStore } from './KonstaStore.svelte.js';
 
 const useDarkClasses = () => {
   return (classNames) => {
-    const context = get(KonstaStore);
-    if (!context.dark) return '';
+    if (!KonstaStore.dark) return '';
     return classNames;
   };
 };

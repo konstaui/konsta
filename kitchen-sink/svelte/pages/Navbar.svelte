@@ -14,8 +14,8 @@
   } from 'konsta/svelte';
   const isPreview = document.location.href.includes('examplePreview');
 
-  let size = 'Default';
-  let isTransparent = false;
+  let size = $state('Default');
+  let isTransparent = $state(false);
 </script>
 
 <Page>
@@ -27,12 +27,14 @@
     large={size === 'Large'}
     transparent={isTransparent}
   >
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
-    <Link slot="right" navbar>Right</Link>
+    {/snippet}
+    {#snippet right()}
+      <Link navbar>Right</Link>
+    {/snippet}
   </Navbar>
   <div class="relative">
     <Block strong inset>
@@ -48,13 +50,14 @@
     <List strong inset>
       {#each ['Default', 'Medium', 'Large'] as v}
         <ListItem key={v} label title={v}>
-          <Radio
-            slot="after"
-            component="div"
-            value={v}
-            checked={size === v}
-            onChange={() => (size = v)}
-          />
+          {#snippet after()}
+            <Radio
+              component="div"
+              value={v}
+              checked={size === v}
+              onChange={() => (size = v)}
+            />
+          {/snippet}
         </ListItem>
       {/each}
     </List>
@@ -66,14 +69,15 @@
       on page scroll
     </BlockHeader>
     <List strong inset>
-      <ListItem label title="Transparent"
-        ><Toggle
-          slot="after"
-          component="div"
-          checked={isTransparent === true}
-          onChange={() => (isTransparent = !isTransparent)}
-        /></ListItem
-      >
+      <ListItem label title="Transparent">
+        {#snippet after()}
+          <Toggle
+            component="div"
+            checked={isTransparent === true}
+            onChange={() => (isTransparent = !isTransparent)}
+          />
+        {/snippet}
+      </ListItem>
     </List>
 
     <Block strong inset className="space-y-4">

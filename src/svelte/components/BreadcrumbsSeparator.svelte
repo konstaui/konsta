@@ -4,20 +4,24 @@
 
   import ChevronIcon from './icons/ChevronIcon.svelte';
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    ios = undefined,
+    material = undefined,
+    children,
+    ...restProps
+  } = $props();
 
-  $: c = useThemeClasses(
-    { ios, material },
-    BreadcrumbsSeparatorClasses({}),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      BreadcrumbsSeparatorClasses({}),
+      className
+    )
   );
 </script>
 
-<div class={c.base} {...$$restProps}>
+<div class={c.base} {...restProps}>
   <ChevronIcon class={c.icon} />
-  <slot />
+  {@render children?.()}
 </div>

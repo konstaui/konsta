@@ -17,11 +17,11 @@
 
 <Page>
   <Navbar title="List">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle>Simple List</BlockTitle>
@@ -69,36 +69,40 @@
   <BlockTitle>Data list, with icons</BlockTitle>
   <List strongIos outlineIos>
     <ListItem title="Ivan Petrov" after="CEO">
-      <DemoIcon slot="media" />
+      {#snippet media()}<DemoIcon />{/snippet}
     </ListItem>
     <ListItem title="John Doe">
-      <DemoIcon slot="media" />
-      <Badge slot="after">5</Badge>
+      {#snippet media()}<DemoIcon />{/snippet}
+      {#snippet after()}
+        <Badge>5</Badge>
+      {/snippet}
     </ListItem>
     <ListItem title="Jenna Smith">
-      <DemoIcon slot="media" />
+      {#snippet media()}<DemoIcon />{/snippet}
     </ListItem>
   </List>
   <BlockTitle>Links</BlockTitle>
   <List strongIos outlineIos>
     <ListItem link title="Ivan Petrov" after="CEO"
-      ><DemoIcon slot="media" /></ListItem
+      >{#snippet media()}<DemoIcon />{/snippet}</ListItem
     >
     <ListItem link title="John Doe" after="Cleaner"
-      ><DemoIcon slot="media" /></ListItem
+      >{#snippet media()}<DemoIcon />{/snippet}</ListItem
     >
-    <ListItem link title="Jenna Smith"><DemoIcon slot="media" /></ListItem>
+    <ListItem link title="Jenna Smith"
+      >{#snippet media()}<DemoIcon />{/snippet}</ListItem
+    >
   </List>
   <BlockTitle>Links, Header, Footer</BlockTitle>
   <List strongIos outlineIos>
     <ListItem link header="Name" title="John Doe" after="Edit">
-      <DemoIcon slot="media" />
+      {#snippet media()}<DemoIcon />{/snippet}
     </ListItem>
     <ListItem link header="Phone" title="+7 90 111-22-3344" after="Edit">
-      <DemoIcon slot="media" />
+      {#snippet media()}<DemoIcon />{/snippet}
     </ListItem>
     <ListItem link header="Email" title="john@doe" footer="Home" after="Edit">
-      <DemoIcon slot="media" />
+      {#snippet media()}<DemoIcon />{/snippet}
     </ListItem>
     <ListItem
       link
@@ -107,7 +111,7 @@
       footer="Work"
       after="Edit"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}<DemoIcon />{/snippet}
     </ListItem>
   </List>
 
@@ -173,13 +177,14 @@
       subtitle="Beatles"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <img
-        class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-        slot="media"
-        src="https://cdn.framework7.io/placeholder/people-160x160-1.jpg"
-        width="80"
-        alt="demo"
-      />
+      {#snippet media()}
+        <img
+          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
+          src="https://cdn.framework7.io/placeholder/people-160x160-1.jpg"
+          width="80"
+          alt="demo"
+        />
+      {/snippet}
     </ListItem>
     <ListItem
       chevronMaterial={false}
@@ -189,13 +194,14 @@
       subtitle="Queen"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <img
-        class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-        slot="media"
-        src="https://cdn.framework7.io/placeholder/people-160x160-2.jpg"
-        width="80"
-        alt="demo"
-      />
+      {#snippet media()}
+        <img
+          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
+          src="https://cdn.framework7.io/placeholder/people-160x160-2.jpg"
+          width="80"
+          alt="demo"
+        />
+      {/snippet}
     </ListItem>
     <ListItem
       chevronMaterial={false}
@@ -205,13 +211,14 @@
       subtitle="Michael Jackson"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <img
-        class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-        slot="media"
-        src="https://cdn.framework7.io/placeholder/people-160x160-3.jpg"
-        width="80"
-        alt="demo"
-      />
+      {#snippet media()}
+        <img
+          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
+          src="https://cdn.framework7.io/placeholder/people-160x160-3.jpg"
+          width="80"
+          alt="demo"
+        />
+      {/snippet}
     </ListItem>
   </List>
   <BlockTitle>Mail App</BlockTitle>

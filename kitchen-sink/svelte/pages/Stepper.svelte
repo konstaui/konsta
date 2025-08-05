@@ -40,11 +40,11 @@
 
 <Page>
   <Navbar title="Stepper">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle>Shape and size</BlockTitle>
@@ -276,34 +276,32 @@
   <BlockTitle>Only Buttons</BlockTitle>
   <List strongIos outlineIos>
     <ListItem title={`Value is ${value}`}>
-      <Stepper
-        slot="after"
-        {value}
-        buttonsOnly
-        onPlus={increase}
-        onMinus={decrease}
-      />
+      {#snippet after()}
+        <Stepper {value} buttonsOnly onPlus={increase} onMinus={decrease} />
+      {/snippet}
     </ListItem>
     <ListItem title={`Value is ${value}`}>
-      <Stepper
-        slot="after"
-        {value}
-        outline
-        buttonsOnly
-        onPlus={increase}
-        onMinus={decrease}
-      />
+      {#snippet after()}
+        <Stepper
+          {value}
+          outline
+          buttonsOnly
+          onPlus={increase}
+          onMinus={decrease}
+        />
+      {/snippet}
     </ListItem>
     <ListItem title={`Value is ${value}`}>
-      <Stepper
-        slot="after"
-        {value}
-        raised
-        outline
-        buttonsOnly
-        onPlus={increase}
-        onMinus={decrease}
-      />
+      {#snippet after()}
+        <Stepper
+          {value}
+          raised
+          outline
+          buttonsOnly
+          onPlus={increase}
+          onMinus={decrease}
+        />
+      {/snippet}
     </ListItem>
   </List>
 

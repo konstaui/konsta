@@ -8,31 +8,32 @@
   import { PreloaderClasses } from '../../shared/classes/PreloaderClasses.js';
   import { PreloaderColors } from '../../shared/colors/PreloaderColors.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    size = 'w-8 h-8',
 
-  export let size = 'w-8 h-8';
+    children,
+    ...restProps
+  } = $props();
 
-  let theme;
-
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
-  $: colors = PreloaderColors(colorsProp, dark);
+  const colors = $derived(PreloaderColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    PreloaderClasses({ size }, colors, theme),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      PreloaderClasses({ size }, colors, theme),
+      className
+    )
   );
 </script>
 
-<span class={c.base} {...$$restProps}>
+<span class={c.base} {...restProps}>
   <span class={c.inner}>
     {#if theme === 'ios'}
       <PreloaderIOS class="w-full h-full" />
@@ -40,5 +41,5 @@
       <PreloaderMaterial class="w-full h-full" />
     {/if}
   </span>
-  <slot />
+  {@render children?.()}
 </span>

@@ -3,31 +3,29 @@
   import { BadgeColors } from '../../shared/colors/BadgeColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    small = false,
+    children,
+    ...restProps
+  } = $props();
 
-  export let small = false;
+  const colors = $derived(BadgeColors(colorsProp));
 
-  export let onClick = undefined;
+  const size = $derived(small ? 'sm' : 'md');
 
-  $: colors = BadgeColors(colorsProp);
-
-  $: size = small ? 'sm' : 'md';
-
-  $: c = useThemeClasses(
-    { ios, material },
-    BadgeClasses({ small }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      BadgeClasses({ small }, colors),
+      className
+    )
   );
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<span class={c.base[size]} {...$$restProps} on:click={onClick}>
-  <slot />
+<span class={c.base[size]} {...restProps}>
+  {@render children?.()}
 </span>

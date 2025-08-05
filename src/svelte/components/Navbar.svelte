@@ -1,101 +1,116 @@
 <script>
-  import { onMount, onDestroy, afterUpdate } from 'svelte';
+  import { onMount, onDestroy, setContext } from 'svelte';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
   import { NavbarColors } from '../../shared/colors/NavbarColors.js';
   import { printText } from '../shared/print-text.js';
+  import { setReactiveContext } from '../shared/set-reactive-context.js';
 
-  let className = undefined;
-  export { className as class };
+  let {
+    class: className,
+    color: colorsProp,
 
-  export let bgClass = '';
-  export let innerClass = '';
-  export let leftClass = '';
-  export let titleClass = '';
-  export let subtitleClass = '';
-  export let rightClass = '';
-  export let subnavbarClass = '';
+    bgClass = '',
+    innerClass = '',
+    leftClass = '',
+    titleClass = '',
+    subtitleClass = '',
+    rightClass = '',
+    subnavbarClass = '',
 
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let outline = undefined;
-  export let centerTitle = undefined;
+    outline = undefined,
+    centerTitle = undefined,
 
-  export let medium = false;
-  export let large = false;
-  export let transparent = false;
+    medium = false,
+    large = false,
+    transparent = false,
 
-  export let fontSizeIos = 'text-[17px]';
-  export let fontSizeMaterial = 'text-[16px]';
+    fontSizeIos = 'text-[17px]',
+    fontSizeMaterial = 'text-[16px]',
 
-  export let titleFontSizeIos = 'text-[17px]';
-  export let titleFontSizeMaterial = 'text-[22px]';
+    titleFontSizeIos = 'text-[17px]',
+    titleFontSizeMaterial = 'text-[22px]',
 
-  export let titleMediumFontSizeIos = 'text-[24px]';
-  export let titleMediumFontSizeMaterial = 'text-[24px]';
+    titleMediumFontSizeIos = 'text-[24px]',
+    titleMediumFontSizeMaterial = 'text-[24px]',
 
-  export let titleLargeFontSizeIos = 'text-[34px]';
-  export let titleLargeFontSizeMaterial = 'text-[28px]';
+    titleLargeFontSizeIos = 'text-[34px]',
+    titleLargeFontSizeMaterial = 'text-[28px]',
 
-  export let scrollEl = undefined;
+    scrollEl = undefined,
 
-  export let title = undefined;
-  export let subtitle = undefined;
-  export let ios = undefined;
-  export let material = undefined;
+    title = undefined,
+    subtitle = undefined,
+    ios = undefined,
+    material = undefined,
 
-  let elRef = 0;
+    left,
+    right,
+    subnavbar,
+
+    children,
+    ...restProps
+  } = $props();
+
+  let elRef = $state(null);
   let titleContainerHeight = 0;
-  let bgElRef = null;
-  let innerElRef = null;
-  let titleContainerElRef = null;
-  let titleElRef = null;
-  let subnavbarElRef = null;
+  let bgElRef = $state(null);
+  let innerElRef = $state(null);
+  let titleContainerElRef = $state(null);
+  let titleElRef = $state(null);
+  let subnavbarElRef = $state(null);
 
-  $: isScrollable = medium || large || transparent;
-  let wasScrollable = isScrollable;
+  const isScrollable = $derived(medium || large || transparent);
+  let wasScrollable = $state(isScrollable);
 
   const dark = useDarkClasses();
 
-  let theme;
-  theme = useTheme((v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
-  $: colors = NavbarColors(colorsProp, dark);
+  setContext('NavbarContext', () => ({ value: { navbar: true } }));
 
-  $: isOutline = typeof outline === 'undefined' ? theme === 'ios' : outline;
+  const colors = $derived(NavbarColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    NavbarClasses(
-      {
-        bgClass,
-        innerClass,
-        leftClass,
-        titleClass,
-        subtitleClass,
-        rightClass,
-        subnavbarClass,
-        transparent,
-        outline: isOutline,
-        fontSizeIos,
-        fontSizeMaterial,
-        titleFontSizeIos,
-        titleFontSizeMaterial,
-        medium,
-        large,
-        titleMediumFontSizeIos,
-        titleMediumFontSizeMaterial,
-        titleLargeFontSizeIos,
-        titleLargeFontSizeMaterial,
-        centerTitle:
-          typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
-      },
-      colors,
-    ),
-    className,
-    (v) => (c = v)
+  const isOutline = $derived(
+    typeof outline === 'undefined' ? theme === 'ios' : outline
+  );
+
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      NavbarClasses(
+        {
+          bgClass,
+          innerClass,
+          leftClass,
+          titleClass,
+          subtitleClass,
+          rightClass,
+          subnavbarClass,
+          left,
+          right,
+          subnavbar,
+          transparent,
+          outline: isOutline,
+          fontSizeIos,
+          fontSizeMaterial,
+          titleFontSizeIos,
+          titleFontSizeMaterial,
+          medium,
+          large,
+          titleMediumFontSizeIos,
+          titleMediumFontSizeMaterial,
+          titleLargeFontSizeIos,
+          titleLargeFontSizeMaterial,
+          centerTitle:
+            typeof centerTitle === 'undefined' ? theme === 'ios' : centerTitle,
+        },
+        colors,
+        className
+      )
+    )
   );
 
   const getScrollEl = () => {
@@ -184,7 +199,7 @@
     }
   };
 
-  afterUpdate(() => {
+  $effect(() => {
     calcSize();
     if (!wasScrollable && isScrollable) {
       initScroll();
@@ -205,37 +220,51 @@
   });
 </script>
 
-<div class={c.base} bind:this={elRef} {...$$restProps}>
+<div class={c.base} bind:this={elRef} {...restProps}>
   <div class={c.bg} bind:this={bgElRef}></div>
   <div class={c.inner} bind:this={innerElRef}>
-    {#if $$slots.left}
-      <div class={c.left}><slot name="left" /></div>
+    {#if left}
+      <div class={c.left}>
+        {@render left?.()}
+      </div>
     {/if}
-    {#if $$slots.title || $$slots.subtitle || title || subtitle}
+    {#if title || subtitle}
       <div class={c.title} bind:this={titleElRef}>
-        {printText(title)}
-        <slot name="title" />
-        {#if subtitle || $$slots.subtitle}
+        {#if typeof title !== 'function'}
+          {printText(title)}
+        {:else}
+          {@render title?.()}
+        {/if}
+        {#if subtitle}
           <div class={c.subtitle}>
-            {printText(subtitle)}<slot name="subtitle" />
+            {#if typeof subtitle !== 'function'}
+              {printText(subtitle)}
+            {:else}
+              {@render subtitle?.()}
+            {/if}
           </div>
         {/if}
       </div>
     {/if}
-    {#if $$slots.right}
-      <div class={c.right}><slot name="right" /></div>
+    {#if right}
+      <div class={c.right}>
+        {@render right?.()}
+      </div>
     {/if}
-    <slot />
+    {@render children?.()}
   </div>
   {#if large || medium}
     <div class={c.titleContainer} bind:this={titleContainerElRef}>
-      {printText(title)}
-      <slot name="title" />
+      {#if typeof title !== 'function'}
+        {printText(title)}
+      {:else}
+        {@render title?.()}
+      {/if}
     </div>
   {/if}
-  {#if $$slots.subnavbar}
+  {#if subnavbar}
     <div class={c.subnavbar} bind:this={subnavbarElRef}>
-      <slot name="subnavbar" />
+      {@render subnavbar?.()}
     </div>
   {/if}
 </div>

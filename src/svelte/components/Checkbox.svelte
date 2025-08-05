@@ -3,43 +3,51 @@
   import { CheckboxColors } from '../../shared/colors/CheckboxColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
 
   import CheckboxIcon from './icons/CheckboxIcon.svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  export let component = 'label';
-  export let checked = false;
-  export let indeterminate = false;
-  export let name = undefined;
-  export let value = undefined;
-  export let disabled = false;
-  export let readonly = false;
-  export let onChange = undefined;
-  export let touchRipple = true;
+    component = 'label',
+    checked = false,
+    indeterminate = false,
+    name = undefined,
+    value = undefined,
+    disabled = false,
+    readonly = false,
+    onChange = undefined,
+    onchange = undefined,
+    touchRipple = true,
 
-  let inputEl;
-  const rippleEl = { current: null };
+    children,
+    ...restProps
+  } = $props();
+
+  let inputEl = $state(null);
+  let rippleEl = $state(null);
 
   const dark = useDarkClasses();
 
-  $: useTouchRipple(rippleEl, touchRipple);
+  useTouchRipple(
+    () => rippleEl,
+    () => touchRipple
+  );
 
-  $: colors = CheckboxColors(colorsProp, dark);
+  const colors = $derived(CheckboxColors(colorsProp, dark));
 
-  $: state = checked || indeterminate ? 'checked' : 'notChecked';
+  const state = $derived(checked || indeterminate ? 'checked' : 'notChecked');
 
-  $: c = useThemeClasses(
-    { ios, material },
-    CheckboxClasses({}, colors, dark),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      CheckboxClasses({}, colors, dark),
+      className
+    )
   );
 
   function watchIndeterminate(indeterminatePassed) {
@@ -48,14 +56,14 @@
     }
   }
 
-  $: watchIndeterminate(indeterminate);
+  $effect(() => watchIndeterminate(indeterminate));
 </script>
 
 <svelte:element
   this={component}
-  bind:this={rippleEl.current}
+  bind:this={rippleEl}
   class={c.base}
-  {...$$restProps}
+  {...restProps}
 >
   <input
     bind:this={inputEl}
@@ -65,7 +73,7 @@
     {disabled}
     {readonly}
     {checked}
-    on:change={onChange}
+    onchange={onChange || onchange}
     class={c.input}
   />
   <i class={c.iconWrap[state]}>
@@ -75,5 +83,5 @@
       <CheckboxIcon {ios} {material} class={c.icon[state]} />
     {/if}
   </i>
-  <slot />
+  {@render children?.()}
 </svelte:element>

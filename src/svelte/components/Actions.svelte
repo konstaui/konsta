@@ -2,30 +2,29 @@
   import { ActionsClasses } from '../../shared/classes/ActionsClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    ios = undefined,
+    material = undefined,
+    opened = undefined,
+    backdrop = true,
+    onBackdropClick = undefined,
+    children,
+    ...restProps
+  } = $props();
 
-  export let opened = undefined;
-  export let backdrop = true;
-  export let onBackdropClick = undefined;
+  let state = $derived(opened ? 'opened' : 'closed');
 
-  $: state = opened ? 'opened' : 'closed';
-
-  $: c = useThemeClasses(
-    { ios, material },
-    ActionsClasses({}),
-    className,
-    (v) => (c = v)
+  let c = $derived(
+    useThemeClasses({ ios, material }, ActionsClasses({}), className)
   );
 </script>
 
 {#if backdrop}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.backdrop[state]} on:click={onBackdropClick}></div>
+  <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
-<div class={c.base[state]} {...$$restProps}>
-  <slot />
+<div class={c.base[state]} {...restProps}>
+  {@render children?.()}
 </div>

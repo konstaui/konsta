@@ -4,29 +4,25 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-
-  export let ios = undefined;
-  export let material = undefined;
-
-  export let component = 'div';
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    component = 'div',
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  $: colors = PageColors(colorsProp, dark);
+  const colors = $derived(PageColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    PageClasses({}, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses({ ios, material }, PageClasses({}, colors), className)
   );
 </script>
 
-<svelte:element this={component} class={c.base} {...$$restProps}>
-  <slot />
+<svelte:element this={component} class={c.base} {...restProps}>
+  {@render children?.()}
 </svelte:element>

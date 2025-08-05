@@ -5,29 +5,39 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import Toolbar from './Toolbar.svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  export let component = 'div';
-  export let id = undefined;
-  export let name = undefined;
-  export let placeholder = 'Message';
-  export let value = undefined;
-  export let outline = false;
-  export let leftClass = '';
-  export let rightClass = '';
-  export let style = undefined;
-  export let textareaId = undefined;
-  export let disabled = undefined;
-  export let size = undefined;
+    component = 'div',
+    id = undefined,
+    name = undefined,
 
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
+    placeholder = 'Message',
+    value = undefined,
+    outline = false,
+    leftClass = '',
+    rightClass = '',
+    style = undefined,
+    textareaId = undefined,
+    disabled = undefined,
+    size = undefined,
+
+    onInput = undefined,
+    oninput = undefined,
+    onChange = undefined,
+    onchange = undefined,
+    onFocus = undefined,
+    onfocus = undefined,
+
+    left,
+    right,
+
+    children,
+    ...restProps
+  } = $props();
 
   const rippleEl = { current: null };
   let areaEl = null;
@@ -35,25 +45,37 @@
 
   const dark = useDarkClasses();
 
-  $: colors = MessagebarColors(colorsProp, dark);
+  const colors = $derived(MessagebarColors(colorsProp, dark));
 
   const onFocusInternal = (e) => {
     isFocused = true;
     if (onFocus) onFocus(e);
+    if (onfocus) onfocus(e);
   };
 
-  $: c = useThemeClasses(
-    { ios, material },
-    MessagebarClasses(
-      {
-        leftClass,
-        rightClass,
-      },
-      colors,
-      { isFocused }
-    ),
-    className,
-    (v) => (c = v)
+  const onInputInternal = (e) => {
+    if (onInput) onInput(e);
+    if (oninput) oninput(e);
+  };
+
+  const onChangeInternal = (e) => {
+    if (onChange) onChange(e);
+    if (onchange) onchange(e);
+  };
+
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      MessagebarClasses(
+        {
+          leftClass,
+          rightClass,
+        },
+        colors,
+        { isFocused }
+      ),
+      className
+    )
   );
 </script>
 
@@ -63,11 +85,13 @@
   {style}
   bind:this={rippleEl.current}
   class={c.base}
-  {...$$restProps}
+  {...restProps}
 >
   <Toolbar {colors} {outline}>
-    {#if $$slots.left}
-      <div class={c.left}><slot name="left" /></div>
+    {#if left}
+      <div class={c.left}>
+        {@render left?.()}
+      </div>
     {/if}
     <div class={c.messagebarArea}>
       <textarea
@@ -80,13 +104,15 @@
         {value}
         {size}
         {disabled}
-        on:input={onInput}
-        on:change={onChange}
+        on:input={onInputInternal}
+        on:change={onChangeInternal}
         on:focus={onFocusInternal}
       ></textarea>
     </div>
-    {#if $$slots.right}
-      <div class={c.right}><slot name="right" /></div>
+    {#if right}
+      <div class={c.right}>
+        {@render right?.()}
+      </div>
     {/if}
   </Toolbar>
 </svelte:element>

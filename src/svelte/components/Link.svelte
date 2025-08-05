@@ -2,92 +2,125 @@
   import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { LinkClasses } from '../../shared/classes/LinkClasses.js';
   import { LinkColors } from '../../shared/colors/LinkColors.js';
+  import { getReactiveContext } from '../shared/get-reactive-context.js';
+  import { getContext } from 'svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
 
-  export let component = 'a';
-  export let linkProps = {};
+    ios = undefined,
+    material = undefined,
 
-  // Toolbar/navbar link
-  export let navbar = false;
+    component = 'a',
+    linkProps = {},
 
-  export let iconOnly = false;
+    // Toolbar/navbar link
+    iconOnly = false,
+    tabbarActive = false,
+    touchRipple = undefined,
 
-  export let tabbarActive = false;
+    onClick = undefined,
+    onclick = undefined,
 
-  export let touchRipple = undefined;
+    children,
+    ...restProps
+  } = $props();
 
-  export let onClick = undefined;
+  let rippleEl = $state(null);
 
-  const rippleEl = { current: null };
+  const theme = $derived(useTheme({ ios, material }));
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+  let NavbarContext =
+    getContext('NavbarContext') || (() => ({ value: { navbar: false } }));
+
+  let ToolbarContext =
+    getContext('ToolbarContext') ||
+    (() => ({
+      value: {
+        toolbar: false,
+        tabbar: false,
+        tabbarLabels: false,
+        tabbarIcons: false,
+      },
+    }));
+
+  const { navbar } = $derived(NavbarContext()?.value || { navbar: false });
+  const { toolbar, tabbar, tabbarLabels, tabbarIcons } = $derived(
+    ToolbarContext()?.value || {
+      toolbar: false,
+      tabbar: false,
+      tabbarLabels: false,
+      tabbarIcons: false,
+    }
+  );
 
   const dark = useDarkClasses();
 
-  $: needsTouchRipple =
+  const needsTouchRipple = $derived(
     theme === 'material' &&
-    (touchRipple ||
-      (typeof touchRipple === 'undefined' && (toolbar || tabbar || navbar)));
+      (touchRipple ||
+        (typeof touchRipple === 'undefined' && (toolbar || tabbar || navbar)))
+  );
 
-  $: useTouchRipple(rippleEl, toolbar || tabbar || navbar);
+  useTouchRipple(
+    () => rippleEl,
+    () => toolbar || tabbar || navbar
+  );
 
-  $: colors = LinkColors(colorsProp, dark);
+  const colors = $derived(LinkColors(colorsProp, dark));
 
   // prettier-ignore
-  $: themeTextColor = navbar ?
+  const themeTextColor = $derived(navbar ?
     (
       theme === 'material' ? colors.navbarTextMaterial : colors.navbarTextIos
     ) :
     (
       theme === 'material' ? colors.textMaterial : colors.textIos
-    );
-
-  $: textColor =
-    tabbar && !tabbarActive ? colors.tabbarInactive : themeTextColor;
-  $: tabbarState = tabbarActive ? 'active' : 'inactive';
-
-  $: c = useThemeClasses(
-    { ios, material },
-    LinkClasses({ iconOnly }, { textColor, needsTouchRipple }),
-    '',
-    (v) => (c = v)
+    )
   );
 
-  $: classes = cls(
-    // base
-    c.base[tabbar ? 'default' : 'notTabbar'],
+  const textColor = $derived(
+    tabbar && !tabbarActive ? colors.tabbarInactive : themeTextColor
+  );
+  const tabbarState = $derived(tabbarActive ? 'active' : 'inactive');
 
-    toolbar && c.toolbar,
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      LinkClasses({ iconOnly }, { textColor, needsTouchRipple })
+    )
+  );
 
-    navbar && c.navbar,
+  const classes = $derived(
+    cls(
+      // base
+      c.base,
 
-    tabbar && c.tabbar[tabbarState],
+      toolbar && c.toolbar,
 
-    className
+      navbar && c.navbar,
+
+      tabbar && c.tabbar[tabbarState],
+
+      className
+    )
   );
 </script>
 
-<!-- svelte-ignore a11y-missing-attribute -->
 <svelte:element
   this={component}
-  bind:this={rippleEl.current}
+  bind:this={rippleEl}
   class={classes}
-  {...$$restProps}
+  {...restProps}
   {...linkProps}
   role="link"
   tabindex="0"
-  on:click={onClick}
+  onclick={onClick || onclick}
 >
-  <slot />
+  {@render children?.()}
 </svelte:element>

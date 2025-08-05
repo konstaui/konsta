@@ -20,11 +20,11 @@
 
 <Page>
   <Navbar title="Action Sheet">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <Block strong inset class="space-y-4">
@@ -35,8 +35,8 @@
   </Block>
   <BlockTitle>Open Action Sheet</BlockTitle>
   <Block strong inset class="flex space-x-4 rtl:space-x-reverse">
-    <Button onClick={() => (actionsOneOpened = true)}>One group</Button>
-    <Button onClick={() => (actionsTwoOpened = true)}>Two groups</Button>
+    <Button onclick={() => (actionsOneOpened = true)}>One group</Button>
+    <Button onclick={() => (actionsTwoOpened = true)}>Two groups</Button>
   </Block>
 
   <Actions
@@ -45,13 +45,13 @@
   >
     <ActionsGroup>
       <ActionsLabel>Do something</ActionsLabel>
-      <ActionsButton onClick={() => (actionsOneOpened = false)} bold>
+      <ActionsButton onclick={() => (actionsOneOpened = false)} bold>
         Button 1
       </ActionsButton>
-      <ActionsButton onClick={() => (actionsOneOpened = false)}>
+      <ActionsButton onclick={() => (actionsOneOpened = false)}>
         Button 2
       </ActionsButton>
-      <ActionsButton onClick={() => (actionsOneOpened = false)}>
+      <ActionsButton onclick={() => (actionsOneOpened = false)}>
         Cancel
       </ActionsButton>
     </ActionsGroup>
@@ -63,15 +63,15 @@
   >
     <ActionsGroup>
       <ActionsLabel>Do something</ActionsLabel>
-      <ActionsButton onClick={() => (actionsTwoOpened = false)} bold>
+      <ActionsButton onclick={() => (actionsTwoOpened = false)} bold>
         Button 1
       </ActionsButton>
-      <ActionsButton onClick={() => (actionsTwoOpened = false)}>
+      <ActionsButton onclick={() => (actionsTwoOpened = false)}>
         Button 2
       </ActionsButton>
     </ActionsGroup>
     <ActionsGroup>
-      <ActionsButton onClick={() => (actionsTwoOpened = false)}>
+      <ActionsButton onclick={() => (actionsTwoOpened = false)}>
         Cancel
       </ActionsButton>
     </ActionsGroup>

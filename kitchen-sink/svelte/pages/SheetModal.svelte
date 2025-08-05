@@ -11,16 +11,16 @@
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let sheetOpened = false;
+  let sheetOpened = $state(false);
 </script>
 
 <Page>
   <Navbar title="Sheet Modal">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <Block strongIos outlineIos class="space-y-4">
@@ -29,7 +29,7 @@
       content. Such modals allow to create custom overlays with custom content.
     </p>
     <p>
-      <Button onClick={() => (sheetOpened = true)}>Open Sheet</Button>
+      <Button onclick={() => (sheetOpened = true)}>Open Sheet</Button>
     </p>
   </Block>
 
@@ -52,7 +52,7 @@
         excepturi voluptatem dolore itaque sapiente dolores!
       </p>
       <div class="mt-4">
-        <Button onClick={() => (sheetOpened = false)}>Action</Button>
+        <Button onclick={() => (sheetOpened = false)}>Action</Button>
       </div>
     </Block>
   </Sheet>

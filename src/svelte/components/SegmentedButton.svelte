@@ -1,14 +1,16 @@
 <script>
   import Button from './Button.svelte';
 
-  export let active = false;
-  export let strong = false;
-  export let rounded = false;
+  let {
+    active = false,
+    strong = false,
+    rounded = false,
+    outline = false,
+    clear = false,
 
-  // svelte-ignore unused-export-let
-  export let outline = false;
-  // svelte-ignore unused-export-let
-  export let clear = false;
+    children,
+    ...restProps
+  } = $props();
 </script>
 
 <Button
@@ -16,7 +18,7 @@
   segmentedActive={active}
   segmentedStrong={strong}
   rounded={rounded && strong}
-  {...$$restProps}
+  {...restProps}
 >
-  <slot />
+  {@render children?.()}
 </Button>

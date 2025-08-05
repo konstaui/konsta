@@ -42,21 +42,22 @@
   };
 
   // Media
-  let media = ['Item 1'];
+  let mediaValue = ['Item 1'];
   const toggleMediaValue = (value) => {
-    if (media.includes(value)) media.splice(media.indexOf(value), 1);
-    else media.push(value);
-    media = [...media];
+    if (mediaValue.includes(value))
+      mediaValue.splice(mediaValue.indexOf(value), 1);
+    else mediaValue.push(value);
+    mediaValue = [...mediaValue];
   };
 </script>
 
 <Page>
   <Navbar title="Checkbox">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle>Inline</BlockTitle>
@@ -82,70 +83,77 @@
   <BlockTitle>Checkbox Group</BlockTitle>
   <List strongIos outlineIos>
     <ListItem label title="Books">
-      <Checkbox
-        slot="media"
-        component="div"
-        name="demo-checkbox"
-        checked={group.includes('Books')}
-        onChange={() => toggleGroupValue('Books')}
-      />
+      {#snippet media()}
+        <Checkbox
+          component="div"
+          name="demo-checkbox"
+          checked={group.includes('Books')}
+          onChange={() => toggleGroupValue('Books')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Movies">
-      <Checkbox
-        slot="media"
-        component="div"
-        name="demo-checkbox"
-        checked={group.includes('Movies')}
-        onChange={() => toggleGroupValue('Movies')}
-      />
+      {#snippet media()}
+        <Checkbox
+          component="div"
+          name="demo-checkbox"
+          checked={group.includes('Movies')}
+          onChange={() => toggleGroupValue('Movies')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Food">
-      <Checkbox
-        slot="media"
-        component="div"
-        name="demo-checkbox"
-        checked={group.includes('Food')}
-        onChange={() => toggleGroupValue('Food')}
-      />
+      {#snippet media()}
+        <Checkbox
+          component="div"
+          name="demo-checkbox"
+          checked={group.includes('Food')}
+          onChange={() => toggleGroupValue('Food')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Drinks">
-      <Checkbox
-        slot="media"
-        component="div"
-        name="demo-checkbox"
-        checked={group.includes('Drinks')}
-        onChange={() => toggleGroupValue('Drinks')}
-      />
+      {#snippet media()}
+        <Checkbox
+          component="div"
+          name="demo-checkbox"
+          checked={group.includes('Drinks')}
+          onChange={() => toggleGroupValue('Drinks')}
+        />
+      {/snippet}
     </ListItem>
   </List>
 
   <BlockTitle>Indeterminate State</BlockTitle>
   <List strongIos outlineIos>
     <ListItem label title="Movies" name="demo-checkbox">
-      <Checkbox
-        slot="media"
-        checked={movies.length === 2}
-        indeterminate={movies.length === 1}
-        onChange={onMoviesChange}
-      />
+      {#snippet media()}
+        <Checkbox
+          checked={movies.length === 2}
+          indeterminate={movies.length === 1}
+          onChange={onMoviesChange}
+        />
+      {/snippet}
       <ul class="ps-12">
         <ListItem label title="Movie 1">
-          <Checkbox
-            slot="media"
-            name="demo-checkbox"
-            value="Movie 1"
-            checked={movies.indexOf('Movie 1') >= 0}
-            onChange={onMovieChange}
-          />
+          {#snippet media()}
+            <Checkbox
+              name="demo-checkbox"
+              value="Movie 1"
+              checked={movies.indexOf('Movie 1') >= 0}
+              onChange={onMovieChange}
+            />
+          {/snippet}
         </ListItem>
         <ListItem label title="Movie 2">
-          <Checkbox
-            slot="media"
-            name="demo-checkbox"
-            value="Movie 2"
-            checked={movies.indexOf('Movie 2') >= 0}
-            onChange={onMovieChange}
-          />
+          {#snippet media()}
+            <Checkbox
+              name="demo-checkbox"
+              value="Movie 2"
+              checked={movies.indexOf('Movie 2') >= 0}
+              onChange={onMovieChange}
+            />
+          {/snippet}
         </ListItem>
       </ul>
     </ListItem>
@@ -160,13 +168,14 @@
       subtitle="New messages from John Doe"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <Checkbox
-        slot="media"
-        component="div"
-        name="demo-media-checkbox"
-        checked={media.includes('Item 1')}
-        onChange={() => toggleMediaValue('Item 1')}
-      />
+      {#snippet media()}
+        <Checkbox
+          component="div"
+          name="demo-media-checkbox"
+          checked={mediaValue.includes('Item 1')}
+          onChange={() => toggleMediaValue('Item 1')}
+        />
+      {/snippet}
     </ListItem>
     <ListItem
       label
@@ -175,13 +184,14 @@
       subtitle="John Doe (@_johndoe) mentioned you on Twitter!"
       text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
     >
-      <Checkbox
-        slot="media"
-        component="div"
-        name="demo-media-checkbox"
-        checked={media.includes('Item 2')}
-        onChange={() => toggleMediaValue('Item 2')}
-      />
+      {#snippet media()}
+        <Checkbox
+          component="div"
+          name="demo-media-checkbox"
+          checked={mediaValue.includes('Item 2')}
+          onChange={() => toggleMediaValue('Item 2')}
+        />
+      {/snippet}
     </ListItem>
   </List>
 </Page>

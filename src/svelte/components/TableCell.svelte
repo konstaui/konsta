@@ -4,33 +4,29 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  export let header = false;
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    header = false,
 
-  export let ios = undefined;
-  export let material = undefined;
-
-  const component = header ? 'th' : 'td';
-  const rippleEl = { current: null };
+    children,
+    ...restProps
+  } = $props();
+  const component = $derived(header ? 'th' : 'td');
   const dark = useDarkClasses();
-  $: colors = TableCellColors(colorsProp, dark);
+  const colors = $derived(TableCellColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    TableCellClasses({ header }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      TableCellClasses({ header }, colors),
+      className
+    )
   );
 </script>
 
-<svelte:element
-  this={component}
-  bind:this={rippleEl.current}
-  class={c.base}
-  {...$$restProps}
->
-  <slot />
+<svelte:element this={component} class={c.base} {...restProps}>
+  {@render children?.()}
 </svelte:element>

@@ -6,36 +6,39 @@
   import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
   import { printText } from '../shared/print-text.js';
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    ios = undefined,
+    material = undefined,
+    component = 'a',
+    text = 'Back',
+    showText = false,
+    onClick = undefined,
+    onclick = undefined,
 
-  export let component = 'a';
-  export let text = 'Back';
-  export let showText = 'auto';
-  export let onClick = undefined;
+    children,
+    ...restProps
+  } = $props();
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
-  $: shouldShowText =
-    (showText === 'auto' && theme === 'ios') || showText === true;
-
-  $: c = useThemeClasses(
-    { ios, material },
-    NavbarBackLinkClasses(),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses({ ios, material }, NavbarBackLinkClasses(), className)
   );
 </script>
 
-<Link class={c.base} navbar {component} {...$$restProps} {onClick}>
+<Link
+  class={c.base}
+  navbar
+  {component}
+  {...restProps}
+  onclick={onClick || onclick}
+>
   <span class={c.icon}>
     <BackIcon {theme} />
   </span>
-  {#if shouldShowText}
+  {#if showText}
     <span>{printText(text)}</span>
   {/if}
-  <slot />
+  {@render children?.()}
 </Link>

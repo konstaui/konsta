@@ -21,18 +21,18 @@
   import MdFileUpload from '../components/MdFileUpload.svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let activeTab = 'tab-1';
-  let isTabbarLabels = true;
-  let isTabbarIcons = true;
+  let activeTab = $state('tab-1');
+  let isTabbarLabels = $state(true);
+  let isTabbarIcons = $state(true);
 </script>
 
 <Page>
   <Navbar title="Tabbar">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <Tabbar
@@ -46,36 +46,48 @@
         onClick={() => (activeTab = 'tab-1')}
         label={isTabbarLabels ? 'Tab 1' : undefined}
       >
-        <svelte:fragment slot="icon">
+        {#snippet icon()}
           <Icon>
-            <EnvelopeFill slot="ios" class="w-7 h-7" />
-            <MdEmail slot="material" class="w-6 h-6" />
+            {#snippet ios()}
+              <EnvelopeFill class="w-7 h-7" />
+            {/snippet}
+            {#snippet material()}
+              <MdEmail class="w-6 h-6" />
+            {/snippet}
           </Icon>
-        </svelte:fragment>
+        {/snippet}
       </TabbarLink>
       <TabbarLink
         active={activeTab === 'tab-2'}
         onClick={() => (activeTab = 'tab-2')}
         label={isTabbarLabels ? 'Tab 2' : undefined}
       >
-        <svelte:fragment slot="icon">
+        {#snippet icon()}
           <Icon>
-            <Calendar slot="ios" class="w-7 h-7" />
-            <MdToday slot="material" class="w-6 h-6" />
+            {#snippet ios()}
+              <Calendar class="w-7 h-7" />
+            {/snippet}
+            {#snippet material()}
+              <MdToday class="w-6 h-6" />
+            {/snippet}
           </Icon>
-        </svelte:fragment>
+        {/snippet}
       </TabbarLink>
       <TabbarLink
         active={activeTab === 'tab-3'}
         onClick={() => (activeTab = 'tab-3')}
         label={isTabbarLabels ? 'Tab 3' : undefined}
       >
-        <svelte:fragment slot="icon">
+        {#snippet icon()}
           <Icon>
-            <CloudUploadFill slot="ios" class="w-7 h-7" />
-            <MdFileUpload slot="material" class="w-6 h-6" />
+            {#snippet ios()}
+              <CloudUploadFill class="w-7 h-7" />
+            {/snippet}
+            {#snippet material()}
+              <MdFileUpload class="w-6 h-6" />
+            {/snippet}
           </Icon>
-        </svelte:fragment>
+        {/snippet}
       </TabbarLink>
     {:else}
       <TabbarLink
@@ -98,18 +110,20 @@
 
   <List strong inset>
     <ListItem title="Tabbar Labels">
-      <Toggle
-        slot="after"
-        checked={isTabbarLabels}
-        onChange={() => (isTabbarLabels = !isTabbarLabels)}
-      />
+      {#snippet after()}
+        <Toggle
+          checked={isTabbarLabels}
+          onChange={() => (isTabbarLabels = !isTabbarLabels)}
+        />
+      {/snippet}
     </ListItem>
     <ListItem title="Tabbar Icons">
-      <Toggle
-        slot="after"
-        checked={isTabbarIcons}
-        onChange={() => (isTabbarIcons = !isTabbarIcons)}
-      />
+      {#snippet after()}
+        <Toggle
+          checked={isTabbarIcons}
+          onChange={() => (isTabbarIcons = !isTabbarIcons)}
+        />
+      {/snippet}
     </ListItem>
   </List>
 

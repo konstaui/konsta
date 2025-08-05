@@ -16,11 +16,11 @@
 
 <Page>
   <Navbar title="Cards">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle withBlock={false}>Simple Cards</BlockTitle>
@@ -28,9 +28,15 @@
     This is a simple card with plain text, but cards can also contain their own
     header, footer, list view, image, or any other element.
   </Card>
-  <Card header="Card header" footer="Card footer">
-    Card with header and footer. Card headers are used to display card titles
-    and footers for additional information or just for custom actions.
+  <Card>
+    {#snippet header()}
+      Card header
+    {/snippet}
+    {#snippet footer()}
+      Card footer
+    {/snippet}
+    Card with header and footer. Card headers are used to display card titles and
+    footers for additional information or just for custom actions.
   </Card>
   <Card>
     Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -43,9 +49,15 @@
     This is a simple card with plain text, but cards can also contain their own
     header, footer, list view, image, or any other element.
   </Card>
-  <Card outline header="Card header" footer="Card footer">
-    Card with header and footer. Card headers are used to display card titles
-    and footers for additional information or just for custom actions.
+  <Card outline>
+    {#snippet header()}
+      Card header
+    {/snippet}
+    {#snippet footer()}
+      Card footer
+    {/snippet}
+    Card with header and footer. Card headers are used to display card titles and
+    footers for additional information or just for custom actions.
   </Card>
   <Card outline>
     Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -54,15 +66,15 @@
   </Card>
 
   <BlockTitle withBlock={false}>Outline With Dividers</BlockTitle>
-  <Card
-    outline
-    header="Card header"
-    footer="Card footer"
-    headerDivider
-    footerDivider
-  >
-    Card with header and footer. Card headers are used to display card titles
-    and footers for additional information or just for custom actions.
+  <Card outline headerDivider footerDivider>
+    {#snippet header()}
+      Card header
+    {/snippet}
+    {#snippet footer()}
+      Card footer
+    {/snippet}
+    Card with header and footer. Card headers are used to display card titles and
+    footers for additional information or just for custom actions.
   </Card>
 
   <BlockTitle withBlock={false}>Raised Cards</BlockTitle>
@@ -70,9 +82,15 @@
     This is a simple card with plain text, but cards can also contain their own
     header, footer, list view, image, or any other element.
   </Card>
-  <Card raised header="Card header" footer="Card footer">
-    Card with header and footer. Card headers are used to display card titles
-    and footers for additional information or just for custom actions.
+  <Card raised>
+    {#snippet header()}
+      Card header
+    {/snippet}
+    {#snippet footer()}
+      Card footer
+    {/snippet}
+    Card with header and footer. Card headers are used to display card titles and
+    footers for additional information or just for custom actions.
   </Card>
   <Card raised>
     Another card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -105,7 +123,7 @@
         Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
         efficitur vitae non felis. Phasellus quis nibh hendrerit...
       </p>
-      <svelte:fragment slot="footer">
+      {#snippet footer()}
         <div class="flex justify-between material:hidden">
           <Link>Like</Link>
           <Link>Read more</Link>
@@ -116,22 +134,23 @@
           <Button rounded inline>Like</Button>
           <Button rounded inline outline>Read more</Button>
         </div>
-      </svelte:fragment>
+      {/snippet}
     </Card>
     <Card>
-      <div
-        slot="header"
-        class="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
-        style="background-image: url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)"
-      >
-        Lorem Ipsum
-      </div>
+      {#snippet header()}
+        <div
+          class="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
+          style="background-image: url(https://cdn.framework7.io/placeholder/people-1000x600-6.jpg)"
+        >
+          Lorem Ipsum
+        </div>
+      {/snippet}
       <div class="text-gray-500 mb-3">Posted on January 21, 2021</div>
       <p>
         Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
         efficitur vitae non felis. Phasellus quis nibh hendrerit...
       </p>
-      <svelte:fragment slot="footer">
+      {#snippet footer()}
         <div class="flex justify-between material:hidden">
           <Link>Like</Link>
           <Link>Read more</Link>
@@ -142,7 +161,7 @@
           <Button rounded inline>Like</Button>
           <Button rounded inline outline>Read more</Button>
         </div>
-      </svelte:fragment>
+      {/snippet}
     </Card>
   </div>
 </Page>

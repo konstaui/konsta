@@ -4,37 +4,40 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    size = 'w-screen h-screen md:w-160 md:h-160',
+    opened = false,
+    backdrop = true,
+    onBackdropClick = undefined,
 
-  export let size = 'w-screen h-screen md:w-160 md:h-160';
-  export let opened = false;
-  export let backdrop = true;
-  export let onBackdropClick = undefined;
+    children,
+    ...restProps
+  } = $props();
 
-  $: state = opened ? 'opened' : 'closed';
+  const state = $derived(opened ? 'opened' : 'closed');
 
   const dark = useDarkClasses();
 
-  $: colors = PopupColors(colorsProp, dark);
+  const colors = $derived(PopupColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    PopupClasses({ size }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      PopupClasses({ size }, colors),
+      className
+    )
   );
 </script>
 
 {#if backdrop}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.backdrop[state]} on:click={onBackdropClick}></div>
+  <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
-<div class={c.base[state]} {...$$restProps}>
-  <slot />
+<div class={c.base[state]} {...restProps}>
+  {@render children?.()}
 </div>

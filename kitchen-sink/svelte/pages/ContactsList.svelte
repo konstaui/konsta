@@ -13,11 +13,11 @@
 
 <Page>
   <Navbar title="Contacts List">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
   <List strongIos>
     <ListGroup dividers={false}>

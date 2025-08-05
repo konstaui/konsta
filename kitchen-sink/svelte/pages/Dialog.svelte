@@ -13,20 +13,20 @@
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let basicOpened = false;
-  let alertOpened = false;
-  let confirmOpened = false;
-  let listOpened = false;
-  let radioValue = 'batman';
+  let basicOpened = $state(false);
+  let alertOpened = $state(false);
+  let confirmOpened = $state(false);
+  let listOpened = $state(false);
+  let radioValue = $state('batman');
 </script>
 
 <Page>
   <Navbar title="Dialog">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <Block strong inset class="space-y-4">
@@ -37,82 +37,90 @@
   </Block>
   <Block strong inset>
     <p class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <Button rounded onClick={() => (basicOpened = true)}>Basic</Button>
-      <Button rounded onClick={() => (alertOpened = true)}>Alert</Button>
-      <Button rounded onClick={() => (confirmOpened = true)}>Confirm</Button>
-      <Button rounded onClick={() => (listOpened = true)}>List</Button>
+      <Button rounded onclick={() => (basicOpened = true)}>Basic</Button>
+      <Button rounded onclick={() => (alertOpened = true)}>Alert</Button>
+      <Button rounded onclick={() => (confirmOpened = true)}>Confirm</Button>
+      <Button rounded onclick={() => (listOpened = true)}>List</Button>
     </p>
   </Block>
   <Dialog opened={basicOpened} onBackdropClick={() => (basicOpened = false)}>
-    <svelte:fragment slot="title">Dialog Title</svelte:fragment>
+    {#snippet title()}
+      Dialog Title
+    {/snippet}
     Dialog is a type of modal window that appears in front of app content to provide
     critical information, or prompt for a decision to be made.
 
-    <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (basicOpened = false)}>
+    {#snippet buttons()}
+      <DialogButton onclick={() => (basicOpened = false)}>
         Action 2
       </DialogButton>
-      <DialogButton onClick={() => (basicOpened = false)}>
+      <DialogButton onclick={() => (basicOpened = false)}>
         Action 1
       </DialogButton>
-    </svelte:fragment>
+    {/snippet}
   </Dialog>
   <Dialog opened={alertOpened} onBackdropClick={() => (alertOpened = false)}>
-    <svelte:fragment slot="title">Konsta UI</svelte:fragment>
+    {#snippet title()}
+      Konsta UI
+    {/snippet}
     Hello world!
-    <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (alertOpened = false)}>Ok</DialogButton>
-    </svelte:fragment>
+    {#snippet buttons()}
+      <DialogButton onclick={() => (alertOpened = false)}>Ok</DialogButton>
+    {/snippet}
   </Dialog>
   <Dialog
     opened={confirmOpened}
     onBackdropClick={() => (confirmOpened = false)}
   >
-    <svelte:fragment slot="title">Konsta UI</svelte:fragment>
+    {#snippet title()}
+      Konsta UI
+    {/snippet}
     All good today?
-    <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (confirmOpened = false)}>No</DialogButton>
-      <DialogButton strong onClick={() => (confirmOpened = false)}>
+    {#snippet buttons()}
+      <DialogButton onclick={() => (confirmOpened = false)}>No</DialogButton>
+      <DialogButton strong onclick={() => (confirmOpened = false)}>
         Yes
       </DialogButton>
-    </svelte:fragment>
+    {/snippet}
   </Dialog>
   <Dialog opened={listOpened} onBackdropClick={() => (listOpened = false)}>
-    <svelte:fragment slot="title">Your super hero</svelte:fragment>
+    {#snippet title()}
+      Your super hero
+    {/snippet}
     <List nested class="-mx-4">
       <ListItem label title="Batman">
-        <svelte:fragment slot="after">
+        {#snippet after()}
           <Radio
             component="div"
             value="batman"
             checked={radioValue === 'batman'}
             onChange={() => (radioValue = 'batman')}
           />
-        </svelte:fragment>
+        {/snippet}
       </ListItem>
       <ListItem label title="Spider-man">
-        <svelte:fragment slot="after">
+        {#snippet after()}
           <Radio
             component="div"
             value="spiderman"
             checked={radioValue === 'spiderman'}
             onChange={() => (radioValue = 'spiderman')}
           />
-        </svelte:fragment>
+        {/snippet}
       </ListItem>
       <ListItem label title="Hulk">
-        <svelte:fragment slot="after">
+        {#snippet after()}
           <Radio
             component="div"
             value="hulk"
             checked={radioValue === 'hulk'}
             onChange={() => (radioValue = 'hulk')}
           />
-        </svelte:fragment>
+        {/snippet}
       </ListItem>
     </List>
-    <svelte:fragment slot="buttons">
-      <DialogButton onClick={() => (listOpened = false)}>Confirm</DialogButton>
-    </svelte:fragment>
+    {#snippet buttons()}
+      <DialogButton onclick={() => (listOpened = false)}>Confirm</DialogButton>
+    {/snippet}
   </Dialog>
 </Page>

@@ -7,45 +7,47 @@
 
   import DeleteIcon from './icons/DeleteIcon.svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-
-  export let deleteButton = undefined;
-  export let onDelete = undefined;
-  export let outline = false;
-
-  export let onClick = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    deleteButton = undefined,
+    onDelete = undefined,
+    ondelete = undefined,
+    onClick = undefined,
+    onclick = undefined,
+    outline = false,
+    media = undefined,
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
-  $: style = outline ? 'outline' : 'fill';
+  const style = $derived(outline ? 'outline' : 'fill');
 
-  $: colors = ChipColors(colorsProp, dark);
+  const colors = $derived(ChipColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    ChipClasses({}, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses({ ios, material }, ChipClasses({}, colors), className)
   );
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y_no_static_element_interactions -->
-<div class={c.base[style]} {...$$restProps} on:click={onClick}>
-  {#if $$slots.media}
-    <div class={c.media}><slot name="media" /></div>
+<div class={c.base[style]} {...restProps} onclick={onClick || onclick}>
+  {#if media}
+    <div class={c.media}>{@render media()}</div>
   {/if}
-  <slot />
+  {@render children?.()}
   {#if deleteButton}
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class={c.deleteButton} role="button" tabindex="0" on:click={onDelete}>
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <div
+      class={c.deleteButton}
+      role="button"
+      tabindex="0"
+      onclick={onDelete || ondelete}
+    >
       <DeleteIcon {theme} class="h-4 w-4" />
     </div>
   {/if}

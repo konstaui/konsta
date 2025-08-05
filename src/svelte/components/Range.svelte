@@ -5,41 +5,49 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  export let inputId = undefined;
-  export let name = undefined;
-  export let value = undefined;
-  export let readonly = undefined;
-  export let disabled = undefined;
-  export let step = 1;
-  export let min = 0;
-  export let max = 100;
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
-  export let onBlur = undefined;
+    inputId = undefined,
+    name = undefined,
+    value = undefined,
+    readonly = undefined,
+    disabled = undefined,
+    step = 1,
+    min = 0,
+    max = 100,
+    onInput = undefined,
+    onChange = undefined,
+    onFocus = undefined,
+    onBlur = undefined,
+    oninput = undefined,
+    onchange = undefined,
+    onfocus = undefined,
+    onblur = undefined,
+
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  $: colors = RangeColors(colorsProp, dark);
+  const colors = $derived(RangeColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    RangeClasses({}, colors, dark),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      RangeClasses({}, colors, dark),
+      className
+    )
   );
 
-  $: valueWidth = (((value || 0) - min) / (max - min)) * 100;
+  const valueWidth = $derived((((value || 0) - min) / (max - min)) * 100);
 </script>
 
-<div class={c.base} {...$$restProps}>
+<div class={c.base} {...restProps}>
   <span class={c.trackBg}></span>
   <span class={c.trackValue} style={`width: ${valueWidth}%`}></span>
   <input
@@ -53,9 +61,9 @@
     {value}
     {readonly}
     {disabled}
-    on:input={onInput}
-    on:change={onChange}
-    on:focus={onFocus}
-    on:blur={onBlur}
+    oninput={onInput || oninput}
+    onchange={onChange || onchange}
+    onfocus={onFocus || onfocus}
+    onblur={onBlur || onblur}
   />
 </div>

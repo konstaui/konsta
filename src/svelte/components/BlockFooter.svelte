@@ -5,38 +5,41 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-  export let inset = undefined;
-  export let insetIos = false;
-  export let insetMaterial = false;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    inset = undefined,
+    insetIos = false,
+    insetMaterial = false,
+    children,
+    ...restProps
+  } = $props();
 
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
 
-  $: isInset =
+  const isInset = $derived(
     typeof inset === 'undefined'
       ? theme === 'ios'
         ? insetIos
         : insetMaterial
-      : inset;
+      : inset
+  );
 
-  $: colors = BlockFooterColors(colorsProp, dark);
+  const colors = $derived(BlockFooterColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    BlockFooterClasses({ inset: isInset }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      BlockFooterClasses({ inset: isInset }, colors),
+      className
+    )
   );
 </script>
 
-<div class={c.base} {...$$restProps}>
-  <slot />
+<div class={c.base} {...restProps}>
+  {@render children?.()}
 </div>

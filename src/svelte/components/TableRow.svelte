@@ -4,28 +4,30 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    header = false,
 
-  export let ios = undefined;
-  export let material = undefined;
+    children,
+    ...restProps
+  } = $props();
 
-  export let header = undefined;
-
-  const rippleEl = { current: null };
   const dark = useDarkClasses();
-  $: colors = TableRowColors(colorsProp, dark);
 
-  $: c = useThemeClasses(
-    { ios, material },
-    TableRowClasses({ header }, colors),
-    className,
-    (v) => (c = v)
+  const colors = $derived(TableRowColors(colorsProp, dark));
+
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      TableRowClasses({ header }, colors),
+      className
+    )
   );
 </script>
 
-<tr bind:this={rippleEl.current} class={c.base} {...$$restProps}>
-  <slot />
+<tr class={c.base} {...restProps}>
+  {@render children?.()}
 </tr>

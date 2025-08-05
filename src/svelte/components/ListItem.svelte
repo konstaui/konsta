@@ -2,187 +2,209 @@
   import { cls } from '../../shared/cls.js';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
   import ChevronIcon from './icons/ChevronIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
   import { ListItemColors } from '../../shared/colors/ListItemColors.js';
-  import { getReactiveContext } from '../shared/get-reactive-context.js';
   import { printText } from '../shared/print-text.js';
+  import { getContext } from 'svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  export let component = 'li';
-  export let mediaClass = '';
-  export let innerClass = '';
-  export let contentClass = '';
-  export let titleWrapClass = '';
+    component = 'li',
+    mediaClass = '',
+    innerClass = '',
+    contentClass = '',
+    titleWrapClass = '',
 
-  export let titleFontSizeIos = 'text-[17px]';
-  export let titleFontSizeMaterial = 'text-[16px]';
+    titleFontSizeIos = 'text-[17px]',
+    titleFontSizeMaterial = 'text-[16px]',
 
-  export let withMedia = undefined;
-  export let withTitle = undefined;
+    withMedia = undefined,
+    withTitle = undefined,
 
-  // Content props
-  export let title = '';
-  export let subtitle = '';
-  export let text = '';
-  export let after = '';
-  export let header = '';
-  export let footer = '';
+    // Content props
+    title = '',
+    subtitle = '',
+    text = '',
+    after = '',
+    header = '',
+    footer = '',
 
-  export let menuListItem = false;
-  export let menuListItemActive = false;
+    menuListItem = false,
+    menuListItemActive = false,
 
-  export let groupTitle = false;
+    groupTitle = false,
 
-  // Title
-  export let strongTitle = 'auto';
+    // Title
+    strongTitle = 'auto',
 
-  // Label props
-  export let label = false;
+    // Label props
+    label = false,
 
-  // Link props
-  export let chevron = undefined;
-  export let chevronIos = true;
-  export let chevronMaterial = true;
-  export let href = undefined;
-  export let target = undefined;
-  export let dividers = undefined;
-  export let contacts = false;
+    // Link props
+    chevron = undefined,
+    chevronIos = true,
+    chevronMaterial = true,
+    href = undefined,
+    target = undefined,
+    dividers = undefined,
+    contacts = false,
 
-  export let link = false;
-  export let linkComponent = 'a';
-  export let linkProps = {};
+    link = false,
+    linkComponent = 'a',
+    linkProps = {},
 
-  export let touchRipple = true;
+    touchRipple = true,
 
-  export let onClick = undefined;
+    onClick = undefined,
+    onclick = undefined,
 
-  let ListDividersContext = getReactiveContext(
-    'ListDividersContext',
-    (value) => {
-      ListDividersContext = value || {};
-    }
-  ) || { value: false };
+    children,
 
-  const rippleEl = { current: null };
+    inner,
+    content,
+    media,
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+    ...restProps
+  } = $props();
+
+  const onClickInternal = (e) => {
+    if (onClick) onClick(e);
+    if (onclick) onclick(e);
+  };
+
+  const ListDividersContext =
+    getContext('ListDividersContext') || (() => ({ value: false }));
+
+  let rippleEl = $state(null);
+
+  const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
 
-  $: hasChevron =
+  const hasChevron = $derived(
     typeof chevron === 'undefined'
       ? theme === 'ios'
         ? chevronIos
         : chevronMaterial
-      : chevron;
+      : chevron
+  );
 
-  $: colors = ListItemColors(colorsProp, dark);
+  const colors = $derived(ListItemColors(colorsProp, dark));
 
-  $: isMenuListItemActive = menuListItem && menuListItemActive;
+  const isMenuListItemActive = $derived(menuListItem && menuListItemActive);
 
-  $: textColor =
+  const textColor = $derived(
     colors[
       `${
         isMenuListItemActive
           ? 'menuListItemActiveText'
           : menuListItem
-          ? 'menuListItemText'
-          : 'text'
+            ? 'menuListItemText'
+            : 'text'
       }${theme === 'ios' ? 'Ios' : 'Material'}`
-    ];
-
-  $: isLink = !!href || href === '' || menuListItem || link;
-  $: isLabel = !!label;
-
-  $: needsTouchRipple =
-    theme === 'material' && (isLabel || isLink) && touchRipple;
-
-  $: useTouchRipple(rippleEl, needsTouchRipple);
-
-  $: hrefComputed =
-    href === true || href === false || typeof href === 'undefined'
-      ? undefined
-      : href || '';
-  $: ItemContentComponent = isLink ? linkComponent : isLabel ? 'label' : 'div';
-  $: linkPropsComputed = isLink
-    ? { href: hrefComputed, target, ...linkProps }
-    : {};
-
-  $: isMediaItem =
-    (title || $$slots.title) &&
-    withTitle !== false &&
-    (subtitle || text || $$slots.subtitle || $$slots.text);
-
-  $: autoStrongTitle =
-    strongTitle === 'auto' &&
-    (title || $$slots.title) &&
-    withTitle !== false &&
-    (subtitle || text || $$slots.subtitle || $$slots.text);
-
-  $: c = useThemeClasses(
-    { ios, material },
-    ListItemClasses(
-      {
-        menuListItem,
-        dividers:
-          typeof dividers === 'undefined'
-            ? ListDividersContext.value
-            : dividers,
-        mediaClass,
-        innerClass,
-        contentClass,
-        titleWrapClass,
-        titleFontSizeIos,
-        titleFontSizeMaterial,
-        strongTitle,
-        contacts: contacts === 'false' ? '' : contacts,
-      },
-      colors,
-      {
-        isMediaItem,
-        theme,
-        textColor,
-        needsTouchRipple,
-        isMenuListItemActive,
-        darkClasses: dark,
-        autoStrongTitle,
-      }
-    ),
-    className,
-    (v) => (c = v)
+    ]
   );
 
-  $: itemContentClasses =
-    isLink || isLabel ? c.itemContent.link : c.itemContent.default;
+  const isLink = $derived(!!href || href === '' || menuListItem || link);
+  const isLabel = $derived(!!label);
 
-  $: titleClasses = menuListItem
-    ? c.title.menuListItem
-    : strongTitle === true || autoStrongTitle
-    ? c.title.strong
-    : c.title.default;
+  const needsTouchRipple = $derived(
+    theme === 'material' && (isLabel || isLink) && touchRipple
+  );
+
+  useTouchRipple(
+    () => rippleEl,
+    () => needsTouchRipple
+  );
+
+  const hrefComputed = $derived(
+    href === true || href === false || typeof href === 'undefined'
+      ? undefined
+      : href || ''
+  );
+  const ItemContentComponent = $derived(
+    isLink ? linkComponent : isLabel ? 'label' : 'div'
+  );
+  const linkPropsComputed = $derived(
+    isLink ? { href: hrefComputed, target, ...linkProps } : {}
+  );
+
+  const isMediaItem = $derived(
+    title && withTitle !== false && (subtitle || text)
+  );
+
+  const autoStrongTitle = $derived(
+    strongTitle === 'auto' && title && withTitle !== false && (subtitle || text)
+  );
+
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ListItemClasses(
+        {
+          menuListItem,
+          dividers:
+            typeof dividers === 'undefined'
+              ? ListDividersContext().value
+              : dividers,
+          mediaClass,
+          innerClass,
+          contentClass,
+          titleWrapClass,
+          titleFontSizeIos,
+          titleFontSizeMaterial,
+          strongTitle,
+          contacts: contacts === 'false' ? '' : contacts,
+        },
+        colors,
+        {
+          isMediaItem,
+          theme,
+          textColor,
+          needsTouchRipple,
+          isMenuListItemActive,
+          darkClasses: dark,
+          autoStrongTitle,
+        }
+      ),
+      className
+    )
+  );
+
+  const itemContentClasses = $derived(
+    isLink || isLabel ? c.itemContent.link : c.itemContent.default
+  );
+
+  const titleClasses = $derived(
+    menuListItem
+      ? c.title.menuListItem
+      : strongTitle === true || autoStrongTitle
+        ? c.title.strong
+        : c.title.default
+  );
 </script>
 
 {#if groupTitle}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <svelte:element
     this={component}
     class={cls(c.groupTitle, className)}
-    on:click={onClick}
+    onclick={onClickInternal}
+    {...restProps}
   >
-    {title}
-    <slot name="title" />
-    <slot />
+    {#if typeof title === 'function'}
+      {@render title()}
+    {:else}
+      {title}
+    {/if}
+    {@render children?.()}
   </svelte:element>
 {:else}
   <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -190,37 +212,47 @@
   <svelte:element
     this={component}
     class={c.base}
-    {...$$restProps}
-    on:click={onClick}
+    {...restProps}
+    onclick={onClickInternal}
   >
     {#if typeof ItemContentComponent === 'string'}
       <svelte:element
         this={ItemContentComponent}
-        bind:this={rippleEl.current}
+        bind:this={rippleEl}
         class={itemContentClasses}
         {...linkPropsComputed}
       >
-        {#if $$slots.media && withMedia !== false}
-          <div class={c.media}><slot name="media" /></div>
+        {#if media && withMedia !== false}
+          <div class={c.media}>{@render media()}</div>
         {/if}
         <div class={c.inner}>
-          {#if header || $$slots.header}
+          {#if header}
             <div class={c.header}>
-              {printText(header)}<slot name="header" />
+              {#if typeof header === 'function'}
+                {@render header()}
+              {:else}
+                {printText(header)}
+              {/if}
             </div>
           {/if}
-          {#if ((title || $$slots.title) && withTitle !== false) || after || $$slots.after}
+          {#if (title && withTitle !== false) || after}
             <div class={c.titleWrap}>
-              {#if (title || $$slots.title) && withTitle !== false}
+              {#if title && withTitle !== false}
                 <div class={titleClasses}>
-                  {printText(title)}
-                  <slot name="title" />
+                  {#if typeof title === 'function'}
+                    {@render title()}
+                  {:else}
+                    {printText(title)}
+                  {/if}
                 </div>
               {/if}
-              {#if after || $$slots.after}
+              {#if after}
                 <div class={c.after}>
-                  {printText(after)}
-                  <slot name="after" />
+                  {#if typeof after === 'function'}
+                    {@render after()}
+                  {:else}
+                    {printText(after)}
+                  {/if}
                 </div>
               {/if}
               {#if isLink && hasChevron && !menuListItem}
@@ -228,51 +260,74 @@
               {/if}
             </div>
           {/if}
-          {#if subtitle || $$slots.subtitle}
+          {#if subtitle}
             <div class={c.subtitle}>
-              {printText(subtitle)}<slot name="subtitle" />
+              {#if typeof subtitle === 'function'}
+                {@render subtitle()}
+              {:else}
+                {printText(subtitle)}
+              {/if}
             </div>
           {/if}
-          {#if text || $$slots.text}
-            <div class={c.text}>{printText(text)}<slot name="text" /></div>
+          {#if text}
+            <div class={c.text}>
+              {#if typeof text === 'function'}
+                {@render text()}
+              {:else}
+                {printText(text)}
+              {/if}
+            </div>
           {/if}
-          {#if footer || $$slots.footer}
+          {#if footer}
             <div class={c.footer}>
-              {printText(footer)}<slot name="footer" />
+              {#if typeof footer === 'function'}
+                {@render footer()}
+              {:else}
+                {printText(footer)}
+              {/if}
             </div>
           {/if}
-          <slot name="inner" />
+          {@render inner?.()}
         </div>
-        <slot name="content" />
+        {@render content?.()}
       </svelte:element>
     {:else}
-      <svelte:component
-        this={ItemContentComponent}
-        bind:this={rippleEl.current}
+      <ItemContentComponent
+        bind:this={rippleEl}
         class={itemContentClasses}
         {...linkPropsComputed}
       >
-        {#if $$slots.media}
-          <div class={c.media}><slot name="media" /></div>
+        {#if media}
+          <div class={c.media}>{@render media()}</div>
         {/if}
         <div class={c.inner}>
-          {#if header || $$slots.header}
+          {#if header}
             <div class={c.header}>
-              {printText(header)}<slot name="header" />
+              {#if typeof header === 'function'}
+                {@render header()}
+              {:else}
+                {printText(header)}
+              {/if}
             </div>
           {/if}
-          {#if ((title || $$slots.title) && withTitle !== false) || after || $$slots.after}
+          {#if (title && withTitle !== false) || after}
             <div class={c.titleWrap}>
-              {#if (title || $$slots.title) && withTitle !== false}
+              {#if title && withTitle !== false}
                 <div class={titleClasses}>
-                  {printText(title)}
-                  <slot name="title" />
+                  {#if typeof title === 'function'}
+                    {@render title()}
+                  {:else}
+                    {printText(title)}
+                  {/if}
                 </div>
               {/if}
-              {#if after || $$slots.after}
+              {#if after}
                 <div class={c.after}>
-                  {printText(after)}
-                  <slot name="after" />
+                  {#if typeof after === 'function'}
+                    {@render after()}
+                  {:else}
+                    {printText(after)}
+                  {/if}
                 </div>
               {/if}
               {#if isLink && hasChevron && !menuListItem}
@@ -280,24 +335,38 @@
               {/if}
             </div>
           {/if}
-          {#if subtitle || $$slots.subtitle}
+          {#if subtitle}
             <div class={c.subtitle}>
-              {printText(subtitle)}<slot name="subtitle" />
+              {#if typeof subtitle === 'function'}
+                {@render subtitle()}
+              {:else}
+                {printText(subtitle)}
+              {/if}
             </div>
           {/if}
-          {#if text || $$slots.text}
-            <div class={c.text}>{printText(text)}<slot name="text" /></div>
+          {#if text}
+            <div class={c.text}>
+              {#if typeof text === 'function'}
+                {@render text()}
+              {:else}
+                {printText(text)}
+              {/if}
+            </div>
           {/if}
-          {#if footer || $$slots.footer}
+          {#if footer}
             <div class={c.footer}>
-              {printText(footer)}<slot name="footer" />
+              {#if typeof footer === 'function'}
+                {@render footer()}
+              {:else}
+                {printText(footer)}
+              {/if}
             </div>
           {/if}
-          <slot name="inner" />
+          {@render inner?.()}
         </div>
-        <slot name="content" />
-      </svelte:component>
+        {@render content?.()}
+      </ItemContentComponent>
     {/if}
-    <slot />
+    {@render children?.()}
   </svelte:element>
 {/if}

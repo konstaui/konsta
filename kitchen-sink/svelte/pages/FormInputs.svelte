@@ -27,33 +27,43 @@
 
 <Page>
   <Navbar title="Form Inputs">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle>Default</BlockTitle>
   <List strongIos insetIos>
     <ListInput label="Name" type="text" placeholder="Your name">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput label="Password" type="password" placeholder="Your password">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput label="E-mail" type="email" placeholder="Your e-mail">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput label="URL" type="url" placeholder="URL">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput label="Phone" type="tel" placeholder="Your phone number">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -63,7 +73,9 @@
       defaultValue="Male"
       placeholder="Please choose..."
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </ListInput>
@@ -74,7 +86,9 @@
       defaultValue="2014-04-30"
       placeholder="Please choose..."
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -82,7 +96,9 @@
       type="datetime-local"
       placeholder="Please choose..."
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -91,14 +107,18 @@
       placeholder="Bio"
       inputClass="!h-20 resize-none"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 
   <BlockTitle>Outline</BlockTitle>
   <List strongIos insetIos>
     <ListInput outline label="Name" type="text" placeholder="Your name">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -107,19 +127,27 @@
       type="password"
       placeholder="Your password"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput outline label="E-mail" type="email" placeholder="Your e-mail">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput outline label="URL" type="url" placeholder="URL">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput outline label="Phone" type="tel" placeholder="Your phone number">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -130,7 +158,9 @@
       defaultValue="Male"
       placeholder="Please choose..."
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
       <option value="Male">Male</option>
       <option value="Female">Female</option>
     </ListInput>
@@ -142,7 +172,9 @@
       defaultValue="2014-04-30"
       placeholder="Please choose..."
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -151,7 +183,9 @@
       type="datetime-local"
       placeholder="Please choose..."
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -161,14 +195,18 @@
       placeholder="Bio"
       inputClass="!h-20 resize-none"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 
   <BlockTitle>Floating Labels</BlockTitle>
   <List strongIos insetIos>
     <ListInput label="Name" floatingLabel type="text" placeholder="Your name">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -177,7 +215,9 @@
       type="password"
       placeholder="Your password"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -186,11 +226,15 @@
       type="email"
       placeholder="Your e-mail"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput label="URL" floatingLabel type="url" placeholder="URL">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -199,7 +243,9 @@
       type="tel"
       placeholder="Your phone number"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 
@@ -212,7 +258,9 @@
       type="text"
       placeholder="Your name"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -222,7 +270,9 @@
       type="password"
       placeholder="Your password"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -232,11 +282,15 @@
       type="email"
       placeholder="Your e-mail"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput outline label="URL" floatingLabel type="url" placeholder="URL">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput
@@ -246,7 +300,9 @@
       type="tel"
       placeholder="Your phone number"
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 
@@ -263,7 +319,9 @@
         : ''}
       onInput={onNameChange}
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 
@@ -279,26 +337,36 @@
       onInput={onDemoValueChange}
       onClear={onDemoValueClear}
     >
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 
   <BlockTitle>Icon + Input</BlockTitle>
   <List strongIos insetIos>
     <ListInput type="text" placeholder="Your name">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput type="password" placeholder="Your password">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput type="email" placeholder="Your e-mail">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
 
     <ListInput type="url" placeholder="URL">
-      <DemoIcon slot="media" />
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
     </ListInput>
   </List>
 

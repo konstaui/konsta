@@ -9,57 +9,61 @@
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let checked1 = true;
-  let checked2 = true;
-  let checked3 = true;
-  let checked4 = true;
+  let checked1 = $state(true);
+  let checked2 = $state(true);
+  let checked3 = $state(true);
+  let checked4 = $state(true);
 </script>
 
 <Page>
   <Navbar title="Toggle">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <List strong inset>
     <ListItem label title="Item 1">
-      <Toggle
-        slot="after"
-        component="div"
-        class="-my-1"
-        checked={checked1}
-        onChange={() => (checked1 = !checked1)}
-      />
+      {#snippet after()}
+        <Toggle
+          component="div"
+          class="-my-1"
+          checked={checked1}
+          onChange={() => (checked1 = !checked1)}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Item 2">
-      <Toggle
-        slot="after"
-        component="div"
-        class="-my-1 k-color-brand-red"
-        checked={checked2}
-        onChange={() => (checked2 = !checked2)}
-      />
+      {#snippet after()}
+        <Toggle
+          component="div"
+          class="-my-1 k-color-brand-red"
+          checked={checked2}
+          onChange={() => (checked2 = !checked2)}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Item 3">
-      <Toggle
-        slot="after"
-        component="div"
-        class="-my-1 k-color-brand-green"
-        checked={checked3}
-        onChange={() => (checked3 = !checked3)}
-      />
+      {#snippet after()}
+        <Toggle
+          component="div"
+          class="-my-1 k-color-brand-green"
+          checked={checked3}
+          onChange={() => (checked3 = !checked3)}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Item 4">
-      <Toggle
-        slot="after"
-        component="div"
-        class="-my-1 k-color-brand-yellow"
-        checked={checked4}
-        onChange={() => (checked4 = !checked4)}
-      />
+      {#snippet after()}
+        <Toggle
+          component="div"
+          class="-my-1 k-color-brand-yellow"
+          checked={checked4}
+          onChange={() => (checked4 = !checked4)}
+        />
+      {/snippet}
     </ListItem>
   </List>
 </Page>

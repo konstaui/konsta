@@ -9,7 +9,7 @@
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let searchQuery = '';
+  let searchQuery = $state('');
   let items = [
     { title: 'FC Ajax' },
     { title: 'FC Arsenal' },
@@ -43,34 +43,32 @@
     console.log('Disable');
   }
 
-  let filteredItems = [];
-  /* eslint-disable */
-  $: {
-    filteredItems = searchQuery
+  let filteredItems = $derived.by(() =>
+    searchQuery
       ? items.filter((item) =>
           item.title.toLowerCase().includes(searchQuery.toLowerCase())
         )
-      : items;
-  }
-  /* eslint-enable */
+      : items
+  );
 </script>
 
 <Page>
   <Navbar title="Searchbar">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
-    <Searchbar
-      slot="subnavbar"
-      onInput={handleSearch}
-      value={searchQuery}
-      onClear={handleClear}
-      disableButton
-      disableButtonText="Cancel"
-      onDisable={handleDisable}
-    />
+    {/snippet}
+    {#snippet subnavbar()}
+      <Searchbar
+        onInput={handleSearch}
+        value={searchQuery}
+        onClear={handleClear}
+        disableButton
+        disableButtonText="Cancel"
+        onDisable={handleDisable}
+      />
+    {/snippet}
   </Navbar>
   <List strong insetMaterial outlineIos>
     {#if filteredItems.length === 0}

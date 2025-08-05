@@ -5,97 +5,106 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTheme } from '../shared/use-theme.js';
-  import { setReactiveContext } from '../shared/set-reactive-context.js';
+  import { setContext } from 'svelte';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
 
-  export let margin = 'my-8';
-  export let dividers = undefined;
-  export let dividersIos = true;
-  export let dividersMaterial = false;
-  export let inset = undefined;
-  export let insetIos = undefined;
-  export let insetMaterial = undefined;
-  export let strong = undefined;
-  export let strongIos = undefined;
-  export let strongMaterial = undefined;
-  export let outline = undefined;
-  export let outlineIos = undefined;
-  export let outlineMaterial = undefined;
-  export let nested = false;
-  export let menuList = false;
+    ios = undefined,
+    material = undefined,
 
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
+    margin = 'my-8',
+    dividers = undefined,
+    dividersIos = true,
+    dividersMaterial = false,
+    inset = undefined,
+    insetIos = undefined,
+    insetMaterial = undefined,
+    strong = undefined,
+    strongIos = undefined,
+    strongMaterial = undefined,
+    outline = undefined,
+    outlineIos = undefined,
+    outlineMaterial = undefined,
+    nested = false,
+    menuList = false,
+
+    children,
+    ...restProps
+  } = $props();
+
+  const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
 
   /* eslint-disable */
-  const hasDividers = () =>
+  const hasDividers = $derived(
     typeof dividers === 'undefined'
       ? theme === 'ios'
         ? dividersIos
         : dividersMaterial
-      : dividers;
+      : dividers
+  );
   /* eslint-enable */
-  $: isStrong =
+  const isStrong = $derived(
     typeof strong === 'undefined'
       ? theme === 'ios'
         ? strongIos
         : strongMaterial
-      : strong;
-  $: isOutline =
+      : strong
+  );
+  const isOutline = $derived(
     typeof outline === 'undefined'
       ? theme === 'ios'
         ? outlineIos
         : outlineMaterial
-      : outline;
+      : outline
+  );
   /* eslint-disable */
-  $: isInset =
+  const isInset = $derived(
     typeof inset === 'undefined'
       ? theme === 'ios'
         ? insetIos
         : insetMaterial
-      : inset;
-  /* eslint-enable */
+      : inset
+  );
+  setContext('ListDividersContext', () => ({ value: hasDividers }));
 
-  // eslint-disable-next-line
-  setReactiveContext('ListDividersContext', () => {
-    return {
-      value: hasDividers(),
-    };
-  });
+  const colors = $derived(ListColors(colorsProp, dark));
 
-  $: colors = ListColors(colorsProp, dark);
-
-  $: c = useThemeClasses(
-    { ios, material },
-    ListClasses(
-      { nested, margin, inset: isInset, outline: isOutline, strong: isStrong },
-      colors,
-    ),
-    '',
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ListClasses(
+        {
+          nested,
+          margin,
+          inset: isInset,
+          outline: isOutline,
+          strong: isStrong,
+        },
+        colors
+      ),
+      className
+    )
   );
 
-  $: classes = cls(
-    c.base,
+  const classes = $derived(
+    cls(
+      c.base,
 
-    isInset && c.inset,
+      isInset && c.inset,
 
-    menuList && c.menuList,
+      menuList && c.menuList,
 
-    className
+      className
+    )
   );
 </script>
 
-<div class={classes} {...$$restProps}>
+<div class={classes} {...restProps}>
   <ul class={c.ul}>
-    <slot />
+    {@render children?.()}
   </ul>
 </div>

@@ -4,43 +4,41 @@
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
-
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-
-  export let fontSizeIos = 'text-sm';
-  export let fontSizeMaterial = 'text-sm';
-  export let dividers = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    fontSizeIos = 'text-sm',
+    fontSizeMaterial = 'text-sm',
+    dividers = undefined,
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
-  $: attrs = {
-    ...$$restProps,
-  };
+  const colors = $derived(ActionsLabelColors(colorsProp, dark));
 
-  $: colors = ActionsLabelColors(colorsProp, dark);
+  const isDividers = $derived(
+    typeof dividers === 'undefined' ? theme === 'ios' : dividers
+  );
 
-  $: isDividers = typeof dividers === 'undefined' ? theme === 'ios' : dividers;
-
-  $: c = useThemeClasses(
-    { ios, material },
-    ActionsLabelClasses(
-      { fontSizeIos, fontSizeMaterial, dividers: isDividers },
-      colors,
-      dark
-    ),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ActionsLabelClasses(
+        { fontSizeIos, fontSizeMaterial, dividers: isDividers },
+        colors,
+        dark
+      ),
+      className
+    )
   );
 </script>
 
-<div class={c.base} {...attrs}>
-  <slot />
+<div class={c.base} {...restProps}>
+  {@render children?.()}
 </div>

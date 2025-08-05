@@ -5,32 +5,26 @@
   import { IconClasses } from '../../shared/classes/IconClasses.js';
   import { printText } from '../shared/print-text.js';
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    badge = '',
+    badgeColors = undefined,
+    children,
+    ios = undefined,
+    material = undefined,
+    ...restProps
+  } = $props();
 
-  export let badge = '';
-  export let badgeColors = undefined;
+  const theme = $derived(useTheme({}));
 
-  let theme;
-  theme = useTheme({}, (v) => (theme = v));
-
-  $: c = useThemeClasses(
-    {},
-    IconClasses(),
-    className,
-    (v) => (c = v)
-  );
+  const c = $derived(useThemeClasses({}, IconClasses(), className));
 </script>
 
-<i class={c.base} {...$$restProps}>
-  {#if theme === 'ios'}
-    {printText(ios || '')}
-    <slot name="ios" />
-  {:else}
-    {printText(material || '')}
-    <slot name="material" />
+<i class={c.base} {...restProps}>
+  {#if theme === 'ios' && ios}
+    {@render ios()}
+  {:else if theme === 'material' && material}
+    {@render material()}
   {/if}
 
   {#if typeof badge !== 'undefined' && badge !== null && badge !== ''}
@@ -38,5 +32,5 @@
       {printText(badge)}
     </Badge>
   {/if}
-  <slot />
+  {@render children?.()}
 </i>

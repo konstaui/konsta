@@ -13,11 +13,11 @@
 
 <Page>
   <Navbar title="Chips">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <BlockTitle>Chips With Text</BlockTitle>
@@ -41,30 +41,33 @@
   <BlockTitle>Contact Chips</BlockTitle>
   <Block strongIos outlineIos>
     <Chip class="m-0.5">
-      <img
-        slot="media"
-        alt="avatar"
-        class="ios:h-7 material:h-6 rounded-full"
-        src="https://cdn.framework7.io/placeholder/people-100x100-9.jpg"
-      />
+      {#snippet media()}
+        <img
+          alt="avatar"
+          class="ios:h-7 material:h-6 rounded-full"
+          src="https://cdn.framework7.io/placeholder/people-100x100-9.jpg"
+        />
+      {/snippet}
       Jane Doe
     </Chip>
     <Chip class="m-0.5">
-      <img
-        slot="media"
-        alt="avatar"
-        class="ios:h-7 material:h-6 rounded-full"
-        src="https://cdn.framework7.io/placeholder/people-100x100-3.jpg"
-      />
+      {#snippet media()}
+        <img
+          alt="avatar"
+          class="ios:h-7 material:h-6 rounded-full"
+          src="https://cdn.framework7.io/placeholder/people-100x100-3.jpg"
+        />
+      {/snippet}
       John Doe
     </Chip>
     <Chip class="m-0.5">
-      <img
-        slot="media"
-        alt="avatar"
-        class="ios:h-7 material:h-6 rounded-full"
-        src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
-      />
+      {#snippet media()}
+        <img
+          alt="avatar"
+          class="ios:h-7 material:h-6 rounded-full"
+          src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
+        />
+      {/snippet}
       Adam Smith
     </Chip>
   </Block>
@@ -83,12 +86,13 @@
       deleteButton
       onDelete={() => console.log('Delete Chip')}
     >
-      <img
-        slot="media"
-        alt="avatar"
-        class="ios:h-7 material:h-6 rounded-full"
-        src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
-      />
+      {#snippet media()}
+        <img
+          alt="avatar"
+          class="ios:h-7 material:h-6 rounded-full"
+          src="https://cdn.framework7.io/placeholder/people-100x100-7.jpg"
+        />
+      {/snippet}
       Adam Smith
     </Chip>
   </Block>

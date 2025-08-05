@@ -4,33 +4,39 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    position = 'left',
+    opened = false,
+    button = undefined,
 
-  export let position = 'left';
-  export let opened = false;
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  $: colors = ToastColors(colorsProp, dark);
+  const colors = $derived(ToastColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    ToastClasses({ opened }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      ToastClasses({ opened }, colors),
+      className
+    )
   );
 </script>
 
-<div class={c.base[position]} {...$$restProps}>
+<div class={c.base[position]} {...restProps}>
   <div class={c.content}>
-    <slot />
-    {#if $$slots.button}
-      <div class={c.button}><slot name="button" /></div>
+    {@render children?.()}
+    {#if button}
+      <div class={c.button}>
+        {@render button()}
+      </div>
     {/if}
   </div>
 </div>

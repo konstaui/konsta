@@ -9,30 +9,34 @@
   import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
   import { PopoverColors } from '../../shared/colors/PopoverColors.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
-  export let style = '';
+  let {
+    class: className,
+    colors: colorsProp,
 
-  export let angle = true;
-  export let angleClass = '';
-  export let size = 'w-64';
-  export let opened = false;
-  export let backdrop = true;
-  export let onBackdropClick = undefined;
-  export let target = undefined;
-  export let targetX = undefined;
-  export let targetY = undefined;
-  export let targetWidth = undefined;
-  export let targetHeight = undefined;
+    ios = undefined,
+    material = undefined,
+    style = '',
 
-  let el;
-  let angleEl;
+    angle = true,
+    angleClass = '',
+    size = 'w-64',
+    opened = false,
+    backdrop = true,
+    onBackdropClick = undefined,
+    target = undefined,
+    targetX = undefined,
+    targetY = undefined,
+    targetWidth = undefined,
+    targetHeight = undefined,
 
-  let positions = {
+    children,
+    ...restProps
+  } = $props();
+
+  let el = $state(null);
+  let angleEl = $state(null);
+
+  let positions = $state({
     set: false,
     angleTop: 0,
     angleLeft: 0,
@@ -40,23 +44,25 @@
     popoverTop: 0,
     popoverLeft: 0,
     popoverPosition: 'top-left',
-  };
+  });
 
-  $: state = opened ? 'opened' : 'closed';
+  const state = $derived(opened ? 'opened' : 'closed');
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
 
-  $: colors = PopoverColors(colorsProp, dark);
+  const colors = $derived(PopoverColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    PopoverClasses({ size, angleClass }, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      PopoverClasses({ size, angleClass }, colors, dark),
+      className
+    )
   );
+
+  console.log(c);
 
   const setPopover = () => {
     if (!target || !el || !opened) return;
@@ -94,22 +100,26 @@
     setPopover();
   }
 
-  $: watchOpened(opened);
+  $effect(() => watchOpened(opened));
 
-  $: popoverStyle = positions.set
-    ? `
+  const popoverStyle = $derived(
+    positions.set
+      ? `
         ${style || ''};
         left: ${positions.popoverLeft};
         top: ${positions.popoverTop};
       `
-    : style || '';
+      : style || ''
+  );
 
-  $: angleStyle = positions.set
-    ? `
+  const angleStyle = $derived(
+    positions.set
+      ? `
         left: ${positions.angleLeft};
         top: ${positions.angleTop};
       `
-    : undefined;
+      : undefined
+  );
 
   const originClasses = {
     'top-right': 'origin-bottom-left',
@@ -119,18 +129,20 @@
     'bottom-right': 'origin-top-left',
     'bottom-left': 'origin-top-right',
   };
-  $: classes = cls(
-    c.base[state],
-    theme === 'material' && originClasses[positions.popoverPosition]
+  const classes = $derived(
+    cls(
+      c.base[state],
+      theme === 'material' && originClasses[positions.popoverPosition]
+    )
   );
 </script>
 
 {#if backdrop}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.backdrop[state]} on:click={onBackdropClick}></div>
+  <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
-<div bind:this={el} class={classes} style={popoverStyle} {...$$restProps}>
+<div bind:this={el} class={classes} style={popoverStyle} {...restProps}>
   {#if angle}
     <div
       bind:this={angleEl}
@@ -140,7 +152,7 @@
       <div class={c.angleArrow[positions.anglePosition]}></div>
     </div>
   {/if}
-  <div class={c.inner}>
-    <slot />
+  <div class={c.inner[state]}>
+    {@render children?.()}
   </div>
 </div>

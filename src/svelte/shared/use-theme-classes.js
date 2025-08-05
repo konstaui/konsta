@@ -1,6 +1,4 @@
-// eslint-disable-next-line
-import { get } from 'svelte/store';
-import { KonstaStore } from './KonstaStore.js';
+import { KonstaStore } from './KonstaStore.svelte.js';
 import { cls } from '../../shared/cls.js';
 
 const propClasses = (classesObj, theme, state) => {
@@ -45,7 +43,7 @@ const themeClasses = (classesObj, theme, addBaseClassName) => {
 };
 
 const useThemeClasses = (props, classesObj, addBaseClassName = '', cb) => {
-  let theme = get(KonstaStore).theme;
+  let theme = KonstaStore.theme;
   const calcClasses = () => {
     return themeClasses(
       typeof classesObj === 'function' ? classesObj() : classesObj,
@@ -55,14 +53,6 @@ const useThemeClasses = (props, classesObj, addBaseClassName = '', cb) => {
   };
   if (props.ios) theme = 'ios';
   else if (props.material) theme = 'material';
-  else {
-    KonstaStore.subscribe((context) => {
-      theme = context.theme || 'ios';
-      if (cb) {
-        cb(calcClasses());
-      }
-    });
-  }
   return calcClasses();
 };
 

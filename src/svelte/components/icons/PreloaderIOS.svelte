@@ -1,4 +1,5 @@
 <script>
+  let { ...restProps } = $props();
 </script>
 
 <svg
@@ -7,7 +8,7 @@
   height="20"
   viewBox="0 0 20 20"
   fill="currentcolor"
-  {...$$restProps}
+  {...restProps}
 >
   <path
     d="M10,0 C10.5522847,0 11,0.44771525 11,1 L11,6 C11,6.55228475 10.5522847,7 10,7 C9.44771525,7 9,6.55228475 9,6 L9,1 C9,0.44771525 9.44771525,0 10,0 Z"

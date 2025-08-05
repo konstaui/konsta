@@ -11,27 +11,28 @@
     Popover,
   } from 'konsta/svelte';
 
-  import { afterUpdate } from 'svelte';
   import routes from '../routes.js';
   import DemoIcon from '../components/DemoIcon.svelte';
 
-  export let theme;
-  export let setTheme;
-  export let setColorTheme;
-  export let colorPickerOpened;
-  export let vibrant;
-  export let setVibrant;
-  export let monochrome;
-  export let setMonochrome;
+  let {
+    theme,
+    setTheme,
+    setColorTheme,
+    colorPickerOpened,
+    vibrant,
+    setVibrant,
+    monochrome,
+    setMonochrome,
+  } = $props();
 
-  let darkMode = false;
+  let darkMode = $state(false);
 
   const toggleDarkMode = () => {
     darkMode = !darkMode;
     document.documentElement.classList.toggle('dark');
   };
 
-  afterUpdate(() => {
+  $effect(() => {
     darkMode = document.documentElement.classList.contains('dark');
   });
 </script>
@@ -42,30 +43,33 @@
   <BlockTitle>Theme</BlockTitle>
   <List strong inset>
     <ListItem label title="iOS Theme">
-      <Radio
-        slot="media"
-        onChange={() => setTheme('ios')}
-        component="div"
-        checked={theme === 'ios'}
-      />
+      {#snippet media()}
+        <Radio
+          onChange={() => setTheme('ios')}
+          component="div"
+          checked={theme === 'ios'}
+        />
+      {/snippet}
     </ListItem>
     <ListItem label title="Material Theme">
-      <Radio
-        slot="media"
-        onChange={() => setTheme('material')}
-        component="div"
-        checked={theme === 'material'}
-      />
+      {#snippet media()}
+        <Radio
+          onChange={() => setTheme('material')}
+          component="div"
+          checked={theme === 'material'}
+        />
+      {/snippet}
     </ListItem>
   </List>
   <List strong inset>
     <ListItem title="Dark Mode" label>
-      <Toggle
-        slot="after"
-        component="div"
-        onChange={() => toggleDarkMode()}
-        checked={darkMode}
-      />
+      {#snippet after()}
+        <Toggle
+          component="div"
+          onChange={() => toggleDarkMode()}
+          checked={darkMode}
+        />
+      {/snippet}
     </ListItem>
 
     <ListItem
@@ -73,17 +77,28 @@
       link
       onClick={() => (colorPickerOpened = true)}
     >
-      <div
-        slot="after"
-        class="w-6 h-6 rounded-full bg-primary home-color-picker"
-      ></div>
+      {#snippet after()}
+        <div class="w-6 h-6 rounded-full bg-primary home-color-picker"></div>
+      {/snippet}
     </ListItem>
     {#if theme === 'material'}
       <ListItem title="Vibrant Colors" label>
-        <Toggle slot="after" component="div" checked={vibrant} onChange={() => setVibrant(!vibrant)} />
+        {#snippet after()}
+          <Toggle
+            component="div"
+            checked={vibrant}
+            onChange={() => setVibrant(!vibrant)}
+          />
+        {/snippet}
       </ListItem>
       <ListItem title="Monochrome" label>
-        <Toggle slot="after" component="div" checked={monochrome} onChange={() => setMonochrome(!monochrome)} />
+        {#snippet after()}
+          <Toggle
+            component="div"
+            checked={monochrome}
+            onChange={() => setMonochrome(!monochrome)}
+          />
+        {/snippet}
       </ListItem>
     {/if}
   </List>
@@ -136,7 +151,9 @@
   <List strong inset>
     {#each routes as route}
       <ListItem link href={`#${route.path}`} title={route.title}>
-        <DemoIcon slot="media" />
+        {#snippet media()}
+          <DemoIcon />
+        {/snippet}
       </ListItem>
     {/each}
   </List>

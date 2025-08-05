@@ -1,40 +1,41 @@
 <script>
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { FabClasses } from '../../shared/classes/FabClasses.js';
   import { FabColors } from '../../shared/colors/FabColors.js';
   import { printText } from '../shared/print-text.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    component = 'a',
+    href = undefined,
+    text = undefined,
+    textPosition = 'after',
+    touchRipple = true,
+    children,
+    icon,
+    onClick = undefined,
+    onclick = undefined,
+    ...restProps
+  } = $props();
 
-  export let component = 'a'; // or 'button'
-
-  export let href = undefined;
-  export let text = undefined;
-  export let textPosition = 'after';
-  export let touchRipple = true;
-
-  export let onClick = undefined;
-
-  const rippleEl = { current: null };
+  let rippleEl = $state(null);
 
   const dark = useDarkClasses();
 
-  $: useTouchRipple(rippleEl, touchRipple);
+  useTouchRipple(
+    () => rippleEl,
+    () => touchRipple
+  );
 
-  $: colors = FabColors(colorsProp, dark);
+  const colors = $derived(FabColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    FabClasses({}, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses({ ios, material }, FabClasses({}, colors, dark), className)
   );
 </script>
 
@@ -43,41 +44,69 @@
     this={component}
     class={text ? c.base.withText : c.base.iconOnly}
     {href}
-    bind:this={rippleEl.current}
+    bind:this={rippleEl}
     role="button"
     tabindex="0"
-    on:click={onClick}
-    {...$$restProps}
+    onclick={onClick || onclick}
+    {...restProps}
   >
-    {#if (text || $$slots.text) && textPosition === 'before'}
-      <span class={c.text}>{printText(text)}<slot name="text" /></span>
+    {#if text && textPosition === 'before'}
+      <span class={c.text}>
+        {#if typeof text !== 'function'}
+          {printText(text)}
+        {:else}
+          {@render text?.()}
+        {/if}
+      </span>
     {/if}
-    {#if $$slots.icon}
-      <span class={c.icon}><slot name="icon" /></span>
+    {#if icon}
+      <span class={c.icon}>
+        {@render icon?.()}
+      </span>
     {/if}
-    {#if (text || $$slots.text) && textPosition === 'after'}
-      <span class={c.text}>{printText(text)}<slot name="text" /></span>
+    {#if text && textPosition === 'after'}
+      <span class={c.text}>
+        {#if typeof text !== 'function'}
+          {printText(text)}
+        {:else}
+          {@render text?.()}
+        {/if}
+      </span>
     {/if}
-    <slot />
+    {@render children?.()}
   </svelte:element>
 {:else}
-  <svelte:component
-    this={component}
+  {@const Component = component}
+  <Component
     class={text ? c.base.withText : c.base.iconOnly}
     {href}
-    bind:this={rippleEl.current}
-    on:click={onClick}
-    {...$$restProps}
+    bind:this={rippleEl}
+    onclick={onClick || onclick}
+    {...restProps}
   >
-    {#if (text || $$slots.text) && textPosition === 'before'}
-      <span class={c.text}>{printText(text)}<slot name="text" /></span>
+    {#if text && textPosition === 'before'}
+      <span class={c.text}>
+        {#if typeof text !== 'function'}
+          {printText(text)}
+        {:else}
+          {@render text?.()}
+        {/if}
+      </span>
     {/if}
-    {#if $$slots.icon}
-      <span class={c.icon}><slot name="icon" /></span>
+    {#if icon}
+      <span class={c.icon}>
+        {@render icon?.()}
+      </span>
     {/if}
-    {#if (text || $$slots.text) && textPosition === 'after'}
-      <span class={c.text}>{printText(text)}<slot name="text" /></span>
+    {#if text && textPosition === 'after'}
+      <span class={c.text}>
+        {#if typeof text !== 'function'}
+          {printText(text)}
+        {:else}
+          {@render text?.()}
+        {/if}
+      </span>
     {/if}
-    <slot />
-  </svelte:component>
+    {@render children?.()}
+  </Component>
 {/if}

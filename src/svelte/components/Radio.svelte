@@ -1,55 +1,60 @@
 <script>
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
   import CheckboxIcon from './icons/CheckboxIcon.svelte';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { RadioClasses } from '../../shared/classes/RadioClasses.js';
   import { RadioColors } from '../../shared/colors/RadioColors.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    component = 'label',
+    checked = false,
+    name = undefined,
+    value = undefined,
+    disabled = false,
+    readonly = false,
+    onChange = undefined,
+    onchange = undefined,
+    touchRipple = true,
 
-  export let component = 'label';
+    children,
+    ...restProps
+  } = $props();
 
-  export let checked = false;
-  export let name = undefined;
-  export let value = undefined;
-  export let disabled = false;
-  export let readonly = false;
-  export let onChange = undefined;
-  export let touchRipple = true;
+  let rippleEl = $state(null);
 
-  const rippleEl = { current: null };
-
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+  const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
 
-  $: useTouchRipple(rippleEl, touchRipple);
+  useTouchRipple(
+    () => rippleEl,
+    () => touchRipple
+  );
 
-  $: colors = RadioColors(colorsProp, dark);
+  const colors = $derived(RadioColors(colorsProp, dark));
 
-  $: state = checked ? 'checked' : 'notChecked';
+  const state = $derived(checked ? 'checked' : 'notChecked');
 
-  $: c = useThemeClasses(
-    { ios, material },
-    RadioClasses({}, colors, dark),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      RadioClasses({}, colors, dark),
+      className
+    )
   );
 </script>
 
 <svelte:element
   this={component}
-  bind:this={rippleEl.current}
+  bind:this={rippleEl}
   class={c.base}
-  {...$$restProps}
+  {...restProps}
 >
   <input
     type="radio"
@@ -58,7 +63,7 @@
     {disabled}
     {readonly}
     {checked}
-    on:change={onChange}
+    onchange={onChange || onchange}
     class={c.input}
   />
 
@@ -69,5 +74,5 @@
       <span class={c.icon[state]}></span>
     {/if}
   </i>
-  <slot />
+  {@render children?.()}
 </svelte:element>

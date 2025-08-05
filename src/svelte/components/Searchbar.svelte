@@ -9,66 +9,82 @@
   import { SearchbarClasses } from '../../shared/classes/SearchbarClasses.js';
   import { SearchbarColors } from '../../shared/colors/SearchbarColors.js';
   import { cls } from '../../shared/cls.js';
-  import { useTouchRipple } from '../shared/use-touch-ripple.js';
+  import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
 
-  export let component = 'div';
+    component = 'div',
 
-  export let placeholder = 'Search';
-  export let value = undefined;
-  export let inputId = undefined;
-  export let inputStyle = undefined;
+    placeholder = 'Search',
+    value = undefined,
+    inputId = undefined,
+    inputStyle = undefined,
 
-  export let disableButton = false;
-  export let disableButtonText = 'Cancel';
-  export let clearButton = true;
+    disableButton = false,
+    disableButtonText = 'Cancel',
+    clearButton = true,
 
-  export let onInput = undefined;
-  export let onChange = undefined;
-  export let onFocus = undefined;
-  export let onBlur = undefined;
-  export let onClear = undefined;
-  export let onDisable = undefined;
-  export let touchRipple = true;
+    onInput = undefined,
+    onChange = undefined,
+    onFocus = undefined,
+    onBlur = undefined,
+    onClear = undefined,
+    onDisable = undefined,
 
-  let theme;
-  theme = useTheme({ ios, material }, (v) => (theme = v));
+    oninput = undefined,
+    onchange = undefined,
+    onfocus = undefined,
+    onblur = undefined,
+    onclear = undefined,
+    ondisable = undefined,
 
-  let searchEl = null;
-  const rippleEl = { current: null };
-  $: useTouchRipple(rippleEl, touchRipple);
+    touchRipple = true,
+    children,
+    ...restProps
+  } = $props();
 
-  let isEnabled = false;
-  let disableButtonRef = null;
-  let disableButtonWidth = 0;
-  let disableTimeout = null;
-  let allowTransition = false;
+  let theme = $state(useTheme({ ios, material }));
+
+  let searchEl = $state(null);
+  let rippleEl = $state(null);
+  useTouchRipple(
+    () => rippleEl,
+    () => touchRipple
+  );
+
+  let isEnabled = $state(false);
+  let disableButtonRef = $state(null);
+  let disableButtonWidth = $state(0);
+  let disableTimeout = $state(null);
+  let allowTransition = $state(false);
 
   const dark = useDarkClasses();
 
-  $: colors = SearchbarColors(colorsProp, dark);
+  const colors = $derived(SearchbarColors(colorsProp, dark));
 
   const handleInput = (e) => {
     if (onInput) onInput(e);
+    if (oninput) oninput(e);
   };
 
   const handleChange = (e) => {
     if (onChange) onChange(e);
+    if (onchange) onchange(e);
   };
 
   const handleFocus = (e) => {
     isEnabled = true;
     if (onFocus) onFocus(e);
+    if (onfocus) onfocus(e);
   };
 
   const handleBlur = (e) => {
     if (onBlur) onBlur(e);
+    if (onblur) onblur(e);
   };
 
   const onGlobalBlur = () => {
@@ -91,6 +107,8 @@
     }
     if (onDisable) onDisable();
     if (onClear) onClear();
+    if (onclear) onclear();
+    if (ondisable) ondisable();
   };
 
   onMount(() => {
@@ -104,24 +122,25 @@
     });
   });
 
-  $: c = useThemeClasses(
-    { ios, material },
-    SearchbarClasses({}, colors, {
-      isEnabled,
-      darkClasses: dark,
-    }),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      SearchbarClasses({}, colors, {
+        isEnabled,
+        darkClasses: dark,
+      }),
+      className
+    )
   );
 </script>
 
 <svelte:element
   this={component}
-  bind:this={rippleEl.current}
+  bind:this={rippleEl}
   class={c.base}
-  on:blurCapture={onGlobalBlur}
-  on:focusCapture={onGlobalFocus}
-  {...$$restProps}
+  onblurcapture={onGlobalBlur}
+  onfocuscapture={onGlobalFocus}
+  {...restProps}
 >
   <div class={c.inner}>
     <span class={c.searchIconWrap}>
@@ -136,13 +155,13 @@
       name="search"
       {placeholder}
       {value}
-      on:input={handleInput}
-      on:change={handleChange}
-      on:focus={handleFocus}
-      on:blur={handleBlur}
+      oninput={handleInput}
+      onchange={handleChange}
+      onfocus={handleFocus}
+      onblur={handleBlur}
     />
     {#if value && clearButton}
-      <button class={c.clearButton} on:click={onClear} type="button">
+      <button class={c.clearButton} onclick={onClear || onclear} type="button">
         <DeleteIcon {theme} class={c.deleteIcon} />
       </button>
     {/if}
@@ -158,19 +177,19 @@
           ? '0ms'
           : ''};"
         class={c.cancelButton}
-        on:click={handleDisableButton}
-        on:pointerdown|preventDefault
+        onclick={handleDisableButton || ondisable}
+        onpointerdown={(e) => e.preventDefault()}
       >
         {disableButtonText}
       </button>
     {:else}
       <button
         type="button"
-        on:click={handleDisableButton}
-        on:pointerdown|preventDefault
+        onclick={handleDisableButton}
+        onpointerdown={(e) => e.preventDefault()}
         class={cls(c.cancelButton)}
       >
-        <BackIcon {theme} on:click={handleDisableButton} />
+        <BackIcon {theme} />
       </button>
     {/if}
   {/if}

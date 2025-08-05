@@ -9,9 +9,9 @@
   } from 'konsta/svelte';
 
   const isPreview = document.location.href.includes('examplePreview');
-  let toastLeftOpened = false;
-  let toastCenterOpened = false;
-  let toastRightOpened = false;
+  let toastLeftOpened = $state(false);
+  let toastCenterOpened = $state(false);
+  let toastRightOpened = $state(false);
 
   const openToast = (setter) => {
     // close other toast
@@ -24,45 +24,36 @@
 
 <Page>
   <Navbar title="Toast">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
 
   <Block strongIos outlineIos class="flex flex-col gap-4">
     <Toast position="left" opened={toastLeftOpened}>
-      <Button
-        slot="button"
-        clear
-        inline
-        onClick={() => (toastLeftOpened = false)}
-      >
-        Close
-      </Button>
+      {#snippet button()}
+        <Button clear inline onClick={() => (toastLeftOpened = false)}>
+          Close
+        </Button>
+      {/snippet}
       <div class="shrink">Hello this is left toast!</div>
     </Toast>
     <Toast position="center" opened={toastCenterOpened}>
-      <Button
-        slot="button"
-        clear
-        inline
-        onClick={() => (toastCenterOpened = false)}
-      >
-        Close
-      </Button>
+      {#snippet button()}
+        <Button clear inline onClick={() => (toastCenterOpened = false)}>
+          Close
+        </Button>
+      {/snippet}
       <div class="shrink">Hello this is center toast!</div>
     </Toast>
     <Toast position="right" opened={toastRightOpened}>
-      <Button
-        slot="button"
-        clear
-        inline
-        onClick={() => (toastRightOpened = false)}
-      >
-        Close
-      </Button>
+      {#snippet button()}
+        <Button clear inline onClick={() => (toastRightOpened = false)}>
+          Close
+        </Button>
+      {/snippet}
       <div class="shrink">Hello this is right toast!</div>
     </Toast>
     <p>
@@ -70,17 +61,17 @@
       screen.
     </p>
     <p>
-      <Button onClick={() => openToast(() => (toastLeftOpened = true))}>
+      <Button onclick={() => openToast(() => (toastLeftOpened = true))}>
         Toast on Left
       </Button>
     </p>
     <p>
-      <Button onClick={() => openToast(() => (toastCenterOpened = true))}>
+      <Button onclick={() => openToast(() => (toastCenterOpened = true))}>
         Toast on Center
       </Button>
     </p>
     <p>
-      <Button onClick={() => openToast(() => (toastRightOpened = true))}>
+      <Button onclick={() => openToast(() => (toastRightOpened = true))}>
         Toast on Right
       </Button>
     </p>

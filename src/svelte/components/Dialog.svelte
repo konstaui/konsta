@@ -4,63 +4,78 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
 
-  export let sizeIos = 'w-[16.875rem]';
-  export let sizeMaterial = 'w-[19.5rem]';
-  export let titleFontSizeIos = 'text-[18px]';
-  export let titleFontSizeMaterial = 'text-[24px]';
+    ios = undefined,
+    material = undefined,
 
-  export let opened = false;
-  export let backdrop = true;
-  export let onBackdropClick = undefined;
+    sizeIos = 'w-[16.875rem]',
+    sizeMaterial = 'w-[19.5rem]',
+    titleFontSizeIos = 'text-[18px]',
+    titleFontSizeMaterial = 'text-[24px]',
 
-  $: state = opened ? 'opened' : 'closed';
+    opened = false,
+    backdrop = true,
+    onBackdropClick = undefined,
+
+    title,
+    buttons,
+
+    children,
+    ...restProps
+  } = $props();
+
+  const state = $derived(opened ? 'opened' : 'closed');
 
   const dark = useDarkClasses();
 
-  $: colors = DialogColors(colorsProp, dark);
+  const colors = $derived(DialogColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    DialogClasses(
-      {
-        sizeIos,
-        sizeMaterial,
-        titleFontSizeIos,
-        titleFontSizeMaterial,
-      },
-      colors,
-      dark
-    ),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      DialogClasses(
+        {
+          sizeIos,
+          sizeMaterial,
+          titleFontSizeIos,
+          titleFontSizeMaterial,
+        },
+        colors,
+        className
+      )
+    )
   );
 </script>
 
 {#if backdrop}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.backdrop[state]} on:click={onBackdropClick}></div>
+  <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
 
-<div class={c.base[state]} {...$$restProps}>
+<div class={c.base[state]} {...restProps}>
   <div class={c.contentWrap}>
-    {#if $$slots.title}
-      <div class={c.title}><slot name="title" /></div>
+    {#if title}
+      <div class={c.title}>
+        {#if typeof title !== 'function'}
+          {printText(title)}
+        {:else}
+          {@render title?.()}
+        {/if}
+      </div>
     {/if}
-    {#if $$slots.default}
+    {#if children}
       <div class={c.content}>
-        <slot />
+        {@render children?.()}
       </div>
     {/if}
   </div>
-  {#if $$slots.buttons}
-    <div class={c.buttons}><slot name="buttons" /></div>
+  {#if buttons}
+    <div class={c.buttons}>
+      {@render buttons?.()}
+    </div>
   {/if}
 </div>

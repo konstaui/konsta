@@ -10,21 +10,21 @@
     Icon,
     Link,
   } from 'konsta/svelte';
-  import { onMount, afterUpdate } from 'svelte';
+  import { onMount } from 'svelte';
   import { CameraFill, ArrowUpCircleFill } from 'framework7-icons/svelte';
   import MdCameraAlt from '../components/MdCameraAlt.svelte';
   import MdSend from '../components/MdSend.svelte';
 
-  let messageText = '';
-  let isClickable;
-  let inputOpacity = 0.3;
+  let messageText = $state('');
+  let isClickable = $state(false);
+  let inputOpacity = $state(0.3);
   const onMessageTextChange = (e) => {
     messageText = e.target.value;
     isClickable = messageText.trim().length > 0;
     inputOpacity = messageText ? 1 : 0.3;
   };
 
-  let messagesData = [
+  let messagesData = $state([
     {
       type: 'sent',
       text: 'Hi, Kate',
@@ -77,10 +77,10 @@
       text: 'What time?',
       avatar: 'https://cdn.framework7.io/placeholder/people-100x100-7.jpg',
     },
-  ];
+  ]);
 
   const isPreview = document.location.href.includes('examplePreview');
-  let shouldScrollMessages = false;
+  let shouldScrollMessages = $state(false);
 
   const scrollToBottom = (animate = true) => {
     const pageEl = document.querySelector('.messages-page');
@@ -94,7 +94,7 @@
     scrollToBottom(false);
   });
 
-  afterUpdate(() => {
+  $effect(() => {
     if (shouldScrollMessages) {
       scrollToBottom();
       shouldScrollMessages = false;
@@ -132,11 +132,11 @@
 
 <Page class="ios:bg-white ios:dark:bg-black messages-page">
   <Navbar title="Messages">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
+    {/snippet}
   </Navbar>
   <Messages>
     <MessagesTitle>
@@ -150,12 +150,13 @@
           name={message.name}
           text={message.text}
         >
-          <img
-            slot="avatar"
-            alt="avatar"
-            class="w-8 h-8 rounded-full"
-            src={message.avatar}
-          />
+          {#snippet avatar()}
+            <img
+              alt="avatar"
+              class="w-8 h-8 rounded-full"
+              src={message.avatar}
+            />
+          {/snippet}
         </Message>
       {:else}
         <Message
@@ -172,30 +173,37 @@
     value={messageText}
     onInput={onMessageTextChange}
   >
-    <Link toolbar iconOnly slot="left">
-      <Icon>
-        <CameraFill slot="ios" class="w-7 h-7" />
-        <MdCameraAlt
-          slot="material"
-          class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
-        />
-      </Icon>
-    </Link>
-    <Link
-      toolbar
-      slot="right"
-      onClick={() => (isClickable ? handleSendClick() : undefined)}
-      style="opacity: {inputOpacity}; cursor: {isClickable
-        ? 'pointer'
-        : 'default'}"
-    >
-      <Icon>
-        <ArrowUpCircleFill slot="ios" class="w-7 h-7" />
-        <MdSend
-          slot="material"
-          class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
-        />
-      </Icon>
-    </Link>
+    {#snippet left()}
+      <Link iconOnly>
+        <Icon>
+          {#snippet ios()}
+            <CameraFill class="w-7 h-7" />
+          {/snippet}
+          {#snippet material()}
+            <MdCameraAlt
+              class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
+            />
+          {/snippet}
+        </Icon>
+      </Link>
+    {/snippet}
+    {#snippet right()}
+      <Link
+        iconOnly
+        onClick={() => (isClickable ? handleSendClick() : undefined)}
+        style="opacity: {inputOpacity}; cursor: {isClickable
+          ? 'pointer'
+          : 'default'}"
+      >
+        <Icon>
+          {#snippet ios()}
+            <ArrowUpCircleFill class="w-7 h-7" />
+          {/snippet}
+          {#snippet material()}
+            <MdSend class="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+          {/snippet}
+        </Icon>
+      </Link>
+    {/snippet}
   </Messagebar>
 </Page>

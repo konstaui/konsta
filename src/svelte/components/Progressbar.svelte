@@ -4,31 +4,29 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-  export let ios = undefined;
-  export let material = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    progress = 0,
 
-  export let progress = 0;
-
+    children,
+    ...restProps
+  } = $props();
   const dark = useDarkClasses();
 
-  $: colors = ProgressbarColors(colorsProp, dark);
+  const colors = $derived(ProgressbarColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    ProgressbarClasses(colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses({ ios, material }, ProgressbarClasses(colors), className)
   );
 </script>
 
-<span class={c.base} {...$$restProps}>
+<span class={c.base} {...restProps}>
   <span
     class={c.inner}
     style={`transform: translateX(-${100 - (progress / 1) * 100}%)`}
   ></span>
-  <slot />
+  {@render children?.()}
 </span>

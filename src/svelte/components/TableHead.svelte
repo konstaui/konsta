@@ -2,22 +2,20 @@
   import { TableHeadClasses } from '../../shared/classes/TableHeadClasses.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
+  let {
+    class: className,
+    ios = undefined,
+    material = undefined,
 
-  export let ios = undefined;
-  export let material = undefined;
+    children,
+    ...restProps
+  } = $props();
 
-  const rippleEl = { current: null };
-
-  $: c = useThemeClasses(
-    { ios, material },
-    TableHeadClasses({}),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses({ ios, material }, TableHeadClasses({}), className)
   );
 </script>
 
-<thead bind:this={rippleEl.current} class={c.base} {...$$restProps}>
-  <slot />
+<thead class={c.base} {...restProps}>
+  {@render children?.()}
 </thead>

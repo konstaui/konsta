@@ -28,59 +28,98 @@
 
 <Page>
   <Navbar title="Badge">
-    <svelte:fragment slot="left">
+    {#snippet left()}
       {#if !isPreview}
-        <NavbarBackLink onClick={() => history.back()} />
+        <NavbarBackLink onclick={() => history.back()} />
       {/if}
-    </svelte:fragment>
-
-    <Link navbar iconOnly slot="right">
-      <Icon badge="5" badgeColors={{ bg: 'bg-red-500' }}>
-        <PersonCircleFill slot="ios" class="w-7 h-7" />
-        <MdPerson slot="material" class="w-6 h-6" />
-      </Icon>
-    </Link>
+    {/snippet}
+    {#snippet right()}
+      <Link navbar iconOnly>
+        <Icon badge="5" badgeColors={{ bg: 'bg-red-500' }}>
+          {#snippet ios()}
+            <PersonCircleFill class="w-7 h-7" />
+          {/snippet}
+          {#snippet material()}
+            <MdPerson class="w-6 h-6" />
+          {/snippet}
+        </Icon>
+      </Link>
+    {/snippet}
   </Navbar>
 
   <Tabbar labels icons class="left-0 bottom-0 fixed">
     <TabbarLink active label="Inbox">
-      <Icon slot="icon" badge="5" badgeColors={{ bg: 'bg-green-500' }}>
-        <EnvelopeFill slot="ios" class="w-7 h-7" />
-        <MdEmail slot="material" class="w-6 h-6" />
-      </Icon>
+      {#snippet icon()}
+        <Icon badge="5" badgeColors={{ bg: 'bg-green-500' }}>
+          {#snippet ios()}
+            <EnvelopeFill class="w-7 h-7" />
+          {/snippet}
+          {#snippet material()}
+            <MdEmail class="w-6 h-6" />
+          {/snippet}
+        </Icon>
+      {/snippet}
     </TabbarLink>
     <TabbarLink label="Calendar">
-      <Icon slot="icon" badge="7" badgeColors={{ bg: 'bg-red-500' }}>
-        <Calendar slot="ios" class="w-7 h-7" />
-        <MdToday slot="material" class="w-6 h-6" />
-      </Icon>
+      {#snippet icon()}
+        <Icon badge="7" badgeColors={{ bg: 'bg-red-500' }}>
+          {#snippet ios()}
+            <Calendar class="w-7 h-7" />
+          {/snippet}
+          {#snippet material()}
+            <MdToday class="w-6 h-6" />
+          {/snippet}
+        </Icon>
+      {/snippet}
     </TabbarLink>
     <TabbarLink label="Upload">
-      <Icon slot="icon" badge="1" badgeColors={{ bg: 'bg-red-500' }}>
-        <CloudUploadFill slot="ios" class="w-7 h-7" />
-        <MdFileUpload slot="material" class="w-6 h-6" />
-      </Icon>
+      {#snippet icon()}
+        <Icon badge="1" badgeColors={{ bg: 'bg-red-500' }}>
+          {#snippet ios()}
+            <CloudUploadFill class="w-7 h-7" />
+          {/snippet}
+          {#snippet material()}
+            <MdFileUpload class="w-6 h-6" />
+          {/snippet}
+        </Icon>
+      {/snippet}
     </TabbarLink>
   </Tabbar>
   <List strong inset>
     <ListItem title="Foo Bar">
-      <DemoIcon slot="media" />
-      <Badge slot="after" colors={{ bg: 'bg-gray-500' }}>0</Badge>
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
+      {#snippet after()}
+        <Badge colors={{ bg: 'bg-gray-500' }}>0</Badge>
+      {/snippet}
     </ListItem>
 
     <ListItem title="Ivan Petrov">
-      <DemoIcon slot="media" />
-      <Badge slot="after">CEO</Badge>
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
+      {#snippet after()}
+        <Badge>CEO</Badge>
+      {/snippet}
     </ListItem>
 
     <ListItem title="John Doe">
-      <DemoIcon slot="media" />
-      <Badge slot="after" colors={{ bg: 'bg-green-500' }}>5</Badge>
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
+      {#snippet after()}
+        <Badge colors={{ bg: 'bg-green-500' }}>5</Badge>
+      {/snippet}
     </ListItem>
 
     <ListItem title="Jane Doe">
-      <DemoIcon slot="media" />
-      <Badge slot="after" colors={{ bg: 'bg-yellow-500' }}>NEW</Badge>
+      {#snippet media()}
+        <DemoIcon />
+      {/snippet}
+      {#snippet after()}
+        <Badge colors={{ bg: 'bg-yellow-500' }}>NEW</Badge>
+      {/snippet}
     </ListItem>
   </List>
 </Page>

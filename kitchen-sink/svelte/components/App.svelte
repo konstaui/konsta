@@ -5,10 +5,14 @@
   import routes from '../routes.js';
   import HomePage from '../pages/Home.svelte';
 
-  let theme = window.location.search.includes('theme=material') ? 'material' : 'ios';
+  let theme = window.location.search.includes('theme=material')
+    ? 'material'
+    : 'ios';
   const setTheme = (t) => {
     theme = t;
   };
+  window.setTheme = setTheme;
+
   let currentColorTheme = '';
   let currentVibrant = false;
   let currentMonochrome = false;
@@ -78,7 +82,9 @@
     window.removeEventListener('popstate', updateHash);
   });
 
-  $: component = routes.find(route => route.path === hash.slice(1))?.component;
+  $: component = routes.find(
+    (route) => route.path === hash.slice(1)
+  )?.component;
 </script>
 
 <App {theme} safeAreas={!inIFrame}>

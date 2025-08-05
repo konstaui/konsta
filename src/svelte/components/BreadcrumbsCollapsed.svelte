@@ -4,37 +4,31 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
-  let className = undefined;
-  export { className as class };
-  export let ios = undefined;
-  export let material = undefined;
-
-  let colorsProp = undefined;
-  export { colorsProp as colors };
-
-  export let onClick = undefined;
+  let {
+    class: className,
+    colors: colorsProp,
+    ios = undefined,
+    material = undefined,
+    children,
+    ...restProps
+  } = $props();
 
   const dark = useDarkClasses();
 
-  $: colors = BreadcrumbsCollapsedColors(colorsProp, dark);
+  const colors = $derived(BreadcrumbsCollapsedColors(colorsProp, dark));
 
-  $: c = useThemeClasses(
-    { ios, material },
-    BreadcrumbsCollapsedClasses({}, colors),
-    className,
-    (v) => (c = v)
+  const c = $derived(
+    useThemeClasses(
+      { ios, material },
+      BreadcrumbsCollapsedClasses({}, colors),
+      className
+    )
   );
 </script>
 
-<div
-  class={c.base}
-  {...$$restProps}
-  role="button"
-  tabindex="0"
-  on:click={onClick}
->
+<div class={c.base} {...restProps} role="button" tabindex="0">
   <span class={c.dot}></span>
   <span class={c.dot}></span>
   <span class={c.dot}></span>
-  <slot />
+  {@render children?.()}
 </div>
