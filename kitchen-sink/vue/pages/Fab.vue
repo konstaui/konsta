@@ -135,14 +135,7 @@
 </template>
 <script>
   import { computed } from 'vue';
-  import {
-    kPage,
-    kNavbar,
-    kNavbarBackLink,
-    kBlock,
-    kFab,
-    useTheme,
-  } from 'konsta/vue';
+  import { kPage, kNavbar, kNavbarBackLink, kBlock, kFab } from 'konsta/vue';
   import { Plus } from 'framework7-icons/vue';
   import MdAdd from '../components/MdAdd.vue';
 
@@ -157,11 +150,9 @@
       kFab,
     },
     setup() {
-      const theme = useTheme();
       const PlusIcon = computed(() => (theme.value === 'ios' ? Plus : MdAdd));
 
       return {
-        theme,
         PlusIcon,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,

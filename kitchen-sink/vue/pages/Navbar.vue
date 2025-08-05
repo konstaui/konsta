@@ -12,7 +12,7 @@
         <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>
-        <k-link navbar>Right</k-link>
+        <k-link>Right</k-link>
       </template>
     </k-navbar>
     <div class="relative">

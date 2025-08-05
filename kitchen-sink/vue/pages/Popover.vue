@@ -7,7 +7,6 @@
       <template #right>
         <k-link
           class="popover-navbar-link"
-          navbar
           @click="() => openPopover('.popover-navbar-link')"
         >
           Popover

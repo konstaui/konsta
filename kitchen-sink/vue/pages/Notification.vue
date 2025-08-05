@@ -121,7 +121,6 @@
     kButton,
     kDialog,
     kDialogButton,
-    useTheme,
   } from 'konsta/vue';
   import DemoIcon from '../components/DemoIcon.vue';
 
@@ -146,7 +145,6 @@
         notificationCallbackOnClose: false,
       });
       const alertOpened = ref(false);
-      const theme = useTheme();
       const openNotification = (setter) => {
         opened.value = {
           notificationFull: false,
@@ -170,7 +168,6 @@
         opened,
         alertOpened,
         openNotification,
-        theme,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };

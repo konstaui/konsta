@@ -12,11 +12,11 @@
       :class="`left-0 ios:top-safe-15 ios:mt-1 material:top-safe-16 sticky w-full`"
     >
       <k-toolbar-pane>
-        <k-link toolbar>Link 1</k-link>
-        <k-link toolbar>Link 2</k-link>
+        <k-link>Link 1</k-link>
+        <k-link>Link 2</k-link>
       </k-toolbar-pane>
       <k-toolbar-pane>
-        <k-link toolbar>Link 3</k-link>
+        <k-link>Link 3</k-link>
       </k-toolbar-pane>
     </k-toolbar>
 
@@ -71,11 +71,11 @@
     </k-block>
     <k-toolbar v-if="!isTop" :class="`left-0 sticky bottom-0 w-full mt-auto`">
       <k-toolbar-pane>
-        <k-link toolbar>Link 1</k-link>
-        <k-link toolbar>Link 2</k-link>
+        <k-link>Link 1</k-link>
+        <k-link>Link 2</k-link>
       </k-toolbar-pane>
       <k-toolbar-pane>
-        <k-link toolbar>Link 3</k-link>
+        <k-link>Link 3</k-link>
       </k-toolbar-pane>
     </k-toolbar>
   </k-page>

@@ -40,8 +40,8 @@
       <k-page>
         <k-navbar title="Left Panel">
           <template #right>
-            <k-link navbar @click="() => (leftPanelOpened = false)">
-              Close
+            <k-link icon-only @click="() => (leftPanelOpened = false)">
+              <close-icon />
             </k-link>
           </template>
         </k-navbar>
@@ -71,8 +71,8 @@
       <k-page>
         <k-navbar title="Right Panel">
           <template #right>
-            <k-link navbar @click="() => (rightPanelOpened = false)">
-              Close
+            <k-link icon-only @click="() => (rightPanelOpened = false)">
+              <close-icon />
             </k-link>
           </template>
         </k-navbar>
@@ -105,8 +105,8 @@
       >
         <k-navbar title="Left Panel">
           <template #right>
-            <k-link navbar @click="() => (leftFloatingPanelOpened = false)">
-              Close
+            <k-link icon-only @click="() => (leftFloatingPanelOpened = false)">
+              <close-icon />
             </k-link>
           </template>
         </k-navbar>
@@ -140,8 +140,8 @@
       >
         <k-navbar title="Right Panel">
           <template #right>
-            <k-link navbar @click="() => (rightFloatingPanelOpened = false)">
-              Close
+            <k-link icon-only @click="() => (rightFloatingPanelOpened = false)">
+              <close-icon />
             </k-link>
           </template>
         </k-navbar>
@@ -175,7 +175,7 @@
     kLink,
     kButton,
   } from 'konsta/vue';
-
+  import CloseIcon from '../components/CloseIcon.vue';
   export default {
     name: 'SidePanelsPage',
     title: 'Panel / Side Panels',
@@ -188,6 +188,7 @@
       kBlockTitle,
       kLink,
       kButton,
+      CloseIcon,
     },
     setup() {
       const leftPanelOpened = ref(false);

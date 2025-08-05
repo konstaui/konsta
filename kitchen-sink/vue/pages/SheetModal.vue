@@ -27,7 +27,9 @@
       <k-toolbar top class="justify-end ios:pt-4">
         <div class="ios:hidden" />
         <k-toolbar-pane>
-          <k-link toolbar @click="() => (sheetOpened = false)"> Done </k-link>
+          <k-link icon-only @click="() => (sheetOpened = false)">
+            <close-icon />
+          </k-link>
         </k-toolbar-pane>
       </k-toolbar>
       <k-block>
@@ -59,7 +61,7 @@
     kLink,
     kToolbarPane,
   } from 'konsta/vue';
-
+  import CloseIcon from '../components/CloseIcon.vue';
   export default {
     name: 'SheetModalPage',
     components: {
@@ -72,6 +74,7 @@
       kToolbar,
       kLink,
       kToolbarPane,
+      CloseIcon,
     },
     setup() {
       const sheetOpened = ref(false);

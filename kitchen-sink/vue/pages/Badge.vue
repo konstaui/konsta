@@ -5,7 +5,7 @@
         <k-navbar-back-link @click="() => history.back()" />
       </template>
       <template #right>
-        <k-link navbar icon-only>
+        <k-link icon-only>
           <k-icon badge="5" :badge-colors="{ bg: 'bg-red-500' }">
             <template #ios><PersonCircleFill class="w-7 h-7" /></template>
             <template #material><MdPerson class="w-6 h-6" /></template>
