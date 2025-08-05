@@ -125,7 +125,6 @@ export const useIosTabbarHighlight = (params) => {
       const activeIndex = [...linkEls].indexOf(activeLinkEl);
       data.linkEls = linkEls;
       data.activeIndex = activeIndex;
-      console.log(getEl());
       setHighlightStyle({
         ...getHighlightStyle(),
         width: `${width}%`,

@@ -1,7 +1,7 @@
 <template>
   <component :is="component" :class="c.base">
     <div :class="c.bg" />
-    <div :class="c.inner">
+    <div :class="c.inner" ref="innerRef">
       <slot />
     </div>
     <span
@@ -13,7 +13,7 @@
   </component>
 </template>
 <script>
-  import { computed, onMounted, onUpdated, ref, provide } from 'vue';
+  import { computed, onMounted, ref, provide, onBeforeUnmount } from 'vue';
   import { useContext } from '../shared/use-context.js';
   import { useTheme } from '../shared/use-theme.js';
   import { themeClasses } from '../shared/use-theme-classes.js';
@@ -55,6 +55,8 @@
       const context = useContext();
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
+      const innerRef = ref(null);
+      const observer = ref(null);
       const highlightElRef = ref(null);
       const highlightStyle = ref({
         transform: '',
@@ -91,7 +93,11 @@
         )
       );
       const setHighlight = () => {
-        if (hasHighlight.value && highlightElRef.value) {
+        if (
+          hasHighlight.value &&
+          highlightElRef.value &&
+          theme.value === 'material'
+        ) {
           const linksEl = highlightElRef.value.previousElementSibling;
           const activeIndex = [...linksEl.children].indexOf(
             linksEl.querySelector('.k-tabbar-link-active')
@@ -111,14 +117,59 @@
           }
         }
       };
+      const attachMutationObserver = () => {
+        if (!innerRef?.value || theme.value !== 'material') return;
+        observer.value = new MutationObserver((mutations) => {
+          let needUpdate = false;
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+              if (
+                [...mutation.addedNodes, ...mutation.removedNodes].filter(
+                  (el) => el.nodeType === 1 && el.classList.contains('k-link')
+                ).length > 0 ||
+                (mutation.target &&
+                  mutation.target.nodeType === 1 &&
+                  mutation.target.closest('.k-link'))
+              ) {
+                needUpdate = true;
+              }
+            }
+            if (mutation.type === 'attributes') {
+              if (
+                mutation.target &&
+                mutation.target.classList.contains('k-link')
+              ) {
+                needUpdate = true;
+              }
+            }
+          });
+          if (needUpdate) {
+            setHighlight();
+          }
+        });
+        observer.value.observe(innerRef.value, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+      };
+      const detachMutationObserver = () => {
+        if (observer.value) {
+          observer.value.disconnect();
+        }
+      };
       onMounted(() => {
         setHighlight();
+        attachMutationObserver();
       });
-      onUpdated(() => {
-        setHighlight();
+      onBeforeUnmount(() => {
+        detachMutationObserver();
       });
+
       return {
         c,
+        innerRef,
         hasHighlight,
         highlightElRef,
         highlightStyle,

@@ -66,6 +66,7 @@
         transform: '',
         width: '',
       });
+      const observer = ref(null);
       const highlightData = ref({});
       const highlightInnerRef = ref(null);
       const highlightThumbRef = ref(null);
@@ -96,7 +97,7 @@
         detachEvents,
         onUpdated: onUpdatedHighlight,
       } = useIosTabbarHighlight({
-        getEl: () => elRef.value?.elRef,
+        getEl: () => elRef.value?.$el,
         getHighlightEl: () => highlightElRef.value,
         getHighlightInnerEl: () => highlightInnerRef.value,
         getHighlightThumbEl: () => highlightThumbRef.value,
@@ -109,14 +110,53 @@
         setHighlightStyle: (value) => (highlightStyle.value = value),
       });
 
-      onUpdated(() => {
-        onUpdatedHighlight();
-      });
+      const attachMutationObserver = () => {
+        if (!elRef?.value?.$el || theme.value !== 'ios') return;
+        observer.value = new MutationObserver((mutations) => {
+          let needUpdate = false;
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'childList') {
+              if (
+                [...mutation.addedNodes, ...mutation.removedNodes].filter(
+                  (el) => el.nodeType === 1 && el.classList.contains('k-link')
+                ).length > 0
+              ) {
+                needUpdate = true;
+              }
+            }
+            if (mutation.type === 'attributes') {
+              if (
+                mutation.target &&
+                mutation.target.classList.contains('k-link')
+              ) {
+                needUpdate = true;
+              }
+            }
+          });
+          if (needUpdate) {
+            onUpdatedHighlight();
+          }
+        });
+        observer.value.observe(elRef.value.$el, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+      };
+      const detachMutationObserver = () => {
+        if (observer.value) {
+          observer.value.disconnect();
+        }
+      };
+
       onMounted(() => {
+        attachMutationObserver();
         attachEvents();
         onUpdatedHighlight();
       });
       onBeforeUnmount(() => {
+        detachMutationObserver();
         detachEvents();
       });
 
