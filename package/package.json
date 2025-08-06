@@ -18,12 +18,14 @@
   },
   "releaseDate": "September 18, 2024",
   "svelte": "./svelte/konsta-svelte.js",
+  "dependencies": {
+    "tailwind-merge": "^3.3.1"
+  },
   "exports": {
     "./package.json": "./package.json",
     "./react": {
       "types": "./react/konsta-react.d.ts",
-      "require": "./react/cjs/konsta-react.js",
-      "import": "./react/esm/konsta-react.js"
+      "import": "./react/konsta-react.js"
     },
     "./vue": {
       "types": "./vue/konsta-vue.d.ts",
