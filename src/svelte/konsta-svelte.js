@@ -58,6 +58,7 @@ import TableRow from './components/TableRow.svelte';
 import Toast from './components/Toast.svelte';
 import Toggle from './components/Toggle.svelte';
 import Toolbar from './components/Toolbar.svelte';
+import ToolbarPane from './components/ToolbarPane.svelte';
 // eslint-disable-next-line
 import KonstaProvider from './shared/KonstaProvider.svelte';
 import { useTheme } from './shared/use-theme.js';
@@ -127,4 +128,5 @@ export {
   Toast,
   Toggle,
   Toolbar,
+  ToolbarPane,
 };

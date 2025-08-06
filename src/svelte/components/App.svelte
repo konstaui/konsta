@@ -34,6 +34,9 @@
       }
     }
   });
+  KonstaStore.theme = currentTheme;
+  KonstaStore.dark = dark;
+  KonstaStore.touchRipple = touchRipple;
   $effect(() => {
     KonstaStore.theme = currentTheme;
     KonstaStore.dark = dark;

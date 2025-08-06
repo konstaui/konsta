@@ -50,14 +50,16 @@
     }));
 
   const { navbar } = $derived(NavbarContext()?.value || { navbar: false });
-  const { toolbar, tabbar, tabbarLabels, tabbarIcons } = $derived(
-    ToolbarContext()?.value || {
-      toolbar: false,
-      tabbar: false,
-      tabbarLabels: false,
-      tabbarIcons: false,
-    }
-  );
+  const { toolbar, tabbar, tabbarLabels, tabbarIcons, setActiveTabbarEl } =
+    $derived(
+      ToolbarContext()?.value || {
+        toolbar: false,
+        tabbar: false,
+        tabbarLabels: false,
+        tabbarIcons: false,
+        setActiveTabbarEl: undefined,
+      }
+    );
 
   const dark = useDarkClasses();
 
@@ -110,6 +112,12 @@
       className
     )
   );
+
+  $effect(() => {
+    if (tabbar && tabbarActive) {
+      setActiveTabbarEl?.(rippleEl);
+    }
+  });
 </script>
 
 <svelte:element

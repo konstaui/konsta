@@ -50,7 +50,9 @@
     subtitle="This is a subtitle"
     text="This is a simple notification message"
   >
-    <DemoIcon slot="icon" />
+    {#snippet icon()}
+      <DemoIcon />
+    {/snippet}
   </Notification>
 
   <Notification
@@ -61,7 +63,9 @@
     button
     onClose={() => (notificationWithButton = false)}
   >
-    <DemoIcon slot="icon" />
+    {#snippet icon()}
+      <DemoIcon />
+    {/snippet}
   </Notification>
 
   <Notification
@@ -72,7 +76,9 @@
     text="Click me to close"
     onclick={() => (notificationCloseOnClick = false)}
   >
-    <DemoIcon slot="icon" />
+    {#snippet icon()}
+      <DemoIcon />
+    {/snippet}
   </Notification>
 
   <Notification
@@ -86,7 +92,9 @@
       alertOpened = true;
     }}
   >
-    <DemoIcon slot="icon" />
+    {#snippet icon()}
+      <DemoIcon />
+    {/snippet}
   </Notification>
   <Dialog opened={alertOpened} onBackdropClick={() => (alertOpened = false)}>
     {#snippet title()}

@@ -8,6 +8,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
   import { PopoverColors } from '../../shared/colors/PopoverColors.js';
+  import Glass from './Glass.svelte';
 
   let {
     class: className,
@@ -17,9 +18,8 @@
     material = undefined,
     style = '',
 
-    angle = true,
+    angle = false,
     angleClass = '',
-    size = 'w-64',
     opened = false,
     backdrop = true,
     onBackdropClick = undefined,
@@ -57,12 +57,10 @@
   const c = $derived(
     useThemeClasses(
       { ios, material },
-      PopoverClasses({ size, angleClass }, colors, dark),
+      PopoverClasses({ angleClass }, colors, dark),
       className
     )
   );
-
-  console.log(c);
 
   const setPopover = () => {
     if (!target || !el || !opened) return;
@@ -152,7 +150,7 @@
       <div class={c.angleArrow[positions.anglePosition]}></div>
     </div>
   {/if}
-  <div class={c.inner[state]}>
+  <Glass class={c.inner[state]}>
     {@render children?.()}
-  </div>
+  </Glass>
 </div>

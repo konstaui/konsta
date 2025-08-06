@@ -6,7 +6,7 @@
   import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
   import { NavbarColors } from '../../shared/colors/NavbarColors.js';
   import { printText } from '../shared/print-text.js';
-  import { setReactiveContext } from '../shared/set-reactive-context.js';
+  import Glass from './Glass.svelte';
 
   let {
     class: className,
@@ -141,12 +141,13 @@
 
     const maxTranslate = titleContainerHeight;
     const scrollProgress = Math.max(Math.min(scrollTop / maxTranslate, 1), 0);
-
-    bgElRef.style.opacity = transparent ? -0.5 + scrollProgress * 1.5 : '';
-    if (medium || large) {
-      bgElRef.style.transform = `translateY(-${
-        scrollProgress * maxTranslate
-      }px)`;
+    if (theme === 'material') {
+      bgElRef.style.opacity = transparent ? -0.5 + scrollProgress * 1.5 : '';
+      if (medium || large) {
+        bgElRef.style.transform = `translateY(-${
+          scrollProgress * maxTranslate
+        }px)`;
+      }
     }
 
     if (titleContainerElRef) {
@@ -221,12 +222,15 @@
 </script>
 
 <div class={c.base} bind:this={elRef} {...restProps}>
+  {#if theme === 'ios'}
+    <div class={c.bgBlur}></div>
+  {/if}
   <div class={c.bg} bind:this={bgElRef}></div>
   <div class={c.inner} bind:this={innerElRef}>
     {#if left}
-      <div class={c.left}>
+      <Glass class={c.left}>
         {@render left?.()}
-      </div>
+      </Glass>
     {/if}
     {#if title || subtitle}
       <div class={c.title} bind:this={titleElRef}>
@@ -247,9 +251,9 @@
       </div>
     {/if}
     {#if right}
-      <div class={c.right}>
+      <Glass class={c.right}>
         {@render right?.()}
-      </div>
+      </Glass>
     {/if}
     {@render children?.()}
   </div>

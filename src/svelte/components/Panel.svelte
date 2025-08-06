@@ -4,13 +4,13 @@
   import { PanelColors } from '../../shared/colors/PanelColors.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
-
+  import Glass from './Glass.svelte';
+  import { useTheme } from '../shared/use-theme.js';
   let {
     class: className,
     colors: colorsProp,
     ios = undefined,
     material = undefined,
-    size = 'w-72 h-screen',
     side = 'left',
     opened = false,
     backdrop = true,
@@ -26,11 +26,12 @@
   const dark = useDarkClasses();
 
   const colors = $derived(PanelColors(colorsProp, dark));
+  const theme = $derived(useTheme({ ios, material }));
 
   const c = $derived(
     useThemeClasses(
       { ios, material },
-      PanelClasses({ size, floating }, colors),
+      PanelClasses({ floating }, colors),
       className
     )
   );
@@ -43,6 +44,12 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
-<div class={classes} {...restProps}>
-  {@render children?.()}
-</div>
+{#if theme === 'ios' && floating}
+  <Glass hoverable={false} class={classes} {...restProps}>
+    {@render children?.()}
+  </Glass>
+{:else}
+  <div class={classes} {...restProps}>
+    {@render children?.()}
+  </div>
+{/if}

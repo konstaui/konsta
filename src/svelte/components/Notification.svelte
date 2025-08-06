@@ -5,10 +5,12 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { printText } from '../shared/print-text.js';
   import { useTheme } from '../shared/use-theme.js';
+  import Glass from './Glass.svelte';
 
   import DeleteIcon from './icons/DeleteIcon.svelte';
 
   let {
+    component = 'div',
     class: className,
     colors: colorsProp,
     ios = undefined,
@@ -47,45 +49,45 @@
 {#if theme === 'ios'}
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.base} {...restProps} onclick={onClick || onclick}>
-    <div class={c.header}>
-      {#if icon}
-        <div class={c.icon}>{@render icon()}</div>
-      {/if}
-      {#if title}
-        <div class={c.title}>
-          {#if typeof title !== 'function'}
-            {printText(title)}
-          {:else}
-            {@render title()}
-          {/if}
-        </div>
-      {/if}
-      {#if titleRightText}
-        <div class={c.titleRightText}>
-          {#if typeof titleRightText !== 'function'}
-            {printText(titleRightText)}
-          {:else}
-            {@render titleRightText()}
-          {/if}
-        </div>
-      {/if}
-      {#if button}
-        <!-- svelte-ignore a11y_click_events_have_key_events -->
-        <div
-          class={c.button}
-          role="button"
-          tabindex="0"
-          onclick={onClose || onclose}
-        >
-          <DeleteIcon {theme} class={c.deleteIcon} />
-          {#if typeof button === 'function'}
-            {@render button()}
-          {/if}
-        </div>
-      {/if}
-    </div>
+  <Glass {component} class={c.base} {...restProps} onclick={onClick || onclick}>
+    {#if icon}
+      <div class={c.icon}>{@render icon()}</div>
+    {/if}
     <div class={c.content}>
+      <div class={c.header}>
+        {#if title}
+          <div class={c.title}>
+            {#if typeof title !== 'function'}
+              {printText(title)}
+            {:else}
+              {@render title()}
+            {/if}
+          </div>
+        {/if}
+        {#if titleRightText}
+          <div class={c.titleRightText}>
+            {#if typeof titleRightText !== 'function'}
+              {printText(titleRightText)}
+            {:else}
+              {@render titleRightText()}
+            {/if}
+          </div>
+        {/if}
+        {#if button}
+          <!-- svelte-ignore a11y_click_events_have_key_events -->
+          <div
+            class={c.button}
+            role="button"
+            tabindex="0"
+            onclick={onClose || onclose}
+          >
+            <DeleteIcon {theme} class={c.deleteIcon} />
+            {#if typeof button === 'function'}
+              {@render button()}
+            {/if}
+          </div>
+        {/if}
+      </div>
       {#if subtitle}
         <div class={c.subtitle}>
           {#if typeof subtitle !== 'function'}
@@ -106,7 +108,7 @@
       {/if}
       {@render children?.()}
     </div>
-  </div>
+  </Glass>
 {:else}
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->

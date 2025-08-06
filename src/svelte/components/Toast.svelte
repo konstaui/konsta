@@ -3,6 +3,7 @@
   import { ToastColors } from '../../shared/colors/ToastColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
+  import Glass from './Glass.svelte';
 
   let {
     class: className,
@@ -31,12 +32,14 @@
 </script>
 
 <div class={c.base[position]} {...restProps}>
-  <div class={c.content}>
-    {@render children?.()}
-    {#if button}
-      <div class={c.button}>
-        {@render button()}
-      </div>
-    {/if}
-  </div>
+  <Glass hoverable={false} class={c.inner}>
+    <div class={c.content}>
+      {@render children?.()}
+      {#if button}
+        <div class={c.button}>
+          {@render button()}
+        </div>
+      {/if}
+    </div>
+  </Glass>
 </div>

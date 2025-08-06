@@ -3,9 +3,6 @@ import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { MessagebarClasses } from '../../shared/classes/MessagebarClasses.js';
 import { MessagebarColors } from '../../shared/colors/MessagebarColors.js';
-import { cls } from '../../shared/cls.js';
-
-// import Link from './Link.jsx';
 import Toolbar from './Toolbar.jsx';
 import Glass from './Glass.jsx';
 

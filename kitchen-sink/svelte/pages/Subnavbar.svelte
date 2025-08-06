@@ -19,10 +19,10 @@
       {/if}
     {/snippet}
     {#snippet subnavbar()}
-      <Segmented strong activeButtonIndex={0} childButtonsLength={3}>
-        <SegmentedButton small strong active>Button</SegmentedButton>
-        <SegmentedButton small strong>Button</SegmentedButton>
-        <SegmentedButton small strong>Button</SegmentedButton>
+      <Segmented strong rounded>
+        <SegmentedButton active>Button</SegmentedButton>
+        <SegmentedButton>Button</SegmentedButton>
+        <SegmentedButton>Button</SegmentedButton>
       </Segmented>
     {/snippet}
   </Navbar>

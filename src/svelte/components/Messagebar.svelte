@@ -4,6 +4,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import Toolbar from './Toolbar.svelte';
+  import Glass from './Glass.svelte';
 
   let {
     class: className,
@@ -93,7 +94,7 @@
         {@render left?.()}
       </div>
     {/if}
-    <div class={c.messagebarArea}>
+    <Glass class={c.messagebarArea}>
       <textarea
         id={textareaId}
         bind:this={areaEl}
@@ -104,11 +105,11 @@
         {value}
         {size}
         {disabled}
-        on:input={onInputInternal}
-        on:change={onChangeInternal}
-        on:focus={onFocusInternal}
+        oninput={onInputInternal}
+        onchange={onChangeInternal}
+        onfocus={onFocusInternal}
       ></textarea>
-    </div>
+    </Glass>
     {#if right}
       <div class={c.right}>
         {@render right?.()}

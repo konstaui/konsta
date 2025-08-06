@@ -3,12 +3,14 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { ActionsGroupColors } from '../../shared/colors/ActionsGroupColors.js';
+  import Glass from './Glass.svelte';
   let {
     class: className,
     colors: colorsProp,
     ios = undefined,
     material = undefined,
     dividers = true,
+    component = 'div',
     children,
     ...restProps
   } = $props();
@@ -26,6 +28,6 @@
   );
 </script>
 
-<div class={c.base} {...restProps}>
+<Glass {component} class={c.base} {...restProps}>
   {@render children?.()}
-</div>
+</Glass>

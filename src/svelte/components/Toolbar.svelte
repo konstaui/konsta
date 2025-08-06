@@ -1,5 +1,5 @@
 <script>
-  import { onMount, setContext } from 'svelte';
+  import { onMount, setContext, onDestroy } from 'svelte';
   import { useTheme } from '../shared/use-theme.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -28,14 +28,27 @@
   } = $props();
 
   let highlightElRef = $state(null);
+  let innerEl = $state(null);
+  let observer = null;
 
   const theme = $derived(useTheme({ ios, material }));
 
+  let activeTabbarEl = $state(null);
+
   setContext('ToolbarContext', () => ({
-    value: { toolbar: true, tabbar, tabbarLabels, tabbarIcons },
+    value: {
+      toolbar: true,
+      tabbar,
+      tabbarLabels,
+      tabbarIcons,
+      activeTabbarEl,
+      setActiveTabbarEl: (el) => {
+        activeTabbarEl = el;
+      },
+    },
   }));
 
-  const highlightStyle = $state({
+  let highlightStyle = $state({
     transform: '',
     width: '',
   });
@@ -47,7 +60,7 @@
   const hasHighlight = $derived(theme === 'material' && tabbar && !tabbarIcons);
 
   const setHighlight = () => {
-    if (hasHighlight && highlightElRef) {
+    if (hasHighlight && highlightElRef && theme === 'material') {
       const linksEl = highlightElRef.previousElementSibling;
       const activeIndex = [...linksEl.children].indexOf(
         linksEl.querySelector('.k-tabbar-link-active')
@@ -64,8 +77,15 @@
       }
     }
   };
-  onMount(() => setHighlight());
-  $effect(() => setHighlight());
+
+  $effect(() => {
+    activeTabbarEl;
+    setHighlight();
+  });
+
+  onMount(() => {
+    setHighlight();
+  });
 
   const dark = useDarkClasses();
 
@@ -93,7 +113,7 @@
 
 <div class={c.base} {...restProps}>
   <div class={c.bg}></div>
-  <div class={c.inner}>
+  <div class={c.inner} bind:this={innerEl}>
     {@render children?.()}
   </div>
   {#if hasHighlight}

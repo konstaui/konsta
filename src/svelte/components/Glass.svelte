@@ -16,11 +16,11 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+
+  export { el };
+
   const theme = $derived(useTheme({ ios, material }));
-
-  let Component = component;
-
-  const el = { current: null };
 
   const dark = useDarkClasses();
 
@@ -30,7 +30,7 @@
 
   const hoverableData = { current: {} };
   const { attachEvents, detachEvents } = useHoverable({
-    getEl: () => el.current,
+    getEl: () => el,
     enabled: () => hoverable && theme === 'ios',
     data: hoverableData.current,
   });
@@ -43,11 +43,6 @@
   });
 </script>
 
-<svelte:element
-  this={Component}
-  class={c.base}
-  bind:this={el.current}
-  {...restProps}
->
+<svelte:element this={component} class={c.base} bind:this={el} {...restProps}>
   {@render children?.()}
 </svelte:element>

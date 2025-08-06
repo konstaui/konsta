@@ -4,6 +4,7 @@
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useTouchRipple } from '../shared/use-touch-ripple.svelte.js';
+  import { useTheme } from '../shared/use-theme.js';
 
   let {
     component = 'label',
@@ -27,6 +28,7 @@
   let elRef = $state(null);
   let rippleTargetElRef = $state(null);
 
+  const theme = $derived(useTheme({ ios, material }));
   const dark = useDarkClasses();
 
   useTouchRipple(
@@ -63,8 +65,17 @@
     onchange={onChange || onchange}
     class={c.input}
   />
-  <span bind:this={rippleTargetElRef} class={c.thumbWrap[state]}>
-    <span class={c.thumb[state]}></span>
-  </span>
+  {#if theme === 'ios'}
+    <span class={c.thumbSide[state]}></span>
+    <span class={c.thumbBg[state]}></span>
+    <span class={c.thumbShadow[state]}></span>
+    <span ref={rippleTargetElRef} class={c.thumbWrap[state]}>
+      <span class={c.thumb[state]}></span>
+    </span>{:else}
+    <span bind:this={rippleTargetElRef} class={c.thumbWrap[state]}>
+      <span class={c.thumb[state]}></span>
+    </span>
+  {/if}
+
   {@render children?.()}
 </svelte:element>

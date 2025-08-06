@@ -53,9 +53,9 @@
   >
     <Page>
       <Navbar title="Left Panel">
-        <Link slot="right" navbar onClick={() => (leftPanelOpened = false)}>
-          Close
-        </Link>
+        {#snippet right()}
+          <Link navbar onClick={() => (leftPanelOpened = false)}>Close</Link>
+        {/snippet}
       </Navbar>
       <Block class="space-y-4">
         <p>Here comes left panel.</p>
@@ -82,9 +82,9 @@
   >
     <Page>
       <Navbar title="Right Panel">
-        <Link slot="right" navbar onClick={() => (rightPanelOpened = false)}>
-          Close
-        </Link>
+        {#snippet right()}
+          <Link navbar onClick={() => (rightPanelOpened = false)}>Close</Link>
+        {/snippet}
       </Navbar>
       <Block class="space-y-4">
         <p>Here comes right panel.</p>
@@ -109,15 +109,16 @@
     opened={leftFloatingPanelOpened}
     onBackdropClick={() => (leftFloatingPanelOpened = false)}
   >
-    <Page class="no-safe-areas-top no-safe-areas-bottom">
+    <Page
+      colors={{ bgIos: 'bg-transparent' }}
+      class="no-safe-areas-top no-safe-areas-bottom"
+    >
       <Navbar title="Left Panel">
-        <Link
-          slot="right"
-          navbar
-          onClick={() => (leftFloatingPanelOpened = false)}
-        >
-          Close
-        </Link>
+        {#snippet right()}
+          <Link navbar onClick={() => (leftFloatingPanelOpened = false)}>
+            Close
+          </Link>
+        {/snippet}
       </Navbar>
       <Block class="space-y-4">
         <p>Here comes left panel.</p>
@@ -143,15 +144,16 @@
     opened={rightFloatingPanelOpened}
     onBackdropClick={() => (rightFloatingPanelOpened = false)}
   >
-    <Page className="no-safe-areas-top no-safe-areas-bottom">
+    <Page
+      colors={{ bgIos: 'bg-transparent' }}
+      className="no-safe-areas-top no-safe-areas-bottom"
+    >
       <Navbar title="Right Panel">
-        <Link
-          slot="right"
-          navbar
-          onClick={() => (rightFloatingPanelOpened = false)}
-        >
-          Close
-        </Link>
+        {#snippet right()}
+          <Link navbar onClick={() => (rightFloatingPanelOpened = false)}>
+            Close
+          </Link>
+        {/snippet}
       </Navbar>
       <Block class="space-y-4">
         <p>Here comes right panel.</p>

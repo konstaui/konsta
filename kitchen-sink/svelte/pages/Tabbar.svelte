@@ -10,6 +10,7 @@
     List,
     ListItem,
     Toggle,
+    ToolbarPane,
   } from 'konsta/svelte';
   import {
     EnvelopeFill,
@@ -40,72 +41,74 @@
     icons={isTabbarIcons}
     class="left-0 bottom-0 fixed"
   >
-    {#if isTabbarIcons}
-      <TabbarLink
-        active={activeTab === 'tab-1'}
-        onClick={() => (activeTab = 'tab-1')}
-        label={isTabbarLabels ? 'Tab 1' : undefined}
-      >
-        {#snippet icon()}
-          <Icon>
-            {#snippet ios()}
-              <EnvelopeFill class="w-7 h-7" />
-            {/snippet}
-            {#snippet material()}
-              <MdEmail class="w-6 h-6" />
-            {/snippet}
-          </Icon>
-        {/snippet}
-      </TabbarLink>
-      <TabbarLink
-        active={activeTab === 'tab-2'}
-        onClick={() => (activeTab = 'tab-2')}
-        label={isTabbarLabels ? 'Tab 2' : undefined}
-      >
-        {#snippet icon()}
-          <Icon>
-            {#snippet ios()}
-              <Calendar class="w-7 h-7" />
-            {/snippet}
-            {#snippet material()}
-              <MdToday class="w-6 h-6" />
-            {/snippet}
-          </Icon>
-        {/snippet}
-      </TabbarLink>
-      <TabbarLink
-        active={activeTab === 'tab-3'}
-        onClick={() => (activeTab = 'tab-3')}
-        label={isTabbarLabels ? 'Tab 3' : undefined}
-      >
-        {#snippet icon()}
-          <Icon>
-            {#snippet ios()}
-              <CloudUploadFill class="w-7 h-7" />
-            {/snippet}
-            {#snippet material()}
-              <MdFileUpload class="w-6 h-6" />
-            {/snippet}
-          </Icon>
-        {/snippet}
-      </TabbarLink>
-    {:else}
-      <TabbarLink
-        active={activeTab === 'tab-1'}
-        onClick={() => (activeTab = 'tab-1')}
-        label={isTabbarLabels ? 'Tab 1' : undefined}
-      />
-      <TabbarLink
-        active={activeTab === 'tab-2'}
-        onClick={() => (activeTab = 'tab-2')}
-        label={isTabbarLabels ? 'Tab 2' : undefined}
-      />
-      <TabbarLink
-        active={activeTab === 'tab-3'}
-        onClick={() => (activeTab = 'tab-3')}
-        label={isTabbarLabels ? 'Tab 3' : undefined}
-      />
-    {/if}
+    <ToolbarPane>
+      {#if isTabbarIcons}
+        <TabbarLink
+          active={activeTab === 'tab-1'}
+          onclick={() => (activeTab = 'tab-1')}
+          label={isTabbarLabels ? 'Tab 1' : undefined}
+        >
+          {#snippet icon()}
+            <Icon>
+              {#snippet ios()}
+                <EnvelopeFill class="w-7 h-7" />
+              {/snippet}
+              {#snippet material()}
+                <MdEmail class="w-6 h-6" />
+              {/snippet}
+            </Icon>
+          {/snippet}
+        </TabbarLink>
+        <TabbarLink
+          active={activeTab === 'tab-2'}
+          onclick={() => (activeTab = 'tab-2')}
+          label={isTabbarLabels ? 'Tab 2' : undefined}
+        >
+          {#snippet icon()}
+            <Icon>
+              {#snippet ios()}
+                <Calendar class="w-7 h-7" />
+              {/snippet}
+              {#snippet material()}
+                <MdToday class="w-6 h-6" />
+              {/snippet}
+            </Icon>
+          {/snippet}
+        </TabbarLink>
+        <TabbarLink
+          active={activeTab === 'tab-3'}
+          onclick={() => (activeTab = 'tab-3')}
+          label={isTabbarLabels ? 'Tab 3' : undefined}
+        >
+          {#snippet icon()}
+            <Icon>
+              {#snippet ios()}
+                <CloudUploadFill class="w-7 h-7" />
+              {/snippet}
+              {#snippet material()}
+                <MdFileUpload class="w-6 h-6" />
+              {/snippet}
+            </Icon>
+          {/snippet}
+        </TabbarLink>
+      {:else}
+        <TabbarLink
+          active={activeTab === 'tab-1'}
+          onclick={() => (activeTab = 'tab-1')}
+          label={isTabbarLabels ? 'Tab 1' : undefined}
+        />
+        <TabbarLink
+          active={activeTab === 'tab-2'}
+          onclick={() => (activeTab = 'tab-2')}
+          label={isTabbarLabels ? 'Tab 2' : undefined}
+        />
+        <TabbarLink
+          active={activeTab === 'tab-3'}
+          onclick={() => (activeTab = 'tab-3')}
+          label={isTabbarLabels ? 'Tab 3' : undefined}
+        />
+      {/if}
+    </ToolbarPane>
   </Tabbar>
 
   <List strong inset>

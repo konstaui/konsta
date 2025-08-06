@@ -10,6 +10,7 @@
     ListItem,
     Tabbar,
     TabbarLink,
+    ToolbarPane,
   } from 'konsta/svelte';
   import {
     PersonCircleFill,
@@ -48,42 +49,44 @@
   </Navbar>
 
   <Tabbar labels icons class="left-0 bottom-0 fixed">
-    <TabbarLink active label="Inbox">
-      {#snippet icon()}
-        <Icon badge="5" badgeColors={{ bg: 'bg-green-500' }}>
-          {#snippet ios()}
-            <EnvelopeFill class="w-7 h-7" />
-          {/snippet}
-          {#snippet material()}
-            <MdEmail class="w-6 h-6" />
-          {/snippet}
-        </Icon>
-      {/snippet}
-    </TabbarLink>
-    <TabbarLink label="Calendar">
-      {#snippet icon()}
-        <Icon badge="7" badgeColors={{ bg: 'bg-red-500' }}>
-          {#snippet ios()}
-            <Calendar class="w-7 h-7" />
-          {/snippet}
-          {#snippet material()}
-            <MdToday class="w-6 h-6" />
-          {/snippet}
-        </Icon>
-      {/snippet}
-    </TabbarLink>
-    <TabbarLink label="Upload">
-      {#snippet icon()}
-        <Icon badge="1" badgeColors={{ bg: 'bg-red-500' }}>
-          {#snippet ios()}
-            <CloudUploadFill class="w-7 h-7" />
-          {/snippet}
-          {#snippet material()}
-            <MdFileUpload class="w-6 h-6" />
-          {/snippet}
-        </Icon>
-      {/snippet}
-    </TabbarLink>
+    <ToolbarPane>
+      <TabbarLink active label="Inbox">
+        {#snippet icon()}
+          <Icon badge="5" badgeColors={{ bg: 'bg-green-500' }}>
+            {#snippet ios()}
+              <EnvelopeFill class="w-7 h-7" />
+            {/snippet}
+            {#snippet material()}
+              <MdEmail class="w-6 h-6" />
+            {/snippet}
+          </Icon>
+        {/snippet}
+      </TabbarLink>
+      <TabbarLink label="Calendar">
+        {#snippet icon()}
+          <Icon badge="7" badgeColors={{ bg: 'bg-red-500' }}>
+            {#snippet ios()}
+              <Calendar class="w-7 h-7" />
+            {/snippet}
+            {#snippet material()}
+              <MdToday class="w-6 h-6" />
+            {/snippet}
+          </Icon>
+        {/snippet}
+      </TabbarLink>
+      <TabbarLink label="Upload">
+        {#snippet icon()}
+          <Icon badge="1" badgeColors={{ bg: 'bg-red-500' }}>
+            {#snippet ios()}
+              <CloudUploadFill class="w-7 h-7" />
+            {/snippet}
+            {#snippet material()}
+              <MdFileUpload class="w-6 h-6" />
+            {/snippet}
+          </Icon>
+        {/snippet}
+      </TabbarLink>
+    </ToolbarPane>
   </Tabbar>
   <List strong inset>
     <ListItem title="Foo Bar">

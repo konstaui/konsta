@@ -5,6 +5,7 @@
   import { FabClasses } from '../../shared/classes/FabClasses.js';
   import { FabColors } from '../../shared/colors/FabColors.js';
   import { printText } from '../shared/print-text.js';
+  import Glass from './Glass.svelte';
 
   let {
     class: className,
@@ -39,74 +40,38 @@
   );
 </script>
 
-{#if typeof component === 'string'}
-  <svelte:element
-    this={component}
-    class={text ? c.base.withText : c.base.iconOnly}
-    {href}
-    bind:this={rippleEl}
-    role="button"
-    tabindex="0"
-    onclick={onClick || onclick}
-    {...restProps}
-  >
-    {#if text && textPosition === 'before'}
-      <span class={c.text}>
-        {#if typeof text !== 'function'}
-          {printText(text)}
-        {:else}
-          {@render text?.()}
-        {/if}
-      </span>
-    {/if}
-    {#if icon}
-      <span class={c.icon}>
-        {@render icon?.()}
-      </span>
-    {/if}
-    {#if text && textPosition === 'after'}
-      <span class={c.text}>
-        {#if typeof text !== 'function'}
-          {printText(text)}
-        {:else}
-          {@render text?.()}
-        {/if}
-      </span>
-    {/if}
-    {@render children?.()}
-  </svelte:element>
-{:else}
-  {@const Component = component}
-  <Component
-    class={text ? c.base.withText : c.base.iconOnly}
-    {href}
-    bind:this={rippleEl}
-    onclick={onClick || onclick}
-    {...restProps}
-  >
-    {#if text && textPosition === 'before'}
-      <span class={c.text}>
-        {#if typeof text !== 'function'}
-          {printText(text)}
-        {:else}
-          {@render text?.()}
-        {/if}
-      </span>
-    {/if}
-    {#if icon}
-      <span class={c.icon}>
-        {@render icon?.()}
-      </span>
-    {/if}
-    {#if text && textPosition === 'after'}
-      <span class={c.text}>
-        {#if typeof text !== 'function'}
-          {printText(text)}
-        {:else}
-          {@render text?.()}
-        {/if}
-      </span>
-    {/if}
-    {@render children?.()}
-  </Component>
-{/if}
+<Glass
+  {component}
+  class={text ? c.base.withText : c.base.iconOnly}
+  {href}
+  bind:this={rippleEl}
+  role="button"
+  tabindex="0"
+  onclick={onClick || onclick}
+  {...restProps}
+>
+  {#if text && textPosition === 'before'}
+    <span class={c.text}>
+      {#if typeof text !== 'function'}
+        {printText(text)}
+      {:else}
+        {@render text?.()}
+      {/if}
+    </span>
+  {/if}
+  {#if icon}
+    <span class={c.icon}>
+      {@render icon?.()}
+    </span>
+  {/if}
+  {#if text && textPosition === 'after'}
+    <span class={c.text}>
+      {#if typeof text !== 'function'}
+        {printText(text)}
+      {:else}
+        {@render text?.()}
+      {/if}
+    </span>
+  {/if}
+  {@render children?.()}
+</Glass>

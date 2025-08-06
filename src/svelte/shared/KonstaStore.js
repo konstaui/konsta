@@ -2,7 +2,7 @@
 import { writable } from 'svelte/store';
 
 const KonstaStore = writable({
-  theme: 'material',
+  theme: 'ios',
   dark: true,
   touchRipple: true,
 });
