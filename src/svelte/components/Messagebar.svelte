@@ -17,7 +17,7 @@
     name = undefined,
 
     placeholder = 'Message',
-    value = undefined,
+    value = $bindable(undefined),
     outline = false,
     leftClass = '',
     rightClass = '',
@@ -104,7 +104,7 @@
         class={c.messagebarInput}
         {placeholder}
         {name}
-        {value}
+        bind:value
         {size}
         {disabled}
         oninput={onInputInternal}

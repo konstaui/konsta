@@ -33,7 +33,7 @@
     inputClass = '',
 
     name = undefined,
-    value = undefined,
+    value = $bindable(undefined),
     type = 'text',
     inputmode = undefined,
     readonly = undefined,
@@ -131,6 +131,7 @@
   };
 
   const onInputInternal = (e) => {
+    value = e.target.value;
     if (onInput) onInput(e);
     if (oninput) oninput(e);
   };

@@ -14,7 +14,7 @@
     material = undefined,
 
     component = 'label',
-    checked = false,
+    checked = $bindable(false),
     indeterminate = false,
     name = undefined,
     value = undefined,
@@ -68,7 +68,7 @@
     {value}
     {disabled}
     {readonly}
-    {checked}
+    bind:checked
     onchange={onChange || onchange}
     class={c.input}
   />

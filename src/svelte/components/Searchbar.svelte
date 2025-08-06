@@ -21,7 +21,7 @@
     component = 'div',
 
     placeholder = 'Search',
-    value = undefined,
+    value = $bindable(undefined),
     inputId = undefined,
     inputStyle = undefined,
 
@@ -141,7 +141,7 @@
       type="text"
       name="search"
       {placeholder}
-      {value}
+      bind:value
       oninput={handleInput}
       onchange={handleChange}
       onfocus={handleFocus}

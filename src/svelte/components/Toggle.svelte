@@ -12,7 +12,7 @@
     colors: colorsProp,
     ios = undefined,
     material = undefined,
-    checked = false,
+    checked = $bindable(false),
     name = undefined,
     value = undefined,
     disabled = false,
@@ -62,7 +62,7 @@
     {value}
     {disabled}
     {readonly}
-    {checked}
+    bind:checked
     onchange={onChange || onchange}
     class={c.input}
   />

@@ -15,7 +15,7 @@
 
     inputId = undefined,
     name = undefined,
-    value = undefined,
+    value = $bindable(undefined),
     readonly = undefined,
     disabled = undefined,
     step = 1,
@@ -106,7 +106,7 @@
     {min}
     {max}
     {step}
-    {value}
+    bind:value
     {readonly}
     {disabled}
     oninput={onInput || oninput}
