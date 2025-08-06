@@ -1,7 +1,8 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-/* eslint no-console: "off" */
-const fs = require('fs-extra');
-const path = require('path');
+import fs from 'fs-extra';
+import path from 'path';
+import { getDirname } from './get-dirname.js';
+
+const __dirname = getDirname(import.meta.url);
 
 const componentSvelteElementInheritance = {
   Button: 'HTMLButtonAttributes',
@@ -164,7 +165,7 @@ export default ${componentName};
   `.trim();
 };
 
-module.exports = async (outputDir = 'package') => {
+export default async (outputDir = 'package') => {
   // Types
   let typesContent = fs.readFileSync(
     path.resolve(__dirname, '../src/svelte/konsta-svelte.d.ts'),
@@ -180,6 +181,9 @@ module.exports = async (outputDir = 'package') => {
     const componentName = fileName.split('.d.ts')[0];
     components.push(componentName);
     const componentTypes = createComponentTypes(componentName, propsContent);
+    if (!fs.existsSync(path.resolve(outputDir, 'svelte', 'types'))) {
+      fs.mkdirSync(path.resolve(outputDir, 'svelte', 'types'));
+    }
     fs.writeFileSync(
       path.resolve(outputDir, 'svelte', 'types', fileName),
       componentTypes

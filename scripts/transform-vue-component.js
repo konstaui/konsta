@@ -1,14 +1,13 @@
-const fs = require('fs');
-// eslint-disable-next-line
-const compilerSFC = require('@vue/compiler-sfc');
+import fs from 'fs';
+import { parse, compileTemplate } from '@vue/compiler-sfc';
 
 const transformVueComponent = (inputFile, outputFile) => {
   const src = fs.readFileSync(inputFile, 'utf-8');
-  const { descriptor } = compilerSFC.parse(src);
+  const { descriptor } = parse(src);
   let templateCode = '';
   let scriptContent = descriptor.script.content;
   if (descriptor.template) {
-    templateCode = compilerSFC.compileTemplate({
+    templateCode = compileTemplate({
       source: descriptor.template.content,
     }).code;
     templateCode = templateCode.replace(
@@ -24,4 +23,4 @@ const transformVueComponent = (inputFile, outputFile) => {
   fs.writeFileSync(outputFile, content);
 };
 
-module.exports = transformVueComponent;
+export default transformVueComponent;

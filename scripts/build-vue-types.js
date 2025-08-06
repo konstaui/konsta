@@ -1,7 +1,8 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-/* eslint no-console: "off" */
-const fs = require('fs-extra');
-const path = require('path');
+import fs from 'fs-extra';
+import path from 'path';
+import { getDirname } from './get-dirname.js';
+
+const __dirname = getDirname(import.meta.url);
 
 const createComponentTypes = (componentName, propsContent) => {
   propsContent = propsContent.replace(
@@ -176,7 +177,7 @@ export default ${componentName};
   `.trim();
 };
 
-module.exports = async (outputDir = 'package') => {
+export default async (outputDir = 'package') => {
   let typesContent = fs.readFileSync(
     path.resolve(__dirname, '../src/vue/konsta-vue.d.ts'),
     'utf-8'
@@ -191,6 +192,9 @@ module.exports = async (outputDir = 'package') => {
     const componentName = fileName.split('.d.ts')[0];
     components.push(componentName);
     const componentTypes = createComponentTypes(componentName, propsContent);
+    if (!fs.existsSync(path.resolve(outputDir, 'vue', 'types'))) {
+      fs.mkdirSync(path.resolve(outputDir, 'vue', 'types'));
+    }
     fs.writeFileSync(
       path.resolve(outputDir, 'vue', 'types', fileName),
       componentTypes

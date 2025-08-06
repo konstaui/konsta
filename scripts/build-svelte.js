@@ -1,10 +1,12 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-/* eslint no-console: "off" */
-const fs = require('fs-extra');
-const path = require('path');
-const bannerSvelte = require('./banner.js')('Svelte');
+import fs from 'fs-extra';
+import path from 'path';
+import banner from './banner.js';
+import { getDirname } from './get-dirname.js';
 
-module.exports = async (outputDir = 'package') => {
+const __dirname = getDirname(import.meta.url);
+const bannerSvelte = banner('Svelte');
+
+export default async (outputDir = 'package') => {
   // Copy files
   const dirsToCopy = [
     'svelte/components',

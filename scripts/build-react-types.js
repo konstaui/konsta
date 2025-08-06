@@ -1,7 +1,8 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-/* eslint no-console: "off" */
-const fs = require('fs-extra');
-const path = require('path');
+import fs from 'fs-extra';
+import path from 'path';
+import { getDirname } from './get-dirname.js';
+
+const __dirname = getDirname(import.meta.url);
 
 const createComponentTypes = (componentName, propsContent) => {
   propsContent = propsContent.replace(
@@ -13,18 +14,17 @@ import * as React from 'react';
 
 ${propsContent}
 
-interface ${componentName}Props {}
-export interface Props extends Omit<React.HTMLAttributes<HTMLElement>, keyof Props> {}
+interface ${componentName}Props extends Omit<React.HTMLAttributes<HTMLElement>, keyof Props>, Props {
+  ref?: React.Ref<HTMLElement>;
+}
 
-interface ${componentName}Props extends Props {}
-
-declare const ${componentName}: React.FunctionComponent<${componentName}Props>;
+declare const ${componentName}: React.ComponentType<${componentName}Props>;
 
 export default ${componentName};
   `.trim();
 };
 
-module.exports = async (outputDir = 'package') => {
+export default async (outputDir = 'package') => {
   // Types
   let typesContent = fs.readFileSync(
     path.resolve(__dirname, '../src/react/konsta-react.d.ts'),
@@ -40,6 +40,9 @@ module.exports = async (outputDir = 'package') => {
     const componentName = fileName.split('.d.ts')[0];
     components.push(componentName);
     const componentTypes = createComponentTypes(componentName, propsContent);
+    if (!fs.existsSync(path.resolve(outputDir, 'react', 'types'))) {
+      fs.mkdirSync(path.resolve(outputDir, 'react', 'types'));
+    }
     fs.writeFileSync(
       path.resolve(outputDir, 'react', 'types', fileName),
       componentTypes

@@ -1,6 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+import fs from 'fs';
+import path from 'path';
+import https from 'https';
+import { getDirname } from './get-dirname.js';
+
+const __dirname = getDirname(import.meta.url);
 
 const getSponsors = () => {
   return new Promise((resolve, reject) => {

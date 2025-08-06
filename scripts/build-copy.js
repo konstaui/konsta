@@ -1,18 +1,16 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-/* eslint no-console: "off" */
-const fs = require('fs');
+import fs from 'fs';
 
 async function buildCopy(cb) {
   const env = process.env.NODE_ENV || 'development';
   const outputDir = env === 'development' ? 'build' : 'package';
-  if (!fs.existsSync(`./${outputDir}/config/`)) {
-    fs.mkdirSync(`./${outputDir}/config/`);
-  }
-  fs.readdirSync('./src/config').forEach((f) => {
-    fs.copyFileSync(`./src/config/${f}`, `./${outputDir}/config/${f}`);
+  fs.cpSync('./src/color-utils', `${outputDir}/color-utils`, {
+    recursive: true,
   });
-  fs.copyFileSync(`./src/config.js`, `./${outputDir}/config.js`);
+  fs.cpSync('./src/styles', `${outputDir}/styles`, { recursive: true });
+
+  fs.copyFileSync(`./src/plugin-colors.js`, `./${outputDir}/plugin-colors.js`);
+  fs.copyFileSync(`./src/theme.css`, `./${outputDir}/theme.css`);
   if (cb) cb();
 }
 
-module.exports = buildCopy;
+export default buildCopy;

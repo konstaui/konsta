@@ -1,16 +1,15 @@
 {
   "name": "konsta/react",
   "private": true,
-  "main": "./cjs/konsta-react.js",
-  "jsnext:main": "./esm/konsta-react.js",
-  "module": "./esm/konsta-react.js",
+  "main": "./konsta-react.js",
+  "jsnext:main": "./konsta-react.js",
+  "module": "./konsta-react.js",
   "types": "./konsta-react.d.ts",
   "type": "module",
   "exports": {
     ".": {
       "types": "./konsta-react.d.ts",
-      "import": "./esm/konsta-react.js",
-      "require": "./cjs/konsta-react.js"
+      "import": "./konsta-react.js"
     }
   }
 }

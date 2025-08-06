@@ -1,4 +1,12 @@
-const pkg = require('../package.json');
+import fs from 'fs';
+import path from 'path';
+import { getDirname } from './get-dirname.js';
+
+const __dirname = getDirname(import.meta.url);
+
+const pkg = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8')
+);
 
 const date = {
   day: new Date().getDate(),
@@ -9,7 +17,7 @@ const date = {
   year: new Date().getFullYear(),
 };
 
-module.exports = (name = null) =>
+export default (name = null) =>
   `${`
 /**
  * Konsta UI ${name ? `${name} ` : ''}${pkg.version}

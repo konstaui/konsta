@@ -1,58 +1,32 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-/* eslint no-console: "off" */
-const { promise: exec } = require('exec-sh');
-const fs = require('fs-extra');
-const path = require('path');
-const bannerReact = require('./banner.js')('React');
+import exec from 'exec-sh';
+import fs from 'fs-extra';
+import banner from './banner.js';
 
-module.exports = async (format, outputDir = 'package') => {
+const bannerReact = banner('React');
+
+export default async (outputDir = 'package') => {
   // Babel
-  await exec(
-    `cross-env MODULES=${format} npx babel --config-file ./babel.config.react.js src/react --out-dir ${outputDir}/react/${format}`
+  await exec.promise(
+    `cross-env MODULES=esm npx babel --config-file ./babel.config.react.js src/react --out-dir ${outputDir}/react`
   );
 
   // Fix import paths
   let fileContent = await fs.readFile(
-    `./${outputDir}/react/${format}/konsta-react.js`,
+    `./${outputDir}/react/konsta-react.js`,
     'utf-8'
   );
   fileContent = fileContent.replace(/\.jsx/g, '.js');
   fileContent = `${bannerReact}\n${fileContent}`;
-  await fs.writeFile(
-    `./${outputDir}/react/${format}/konsta-react.js`,
-    fileContent
-  );
-
-  // Fix global shared paths
-  const dirsWithShared = [
-    `react/${format}/components`,
-    `react/${format}/shared`,
-  ];
-  dirsWithShared.forEach((dirPath) => {
-    const dirFullPath = path.resolve(__dirname, `../${outputDir}`, dirPath);
-    fs.readdirSync(dirFullPath).forEach((f) => {
-      if (fs.lstatSync(path.resolve(dirFullPath, f)).isDirectory()) return;
-      if (f.includes('package.json')) return;
-      // eslint-disable-next-line
-      let fileContent = fs.readFileSync(path.resolve(dirFullPath, f), 'utf-8');
-      fileContent = fileContent.replace(
-        /..\/..\/shared\//g,
-        `../../../shared/${format}/`
-      );
-      fs.writeFileSync(path.resolve(dirFullPath, f), fileContent);
-    });
-  });
+  await fs.writeFile(`./${outputDir}/react/konsta-react.js`, fileContent);
 
   // .jsx -> .js
-  fs.readdirSync(`./${outputDir}/react/${format}/components/`)
+  fs.readdirSync(`./${outputDir}/react/components/`)
     .filter(
       (file) =>
-        !fs
-          .lstatSync(`./${outputDir}/react/${format}/components/${file}`)
-          .isDirectory()
+        !fs.lstatSync(`./${outputDir}/react/components/${file}`).isDirectory()
     )
     .forEach((file) => {
-      const filePath = `./${outputDir}/react/${format}/components/${file}`;
+      const filePath = `./${outputDir}/react/components/${file}`;
       const content = fs
         .readFileSync(filePath, 'utf-8')
         .replace(/\.jsx/g, '.js');

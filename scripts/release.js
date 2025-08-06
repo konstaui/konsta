@@ -1,10 +1,18 @@
 /* eslint-disable no-await-in-loop */
-const exec = require('exec-sh');
-const inquirer = require('inquirer');
-const fs = require('fs');
-const path = require('path');
-const pkg = require('../package.json');
-const childPkg = require('../package/package.json');
+import exec from 'exec-sh';
+import inquirer from 'inquirer';
+import fs from 'fs';
+import path from 'path';
+import { getDirname } from './get-dirname.js';
+
+const __dirname = getDirname(import.meta.url);
+
+const pkg = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8')
+);
+const childPkg = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../package/package.json'), 'utf-8')
+);
 
 async function release() {
   const date = new Date();
