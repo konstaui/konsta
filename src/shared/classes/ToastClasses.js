@@ -28,8 +28,8 @@ export const ToastClasses = (props, colors, baseClassName) => {
     },
     content: {
       common: 'flex items-center justify-between',
-      ios: 'pl-safe-4 pr-safe-4 pt-3 pb-safe-3 sm:px-4 sm:py-3',
-      material: 'pl-safe-6 pr-safe-6 py-3.5 pb-safe-3.5 sm:px-6 sm:py-3.5',
+      ios: 'pl-4 pr-4 pt-3 pb-3 sm:px-4 sm:py-3',
+      material: 'pl-6 pr-6 py-3.5 pb-3.5 sm:px-6 sm:py-3.5',
     },
     button: {
       common: '-my-2 shrink-0 ms-4',

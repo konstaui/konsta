@@ -71,7 +71,9 @@
         : insetMaterial
       : inset
   );
-  setContext('ListDividersContext', () => ({ value: hasDividers }));
+  setContext('ListContext', () => ({
+    value: { dividers: hasDividers, nested },
+  }));
 
   const colors = $derived(ListColors(colorsProp, dark));
 

@@ -5,7 +5,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useTouchRipple } from '../shared/use-touch-ripple.js';
 import { ListButtonClasses } from '../../shared/classes/ListButtonClasses.js';
 import { ListButtonColors } from '../../shared/colors/ListButtonColors.js';
-import { useListDividers } from '../shared/use-list-dividers.js';
+import { useList } from '../shared/use-list.js';
 
 const ListButton = (props) => {
   const {
@@ -38,7 +38,8 @@ const ListButton = (props) => {
 
   const elRef = useRef(null);
   const rippleElRef = useRef(null);
-  const dividers = useListDividers();
+  const listContext = useList();
+  const dividers = listContext?.dividers;
 
   const Component = component;
 

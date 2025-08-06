@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import List from './List.jsx';
+import { useList } from '../shared/use-list.js';
+import { ListContext } from '../shared/ListContext.js';
 
 const ListGroup = (props) => {
   const {
@@ -16,6 +18,8 @@ const ListGroup = (props) => {
     ...rest,
   };
 
+  const listContext = useList();
+
   return (
     <li
       ref={(el) => {
@@ -25,7 +29,11 @@ const ListGroup = (props) => {
       }}
     >
       <List nested {...attrs}>
-        {children}
+        <ListContext.Provider
+          value={{ nested: false, dividers: listContext?.dividers }}
+        >
+          {children}
+        </ListContext.Provider>
       </List>
     </li>
   );

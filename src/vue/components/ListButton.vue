@@ -57,8 +57,8 @@
       const rippleElRef = ref(null);
       useTouchRipple(rippleElRef, props, { context });
 
-      const ListDividersContext = inject('ListDividersContext', {
-        value: false,
+      const ListContext = inject('ListContext', {
+        value: { dividers: false, nested: false },
       });
 
       const colors = computed(() =>
@@ -67,7 +67,7 @@
 
       const c = useThemeClasses(props, () =>
         ListButtonClasses(
-          { ...props, dividers: ListDividersContext.value },
+          { ...props, dividers: ListContext.value.dividers },
           colors.value,
           ctx.attrs.class
         )

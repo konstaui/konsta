@@ -212,9 +212,10 @@
         () => props.strongTitle === 'auto' && isMediaItem.value
       );
 
-      const ListDividersContext = inject('ListDividersContext', {
-        value: false,
+      const ListContext = inject('ListContext', {
+        value: { dividers: false, nested: false },
       });
+      console.log(ListContext.value);
 
       const c = useThemeClasses(props, () =>
         ListItemClasses(
@@ -222,7 +223,7 @@
             ...props,
             dividers:
               typeof props.dividers === 'undefined'
-                ? ListDividersContext.value
+                ? ListContext.value.dividers
                 : props.dividers,
             contacts:
               typeof props.contacts === 'undefined' ? '' : props.contacts,
@@ -236,6 +237,7 @@
             isMenuListItemActive: isMenuListItemActive.value,
             darkClasses: useDarkClasses,
             autoStrongTitle: autoStrongTitle.value,
+            nested: ListContext.value.nested,
           },
           ctx.attrs.class
         )

@@ -4,7 +4,7 @@ export const CardClasses = (props, colors, baseClassName) => {
   const { headerDivider, footerDivider, contentWrapPadding } = props;
   return {
     base: {
-      common: cls(`k-card overflow-hidden m-4`, baseClassName),
+      common: cls(`k-card overflow-hidden my-4 mx-safe-4`, baseClassName),
       ios: cls('rounded-3xl', colors.bgIos, colors.textIos),
       material: cls('rounded-2xl', colors.bgMaterial, colors.textMaterial),
       plain: '',

@@ -77,8 +77,11 @@
     if (onclick) onclick(e);
   };
 
-  const ListDividersContext =
-    getContext('ListDividersContext') || (() => ({ value: false }));
+  const ListContext =
+    getContext('ListContext') ||
+    (() => ({
+      value: { dividers: false, nested: false },
+    }));
 
   let el = $state(null);
   export { el };
@@ -151,7 +154,7 @@
           menuListItem,
           dividers:
             typeof dividers === 'undefined'
-              ? ListDividersContext().value
+              ? ListContext().value.dividers
               : dividers,
           mediaClass,
           innerClass,
@@ -171,6 +174,7 @@
           isMenuListItemActive,
           darkClasses: dark,
           autoStrongTitle,
+          nested: ListContext().value.nested,
         }
       ),
       className

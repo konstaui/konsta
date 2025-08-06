@@ -5,7 +5,7 @@ import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { ListColors } from '../../shared/colors/ListColors.js';
-import { ListDividersContext } from '../shared/ListDividersContext.js';
+import { ListContext } from '../shared/ListContext.js';
 import { getThemeSpecificProps } from '../shared/get-theme-specific-props.js';
 
 const List = (props) => {
@@ -105,7 +105,7 @@ const List = (props) => {
   );
 
   return (
-    <ListDividersContext.Provider value={hasDividers}>
+    <ListContext.Provider value={{ nested, dividers: hasDividers }}>
       <Component
         ref={(el) => {
           elRef.current = el;
@@ -117,7 +117,7 @@ const List = (props) => {
       >
         <ul className={c.ul}>{children}</ul>
       </Component>
-    </ListDividersContext.Provider>
+    </ListContext.Provider>
   );
 };
 

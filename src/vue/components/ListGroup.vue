@@ -1,17 +1,20 @@
 <template>
   <li>
     <k-list nested v-bind="props">
-      <slot />
+      <k-list-group-inner>
+        <slot />
+      </k-list-group-inner>
     </k-list>
   </li>
 </template>
 <script>
   import kList from './List.vue';
-
+  import kListGroupInner from './ListGroupInner.vue';
   export default {
     name: 'k-list-group',
     components: {
       kList,
+      kListGroupInner,
     },
     props: {
       dividers: { type: Boolean, default: undefined },

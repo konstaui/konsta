@@ -10,6 +10,7 @@ export const ListItemClasses = (
     needsTouchRipple,
     isMenuListItemActive,
     autoStrongTitle,
+    nested,
   },
   baseClassName
 ) => {
@@ -41,7 +42,8 @@ export const ListItemClasses = (
     itemContent: {
       common: cls(`flex items-center ${contentClassName || contentClass}`),
       ios: cls(
-        !menuListItem && cls(colors.primaryTextIos, 'ps-safe-4'),
+        !menuListItem &&
+          cls(colors.primaryTextIos, nested ? 'ps-4' : 'ps-safe-4'),
         menuListItem && 'rounded-2xl ml-safe-2 mr-safe-2 ps-2'
       ),
       material: cls(

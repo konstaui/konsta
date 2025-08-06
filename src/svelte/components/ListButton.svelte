@@ -28,8 +28,8 @@
     ...restProps
   } = $props();
 
-  const ListDividersContext =
-    getContext('ListDividersContext') || (() => ({ value: false }));
+  const ListContext =
+    getContext('ListContext') || (() => ({ value: { dividers: false } }));
 
   let el = $state(null);
   export { el };
@@ -49,7 +49,7 @@
     useThemeClasses(
       { ios, material },
       ListButtonClasses(
-        { dividers: ListDividersContext().value },
+        { dividers: ListContext().value.dividers },
         colors,
         theme
       ),

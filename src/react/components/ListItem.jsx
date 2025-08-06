@@ -7,7 +7,7 @@ import ChevronIcon from './icons/ChevronIcon.jsx';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
 import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
 import { ListItemColors } from '../../shared/colors/ListItemColors.js';
-import { useListDividers } from '../shared/use-list-dividers.js';
+import { useList } from '../shared/use-list.js';
 
 const ListItem = (props) => {
   const {
@@ -79,8 +79,10 @@ const ListItem = (props) => {
     ...rest,
   };
 
+  const listContext = useList();
+
   const dividers =
-    typeof dividersProp === 'undefined' ? useListDividers() : dividersProp;
+    typeof dividersProp === 'undefined' ? listContext?.dividers : dividersProp;
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
@@ -152,6 +154,7 @@ const ListItem = (props) => {
         isMenuListItemActive,
         darkClasses: dark,
         autoStrongTitle,
+        nested: listContext?.nested,
       }
     ),
     className

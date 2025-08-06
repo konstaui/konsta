@@ -89,7 +89,7 @@ export const NavbarClasses = (props, colors, baseClassName) => {
     },
     titleContainer: {
       common: cls(
-        'flex items-center px-4 relative',
+        'flex items-center px-safe-4 relative',
         (large || medium) && 'pointer-events-auto'
       ),
       ios: cls(

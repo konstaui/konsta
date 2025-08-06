@@ -82,9 +82,12 @@
             : props.insetMaterial
           : props.inset
       );
-      const ListDividersContext = computed(() => hasDividers.value);
+      const ListContext = computed(() => ({
+        dividers: hasDividers.value,
+        nested: props.nested,
+      }));
 
-      provide('ListDividersContext', ListDividersContext);
+      provide('ListContext', ListContext);
 
       const colors = computed(() =>
         ListColors(props.colors || {}, useDarkClasses)

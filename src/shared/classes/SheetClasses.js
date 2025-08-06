@@ -4,7 +4,7 @@ export const SheetClasses = (props, colors, baseClassName) => {
   return {
     base: {
       common: cls(
-        'k-sheet left-0 top-full transition-transform duration-400 z-40 overflow-hidden fixed',
+        'k-sheet left-safe right-safe top-full transition-transform duration-400 z-40 overflow-hidden fixed [&>*]:no-safe-areas-left [&>*]:no-safe-areas-right',
         baseClassName
       ),
       ios: cls('rounded-t-4xl', colors.bgIos),
