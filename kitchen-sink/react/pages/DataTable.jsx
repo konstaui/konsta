@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Page,
+  Block,
   Navbar,
   NavbarBackLink,
   BlockTitle,
@@ -21,7 +22,7 @@ export default function DataTablePage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
       <BlockTitle>Plain table</BlockTitle>
-      <div className="block overflow-x-auto mt-8">
+      <Block className="overflow-x-auto !pl-safe !pr-safe">
         <Table>
           <TableHead>
             <TableRow header>
@@ -71,9 +72,9 @@ export default function DataTablePage() {
             </TableRow>
           </TableBody>
         </Table>
-      </div>
+      </Block>
       <BlockTitle>Within card</BlockTitle>
-      <Card className="block overflow-x-auto mt-8" contentWrap={false}>
+      <Card className="overflow-x-auto" contentWrap={false}>
         <Table>
           <TableHead>
             <TableRow header>

@@ -22,8 +22,13 @@ interface Props {
    *
    * @default true
    */
-  touchRipple?: boolean;
-
+  materialTouchRipple?: boolean;
+  /**
+   * Enables touch highlight effect in iOS theme. Allows to globally disable touch highlight for all components
+   *
+   * @default true
+   */
+  iosHoverHighlight?: boolean;
   /**
    * Adds `safe-areas` class to the container. Should be enabled if app container is the full screen element to properly handle screen safe areas
    *

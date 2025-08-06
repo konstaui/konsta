@@ -4,7 +4,7 @@
     v-if="theme === 'ios'"
     :component="component"
     :class="classes"
-    :hoverable="false"
+    :highlight="false"
   >
     <slot />
   </k-glass>

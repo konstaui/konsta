@@ -28,33 +28,33 @@
 
   <!-- Right Top -->
   <Fab
-    class="fixed right-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-red"
+    class="fixed right-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-red"
   >
     {#snippet icon()}
-      <PlusIcon />
+      <PlusIcon class="size-6" />
     {/snippet}
   </Fab>
 
   <!-- Right Bottom -->
   <Fab class="fixed right-safe-4 bottom-safe-4 z-20">
     {#snippet icon()}
-      <PlusIcon />
+      <PlusIcon class="size-6" />
     {/snippet}
   </Fab>
 
   <!-- Left Bottom -->
   <Fab class="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green">
     {#snippet icon()}
-      <PlusIcon />
+      <PlusIcon class="size-6" />
     {/snippet}
   </Fab>
 
   <!-- Left Top -->
   <Fab
-    class="fixed left-safe-4 ios:top-safe-15 material:top-safe-18 z-20 k-color-brand-yellow"
+    class="fixed left-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-yellow"
   >
     {#snippet icon()}
-      <PlusIcon />
+      <PlusIcon class="size-6" />
     {/snippet}
   </Fab>
 
@@ -63,7 +63,7 @@
     class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
   >
     {#snippet icon()}
-      <PlusIcon />
+      <PlusIcon class="size-6" />
     {/snippet}
   </Fab>
 
@@ -74,11 +74,11 @@
     textPosition="after"
   >
     {#snippet icon()}
-      <PlusIcon />
+      <PlusIcon class="size-6" />
     {/snippet}
   </Fab>
 
-  <Block class="space-y-4">
+  <Block strong inset class="space-y-4">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quo rem
       beatae, delectus eligendi est saepe molestias perferendis suscipit,
@@ -108,7 +108,7 @@
       ipsum alias.
     </p>
   </Block>
-  <Block class="space-y-4">
+  <Block strong inset class="space-y-4">
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa ipsa
       debitis sed nihil eaque dolore cum iste quibusdam, accusamus doloribus,

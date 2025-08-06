@@ -61,7 +61,7 @@
   </Navbar>
 
   <BlockTitle>Inline</BlockTitle>
-  <Block strongIos outlineIos>
+  <Block strong inset>
     <p>
       Lorem{' '}
       <Checkbox
@@ -81,7 +81,7 @@
   </Block>
 
   <BlockTitle>Checkbox Group</BlockTitle>
-  <List strongIos outlineIos>
+  <List strong inset>
     <ListItem label title="Books">
       {#snippet media()}
         <Checkbox
@@ -125,7 +125,7 @@
   </List>
 
   <BlockTitle>Indeterminate State</BlockTitle>
-  <List strongIos outlineIos>
+  <List strong inset>
     <ListItem label title="Movies" name="demo-checkbox">
       {#snippet media()}
         <Checkbox
@@ -160,7 +160,7 @@
   </List>
 
   <BlockTitle>With Media Lists</BlockTitle>
-  <List strongIos outlineIos>
+  <List strong inset>
     <ListItem
       label
       title="Facebook"

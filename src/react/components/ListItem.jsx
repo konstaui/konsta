@@ -61,8 +61,6 @@ const ListItem = (props) => {
     ios,
     material,
 
-    touchRipple = true,
-
     // Children
     children,
 
@@ -112,8 +110,7 @@ const ListItem = (props) => {
   const isLink = !!href || href === '' || menuListItem || link;
   const isLabel = !!label;
 
-  const needsTouchRipple =
-    theme === 'material' && (isLabel || isLink) && touchRipple;
+  const needsTouchRipple = theme === 'material' && (isLabel || isLink);
 
   useTouchRipple(rippleElRef, needsTouchRipple);
 

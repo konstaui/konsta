@@ -54,7 +54,7 @@
       <DialogButton onclick={() => (basicOpened = false)}>
         Action 2
       </DialogButton>
-      <DialogButton onclick={() => (basicOpened = false)}>
+      <DialogButton strong onclick={() => (basicOpened = false)}>
         Action 1
       </DialogButton>
     {/snippet}
@@ -65,7 +65,9 @@
     {/snippet}
     Hello world!
     {#snippet buttons()}
-      <DialogButton onclick={() => (alertOpened = false)}>Ok</DialogButton>
+      <DialogButton strong onclick={() => (alertOpened = false)}
+        >Ok</DialogButton
+      >
     {/snippet}
   </Dialog>
   <Dialog
@@ -120,7 +122,9 @@
       </ListItem>
     </List>
     {#snippet buttons()}
-      <DialogButton onclick={() => (listOpened = false)}>Confirm</DialogButton>
+      <DialogButton strong onclick={() => (listOpened = false)}
+        >Confirm</DialogButton
+      >
     {/snippet}
   </Dialog>
 </Page>

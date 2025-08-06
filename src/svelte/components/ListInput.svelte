@@ -75,6 +75,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const theme = $derived(useTheme({ ios, material }));
 
   const isOutline = $derived(
@@ -180,6 +183,7 @@
 </script>
 
 <ListItem
+  bind:this={el}
   {component}
   class={c.base}
   title={undefined}
@@ -220,7 +224,7 @@
       {#if typeof input === 'function'}
         {@render input()}
       {:else}
-        <!-- svelte-ignore a11y-autofocus -->
+        <!-- svelte-ignore a11y_autofocus -->
         {#if type === 'select'}
           <svelte:element
             this={InputComponent}

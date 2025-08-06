@@ -22,20 +22,21 @@
     readonly = false,
     onChange = undefined,
     onchange = undefined,
-    touchRipple = true,
 
     children,
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   let inputEl = $state(null);
-  let rippleEl = $state(null);
 
   const dark = useDarkClasses();
 
   useTouchRipple(
-    () => rippleEl,
-    () => touchRipple
+    () => el,
+    () => true
   );
 
   const colors = $derived(CheckboxColors(colorsProp, dark));
@@ -59,12 +60,7 @@
   $effect(() => watchIndeterminate(indeterminate));
 </script>
 
-<svelte:element
-  this={component}
-  bind:this={rippleEl}
-  class={c.base}
-  {...restProps}
->
+<svelte:element this={component} bind:this={el} class={c.base} {...restProps}>
   <input
     bind:this={inputEl}
     type="checkbox"

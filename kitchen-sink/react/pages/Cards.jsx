@@ -20,7 +20,7 @@ export default function CardsPage() {
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}
       />
 
-      <BlockTitle withBlock={false}>Simple Cards</BlockTitle>
+      <BlockTitle>Simple Cards</BlockTitle>
       <Card>
         This is a simple card with plain text, but cards can also contain their
         own header, footer, list view, image, or any other element.
@@ -36,7 +36,7 @@ export default function CardsPage() {
         Mauris aliquet magna justo.
       </Card>
 
-      <BlockTitle withBlock={false}>Outline Cards</BlockTitle>
+      <BlockTitle>Outline Cards</BlockTitle>
       <Card outline>
         This is a simple card with plain text, but cards can also contain their
         own header, footer, list view, image, or any other element.
@@ -52,7 +52,7 @@ export default function CardsPage() {
         Mauris aliquet magna justo.{' '}
       </Card>
 
-      <BlockTitle withBlock={false}>Outline With Dividers</BlockTitle>
+      <BlockTitle>Outline With Dividers</BlockTitle>
       <Card
         outline
         header="Card header"
@@ -65,7 +65,7 @@ export default function CardsPage() {
         actions.
       </Card>
 
-      <BlockTitle withBlock={false}>Raised Cards</BlockTitle>
+      <BlockTitle>Raised Cards</BlockTitle>
       <Card raised>
         This is a simple card with plain text, but cards can also contain their
         own header, footer, list view, image, or any other element.
@@ -81,7 +81,7 @@ export default function CardsPage() {
         Mauris aliquet magna justo.{' '}
       </Card>
 
-      <BlockTitle withBlock={false}>Card With List View</BlockTitle>
+      <BlockTitle>Card With List View</BlockTitle>
       <Card>
         <List nested className="-m-4">
           <ListItem href title="Link 1" />
@@ -92,7 +92,7 @@ export default function CardsPage() {
         </List>
       </Card>
 
-      <BlockTitle withBlock={false}>Styled Cards</BlockTitle>
+      <BlockTitle>Styled Cards</BlockTitle>
       <div className="lg:grid lg:grid-cols-2">
         <Card
           outline

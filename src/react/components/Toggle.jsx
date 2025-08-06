@@ -18,7 +18,6 @@ const Toggle = (props) => {
     disabled,
     readOnly,
     onChange,
-    touchRipple = true,
 
     ios,
     material,
@@ -45,7 +44,7 @@ const Toggle = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleTargetElRef, theme === 'material' && touchRipple, elRef);
+  useTouchRipple(rippleTargetElRef, theme === 'material', elRef);
 
   const colors = ToggleColors(colorsProp, dark);
 

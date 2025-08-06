@@ -47,8 +47,6 @@ const Stepper = (props) => {
     ios,
     material,
 
-    touchRipple = true,
-
     ref,
 
     children,
@@ -64,8 +62,8 @@ const Stepper = (props) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
 
-  useTouchRipple(buttonLeftElRef, theme === 'material' && touchRipple);
-  useTouchRipple(buttonRightElRef, theme === 'material' && touchRipple);
+  useTouchRipple(buttonLeftElRef, theme === 'material');
+  useTouchRipple(buttonRightElRef, theme === 'material');
 
   const isRounded =
     typeof rounded === 'undefined'

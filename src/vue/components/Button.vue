@@ -150,11 +150,6 @@
         default: false,
       },
 
-      touchRipple: {
-        type: Boolean,
-        default: true,
-      },
-
       disabled: {
         type: Boolean,
         default: false,

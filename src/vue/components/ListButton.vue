@@ -49,8 +49,6 @@
 
       linkComponent: { type: String, default: 'a' },
       linkProps: { type: Object, default: () => ({}) },
-
-      touchRipple: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const context = useContext();

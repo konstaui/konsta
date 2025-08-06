@@ -12,6 +12,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const c = $derived(
     useThemeClasses(
       { ios, material },
@@ -21,7 +24,7 @@
   );
 </script>
 
-<div class={c.base} {...restProps}>
+<div bind:this={el} class={c.base} {...restProps}>
   <ChevronIcon class={c.icon} />
   {@render children?.()}
 </div>

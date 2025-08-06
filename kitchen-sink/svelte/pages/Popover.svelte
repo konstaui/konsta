@@ -38,15 +38,18 @@
       </Link>
     {/snippet}
   </Navbar>
-  <Block class="space-y-4">
+  <Block strong inset class="space-y-4">
     <p>
       <Button
+        rounded
         class="popover-button"
         onclick={() => openPopover('.popover-button')}
       >
         Open popover on me
       </Button>
     </p>
+  </Block>
+  <Block strong inset class="space-y-4">
     <p>
       Mauris fermentum neque et luctus venenatis. Vivamus a sem rhoncus, ornare
       tellus eu, euismod mauris. In porta turpis at semper convallis. Duis

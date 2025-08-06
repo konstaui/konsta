@@ -105,41 +105,41 @@
   <Popover
     opened={colorPickerOpened}
     onBackdropClick={() => (colorPickerOpened = false)}
-    size="w-36"
+    class="w-auto"
     target=".home-color-picker"
   >
-    <div class="grid grid-cols-3 py-2">
+    <div class="grid grid-cols-3 py-2 ios:px-2">
       <Link
         touchRipple
-        class="overflow-hidden h-12"
+        class="overflow-hidden h-12 w-12"
         onClick={() => setColorTheme('')}
       >
         <span class="bg-brand-primary w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
-        class="overflow-hidden h-12"
+        class="overflow-hidden h-12 w-12"
         onClick={() => setColorTheme('k-color-brand-red')}
       >
         <span class="bg-brand-red w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
-        class="overflow-hidden h-12"
+        class="overflow-hidden h-12 w-12"
         onClick={() => setColorTheme('k-color-brand-green')}
       >
         <span class="bg-brand-green w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
-        class="overflow-hidden h-12"
+        class="overflow-hidden h-12 w-12"
         onClick={() => setColorTheme('k-color-brand-yellow')}
       >
         <span class="bg-brand-yellow w-6 h-6 rounded-full"></span>
       </Link>
       <Link
         touchRipple
-        class="overflow-hidden h-12"
+        class="overflow-hidden h-12 w-12"
         onClick={() => setColorTheme('k-color-brand-purple')}
       >
         <span class="bg-brand-purple w-6 h-6 rounded-full"></span>

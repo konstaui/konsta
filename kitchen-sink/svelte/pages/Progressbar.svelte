@@ -24,11 +24,11 @@
   </Navbar>
 
   <BlockTitle>Determinate Progress Bar</BlockTitle>
-  <Block strong insetMaterial outlineIos>
+  <Block strong inset>
     <div class="my-4">
       <Progressbar {progress} />
     </div>
-    <Segmented raised>
+    <Segmented strong rounded>
       <SegmentedButton
         active={progress === 0.1}
         onClick={() => (progress = 0.1)}
@@ -57,7 +57,7 @@
   </Block>
 
   <BlockTitle>Colors</BlockTitle>
-  <Block strong insetMaterial outlineIos class="space-y-4">
+  <Block strong inset class="space-y-4">
     <Progressbar class="k-color-brand-red" progress={0.25} />
     <Progressbar class="k-color-brand-green" progress={0.5} />
     <Progressbar class="k-color-brand-yellow" progress={0.75} />

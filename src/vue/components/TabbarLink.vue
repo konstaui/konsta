@@ -4,7 +4,6 @@
     :tabbar-active="active"
     :component="component"
     :colors="colors"
-    :touch-ripple="touchRipple"
     v-bind="linkProps"
   >
     <span :class="c.content">
@@ -46,7 +45,6 @@
       colors: {
         type: Object,
       },
-      touchRipple: { type: Boolean, default: true },
       linkProps: { type: Object, default: () => ({}) },
       active: {
         type: Boolean,

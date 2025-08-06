@@ -10,7 +10,8 @@ const App = (props) => {
 
     theme = 'material',
     dark = true,
-    touchRipple = true,
+    materialTouchRipple = true,
+    iosHoverHighlight = true,
     safeAreas = true,
 
     ref,
@@ -38,7 +39,8 @@ const App = (props) => {
     <KonstaProvider
       theme={currentTheme}
       dark={dark}
-      touchRipple={touchRipple}
+      materialTouchRipple={materialTouchRipple}
+      iosHoverHighlight={iosHoverHighlight}
       autoThemeDetection={false}
     >
       <Component

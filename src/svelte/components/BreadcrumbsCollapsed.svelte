@@ -13,6 +13,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(BreadcrumbsCollapsedColors(colorsProp, dark));
@@ -26,7 +29,7 @@
   );
 </script>
 
-<div class={c.base} {...restProps} role="button" tabindex="0">
+<div bind:this={el} class={c.base} {...restProps} role="button" tabindex="0">
   <span class={c.dot}></span>
   <span class={c.dot}></span>
   <span class={c.dot}></span>

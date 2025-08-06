@@ -17,6 +17,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const state = $derived(opened ? 'opened' : 'closed');
 
   const dark = useDarkClasses();
@@ -33,6 +36,6 @@
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
-<div class={c.base[state]} {...restProps}>
+<div bind:this={el} class={c.base[state]} {...restProps}>
   {@render children?.()}
 </div>

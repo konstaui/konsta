@@ -22,7 +22,7 @@ export const useTouchRipple = (elRef, needsTouchRipple, eventsElRef) => {
   };
 
   const attachEvents = () => {
-    if (!context.touchRipple) return;
+    if (!context.materialTouchRipple) return;
 
     const el = eventsElRef.current;
     el.addEventListener('pointerdown', onPointerDown);

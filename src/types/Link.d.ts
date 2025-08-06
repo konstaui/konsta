@@ -62,10 +62,4 @@ interface Props {
    * Click handler
    */
   onClick?: (e: any) => void;
-  /**
-   * Enables touch ripple effect in Material theme. If not specified, enabled by default if link is `toolbar`, `tabbar` or `navbar`
-   *
-   * @default undefined
-   */
-  touchRipple?: boolean;
 }

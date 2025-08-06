@@ -55,10 +55,12 @@
     onminus = undefined,
     onplus = undefined,
 
-    touchRipple = true,
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   let theme = $state(useTheme({ ios, material }));
 
@@ -103,11 +105,11 @@
 
   useTouchRipple(
     () => buttonLeftEl,
-    () => touchRipple
+    () => true
   );
   useTouchRipple(
     () => buttonRightEl,
-    () => touchRipple
+    () => true
   );
 
   const dark = useDarkClasses();
@@ -142,7 +144,7 @@
   const valueClasses = $derived(cls(input && c.input, c.value[style]));
 </script>
 
-<svelte:element this={component} class={classes} {...restProps}>
+<svelte:element this={component} bind:this={el} class={classes} {...restProps}>
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <span
     bind:this={buttonLeftEl}

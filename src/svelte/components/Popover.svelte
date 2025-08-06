@@ -34,6 +34,8 @@
   } = $props();
 
   let el = $state(null);
+  export { el };
+
   let angleEl = $state(null);
 
   let positions = $state({

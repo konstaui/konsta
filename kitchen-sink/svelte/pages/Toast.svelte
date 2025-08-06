@@ -31,10 +31,16 @@
     {/snippet}
   </Navbar>
 
-  <Block strongIos outlineIos class="flex flex-col gap-4">
+  <Block strong inset class="flex flex-col gap-4">
     <Toast position="left" opened={toastLeftOpened}>
       {#snippet button()}
-        <Button clear inline onClick={() => (toastLeftOpened = false)}>
+        <Button
+          clear
+          inline
+          small
+          rounded
+          onClick={() => (toastLeftOpened = false)}
+        >
           Close
         </Button>
       {/snippet}
@@ -42,7 +48,13 @@
     </Toast>
     <Toast position="center" opened={toastCenterOpened}>
       {#snippet button()}
-        <Button clear inline onClick={() => (toastCenterOpened = false)}>
+        <Button
+          clear
+          inline
+          small
+          rounded
+          onClick={() => (toastCenterOpened = false)}
+        >
           Close
         </Button>
       {/snippet}
@@ -50,7 +62,13 @@
     </Toast>
     <Toast position="right" opened={toastRightOpened}>
       {#snippet button()}
-        <Button clear inline onClick={() => (toastRightOpened = false)}>
+        <Button
+          clear
+          inline
+          small
+          rounded
+          onClick={() => (toastRightOpened = false)}
+        >
           Close
         </Button>
       {/snippet}
@@ -61,17 +79,23 @@
       screen.
     </p>
     <p>
-      <Button onclick={() => openToast(() => (toastLeftOpened = true))}>
+      <Button rounded onclick={() => openToast(() => (toastLeftOpened = true))}>
         Toast on Left
       </Button>
     </p>
     <p>
-      <Button onclick={() => openToast(() => (toastCenterOpened = true))}>
+      <Button
+        rounded
+        onclick={() => openToast(() => (toastCenterOpened = true))}
+      >
         Toast on Center
       </Button>
     </p>
     <p>
-      <Button onclick={() => openToast(() => (toastRightOpened = true))}>
+      <Button
+        rounded
+        onclick={() => openToast(() => (toastRightOpened = true))}
+      >
         Toast on Right
       </Button>
     </p>

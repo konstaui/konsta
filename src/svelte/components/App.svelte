@@ -7,11 +7,15 @@
     class: className,
     theme = 'material',
     dark = true,
-    touchRipple = true,
+    materialTouchRipple = true,
+    iosHoverHighlight = true,
     safeAreas = true,
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   let currentTheme = $derived.by(() => {
     if (theme === 'ios' || theme === 'material') {
@@ -36,25 +40,32 @@
   });
   KonstaStore.theme = currentTheme;
   KonstaStore.dark = dark;
-  KonstaStore.touchRipple = touchRipple;
+  KonstaStore.materialTouchRipple = materialTouchRipple;
+  KonstaStore.iosHoverHighlight = iosHoverHighlight;
   $effect(() => {
     KonstaStore.theme = currentTheme;
     KonstaStore.dark = dark;
-    KonstaStore.touchRipple = touchRipple;
+    KonstaStore.materialTouchRipple = materialTouchRipple;
+    KonstaStore.iosHoverHighlight = iosHoverHighlight;
   });
 
   const classes = $derived(
-    AppClasses({ theme, dark, touchRipple, safeAreas }, currentTheme, className)
+    AppClasses(
+      { theme, dark, materialTouchRipple, iosHoverHighlight, safeAreas },
+      currentTheme,
+      className
+    )
   );
 </script>
 
 <KonstaProvider
   theme={currentTheme}
   {dark}
-  {touchRipple}
+  {materialTouchRipple}
+  {iosHoverHighlight}
   autoThemeDetection={false}
 >
-  <div class={classes} {...restProps}>
+  <div bind:this={el} class={classes} {...restProps}>
     {@render children?.()}
   </div>
 </KonstaProvider>

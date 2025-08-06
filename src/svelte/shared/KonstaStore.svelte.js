@@ -1,7 +1,8 @@
 const KonstaStore = $state({
   theme: 'material',
   dark: true,
-  touchRipple: true,
+  materialTouchRipple: true,
+  iosHoverHighlight: true,
 });
 
 export { KonstaStore };

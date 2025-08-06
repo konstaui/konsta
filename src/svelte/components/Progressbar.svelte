@@ -14,6 +14,10 @@
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(ProgressbarColors(colorsProp, dark));
@@ -23,7 +27,7 @@
   );
 </script>
 
-<span class={c.base} {...restProps}>
+<span bind:this={el} class={c.base} {...restProps}>
   <span
     class={c.inner}
     style={`transform: translateX(-${100 - (progress / 1) * 100}%)`}

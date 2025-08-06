@@ -80,7 +80,7 @@
       </ListItem>
     </List>
 
-    <Block strong inset className="space-y-4">
+    <Block strong inset class="space-y-4">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tempore
         ratione unde accusantium distinctio nulla quia numquam earum odio,

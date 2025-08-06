@@ -60,8 +60,6 @@
     linkComponent = 'a',
     linkProps = {},
 
-    touchRipple = true,
-
     onClick = undefined,
     onclick = undefined,
 
@@ -82,7 +80,8 @@
   const ListDividersContext =
     getContext('ListDividersContext') || (() => ({ value: false }));
 
-  let rippleEl = $state(null);
+  let el = $state(null);
+  export { el };
 
   const theme = $derived(useTheme({ ios, material }));
 
@@ -116,11 +115,11 @@
   const isLabel = $derived(!!label);
 
   const needsTouchRipple = $derived(
-    theme === 'material' && (isLabel || isLink) && touchRipple
+    theme === 'material' && (isLabel || isLink)
   );
 
   useTouchRipple(
-    () => rippleEl,
+    () => el,
     () => needsTouchRipple
   );
 
@@ -218,7 +217,7 @@
     {#if typeof ItemContentComponent === 'string'}
       <svelte:element
         this={ItemContentComponent}
-        bind:this={rippleEl}
+        bind:this={el}
         class={itemContentClasses}
         {...linkPropsComputed}
       >
@@ -293,7 +292,7 @@
       </svelte:element>
     {:else}
       <ItemContentComponent
-        bind:this={rippleEl}
+        bind:this={el}
         class={itemContentClasses}
         {...linkPropsComputed}
       >

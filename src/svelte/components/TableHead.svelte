@@ -11,11 +11,14 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const c = $derived(
     useThemeClasses({ ios, material }, TableHeadClasses({}), className)
   );
 </script>
 
-<thead class={c.base} {...restProps}>
+<thead bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </thead>

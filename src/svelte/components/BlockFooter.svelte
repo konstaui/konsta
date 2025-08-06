@@ -17,6 +17,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
@@ -40,6 +43,6 @@
   );
 </script>
 
-<div class={c.base} {...restProps}>
+<div bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </div>

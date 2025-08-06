@@ -20,21 +20,21 @@
     readonly = false,
     onChange = undefined,
     onchange = undefined,
-    touchRipple = true,
 
     children,
     ...restProps
   } = $props();
 
-  let rippleEl = $state(null);
+  let el = $state(null);
+  export { el };
 
   const theme = $derived(useTheme({ ios, material }));
 
   const dark = useDarkClasses();
 
   useTouchRipple(
-    () => rippleEl,
-    () => touchRipple
+    () => el,
+    () => true
   );
 
   const colors = $derived(RadioColors(colorsProp, dark));
@@ -50,12 +50,7 @@
   );
 </script>
 
-<svelte:element
-  this={component}
-  bind:this={rippleEl}
-  class={c.base}
-  {...restProps}
->
+<svelte:element this={component} bind:this={el} class={c.base} {...restProps}>
   <input
     type="radio"
     {name}

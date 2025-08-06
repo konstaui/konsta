@@ -23,6 +23,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
   const theme = $derived(useTheme({ ios, material }));
 
@@ -35,7 +38,12 @@
   );
 </script>
 
-<div class={c.base[style]} {...restProps} onclick={onClick || onclick}>
+<div
+  bind:this={el}
+  class={c.base[style]}
+  {...restProps}
+  onclick={onClick || onclick}
+>
   {#if media}
     <div class={c.media}>{@render media()}</div>
   {/if}

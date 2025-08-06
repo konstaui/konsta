@@ -21,6 +21,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const state = $derived(opened ? 'opened' : 'closed');
 
   const dark = useDarkClasses();
@@ -45,11 +48,11 @@
   <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
 {#if theme === 'ios' && floating}
-  <Glass hoverable={false} class={classes} {...restProps}>
+  <Glass bind:this={el} highlight={false} class={classes} {...restProps}>
     {@render children?.()}
   </Glass>
 {:else}
-  <div class={classes} {...restProps}>
+  <div bind:this={el} class={classes} {...restProps}>
     {@render children?.()}
   </div>
 {/if}

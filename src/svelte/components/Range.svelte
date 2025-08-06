@@ -34,6 +34,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   let thumbWrapEl = $state(null);
   let trackBgEl = $state(null);
   let thumbOffset = $state(0);
@@ -82,7 +85,7 @@
   });
 </script>
 
-<div class={c.base} {...restProps}>
+<div bind:this={el} class={c.base} {...restProps}>
   <span class={c.trackBg} bind:this={trackBgEl}></span>
   <span
     class={c.trackValue}

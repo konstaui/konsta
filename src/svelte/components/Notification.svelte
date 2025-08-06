@@ -33,6 +33,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
   const theme = $derived(useTheme({ ios, material }));
 
@@ -49,7 +52,13 @@
 {#if theme === 'ios'}
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <Glass {component} class={c.base} {...restProps} onclick={onClick || onclick}>
+  <Glass
+    bind:this={el}
+    {component}
+    class={c.base}
+    {...restProps}
+    onclick={onClick || onclick}
+  >
     {#if icon}
       <div class={c.icon}>{@render icon()}</div>
     {/if}
@@ -112,7 +121,12 @@
 {:else}
   <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
-  <div class={c.base} {...restProps} onclick={onClick || onclick}>
+  <div
+    bind:this={el}
+    class={c.base}
+    {...restProps}
+    onclick={onClick || onclick}
+  >
     <div class={c.header}>
       {#if icon}
         <div class={c.icon}>{@render icon()}</div>

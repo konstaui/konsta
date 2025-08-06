@@ -30,7 +30,7 @@
       form of a list.
     </p>
   </Block>
-  <MenuList>
+  <MenuList strongIos outlineIos>
     <MenuListItem
       title="Home"
       active={selected === 'home'}
@@ -60,7 +60,7 @@
     </MenuListItem>
   </MenuList>
 
-  <MenuList>
+  <MenuList strongIos outlineIos>
     <MenuListItem
       title="Home"
       subtitle="Home subtitle"

@@ -42,7 +42,6 @@
       linkProps: { type: Object, default: () => ({}) },
       iconOnly: Boolean,
       tabbarActive: Boolean,
-      touchRipple: { type: Boolean, default: undefined },
     },
     setup(props, ctx) {
       const context = useContext();
@@ -56,21 +55,17 @@
       const needsTouchRipple = computed(
         () =>
           theme.value === 'material' &&
-          (props.touchRipple ||
-            (typeof props.touchRipple === 'undefined' &&
-              (ToolbarContext.value.toolbar ||
-                ToolbarContext.value.tabbar ||
-                NavbarContext.value.navbar)))
+          (ToolbarContext.value.toolbar ||
+            ToolbarContext.value.tabbar ||
+            NavbarContext.value.navbar)
       );
 
       useTouchRipple(rippleElRef, props, {
         context,
         addCondition: () =>
-          props.touchRipple ||
-          (typeof props.touchRipple === 'undefined' &&
-            (ToolbarContext.value.toolbar ||
-              ToolbarContext.value.tabbar ||
-              NavbarContext.value.navbar)),
+          ToolbarContext.value.toolbar ||
+          ToolbarContext.value.tabbar ||
+          NavbarContext.value.navbar,
       });
 
       const colors = computed(() =>

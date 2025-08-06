@@ -9,6 +9,7 @@
     MessagesTitle,
     Icon,
     Link,
+    ToolbarPane,
   } from 'konsta/svelte';
   import { onMount } from 'svelte';
   import { CameraFill, ArrowUpCircleFill } from 'framework7-icons/svelte';
@@ -169,41 +170,48 @@
     {/each}
   </Messages>
   <Messagebar
+    class="z-20"
     placeholder="Message"
     value={messageText}
     onInput={onMessageTextChange}
   >
     {#snippet left()}
-      <Link iconOnly>
-        <Icon>
-          {#snippet ios()}
-            <CameraFill class="w-7 h-7" />
-          {/snippet}
-          {#snippet material()}
-            <MdCameraAlt
-              class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
-            />
-          {/snippet}
-        </Icon>
-      </Link>
+      <ToolbarPane class="ios:h-10">
+        <Link iconOnly>
+          <Icon>
+            {#snippet ios()}
+              <CameraFill class="w-5 h-5" />
+            {/snippet}
+            {#snippet material()}
+              <MdCameraAlt
+                class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
+              />
+            {/snippet}
+          </Icon>
+        </Link>
+      </ToolbarPane>
     {/snippet}
     {#snippet right()}
-      <Link
-        iconOnly
-        onClick={() => (isClickable ? handleSendClick() : undefined)}
-        style="opacity: {inputOpacity}; cursor: {isClickable
-          ? 'pointer'
-          : 'default'}"
-      >
-        <Icon>
-          {#snippet ios()}
-            <ArrowUpCircleFill class="w-7 h-7" />
-          {/snippet}
-          {#snippet material()}
-            <MdSend class="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
-          {/snippet}
-        </Icon>
-      </Link>
+      <ToolbarPane class="ios:h-10">
+        <Link
+          iconOnly
+          onClick={() => (isClickable ? handleSendClick() : undefined)}
+          style="opacity: {inputOpacity}; cursor: {isClickable
+            ? 'pointer'
+            : 'default'}"
+        >
+          <Icon>
+            {#snippet ios()}
+              <ArrowUpCircleFill
+                class={`w-7 h-7${isClickable ? ' text-primary' : ''}`}
+              />
+            {/snippet}
+            {#snippet material()}
+              <MdSend class="w-6 h-6 fill-black dark:fill-md-dark-on-surface" />
+            {/snippet}
+          </Icon>
+        </Link>
+      </ToolbarPane>
     {/snippet}
   </Messagebar>
 </Page>

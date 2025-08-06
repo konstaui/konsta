@@ -73,12 +73,7 @@ interface Props {
    * @default false
    */
   readOnly?: boolean;
-  /**
-   * Enables touch ripple effect in Material theme
-   *
-   * @default true
-   */
-  touchRipple?: boolean;
+
   /**
    * Event will be triggered when radio state changed
    */

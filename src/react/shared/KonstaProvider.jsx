@@ -6,7 +6,8 @@ const KonstaProvider = (props) => {
   const {
     theme,
     dark,
-    touchRipple = true,
+    materialTouchRipple = true,
+    iosHoverHighlight = true,
     autoThemeDetection = true,
     children,
   } = props;
@@ -14,7 +15,14 @@ const KonstaProvider = (props) => {
   const currentTheme = useAutoTheme(theme, autoThemeDetection);
 
   return (
-    <KonstaContext.Provider value={{ theme: currentTheme, dark, touchRipple }}>
+    <KonstaContext.Provider
+      value={{
+        theme: currentTheme,
+        dark,
+        materialTouchRipple,
+        iosHoverHighlight,
+      }}
+    >
       {children}
     </KonstaContext.Provider>
   );

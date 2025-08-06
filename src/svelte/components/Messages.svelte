@@ -12,7 +12,8 @@
     ...restProps
   } = $props();
 
-  const rippleEl = { current: null };
+  let el = $state(null);
+  export { el };
 
   const c = $derived(
     useThemeClasses(
@@ -26,7 +27,7 @@
 <svelte:element
   this={component}
   {id}
-  bind:this={rippleEl.current}
+  bind:this={el}
   class={c.base}
   {...restProps}
 >

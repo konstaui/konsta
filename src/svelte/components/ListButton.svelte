@@ -19,7 +19,6 @@
     type = undefined,
     value = undefined,
     linkProps = {},
-    touchRipple = true,
     linkComponent = 'a',
 
     onClick = undefined,
@@ -32,13 +31,14 @@
   const ListDividersContext =
     getContext('ListDividersContext') || (() => ({ value: false }));
 
-  let rippleEl = $state(null);
+  let el = $state(null);
+  export { el };
 
   const theme = $derived(useTheme({ ios, material }));
 
   useTouchRipple(
-    () => rippleEl,
-    () => touchRipple
+    () => el,
+    () => true
   );
 
   const dark = useDarkClasses();
@@ -77,7 +77,7 @@
     <!-- svelte-ignore a11y_missing_attribute -->
     <svelte:element
       this={ButtonComponent}
-      bind:this={rippleEl}
+      bind:this={el}
       class={c.button}
       onclick={onClick || onclick}
       {...buttonAttrs}
@@ -86,7 +86,7 @@
     </svelte:element>
   {:else}
     <ButtonComponent
-      bind:this={rippleEl}
+      bind:this={el}
       class={c.button}
       {...buttonAttrs}
       onclick={onClick || onclick}

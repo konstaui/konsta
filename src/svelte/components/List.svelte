@@ -14,7 +14,6 @@
     ios = undefined,
     material = undefined,
 
-    margin = 'my-8',
     dividers = undefined,
     dividersIos = true,
     dividersMaterial = false,
@@ -33,6 +32,9 @@
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   const theme = $derived(useTheme({ ios, material }));
 
@@ -79,7 +81,6 @@
       ListClasses(
         {
           nested,
-          margin,
           inset: isInset,
           outline: isOutline,
           strong: isStrong,
@@ -103,7 +104,7 @@
   );
 </script>
 
-<div class={classes} {...restProps}>
+<div bind:this={el} class={classes} {...restProps}>
   <ul class={c.ul}>
     {@render children?.()}
   </ul>

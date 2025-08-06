@@ -52,8 +52,6 @@
     segmentedStrong = false,
     segmentedActive = false,
 
-    touchRipple = true,
-
     children,
 
     onClick = undefined,
@@ -64,7 +62,7 @@
 
   const theme = $derived(useTheme({ ios, material }));
 
-  let rippleEl = $state(null);
+  let el = $state(null);
 
   const attrs = $derived({
     href,
@@ -74,8 +72,8 @@
   const dark = useDarkClasses();
 
   useTouchRipple(
-    () => rippleEl,
-    () => touchRipple
+    () => el,
+    () => true
   );
 
   const isOutline = $derived(
@@ -193,7 +191,7 @@
   <svelte:element
     this={Component}
     onclick={onClick || onclick}
-    bind:this={rippleEl}
+    bind:this={el}
     class={classes}
     {disabled}
     {...attrs}
@@ -204,7 +202,7 @@
   </svelte:element>
 {:else}
   <Component
-    bind:this={rippleEl}
+    bind:this={el}
     class={classes}
     {disabled}
     {...attrs}

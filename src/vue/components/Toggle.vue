@@ -55,7 +55,6 @@
       value: { type: [Number, String], default: undefined },
       disabled: { type: Boolean, default: false },
       readonly: { type: Boolean, default: false },
-      touchRipple: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const context = useContext();

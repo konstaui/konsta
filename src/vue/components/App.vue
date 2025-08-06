@@ -3,7 +3,8 @@
     <konsta-provider
       :theme="currentTheme"
       :dark="dark"
-      :touch-ripple="touchRipple"
+      :material-touch-ripple="materialTouchRipple"
+      :ios-touch-highlight="iosHoverHighlight"
       :auto-theme-detection="false"
     >
       <slot />
@@ -34,7 +35,11 @@
         type: Boolean,
         default: true,
       },
-      touchRipple: {
+      materialTouchRipple: {
+        type: Boolean,
+        default: true,
+      },
+      iosHoverHighlight: {
         type: Boolean,
         default: true,
       },

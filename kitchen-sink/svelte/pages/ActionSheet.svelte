@@ -35,8 +35,9 @@
   </Block>
   <BlockTitle>Open Action Sheet</BlockTitle>
   <Block strong inset class="flex space-x-4 rtl:space-x-reverse">
-    <Button onclick={() => (actionsOneOpened = true)}>One group</Button>
-    <Button onclick={() => (actionsTwoOpened = true)}>Two groups</Button>
+    <Button rounded onclick={() => (actionsOneOpened = true)}>One group</Button>
+    <Button rounded onclick={() => (actionsTwoOpened = true)}>Two groups</Button
+    >
   </Block>
 
   <Actions

@@ -272,10 +272,4 @@ interface Props {
    * List item link's `target` attribute
    */
   target?: string;
-  /**
-   * Enables touch ripple effect in Material theme
-   *
-   * @default true
-   */
-  touchRipple?: boolean;
 }

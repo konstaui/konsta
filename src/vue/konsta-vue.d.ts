@@ -27,7 +27,16 @@ declare const kProvider: DefineComponent<
      *
      * @default true
      */
-    touchRipple: {
+    materialTouchRipple: {
+      type: BooleanConstructor;
+      default: true;
+    };
+    /**
+     * Enables touch highlight effect in iOS theme. Allows to globally disable touch highlight for all components
+     *
+     * @default true
+     */
+    iosHoverHighlight: {
       type: BooleanConstructor;
       default: true;
     };

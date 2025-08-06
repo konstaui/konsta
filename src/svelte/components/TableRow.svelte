@@ -15,6 +15,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(TableRowColors(colorsProp, dark));
@@ -28,6 +31,6 @@
   );
 </script>
 
-<tr class={c.base} {...restProps}>
+<tr bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </tr>

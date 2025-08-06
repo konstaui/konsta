@@ -18,6 +18,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(ToastColors(colorsProp, dark));
@@ -31,8 +34,8 @@
   );
 </script>
 
-<div class={c.base[position]} {...restProps}>
-  <Glass hoverable={false} class={c.inner}>
+<div bind:this={el} class={c.base[position]} {...restProps}>
+  <Glass highlight={false} class={c.inner}>
     <div class={c.content}>
       {@render children?.()}
       {#if button}

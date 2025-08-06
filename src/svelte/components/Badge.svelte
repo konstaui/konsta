@@ -4,6 +4,7 @@
   import { useThemeClasses } from '../shared/use-theme-classes.js';
 
   let {
+    component = 'span',
     class: className,
     colors: colorsProp,
     ios = undefined,
@@ -12,6 +13,9 @@
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   const colors = $derived(BadgeColors(colorsProp));
 
@@ -26,6 +30,11 @@
   );
 </script>
 
-<span class={c.base[size]} {...restProps}>
+<svelte:element
+  this={component}
+  bind:this={el}
+  class={c.base[size]}
+  {...restProps}
+>
   {@render children?.()}
-</span>
+</svelte:element>

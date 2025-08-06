@@ -25,7 +25,8 @@
     ...restProps
   } = $props();
 
-  const rippleEl = { current: null };
+  let el = $state(null);
+  export { el };
 
   const dark = useDarkClasses();
 
@@ -57,7 +58,7 @@
 <svelte:element
   this={component}
   {id}
-  bind:this={rippleEl.current}
+  bind:this={el}
   class={classes}
   {...restProps}
 >

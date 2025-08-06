@@ -11,8 +11,6 @@
     colors: colorsProp,
     ios = undefined,
     material = undefined,
-    margin = 'my-8',
-    padding = 'py-4',
     inset = undefined,
     insetIos = false,
     insetMaterial = false,
@@ -26,6 +24,9 @@
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   const theme = $derived(useTheme({ ios, material }));
 
@@ -62,8 +63,6 @@
       { ios, material },
       BlockClasses(
         {
-          margin,
-          padding,
           nested,
           inset: isInset,
           outline: isOutline,
@@ -88,6 +87,6 @@
   );
 </script>
 
-<div class={classes} {...restProps}>
+<div bind:this={el} class={classes} {...restProps}>
   {@render children?.()}
 </div>

@@ -17,7 +17,11 @@
         type: Boolean,
         default: true,
       },
-      touchRipple: {
+      materialTouchRipple: {
+        type: Boolean,
+        default: true,
+      },
+      iosHoverHighlight: {
         type: Boolean,
         default: true,
       },
@@ -32,7 +36,8 @@
       const KonstaContext = computed(() => ({
         theme: currentTheme.value,
         dark: props.dark,
-        touchRipple: props.touchRipple,
+        materialTouchRipple: props.materialTouchRipple,
+        iosHoverHighlight: props.iosHoverHighlight,
       }));
       provide('KonstaContext', KonstaContext);
 

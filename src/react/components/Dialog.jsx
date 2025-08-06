@@ -67,7 +67,7 @@ const Dialog = (props) => {
       )}
       <Glass
         component={Component}
-        hoverable={false}
+        highlight={false}
         ref={(el) => {
           elRef.current = el;
           if (ref && typeof ref === 'function') ref(el);

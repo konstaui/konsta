@@ -20,6 +20,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const theme = $derived(useTheme({ ios, material }));
 
   const c = $derived(
@@ -28,6 +31,7 @@
 </script>
 
 <Link
+  bind:this={el}
   class={c.base}
   navbar
   {component}

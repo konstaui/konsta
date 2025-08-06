@@ -9,7 +9,6 @@
     colors: colorsProp,
     ios = undefined,
     material = undefined,
-    size = 'w-screen h-screen md:w-160 md:h-160',
     opened = false,
     backdrop = true,
     onBackdropClick = undefined,
@@ -25,11 +24,7 @@
   const colors = $derived(PopupColors(colorsProp, dark));
 
   const c = $derived(
-    useThemeClasses(
-      { ios, material },
-      PopupClasses({ size }, colors),
-      className
-    )
+    useThemeClasses({ ios, material }, PopupClasses({}, colors), className)
   );
 </script>
 

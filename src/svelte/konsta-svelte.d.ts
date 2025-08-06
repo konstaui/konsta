@@ -20,7 +20,13 @@ interface KonstaProviderProps {
    *
    * @default true
    */
-  touchRipple?: boolean;
+  materialTouchRipple?: boolean;
+  /**
+   * Enables touch highlight effect in iOS theme. Allows to globally disable touch highlight for all components
+   *
+   * @default true
+   */
+  iosHoverHighlight?: boolean;
 }
 declare class KonstaProvider extends SvelteComponent<
   KonstaProviderProps,

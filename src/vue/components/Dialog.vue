@@ -1,6 +1,6 @@
 <template>
   <div v-if="backdrop" :class="c.backdrop[state]" @click="onBackdropClick" />
-  <k-glass :hoverable="false" :component="component" :class="c.base[state]">
+  <k-glass :highlight="false" :component="component" :class="c.base[state]">
     <div :class="c.contentWrap">
       <div v-if="slots.title" :class="c.title"><slot name="title" /></div>
       <div v-if="slots.default" :class="c.content">

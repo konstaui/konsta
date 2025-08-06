@@ -71,7 +71,7 @@ const Panel = (props) => {
           component={component}
           ref={setRef}
           className={classes}
-          hoverable={false}
+          highlight={false}
           {...attrs}
         >
           {children}

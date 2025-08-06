@@ -1,12 +1,10 @@
 import { cls } from '../cls.js';
 
 export const BlockTitleClasses = (props, colors) => {
-  const { withBlock, medium, large } = props;
+  const { medium, large } = props;
   return {
     base: {
-      common: `k-block-title pl-safe-4 pr-safe-4 mt-8 flex justify-between items-center ${
-        withBlock ? '-mb-6' : 'mb-2'
-      }`,
+      common: `k-block-title pl-safe-4 pr-safe-4 mt-8 flex justify-between items-center -mb-2 has-[+:is(.k-block,.k-block-header,.k-block-footer,.k-list,.k-table)]:-mb-6`,
       ios: cls(
         `font-semibold ${colors.textIos}`,
         large && cls(colors.largeTextIos, 'text-[1.375rem]'),

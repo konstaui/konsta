@@ -27,8 +27,6 @@ const ListButton = (props) => {
     ios,
     material,
 
-    touchRipple = true,
-
     // Children
     children,
 
@@ -51,7 +49,7 @@ const ListButton = (props) => {
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
 
-  useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
+  useTouchRipple(rippleElRef, theme === 'material');
 
   const dark = useDarkClasses();
 

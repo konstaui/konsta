@@ -53,8 +53,6 @@ const Button = (props) => {
     segmentedStrong,
     segmentedActive,
 
-    touchRipple = true,
-
     // Children
     children,
 
@@ -76,7 +74,7 @@ const Button = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
+  useTouchRipple(rippleElRef, theme === 'material');
 
   const themeProps = getThemeSpecificProps(
     theme,

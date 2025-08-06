@@ -1,4 +1,5 @@
 <script>
+  import CloseIcon from '../components/CloseIcon.svelte';
   import {
     Page,
     Navbar,
@@ -26,22 +27,26 @@
     {/snippet}
   </Navbar>
 
-  <Block strongIos outlineIos class="space-y-4">
+  <Block strong inset class="space-y-4">
     <p>
       Konsta UI comes with 2 panels (on left and on right), both are optional.
       You can put absolutely anything inside: data lists, forms, custom content,
       etc.
     </p>
   </Block>
-  <Block strongIos outlineIos class="flex space-x-4 rtl:space-x-reverse">
-    <Button onClick={() => (leftPanelOpened = true)}>Left Panel</Button>
-    <Button onClick={() => (rightPanelOpened = true)}>Right Panel</Button>
+  <Block strong inset class="flex space-x-4 rtl:space-x-reverse">
+    <Button rounded onClick={() => (leftPanelOpened = true)}>Left Panel</Button>
+    <Button rounded onClick={() => (rightPanelOpened = true)}
+      >Right Panel</Button
+    >
   </Block>
 
   <BlockTitle>Floating Panels</BlockTitle>
-  <Block strongIos outlineIos class="flex space-x-4 rtl:space-x-reverse">
-    <Button onClick={() => (leftFloatingPanelOpened = true)}>Left Panel</Button>
-    <Button onClick={() => (rightFloatingPanelOpened = true)}
+  <Block strong inset class="flex space-x-4 rtl:space-x-reverse">
+    <Button rounded onClick={() => (leftFloatingPanelOpened = true)}
+      >Left Panel</Button
+    >
+    <Button rounded onClick={() => (rightFloatingPanelOpened = true)}
       >Right Panel</Button
     >
   </Block>
@@ -54,7 +59,9 @@
     <Page>
       <Navbar title="Left Panel">
         {#snippet right()}
-          <Link navbar onClick={() => (leftPanelOpened = false)}>Close</Link>
+          <Link iconOnly onClick={() => (leftPanelOpened = false)}
+            ><CloseIcon /></Link
+          >
         {/snippet}
       </Navbar>
       <Block class="space-y-4">
@@ -83,7 +90,9 @@
     <Page>
       <Navbar title="Right Panel">
         {#snippet right()}
-          <Link navbar onClick={() => (rightPanelOpened = false)}>Close</Link>
+          <Link iconOnly onClick={() => (rightPanelOpened = false)}
+            ><CloseIcon /></Link
+          >
         {/snippet}
       </Navbar>
       <Block class="space-y-4">
@@ -115,9 +124,9 @@
     >
       <Navbar title="Left Panel">
         {#snippet right()}
-          <Link navbar onClick={() => (leftFloatingPanelOpened = false)}>
-            Close
-          </Link>
+          <Link iconOnly onClick={() => (leftFloatingPanelOpened = false)}
+            ><CloseIcon /></Link
+          >
         {/snippet}
       </Navbar>
       <Block class="space-y-4">
@@ -146,13 +155,13 @@
   >
     <Page
       colors={{ bgIos: 'bg-transparent' }}
-      className="no-safe-areas-top no-safe-areas-bottom"
+      class="no-safe-areas-top no-safe-areas-bottom"
     >
       <Navbar title="Right Panel">
         {#snippet right()}
-          <Link navbar onClick={() => (rightFloatingPanelOpened = false)}>
-            Close
-          </Link>
+          <Link iconOnly onClick={() => (rightFloatingPanelOpened = false)}
+            ><CloseIcon /></Link
+          >
         {/snippet}
       </Navbar>
       <Block class="space-y-4">

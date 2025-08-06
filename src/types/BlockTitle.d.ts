@@ -5,12 +5,6 @@ interface Props {
    * @default 'div'
    */
   component?: string;
-  /**
-   * Useful to disable when there is no Block or List component right after the Block Title
-   *
-   * @default true
-   */
-  withBlock?: boolean;
 
   /**
    * Medium sized block title

@@ -130,8 +130,6 @@
       link: { type: Boolean, default: undefined },
       linkComponent: { type: String, default: 'a' },
       linkProps: { type: Object, default: () => ({}) },
-
-      touchRipple: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const context = useContext();
@@ -176,11 +174,9 @@
       const isLabel = computed(() => !!props.label);
 
       const needsTouchRipple = computed(
-        () =>
-          theme.value === 'material' &&
-          (isLabel.value || isLink.value) &&
-          props.touchRipple
+        () => theme.value === 'material' && (isLabel.value || isLink.value)
       );
+
       useTouchRipple(rippleElRef, props, {
         addCondition: () => isLabel.value || isLink.value,
         context,

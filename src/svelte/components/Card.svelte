@@ -13,7 +13,6 @@
     ios = undefined,
     material = undefined,
 
-    margin = 'm-4',
     header = '',
     footer = '',
     contentWrap = true,
@@ -31,6 +30,9 @@
 
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   const dark = useDarkClasses();
 
@@ -61,7 +63,6 @@
       { ios, material },
       CardClasses(
         {
-          margin,
           outline: isOutline,
           raised: isRaised,
           contentWrapPadding,
@@ -77,7 +78,12 @@
 </script>
 
 {#if typeof component === 'string'}
-  <svelte:element this={component} class={c.base[style]} {...restProps}>
+  <svelte:element
+    this={component}
+    bind:this={el}
+    class={c.base[style]}
+    {...restProps}
+  >
     {#if header}
       <div class={c.header}>{@render header()}</div>
     {/if}
@@ -92,7 +98,7 @@
   </svelte:element>
 {:else}
   {@const Component = component}
-  <Component class={c.base[style]} {...restProps}>
+  <Component bind:this={el} class={c.base[style]} {...restProps}>
     {#if header}
       <div class={c.header}>{@render header()}</div>
     {/if}

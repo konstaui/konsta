@@ -52,10 +52,6 @@
         type: Boolean,
         default: undefined,
       },
-      touchRipple: {
-        type: Boolean,
-        default: true,
-      },
       checked: { type: Boolean, default: false },
       indeterminate: { type: Boolean, default: false },
       name: { type: String, default: undefined },

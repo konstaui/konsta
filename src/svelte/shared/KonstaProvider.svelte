@@ -4,7 +4,8 @@
   let {
     theme,
     dark = false,
-    touchRipple = true,
+    materialTouchRipple = true,
+    iosHoverHighlight = true,
     autoThemeDetection = true,
     children,
   } = $props();
@@ -33,11 +34,13 @@
   });
   KonstaStore.theme = currentTheme;
   KonstaStore.dark = dark;
-  KonstaStore.touchRipple = touchRipple;
+  KonstaStore.materialTouchRipple = materialTouchRipple;
+  KonstaStore.iosHoverHighlight = iosHoverHighlight;
   $effect(() => {
     KonstaStore.theme = currentTheme;
     KonstaStore.dark = dark;
-    KonstaStore.touchRipple = touchRipple;
+    KonstaStore.materialTouchRipple = materialTouchRipple;
+    KonstaStore.iosHoverHighlight = iosHoverHighlight;
   });
 </script>
 

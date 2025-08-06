@@ -97,8 +97,6 @@
       outline: { type: Boolean, default: undefined },
       outlineIos: { type: Boolean, default: undefined },
       outlineMaterial: { type: Boolean, default: undefined },
-
-      touchRipple: { type: Boolean, default: true },
     },
     emits: ['input', 'change', 'focus', 'blur', 'minus', 'plus'],
     setup(props, ctx) {

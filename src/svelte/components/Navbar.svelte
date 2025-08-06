@@ -54,7 +54,9 @@
     ...restProps
   } = $props();
 
-  let elRef = $state(null);
+  let el = $state(null);
+  export { el };
+
   let titleContainerHeight = 0;
   let bgElRef = $state(null);
   let innerElRef = $state(null);
@@ -115,7 +117,7 @@
 
   const getScrollEl = () => {
     if (typeof scrollEl === 'undefined') {
-      return elRef && elRef.parentNode;
+      return el && el.parentNode;
     }
     return scrollEl || scrollEl;
   };
@@ -221,7 +223,7 @@
   });
 </script>
 
-<div class={c.base} bind:this={elRef} {...restProps}>
+<div class={c.base} bind:this={el} {...restProps}>
   {#if theme === 'ios'}
     <div class={c.bgBlur}></div>
   {/if}

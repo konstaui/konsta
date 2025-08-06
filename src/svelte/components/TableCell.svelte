@@ -14,6 +14,10 @@
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
+
   const component = $derived(header ? 'th' : 'td');
   const dark = useDarkClasses();
   const colors = $derived(TableCellColors(colorsProp, dark));
@@ -27,6 +31,6 @@
   );
 </script>
 
-<svelte:element this={component} class={c.base} {...restProps}>
+<svelte:element this={component} bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </svelte:element>

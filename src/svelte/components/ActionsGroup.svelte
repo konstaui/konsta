@@ -15,6 +15,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(ActionsGroupColors(colorsProp, dark));
@@ -28,6 +31,6 @@
   );
 </script>
 
-<Glass {component} class={c.base} {...restProps}>
+<Glass bind:this={el} {component} class={c.base} {...restProps}>
   {@render children?.()}
 </Glass>

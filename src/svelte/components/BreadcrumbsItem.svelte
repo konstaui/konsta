@@ -16,6 +16,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(BreadcrumbsItemColors(colorsProp, dark));
@@ -30,6 +33,7 @@
 </script>
 
 <div
+  bind:this={el}
   class={c.base}
   {...restProps}
   role="menuitem"

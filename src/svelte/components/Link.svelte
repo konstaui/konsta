@@ -22,7 +22,6 @@
     // Toolbar/navbar link
     iconOnly = false,
     tabbarActive = false,
-    touchRipple = undefined,
 
     onClick = undefined,
     onclick = undefined,
@@ -31,7 +30,8 @@
     ...restProps
   } = $props();
 
-  let rippleEl = $state(null);
+  let el = $state(null);
+  export { el };
 
   const theme = $derived(useTheme({ ios, material }));
 
@@ -64,13 +64,11 @@
   const dark = useDarkClasses();
 
   const needsTouchRipple = $derived(
-    theme === 'material' &&
-      (touchRipple ||
-        (typeof touchRipple === 'undefined' && (toolbar || tabbar || navbar)))
+    theme === 'material' && (toolbar || tabbar || navbar)
   );
 
   useTouchRipple(
-    () => rippleEl,
+    () => el,
     () => toolbar || tabbar || navbar
   );
 
@@ -81,6 +79,7 @@
     (
       theme === 'material' ? colors.navbarTextMaterial : colors.navbarTextIos
     ) :
+    toolbar ? (theme === 'material' ? colors.toolbarTextMaterial : colors.toolbarTextIos) :
     (
       theme === 'material' ? colors.textMaterial : colors.textIos
     )
@@ -115,14 +114,14 @@
 
   $effect(() => {
     if (tabbar && tabbarActive) {
-      setActiveTabbarEl?.(rippleEl);
+      setActiveTabbarEl?.(el);
     }
   });
 </script>
 
 <svelte:element
   this={component}
-  bind:this={rippleEl}
+  bind:this={el}
   class={classes}
   {...restProps}
   {...linkProps}

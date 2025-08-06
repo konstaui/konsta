@@ -70,7 +70,7 @@
       />
     {/snippet}
   </Navbar>
-  <List strong insetMaterial outlineIos>
+  <List strong inset>
     {#if filteredItems.length === 0}
       <ListItem title="Nothing found" />
     {/if}

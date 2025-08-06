@@ -16,7 +16,6 @@
     href = undefined,
     text = undefined,
     textPosition = 'after',
-    touchRipple = true,
     children,
     icon,
     onClick = undefined,
@@ -24,13 +23,13 @@
     ...restProps
   } = $props();
 
-  let rippleEl = $state(null);
+  let el = $state(null);
 
   const dark = useDarkClasses();
 
   useTouchRipple(
-    () => rippleEl,
-    () => touchRipple
+    () => el,
+    () => true
   );
 
   const colors = $derived(FabColors(colorsProp, dark));
@@ -44,7 +43,7 @@
   {component}
   class={text ? c.base.withText : c.base.iconOnly}
   {href}
-  bind:this={rippleEl}
+  bind:this={el}
   role="button"
   tabindex="0"
   onclick={onClick || onclick}

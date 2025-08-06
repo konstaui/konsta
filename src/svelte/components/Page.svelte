@@ -14,6 +14,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
 
   const colors = $derived(PageColors(colorsProp, dark));
@@ -23,6 +26,6 @@
   );
 </script>
 
-<svelte:element this={component} class={c.base} {...restProps}>
+<svelte:element this={component} bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </svelte:element>

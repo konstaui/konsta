@@ -27,13 +27,13 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   let highlightElRef = $state(null);
-  let innerEl = $state(null);
-  let observer = null;
+  let activeTabbarEl = $state(null);
 
   const theme = $derived(useTheme({ ios, material }));
-
-  let activeTabbarEl = $state(null);
 
   setContext('ToolbarContext', () => ({
     value: {
@@ -111,9 +111,9 @@
   );
 </script>
 
-<div class={c.base} {...restProps}>
+<div bind:this={el} class={c.base} {...restProps}>
   <div class={c.bg}></div>
-  <div class={c.inner} bind:this={innerEl}>
+  <div class={c.inner}>
     {@render children?.()}
   </div>
   {#if hasHighlight}

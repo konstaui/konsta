@@ -10,8 +10,6 @@ const BlockTitle = (props) => {
     className,
     colors: colorsProp,
 
-    withBlock = true,
-
     medium,
     large,
 
@@ -40,10 +38,7 @@ const BlockTitle = (props) => {
 
   const colors = BlockTitleColors(colorsProp, dark);
 
-  const c = themeClasses(
-    BlockTitleClasses({ ...props, withBlock }, colors),
-    className
-  );
+  const c = themeClasses(BlockTitleClasses({ ...props }, colors), className);
 
   return (
     <Component

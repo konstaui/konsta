@@ -33,6 +33,9 @@
 
   const theme = $derived(useTheme({ ios, material }));
 
+  let el = $state(null);
+  export { el };
+
   let highlightElRef = $state(null);
 
   const dark = useDarkClasses();
@@ -148,7 +151,7 @@
 </script>
 
 {#if theme === 'ios' && navbar}
-  <Glass class={classes} {...restProps}>
+  <Glass bind:this={el} class={classes} {...restProps}>
     {#if isOutline}
       <span class={c.outlineInner}>
         {@render children?.()}
@@ -168,7 +171,7 @@
     {/if}
   </Glass>
 {:else}
-  <div class={classes} {...restProps}>
+  <div bind:this={el} class={classes} {...restProps}>
     {#if isOutline}
       <span class={c.outlineInner}>
         {@render children?.()}

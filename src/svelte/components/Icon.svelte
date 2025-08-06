@@ -15,12 +15,15 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const theme = $derived(useTheme({}));
 
   const c = $derived(useThemeClasses({}, IconClasses(), className));
 </script>
 
-<i class={c.base} {...restProps}>
+<i bind:this={el} class={c.base} {...restProps}>
   {#if theme === 'ios' && ios}
     {@render ios()}
   {:else if theme === 'material' && material}

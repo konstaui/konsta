@@ -26,7 +26,7 @@
   </Navbar>
 
   <BlockTitle>Inline</BlockTitle>
-  <Block strongIos outlineIos>
+  <Block strong inset>
     <p>
       Lorem{' '}
       <Radio
@@ -48,7 +48,7 @@
   </Block>
 
   <BlockTitle>Radio Group</BlockTitle>
-  <List strongIos outlineIos>
+  <List strong inset>
     <ListItem label title="Books">
       {#snippet media()}
         <Radio
@@ -91,7 +91,7 @@
     </ListItem>
   </List>
 
-  <List strongIos outlineIos>
+  <List strong inset>
     <ListItem label title="Books">
       {#snippet after()}
         <Radio
@@ -135,7 +135,7 @@
   </List>
 
   <BlockTitle>With Media Lists</BlockTitle>
-  <List strongIos outlineIos>
+  <List strong inset>
     <ListItem
       label
       title="Facebook"

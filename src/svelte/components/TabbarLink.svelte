@@ -21,6 +21,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const dark = useDarkClasses();
   const colors = $derived(TabbarLinkColors(colorsProp, dark));
 
@@ -37,6 +40,7 @@
 </script>
 
 <Link
+  bind:this={el}
   tabbar
   tabbarActive={active}
   class={className}

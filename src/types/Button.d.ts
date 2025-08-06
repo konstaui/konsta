@@ -305,13 +305,6 @@ interface Props {
   segmentedActive?: boolean;
 
   /**
-   * Enables touch ripple effect in Material theme
-   *
-   * @default true
-   */
-  touchRipple?: boolean;
-
-  /**
    * Makes button disabled
    *
    * @default false

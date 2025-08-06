@@ -21,6 +21,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const theme = $derived(useTheme({ ios, material }));
 
   const isStrong = $derived(
@@ -38,6 +41,7 @@
 
 {#if theme === 'ios'}
   <Button
+    bind:this={el}
     large
     rounded
     tonal={!isStrong}
@@ -50,6 +54,7 @@
   </Button>
 {:else}
   <Button
+    bind:this={el}
     {component}
     inline
     rounded

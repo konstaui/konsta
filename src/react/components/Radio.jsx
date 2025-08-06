@@ -22,8 +22,6 @@ const Radio = (props) => {
     ios,
     material,
 
-    touchRipple = true,
-
     // Children
     children,
 
@@ -45,7 +43,7 @@ const Radio = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useTouchRipple(elRef, theme === 'material' && touchRipple);
+  useTouchRipple(elRef, theme === 'material');
 
   const colors = RadioColors(colorsProp, dark);
 

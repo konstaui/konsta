@@ -55,7 +55,6 @@
       href: { type: [String, Boolean], default: undefined },
       text: { type: String, default: undefined },
       textPosition: { type: String, default: 'after' },
-      touchRipple: { type: Boolean, default: true },
     },
     setup(props, ctx) {
       const context = useContext();

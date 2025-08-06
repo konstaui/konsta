@@ -25,7 +25,7 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
     input: {
       common: 'block appearance-none w-full py-2  focus:outline-none z-30',
       ios: cls(
-        'h-12 pl-10.5 pr-9 text-[17px]',
+        'h-11 pl-10.5 pr-9 text-[17px]',
         darkClasses('dark:placeholder-white/30'),
         colors.placeholderIos,
         colors.inputBgIos
@@ -53,7 +53,7 @@ export const SearchbarClasses = (props, colors, { isEnabled, darkClasses }) => {
     },
     cancelButton: {
       ios: cls(
-        'flex justify-center items-center h-12 w-12 cursor-pointer shrink-0 z-40 transition-all duration-300 rounded-full',
+        'flex justify-center items-center h-11 w-11 cursor-pointer shrink-0 z-40 transition-all duration-300 rounded-full',
         isEnabled ? '' : 'scale-0'
       ),
       material: cls(

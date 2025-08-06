@@ -9,12 +9,14 @@
     colors: colorsProp,
     ios = undefined,
     material = undefined,
-    withBlock = true,
     medium = false,
     large = false,
     children,
     ...restProps
   } = $props();
+
+  let el = $state(null);
+  export { el };
 
   const dark = useDarkClasses();
 
@@ -23,12 +25,12 @@
   const c = $derived(
     useThemeClasses(
       { ios, material },
-      BlockTitleClasses({ withBlock, medium, large }, colors),
+      BlockTitleClasses({ medium, large }, colors),
       className
     )
   );
 </script>
 
-<div class={c.base} {...restProps}>
+<div bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </div>

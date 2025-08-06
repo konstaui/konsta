@@ -13,7 +13,6 @@
     colors: colorsProp,
     ios = undefined,
     material = undefined,
-    size = 'w-8 h-8',
 
     children,
     ...restProps
@@ -27,7 +26,7 @@
   const c = $derived(
     useThemeClasses(
       { ios, material },
-      PreloaderClasses({ size }, colors, theme),
+      PreloaderClasses({}, colors, theme),
       className
     )
   );

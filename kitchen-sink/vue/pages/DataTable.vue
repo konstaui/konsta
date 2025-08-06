@@ -6,7 +6,7 @@
       </template>
     </k-navbar>
     <k-block-title>Plain table</k-block-title>
-    <div class="block overflow-x-auto mt-8">
+    <k-block class="overflow-x-auto !pl-safe !pr-safe">
       <k-table>
         <k-table-head>
           <k-table-row header>
@@ -48,9 +48,9 @@
           </k-table-row>
         </k-table-body>
       </k-table>
-    </div>
+    </k-block>
     <k-block-title>Within card</k-block-title>
-    <k-card class="block overflow-x-auto mt-8" :content-wrap="false">
+    <k-card class="overflow-x-auto" :content-wrap="false">
       <k-table>
         <k-table-head>
           <k-table-row header>
@@ -100,6 +100,7 @@
     kPage,
     kNavbar,
     kNavbarBackLink,
+    kBlock,
     kBlockTitle,
     kCard,
     kTable,
@@ -115,6 +116,7 @@
       kPage,
       kNavbar,
       kNavbarBackLink,
+      kBlock,
       kBlockTitle,
       kCard,
       kTable,

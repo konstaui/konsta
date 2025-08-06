@@ -42,7 +42,6 @@
     onclear = undefined,
     ondisable = undefined,
 
-    touchRipple = true,
     children,
     ...restProps
   } = $props();
@@ -50,11 +49,13 @@
   let theme = $state(useTheme({ ios, material }));
   let disableTimeout = null;
 
+  let el = $state(null);
+  export { el };
+
   let searchEl = $state(null);
-  let rippleEl = $state(null);
   useTouchRipple(
-    () => rippleEl,
-    () => touchRipple
+    () => el,
+    () => true
   );
 
   let isEnabled = $state(false);
@@ -122,7 +123,7 @@
 
 <svelte:element
   this={component}
-  bind:this={rippleEl}
+  bind:this={el}
   class={c.base}
   onblurcapture={onGlobalBlur}
   onfocuscapture={onGlobalFocus}

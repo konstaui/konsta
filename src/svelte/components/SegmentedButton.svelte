@@ -11,6 +11,7 @@
   } = $props();
 
   let el = $state(null);
+  export { el };
 
   const SegmentedContext =
     getContext('SegmentedContext') ||

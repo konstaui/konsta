@@ -20,8 +20,6 @@ const Fab = (props) => {
     ios,
     material,
 
-    touchRipple = true,
-
     // Children
     children,
 
@@ -43,7 +41,7 @@ const Fab = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
+  useTouchRipple(rippleElRef, theme === 'material');
 
   const colors = FabColors(colorsProp, dark);
 

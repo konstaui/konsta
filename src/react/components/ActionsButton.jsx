@@ -25,8 +25,6 @@ const ActionsButton = (props) => {
     // Anchor props
     href,
 
-    touchRipple = true,
-
     dividers = undefined,
 
     // Children
@@ -53,7 +51,7 @@ const ActionsButton = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  useTouchRipple(rippleElRef, theme === 'material' && touchRipple);
+  useTouchRipple(rippleElRef, theme === 'material');
 
   const colors = ActionsButtonColors(colorsProp, dark);
 

@@ -6,7 +6,7 @@ const nextTick = (fn) => {
   });
 };
 
-export const useHoverable = ({
+export const useIosHighlight = ({
   getEl,
   zIndex = 10,
   opacity = 1,

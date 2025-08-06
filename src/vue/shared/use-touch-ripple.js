@@ -24,7 +24,11 @@ export const useTouchRipple = (
     return value;
   };
   const needsTouchRipple = () => {
-    return theme() === 'material' && (addCondition ? addCondition() : true);
+    return (
+      theme() === 'material' &&
+      context.value.materialTouchRipple &&
+      (addCondition ? addCondition() : true)
+    );
   };
   const removeRipple = () => {
     if (ripple.value) ripple.value.remove();
@@ -42,7 +46,7 @@ export const useTouchRipple = (
   };
 
   const attachEvents = () => {
-    if (!context.value.touchRipple || eventsAttached) return;
+    if (!context.value.materialTouchRipple || eventsAttached) return;
     eventsAttached = true;
     const el = getEl(eventsElRef);
     el.addEventListener('pointerdown', onPointerDown);

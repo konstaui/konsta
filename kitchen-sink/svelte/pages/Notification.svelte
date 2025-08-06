@@ -106,18 +106,22 @@
       <DialogButton onclick={() => (alertOpened = false)}>Ок</DialogButton>
     {/snippet}
   </Dialog>
-  <Block strongIos outlineIos class="space-y-4">
+  <Block strong inset class="space-y-4">
     <p>
       Konsta UI comes with simple Notifications component that allows you to
       show some useful messages to user and request basic actions.
     </p>
     <p>
-      <Button onclick={() => openNotification(() => (notificationFull = true))}>
+      <Button
+        rounded
+        onclick={() => openNotification(() => (notificationFull = true))}
+      >
         Full layout notification
       </Button>
     </p>
     <p>
       <Button
+        rounded
         onclick={() => openNotification(() => (notificationWithButton = true))}
       >
         With Close Button
@@ -125,6 +129,7 @@
     </p>
     <p>
       <Button
+        rounded
         onclick={() =>
           openNotification(() => (notificationCloseOnClick = true))}
       >
@@ -133,6 +138,7 @@
     </p>
     <p>
       <Button
+        rounded
         onclick={() =>
           openNotification(() => (notificationCallbackOnClose = true))}
       >

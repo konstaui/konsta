@@ -12,7 +12,7 @@ export const useTouchRipple = (
     return (
       getTouchRipple() &&
       KonstaStore.theme === 'material' &&
-      KonstaStore.touchRipple
+      KonstaStore.materialTouchRipple
     );
   };
 

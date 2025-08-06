@@ -28,6 +28,9 @@
     ...restProps
   } = $props();
 
+  let el = $state(null);
+  export { el };
+
   const state = $derived(opened ? 'opened' : 'closed');
 
   const dark = useDarkClasses();
@@ -55,7 +58,13 @@
   <div class={c.backdrop[state]} onclick={onBackdropClick}></div>
 {/if}
 
-<Glass hoverable={false} {component} class={c.base[state]} {...restProps}>
+<Glass
+  bind:this={el}
+  highlight={false}
+  {component}
+  class={c.base[state]}
+  {...restProps}
+>
   <div class={c.contentWrap}>
     {#if title}
       <div class={c.title}>

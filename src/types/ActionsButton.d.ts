@@ -80,13 +80,6 @@ interface Props {
   fontSizeMaterial?: string;
 
   /**
-   * Enables touch ripple effect in Material theme
-   *
-   * @default true
-   */
-  touchRipple?: boolean;
-
-  /**
    * Renders button outer hairlines (borders). If not specified, will be enabled for iOS theme
    *
    * @default undefined

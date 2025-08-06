@@ -17,8 +17,7 @@
     boldMaterial = false,
     fontSizeIos = 'text-xl',
     fontSizeMaterial = 'text-base',
-    touchRipple = true,
-    dividers = true,
+    dividers = undefined,
 
     onClick = undefined,
     onclick = undefined,
@@ -33,7 +32,7 @@
 
   useTouchRipple(
     () => rippleEl,
-    () => touchRipple
+    () => true
   );
 
   const attrs = $derived({

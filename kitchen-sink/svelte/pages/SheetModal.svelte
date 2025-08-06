@@ -1,4 +1,5 @@
 <script>
+  import CloseIcon from '../components/CloseIcon.svelte';
   import {
     Page,
     Navbar,
@@ -7,6 +8,7 @@
     Block,
     Button,
     Toolbar,
+    ToolbarPane,
     Link,
   } from 'konsta/svelte';
 
@@ -23,13 +25,13 @@
     {/snippet}
   </Navbar>
 
-  <Block strongIos outlineIos class="space-y-4">
+  <Block strong inset class="space-y-4">
     <p>
       Sheet Modals slide up from the bottom of the screen to reveal more
       content. Such modals allow to create custom overlays with custom content.
     </p>
     <p>
-      <Button onclick={() => (sheetOpened = true)}>Open Sheet</Button>
+      <Button rounded onclick={() => (sheetOpened = true)}>Open Sheet</Button>
     </p>
   </Block>
 
@@ -38,11 +40,12 @@
     opened={sheetOpened}
     onBackdropClick={() => (sheetOpened = false)}
   >
-    <Toolbar top>
-      <div class="left"></div>
-      <div class="right">
-        <Link toolbar onClick={() => (sheetOpened = false)}>Done</Link>
-      </div>
+    <Toolbar top class="justify-end ios:pt-4">
+      <div class="ios:hidden"></div>
+      <ToolbarPane>
+        <Link iconOnly onClick={() => (sheetOpened = false)}><CloseIcon /></Link
+        >
+      </ToolbarPane>
     </Toolbar>
     <Block>
       <p>
@@ -52,7 +55,9 @@
         excepturi voluptatem dolore itaque sapiente dolores!
       </p>
       <div class="mt-4">
-        <Button onclick={() => (sheetOpened = false)}>Action</Button>
+        <Button large rounded onclick={() => (sheetOpened = false)}
+          >Action</Button
+        >
       </div>
     </Block>
   </Sheet>

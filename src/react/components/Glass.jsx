@@ -1,15 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { GlassClasses } from '../../shared/classes/GlassClasses.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
-import { useHoverable } from '../../shared/use-hoverable.js';
+import { useIosHighlight } from '../../shared/use-ios-highlight.js';
+import { KonstaContext } from '../shared/KonstaContext.js';
 
 const Glass = (props) => {
   const {
     component = 'div',
     className,
-    hoverable = true,
+    highlight = true,
 
     ios,
     material,
@@ -36,11 +37,13 @@ const Glass = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
-  const hoverableData = useRef({});
-  const { attachEvents, detachEvents } = useHoverable({
+  const { iosHoverHighlight } = useContext(KonstaContext);
+
+  const highlightData = useRef({});
+  const { attachEvents, detachEvents } = useIosHighlight({
     getEl: () => elRef.current,
-    enabled: hoverable && theme === 'ios',
-    data: hoverableData.current,
+    enabled: highlight && theme === 'ios' && iosHoverHighlight,
+    data: highlightData.current,
   });
 
   const c = themeClasses(GlassClasses({ ...props }, dark), className);

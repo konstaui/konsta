@@ -29,10 +29,6 @@
         type: Boolean,
         default: undefined,
       },
-      withBlock: {
-        type: Boolean,
-        default: true,
-      },
       medium: {
         type: Boolean,
         default: false,

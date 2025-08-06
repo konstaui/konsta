@@ -40,7 +40,9 @@
     ...restProps
   } = $props();
 
-  const rippleEl = { current: null };
+  let el = $state(null);
+  export { el };
+
   let areaEl = null;
   let isFocused = false;
 
@@ -84,11 +86,11 @@
   this={component}
   {id}
   {style}
-  bind:this={rippleEl.current}
+  bind:this={el}
   class={c.base}
   {...restProps}
 >
-  <Toolbar {colors} {outline}>
+  <Toolbar {colors} {outline} innerClass={c.toolbarInner}>
     {#if left}
       <div class={c.left}>
         {@render left?.()}

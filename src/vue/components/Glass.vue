@@ -11,7 +11,7 @@
   import { darkClasses } from '../shared/use-dark-classes.js';
 
   import { GlassClasses } from '../../shared/classes/GlassClasses.js';
-  import { useHoverable } from '../../shared/use-hoverable.js';
+  import { useIosHighlight } from '../../shared/use-ios-highlight.js';
   export default {
     name: 'k-glass',
     props: {
@@ -27,7 +27,7 @@
         type: Boolean,
         default: undefined,
       },
-      hoverable: {
+      highlight: {
         type: Boolean,
         default: true,
       },
@@ -38,13 +38,16 @@
       const useThemeClasses = themeClasses(context);
       const elRef = ref(null);
 
-      const hoverableData = ref({});
+      const highlightData = ref({});
       const theme = useTheme(props, context);
 
-      const { attachEvents, detachEvents } = useHoverable({
+      const { attachEvents, detachEvents } = useIosHighlight({
         getEl: () => elRef.value,
-        enabled: props.hoverable && theme.value === 'ios',
-        data: hoverableData.value,
+        enabled:
+          props.highlight &&
+          theme.value === 'ios' &&
+          context.value.iosHoverHighlight,
+        data: highlightData.value,
       });
 
       const c = useThemeClasses(

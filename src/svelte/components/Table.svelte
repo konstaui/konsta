@@ -11,13 +11,14 @@
     ...restProps
   } = $props();
 
-  const rippleEl = { current: null };
+  let el = $state(null);
+  export { el };
 
   const c = $derived(
     useThemeClasses({ ios, material }, TableClasses({}), className)
   );
 </script>
 
-<table bind:this={rippleEl.current} class={c.base} {...restProps}>
+<table bind:this={el} class={c.base} {...restProps}>
   {@render children?.()}
 </table>

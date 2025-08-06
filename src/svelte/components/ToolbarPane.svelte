@@ -45,13 +45,15 @@
       },
     }));
 
-  const { tabbar, activeTabbarEl } = ToolbarContext()?.value || {
-    toolbar: false,
-    tabbar: false,
-    tabbarLabels: false,
-    tabbarIcons: false,
-    activeTabbarEl: undefined,
-  };
+  const { tabbar, activeTabbarEl } = $derived(
+    ToolbarContext()?.value || {
+      toolbar: false,
+      tabbar: false,
+      tabbarLabels: false,
+      tabbarIcons: false,
+      activeTabbarEl: undefined,
+    }
+  );
   const hasHighlight = $derived(theme === 'ios' && tabbar);
 
   const dark = useDarkClasses();

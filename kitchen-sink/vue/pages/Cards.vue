@@ -6,7 +6,7 @@
       </template>
     </k-navbar>
 
-    <k-block-title :with-block="false">Simple Cards</k-block-title>
+    <k-block-title>Simple Cards</k-block-title>
     <k-card>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
@@ -21,7 +21,7 @@
       Mauris aliquet magna justo.
     </k-card>
 
-    <k-block-title :with-block="false">Outline Cards</k-block-title>
+    <k-block-title>Outline Cards</k-block-title>
     <k-card outline>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
@@ -36,7 +36,7 @@
       Mauris aliquet magna justo.{' '}
     </k-card>
 
-    <k-block-title :with-block="false">Outline With Dividers</k-block-title>
+    <k-block-title>Outline With Dividers</k-block-title>
     <k-card
       outline
       header="Card header"
@@ -48,7 +48,7 @@
       and footers for additional information or just for custom actions.
     </k-card>
 
-    <k-block-title :with-block="false">Raised Cards</k-block-title>
+    <k-block-title>Raised Cards</k-block-title>
     <k-card raised>
       This is a simple card with plain text, but cards can also contain their
       own header, footer, list view, image, or any other element.
@@ -63,7 +63,7 @@
       Mauris aliquet magna justo.{' '}
     </k-card>
 
-    <k-block-title :with-block="false">Card With List View</k-block-title>
+    <k-block-title>Card With List View</k-block-title>
     <k-card>
       <k-list nested class="-m-4">
         <k-list-item href title="Link 1" />
@@ -74,7 +74,7 @@
       </k-list>
     </k-card>
 
-    <k-block-title :with-block="false">Styled Cards</k-block-title>
+    <k-block-title>Styled Cards</k-block-title>
     <div class="lg:grid lg:grid-cols-2">
       <k-card outline>
         <template #footer>
@@ -83,7 +83,7 @@
             <k-link>Read more</k-link>
           </div>
           <div
-            className="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
+            class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
           >
             <k-button rounded inline> Like </k-button>
             <k-button rounded inline outline> Read more </k-button>
@@ -111,7 +111,7 @@
             <k-link>Read more</k-link>
           </div>
           <div
-            className="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
+            class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse"
           >
             <k-button rounded inline> Like </k-button>
             <k-button rounded inline outline> Read more </k-button>

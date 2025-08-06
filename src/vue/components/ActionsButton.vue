@@ -42,10 +42,6 @@
         type: [Boolean, String],
         default: undefined,
       },
-      touchRipple: {
-        type: Boolean,
-        default: true,
-      },
       dividers: { type: Boolean, default: undefined },
       bold: { type: Boolean, default: undefined },
       boldIos: { type: Boolean, default: false },

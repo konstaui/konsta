@@ -19,13 +19,14 @@
     readonly = false,
     onChange = undefined,
     onchange = undefined,
-    touchRipple = true,
 
     children,
     ...restProps
   } = $props();
 
-  let elRef = $state(null);
+  let el = $state(null);
+  export { el };
+
   let rippleTargetElRef = $state(null);
 
   const theme = $derived(useTheme({ ios, material }));
@@ -33,8 +34,8 @@
 
   useTouchRipple(
     () => rippleTargetElRef,
-    () => touchRipple,
-    () => elRef
+    () => true,
+    () => el
   );
 
   const colors = $derived(ToggleColors(colorsProp, dark));
@@ -51,7 +52,7 @@
 
 <svelte:element
   this={component}
-  bind:this={elRef}
+  bind:this={el}
   class={c.base[state]}
   {...restProps}
 >
