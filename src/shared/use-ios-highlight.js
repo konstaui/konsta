@@ -1,5 +1,3 @@
-import clsx from 'clsx';
-
 const nextTick = (fn) => {
   requestAnimationFrame(() => {
     requestAnimationFrame(fn);
@@ -63,7 +61,7 @@ export const useIosHighlight = ({
 
     d.rect = el.getBoundingClientRect();
     const lightElWrap = document.createElement('span');
-    lightElWrap.className = clsx('rounded-[inherit]');
+    lightElWrap.className = 'rounded-[inherit]';
     lightElWrap.style = `left: ${offset}px; top: ${offset}px; right: ${offset}px; bottom: ${offset}px;transition-duration: 300ms; opacity: 0; position: absolute; overflow: hidden; pointer-events: none`;
     const lightEl = document.createElement('span');
     const { width, height } = d.rect;
