@@ -11,8 +11,8 @@
     ".": {
       "types": "./konsta-vue.d.ts",
       "vue": "./konsta-vue.js",
-      "import": "./konsta-vue.js",
-      "require": "./konsta-vue.js"
-    }
+      "import": "./konsta-vue.js"
+    },
+    "./theme.css": "./theme.css"
   }
 }

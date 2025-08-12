@@ -11,6 +11,7 @@
     ".": {
       "types": "./konsta-svelte.d.ts",
       "import": "./konsta-svelte.js"
-    }
+    },
+    "./theme.css": "./theme.css"
   }
 }

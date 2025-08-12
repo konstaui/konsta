@@ -10,6 +10,9 @@ async function buildCopy(cb) {
 
   fs.copyFileSync(`./src/plugin-colors.js`, `./${outputDir}/plugin-colors.js`);
   fs.copyFileSync(`./src/theme.css`, `./${outputDir}/theme.css`);
+  fs.copyFileSync(`./src/react/theme.css`, `./${outputDir}/react/theme.css`);
+  fs.copyFileSync(`./src/vue/theme.css`, `./${outputDir}/vue/theme.css`);
+  fs.copyFileSync(`./src/svelte/theme.css`, `./${outputDir}/svelte/theme.css`);
   if (cb) cb();
 }
 

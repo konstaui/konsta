@@ -10,6 +10,7 @@
     ".": {
       "types": "./konsta-react.d.ts",
       "import": "./konsta-react.js"
-    }
+    },
+    "./theme.css": "./theme.css"
   }
 }

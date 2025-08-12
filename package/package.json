@@ -23,20 +23,24 @@
   },
   "exports": {
     "./package.json": "./package.json",
+    "./theme.css": "./theme.css",
     "./react": {
       "types": "./react/konsta-react.d.ts",
       "import": "./react/konsta-react.js"
     },
+    "./react/theme.css": "./react/theme.css",
     "./vue": {
       "types": "./vue/konsta-vue.d.ts",
       "require": "./vue/konsta-vue.js",
       "import": "./vue/konsta-vue.js"
     },
+    "./vue/theme.css": "./vue/theme.css",
     "./svelte": {
       "types": "./svelte/konsta-svelte.d.ts",
       "import": "./svelte/konsta-svelte.js",
       "svelte": "./svelte/konsta-svelte.js"
     },
+    "./svelte/theme.css": "./svelte/theme.css",
     "./config": "./config.js",
     "./config.js": "./config.js"
   }
