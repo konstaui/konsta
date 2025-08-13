@@ -210,7 +210,7 @@
     {@render children?.()}
   </svelte:element>
 {:else}
-  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y_click_events_have_key_events -->
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <svelte:element
     this={component}

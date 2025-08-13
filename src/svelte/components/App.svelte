@@ -38,6 +38,7 @@
       }
     }
   });
+  // svelte-ignore state_referenced_locally
   KonstaStore.theme = currentTheme;
   KonstaStore.dark = dark;
   KonstaStore.materialTouchRipple = materialTouchRipple;

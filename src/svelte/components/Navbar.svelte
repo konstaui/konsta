@@ -65,6 +65,7 @@
   let subnavbarElRef = $state(null);
 
   const isScrollable = $derived(medium || large || transparent);
+  // svelte-ignore state_referenced_locally
   let wasScrollable = $state(isScrollable);
 
   const dark = useDarkClasses();

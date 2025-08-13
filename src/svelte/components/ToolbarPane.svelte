@@ -81,6 +81,7 @@
     setHasTabbarLinks: (value) => {
       hasTabbarLinks = value;
     },
+    // svelte-ignore state_referenced_locally
     classes: c,
     getHighlightStyle: () => highlightStyle,
     setHighlightStyle: ({ width, transform }) => {
