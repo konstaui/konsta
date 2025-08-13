@@ -27,22 +27,6 @@ export default async (outputDir = 'package') => {
     });
   });
 
-  // Fix global shared paths
-  const dirsWithShared = ['vue/components', 'vue/shared'];
-  dirsWithShared.forEach((dirPath) => {
-    const dirFullPath = path.resolve(__dirname, `../${outputDir}`, dirPath);
-    fs.readdirSync(dirFullPath).forEach((f) => {
-      if (fs.lstatSync(path.resolve(dirFullPath, f)).isDirectory()) return;
-      if (f.includes('package.json')) return;
-      let fileContent = fs.readFileSync(path.resolve(dirFullPath, f), 'utf-8');
-      fileContent = fileContent.replace(
-        /..\/..\/shared\//g,
-        '../../shared/esm/'
-      );
-      fs.writeFileSync(path.resolve(dirFullPath, f), fileContent);
-    });
-  });
-
   // Add banner
   let fileContent = await fs.readFile(
     `./${outputDir}/vue/konsta-vue.js`,
