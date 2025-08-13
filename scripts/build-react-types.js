@@ -5,6 +5,22 @@ import { getDirname } from './get-dirname.js';
 const __dirname = getDirname(import.meta.url);
 
 const createComponentTypes = (componentName, propsContent) => {
+  let extendsComponent =
+    {
+      Link: 'a',
+      Button: 'button',
+      SegmentedButton: 'button',
+      ActionsButton: 'button',
+      DialogButton: 'button',
+      Fab: 'a',
+      NavbarBackLink: 'a',
+      Table: 'table',
+      TableBody: 'tbody',
+      TableHead: 'thead',
+      TableCell: 'td',
+      TableRow: 'tr',
+    }[componentName] || 'div';
+
   propsContent = propsContent.replace(
     'interface Props {',
     'export interface Props {'
@@ -14,7 +30,7 @@ import * as React from 'react';
 
 ${propsContent}
 
-interface ${componentName}Props extends Omit<React.HTMLAttributes<HTMLElement>, keyof Props>, Props {
+interface ${componentName}Props extends Omit<React.ComponentProps<'${extendsComponent}'>, keyof Props>, Props {
   ref?: React.Ref<HTMLElement>;
 }
 
