@@ -81,7 +81,7 @@ const addOnClickProp = (componentName, content) => {
 };
 
 const createComponentTypes = (componentName, propsContent) => {
-  const slots = ['default'];
+  const slots = [];
   const removeProps = ['defaultChecked', 'defaultValue'];
   const lowercaseProps = [
     'autoComplete',
@@ -118,15 +118,9 @@ const createComponentTypes = (componentName, propsContent) => {
       });
       if (shouldBeRemoved) return '';
       if (line.includes('React.ReactNode')) {
-        const slotName = line.split('?:')[0].trim();
-        if (!slots.includes(slotName)) slots.push(slotName);
+        return `${line.split('?:')[0]}?: Snippet;`;
       }
-      if (line.includes(' | React.ReactNode')) {
-        return `${line.split(' | React.ReactNode')[0]}`;
-      }
-      if (line.includes('?: React.ReactNode')) {
-        return '';
-      }
+
       return line;
     })
     .join('\n');
@@ -134,7 +128,7 @@ const createComponentTypes = (componentName, propsContent) => {
   const svelteElementType = componentSvelteElementInheritance[componentName];
   const nativeElementType = componentNativeElementInheritance[componentName];
   return `
-import { SvelteComponent } from 'svelte';
+import { SvelteComponent, Snippet } from 'svelte';
 ${
   svelteElementType
     ? `import type { ${svelteElementType} } from 'svelte/elements';`
