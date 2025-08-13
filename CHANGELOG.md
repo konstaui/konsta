@@ -1,10 +1,33 @@
-# [Unreleased](https://github.com/konstaui/konsta/compare/v4.0.1...1b3e59c55ac7cd72efbd8d783b234105022f3875) (2025-08-06)
+# [5.0.0](https://github.com/konstaui/konsta/compare/v4.0.1...v5.0.0) (2025-08-06)
 
-### Bug Fixes
+🎉🎉🎉\
+All new Konsta UI v5 is here with updated iOS 26 and Material Design 2025 look and feel!
 
-- Vue - fix useTheme util ([1a708f9](https://github.com/konstaui/konsta/commit/1a708f99c9fb0fea4e5b51f1b3bbd3f8507e37e9))
+### Tailwind
 
-### Features
+- Konsta has been updated to the latest Tailwind v4 API, so the framework installation and configuration should be done in `@theme` CSS declaration.
+
+### React
+
+- All components have been updated to the latest React 19 API
+
+### Svelte
+
+- All components have been updated to use new Svelte v5 Runes API
+- Which means no more `slots`, we need to use `{#snippet ...}` now to pass the children content
+
+### iOS Theme
+
+- Almost all components have been updated to match the new iOS 26 look and feel
+- New iOS hover highlight on interactive elements (can be disabled globally via App/KonstaProvider parameter)
+
+### Material Theme
+
+- Updated look for Range Slider and Progressbar components
+- Touch ripple can only be enabled/disabled globally (via App/KonstaProvider parameter)
+- New color schemes - Vibrant and Monochrome
+
+### Full Changelog
 
 - a lot of Svelte components updates ([7bd5aec](https://github.com/konstaui/konsta/commit/7bd5aec45cd44ceea2ba2c7d5310c090449acfcf))
 - add Glass component ([176fb99](https://github.com/konstaui/konsta/commit/176fb9979ba3683f1d74e5ee4d08ef6ade9dbf65))

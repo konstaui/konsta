@@ -30,6 +30,7 @@ import * as React from 'react';
 
 ${propsContent}
 
+// @ts-ignore
 interface ${componentName}Props extends Omit<React.ComponentProps<'${extendsComponent}'>, keyof Props>, Props {
   ref?: React.Ref<HTMLElement>;
 }
