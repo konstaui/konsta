@@ -10,25 +10,21 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
 <table>
   <tr>
     <td align="center" valign="middle">
-      <a href="https://www.noneedtostudy.com/take-my-online-class/" target="_blank">
-        <img src="https://konstaui.com/images/sponsors/noneedtostudy.png" alt="Pay someone to do online class? NoNeedToStudy.com" width="160">
+      <a href="https://slovenskecasino.net/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/slovenskecasino-net.png" alt="Najlepšie Slovenské Online Kasina" width="160">
       </a>
     </td>
     <td align="center" valign="middle">
-      <a href="https://www.casinoutanlicens.io/" target="_blank">
-        <img src="https://konstaui.com/images/sponsors/casinoutanlicens.png" alt="Casino utan svensk licens" width="160">
+      <a href="https://novecasino.net/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/novecasino-net.png" alt="Nove Casino" width="160">
       </a>
     </td>
     <td align="center" valign="middle">
-      <a href="https://casinoscrypto.com" target="_blank">
-        <img src="https://konstaui.com/images/sponsors/casinoscrypto.png" alt="Best Crypto Casinos | Top Bitcoin Gambling Sites (2022)" width="160">
+      <a href="https://leofame.com/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/leofame.png" alt="Buy Instagram Followers & Likes" width="160">
       </a>
     </td>
-    <td align="center" valign="middle">
-      <a href="https://cryptocurrencycodes.com" target="_blank">
-        <img src="https://konstaui.com/images/sponsors/cryptocurrencycodes.png" alt="Top FREE Crypto Sign Up Bonuses & Referral Codes" width="160">
-      </a>
-    </td>
+    <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>

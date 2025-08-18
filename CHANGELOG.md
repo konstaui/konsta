@@ -33,7 +33,7 @@ All new Konsta UI v5 is here with updated iOS 26 and Material Design 2025 look a
 
 - a lot of Svelte components updates ([7bd5aec](https://github.com/konstaui/konsta/commit/7bd5aec45cd44ceea2ba2c7d5310c090449acfcf))
 - add Glass component ([176fb99](https://github.com/konstaui/konsta/commit/176fb9979ba3683f1d74e5ee4d08ef6ade9dbf65))
-- add k-{name} component classes ([29200dc](https://github.com/konstaui/konsta/commit/29200dcf61ba5c36302806c125e963c8fc024e83))
+- add k-[name] component classes ([29200dc](https://github.com/konstaui/konsta/commit/29200dcf61ba5c36302806c125e963c8fc024e83))
 - begin Svelte components ([aac737e](https://github.com/konstaui/konsta/commit/aac737ecb54dddcc029fe6958bb348f2c1bdd9ae))
 - FAB iOS styles ([6aa014f](https://github.com/konstaui/konsta/commit/6aa014f1c11ed5e033a6aa7dfd4936bf2b89674d))
 - finalize iOS toolbar pane ([02aff9b](https://github.com/konstaui/konsta/commit/02aff9b1520aa71f15906fb663a4ebd5a519efab))
