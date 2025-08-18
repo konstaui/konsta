@@ -1,3 +1,5 @@
+# Changelog
+
 # [5.0.0](https://github.com/konstaui/konsta/compare/v4.0.1...v5.0.0) (2025-08-19)
 
 🎉🎉🎉\
@@ -87,8 +89,6 @@ All new Konsta UI v5 is here with updated iOS 26 and Material Design 2025 look a
 - update to use react `ref` prop ([57a5c14](https://github.com/konstaui/konsta/commit/57a5c14d4c2c7e3f7dcffc5aa01c1caead109cdb))
 - update Vue components ([14bfbcd](https://github.com/konstaui/konsta/commit/14bfbcdd83bc2c9a5fdcaeed4142653ebdf234a8))
 - Vue Tabbar with mutation observer ([8da2783](https://github.com/konstaui/konsta/commit/8da27837cb6ead13188927d52053dc011dad4cec))
-
-# Changelog
 
 # [4.0.1](https://github.com/konstaui/konsta/compare/v4.0.0...v4.0.1) (2024-09-18)
 

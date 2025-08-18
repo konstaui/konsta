@@ -215,7 +215,6 @@
       const ListContext = inject('ListContext', {
         value: { dividers: false, nested: false },
       });
-      console.log(ListContext.value);
 
       const c = useThemeClasses(props, () =>
         ListItemClasses(
