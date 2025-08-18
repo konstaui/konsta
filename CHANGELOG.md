@@ -1,4 +1,4 @@
-# [5.0.0](https://github.com/konstaui/konsta/compare/v4.0.1...v5.0.0) (2025-08-06)
+# [5.0.0](https://github.com/konstaui/konsta/compare/v4.0.1...v5.0.0) (2025-08-19)
 
 🎉🎉🎉\
 All new Konsta UI v5 is here with updated iOS 26 and Material Design 2025 look and feel!
