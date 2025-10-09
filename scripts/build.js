@@ -6,6 +6,7 @@ import buildVueTypes from './build-vue-types.js';
 import buildSvelte from './build-svelte.js';
 import buildSvelteTypes from './build-svelte-types.js';
 import buildShared from './build-shared.js';
+import buildAngular from './build-angular.js';
 
 (async () => {
   const env = process.env.NODE_ENV || 'development';
@@ -16,6 +17,7 @@ import buildShared from './build-shared.js';
     buildShared(outputDir),
     buildSvelte(outputDir),
     buildVue(outputDir),
+    buildAngular(outputDir),
     buildReactTypes(),
     buildVueTypes(),
     buildSvelteTypes(),

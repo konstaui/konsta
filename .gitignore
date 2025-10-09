@@ -31,9 +31,14 @@ package/**/*.d.ts
 package/**/*.css
 package/**/*.vue
 package/**/**/*.vue
+package/**/*.map
 
 kitchen-sink/react/dist
 kitchen-sink/vue/dist
 kitchen-sink/svelte/dist
+kitchen-sink/angular/dist
+kitchen-sink/angular/node_modules
 
 src/vue-temp
+dist/*
+.tmp

@@ -1,0 +1,16 @@
+{
+  "name": "konsta/angular",
+  "private": true,
+  "main": "./konsta-angular.js",
+  "module": "./konsta-angular.js",
+  "types": "./konsta-angular.d.ts",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./konsta-angular.d.ts",
+      "import": "./konsta-angular.js"
+    },
+    "./theme.css": "./theme.css"
+  }
+}

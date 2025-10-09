@@ -1,0 +1,115 @@
+<k-page>
+  <k-navbar
+    [title]="'Konsta UI'"
+    [large]="true"
+    [transparent]="true"
+    [centerTitle]="true"
+  ></k-navbar>
+
+  <k-block-title>Theme</k-block-title>
+  <k-list [strong]="true" [inset]="true">
+    <k-list-item [label]="true" [title]="'iOS Theme'">
+      <div media>
+        <k-radio
+          [checked]="theme() === 'ios'"
+          (changed)="setTheme('ios')"
+        ></k-radio>
+      </div>
+    </k-list-item>
+    <k-list-item [label]="true" [title]="'Material Theme'">
+      <div media>
+        <k-radio
+          [checked]="theme() === 'material'"
+          (changed)="setTheme('material')"
+        ></k-radio>
+      </div>
+    </k-list-item>
+  </k-list>
+
+  <k-list [strong]="true" [inset]="true">
+    <k-list-item [label]="true" [title]="'Dark Mode'">
+      <div after>
+        <k-toggle [checked]="dark()" (changed)="toggleDark()"></k-toggle>
+      </div>
+    </k-list-item>
+    <k-list-item
+      [title]="'Color Theme'"
+      (click)="openColorPicker()"
+      class="cursor-pointer"
+    >
+      <div after>
+        <div
+          class="w-6 h-6 rounded-full home-color-picker"
+          [ngClass]="{
+            'bg-brand-primary': !color(),
+            'bg-brand-red': color() === 'k-color-brand-red',
+            'bg-brand-green': color() === 'k-color-brand-green',
+            'bg-brand-yellow': color() === 'k-color-brand-yellow',
+            'bg-brand-purple': color() === 'k-color-brand-purple'
+          }"
+        ></div>
+      </div>
+    </k-list-item>
+    <ng-container *ngIf="theme() === 'material'">
+      <k-list-item [label]="true" [title]="'Vibrant Colors'">
+        <div after>
+          <k-toggle
+            [checked]="vibrant()"
+            (changed)="toggleVibrant()"
+          ></k-toggle>
+        </div>
+      </k-list-item>
+      <k-list-item [label]="true" [title]="'Monochrome'">
+        <div after>
+          <k-toggle
+            [checked]="monochrome()"
+            (changed)="toggleMonochrome()"
+          ></k-toggle>
+        </div>
+      </k-list-item>
+    </ng-container>
+  </k-list>
+
+  <k-popover
+    [opened]="colorPickerOpened()"
+    target=".home-color-picker"
+    (backdropClick)="closeColorPicker()"
+  >
+    <div class="grid grid-cols-3 gap-2 py-2">
+      <k-link component="button" class="color-swatch" (clicked)="clearColor()">
+        <span class="sr-only">Default</span>
+      </k-link>
+      <k-link component="button" class="color-swatch bg-brand-red" (clicked)="setColor('k-color-brand-red')">
+        <span class="sr-only">Red</span>
+      </k-link>
+      <k-link component="button" class="color-swatch bg-brand-green" (clicked)="setColor('k-color-brand-green')">
+        <span class="sr-only">Green</span>
+      </k-link>
+      <k-link component="button" class="color-swatch bg-brand-yellow" (clicked)="setColor('k-color-brand-yellow')">
+        <span class="sr-only">Yellow</span>
+      </k-link>
+      <k-link component="button" class="color-swatch bg-brand-purple" (clicked)="setColor('k-color-brand-purple')">
+        <span class="sr-only">Purple</span>
+      </k-link>
+    </div>
+  </k-popover>
+
+  <k-block-title>Component Demos</k-block-title>
+  <k-list [strong]="true" [inset]="true">
+    <ng-container *ngIf="routes.length === 0; else routesList">
+      <k-list-item>
+        <div title>Angular component demos are in progress.</div>
+      </k-list-item>
+    </ng-container>
+    <ng-template #routesList>
+      <k-list-item *ngFor="let route of routes">
+        <div title>{{ route.title }}</div>
+        <div content>
+          <a [routerLink]="route.path" class="inline-flex items-center gap-1 text-primary">
+            View <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </k-list-item>
+    </ng-template>
+  </k-list>
+</k-page>
