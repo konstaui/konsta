@@ -1,5 +1,9 @@
 # Changelog
 
+# [5.0.1](https://github.com/konstaui/konsta/compare/v5.0.0...v5.0.1) (2025-10-09)
+
+- fixed issue with Sheet Modal backdrop visibility
+
 # [5.0.0](https://github.com/konstaui/konsta/compare/v4.0.1...v5.0.0) (2025-08-19)
 
 🎉🎉🎉\
