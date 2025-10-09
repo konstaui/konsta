@@ -6,7 +6,7 @@ import {
   Signal,
   computed,
   effect,
-  inject,
+  forwardRef,
   input,
   signal,
   viewChild,
@@ -43,10 +43,15 @@ import {
     </{{ component() }}>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [
+    {
+      provide: TOOLBAR_CONTEXT,
+      useFactory: (component: KToolbarComponent) => component.contextValue,
+      deps: [forwardRef(() => KToolbarComponent)],
+    },
+  ],
 })
 export class KToolbarComponent {
-  private readonly toolbarContext = inject(TOOLBAR_CONTEXT);
-
   readonly component = input<'div' | 'nav'>('div');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -127,15 +132,14 @@ export class KToolbarComponent {
   readonly innerEl = viewChild<ElementRef<HTMLElement>>('inner');
   readonly highlightEl = viewChild<ElementRef<HTMLElement>>('highlight');
 
-  constructor() {
-    const context = createToolbarContext({
-      tabbar: computed(() => this.tabbar()),
-      tabbarIcons: computed(() => this.tabbarIcons()),
-      tabbarLabels: computed(() => this.tabbarLabels()),
-      toolbar: computed(() => true),
-    });
-    Object.assign(this.toolbarContext, context);
+  readonly contextValue = createToolbarContext({
+    tabbar: computed(() => this.tabbar()),
+    tabbarIcons: computed(() => this.tabbarIcons()),
+    tabbarLabels: computed(() => this.tabbarLabels()),
+    toolbar: computed(() => true),
+  });
 
+  constructor() {
     effect(() => {
       if (!this.hasHighlight()) return;
       queueMicrotask(() => this.updateHighlight());

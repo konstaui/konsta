@@ -4,6 +4,7 @@ import {
   Component,
   Signal,
   computed,
+  forwardRef,
   input,
 } from '@angular/core';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
@@ -13,6 +14,10 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
+import {
+  NAVBAR_CONTEXT,
+  createNavbarContext,
+} from '../shared/navbar-context.js';
 
 @Component({
   selector: 'k-navbar',
@@ -41,6 +46,13 @@ import {
     </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [
+    {
+      provide: NAVBAR_CONTEXT,
+      useFactory: (component: KNavbarComponent) => component.contextValue,
+      deps: [forwardRef(() => KNavbarComponent)],
+    },
+  ],
 })
 export class KNavbarComponent {
   readonly className = input<string | undefined>(undefined, {
@@ -127,4 +139,8 @@ export class KNavbarComponent {
   readonly subnavbarClasses: Signal<string> = computed(
     () => this.classes()['subnavbar']
   );
+
+  readonly contextValue = createNavbarContext({
+    navbar: computed(() => true),
+  });
 }

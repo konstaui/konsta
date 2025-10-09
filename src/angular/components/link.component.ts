@@ -5,6 +5,7 @@ import {
   ElementRef,
   Signal,
   computed,
+  inject,
   input,
   output,
   viewChild,
@@ -18,6 +19,8 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { useTouchRipple } from '../shared/touch-ripple.js';
+import { TOOLBAR_CONTEXT } from '../shared/toolbar-context.js';
+import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
 
 @Component({
   selector: 'k-link',
@@ -60,15 +63,18 @@ export class KLinkComponent {
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
   readonly component = input<'a' | 'button'>('a');
-  readonly tabbar = input<boolean>(false);
+  readonly tabbar = input<boolean | undefined>(undefined);
   readonly tabbarActive = input<boolean>(false);
-  readonly tabbarLabels = input<boolean>(false);
-  readonly tabbarIcons = input<boolean>(false);
-  readonly toolbar = input<boolean>(false);
-  readonly navbar = input<boolean>(false);
+  readonly tabbarLabels = input<boolean | undefined>(undefined);
+  readonly tabbarIcons = input<boolean | undefined>(undefined);
+  readonly toolbar = input<boolean | undefined>(undefined);
+  readonly navbar = input<boolean | undefined>(undefined);
   readonly iconOnly = input<boolean>(false);
 
   readonly clicked = output<Event>();
+
+  private readonly toolbarContext = inject(TOOLBAR_CONTEXT);
+  private readonly navbarContext = inject(NAVBAR_CONTEXT);
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -84,25 +90,57 @@ export class KLinkComponent {
     LinkColors(this.colors() ?? {}, this.dark)
   );
 
+  private readonly isToolbar = computed(() => {
+    const value = this.toolbar();
+    if (value !== undefined && value !== null) return value;
+    return this.toolbarContext.toolbar();
+  });
+
+  private readonly isTabbar = computed(() => {
+    const value = this.tabbar();
+    if (value !== undefined && value !== null) return value;
+    return this.toolbarContext.tabbar();
+  });
+
+  private readonly isTabbarLabels = computed(() => {
+    const value = this.tabbarLabels();
+    if (value !== undefined && value !== null) return value;
+    return this.toolbarContext.tabbarLabels();
+  });
+
+  private readonly isTabbarIcons = computed(() => {
+    const value = this.tabbarIcons();
+    if (value !== undefined && value !== null) return value;
+    return this.toolbarContext.tabbarIcons();
+  });
+
+  private readonly isNavbar = computed(() => {
+    const value = this.navbar();
+    if (value !== undefined && value !== null) return value;
+    return this.navbarContext.navbar();
+  });
+
   private readonly needsTouchRipple = computed(
-    () => this.theme() === 'material' && (this.toolbar() || this.tabbar() || this.navbar())
+    () =>
+      this.theme() === 'material' &&
+      (this.isToolbar() || this.isTabbar() || this.isNavbar())
   );
 
   private readonly textColor = computed(() => {
     const colors = this.palette() as Record<string, any>;
     const theme = this.theme();
-    const themeTextColor = this.navbar()
+    const themeTextColor = this.isNavbar()
       ? theme === 'material'
         ? colors['navbarTextMaterial']
         : colors['navbarTextIos']
-      : this.toolbar()
+      : this.isToolbar()
         ? theme === 'material'
           ? colors['toolbarTextMaterial']
           : colors['toolbarTextIos']
         : theme === 'material'
           ? colors['textMaterial']
           : colors['textIos'];
-    if (this.tabbar() && !this.tabbarActive()) {
+    if (this.isTabbar() && !this.tabbarActive()) {
       return colors['tabbarInactive'] ?? themeTextColor;
     }
     return themeTextColor;
@@ -114,11 +152,11 @@ export class KLinkComponent {
       LinkClasses(
         {
           iconOnly: this.iconOnly(),
-          tabbar: this.tabbar(),
-          tabbarLabels: this.tabbarLabels(),
-          tabbarIcons: this.tabbarIcons(),
-          toolbar: this.toolbar(),
-          navbar: this.navbar(),
+          tabbar: this.isTabbar(),
+          tabbarLabels: this.isTabbarLabels(),
+          tabbarIcons: this.isTabbarIcons(),
+          toolbar: this.isToolbar(),
+          navbar: this.isNavbar(),
         },
         {
           textColor: this.textColor(),
@@ -132,9 +170,9 @@ export class KLinkComponent {
 
     return cls(
       linkClasses['base'],
-      this.toolbar() && linkClasses['toolbar'],
-      this.navbar() && linkClasses['navbar'],
-      this.tabbar() && tabbarClasses[this.tabbarActive() ? 'active' : 'inactive'],
+      this.isToolbar() && linkClasses['toolbar'],
+      this.isNavbar() && linkClasses['navbar'],
+      this.isTabbar() && tabbarClasses[this.tabbarActive() ? 'active' : 'inactive'],
       this.className()
     );
   });
