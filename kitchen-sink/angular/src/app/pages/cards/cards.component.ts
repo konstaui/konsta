@@ -12,7 +12,6 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
 
 @Component({
   selector: 'app-cards',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -35,11 +34,9 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
   template: `
     <k-page>
       <k-navbar title="Cards">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Simple Cards</k-block-title>

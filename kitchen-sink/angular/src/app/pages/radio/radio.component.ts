@@ -16,7 +16,6 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
 
 @Component({
   selector: 'app-radio',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -38,11 +37,9 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
   template: `
     <k-page>
       <k-navbar title="Radio">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Inline</k-block-title>
@@ -70,37 +67,33 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
 
       <k-block-title>Radio Group</k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item
-          *ngFor="let option of groupOptions"
-          [label]="true"
-          [title]="option"
-        >
-          <ng-container ngProjectAs="[media]">
-            <k-radio
-              component="div"
-              [value]="option"
-              [checked]="groupValue() === option"
-              (changed)="groupValue.set(option)"
-            ></k-radio>
-          </ng-container>
-        </k-list-item>
+        @for (option of groupOptions; track option) {
+          <k-list-item [label]="true" [title]="option">
+            <ng-container ngProjectAs="[media]">
+              <k-radio
+                component="div"
+                [value]="option"
+                [checked]="groupValue() === option"
+                (changed)="groupValue.set(option)"
+              ></k-radio>
+            </ng-container>
+          </k-list-item>
+        }
       </k-list>
 
       <k-list [strong]="true" [inset]="true">
-        <k-list-item
-          *ngFor="let option of groupOptions"
-          [label]="true"
-          [title]="option"
-        >
-          <ng-container ngProjectAs="[after]">
-            <k-radio
-              component="div"
-              [value]="option"
-              [checked]="groupValue() === option"
-              (changed)="groupValue.set(option)"
-            ></k-radio>
-          </ng-container>
-        </k-list-item>
+        @for (option of groupOptions; track option) {
+          <k-list-item [label]="true" [title]="option">
+            <ng-container ngProjectAs="[after]">
+              <k-radio
+                component="div"
+                [value]="option"
+                [checked]="groupValue() === option"
+                (changed)="groupValue.set(option)"
+              ></k-radio>
+            </ng-container>
+          </k-list-item>
+        }
       </k-list>
 
       <k-block-title>With Media Lists</k-block-title>

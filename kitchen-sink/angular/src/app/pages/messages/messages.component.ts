@@ -29,7 +29,6 @@ interface MessageItem {
 
 @Component({
   selector: 'app-messages',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -49,32 +48,31 @@ interface MessageItem {
       class="messages-page ios:bg-white ios:dark:bg-black"
     >
       <k-navbar title="Messages">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-messages>
         <k-messages-title>
           <b>{{ currentDay }}</b>, {{ currentTime }}
         </k-messages-title>
-        <k-message
-          *ngFor="let message of messages()"
-          [type]="message.type"
-          [name]="message.name"
-          [text]="message.text"
-        >
-          <ng-container *ngIf="message.type === 'received' && message.avatar">
-            <img
-              avatar
-              [src]="message.avatar"
-              alt=""
-              class="w-8 h-8 rounded-full"
-            />
-          </ng-container>
-        </k-message>
+        @for (message of messages(); track $index) {
+          <k-message
+            [type]="message.type"
+            [name]="message.name"
+            [text]="message.text"
+          >
+            @if (message.type === 'received' && message.avatar) {
+              <img
+                avatar
+                [src]="message.avatar"
+                alt=""
+                class="w-8 h-8 rounded-full"
+              />
+            }
+          </k-message>
+        }
       </k-messages>
 
       <k-messagebar
@@ -121,8 +119,8 @@ interface MessageItem {
             <k-icon>
               <span ios>
                 <svg
-                  [ngClass]="{ 'text-primary': isClickable() }"
                   class="w-7 h-7 transition-colors"
+                  [class.text-primary]="isClickable()"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"

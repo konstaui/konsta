@@ -39,7 +39,6 @@ const ITEMS: SearchItem[] = [
 
 @Component({
   selector: 'app-searchbar',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -52,11 +51,9 @@ const ITEMS: SearchItem[] = [
   template: `
     <k-page>
       <k-navbar title="Searchbar" [subnavbar]="true">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
         <div subnavbar>
           <k-searchbar
             [value]="searchQuery()"
@@ -70,14 +67,12 @@ const ITEMS: SearchItem[] = [
       </k-navbar>
 
       <k-list [strong]="true" [inset]="true">
-        <k-list-item
-          *ngIf="filteredItems().length === 0"
-          title="Nothing found"
-        ></k-list-item>
-        <k-list-item
-          *ngFor="let item of filteredItems()"
-          [title]="item.title"
-        ></k-list-item>
+        @if (filteredItems().length === 0) {
+          <k-list-item title="Nothing found"></k-list-item>
+        }
+        @for (item of filteredItems(); track item.title) {
+          <k-list-item [title]="item.title"></k-list-item>
+        }
       </k-list>
     </k-page>
   `,

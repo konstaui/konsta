@@ -15,7 +15,6 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
   selector: 'app-menu-list',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -36,11 +35,9 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
   template: `
     <k-page>
       <k-navbar title="Menu List">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">

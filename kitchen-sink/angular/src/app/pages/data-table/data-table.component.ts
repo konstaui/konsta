@@ -22,7 +22,6 @@ interface Dessert {
 
 @Component({
   selector: 'app-data-table',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -47,11 +46,9 @@ interface Dessert {
   template: `
     <k-page>
       <k-navbar title="Data Table">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Plain table</k-block-title>
@@ -77,21 +74,23 @@ interface Dessert {
             </k-table-row>
           </k-table-head>
           <k-table-body>
-            <k-table-row *ngFor="let dessert of desserts">
-              <k-table-cell>{{ dessert.name }}</k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.calories }}
-              </k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.fat | number:'1.1-1' }}
-              </k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.carbs }}
-              </k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.protein | number:'1.1-1' }}
-              </k-table-cell>
-            </k-table-row>
+            @for (dessert of desserts; track dessert.name) {
+              <k-table-row>
+                <k-table-cell>{{ dessert.name }}</k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.calories }}
+                </k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.fat | number:'1.1-1' }}
+                </k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.carbs }}
+                </k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.protein | number:'1.1-1' }}
+                </k-table-cell>
+              </k-table-row>
+            }
           </k-table-body>
         </k-table>
       </k-block>
@@ -119,21 +118,23 @@ interface Dessert {
             </k-table-row>
           </k-table-head>
           <k-table-body>
-            <k-table-row *ngFor="let dessert of desserts">
-              <k-table-cell>{{ dessert.name }}</k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.calories }}
-              </k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.fat | number:'1.1-1' }}
-              </k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.carbs }}
-              </k-table-cell>
-              <k-table-cell class="text-right">
-                {{ dessert.protein | number:'1.1-1' }}
-              </k-table-cell>
-            </k-table-row>
+            @for (dessert of desserts; track dessert.name) {
+              <k-table-row>
+                <k-table-cell>{{ dessert.name }}</k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.calories }}
+                </k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.fat | number:'1.1-1' }}
+                </k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.carbs }}
+                </k-table-cell>
+                <k-table-cell class="text-right">
+                  {{ dessert.protein | number:'1.1-1' }}
+                </k-table-cell>
+              </k-table-row>
+            }
           </k-table-body>
         </k-table>
       </k-card>

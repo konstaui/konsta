@@ -16,7 +16,6 @@ import { KSegmentedButtonComponent } from '../../../../../../src/angular/compone
 
 @Component({
   selector: 'app-progressbar',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -38,11 +37,9 @@ import { KSegmentedButtonComponent } from '../../../../../../src/angular/compone
   template: `
     <k-page>
       <k-navbar title="Progressbar">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Determinate Progress Bar</k-block-title>

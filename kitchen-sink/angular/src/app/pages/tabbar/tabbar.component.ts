@@ -26,7 +26,6 @@ interface TabDescriptor {
 
 @Component({
   selector: 'app-tabbar',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -51,11 +50,9 @@ interface TabDescriptor {
   template: `
     <k-page>
       <k-navbar title="Tabbar">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-tabbar
@@ -64,38 +61,40 @@ interface TabDescriptor {
         [icons]="showIcons()"
       >
         <k-toolbar-pane>
-          <k-tabbar-link
-            *ngFor="let tab of tabs"
-            [active]="activeTab() === tab.id"
-            (clicked)="setActiveTab(tab.id)"
-          >
-            <span
-              label
-              *ngIf="showLabels()"
+          @for (tab of tabs; track tab.id) {
+            <k-tabbar-link
+              [active]="activeTab() === tab.id"
+              (clicked)="setActiveTab(tab.id)"
             >
-              {{ tab.title }}
-            </span>
-            <k-icon icon component="span" *ngIf="showIcons()">
-              <svg
-                ios
-                class="w-7 h-7"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path [attr.d]="tab.iosPath" />
-              </svg>
-              <svg
-                material
-                class="w-6 h-6"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path [attr.d]="tab.materialPath" />
-              </svg>
-            </k-icon>
-          </k-tabbar-link>
+              @if (showLabels()) {
+                <span label>
+                  {{ tab.title }}
+                </span>
+              }
+              @if (showIcons()) {
+                <k-icon icon component="span">
+                  <svg
+                    ios
+                    class="w-7 h-7"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path [attr.d]="tab.iosPath" />
+                  </svg>
+                  <svg
+                    material
+                    class="w-6 h-6"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path [attr.d]="tab.materialPath" />
+                  </svg>
+                </k-icon>
+              }
+            </k-tabbar-link>
+          }
         </k-toolbar-pane>
       </k-tabbar>
 
@@ -118,109 +117,100 @@ interface TabDescriptor {
         </k-list-item>
       </k-list>
 
-      <k-block
-        *ngIf="activeTab() === 'tab-1'"
-        [strong]="true"
-        [inset]="true"
-        class="space-y-4"
-      >
-        <p><strong>Tab 1</strong></p>
-        <p>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            accusantium necessitatibus, nihil quas praesentium at quibusdam
-            cupiditate possimus et repudiandae dolorum delectus quo, similique
-            voluptatem magni explicabo adipisci magnam ratione!
-          </span>
-          <span>
-            Quod praesentium consequatur autem veritatis, magni alias consectetur
-            ut quo, voluptatum earum in repellat! Id, autem! Minus suscipit, ad
-            possimus non voluptatem aliquam praesentium earum corrupti optio velit
-            tenetur numquam?
-          </span>
-          <span>
-            Illo id ipsa natus quidem dignissimos odio dolore veniam, accusamus
-            vel assumenda nulla aliquam amet distinctio! Debitis deserunt, et, cum
-            voluptate similique culpa assumenda inventore, facilis eveniet iure
-            optio velit.
-          </span>
-          <span>
-            Maiores minus laborum placeat harum impedit, saepe veniam iusto
-            voluptates delectus omnis consectetur tenetur ex ipsa error debitis
-            aspernatur amet et alias! Sit odit cum voluptas quae? Est, omnis eos?
-          </span>
-        </p>
-      </k-block>
+      @if (activeTab() === 'tab-1') {
+        <k-block [strong]="true" [inset]="true" class="space-y-4">
+          <p><strong>Tab 1</strong></p>
+          <p>
+            <span>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+              accusantium necessitatibus, nihil quas praesentium at quibusdam
+              cupiditate possimus et repudiandae dolorum delectus quo, similique
+              voluptatem magni explicabo adipisci magnam ratione!
+            </span>
+            <span>
+              Quod praesentium consequatur autem veritatis, magni alias consectetur
+              ut quo, voluptatum earum in repellat! Id, autem! Minus suscipit, ad
+              possimus non voluptatem aliquam praesentium earum corrupti optio velit
+              tenetur numquam?
+            </span>
+            <span>
+              Illo id ipsa natus quidem dignissimos odio dolore veniam, accusamus
+              vel assumenda nulla aliquam amet distinctio! Debitis deserunt, et, cum
+              voluptate similique culpa assumenda inventore, facilis eveniet iure
+              optio velit.
+            </span>
+            <span>
+              Maiores minus laborum placeat harum impedit, saepe veniam iusto
+              voluptates delectus omnis consectetur tenetur ex ipsa error debitis
+              aspernatur amet et alias! Sit odit cum voluptas quae? Est, omnis eos?
+            </span>
+          </p>
+        </k-block>
+      }
 
-      <k-block
-        *ngIf="activeTab() === 'tab-2'"
-        [strong]="true"
-        [inset]="true"
-        class="space-y-4"
-      >
-        <p><strong>Tab 2</strong></p>
-        <p>
-          <span>
-            Dicta beatae repudiandae ab pariatur mollitia praesentium fuga ipsum
-            adipisci, quia nam expedita, est dolore eveniet, dolorum obcaecati?
-            Veniam repellendus mollitia sapiente minus saepe voluptatibus
-            necessitatibus laboriosam incidunt nihil autem.
-          </span>
-          <span>
-            Officia pariatur qui, deleniti eum, et minus nisi aliquam nobis hic
-            provident quisquam quidem voluptatem eveniet ducimus. Commodi ea
-            dolorem, impedit eaque dolor, sint blanditiis magni accusantium natus
-            reprehenderit minima?
-          </span>
-          <span>
-            Dicta reiciendis ut vitae laborum aut repellendus quasi beatae nulla
-            sapiente et. Quod distinctio velit, modi ipsam exercitationem iste
-            quia eaque blanditiis neque rerum optio, nulla tenetur pariatur ex
-            officiis.
-          </span>
-          <span>
-            Consectetur accusamus delectus sit voluptatem at esse! Aperiam unde
-            maxime est nemo dicta minus autem esse nobis quibusdam iusto,
-            reprehenderit harum, perferendis quae. Ipsum sit fugit similique
-            recusandae quas inventore?
-          </span>
-        </p>
-      </k-block>
+      @if (activeTab() === 'tab-2') {
+        <k-block [strong]="true" [inset]="true" class="space-y-4">
+          <p><strong>Tab 2</strong></p>
+          <p>
+            <span>
+              Dicta beatae repudiandae ab pariatur mollitia praesentium fuga ipsum
+              adipisci, quia nam expedita, est dolore eveniet, dolorum obcaecati?
+              Veniam repellendus mollitia sapiente minus saepe voluptatibus
+              necessitatibus laboriosam incidunt nihil autem.
+            </span>
+            <span>
+              Officia pariatur qui, deleniti eum, et minus nisi aliquam nobis hic
+              provident quisquam quidem voluptatem eveniet ducimus. Commodi ea
+              dolorem, impedit eaque dolor, sint blanditiis magni accusantium natus
+              reprehenderit minima?
+            </span>
+            <span>
+              Dicta reiciendis ut vitae laborum aut repellendus quasi beatae nulla
+              sapiente et. Quod distinctio velit, modi ipsam exercitationem iste
+              quia eaque blanditiis neque rerum optio, nulla tenetur pariatur ex
+              officiis.
+            </span>
+            <span>
+              Consectetur accusamus delectus sit voluptatem at esse! Aperiam unde
+              maxime est nemo dicta minus autem esse nobis quibusdam iusto,
+              reprehenderit harum, perferendis quae. Ipsum sit fugit similique
+              recusandae quas inventore?
+            </span>
+          </p>
+        </k-block>
+      }
 
-      <k-block
-        *ngIf="activeTab() === 'tab-3'"
-        [strong]="true"
-        [inset]="true"
-        class="space-y-4"
-      >
-        <p><strong>Tab 3</strong></p>
-        <p>
-          <span>
-            Vero esse ab natus neque commodi aut quidem nobis. Unde, quam
-            asperiores. A labore quod commodi autem explicabo distinctio saepe ex
-            amet iste recusandae porro consectetur, sed dolorum sapiente
-            voluptatibus?
-          </span>
-          <span>
-            Commodi ipsum, voluptatem obcaecati voluptatibus illum hic aliquam
-            veritatis modi natus unde, assumenda expedita, esse eum fugit? Saepe
-            aliquam ipsam illum nihil facilis, laborum quia, eius ea dolores
-            molestias dicta.
-          </span>
-          <span>
-            Consequatur quam laudantium, magnam facere ducimus tempora temporibus
-            omnis cupiditate obcaecati tempore? Odit qui a, voluptas eveniet
-            similique, doloribus eum dolorum ad, enim ea itaque voluptates porro
-            minima. Omnis, magnam.
-          </span>
-          <span>
-            Debitis, delectus! Eligendi excepturi rem veritatis, ad exercitationem
-            tempore eveniet voluptates aut labore harum dolorem nemo repellendus
-            accusantium quibusdam neque? Itaque iusto quisquam reprehenderit
-            aperiam maiores dicta iure necessitatibus est.
-          </span>
-        </p>
-      </k-block>
+      @if (activeTab() === 'tab-3') {
+        <k-block [strong]="true" [inset]="true" class="space-y-4">
+          <p><strong>Tab 3</strong></p>
+          <p>
+            <span>
+              Vero esse ab natus neque commodi aut quidem nobis. Unde, quam
+              asperiores. A labore quod commodi autem explicabo distinctio saepe ex
+              amet iste recusandae porro consectetur, sed dolorum sapiente
+              voluptatibus?
+            </span>
+            <span>
+              Commodi ipsum, voluptatem obcaecati voluptatibus illum hic aliquam
+              veritatis modi natus unde, assumenda expedita, esse eum fugit? Saepe
+              aliquam ipsam illum nihil facilis, laborum quia, eius ea dolores
+              molestias dicta.
+            </span>
+            <span>
+              Consequatur quam laudantium, magnam facere ducimus tempora temporibus
+              omnis cupiditate obcaecati tempore? Odit qui a, voluptas eveniet
+              similique, doloribus eum dolorum ad, enim ea itaque voluptates porro
+              minima. Omnis, magnam.
+            </span>
+            <span>
+              Debitis, delectus! Eligendi excepturi rem veritatis, ad exercitationem
+              tempore eveniet voluptates aut labore harum dolorem nemo repellendus
+              accusantium quibusdam neque? Itaque iusto quisquam reprehenderit
+              aperiam maiores dicta iure necessitatibus est.
+            </span>
+          </p>
+        </k-block>
+      }
     </k-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

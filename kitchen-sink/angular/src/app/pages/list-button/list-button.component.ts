@@ -8,7 +8,6 @@ import { KListButtonComponent } from '../../../../../../src/angular/components/l
 
 @Component({
   selector: 'app-list-button',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -27,11 +26,9 @@ import { KListButtonComponent } from '../../../../../../src/angular/components/l
   template: `
     <k-page>
       <k-navbar title="List Button">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-list [strong]="true" [outline]="true">

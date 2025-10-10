@@ -16,7 +16,6 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
 
 @Component({
   selector: 'app-toolbar',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -38,26 +37,25 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
   template: `
     <k-page class="flex flex-col min-h-screen">
       <k-navbar title="Toolbar">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
-      <k-toolbar
-        *ngIf="isTop()"
-        top
-        class="left-0 ios:top-safe-15 ios:mt-1 material:top-safe-16 sticky w-full"
-      >
-        <k-toolbar-pane>
-          <k-link>Link 1</k-link>
-          <k-link>Link 2</k-link>
-        </k-toolbar-pane>
-        <k-toolbar-pane>
-          <k-link>Link 3</k-link>
-        </k-toolbar-pane>
-      </k-toolbar>
+      @if (isTop()) {
+        <k-toolbar
+          top
+          class="left-0 ios:top-safe-15 ios:mt-1 material:top-safe-16 sticky w-full"
+        >
+          <k-toolbar-pane>
+            <k-link>Link 1</k-link>
+            <k-link>Link 2</k-link>
+          </k-toolbar-pane>
+          <k-toolbar-pane>
+            <k-link>Link 3</k-link>
+          </k-toolbar-pane>
+        </k-toolbar>
+      }
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">
         <p>
@@ -112,18 +110,17 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
         </p>
       </k-block>
 
-      <k-toolbar
-        *ngIf="!isTop()"
-        class="left-0 sticky bottom-0 w-full mt-auto"
-      >
-        <k-toolbar-pane>
-          <k-link>Link 1</k-link>
-          <k-link>Link 2</k-link>
-        </k-toolbar-pane>
-        <k-toolbar-pane>
-          <k-link>Link 3</k-link>
-        </k-toolbar-pane>
-      </k-toolbar>
+      @if (!isTop()) {
+        <k-toolbar class="left-0 sticky bottom-0 w-full mt-auto">
+          <k-toolbar-pane>
+            <k-link>Link 1</k-link>
+            <k-link>Link 2</k-link>
+          </k-toolbar-pane>
+          <k-toolbar-pane>
+            <k-link>Link 3</k-link>
+          </k-toolbar-pane>
+        </k-toolbar>
+      }
     </k-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

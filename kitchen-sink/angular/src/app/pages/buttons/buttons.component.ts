@@ -9,7 +9,6 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
 
 @Component({
   selector: 'app-buttons',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -23,11 +22,9 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
   template: `
     <k-page>
       <k-navbar title="Buttons">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Default Buttons</k-block-title>

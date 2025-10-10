@@ -16,7 +16,6 @@ type ToastPosition = 'left' | 'center' | 'right';
 
 @Component({
   selector: 'app-toast',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -29,11 +28,9 @@ type ToastPosition = 'left' | 'center' | 'right';
   template: `
     <k-page>
       <k-navbar title="Toast">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="flex flex-col gap-4">

@@ -16,7 +16,6 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
   selector: 'app-form-inputs',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -31,11 +30,9 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
   template: `
     <k-page>
       <k-navbar title="Form Inputs">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Default</k-block-title>

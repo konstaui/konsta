@@ -10,7 +10,6 @@ import { KBlockFooterComponent } from '../../../../../../src/angular/components/
 
 @Component({
   selector: 'app-content-block',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -31,11 +30,9 @@ import { KBlockFooterComponent } from '../../../../../../src/angular/components/
   template: `
     <k-page>
       <k-navbar title="Content Block">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Block Title</k-block-title>

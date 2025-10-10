@@ -14,7 +14,6 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
   selector: 'app-badge',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -39,11 +38,9 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
   template: `
     <k-page>
       <k-navbar title="Badge">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
         <k-link right [iconOnly]="true" component="button">
           <span class="relative inline-flex">
             <app-demo-icon class="block w-7 h-7" />

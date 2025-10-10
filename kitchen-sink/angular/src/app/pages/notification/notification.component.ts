@@ -25,7 +25,6 @@ interface NotificationState {
 
 @Component({
   selector: 'app-notification',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -48,11 +47,9 @@ interface NotificationState {
   template: `
     <k-page>
       <k-navbar title="Notification">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-notification

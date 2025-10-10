@@ -18,7 +18,6 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [
     CommonModule,
     RouterModule,
@@ -94,17 +93,15 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           <ng-container ngProjectAs="[after]">
             <div
               class="w-6 h-6 rounded-full home-color-picker"
-              [ngClass]="{
-                'bg-brand-primary': !color(),
-                'bg-brand-red': color() === 'k-color-brand-red',
-                'bg-brand-green': color() === 'k-color-brand-green',
-                'bg-brand-yellow': color() === 'k-color-brand-yellow',
-                'bg-brand-purple': color() === 'k-color-brand-purple'
-              }"
+              [class.bg-brand-primary]="!color()"
+              [class.bg-brand-red]="color() === 'k-color-brand-red'"
+              [class.bg-brand-green]="color() === 'k-color-brand-green'"
+              [class.bg-brand-yellow]="color() === 'k-color-brand-yellow'"
+              [class.bg-brand-purple]="color() === 'k-color-brand-purple'"
             ></div>
           </ng-container>
         </k-list-item>
-        <ng-container *ngIf="theme() === 'material'">
+        @if (theme() === 'material') {
           <k-list-item [label]="true" [title]="'Vibrant Colors'">
             <k-toggle
               ngProjectAs="[after]"
@@ -121,7 +118,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
               (changed)="toggleMonochrome()"
             ></k-toggle>
           </k-list-item>
-        </ng-container>
+        }
       </k-list>
 
       <k-popover
@@ -171,16 +168,17 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
       <k-block-title>Components</k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item
-          *ngFor="let route of routes"
-          [title]="route.title"
-          [link]="true"
-          [routerLink]="route.path"
-        >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
-        </k-list-item>
+        @for (route of routes; track route.path) {
+          <k-list-item
+            [title]="route.title"
+            [link]="true"
+            [routerLink]="route.path"
+          >
+            <ng-container ngProjectAs="[media]">
+              <app-demo-icon />
+            </ng-container>
+          </k-list-item>
+        }
       </k-list>
     </k-page>
   `,

@@ -16,7 +16,6 @@ import { KRangeComponent } from '../../../../../../src/angular/components/range.
 
 @Component({
   selector: 'app-range-slider',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -38,11 +37,9 @@ import { KRangeComponent } from '../../../../../../src/angular/components/range.
   template: `
     <k-page>
       <k-navbar title="Range Slider">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Volume: {{ volume() }}</k-block-title>

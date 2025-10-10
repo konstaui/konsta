@@ -14,7 +14,6 @@ interface ContactGroup {
 
 @Component({
   selector: 'app-contacts-list',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -34,26 +33,27 @@ interface ContactGroup {
   template: `
     <k-page>
       <k-navbar title="Contacts List">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-list [strongIos]="true">
-        <k-list-group *ngFor="let group of groups">
-          <k-list-item
-            [title]="group.title"
-            [groupTitle]="true"
-            [contacts]="true"
-          ></k-list-item>
-          <k-list-item
-            *ngFor="let name of group.contacts"
-            [title]="name"
-            [contacts]="true"
-          ></k-list-item>
-        </k-list-group>
+        @for (group of groups; track group.title) {
+          <k-list-group>
+            <k-list-item
+              [title]="group.title"
+              [groupTitle]="true"
+              [contacts]="true"
+            ></k-list-item>
+            @for (name of group.contacts; track name) {
+              <k-list-item
+                [title]="name"
+                [contacts]="true"
+              ></k-list-item>
+            }
+          </k-list-group>
+        }
       </k-list>
     </k-page>
   `,

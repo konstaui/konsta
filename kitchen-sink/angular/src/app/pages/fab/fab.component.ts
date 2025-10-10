@@ -14,7 +14,6 @@ import { ThemeService } from '../../shared/theme.service';
 
 @Component({
   selector: 'app-fab',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -33,18 +32,16 @@ import { ThemeService } from '../../shared/theme.service';
   template: `
     <k-page>
       <k-navbar title="FAB">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-fab
         class="fixed right-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-red"
       >
         <span icon>
-          <ng-container *ngIf="isIos(); else materialIcon">
+          @if (isIos()) {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -64,8 +61,7 @@ import { ThemeService } from '../../shared/theme.service';
                 stroke-linecap="round"
               />
             </svg>
-          </ng-container>
-          <ng-template #materialIcon>
+          } @else {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -74,13 +70,13 @@ import { ThemeService } from '../../shared/theme.service';
             >
               <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
             </svg>
-          </ng-template>
+          }
         </span>
       </k-fab>
 
       <k-fab class="fixed right-safe-4 bottom-safe-4 z-20">
         <span icon>
-          <ng-container *ngIf="isIos(); else materialIcon2">
+          @if (isIos()) {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -100,8 +96,7 @@ import { ThemeService } from '../../shared/theme.service';
                 stroke-linecap="round"
               />
             </svg>
-          </ng-container>
-          <ng-template #materialIcon2>
+          } @else {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -110,13 +105,13 @@ import { ThemeService } from '../../shared/theme.service';
             >
               <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
             </svg>
-          </ng-template>
+          }
         </span>
       </k-fab>
 
       <k-fab class="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green">
         <span icon>
-          <ng-container *ngIf="isIos(); else materialIcon3">
+          @if (isIos()) {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -136,8 +131,7 @@ import { ThemeService } from '../../shared/theme.service';
                 stroke-linecap="round"
               />
             </svg>
-          </ng-container>
-          <ng-template #materialIcon3>
+          } @else {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -146,7 +140,7 @@ import { ThemeService } from '../../shared/theme.service';
             >
               <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
             </svg>
-          </ng-template>
+          }
         </span>
       </k-fab>
 
@@ -154,7 +148,7 @@ import { ThemeService } from '../../shared/theme.service';
         class="fixed left-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-yellow"
       >
         <span icon>
-          <ng-container *ngIf="isIos(); else materialIcon4">
+          @if (isIos()) {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -174,8 +168,7 @@ import { ThemeService } from '../../shared/theme.service';
                 stroke-linecap="round"
               />
             </svg>
-          </ng-container>
-          <ng-template #materialIcon4>
+          } @else {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -184,7 +177,7 @@ import { ThemeService } from '../../shared/theme.service';
             >
               <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
             </svg>
-          </ng-template>
+          }
         </span>
       </k-fab>
 
@@ -192,7 +185,7 @@ import { ThemeService } from '../../shared/theme.service';
         class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
       >
         <span icon>
-          <ng-container *ngIf="isIos(); else materialIcon5">
+          @if (isIos()) {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -212,8 +205,7 @@ import { ThemeService } from '../../shared/theme.service';
                 stroke-linecap="round"
               />
             </svg>
-          </ng-container>
-          <ng-template #materialIcon5>
+          } @else {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -222,7 +214,7 @@ import { ThemeService } from '../../shared/theme.service';
             >
               <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
             </svg>
-          </ng-template>
+          }
         </span>
       </k-fab>
 
@@ -232,7 +224,7 @@ import { ThemeService } from '../../shared/theme.service';
         [textPosition]="'after'"
       >
         <span icon>
-          <ng-container *ngIf="isIos(); else materialIcon6">
+          @if (isIos()) {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -252,8 +244,7 @@ import { ThemeService } from '../../shared/theme.service';
                 stroke-linecap="round"
               />
             </svg>
-          </ng-container>
-          <ng-template #materialIcon6>
+          } @else {
             <svg
               class="w-6 h-6"
               viewBox="0 0 24 24"
@@ -262,20 +253,24 @@ import { ThemeService } from '../../shared/theme.service';
             >
               <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
             </svg>
-          </ng-template>
+          }
         </span>
       </k-fab>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">
-        <p *ngFor="let paragraph of primaryParagraphs">
-          {{ paragraph }}
-        </p>
+        @for (paragraph of primaryParagraphs; track paragraph) {
+          <p>
+            {{ paragraph }}
+          </p>
+        }
       </k-block>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">
-        <p *ngFor="let paragraph of secondaryParagraphs">
-          {{ paragraph }}
-        </p>
+        @for (paragraph of secondaryParagraphs; track paragraph) {
+          <p>
+            {{ paragraph }}
+          </p>
+        }
       </k-block>
     </k-page>
   `,

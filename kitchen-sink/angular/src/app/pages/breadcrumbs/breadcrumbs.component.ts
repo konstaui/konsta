@@ -17,7 +17,6 @@ import { KLinkComponent } from '../../../../../../src/angular/components/link.co
 
 @Component({
   selector: 'app-breadcrumbs',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -49,11 +48,9 @@ import { KLinkComponent } from '../../../../../../src/angular/components/link.co
   template: `
     <k-page>
       <k-navbar title="Breadcrumbs">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true">

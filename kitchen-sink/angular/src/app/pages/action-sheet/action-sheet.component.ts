@@ -18,7 +18,6 @@ import { KActionsButtonComponent } from '../../../../../../src/angular/component
 
 @Component({
   selector: 'app-action-sheet',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -42,11 +41,9 @@ import { KActionsButtonComponent } from '../../../../../../src/angular/component
   template: `
     <k-page>
       <k-navbar title="Action Sheet">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">

@@ -21,7 +21,6 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -53,11 +52,9 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
         [large]="size() === 'Large'"
         [transparent]="isTransparent()"
       >
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
         <k-link right>Right</k-link>
       </k-navbar>
       <div class="relative">
@@ -73,20 +70,18 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
           Medium and Large will collapse to usual size on page scroll
         </k-block-header>
         <k-list [strong]="true" [inset]="true">
-          <k-list-item
-            *ngFor="let option of sizeOptions"
-            [label]="true"
-            [title]="option"
-          >
-            <ng-container ngProjectAs="[after]">
-              <k-radio
-                component="div"
-                [value]="option"
-                [checked]="size() === option"
-                (changed)="setSize(option)"
-              ></k-radio>
-            </ng-container>
-          </k-list-item>
+          @for (option of sizeOptions; track option) {
+            <k-list-item [label]="true" [title]="option">
+              <ng-container ngProjectAs="[after]">
+                <k-radio
+                  component="div"
+                  [value]="option"
+                  [checked]="size() === option"
+                  (changed)="setSize(option)"
+                ></k-radio>
+              </ng-container>
+            </k-list-item>
+          }
         </k-list>
 
         <k-block-title>Transparent</k-block-title>
@@ -107,9 +102,11 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
         </k-list>
 
         <k-block [strong]="true" [inset]="true" class="space-y-4">
-          <p *ngFor="let paragraph of paragraphs">
-            {{ paragraph }}
-          </p>
+          @for (paragraph of paragraphs; track paragraph) {
+            <p>
+              {{ paragraph }}
+            </p>
+          }
         </k-block>
       </div>
     </k-page>

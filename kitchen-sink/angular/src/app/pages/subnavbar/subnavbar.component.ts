@@ -10,7 +10,6 @@ import { KSegmentedButtonComponent } from '../../../../../../src/angular/compone
 
 @Component({
   selector: 'app-subnavbar',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -24,11 +23,9 @@ import { KSegmentedButtonComponent } from '../../../../../../src/angular/compone
   template: `
     <k-page>
       <k-navbar title="Subnavbar" [subnavbar]="true">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
         <div subnavbar>
           <k-segmented [strong]="true" [rounded]="true">
             <k-segmented-button [active]="true">Button</k-segmented-button>

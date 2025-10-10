@@ -14,9 +14,45 @@ import { KBlockComponent } from '../../../../../../src/angular/components/block.
 import { KListComponent } from '../../../../../../src/angular/components/list.component.js';
 import { KListItemComponent } from '../../../../../../src/angular/components/list-item.component.js';
 
+type GroupOption = 'Books' | 'Movies' | 'Food' | 'Drinks';
+type MovieOption = 'Movie 1' | 'Movie 2';
+
+type MediaItem = {
+  readonly id: string;
+  readonly title: string;
+  readonly after: string;
+  readonly subtitle: string;
+  readonly text: string;
+};
+
+const GROUP_OPTIONS: readonly GroupOption[] = [
+  'Books',
+  'Movies',
+  'Food',
+  'Drinks',
+];
+const MOVIE_OPTIONS: readonly MovieOption[] = ['Movie 1', 'Movie 2'];
+const LONG_TEXT =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.';
+const MEDIA_ITEMS: readonly MediaItem[] = [
+  {
+    id: 'Item 1',
+    title: 'Facebook',
+    after: '17:14',
+    subtitle: 'New messages from John Doe',
+    text: LONG_TEXT,
+  },
+  {
+    id: 'Item 2',
+    title: 'John Doe (via Twitter)',
+    after: '17:11',
+    subtitle: 'John Doe (@_johndoe) mentioned you on Twitter!',
+    text: LONG_TEXT,
+  },
+];
+
 @Component({
   selector: 'app-checkbox',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -38,11 +74,9 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
   template: `
     <k-page>
       <k-navbar title="Checkbox">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Inline</k-block-title>
@@ -70,83 +104,46 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
 
       <k-block-title>Checkbox Group</k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item [label]="true" [title]="'Books'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Books')"
-            (changed)="toggleGroupValue('Books')"
-          ></k-checkbox>
-        </k-list-item>
-        <k-list-item [label]="true" [title]="'Movies'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Movies')"
-            (changed)="toggleGroupValue('Movies')"
-          ></k-checkbox>
-        </k-list-item>
-        <k-list-item [label]="true" [title]="'Food'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Food')"
-            (changed)="toggleGroupValue('Food')"
-          ></k-checkbox>
-        </k-list-item>
-        <k-list-item [label]="true" [title]="'Drinks'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Drinks')"
-            (changed)="toggleGroupValue('Drinks')"
-          ></k-checkbox>
-        </k-list-item>
+        @for (option of groupOptions; track option) {
+          <k-list-item [label]="true" [title]="option">
+            <ng-container ngProjectAs="[media]">
+              <k-checkbox
+                [component]="'div'"
+                name="demo-checkbox"
+                [checked]="group().includes(option)"
+                (changed)="toggleGroupValue(option)"
+              ></k-checkbox>
+            </ng-container>
+          </k-list-item>
+        }
       </k-list>
 
       <k-block-title>Indeterminate State</k-block-title>
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Movies'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            [checked]="movies().length === 2"
-            [indeterminate]="movies().length === 1"
-            (changed)="toggleMoviesAll()"
-          ></k-checkbox>
+          <ng-container ngProjectAs="[media]">
+            <k-checkbox
+              [component]="'div'"
+              [checked]="isAllMoviesSelected()"
+              [indeterminate]="isSomeMoviesSelected()"
+              (changed)="toggleMoviesAll()"
+            ></k-checkbox>
+          </ng-container>
           <div content>
             <ul class="ps-12">
-              <k-list-item [label]="true" [title]="'Movie 1'">
-                <k-checkbox
-                  media
-                  ngProjectAs="[media]"
-                  [component]="'div'"
-                  name="demo-checkbox"
-                  value="Movie 1"
-                  [checked]="movies().includes('Movie 1')"
-                  (changed)="onMovieChange($event)"
-                ></k-checkbox>
-              </k-list-item>
-              <k-list-item [label]="true" [title]="'Movie 2'">
-                <k-checkbox
-                  media
-                  ngProjectAs="[media]"
-                  [component]="'div'"
-                  name="demo-checkbox"
-                  value="Movie 2"
-                  [checked]="movies().includes('Movie 2')"
-                  (changed)="onMovieChange($event)"
-                ></k-checkbox>
-              </k-list-item>
+              @for (movie of movieOptions; track movie) {
+                <k-list-item [label]="true" [title]="movie">
+                  <ng-container ngProjectAs="[media]">
+                    <k-checkbox
+                      [component]="'div'"
+                      name="demo-checkbox"
+                      [value]="movie"
+                      [checked]="movies().includes(movie)"
+                      (changed)="onMovieChange($event)"
+                    ></k-checkbox>
+                  </ng-container>
+                </k-list-item>
+              }
             </ul>
           </div>
         </k-list-item>
@@ -154,44 +151,34 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
 
       <k-block-title>With Media Lists</k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item
-          [label]="true"
-          [title]="'Facebook'"
-          [after]="'17:14'"
-          [subtitle]="'New messages from John Doe'"
-          [text]="longText"
-        >
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-media-checkbox"
-            [checked]="media().includes('Item 1')"
-            (changed)="toggleMediaValue('Item 1')"
-          ></k-checkbox>
-        </k-list-item>
-        <k-list-item
-          [label]="true"
-          [title]="'John Doe (via Twitter)'"
-          [after]="'17:11'"
-          [subtitle]="'John Doe (@_johndoe) mentioned you on Twitter!'"
-          [text]="longText"
-        >
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-media-checkbox"
-            [checked]="media().includes('Item 2')"
-            (changed)="toggleMediaValue('Item 2')"
-          ></k-checkbox>
-        </k-list-item>
+        @for (item of mediaItems; track item.id) {
+          <k-list-item
+            [label]="true"
+            [title]="item.title"
+            [after]="item.after"
+            [subtitle]="item.subtitle"
+            [text]="item.text"
+          >
+            <ng-container ngProjectAs="[media]">
+              <k-checkbox
+                [component]="'div'"
+                name="demo-media-checkbox"
+                [checked]="media().includes(item.id)"
+                (changed)="toggleMediaValue(item.id)"
+              ></k-checkbox>
+            </ng-container>
+          </k-list-item>
+        }
       </k-list>
     </k-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxComponent {
+  readonly groupOptions = GROUP_OPTIONS;
+  readonly movieOptions = MOVIE_OPTIONS;
+  readonly mediaItems = MEDIA_ITEMS;
+
   readonly isPreview = computed(
     () =>
       typeof document !== 'undefined' &&
@@ -201,71 +188,87 @@ export class CheckboxComponent {
   readonly checked1 = signal(false);
   readonly checked2 = signal(true);
 
-  readonly group = signal<string[]>(['Books']);
-  readonly movies = signal<string[]>(['Movie 1']);
-  readonly media = signal<string[]>(['Item 1']);
+  readonly group = signal<GroupOption[]>(['Books']);
+  readonly movies = signal<MovieOption[]>([MOVIE_OPTIONS[0]]);
+  readonly media = signal<MediaItem['id'][]>([MEDIA_ITEMS[0].id]);
 
-  readonly longText =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.';
+  readonly isAllMoviesSelected = computed(
+    () => this.movies().length === this.movieOptions.length
+  );
+  readonly isSomeMoviesSelected = computed(() => {
+    const count = this.movies().length;
+    return count > 0 && count < this.movieOptions.length;
+  });
 
   toggleChecked1(event: Event) {
-    const target = event.target as HTMLInputElement;
+    const target = this.getCheckboxTarget(event);
+    if (!target) {
+      return;
+    }
     this.checked1.set(target.checked);
   }
 
   toggleChecked2(event: Event) {
-    const target = event.target as HTMLInputElement;
+    const target = this.getCheckboxTarget(event);
+    if (!target) {
+      return;
+    }
     this.checked2.set(target.checked);
   }
 
-  toggleGroupValue(value: string) {
-    const next = [...this.group()];
-    const index = next.indexOf(value);
-    if (index >= 0) {
-      next.splice(index, 1);
-    } else {
-      next.push(value);
-    }
-    this.group.set(next);
+  toggleGroupValue(value: GroupOption) {
+    this.group.update((current) =>
+      current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value]
+    );
   }
 
   onMovieChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const value = target.value;
-    const next = [...this.movies()];
-    const index = next.indexOf(value);
-    if (target.checked && index < 0) {
-      next.push(value);
+    const target = this.getCheckboxTarget(event);
+    if (!target || !this.isMovieOption(target.value)) {
+      return;
     }
-    if (!target.checked && index >= 0) {
-      next.splice(index, 1);
-    }
-    this.movies.set(next);
+    const { value, checked } = target;
+
+    this.movies.update((current) => {
+      const hasValue = current.includes(value);
+      if (checked && !hasValue) {
+        return [...current, value];
+      }
+      if (!checked && hasValue) {
+        return current.filter((item) => item !== value);
+      }
+      return current;
+    });
   }
 
   toggleMoviesAll() {
-    const length = this.movies().length;
-    if (length === 2 || length === 0) {
-      this.movies.set(['Movie 1', 'Movie 2']);
-    } else {
-      this.movies.set([]);
-    }
+    this.movies.update((current) =>
+      current.length === this.movieOptions.length ? [] : [...this.movieOptions]
+    );
   }
 
-  toggleMediaValue(value: string) {
-    const next = [...this.media()];
-    const index = next.indexOf(value);
-    if (index >= 0) {
-      next.splice(index, 1);
-    } else {
-      next.push(value);
-    }
-    this.media.set(next);
+  toggleMediaValue(value: MediaItem['id']) {
+    this.media.update((current) =>
+      current.includes(value)
+        ? current.filter((item) => item !== value)
+        : [...current, value]
+    );
   }
 
   back() {
     if (typeof window !== 'undefined') {
       window.history.back();
     }
+  }
+
+  private getCheckboxTarget(event: Event): HTMLInputElement | null {
+    const { target } = event;
+    return target instanceof HTMLInputElement ? target : null;
+  }
+
+  private isMovieOption(value: string): value is MovieOption {
+    return this.movieOptions.includes(value as MovieOption);
   }
 }

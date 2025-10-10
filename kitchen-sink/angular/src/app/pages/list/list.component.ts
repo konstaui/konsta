@@ -14,7 +14,6 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
   selector: 'app-list',
-  standalone: true,
   imports: [
     CommonModule,
     RouterModule,

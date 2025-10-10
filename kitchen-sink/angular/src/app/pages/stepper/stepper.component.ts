@@ -16,7 +16,6 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
 
 @Component({
   selector: 'app-stepper',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -31,11 +30,9 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
   template: `
     <k-page>
       <k-navbar title="Stepper">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Shape and size</k-block-title>

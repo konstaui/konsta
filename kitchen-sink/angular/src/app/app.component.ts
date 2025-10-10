@@ -12,7 +12,6 @@ import { ThemeService } from './shared/theme.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [CommonModule, RouterOutlet, KAppComponent],
   template: `
     <k-app

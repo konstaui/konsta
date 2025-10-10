@@ -18,7 +18,6 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
 
 @Component({
   selector: 'app-sheet-modal',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -35,11 +34,9 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
   template: `
     <k-page>
       <k-navbar title="Sheet Modal">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">

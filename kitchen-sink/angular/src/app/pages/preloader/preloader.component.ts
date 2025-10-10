@@ -9,7 +9,6 @@ import { KPreloaderComponent } from '../../../../../../src/angular/components/pr
 
 @Component({
   selector: 'app-preloader',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -29,11 +28,9 @@ import { KPreloaderComponent } from '../../../../../../src/angular/components/pr
   template: `
     <k-page>
       <k-navbar title="Preloader">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block-title>Default</k-block-title>

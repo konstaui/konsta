@@ -15,7 +15,6 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
 
 @Component({
   selector: 'app-toggle',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -35,11 +34,9 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
   template: `
     <k-page>
       <k-navbar title="Toggle">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-list [strong]="true" [inset]="true">

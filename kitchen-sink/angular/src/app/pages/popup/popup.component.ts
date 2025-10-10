@@ -16,7 +16,6 @@ import { KDeleteIconComponent } from '../../../../../../src/angular/components/i
 
 @Component({
   selector: 'app-popup',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -38,11 +37,9 @@ import { KDeleteIconComponent } from '../../../../../../src/angular/components/i
   template: `
     <k-page>
       <k-navbar title="Popup">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">

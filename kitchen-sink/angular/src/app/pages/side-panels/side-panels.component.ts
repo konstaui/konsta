@@ -17,7 +17,6 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
 
 @Component({
   selector: 'app-side-panels',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -33,11 +32,9 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
   template: `
     <k-page>
       <k-navbar title="Panel / Side Panel">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">

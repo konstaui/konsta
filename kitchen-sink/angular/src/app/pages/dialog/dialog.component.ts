@@ -18,7 +18,6 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
 
 @Component({
   selector: 'app-dialog',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -42,11 +41,9 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
   template: `
     <k-page>
       <k-navbar title="Dialog">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">

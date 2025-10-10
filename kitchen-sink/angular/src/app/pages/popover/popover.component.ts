@@ -17,7 +17,6 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
 
 @Component({
   selector: 'app-popover',
-  standalone: true,
   imports: [
     CommonModule,
     KPageComponent,
@@ -40,11 +39,9 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
   template: `
     <k-page>
       <k-navbar title="Popover">
-        <k-navbar-back-link
-          left
-          *ngIf="!isPreview()"
-          (clicked)="back()"
-        ></k-navbar-back-link>
+        @if (!isPreview()) {
+          <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+        }
         <k-link
           right
           class="popover-navbar-link"
@@ -132,12 +129,13 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
         (backdropClick)="closePopover()"
       >
         <k-list [nested]="true">
-          <k-list-item
-            *ngFor="let item of popoverItems"
-            [title]="item"
-            [link]="true"
-            (click)="closePopover()"
-          ></k-list-item>
+          @for (item of popoverItems; track item) {
+            <k-list-item
+              [title]="item"
+              [link]="true"
+              (click)="closePopover()"
+            ></k-list-item>
+          }
         </k-list>
       </k-popover>
     </k-page>

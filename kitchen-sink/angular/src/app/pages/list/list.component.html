@@ -1,10 +1,8 @@
 <k-page>
   <k-navbar title="List">
-    <k-navbar-back-link
-      left
-      *ngIf="!isPreview()"
-      (clicked)="back()"
-    ></k-navbar-back-link>
+    @if (!isPreview()) {
+      <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+    }
   </k-navbar>
 
   <k-block-title>Simple List</k-block-title>
@@ -142,17 +140,18 @@
 
   <k-block-title>Grouped with sticky titles</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <k-list-group *ngFor="let group of groupedNames">
-      <k-list-item
-        [groupTitle]="true"
-        [title]="group.title"
-        class="ios:top-safe-15 material:top-16-safe sticky"
-      ></k-list-item>
-      <k-list-item
-        *ngFor="let name of group.items"
-        [title]="name"
-      ></k-list-item>
-    </k-list-group>
+    @for (group of groupedNames; track group.title) {
+      <k-list-group>
+        <k-list-item
+          [groupTitle]="true"
+          [title]="group.title"
+          class="ios:top-safe-15 material:top-16-safe sticky"
+        ></k-list-item>
+        @for (name of group.items; track name) {
+          <k-list-item [title]="name"></k-list-item>
+        }
+      </k-list-group>
+    }
   </k-list>
 
   <k-block-title class="text-2xl">Media Lists</k-block-title>
@@ -166,36 +165,38 @@
 
   <k-block-title>Songs</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <k-list-item
-      *ngFor="let song of songs"
-      [link]="true"
-      [chevronMaterial]="false"
-      [title]="song.title"
-      [after]="song.price"
-      [subtitle]="song.artist"
-      [text]="longText"
-    >
-      <ng-container ngProjectAs="[media]">
-        <img
-          [src]="song.image"
-          width="80"
-          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-          alt="{{ song.title }} cover"
-        />
-      </ng-container>
-    </k-list-item>
+    @for (song of songs; track song.title) {
+      <k-list-item
+        [link]="true"
+        [chevronMaterial]="false"
+        [title]="song.title"
+        [after]="song.price"
+        [subtitle]="song.artist"
+        [text]="longText"
+      >
+        <ng-container ngProjectAs="[media]">
+          <img
+            [src]="song.image"
+            width="80"
+            class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
+            alt="{{ song.title }} cover"
+          />
+        </ng-container>
+      </k-list-item>
+    }
   </k-list>
 
   <k-block-title>Mail App</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <k-list-item
-      *ngFor="let item of mailItems"
-      [link]="true"
-      [chevronMaterial]="false"
-      [title]="item.title"
-      [after]="item.time"
-      [subtitle]="item.subtitle"
-      [text]="longText"
-    ></k-list-item>
+    @for (item of mailItems; track item.title) {
+      <k-list-item
+        [link]="true"
+        [chevronMaterial]="false"
+        [title]="item.title"
+        [after]="item.time"
+        [subtitle]="item.subtitle"
+        [text]="longText"
+      ></k-list-item>
+    }
   </k-list>
 </k-page>
