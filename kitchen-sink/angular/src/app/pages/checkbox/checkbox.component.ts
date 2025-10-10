@@ -74,7 +74,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             name="demo-checkbox"
             [checked]="group().includes('Books')"
             (changed)="toggleGroupValue('Books')"
@@ -84,7 +84,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             name="demo-checkbox"
             [checked]="group().includes('Movies')"
             (changed)="toggleGroupValue('Movies')"
@@ -94,7 +94,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             name="demo-checkbox"
             [checked]="group().includes('Food')"
             (changed)="toggleGroupValue('Food')"
@@ -104,7 +104,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             name="demo-checkbox"
             [checked]="group().includes('Drinks')"
             (changed)="toggleGroupValue('Drinks')"
@@ -118,7 +118,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             [checked]="movies().length === 2"
             [indeterminate]="movies().length === 1"
             (changed)="toggleMoviesAll()"
@@ -129,7 +129,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
                 <k-checkbox
                   media
                   ngProjectAs="[media]"
-                  [component]="'span'"
+                  [component]="'div'"
                   name="demo-checkbox"
                   value="Movie 1"
                   [checked]="movies().includes('Movie 1')"
@@ -140,7 +140,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
                 <k-checkbox
                   media
                   ngProjectAs="[media]"
-                  [component]="'span'"
+                  [component]="'div'"
                   name="demo-checkbox"
                   value="Movie 2"
                   [checked]="movies().includes('Movie 2')"
@@ -164,7 +164,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             name="demo-media-checkbox"
             [checked]="media().includes('Item 1')"
             (changed)="toggleMediaValue('Item 1')"
@@ -180,7 +180,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-checkbox
             media
             ngProjectAs="[media]"
-            [component]="'span'"
+            [component]="'div'"
             name="demo-media-checkbox"
             [checked]="media().includes('Item 2')"
             (changed)="toggleMediaValue('Item 2')"
