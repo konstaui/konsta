@@ -352,17 +352,17 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
       <k-block-title>Only Buttons</k-block-title>
       <k-list [strong]="true" [inset]="true">
         <k-list-item [title]="'Value is ' + value()">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-stepper
               [value]="value()"
               [buttonsOnly]="true"
               (plus)="increase()"
               (minus)="decrease()"
             ></k-stepper>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item [title]="'Value is ' + value()">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-stepper
               [value]="value()"
               [buttonsOnly]="true"
@@ -370,10 +370,10 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
               (plus)="increase()"
               (minus)="decrease()"
             ></k-stepper>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item [title]="'Value is ' + value()">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-stepper
               [value]="value()"
               [buttonsOnly]="true"
@@ -382,7 +382,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
               (plus)="increase()"
               (minus)="decrease()"
             ></k-stepper>
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
 

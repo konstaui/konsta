@@ -78,14 +78,14 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
             [label]="true"
             [title]="option"
           >
-            <div after>
+            <ng-container ngProjectAs="[after]">
               <k-radio
                 component="div"
                 [value]="option"
                 [checked]="size() === option"
                 (changed)="setSize(option)"
               ></k-radio>
-            </div>
+            </ng-container>
           </k-list-item>
         </k-list>
 
@@ -95,15 +95,15 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
           visible on page scroll
         </k-block-header>
         <k-list [strong]="true" [inset]="true">
-          <k-list-item [label]="true" [title]="'Transparent'">
-            <div after>
-              <k-toggle
-                component="div"
-                [checked]="isTransparent()"
-                (changed)="toggleTransparent()"
-              ></k-toggle>
-            </div>
-          </k-list-item>
+        <k-list-item [label]="true" [title]="'Transparent'">
+          <ng-container ngProjectAs="[after]">
+            <k-toggle
+              component="div"
+              [checked]="isTransparent()"
+              (changed)="toggleTransparent()"
+            ></k-toggle>
+          </ng-container>
+        </k-list-item>
         </k-list>
 
         <k-block [strong]="true" [inset]="true" class="space-y-4">

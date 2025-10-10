@@ -44,44 +44,44 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
 
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Item 1'">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-toggle
               component="div"
               class="-my-1"
               [checked]="checked1()"
               (changed)="toggleSignal(checked1)"
             ></k-toggle>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Item 2'">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-toggle
               component="div"
               class="-my-1 k-color-brand-red"
               [checked]="checked2()"
               (changed)="toggleSignal(checked2)"
             ></k-toggle>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Item 3'">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-toggle
               component="div"
               class="-my-1 k-color-brand-green"
               [checked]="checked3()"
               (changed)="toggleSignal(checked3)"
             ></k-toggle>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Item 4'">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-toggle
               component="div"
               class="-my-1 k-color-brand-yellow"
               [checked]="checked4()"
               (changed)="toggleSignal(checked4)"
             ></k-toggle>
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
     </k-page>

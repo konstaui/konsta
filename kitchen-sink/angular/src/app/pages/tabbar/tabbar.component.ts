@@ -101,20 +101,20 @@ interface TabDescriptor {
 
       <k-list [strong]="true" [inset]="true">
         <k-list-item [title]="'Tabbar Labels'">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-toggle
               [checked]="showLabels()"
               (changed)="toggleLabels()"
             ></k-toggle>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item [title]="'Tabbar Icons'">
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-toggle
               [checked]="showIcons()"
               (changed)="toggleIcons()"
             ></k-toggle>
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
 

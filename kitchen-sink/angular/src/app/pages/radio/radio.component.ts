@@ -75,14 +75,14 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           [label]="true"
           [title]="option"
         >
-          <div media>
+          <ng-container ngProjectAs="[media]">
             <k-radio
               component="div"
               [value]="option"
               [checked]="groupValue() === option"
               (changed)="groupValue.set(option)"
             ></k-radio>
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
 
@@ -92,14 +92,14 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           [label]="true"
           [title]="option"
         >
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <k-radio
               component="div"
               [value]="option"
               [checked]="groupValue() === option"
               (changed)="groupValue.set(option)"
             ></k-radio>
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
 
@@ -112,13 +112,13 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           [subtitle]="'New messages from John Doe'"
           [text]="longText"
         >
-          <div media>
+          <ng-container ngProjectAs="[media]">
             <k-radio
               component="div"
               [checked]="mediaValue() === 'Item 1'"
               (changed)="mediaValue.set('Item 1')"
             ></k-radio>
-          </div>
+          </ng-container>
         </k-list-item>
         <k-list-item
           [label]="true"
@@ -127,13 +127,13 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           [subtitle]="'John Doe (@_johndoe) mentioned you on Twitter!'"
           [text]="longText"
         >
-          <div media>
+          <ng-container ngProjectAs="[media]">
             <k-radio
               component="div"
               [checked]="mediaValue() === 'Item 2'"
               (changed)="mediaValue.set('Item 2')"
             ></k-radio>
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
     </k-page>

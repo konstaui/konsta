@@ -136,34 +136,34 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
         <div title>Your super hero</div>
         <k-list [nested]="true" class="-mx-4">
           <k-list-item [label]="true" [title]="'Batman'">
-            <div after>
+            <ng-container ngProjectAs="[after]">
               <k-radio
                 component="div"
                 value="batman"
                 [checked]="radioValue() === 'batman'"
                 (changed)="radioValue.set('batman')"
               ></k-radio>
-            </div>
+            </ng-container>
           </k-list-item>
           <k-list-item [label]="true" [title]="'Spider-man'">
-            <div after>
+            <ng-container ngProjectAs="[after]">
               <k-radio
                 component="div"
                 value="spiderman"
                 [checked]="radioValue() === 'spiderman'"
                 (changed)="radioValue.set('spiderman')"
               ></k-radio>
-            </div>
+            </ng-container>
           </k-list-item>
           <k-list-item [label]="true" [title]="'Hulk'">
-            <div after>
+            <ng-container ngProjectAs="[after]">
               <k-radio
                 component="div"
                 value="hulk"
                 [checked]="radioValue() === 'hulk'"
                 (changed)="radioValue.set('hulk')"
               ></k-radio>
-            </div>
+            </ng-container>
           </k-list-item>
         </k-list>
         <k-dialog-button

@@ -2,10 +2,11 @@
   "name": "konsta/angular",
   "private": true,
   "main": "./konsta-angular.js",
+  "jsnext:main": "./konsta-angular.js",
   "module": "./konsta-angular.js",
   "types": "./konsta-angular.d.ts",
+  "angular": "./konsta-angular.js",
   "type": "module",
-  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./konsta-angular.d.ts",

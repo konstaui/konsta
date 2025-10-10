@@ -91,7 +91,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           [link]="true"
           (click)="openColorPicker()"
         >
-          <div after>
+          <ng-container ngProjectAs="[after]">
             <div
               class="w-6 h-6 rounded-full home-color-picker"
               [ngClass]="{
@@ -102,7 +102,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
                 'bg-brand-purple': color() === 'k-color-brand-purple'
               }"
             ></div>
-          </div>
+          </ng-container>
         </k-list-item>
         <ng-container *ngIf="theme() === 'material'">
           <k-list-item [label]="true" [title]="'Vibrant Colors'">
@@ -177,9 +177,9 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           [link]="true"
           [routerLink]="route.path"
         >
-          <div media>
+          <ng-container ngProjectAs="[media]">
             <app-demo-icon />
-          </div>
+          </ng-container>
         </k-list-item>
       </k-list>
     </k-page>

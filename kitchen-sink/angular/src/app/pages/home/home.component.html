@@ -9,35 +9,35 @@
   <k-block-title>Theme</k-block-title>
   <k-list [strong]="true" [inset]="true">
     <k-list-item [label]="true" [title]="'iOS Theme'">
-      <div media>
+      <ng-container ngProjectAs="[media]">
         <k-radio
           [checked]="theme() === 'ios'"
           (changed)="setTheme('ios')"
         ></k-radio>
-      </div>
+      </ng-container>
     </k-list-item>
     <k-list-item [label]="true" [title]="'Material Theme'">
-      <div media>
+      <ng-container ngProjectAs="[media]">
         <k-radio
           [checked]="theme() === 'material'"
           (changed)="setTheme('material')"
         ></k-radio>
-      </div>
+      </ng-container>
     </k-list-item>
   </k-list>
 
   <k-list [strong]="true" [inset]="true">
     <k-list-item [label]="true" [title]="'Dark Mode'">
-      <div after>
+      <ng-container ngProjectAs="[after]">
         <k-toggle [checked]="dark()" (changed)="toggleDark()"></k-toggle>
-      </div>
+      </ng-container>
     </k-list-item>
     <k-list-item
       [title]="'Color Theme'"
       (click)="openColorPicker()"
       class="cursor-pointer"
     >
-      <div after>
+      <ng-container ngProjectAs="[after]">
         <div
           class="w-6 h-6 rounded-full home-color-picker"
           [ngClass]="{
@@ -48,24 +48,24 @@
             'bg-brand-purple': color() === 'k-color-brand-purple'
           }"
         ></div>
-      </div>
+      </ng-container>
     </k-list-item>
     <ng-container *ngIf="theme() === 'material'">
       <k-list-item [label]="true" [title]="'Vibrant Colors'">
-        <div after>
+        <ng-container ngProjectAs="[after]">
           <k-toggle
             [checked]="vibrant()"
             (changed)="toggleVibrant()"
           ></k-toggle>
-        </div>
+        </ng-container>
       </k-list-item>
       <k-list-item [label]="true" [title]="'Monochrome'">
-        <div after>
+        <ng-container ngProjectAs="[after]">
           <k-toggle
             [checked]="monochrome()"
             (changed)="toggleMonochrome()"
           ></k-toggle>
-        </div>
+        </ng-container>
       </k-list-item>
     </ng-container>
   </k-list>
