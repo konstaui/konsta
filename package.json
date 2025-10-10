@@ -18,8 +18,8 @@
     "svelte": "cross-env NODE_ENV=development vite ./kitchen-sink/svelte",
     "build-svelte-ks": "cross-env NODE_ENV=production vite build ./kitchen-sink/svelte",
     "/*============ Angular Kitchen Sink ============*/": "============",
-    "angular": "npm --prefix kitchen-sink/angular run dev",
-    "build-angular-ks": "npm --prefix kitchen-sink/angular run build",
+    "angular": "cross-env NODE_ENV=development vite ./kitchen-sink/angular",
+    "build-angular-ks": "cross-env NODE_ENV=production vite build ./kitchen-sink/angular",
     "/*============ Dev tools ============*/": "============",
     "prettier": "prettier \"**/*.+(js|json|scss|css|less|ts|vue)\"",
     "format": "npm run prettier -- --write",
@@ -30,6 +30,7 @@
     "build-sponsors": "node ./scripts/build-sponsors.js"
   },
   "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^1.21.2",
     "@angular/animations": "^20.0.0",
     "@angular/build": "^20.0.0",
     "@angular/common": "^20.0.0",
