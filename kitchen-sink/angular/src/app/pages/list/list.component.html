@@ -1,163 +1,166 @@
 <k-page>
   <k-navbar title="List">
-    <k-navbar-back-link left (clicked)="back()" />
+    <k-navbar-back-link
+      left
+      *ngIf="!isPreview()"
+      (clicked)="back()"
+    ></k-navbar-back-link>
   </k-navbar>
 
   <k-block-title>Simple List</k-block-title>
-  <k-list [dividers]="true">
+  <k-list>
     <k-list-item title="Item 1"></k-list-item>
     <k-list-item title="Item 2"></k-list-item>
     <k-list-item title="Item 3"></k-list-item>
   </k-list>
 
   <k-block-title>Strong List</k-block-title>
-  <k-list [strong]="true" [dividers]="true">
+  <k-list [strong]="true">
     <k-list-item title="Item 1"></k-list-item>
     <k-list-item title="Item 2"></k-list-item>
     <k-list-item title="Item 3"></k-list-item>
   </k-list>
 
   <k-block-title>Strong Outline List</k-block-title>
-  <k-list [strong]="true" [outline]="true" [dividers]="true">
+  <k-list [strong]="true" [outline]="true">
     <k-list-item title="Item 1"></k-list-item>
     <k-list-item title="Item 2"></k-list-item>
     <k-list-item title="Item 3"></k-list-item>
   </k-list>
 
-  <k-block-title>Inset List</k-block-title>
-  <k-list [strong]="true" [inset]="true" [dividers]="true">
+  <k-block-title>Strong Inset List</k-block-title>
+  <k-list [strong]="true" [inset]="true">
     <k-list-item title="Item 1"></k-list-item>
     <k-list-item title="Item 2"></k-list-item>
     <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong Outline Inset List</k-block-title>
+  <k-list [strong]="true" [outline]="true" [inset]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Simple Links List</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item [link]="true" title="Link 1"></k-list-item>
+    <k-list-item [link]="true" title="Link 2"></k-list-item>
+    <k-list-item [link]="true" title="Link 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Data list, with icons</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item title="Ivan Petrov" after="CEO">
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+    </k-list-item>
+    <k-list-item title="John Doe">
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+      <div after>
+        <k-badge>5</k-badge>
+      </div>
+    </k-list-item>
+    <k-list-item title="Jenna Smith">
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+    </k-list-item>
   </k-list>
 
   <k-block-title>Links</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <li class="k-list-item">
-      <a class="active:duration-0 active:not-[:has(.k-toggle:active)]:bg-black/10 cursor-pointer duration-300 flex items-center ps-safe-4 select-none text-black">
-        <div class="flex me-4 py-2 shrink-0"></div>
-        <div class="pe-safe-4 py-3 relative w-full">
-          <div class="flex items-center justify-between min-h-7 text-[17px]">
-            <span class="shrink">Link 1</span>
-            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/40">
-              <k-chevron-icon class="opacity-40" />
-            </span>
-          </div>
-        </div>
-      </a>
-    </li>
-    <li class="k-list-item">
-      <a class="active:duration-0 active:not-[:has(.k-toggle:active)]:bg-black/10 cursor-pointer duration-300 flex items-center ps-safe-4 select-none text-black">
-        <div class="flex me-4 py-2 shrink-0"></div>
-        <div class="pe-safe-4 py-3 relative w-full">
-          <div class="flex items-center justify-between min-h-7 text-[17px]">
-            <span class="shrink">Link 2</span>
-            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/40">
-              <k-chevron-icon class="opacity-40" />
-            </span>
-          </div>
-        </div>
-      </a>
-    </li>
-    <li class="k-list-item">
-      <a class="active:duration-0 active:not-[:has(.k-toggle:active)]:bg-black/10 cursor-pointer duration-300 flex items-center ps-safe-4 select-none text-black">
-        <div class="flex me-4 py-2 shrink-0"></div>
-        <div class="pe-safe-4 py-3 relative w-full">
-          <div class="flex items-center justify-between min-h-7 text-[17px]">
-            <span class="shrink">Link 3</span>
-            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/40">
-              <k-chevron-icon class="opacity-40" />
-            </span>
-          </div>
-        </div>
-      </a>
-    </li>
+    <k-list-item [link]="true" title="Ivan Petrov" after="CEO">
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+    </k-list-item>
+    <k-list-item [link]="true" title="John Doe" after="Cleaner">
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+    </k-list-item>
+    <k-list-item [link]="true" title="Jenna Smith">
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+    </k-list-item>
   </k-list>
 
-  <k-block-title>Contacts</k-block-title>
+  <k-block-title>Links, Header, Footer</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <li class="k-list-item">
-      <div class="flex items-center ps-safe-4 text-black">
-        <div class="flex me-4 py-2 shrink-0">
-          <img
-            [src]="demoIconSrc"
-            alt="Contact avatar"
-            class="ios:w-7 material:w-6"
-          />
-        </div>
-        <div class="pe-safe-4 py-3 relative w-full">
-          <div class="flex items-center justify-between min-h-7 text-[17px]">
-            <span class="shrink">Ivan Petrov</span>
-            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/55">
-              CEO
-            </span>
-          </div>
-        </div>
+    <k-list-item [link]="true" header="Name" title="John Doe" after="Edit">
+      <div media>
+        <app-demo-icon></app-demo-icon>
       </div>
-    </li>
-    <li class="k-list-item">
-      <div class="flex items-center ps-safe-4 text-black">
-        <div class="flex me-4 py-2 shrink-0">
-          <img
-            [src]="demoIconSrc"
-            alt="Contact avatar"
-            class="ios:w-7 material:w-6"
-          />
-        </div>
-        <div class="pe-safe-4 py-3 relative w-full">
-          <div class="flex items-center justify-between min-h-7 text-[17px]">
-            <span class="shrink">John Doe</span>
-            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/55">
-              <k-badge>5</k-badge>
-            </span>
-          </div>
-        </div>
+    </k-list-item>
+    <k-list-item
+      [link]="true"
+      header="Phone"
+      title="+7 90 111-22-3344"
+      after="Edit"
+    >
+      <div media>
+        <app-demo-icon></app-demo-icon>
       </div>
-    </li>
-    <li class="k-list-item">
-      <div class="flex items-center ps-safe-4 text-black">
-        <div class="flex me-4 py-2 shrink-0">
-          <img
-            [src]="demoIconSrc"
-            alt="Contact avatar"
-            class="ios:w-7 material:w-6"
-          />
-        </div>
-        <div class="pe-safe-4 py-3 relative w-full">
-          <div class="flex items-center justify-between min-h-7 text-[17px]">
-            <span class="shrink">Jenna Smith</span>
-          </div>
-        </div>
+    </k-list-item>
+    <k-list-item
+      [link]="true"
+      header="Email"
+      title="john@doe"
+      footer="Home"
+      after="Edit"
+    >
+      <div media>
+        <app-demo-icon></app-demo-icon>
       </div>
-    </li>
+    </k-list-item>
+    <k-list-item
+      [link]="true"
+      header="Email"
+      title="john@konsta"
+      footer="Work"
+      after="Edit"
+    >
+      <div media>
+        <app-demo-icon></app-demo-icon>
+      </div>
+    </k-list-item>
   </k-list>
 
-  <k-block-title>Grouped (Sticky)</k-block-title>
+  <k-block-title>Links, no icons</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <ng-container *ngFor="let group of groupedNames">
-      <li
-        class="pl-safe-4 pr-safe-4 py-1 flex items-center z-20 sticky ios:top-safe-15 material:top-16-safe text-black/60 bg-ios-light-surface-variant"
-      >
-        {{ group.title }}
-      </li>
-      <li class="k-list-item" *ngFor="let name of group.items">
-        <div class="flex items-center ps-safe-4 text-black">
-          <div class="flex me-4 py-2 shrink-0"></div>
-          <div class="pe-safe-4 py-3 relative w-full">
-            <div class="flex items-center justify-between min-h-7 text-[17px]">
-              <span class="shrink">{{ name }}</span>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ng-container>
+    <k-list-item [link]="true" title="Ivan Petrov"></k-list-item>
+    <k-list-item [link]="true" title="John Doe"></k-list-item>
+    <k-list-item [groupTitle]="true" title="Group title Here"></k-list-item>
+    <k-list-item [link]="true" title="Ivan Petrov"></k-list-item>
+    <k-list-item [link]="true" title="Jenna Smith"></k-list-item>
   </k-list>
 
-  <k-block-title class="text-xl">Media Lists</k-block-title>
+  <k-block-title>Grouped with sticky titles</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-group *ngFor="let group of groupedNames">
+      <k-list-item
+        [groupTitle]="true"
+        [title]="group.title"
+        class="ios:top-safe-15 material:top-16-safe sticky"
+      ></k-list-item>
+      <k-list-item
+        *ngFor="let name of group.items"
+        [title]="name"
+      ></k-list-item>
+    </k-list-group>
+  </k-list>
+
+  <k-block-title class="text-2xl">Media Lists</k-block-title>
   <k-block>
     <p>
-      Media Lists provide flexible layouts for more complex content, such as songs
-      or mail items.
+      Media Lists are almost the same as Data Lists, but with a more flexible
+      layout for visualization of more complex data, like products, services,
+      user, etc.
     </p>
   </k-block>
 
@@ -176,7 +179,7 @@
         <img
           [src]="song.image"
           width="80"
-          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-12"
+          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
           alt="{{ song.title }} cover"
         />
       </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { KPageComponent } from '../../../../../../src/angular/components/page.component.js';
 import { KNavbarComponent } from '../../../../../../src/angular/components/navbar.component.js';
@@ -8,8 +8,8 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
 import { KBlockComponent } from '../../../../../../src/angular/components/block.component.js';
 import { KListComponent } from '../../../../../../src/angular/components/list.component.js';
 import { KListItemComponent } from '../../../../../../src/angular/components/list-item.component.js';
+import { KListGroupComponent } from '../../../../../../src/angular/components/list-group.component.js';
 import { KBadgeComponent } from '../../../../../../src/angular/components/badge.component.js';
-import { KChevronIconComponent } from '../../../../../../src/angular/components/icons/chevron-icon.component.js';
 import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
@@ -25,8 +25,8 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
     KBlockComponent,
     KListComponent,
     KListItemComponent,
+    KListGroupComponent,
     KBadgeComponent,
-    KChevronIconComponent,
     DemoIconComponent,
   ],
   templateUrl: './list.component.html',
@@ -34,10 +34,14 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent {
+  readonly isPreview = computed(
+    () =>
+      typeof document !== 'undefined' &&
+      document.location.href.includes('examplePreview')
+  );
+
   readonly longText =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.';
-
-  readonly demoIconSrc = new URL('../../images/demo-icon.png', import.meta.url).href;
 
   readonly songs = [
     {
