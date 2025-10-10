@@ -18,12 +18,14 @@ import {
 } from '../shared/theme-helpers.js';
 import { useTouchRipple } from '../shared/touch-ripple.js';
 
+type ToggleTag = 'label' | 'div' | 'span' | 'li';
+
 @Component({
   selector: 'k-toggle',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <label #root class="{{ baseClasses()[state()] }}">
+    <ng-template #toggleContent>
       <input
         #input
         type="checkbox"
@@ -50,7 +52,45 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
         </span>
       </ng-template>
       <ng-content />
-    </label>
+    </ng-template>
+
+    @switch (componentTag()) {
+      @case ('div') {
+        <div
+          #root
+          class="{{ baseClasses()[state()] }}"
+          role="switch"
+          [attr.aria-checked]="state() === 'checked'"
+        >
+          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+        </div>
+      }
+      @case ('span') {
+        <span
+          #root
+          class="{{ baseClasses()[state()] }}"
+          role="switch"
+          [attr.aria-checked]="state() === 'checked'"
+        >
+          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+        </span>
+      }
+      @case ('li') {
+        <li
+          #root
+          class="{{ baseClasses()[state()] }}"
+          role="switch"
+          [attr.aria-checked]="state() === 'checked'"
+        >
+          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+        </li>
+      }
+      @default {
+        <label #root class="{{ baseClasses()[state()] }}">
+          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+        </label>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -70,6 +110,7 @@ export class KToggleComponent {
   readonly value = input<string | undefined>(undefined);
   readonly disabled = input<boolean>(false);
   readonly readOnly = input<boolean>(false);
+  readonly component = input<ToggleTag>('label');
 
   readonly changed = output<Event>();
 
@@ -119,6 +160,13 @@ export class KToggleComponent {
       return this.checked() ? 'checked' : 'notChecked';
     }
     return this.defaultChecked() ? 'checked' : 'notChecked';
+  });
+  readonly componentTag: Signal<ToggleTag> = computed(() => {
+    const raw = (this.component() || 'label').toLowerCase();
+    if (raw === 'div' || raw === 'span' || raw === 'li' || raw === 'label') {
+      return raw as ToggleTag;
+    }
+    return 'label';
   });
 
   constructor() {

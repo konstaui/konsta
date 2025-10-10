@@ -62,34 +62,29 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
       <k-block-title>Theme</k-block-title>
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'iOS Theme'">
-          <div media>
-            <k-radio
-              component="div"
-              [checked]="theme() === 'ios'"
-              (changed)="setTheme('ios')"
-            ></k-radio>
-          </div>
+          <k-radio
+            ngProjectAs="[media]"
+            [checked]="theme() === 'ios'"
+            (changed)="setTheme('ios')"
+          ></k-radio>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Material Theme'">
-          <div media>
-            <k-radio
-              component="div"
-              [checked]="theme() === 'material'"
-              (changed)="setTheme('material')"
-            ></k-radio>
-          </div>
+          <k-radio
+            ngProjectAs="[media]"
+            [checked]="theme() === 'material'"
+            (changed)="setTheme('material')"
+          ></k-radio>
         </k-list-item>
       </k-list>
 
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Dark Mode'">
-          <div after>
-            <k-toggle
-              component="div"
-              [checked]="dark()"
-              (changed)="toggleDark()"
-            ></k-toggle>
-          </div>
+          <k-toggle
+            ngProjectAs="[after]"
+            class="-my-1"
+            [checked]="dark()"
+            (changed)="toggleDark()"
+          ></k-toggle>
         </k-list-item>
         <k-list-item
           [title]="'Color Theme'"
@@ -111,22 +106,20 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
         </k-list-item>
         <ng-container *ngIf="theme() === 'material'">
           <k-list-item [label]="true" [title]="'Vibrant Colors'">
-            <div after>
-              <k-toggle
-                component="div"
-                [checked]="vibrant()"
-                (changed)="toggleVibrant()"
-              ></k-toggle>
-            </div>
+            <k-toggle
+              ngProjectAs="[after]"
+              class="-my-1"
+              [checked]="vibrant()"
+              (changed)="toggleVibrant()"
+            ></k-toggle>
           </k-list-item>
           <k-list-item [label]="true" [title]="'Monochrome'">
-            <div after>
-              <k-toggle
-                component="div"
-                [checked]="monochrome()"
-                (changed)="toggleMonochrome()"
-              ></k-toggle>
-            </div>
+            <k-toggle
+              ngProjectAs="[after]"
+              class="-my-1"
+              [checked]="monochrome()"
+              (changed)="toggleMonochrome()"
+            ></k-toggle>
           </k-list-item>
         </ng-container>
       </k-list>

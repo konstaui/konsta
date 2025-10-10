@@ -30,8 +30,8 @@ import {
         <div class="{{ leftClasses() }}">
           <ng-content select="[left]" />
         </div>
-        <div class="{{ titleContainerClasses() }}">
-          <div class="{{ titleClasses() }}" *ngIf="title()">{{ title() }}</div>
+        <div class="{{ titleClasses() }}" *ngIf="title() || subtitle()">
+          <ng-container *ngIf="title()">{{ title() }}</ng-container>
           <div class="{{ subtitleClasses() }}" *ngIf="subtitle()">
             {{ subtitle() }}
           </div>
@@ -39,6 +39,13 @@ import {
         <div class="{{ rightClasses() }}">
           <ng-content select="[right]" />
         </div>
+        <ng-content />
+      </div>
+      <div
+        *ngIf="(large() || medium()) && title()"
+        class="{{ titleContainerClasses() }}"
+      >
+        {{ title() }}
       </div>
       <div *ngIf="subnavbar()" class="{{ subnavbarClasses() }}">
         <ng-content select="[subnavbar]" />

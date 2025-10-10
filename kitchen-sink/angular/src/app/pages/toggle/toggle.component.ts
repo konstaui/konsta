@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  WritableSignal,
   computed,
   signal,
 } from '@angular/core';
@@ -48,7 +49,7 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
               component="div"
               class="-my-1"
               [checked]="checked1()"
-              (changed)="checked1.update((value) => !value)"
+              (changed)="toggleSignal(checked1)"
             ></k-toggle>
           </div>
         </k-list-item>
@@ -58,7 +59,7 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
               component="div"
               class="-my-1 k-color-brand-red"
               [checked]="checked2()"
-              (changed)="checked2.update((value) => !value)"
+              (changed)="toggleSignal(checked2)"
             ></k-toggle>
           </div>
         </k-list-item>
@@ -68,7 +69,7 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
               component="div"
               class="-my-1 k-color-brand-green"
               [checked]="checked3()"
-              (changed)="checked3.update((value) => !value)"
+              (changed)="toggleSignal(checked3)"
             ></k-toggle>
           </div>
         </k-list-item>
@@ -78,7 +79,7 @@ import { KToggleComponent } from '../../../../../../src/angular/components/toggl
               component="div"
               class="-my-1 k-color-brand-yellow"
               [checked]="checked4()"
-              (changed)="checked4.update((value) => !value)"
+              (changed)="toggleSignal(checked4)"
             ></k-toggle>
           </div>
         </k-list-item>
@@ -98,6 +99,10 @@ export class ToggleComponent {
   readonly checked2 = signal(true);
   readonly checked3 = signal(true);
   readonly checked4 = signal(true);
+
+  toggleSignal(target: WritableSignal<boolean>) {
+    target.update((value) => !value);
+  }
 
   back() {
     if (typeof window !== 'undefined') {

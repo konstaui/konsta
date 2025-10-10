@@ -234,9 +234,6 @@ export class KCheckboxComponent implements ControlValueAccessor {
   private onTouchedFn: () => void = () => {};
 
   constructor() {
-    effect(() => {
-      console.log('k-checkbox component input', this.component());
-    });
     useTouchRipple({
       element: () => this.root()?.nativeElement ?? null,
       needsRipple: () => this.theme() === 'material' && this.isInteractive(),

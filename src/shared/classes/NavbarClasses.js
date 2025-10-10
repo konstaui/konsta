@@ -113,7 +113,8 @@ export const NavbarClasses = (props, colors, baseClassName) => {
       common: cls(
         `whitespace-nowrap leading-tight`,
         titleClassName || titleClass,
-        (large || medium || transparent) && 'opacity-0',
+        (large || medium) && 'opacity-0',
+        transparent && !(large || medium) && 'opacity-100',
         centerTitle
           ? `absolute top-1/2 left-1/2 transform-gpu -translate-x-1/2 -translate-y-1/2 text-center`
           : 'text-start'
