@@ -12,6 +12,7 @@ import {
   input,
   viewChild,
 } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ListItemClasses } from '../../shared/classes/ListItemClasses.js';
 import { ListItemColors } from '../../shared/colors/ListItemColors.js';
 import { LIST_CONTEXT } from '../shared/list-context.js';
@@ -25,7 +26,7 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
 @Component({
   selector: 'k-list-item',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   template: `
     <li #root class="{{ baseClasses() }}">
       <ng-container *ngIf="groupTitle(); else standardItem">
@@ -44,6 +45,7 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
             class="{{ itemContentClasses() }}"
             [attr.href]="linkHref()"
             [attr.target]="target() ?? null"
+            [routerLink]="routerLink() ?? null"
             (click)="handleClick($event)"
           >
             <ng-container *ngTemplateOutlet="itemBody"></ng-container>
@@ -139,6 +141,7 @@ export class KListItemComponent {
   readonly link = input<boolean>(false);
   readonly href = input<string | undefined>(undefined);
   readonly target = input<string | undefined>(undefined);
+  readonly routerLink = input<string | any[] | undefined>(undefined);
   readonly menuListItem = input<boolean>(false);
   readonly menuListItemActive = input<boolean>(false);
   readonly chevron = input<boolean | undefined>(undefined);
@@ -168,6 +171,9 @@ export class KListItemComponent {
   private readonly isLink = computed(() => {
     if (this.groupTitle()) return false;
     if (this.link()) return true;
+    if (this.routerLink() !== undefined && this.routerLink() !== null) {
+      return true;
+    }
     const href = this.href();
     return href !== undefined && href !== null;
   });
@@ -178,6 +184,9 @@ export class KListItemComponent {
 
   readonly linkHref = computed(() => {
     if (!this.isLink()) return null;
+    if (this.routerLink() !== undefined && this.routerLink() !== null) {
+      return null;
+    }
     const href = this.href();
     return href ?? '';
   });

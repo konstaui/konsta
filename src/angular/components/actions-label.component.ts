@@ -19,9 +19,28 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <{{ component() }} class="{{ classes() }}">
-      <ng-content />
-    </{{ component() }}>
+    @switch (tag()) {
+      @case ('span') {
+        <span class="{{ classes() }}">
+          <ng-content />
+        </span>
+      }
+      @case ('p') {
+        <p class="{{ classes() }}">
+          <ng-content />
+        </p>
+      }
+      @case ('label') {
+        <label class="{{ classes() }}">
+          <ng-content />
+        </label>
+      }
+      @default {
+        <div class="{{ classes() }}">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -46,6 +65,13 @@ export class KActionsLabelComponent {
     material: this.material() === true,
   }));
   private readonly dark = useDarkClasses();
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'span', 'p', 'label']);
+  readonly tag: Signal<'div' | 'span' | 'p' | 'label'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KActionsLabelComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'span' | 'p' | 'label';
+  });
 
   private readonly palette = computed(() =>
     ActionsLabelColors(this.colors() ?? {}, this.dark)

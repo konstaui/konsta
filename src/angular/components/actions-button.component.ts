@@ -49,15 +49,30 @@ type ActionsButtonTag = 'button' | 'a' | string;
         </button>
       }
       @default {
-        <{{ componentTag() }}
-          #el
-          class="{{ classes() }}"
-          role="button"
-          [attr.tabindex]="0"
-          (click)="handleClick($event)"
-        >
-          <ng-content />
-        </{{ componentTag() }}>
+        @switch (fallbackTag()) {
+          @case ('span') {
+            <span
+              #el
+              class="{{ classes() }}"
+              role="button"
+              tabindex="0"
+              (click)="handleClick($event)"
+            >
+              <ng-content />
+            </span>
+          }
+          @default {
+            <div
+              #el
+              class="{{ classes() }}"
+              role="button"
+              tabindex="0"
+              (click)="handleClick($event)"
+            >
+              <ng-content />
+            </div>
+          }
+        }
       }
     }
   `,
@@ -137,10 +152,21 @@ export class KActionsButtonComponent {
     if (this.href() !== undefined && this.href() !== null) return 'a';
     return 'button';
   });
+  readonly fallbackTag = computed(() => {
+    const tag = this.componentTag();
+    if (tag === 'a' || tag === 'button') return 'div';
+    const normalized = (tag ?? '').toLowerCase();
+    if (normalized === 'span') return 'span';
+    if (normalized === 'div') return 'div';
+    return 'div';
+  });
 
   constructor() {
     useTouchRipple({
-      element: () => this.elementRef()?.nativeElement ?? null,
+      element: () => {
+        const el = this.elementRef();
+        return el?.nativeElement ?? null;
+      },
       needsRipple: () => this.theme() === 'material',
     });
   }

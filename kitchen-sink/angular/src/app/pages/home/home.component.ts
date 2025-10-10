@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { KonstaTheme } from '../../../../../../src/angular/shared/konsta-context.js';
 import { KNavbarComponent } from '../../../../../../src/angular/components/navbar.component.js';
 import { KPageComponent } from '../../../../../../src/angular/components/page.component.js';
@@ -14,7 +14,7 @@ import { KLinkComponent } from '../../../../../../src/angular/components/link.co
 import { KPopoverComponent } from '../../../../../../src/angular/components/popover.component.js';
 import { ThemeService } from '../../shared/theme.service';
 import { demoRoutes } from '../../routes';
-import { DemoIconComponent } from '../../components/demo-icon.component';
+import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
 @Component({
   selector: 'app-home',
@@ -45,33 +45,8 @@ import { DemoIconComponent } from '../../components/demo-icon.component';
         transform: scale(1.05);
       }
 
-      .color-swatch {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 3rem;
-        height: 3rem;
-        border-radius: 999px;
-        border: 1px solid rgba(148, 163, 184, 0.35);
-        background: linear-gradient(135deg, #007aff, #2563eb);
-        transition: transform 0.2s ease, border-color 0.2s ease;
-      }
-
-      .color-swatch:hover {
-        transform: scale(1.05);
-        border-color: rgba(99, 102, 241, 0.6);
-      }
-
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
+      .home-color-picker {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
     `,
   ],
@@ -107,13 +82,16 @@ import { DemoIconComponent } from '../../components/demo-icon.component';
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Dark Mode'">
           <div after>
-            <k-toggle [checked]="dark()" (changed)="toggleDark()"></k-toggle>
+            <k-toggle
+              [checked]="dark()"
+              (changed)="toggleDark()"
+            ></k-toggle>
           </div>
         </k-list-item>
         <k-list-item
           [title]="'Color Theme'"
+          [link]="true"
           (click)="openColorPicker()"
-          class="cursor-pointer"
         >
           <div after>
             <div
@@ -150,52 +128,61 @@ import { DemoIconComponent } from '../../components/demo-icon.component';
 
       <k-popover
         [opened]="colorPickerOpened()"
+        class="w-auto"
         target=".home-color-picker"
         (backdropClick)="closeColorPicker()"
       >
-        <div class="grid grid-cols-3 gap-2 py-2">
-          <k-link component="button" class="color-swatch" (clicked)="clearColor()">
-            <span class="sr-only">Default</span>
+        <div class="grid grid-cols-3 py-2 ios:px-2">
+          <k-link
+            component="button"
+            class="overflow-hidden h-12 w-12 flex items-center justify-center"
+            (clicked)="clearColor()"
+          >
+            <span class="bg-brand-primary w-6 h-6 rounded-full"></span>
           </k-link>
-          <k-link component="button" class="color-swatch bg-brand-red" (clicked)="setColor('k-color-brand-red')">
-            <span class="sr-only">Red</span>
+          <k-link
+            component="button"
+            class="overflow-hidden h-12 w-12 flex items-center justify-center"
+            (clicked)="setColor('k-color-brand-red')"
+          >
+            <span class="bg-brand-red w-6 h-6 rounded-full"></span>
           </k-link>
-          <k-link component="button" class="color-swatch bg-brand-green" (clicked)="setColor('k-color-brand-green')">
-            <span class="sr-only">Green</span>
+          <k-link
+            component="button"
+            class="overflow-hidden h-12 w-12 flex items-center justify-center"
+            (clicked)="setColor('k-color-brand-green')"
+          >
+            <span class="bg-brand-green w-6 h-6 rounded-full"></span>
           </k-link>
-          <k-link component="button" class="color-swatch bg-brand-yellow" (clicked)="setColor('k-color-brand-yellow')">
-            <span class="sr-only">Yellow</span>
+          <k-link
+            component="button"
+            class="overflow-hidden h-12 w-12 flex items-center justify-center"
+            (clicked)="setColor('k-color-brand-yellow')"
+          >
+            <span class="bg-brand-yellow w-6 h-6 rounded-full"></span>
           </k-link>
-          <k-link component="button" class="color-swatch bg-brand-purple" (clicked)="setColor('k-color-brand-purple')">
-            <span class="sr-only">Purple</span>
+          <k-link
+            component="button"
+            class="overflow-hidden h-12 w-12 flex items-center justify-center"
+            (clicked)="setColor('k-color-brand-purple')"
+          >
+            <span class="bg-brand-purple w-6 h-6 rounded-full"></span>
           </k-link>
         </div>
       </k-popover>
 
       <k-block-title>Components</k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <ng-container *ngIf="routes.length === 0; else routesList">
-          <k-list-item>
-            <div title>Angular component demos are in progress.</div>
-          </k-list-item>
-        </ng-container>
-        <ng-template #routesList>
-          <k-list-item *ngFor="let route of routes">
-            <div media>
-              <app-demo-icon />
-            </div>
-            <div title>{{ route.title }}</div>
-            <div content>
-              <k-link
-                component="button"
-                class="inline-flex items-center gap-1 text-primary"
-                (clicked)="navigate(route.path)"
-              >
-                View <span aria-hidden="true">→</span>
-              </k-link>
-            </div>
-          </k-list-item>
-        </ng-template>
+        <k-list-item
+          *ngFor="let route of routes"
+          [title]="route.title"
+          [link]="true"
+          [routerLink]="route.path"
+        >
+          <div media>
+            <app-demo-icon />
+          </div>
+        </k-list-item>
       </k-list>
     </k-page>
   `,
@@ -203,7 +190,6 @@ import { DemoIconComponent } from '../../components/demo-icon.component';
 })
 export class HomeComponent {
   private readonly themeService = inject(ThemeService);
-  private readonly router = inject(Router);
 
   readonly theme = this.themeService.theme;
   readonly dark = this.themeService.dark;
@@ -246,9 +232,5 @@ export class HomeComponent {
 
   closeColorPicker() {
     this.colorPickerOpened.set(false);
-  }
-
-  navigate(path: string) {
-    this.router.navigateByUrl(path);
   }
 }

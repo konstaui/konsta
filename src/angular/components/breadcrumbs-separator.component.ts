@@ -15,10 +15,26 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
   standalone: true,
   imports: [CommonModule, KChevronIconComponent],
   template: `
-    <{{ component() }} class="{{ classes() }}">
-      <k-chevron-icon class="{{ iconClasses() }}" />
-      <ng-content />
-    </{{ component() }}>
+    @switch (tag()) {
+      @case ('span') {
+        <span class="{{ classes() }}">
+          <k-chevron-icon class="{{ iconClasses() }}" />
+          <ng-content />
+        </span>
+      }
+      @case ('li') {
+        <li class="{{ classes() }}">
+          <k-chevron-icon class="{{ iconClasses() }}" />
+          <ng-content />
+        </li>
+      }
+      @default {
+        <div class="{{ classes() }}">
+          <k-chevron-icon class="{{ iconClasses() }}" />
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,6 +50,13 @@ export class KBreadcrumbsSeparatorComponent {
     ios: this.ios() === true,
     material: this.material() === true,
   }));
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'span', 'li']);
+  readonly tag: Signal<'div' | 'span' | 'li'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KBreadcrumbsSeparatorComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'span' | 'li';
+  });
 
   private readonly classesObj = computed(
     () =>

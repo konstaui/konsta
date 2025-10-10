@@ -2,6 +2,7 @@
 
 @import 'tailwindcss';
 @import 'konsta/theme.css';
+@import '../../../src/styles/hairlines.css';
 
 @source '../../../src/shared';
 @source '../../../src/angular';

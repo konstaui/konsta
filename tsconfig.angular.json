@@ -24,6 +24,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true
   },
+  "files": ["src/angular/types/shared.d.ts"],
   "include": [
     "src/angular/**/*.ts",
     "src/angular/**/*.d.ts",

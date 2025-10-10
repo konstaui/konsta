@@ -31,7 +31,7 @@ type ButtonComponentTag = 'button' | 'a';
     @if (componentTag() === 'a') {
       <a
         #el
-        class={{ classes() }}
+        [class]="classes()"
         [attr.href]="disabled() ? null : href() ?? ''"
         [attr.role]="'button'"
         [attr.tabindex]="disabled() ? -1 : tabindex()"
@@ -43,7 +43,7 @@ type ButtonComponentTag = 'button' | 'a';
     } @else {
       <button
         #el
-        class={{ classes() }}
+        [class]="classes()"
         [disabled]="disabled()"
         [attr.type]="type()"
         (click)="onClick($event)"

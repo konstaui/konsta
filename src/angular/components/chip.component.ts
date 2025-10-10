@@ -25,7 +25,7 @@ type ChipStyle = 'fill' | 'outline';
   standalone: true,
   imports: [CommonModule, KDeleteIconComponent],
   template: `
-    <{{ component() }} class="{{ baseClasses()[style()] }}">
+    <ng-template #chipContent>
       <div *ngIf="hasMedia()" class="{{ mediaClasses() }}">
         <ng-container *ngIf="media(); else mediaSlot">
           {{ media() }}
@@ -48,7 +48,35 @@ type ChipStyle = 'fill' | 'outline';
           [material]="material()"
         />
       </div>
-    </{{ component() }}>
+    </ng-template>
+
+    @switch (tag()) {
+      @case ('button') {
+        <button class="{{ baseClasses()[style()] }}" type="button">
+          <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+        </button>
+      }
+      @case ('a') {
+        <a class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+        </a>
+      }
+      @case ('span') {
+        <span class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+        </span>
+      }
+      @case ('li') {
+        <li class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+        </li>
+      }
+      @default {
+        <div class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="chipContent"></ng-container>
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -78,6 +106,13 @@ export class KChipComponent {
     material: this.material() === true,
   }));
   private readonly dark = useDarkClasses();
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'span', 'button', 'a', 'li']);
+  readonly tag: Signal<'div' | 'span' | 'button' | 'a' | 'li'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KChipComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'span' | 'button' | 'a' | 'li';
+  });
 
   private readonly palette = computed(() =>
     ChipColors(this.colors() ?? {}, this.dark)

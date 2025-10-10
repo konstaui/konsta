@@ -1,0 +1,198 @@
+<k-page>
+  <k-navbar title="List">
+    <k-navbar-back-link left (clicked)="back()" />
+  </k-navbar>
+
+  <k-block-title>Simple List</k-block-title>
+  <k-list [dividers]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong List</k-block-title>
+  <k-list [strong]="true" [dividers]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong Outline List</k-block-title>
+  <k-list [strong]="true" [outline]="true" [dividers]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Inset List</k-block-title>
+  <k-list [strong]="true" [inset]="true" [dividers]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Links</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <li class="k-list-item">
+      <a class="active:duration-0 active:not-[:has(.k-toggle:active)]:bg-black/10 cursor-pointer duration-300 flex items-center ps-safe-4 select-none text-black">
+        <div class="flex me-4 py-2 shrink-0"></div>
+        <div class="pe-safe-4 py-3 relative w-full">
+          <div class="flex items-center justify-between min-h-7 text-[17px]">
+            <span class="shrink">Link 1</span>
+            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/40">
+              <k-chevron-icon class="opacity-40" />
+            </span>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="k-list-item">
+      <a class="active:duration-0 active:not-[:has(.k-toggle:active)]:bg-black/10 cursor-pointer duration-300 flex items-center ps-safe-4 select-none text-black">
+        <div class="flex me-4 py-2 shrink-0"></div>
+        <div class="pe-safe-4 py-3 relative w-full">
+          <div class="flex items-center justify-between min-h-7 text-[17px]">
+            <span class="shrink">Link 2</span>
+            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/40">
+              <k-chevron-icon class="opacity-40" />
+            </span>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="k-list-item">
+      <a class="active:duration-0 active:not-[:has(.k-toggle:active)]:bg-black/10 cursor-pointer duration-300 flex items-center ps-safe-4 select-none text-black">
+        <div class="flex me-4 py-2 shrink-0"></div>
+        <div class="pe-safe-4 py-3 relative w-full">
+          <div class="flex items-center justify-between min-h-7 text-[17px]">
+            <span class="shrink">Link 3</span>
+            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/40">
+              <k-chevron-icon class="opacity-40" />
+            </span>
+          </div>
+        </div>
+      </a>
+    </li>
+  </k-list>
+
+  <k-block-title>Contacts</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <li class="k-list-item">
+      <div class="flex items-center ps-safe-4 text-black">
+        <div class="flex me-4 py-2 shrink-0">
+          <img
+            [src]="demoIconSrc"
+            alt="Contact avatar"
+            class="ios:w-7 material:w-6"
+          />
+        </div>
+        <div class="pe-safe-4 py-3 relative w-full">
+          <div class="flex items-center justify-between min-h-7 text-[17px]">
+            <span class="shrink">Ivan Petrov</span>
+            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/55">
+              CEO
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="k-list-item">
+      <div class="flex items-center ps-safe-4 text-black">
+        <div class="flex me-4 py-2 shrink-0">
+          <img
+            [src]="demoIconSrc"
+            alt="Contact avatar"
+            class="ios:w-7 material:w-6"
+          />
+        </div>
+        <div class="pe-safe-4 py-3 relative w-full">
+          <div class="flex items-center justify-between min-h-7 text-[17px]">
+            <span class="shrink">John Doe</span>
+            <span class="flex gap-1 items-center ms-auto ps-1 shrink-0 text-black/55">
+              <k-badge>5</k-badge>
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="k-list-item">
+      <div class="flex items-center ps-safe-4 text-black">
+        <div class="flex me-4 py-2 shrink-0">
+          <img
+            [src]="demoIconSrc"
+            alt="Contact avatar"
+            class="ios:w-7 material:w-6"
+          />
+        </div>
+        <div class="pe-safe-4 py-3 relative w-full">
+          <div class="flex items-center justify-between min-h-7 text-[17px]">
+            <span class="shrink">Jenna Smith</span>
+          </div>
+        </div>
+      </div>
+    </li>
+  </k-list>
+
+  <k-block-title>Grouped (Sticky)</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <ng-container *ngFor="let group of groupedNames">
+      <li
+        class="pl-safe-4 pr-safe-4 py-1 flex items-center z-20 sticky ios:top-safe-15 material:top-16-safe text-black/60 bg-ios-light-surface-variant"
+      >
+        {{ group.title }}
+      </li>
+      <li class="k-list-item" *ngFor="let name of group.items">
+        <div class="flex items-center ps-safe-4 text-black">
+          <div class="flex me-4 py-2 shrink-0"></div>
+          <div class="pe-safe-4 py-3 relative w-full">
+            <div class="flex items-center justify-between min-h-7 text-[17px]">
+              <span class="shrink">{{ name }}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ng-container>
+  </k-list>
+
+  <k-block-title class="text-xl">Media Lists</k-block-title>
+  <k-block>
+    <p>
+      Media Lists provide flexible layouts for more complex content, such as songs
+      or mail items.
+    </p>
+  </k-block>
+
+  <k-block-title>Songs</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item
+      *ngFor="let song of songs"
+      [link]="true"
+      [chevronMaterial]="false"
+      [title]="song.title"
+      [after]="song.price"
+      [subtitle]="song.artist"
+      [text]="longText"
+    >
+      <div media>
+        <img
+          [src]="song.image"
+          width="80"
+          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-12"
+          alt="{{ song.title }} cover"
+        />
+      </div>
+    </k-list-item>
+  </k-list>
+
+  <k-block-title>Mail App</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item
+      *ngFor="let item of mailItems"
+      [link]="true"
+      [chevronMaterial]="false"
+      [title]="item.title"
+      [after]="item.time"
+      [subtitle]="item.subtitle"
+      [text]="longText"
+    ></k-list-item>
+  </k-list>
+</k-page>

@@ -150,166 +150,218 @@ declare module '../../shared/calc-popover-position.js' {
 }
 
 declare module '../../shared/classes/ActionsClasses.js' {
-  export function ActionsClasses(): Record<string, any>;
+  export const ActionsClasses: () => Record<string, any>;
 }
 
 declare module '../../shared/classes/ActionsButtonClasses.js' {
-  export function ActionsButtonClasses(
+  export const ActionsButtonClasses: (
     props: Record<string, any>,
     colors: Record<string, any>,
     darkClasses: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/ActionsButtonColors.js' {
-  export function ActionsButtonColors(
+  export const ActionsButtonColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/ActionsGroupClasses.js' {
-  export function ActionsGroupClasses(
+  export const ActionsGroupClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/ActionsGroupColors.js' {
-  export function ActionsGroupColors(
+  export const ActionsGroupColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/ActionsLabelClasses.js' {
-  export function ActionsLabelClasses(
+  export const ActionsLabelClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/ActionsLabelColors.js' {
-  export function ActionsLabelColors(
+  export const ActionsLabelColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/BlockFooterClasses.js' {
-  export function BlockFooterClasses(
+  export const BlockFooterClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/BlockFooterColors.js' {
-  export function BlockFooterColors(
+  export const BlockFooterColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/BlockHeaderClasses.js' {
-  export function BlockHeaderClasses(
+  export const BlockHeaderClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/BlockHeaderColors.js' {
-  export function BlockHeaderColors(
+  export const BlockHeaderColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/BreadcrumbsClasses.js' {
-  export function BreadcrumbsClasses(
+  export const BreadcrumbsClasses: (
     props: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/BreadcrumbsCollapsedClasses.js' {
-  export function BreadcrumbsCollapsedClasses(
+  export const BreadcrumbsCollapsedClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/BreadcrumbsCollapsedColors.js' {
-  export function BreadcrumbsCollapsedColors(
+  export const BreadcrumbsCollapsedColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/BreadcrumbsItemClasses.js' {
-  export function BreadcrumbsItemClasses(
+  export const BreadcrumbsItemClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/BreadcrumbsItemColors.js' {
-  export function BreadcrumbsItemColors(
+  export const BreadcrumbsItemColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/BreadcrumbsSeparatorClasses.js' {
-  export function BreadcrumbsSeparatorClasses(
+  export const BreadcrumbsSeparatorClasses: (
     props: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/BreadcrumbsColors.js' {
-  export function BreadcrumbsColors(
+  export const BreadcrumbsColors: (
     colors?: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/CardClasses.js' {
-  export function CardClasses(
+  export const CardClasses: (
     props: Record<string, any>,
     colors: Record<string, any>,
     baseClassName?: string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/CardColors.js' {
-  export function CardColors(
+  export const CardColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/CheckboxClasses.js' {
-  export function CheckboxClasses(
+  export const CheckboxClasses: (
     props: Record<string, any>,
     colors: Record<string, any>,
     darkClasses: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/CheckboxColors.js' {
-  export function CheckboxColors(
+  export const CheckboxColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/classes/ChipClasses.js' {
-  export function ChipClasses(
+  export const ChipClasses: (
     props: Record<string, any>,
     colors: Record<string, any>
-  ): Record<string, any>;
+  ) => Record<string, any>;
 }
 
 declare module '../../shared/colors/ChipColors.js' {
-  export function ChipColors(
+  export const ChipColors: (
     colors?: Record<string, any>,
     dark?: (className: string) => string
-  ): Record<string, any>;
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/classes/TabbarLinkClasses.js' {
+  export const TabbarLinkClasses: (
+    props: Record<string, any>,
+    colors: Record<string, any>
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/colors/TabbarLinkColors.js' {
+  export const TabbarLinkColors: (
+    colors?: Record<string, any>,
+    dark?: (className: string) => string
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/classes/GlassClasses.js' {
+  export const GlassClasses: (
+    props: Record<string, any>,
+    dark: (className: string) => string
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/classes/ToolbarPaneClasses.js' {
+  export const ToolbarPaneClasses: (
+    props: Record<string, any>,
+    colors: Record<string, any>,
+    dark: (className: string) => string,
+    baseClassName?: string
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/colors/ToolbarPaneColors.js' {
+  export const ToolbarPaneColors: (
+    colors?: Record<string, any>,
+    dark?: (className: string) => string
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/classes/ToolbarClasses.js' {
+  export const ToolbarClasses: (
+    props: Record<string, any>,
+    colors: Record<string, any>,
+    baseClassName?: string
+  ) => Record<string, any>;
+}
+
+declare module '../../shared/colors/ToolbarColors.js' {
+  export const ToolbarColors: (
+    colors?: Record<string, any>,
+    dark?: (className: string) => string
+  ) => Record<string, any>;
 }

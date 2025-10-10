@@ -1,0 +1,27 @@
+:host {
+  display: contents;
+}
+
+:host ::ng-deep k-list k-list-item:not([grouptitle]) li > .flex > .pe-safe-4 {
+  position: relative;
+}
+
+:host ::ng-deep k-list k-list-item:not([grouptitle]) li > .flex > .pe-safe-4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transform-origin: center bottom;
+  transform: scaleY(calc(1 / max(1, var(--k-device-pixel-ratio, 1))));
+}
+
+:host ::ng-deep k-list k-list-item:not([grouptitle]):last-child li > .flex > .pe-safe-4::after {
+  display: none;
+}
+
+img {
+  object-fit: cover;
+}

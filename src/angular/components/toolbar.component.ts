@@ -28,7 +28,24 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <{{ component() }} class="{{ baseClasses() }}">
+    @switch (component()) {
+      @case ('nav') {
+        <nav class="{{ baseClasses() }}">
+          <ng-container
+            *ngTemplateOutlet="toolbarContent"
+          ></ng-container>
+        </nav>
+      }
+      @default {
+        <div class="{{ baseClasses() }}">
+          <ng-container
+            *ngTemplateOutlet="toolbarContent"
+          ></ng-container>
+        </div>
+      }
+    }
+
+    <ng-template #toolbarContent>
       <div *ngIf="showBgBlur()" class="{{ bgBlurClasses() }}"></div>
       <div *ngIf="showBg()" class="{{ bgClasses() }}"></div>
       <div #inner class="{{ innerClasses() }}">
@@ -40,7 +57,7 @@ import {
         class="{{ highlightClasses() }}"
         [ngStyle]="highlightStyleSignal()"
       ></span>
-    </{{ component() }}>
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [

@@ -21,9 +21,28 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
         (click)="handleBackdropClick($event)"
       ></div>
     }
-    <{{ component() }} class="{{ baseClasses()[state()] }}">
-      <ng-content />
-    </{{ component() }}>
+    @switch (tag()) {
+      @case ('section') {
+        <section class="{{ baseClasses()[state()] }}">
+          <ng-content />
+        </section>
+      }
+      @case ('nav') {
+        <nav class="{{ baseClasses()[state()] }}">
+          <ng-content />
+        </nav>
+      }
+      @case ('aside') {
+        <aside class="{{ baseClasses()[state()] }}">
+          <ng-content />
+        </aside>
+      }
+      @default {
+        <div class="{{ baseClasses()[state()] }}">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -43,6 +62,13 @@ export class KActionsComponent {
     ios: this.ios() === true,
     material: this.material() === true,
   }));
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'section', 'nav', 'aside']);
+  readonly tag: Signal<'div' | 'section' | 'nav' | 'aside'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KActionsComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'section' | 'nav' | 'aside';
+  });
 
   private readonly classes = computed(
     () =>

@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  computed,
   effect,
   input,
   output,
@@ -11,6 +12,7 @@ import {
 } from '@angular/core';
 import { calcPopoverPosition } from '../../shared/calc-popover-position.js';
 import { useThemeSignal } from '../shared/theme-helpers.js';
+import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-popover',
@@ -24,8 +26,8 @@ import { useThemeSignal } from '../shared/theme-helpers.js';
     ></div>
     <div
       #popover
-      class="k-popover fixed z-30 rounded-3xl bg-white/95 p-3 shadow-lg dark:bg-slate-800/95 transition-opacity duration-200"
       *ngIf="opened()"
+      [class]="classes()"
       [ngStyle]="style()"
     >
       <ng-content />
@@ -38,6 +40,9 @@ export class KPopoverComponent {
 
   readonly opened = input<boolean>(false);
   readonly target = input<string | HTMLElement | null>(null);
+  readonly className = input<string | undefined>(undefined, {
+    alias: 'class',
+  });
 
   readonly backdropClick = output<void>();
 
@@ -46,6 +51,12 @@ export class KPopoverComponent {
   private readonly styleSig = signal<Record<string, string>>({});
 
   readonly style = this.styleSig.asReadonly();
+  readonly classes = computed(() =>
+    cls(
+      'k-popover fixed z-30 rounded-3xl bg-white/95 p-3 shadow-lg dark:bg-slate-800/95 transition-opacity duration-200',
+      this.className()
+    )
+  );
 
   constructor() {
     effect(() => {

@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   computed,
   input,
-  viewChild,
 } from '@angular/core';
 import { GlassClasses } from '../../shared/classes/GlassClasses.js';
 import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
@@ -15,18 +13,27 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <{{ component() }}
-      #el
-      class="{{ classes() }}"
-    >
-      <ng-content />
-    </{{ component() }}>
+    @switch (component()) {
+      @case ('span') {
+        <span class="{{ classes() }}">
+          <ng-content />
+        </span>
+      }
+      @case ('section') {
+        <section class="{{ classes() }}">
+          <ng-content />
+        </section>
+      }
+      @default {
+        <div class="{{ classes() }}">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KGlassComponent {
-  private readonly el = viewChild<ElementRef<HTMLElement>>('el');
-
   readonly component = input<'div' | 'span' | 'section'>('div');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',

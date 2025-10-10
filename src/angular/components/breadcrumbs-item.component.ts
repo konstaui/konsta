@@ -19,14 +19,59 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <{{ component() }}
-      class="{{ classes() }}"
-      role="menuitem"
-      [attr.tabindex]="0"
-      (click)="handleClick($event)"
-    >
-      <ng-content />
-    </{{ component() }}>
+    @switch (tag()) {
+      @case ('a') {
+        <a
+          class="{{ classes() }}"
+          role="menuitem"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </a>
+      }
+      @case ('button') {
+        <button
+          class="{{ classes() }}"
+          role="menuitem"
+          tabindex="0"
+          type="button"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </button>
+      }
+      @case ('span') {
+        <span
+          class="{{ classes() }}"
+          role="menuitem"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </span>
+      }
+      @case ('li') {
+        <li
+          class="{{ classes() }}"
+          role="menuitem"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </li>
+      }
+      @default {
+        <div
+          class="{{ classes() }}"
+          role="menuitem"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -47,6 +92,13 @@ export class KBreadcrumbsItemComponent {
     material: this.material() === true,
   }));
   private readonly dark = useDarkClasses();
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'span', 'a', 'button', 'li']);
+  readonly tag: Signal<'div' | 'span' | 'a' | 'button' | 'li'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KBreadcrumbsItemComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'span' | 'a' | 'button' | 'li';
+  });
 
   private readonly palette = computed(() =>
     BreadcrumbsItemColors(this.colors() ?? {}, this.dark)

@@ -19,17 +19,74 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <{{ component() }}
-      class="{{ baseClasses() }}"
-      role="button"
-      [attr.tabindex]="0"
-      (click)="handleClick($event)"
-    >
-      <span class="{{ dotClasses() }}"></span>
-      <span class="{{ dotClasses() }}"></span>
-      <span class="{{ dotClasses() }}"></span>
-      <ng-content />
-    </{{ component() }}>
+    @switch (tag()) {
+      @case ('button') {
+        <button
+          class="{{ baseClasses() }}"
+          type="button"
+          role="button"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <ng-content />
+        </button>
+      }
+      @case ('a') {
+        <a
+          class="{{ baseClasses() }}"
+          role="button"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <ng-content />
+        </a>
+      }
+      @case ('span') {
+        <span
+          class="{{ baseClasses() }}"
+          role="button"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <ng-content />
+        </span>
+      }
+      @case ('li') {
+        <li
+          class="{{ baseClasses() }}"
+          role="button"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <ng-content />
+        </li>
+      }
+      @default {
+        <div
+          class="{{ baseClasses() }}"
+          role="button"
+          tabindex="0"
+          (click)="handleClick($event)"
+        >
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <span class="{{ dotClasses() }}"></span>
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -49,6 +106,13 @@ export class KBreadcrumbsCollapsedComponent {
     material: this.material() === true,
   }));
   private readonly dark = useDarkClasses();
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'span', 'button', 'a', 'li']);
+  readonly tag: Signal<'div' | 'span' | 'button' | 'a' | 'li'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KBreadcrumbsCollapsedComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'span' | 'button' | 'a' | 'li';
+  });
 
   private readonly palette = computed(() =>
     BreadcrumbsCollapsedColors(this.colors() ?? {}, this.dark)

@@ -21,7 +21,7 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <{{ component() }} class="{{ baseClasses()[style()] }}">
+    <ng-template #cardContent>
       <ng-container *ngIf="hasHeader(); else noHeader">
         <div class="{{ headerClasses() }}">
           <ng-container *ngIf="header(); else headerSlot">
@@ -54,7 +54,30 @@ import {
         </div>
       </ng-container>
       <ng-template #noFooter></ng-template>
-    </{{ component() }}>
+    </ng-template>
+
+    @switch (tag()) {
+      @case ('section') {
+        <section class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+        </section>
+      }
+      @case ('article') {
+        <article class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+        </article>
+      }
+      @case ('li') {
+        <li class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+        </li>
+      }
+      @default {
+        <div class="{{ baseClasses()[style()] }}">
+          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -95,6 +118,13 @@ export class KCardComponent {
     material: this.material() === true,
   }));
   private readonly dark = useDarkClasses();
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'section', 'article', 'li']);
+  readonly tag: Signal<'div' | 'section' | 'article' | 'li'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KCardComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'section' | 'article' | 'li';
+  });
 
   private readonly palette = computed(() =>
     CardColors(this.colors() ?? {}, this.dark)
