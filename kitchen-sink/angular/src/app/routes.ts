@@ -104,6 +104,14 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'form-inputs',
+    title: 'Form Inputs',
+    loadComponent: () =>
+      import('./pages/form-inputs/form-inputs.component').then(
+        (m) => m.FormInputsComponent
+      ),
+  },
+  {
     path: 'list',
     title: 'List',
     loadComponent: () =>
@@ -125,6 +133,14 @@ export const demoRoutes: DemoRoute[] = [
     loadComponent: () =>
       import('./pages/menu-list/menu-list.component').then(
         (m) => m.MenuListComponent
+      ),
+  },
+  {
+    path: 'messages',
+    title: 'Messages',
+    loadComponent: () =>
+      import('./pages/messages/messages.component').then(
+        (m) => m.MessagesComponent
       ),
   },
   {
@@ -176,6 +192,22 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'range-slider',
+    title: 'Range Slider',
+    loadComponent: () =>
+      import('./pages/range-slider/range-slider.component').then(
+        (m) => m.RangeSliderComponent
+      ),
+  },
+  {
+    path: 'searchbar',
+    title: 'Searchbar',
+    loadComponent: () =>
+      import('./pages/searchbar/searchbar.component').then(
+        (m) => m.SearchbarComponent
+      ),
+  },
+  {
     path: 'radio',
     title: 'Radio',
     loadComponent: () =>
@@ -192,11 +224,51 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'sheet-modal',
+    title: 'Sheet Modal',
+    loadComponent: () =>
+      import('./pages/sheet-modal/sheet-modal.component').then(
+        (m) => m.SheetModalComponent
+      ),
+  },
+  {
+    path: 'side-panels',
+    title: 'Side Panels',
+    loadComponent: () =>
+      import('./pages/side-panels/side-panels.component').then(
+        (m) => m.SidePanelsComponent
+      ),
+  },
+  {
+    path: 'subnavbar',
+    title: 'Subnavbar',
+    loadComponent: () =>
+      import('./pages/subnavbar/subnavbar.component').then(
+        (m) => m.SubnavbarComponent
+      ),
+  },
+  {
+    path: 'stepper',
+    title: 'Stepper',
+    loadComponent: () =>
+      import('./pages/stepper/stepper.component').then(
+        (m) => m.StepperComponent
+      ),
+  },
+  {
     path: 'tabbar',
     title: 'Tabbar',
     loadComponent: () =>
       import('./pages/tabbar/tabbar.component').then(
         (m) => m.TabbarComponent
+      ),
+  },
+  {
+    path: 'toast',
+    title: 'Toast',
+    loadComponent: () =>
+      import('./pages/toast/toast.component').then(
+        (m) => m.ToastComponent
       ),
   },
   {
