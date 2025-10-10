@@ -6,3 +6,4 @@ export * from './konsta-provider.component.js';
 export * from './toolbar-context.js';
 export * from './navbar-context.js';
 export * from './segmented-context.js';
+export * from './ios-highlight.js';

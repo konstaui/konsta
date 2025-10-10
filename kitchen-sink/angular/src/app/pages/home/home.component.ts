@@ -64,6 +64,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
         <k-list-item [label]="true" [title]="'iOS Theme'">
           <div media>
             <k-radio
+              component="div"
               [checked]="theme() === 'ios'"
               (changed)="setTheme('ios')"
             ></k-radio>
@@ -72,6 +73,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
         <k-list-item [label]="true" [title]="'Material Theme'">
           <div media>
             <k-radio
+              component="div"
               [checked]="theme() === 'material'"
               (changed)="setTheme('material')"
             ></k-radio>
@@ -83,6 +85,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
         <k-list-item [label]="true" [title]="'Dark Mode'">
           <div after>
             <k-toggle
+              component="div"
               [checked]="dark()"
               (changed)="toggleDark()"
             ></k-toggle>
@@ -110,6 +113,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           <k-list-item [label]="true" [title]="'Vibrant Colors'">
             <div after>
               <k-toggle
+                component="div"
                 [checked]="vibrant()"
                 (changed)="toggleVibrant()"
               ></k-toggle>
@@ -118,6 +122,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           <k-list-item [label]="true" [title]="'Monochrome'">
             <div after>
               <k-toggle
+                component="div"
                 [checked]="monochrome()"
                 (changed)="toggleMonochrome()"
               ></k-toggle>

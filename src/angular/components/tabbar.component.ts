@@ -29,8 +29,8 @@ export class KTabbarComponent {
     alias: 'class',
   });
   readonly colors = input<Record<string, string> | undefined>(undefined);
-  readonly icons = input<boolean>(true);
-  readonly labels = input<boolean>(true);
+  readonly icons = input<boolean>(false);
+  readonly labels = input<boolean>(false);
   readonly top = input<boolean>(false);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);

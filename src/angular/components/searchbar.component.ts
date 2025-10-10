@@ -20,13 +20,19 @@ import {
 } from '../shared/theme-helpers.js';
 import { KGlassComponent } from './glass.component.js';
 import { KDeleteIconComponent } from './icons/delete-icon.component.js';
+import { KSearchDisableIconComponent } from './icons/search-disable-icon.component.js';
 
 type SearchbarTag = 'div' | 'span';
 
 @Component({
   selector: 'k-searchbar',
   standalone: true,
-  imports: [CommonModule, KGlassComponent, KDeleteIconComponent],
+  imports: [
+    CommonModule,
+    KGlassComponent,
+    KDeleteIconComponent,
+    KSearchDisableIconComponent,
+  ],
   template: `
     @switch (componentTag()) {
       @case ('span') {
@@ -87,34 +93,37 @@ type SearchbarTag = 'div' | 'span';
           (blur)="handleBlur($event)"
         />
 
-        <span
+        <button
           *ngIf="showClearButton()"
-          role="button"
-          tabindex="0"
+          type="button"
           class="{{ clearButtonClass() }}"
           (click)="handleClear($event)"
-          (keydown.enter)="handleClear($event)"
-          (keydown.space)="handleClear($event)"
         >
           <k-delete-icon class="{{ deleteIconClass() }}" />
-        </span>
+        </button>
       </k-glass>
 
       <ng-container *ngIf="disableButton()">
-        <button
+        <k-glass
           *ngIf="isIos(); else materialCancel"
-          type="button"
-          class="{{ cancelButtonClass() }}"
+          component="button"
+          buttonType="button"
+          [class]="cancelButtonClass()"
+          [attr.aria-label]="disableButtonText()"
+          [ios]="ios()"
+          [material]="material()"
+          [ngStyle]="cancelButtonStyle()"
           (click)="handleDisable()"
           (pointerdown)="preventPointerDown($event)"
         >
-          {{ disableButtonText() }}
-        </button>
+          <k-search-disable-icon class="w-4 h-4" />
+        </k-glass>
         <ng-template #materialCancel>
           <button
             type="button"
             class="{{ cancelButtonClass() }}"
             aria-label="{{ disableButtonText() }}"
+            [ngStyle]="cancelButtonStyle()"
             (click)="handleDisable()"
             (pointerdown)="preventPointerDown($event)"
           >
@@ -238,6 +247,18 @@ export class KSearchbarComponent {
   readonly cancelButtonClass: Signal<string> = computed(
     () => this.classes()['cancelButton'] as string
   );
+
+  readonly cancelButtonStyle = computed(() => {
+    if (!this.disableButton()) return null;
+    if (this.isIos()) {
+      const offset = 48 + 16;
+      return {
+        marginRight: this.enabled() ? '0px' : `-${offset}px`,
+        marginLeft: this.enabled() ? '16px' : '0px',
+      };
+    }
+    return null;
+  });
 
   readonly showClearButton = computed(
     () => this.clearButton() && !!this.stringValue()

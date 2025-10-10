@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  OnDestroy,
   Signal,
   computed,
   effect,
@@ -68,7 +70,7 @@ import {
     },
   ],
 })
-export class KToolbarComponent {
+export class KToolbarComponent implements AfterViewInit, OnDestroy {
   readonly component = input<'div' | 'nav'>('div');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -148,6 +150,7 @@ export class KToolbarComponent {
 
   readonly innerEl = viewChild<ElementRef<HTMLElement>>('inner');
   readonly highlightEl = viewChild<ElementRef<HTMLElement>>('highlight');
+  private highlightObserver: MutationObserver | null = null;
 
   readonly contextValue = createToolbarContext({
     tabbar: computed(() => this.tabbar()),
@@ -158,9 +161,28 @@ export class KToolbarComponent {
 
   constructor() {
     effect(() => {
-      if (!this.hasHighlight()) return;
-      queueMicrotask(() => this.updateHighlight());
+      if (!this.hasHighlight()) {
+        this.disconnectHighlightObserver();
+        return;
+      }
+      this.attachHighlightObserver();
+      this.scheduleHighlightUpdate();
     });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.hasHighlight()) {
+      this.attachHighlightObserver();
+      this.scheduleHighlightUpdate();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.disconnectHighlightObserver();
+  }
+
+  private scheduleHighlightUpdate() {
+    queueMicrotask(() => this.updateHighlight());
   }
 
   private updateHighlight() {
@@ -176,5 +198,30 @@ export class KToolbarComponent {
       width: `${widthPct}%`,
       transform: `translateX(${index * 100}%)`,
     });
+  }
+
+  private attachHighlightObserver() {
+    if (typeof window === 'undefined') return;
+    const inner = this.innerEl()?.nativeElement;
+    if (!inner) return;
+    if (this.highlightObserver) {
+      this.highlightObserver.disconnect();
+    }
+    this.highlightObserver = new MutationObserver(() => {
+      this.scheduleHighlightUpdate();
+    });
+    this.highlightObserver.observe(inner, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+
+  private disconnectHighlightObserver() {
+    if (this.highlightObserver) {
+      this.highlightObserver.disconnect();
+      this.highlightObserver = null;
+    }
   }
 }

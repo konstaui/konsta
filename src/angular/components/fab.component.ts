@@ -17,6 +17,7 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { useTouchRipple } from '../shared/touch-ripple.js';
+import { useIosHighlight } from '../shared/ios-highlight.js';
 
 type FabTag = 'a' | 'button' | 'div';
 
@@ -162,6 +163,11 @@ export class KFabComponent {
     useTouchRipple({
       element: () => this.elementRef()?.nativeElement ?? null,
       needsRipple: () => this.theme() === 'material',
+    });
+
+    useIosHighlight({
+      element: () => this.elementRef()?.nativeElement ?? null,
+      enabled: () => this.theme() === 'ios',
     });
   }
 }
