@@ -5,7 +5,6 @@ import {
   ElementRef,
   Signal,
   computed,
-  effect,
   input,
   output,
   viewChild,
@@ -19,12 +18,14 @@ import {
 } from '../shared/theme-helpers.js';
 import { useTouchRipple } from '../shared/touch-ripple.js';
 
+type RadioTag = 'label' | 'div' | 'span' | 'li';
+
 @Component({
   selector: 'k-radio',
   standalone: true,
   imports: [CommonModule],
   template: `
-    <label #root class="{{ baseClasses() }}">
+    <ng-template #radioContent>
       <input
         #input
         type="radio"
@@ -59,7 +60,30 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
         </ng-template>
       </i>
       <ng-content />
-    </label>
+    </ng-template>
+
+    @switch (componentTag()) {
+      @case ('div') {
+        <div #root class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+        </div>
+      }
+      @case ('span') {
+        <span #root class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+        </span>
+      }
+      @case ('li') {
+        <li #root class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+        </li>
+      }
+      @default {
+        <label #root class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+        </label>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -67,6 +91,7 @@ export class KRadioComponent {
   private readonly root = viewChild<ElementRef<HTMLElement>>('root');
   private readonly inputEl = viewChild<ElementRef<HTMLInputElement>>('input');
 
+  readonly component = input<RadioTag>('label');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
@@ -91,6 +116,13 @@ export class KRadioComponent {
     material: this.material() === true,
   }));
   private readonly dark = useDarkClasses();
+
+  private static readonly SUPPORTED_TAGS = new Set<RadioTag>([
+    'label',
+    'div',
+    'span',
+    'li',
+  ]);
 
   private readonly palette = computed(() =>
     RadioColors(this.colors() ?? {}, this.dark)
@@ -129,6 +161,14 @@ export class KRadioComponent {
       needsRipple: () => this.theme() === 'material',
     });
   }
+
+  readonly componentTag: Signal<RadioTag> = computed(() => {
+    const raw = (this.component() ?? 'label').toLowerCase();
+    if (KRadioComponent.SUPPORTED_TAGS.has(raw as RadioTag)) {
+      return raw as RadioTag;
+    }
+    return 'label';
+  });
 
   handleChange(event: Event) {
     this.changed.emit(event);

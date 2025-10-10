@@ -19,28 +19,8 @@ export const demoRoutes: DemoRoute[] = [
     path: 'badge',
     title: 'Badge',
     loadComponent: () =>
-      import('./pages/badge/badge.component').then((m) => m.BadgeComponent),
-  },
-  {
-    path: 'contacts-list',
-    title: 'Contacts List',
-    loadComponent: () =>
-      import('./pages/contacts-list/contacts-list.component').then(
-        (m) => m.ContactsListComponent
-      ),
-  },
-  {
-    path: 'fab',
-    title: 'FAB (Floating Action Button)',
-    loadComponent: () =>
-      import('./pages/fab/fab.component').then((m) => m.FabComponent),
-  },
-  {
-    path: 'menu-list',
-    title: 'Menu List',
-    loadComponent: () =>
-      import('./pages/menu-list/menu-list.component').then(
-        (m) => m.MenuListComponent
+      import('./pages/badge/badge.component').then(
+        (m) => m.BadgeComponent
       ),
   },
   {
@@ -52,17 +32,19 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'buttons',
+    title: 'Buttons',
+    loadComponent: () =>
+      import('./pages/buttons/buttons.component').then(
+        (m) => m.ButtonsComponent
+      ),
+  },
+  {
     path: 'cards',
     title: 'Cards',
     loadComponent: () =>
-      import('./pages/cards/cards.component').then((m) => m.CardsComponent),
-  },
-  {
-    path: 'content-block',
-    title: 'Content Block',
-    loadComponent: () =>
-      import('./pages/content-block/content-block.component').then(
-        (m) => m.ContentBlockComponent
+      import('./pages/cards/cards.component').then(
+        (m) => m.CardsComponent
       ),
   },
   {
@@ -77,14 +59,24 @@ export const demoRoutes: DemoRoute[] = [
     path: 'chips',
     title: 'Chips',
     loadComponent: () =>
-      import('./pages/chips/chips.component').then((m) => m.ChipsComponent),
+      import('./pages/chips/chips.component').then(
+        (m) => m.ChipsComponent
+      ),
   },
   {
-    path: 'dialog',
-    title: 'Dialog',
+    path: 'contacts-list',
+    title: 'Contacts List',
     loadComponent: () =>
-      import('./pages/dialog/dialog.component').then(
-        (m) => m.DialogComponent
+      import('./pages/contacts-list/contacts-list.component').then(
+        (m) => m.ContactsListComponent
+      ),
+  },
+  {
+    path: 'content-block',
+    title: 'Content Block',
+    loadComponent: () =>
+      import('./pages/content-block/content-block.component').then(
+        (m) => m.ContentBlockComponent
       ),
   },
   {
@@ -96,10 +88,28 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'dialog',
+    title: 'Dialog',
+    loadComponent: () =>
+      import('./pages/dialog/dialog.component').then(
+        (m) => m.DialogComponent
+      ),
+  },
+  {
+    path: 'fab',
+    title: 'FAB (Floating Action Button)',
+    loadComponent: () =>
+      import('./pages/fab/fab.component').then(
+        (m) => m.FabComponent
+      ),
+  },
+  {
     path: 'list',
     title: 'List',
     loadComponent: () =>
-      import('./pages/list/list.component').then((m) => m.ListComponent),
+      import('./pages/list/list.component').then(
+        (m) => m.ListComponent
+      ),
   },
   {
     path: 'list-button',
@@ -107,6 +117,14 @@ export const demoRoutes: DemoRoute[] = [
     loadComponent: () =>
       import('./pages/list-button/list-button.component').then(
         (m) => m.ListButtonComponent
+      ),
+  },
+  {
+    path: 'menu-list',
+    title: 'Menu List',
+    loadComponent: () =>
+      import('./pages/menu-list/menu-list.component').then(
+        (m) => m.MenuListComponent
       ),
   },
   {
@@ -126,6 +144,30 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'popup',
+    title: 'Popup',
+    loadComponent: () =>
+      import('./pages/popup/popup.component').then(
+        (m) => m.PopupComponent
+      ),
+  },
+  {
+    path: 'notification',
+    title: 'Notification',
+    loadComponent: () =>
+      import('./pages/notification/notification.component').then(
+        (m) => m.NotificationComponent
+      ),
+  },
+  {
+    path: 'preloader',
+    title: 'Preloader',
+    loadComponent: () =>
+      import('./pages/preloader/preloader.component').then(
+        (m) => m.PreloaderComponent
+      ),
+  },
+  {
     path: 'progressbar',
     title: 'Progressbar',
     loadComponent: () =>
@@ -137,7 +179,17 @@ export const demoRoutes: DemoRoute[] = [
     path: 'radio',
     title: 'Radio',
     loadComponent: () =>
-      import('./pages/radio/radio.component').then((m) => m.RadioComponent),
+      import('./pages/radio/radio.component').then(
+        (m) => m.RadioComponent
+      ),
+  },
+  {
+    path: 'segmented-control',
+    title: 'Segmented Control',
+    loadComponent: () =>
+      import('./pages/segmented-control/segmented-control.component').then(
+        (m) => m.SegmentedControlComponent
+      ),
   },
   {
     path: 'tabbar',
@@ -163,15 +215,7 @@ export const demoRoutes: DemoRoute[] = [
         (m) => m.ToolbarComponent
       ),
   },
-  {
-    path: 'buttons',
-    title: 'Buttons',
-    loadComponent: () =>
-      import('./pages/buttons/buttons.component').then(
-        (m) => m.ButtonsComponent
-      ),
-  },
-].sort((a, b) => (a.title > b.title ? 1 : -1));
+];
 
 export const routes: Routes = [
   {
