@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 @import 'tailwindcss';
 @import 'konsta/theme.css';
-@import '../../../src/styles/hairlines.css';
 
 @source '../../../src/shared';
 @source '../../../src/angular';
@@ -15,21 +14,4 @@
   --color-brand-yellow: #ffcc00;
   --color-brand-purple: #9c27b0;
   --color-brand-blue: #2196f3;
-}
-
-:root {
-  font-family: 'Inter', system-ui, sans-serif;
-  color-scheme: light dark;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: var(--k-bg-page);
-  color: var(--k-text-primary);
-}
-
-html.dark body {
-  background-color: #0f172a;
-  color: #e2e8f0;
 }
