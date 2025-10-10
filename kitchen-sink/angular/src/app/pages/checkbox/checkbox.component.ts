@@ -71,81 +71,81 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
       <k-block-title>Checkbox Group</k-block-title>
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Books'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Books')"
-            (changed)="toggleGroupValue('Books')"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              name="demo-checkbox"
+              [checked]="group().includes('Books')"
+              (changed)="toggleGroupValue('Books')"
+            ></k-checkbox>
+          </div>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Movies'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Movies')"
-            (changed)="toggleGroupValue('Movies')"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              name="demo-checkbox"
+              [checked]="group().includes('Movies')"
+              (changed)="toggleGroupValue('Movies')"
+            ></k-checkbox>
+          </div>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Food'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Food')"
-            (changed)="toggleGroupValue('Food')"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              name="demo-checkbox"
+              [checked]="group().includes('Food')"
+              (changed)="toggleGroupValue('Food')"
+            ></k-checkbox>
+          </div>
         </k-list-item>
         <k-list-item [label]="true" [title]="'Drinks'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-checkbox"
-            [checked]="group().includes('Drinks')"
-            (changed)="toggleGroupValue('Drinks')"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              name="demo-checkbox"
+              [checked]="group().includes('Drinks')"
+              (changed)="toggleGroupValue('Drinks')"
+            ></k-checkbox>
+          </div>
         </k-list-item>
       </k-list>
 
       <k-block-title>Indeterminate State</k-block-title>
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Movies'">
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            [checked]="movies().length === 2"
-            [indeterminate]="movies().length === 1"
-            (changed)="toggleMoviesAll()"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              [checked]="movies().length === 2"
+              [indeterminate]="movies().length === 1"
+              (changed)="toggleMoviesAll()"
+            ></k-checkbox>
+          </div>
           <div content>
             <ul class="ps-12">
               <k-list-item [label]="true" [title]="'Movie 1'">
-                <k-checkbox
-                  media
-                  ngProjectAs="[media]"
-                  [component]="'div'"
-                  name="demo-checkbox"
-                  value="Movie 1"
-                  [checked]="movies().includes('Movie 1')"
-                  (changed)="onMovieChange($event)"
-                ></k-checkbox>
+                <div media>
+                  <k-checkbox
+                    [component]="'div'"
+                    name="demo-checkbox"
+                    value="Movie 1"
+                    [checked]="movies().includes('Movie 1')"
+                    (changed)="onMovieChange($event)"
+                  ></k-checkbox>
+                </div>
               </k-list-item>
               <k-list-item [label]="true" [title]="'Movie 2'">
-                <k-checkbox
-                  media
-                  ngProjectAs="[media]"
-                  [component]="'div'"
-                  name="demo-checkbox"
-                  value="Movie 2"
-                  [checked]="movies().includes('Movie 2')"
-                  (changed)="onMovieChange($event)"
-                ></k-checkbox>
+                <div media>
+                  <k-checkbox
+                    [component]="'div'"
+                    name="demo-checkbox"
+                    value="Movie 2"
+                    [checked]="movies().includes('Movie 2')"
+                    (changed)="onMovieChange($event)"
+                  ></k-checkbox>
+                </div>
               </k-list-item>
             </ul>
           </div>
@@ -161,14 +161,14 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           [subtitle]="'New messages from John Doe'"
           [text]="longText"
         >
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-media-checkbox"
-            [checked]="media().includes('Item 1')"
-            (changed)="toggleMediaValue('Item 1')"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              name="demo-media-checkbox"
+              [checked]="media().includes('Item 1')"
+              (changed)="toggleMediaValue('Item 1')"
+            ></k-checkbox>
+          </div>
         </k-list-item>
         <k-list-item
           [label]="true"
@@ -177,14 +177,14 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           [subtitle]="'John Doe (@_johndoe) mentioned you on Twitter!'"
           [text]="longText"
         >
-          <k-checkbox
-            media
-            ngProjectAs="[media]"
-            [component]="'div'"
-            name="demo-media-checkbox"
-            [checked]="media().includes('Item 2')"
-            (changed)="toggleMediaValue('Item 2')"
-          ></k-checkbox>
+          <div media>
+            <k-checkbox
+              [component]="'div'"
+              name="demo-media-checkbox"
+              [checked]="media().includes('Item 2')"
+              (changed)="toggleMediaValue('Item 2')"
+            ></k-checkbox>
+          </div>
         </k-list-item>
       </k-list>
     </k-page>
