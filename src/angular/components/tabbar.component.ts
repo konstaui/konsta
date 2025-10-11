@@ -4,7 +4,7 @@ import { KToolbarComponent } from './toolbar.component.js';
 
 @Component({
   selector: 'k-tabbar',
-  
+
   imports: [CommonModule, KToolbarComponent],
   template: `
     <k-toolbar
@@ -21,6 +21,13 @@ import { KToolbarComponent } from './toolbar.component.js';
       <ng-content />
     </k-toolbar>
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KTabbarComponent {

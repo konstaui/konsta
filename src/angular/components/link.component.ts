@@ -26,29 +26,34 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
   selector: 'k-link',
   
   imports: [CommonModule],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   template: `
-    @switch (component()) {
-      @case ('a') {
-        <a
-          #root
-          class="{{ classes() }}"
-          [attr.href]="href() ?? null"
-          [attr.target]="target() ?? null"
-          (click)="handleClick($event)"
-        >
-          <ng-content />
-        </a>
-      }
-      @default {
-        <button
-          #root
-          type="button"
-          class="{{ classes() }}"
-          (click)="handleClick($event)"
-        >
-          <ng-content />
-        </button>
-      }
+    @if (component() === 'a') {
+      <a
+        #root
+        class="{{ classes() }}"
+        [attr.href]="href() ?? null"
+        [attr.target]="target() ?? null"
+        (click)="handleClick($event)"
+      >
+        <ng-content />
+      </a>
+    }
+    @if (component() === 'button') {
+      <button
+        #root
+        type="button"
+        class="{{ classes() }}"
+        (click)="handleClick($event)"
+      >
+        <ng-content />
+      </button>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

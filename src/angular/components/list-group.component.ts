@@ -12,46 +12,51 @@ type ListGroupTag = 'li' | 'div';
 
 @Component({
   selector: 'k-list-group',
-  
+
   imports: [CommonModule, KListComponent],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   template: `
-    @switch (componentTag()) {
-      @case ('li') {
-        <li [class]="className() ?? null">
-          <k-list
-            [class]="listClass() ?? undefined"
-            [colors]="colors()"
-            [ios]="ios()"
-            [material]="material()"
-            [dividers]="dividers()"
-            [inset]="inset()"
-            [strong]="strong()"
-            [outline]="outline()"
-            [menuList]="menuList()"
-            [nested]="true"
-          >
-            <ng-content />
-          </k-list>
-        </li>
-      }
-      @default {
-        <div [class]="className() ?? null">
-          <k-list
-            [class]="listClass() ?? undefined"
-            [colors]="colors()"
-            [ios]="ios()"
-            [material]="material()"
-            [dividers]="dividers()"
-            [inset]="inset()"
-            [strong]="strong()"
-            [outline]="outline()"
-            [menuList]="menuList()"
-            [nested]="true"
-          >
-            <ng-content />
-          </k-list>
-        </div>
-      }
+    @if (componentTag() === 'li') {
+      <li [class]="className() ?? null">
+        <k-list
+          [class]="listClass() ?? undefined"
+          [colors]="colors()"
+          [ios]="ios()"
+          [material]="material()"
+          [dividers]="dividers()"
+          [inset]="inset()"
+          [strong]="strong()"
+          [outline]="outline()"
+          [menuList]="menuList()"
+          [nested]="true"
+        >
+          <ng-content />
+        </k-list>
+      </li>
+    }
+    @if (componentTag() === 'div') {
+      <div [class]="className() ?? null">
+        <k-list
+          [class]="listClass() ?? undefined"
+          [colors]="colors()"
+          [ios]="ios()"
+          [material]="material()"
+          [dividers]="dividers()"
+          [inset]="inset()"
+          [strong]="strong()"
+          [outline]="outline()"
+          [menuList]="menuList()"
+          [nested]="true"
+        >
+          <ng-content />
+        </k-list>
+      </div>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

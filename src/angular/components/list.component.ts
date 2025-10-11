@@ -33,7 +33,7 @@ import {
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [
+  providers: [
     {
       provide: LIST_CONTEXT,
       useFactory: (component: KListComponent) => component.contextValue,

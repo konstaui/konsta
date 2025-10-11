@@ -66,6 +66,13 @@ import {
       }
     </ng-template>
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [
     {
