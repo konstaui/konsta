@@ -109,5 +109,5 @@ export const useThemeClasses = (overrides?: ThemeOverrideFactory) => {
 export const useDarkClasses = () => {
   const ctx = injectKonstaContext();
   const enabled = computed(() => ctx.dark());
-  return (classNames: string) => (enabled() ? classNames : '');
+  return (classNames: string) => classNames;
 };
