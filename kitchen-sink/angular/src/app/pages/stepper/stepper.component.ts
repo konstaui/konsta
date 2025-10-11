@@ -354,6 +354,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-stepper
             [value]="value()"
             [buttonsOnly]="true"
+            [rounded]="true"
             (plus)="increase()"
             (minus)="decrease()"
           ></k-stepper>
@@ -365,6 +366,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-stepper
             [value]="value()"
             [buttonsOnly]="true"
+            [rounded]="true"
             [outline]="true"
             (plus)="increase()"
             (minus)="decrease()"
@@ -377,6 +379,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-stepper
             [value]="value()"
             [buttonsOnly]="true"
+            [rounded]="true"
             [raised]="true"
             [outline]="true"
             (plus)="increase()"
