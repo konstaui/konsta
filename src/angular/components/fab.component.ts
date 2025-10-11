@@ -35,7 +35,11 @@ type FabTag = 'a' | 'button' | 'div';
       }
       @if (hasIcon()) {
         <span class="{{ iconClasses() }}">
-          <ng-content select="[icon]" />
+          @if (icon()) {
+            <ng-container *ngTemplateOutlet="icon()!" />
+          } @else {
+            <ng-content select="[icon]" />
+          }
         </span>
       }
       @if (hasText() && textPosition() === 'after') {
@@ -95,6 +99,7 @@ export class KFabComponent {
   readonly href = input<string | undefined>(undefined);
   readonly text = input<string | undefined>(undefined);
   readonly textPosition = input<'before' | 'after'>('after');
+  readonly icon = input<any | undefined>(undefined);
 
   private readonly textSlot =
     contentChild<ElementRef<HTMLElement>>('[text]');
@@ -149,7 +154,7 @@ export class KFabComponent {
   readonly hasText = computed(
     () => !!this.text() || !!this.textSlot()
   );
-  readonly hasIcon = computed(() => !!this.iconSlot());
+  readonly hasIcon = computed(() => !!this.icon() || !!this.iconSlot());
 
   readonly componentTag: Signal<FabTag> = computed(() => {
     const value = (this.component() || 'a').toLowerCase();

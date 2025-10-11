@@ -39,223 +39,62 @@ import { ThemeService } from '../../shared/theme.service';
 
       <k-fab
         class="fixed right-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-red"
-      >
-        <span icon>
-          @if (isIos()) {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5V19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          } @else {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-            </svg>
-          }
-        </span>
-      </k-fab>
+        [icon]="plusIconTpl"
+      ></k-fab>
 
-      <k-fab class="fixed right-safe-4 bottom-safe-4 z-20">
-        <span icon>
-          @if (isIos()) {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5V19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          } @else {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-            </svg>
-          }
-        </span>
-      </k-fab>
+      <k-fab class="fixed right-safe-4 bottom-safe-4 z-20" [icon]="plusIconTpl"></k-fab>
 
-      <k-fab class="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green">
-        <span icon>
-          @if (isIos()) {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5V19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          } @else {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-            </svg>
-          }
-        </span>
-      </k-fab>
+      <k-fab class="fixed left-safe-4 bottom-safe-4 z-20 k-color-brand-green" [icon]="plusIconTpl"></k-fab>
 
       <k-fab
         class="fixed left-safe-4 ios:top-safe-19 material:top-safe-18 z-20 k-color-brand-yellow"
-      >
-        <span icon>
-          @if (isIos()) {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5V19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          } @else {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-            </svg>
-          }
-        </span>
-      </k-fab>
+        [icon]="plusIconTpl"
+      ></k-fab>
 
       <k-fab
         class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"
-      >
-        <span icon>
-          @if (isIos()) {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5V19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          } @else {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-            </svg>
-          }
-        </span>
-      </k-fab>
+        [icon]="plusIconTpl"
+      ></k-fab>
 
       <k-fab
         class="fixed left-1/2 bottom-safe-4 transform -translate-x-1/2 z-20"
         [text]="'Create'"
         [textPosition]="'after'"
-      >
-        <span icon>
-          @if (isIos()) {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5V19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <path
-                d="M5 12H19"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-          } @else {
-            <svg
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-            </svg>
-          }
-        </span>
-      </k-fab>
+        [icon]="plusIconTpl"
+      ></k-fab>
+
+      <ng-template #plusIconTpl>
+        @if (isIos()) {
+          <svg
+            class="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 5V19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M5 12H19"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+        } @else {
+          <svg
+            class="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
+          </svg>
+        }
+      </ng-template>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">
         @for (paragraph of primaryParagraphs; track paragraph) {
