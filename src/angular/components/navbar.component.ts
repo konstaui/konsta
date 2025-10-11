@@ -184,6 +184,15 @@ export class KNavbarComponent {
       return scrollElInput;
     }
     const navElement = this.navEl()?.nativeElement;
+    // Find the k-page element (scrollable container)
+    let parent = navElement?.parentElement;
+    while (parent) {
+      if (parent.classList.contains('k-page') || parent.tagName === 'K-PAGE') {
+        const pageInner = parent.querySelector('.ios-edges, .material-edges');
+        return (pageInner as HTMLElement) || parent;
+      }
+      parent = parent.parentElement;
+    }
     return navElement?.parentElement ?? null;
   }
 
