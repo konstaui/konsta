@@ -71,16 +71,16 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
         </k-block-header>
         <k-list [strong]="true" [inset]="true">
           @for (option of sizeOptions; track option) {
-            <k-list-item [label]="true" [title]="option">
-              <ng-container ngProjectAs="[after]">
-                <k-radio
-                  component="div"
-                  [value]="option"
-                  [checked]="size() === option"
-                  (changed)="setSize(option)"
-                ></k-radio>
-              </ng-container>
-            </k-list-item>
+            <k-list-item [label]="true" [title]="option" [after]="radioTpl"></k-list-item>
+
+            <ng-template #radioTpl>
+              <k-radio
+                component="div"
+                [value]="option"
+                [checked]="size() === option"
+                (changed)="setSize(option)"
+              ></k-radio>
+            </ng-template>
           }
         </k-list>
 
@@ -90,15 +90,15 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
           visible on page scroll
         </k-block-header>
         <k-list [strong]="true" [inset]="true">
-        <k-list-item [label]="true" [title]="'Transparent'">
-          <ng-container ngProjectAs="[after]">
+          <k-list-item [label]="true" [title]="'Transparent'" [after]="transparentToggleTpl"></k-list-item>
+
+          <ng-template #transparentToggleTpl>
             <k-toggle
               component="div"
               [checked]="isTransparent()"
               (changed)="toggleTransparent()"
             ></k-toggle>
-          </ng-container>
-        </k-list-item>
+          </ng-template>
         </k-list>
 
         <k-block [strong]="true" [inset]="true" class="space-y-4">

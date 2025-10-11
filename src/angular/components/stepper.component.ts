@@ -6,7 +6,6 @@ import {
   Signal,
   computed,
   contentChild,
-  effect,
   input,
   output,
   viewChild,
@@ -323,15 +322,13 @@ export class KStepperComponent {
   );
 
   constructor() {
-    effect(() => {
-      useTouchRipple({
-        element: () => this.minusButtonRef()?.nativeElement ?? null,
-        needsRipple: () => this.theme() === 'material',
-      });
-      useTouchRipple({
-        element: () => this.plusButtonRef()?.nativeElement ?? null,
-        needsRipple: () => this.theme() === 'material',
-      });
+    useTouchRipple({
+      element: () => this.minusButtonRef()?.nativeElement ?? null,
+      needsRipple: () => this.theme() === 'material',
+    });
+    useTouchRipple({
+      element: () => this.plusButtonRef()?.nativeElement ?? null,
+      needsRipple: () => this.theme() === 'material',
     });
   }
 

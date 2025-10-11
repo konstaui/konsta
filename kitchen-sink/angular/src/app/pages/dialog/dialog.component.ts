@@ -132,36 +132,38 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
       >
         <div title>Your super hero</div>
         <k-list [nested]="true" class="-mx-4">
-          <k-list-item [label]="true" [title]="'Batman'">
-            <ng-container ngProjectAs="[after]">
-              <k-radio
-                component="div"
-                value="batman"
-                [checked]="radioValue() === 'batman'"
-                (changed)="radioValue.set('batman')"
-              ></k-radio>
-            </ng-container>
-          </k-list-item>
-          <k-list-item [label]="true" [title]="'Spider-man'">
-            <ng-container ngProjectAs="[after]">
-              <k-radio
-                component="div"
-                value="spiderman"
-                [checked]="radioValue() === 'spiderman'"
-                (changed)="radioValue.set('spiderman')"
-              ></k-radio>
-            </ng-container>
-          </k-list-item>
-          <k-list-item [label]="true" [title]="'Hulk'">
-            <ng-container ngProjectAs="[after]">
-              <k-radio
-                component="div"
-                value="hulk"
-                [checked]="radioValue() === 'hulk'"
-                (changed)="radioValue.set('hulk')"
-              ></k-radio>
-            </ng-container>
-          </k-list-item>
+          <k-list-item [label]="true" [title]="'Batman'" [after]="batmanRadioTpl"></k-list-item>
+
+          <ng-template #batmanRadioTpl>
+            <k-radio
+              component="div"
+              value="batman"
+              [checked]="radioValue() === 'batman'"
+              (changed)="radioValue.set('batman')"
+            ></k-radio>
+          </ng-template>
+
+          <k-list-item [label]="true" [title]="'Spider-man'" [after]="spidermanRadioTpl"></k-list-item>
+
+          <ng-template #spidermanRadioTpl>
+            <k-radio
+              component="div"
+              value="spiderman"
+              [checked]="radioValue() === 'spiderman'"
+              (changed)="radioValue.set('spiderman')"
+            ></k-radio>
+          </ng-template>
+
+          <k-list-item [label]="true" [title]="'Hulk'" [after]="hulkRadioTpl"></k-list-item>
+
+          <ng-template #hulkRadioTpl>
+            <k-radio
+              component="div"
+              value="hulk"
+              [checked]="radioValue() === 'hulk'"
+              (changed)="radioValue.set('hulk')"
+            ></k-radio>
+          </ng-template>
         </k-list>
         <k-dialog-button
           buttons

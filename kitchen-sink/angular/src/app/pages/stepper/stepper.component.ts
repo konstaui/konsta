@@ -348,39 +348,41 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
 
       <k-block-title>Only Buttons</k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item [title]="'Value is ' + value()">
-          <ng-container ngProjectAs="[after]">
-            <k-stepper
-              [value]="value()"
-              [buttonsOnly]="true"
-              (plus)="increase()"
-              (minus)="decrease()"
-            ></k-stepper>
-          </ng-container>
-        </k-list-item>
-        <k-list-item [title]="'Value is ' + value()">
-          <ng-container ngProjectAs="[after]">
-            <k-stepper
-              [value]="value()"
-              [buttonsOnly]="true"
-              [outline]="true"
-              (plus)="increase()"
-              (minus)="decrease()"
-            ></k-stepper>
-          </ng-container>
-        </k-list-item>
-        <k-list-item [title]="'Value is ' + value()">
-          <ng-container ngProjectAs="[after]">
-            <k-stepper
-              [value]="value()"
-              [buttonsOnly]="true"
-              [raised]="true"
-              [outline]="true"
-              (plus)="increase()"
-              (minus)="decrease()"
-            ></k-stepper>
-          </ng-container>
-        </k-list-item>
+        <k-list-item [title]="'Value is ' + value()" [after]="stepper1Tpl"></k-list-item>
+
+        <ng-template #stepper1Tpl>
+          <k-stepper
+            [value]="value()"
+            [buttonsOnly]="true"
+            (plus)="increase()"
+            (minus)="decrease()"
+          ></k-stepper>
+        </ng-template>
+
+        <k-list-item [title]="'Value is ' + value()" [after]="stepper2Tpl"></k-list-item>
+
+        <ng-template #stepper2Tpl>
+          <k-stepper
+            [value]="value()"
+            [buttonsOnly]="true"
+            [outline]="true"
+            (plus)="increase()"
+            (minus)="decrease()"
+          ></k-stepper>
+        </ng-template>
+
+        <k-list-item [title]="'Value is ' + value()" [after]="stepper3Tpl"></k-list-item>
+
+        <ng-template #stepper3Tpl>
+          <k-stepper
+            [value]="value()"
+            [buttonsOnly]="true"
+            [raised]="true"
+            [outline]="true"
+            (plus)="increase()"
+            (minus)="decrease()"
+          ></k-stepper>
+        </ng-template>
       </k-list>
 
       <k-block-title>Colors</k-block-title>

@@ -99,22 +99,25 @@ interface TabDescriptor {
       </k-tabbar>
 
       <k-list [strong]="true" [inset]="true">
-        <k-list-item [title]="'Tabbar Labels'">
-          <ng-container ngProjectAs="[after]">
-            <k-toggle
-              [checked]="showLabels()"
-              (changed)="toggleLabels()"
-            ></k-toggle>
-          </ng-container>
-        </k-list-item>
-        <k-list-item [title]="'Tabbar Icons'">
-          <ng-container ngProjectAs="[after]">
-            <k-toggle
-              [checked]="showIcons()"
-              (changed)="toggleIcons()"
-            ></k-toggle>
-          </ng-container>
-        </k-list-item>
+        <k-list-item [title]="'Tabbar Labels'" [after]="labelsToggleTpl"></k-list-item>
+
+        <ng-template #labelsToggleTpl>
+          <k-toggle
+            component="div"
+            [checked]="showLabels()"
+            (changed)="toggleLabels()"
+          ></k-toggle>
+        </ng-template>
+
+        <k-list-item [title]="'Tabbar Icons'" [after]="iconsToggleTpl"></k-list-item>
+
+        <ng-template #iconsToggleTpl>
+          <k-toggle
+            component="div"
+            [checked]="showIcons()"
+            (changed)="toggleIcons()"
+          ></k-toggle>
+        </ng-template>
       </k-list>
 
       @if (activeTab() === 'tab-1') {
