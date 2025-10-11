@@ -33,3 +33,6 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+# Development Setup
+DO not try to buils or run server yourself all is realy running and auto reloading on changes.
