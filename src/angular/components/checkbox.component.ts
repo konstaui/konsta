@@ -129,6 +129,7 @@ export class KCheckboxComponent implements ControlValueAccessor {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
+  readonly mediaAttr = input<boolean>(false, { alias: 'media' });
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);

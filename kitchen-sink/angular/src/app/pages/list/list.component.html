@@ -49,62 +49,50 @@
 
   <k-block-title>Data list, with icons</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <k-list-item title="Ivan Petrov" after="CEO">
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
-    <k-list-item title="John Doe">
-      <app-demo-icon media></app-demo-icon>
+    <k-list-item title="Ivan Petrov" after="CEO" [media]="demoIconTpl"></k-list-item>
+    <k-list-item title="John Doe" [media]="demoIconTpl">
       <k-badge after>5</k-badge>
     </k-list-item>
-    <k-list-item title="Jenna Smith">
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
+    <k-list-item title="Jenna Smith" [media]="demoIconTpl"></k-list-item>
   </k-list>
+
+  <ng-template #demoIconTpl>
+    <app-demo-icon></app-demo-icon>
+  </ng-template>
 
   <k-block-title>Links</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <k-list-item [link]="true" title="Ivan Petrov" after="CEO">
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
-    <k-list-item [link]="true" title="John Doe" after="Cleaner">
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
-    <k-list-item [link]="true" title="Jenna Smith">
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
+    <k-list-item [link]="true" title="Ivan Petrov" after="CEO" [media]="demoIconTpl"></k-list-item>
+    <k-list-item [link]="true" title="John Doe" after="Cleaner" [media]="demoIconTpl"></k-list-item>
+    <k-list-item [link]="true" title="Jenna Smith" [media]="demoIconTpl"></k-list-item>
   </k-list>
 
   <k-block-title>Links, Header, Footer</k-block-title>
   <k-list [strongIos]="true" [outlineIos]="true">
-    <k-list-item [link]="true" header="Name" title="John Doe" after="Edit">
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
+    <k-list-item [link]="true" header="Name" title="John Doe" after="Edit" [media]="demoIconTpl"></k-list-item>
     <k-list-item
       [link]="true"
       header="Phone"
       title="+7 90 111-22-3344"
       after="Edit"
-    >
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
+      [media]="demoIconTpl"
+    ></k-list-item>
     <k-list-item
       [link]="true"
       header="Email"
       title="john@doe"
       footer="Home"
       after="Edit"
-    >
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
+      [media]="demoIconTpl"
+    ></k-list-item>
     <k-list-item
       [link]="true"
       header="Email"
       title="john@konsta"
       footer="Work"
       after="Edit"
-    >
-      <app-demo-icon media></app-demo-icon>
-    </k-list-item>
+      [media]="demoIconTpl"
+    ></k-list-item>
   </k-list>
 
   <k-block-title>Links, no icons</k-block-title>
@@ -151,15 +139,17 @@
         [after]="song.price"
         [subtitle]="song.artist"
         [text]="longText"
-      >
+        [media]="songImageTpl"
+      ></k-list-item>
+
+      <ng-template #songImageTpl>
         <img
-          media
           [src]="song.image"
           width="80"
           class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-          alt="{{ song.title }} cover"
+          [alt]="song.title + ' cover'"
         />
-      </k-list-item>
+      </ng-template>
     }
   </k-list>
 
