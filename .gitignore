@@ -42,3 +42,4 @@ kitchen-sink/angular/node_modules
 src/vue-temp
 dist/*
 .tmp
+.playwright-mcp
