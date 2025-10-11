@@ -23,7 +23,7 @@ import {
 
 @Component({
   selector: 'k-list',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <div #root [class]="baseClasses()">

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'k-chevron-icon',
-  standalone: true,
+  
   template: `
     <svg
       [attr.class]="className() ?? null"

@@ -24,7 +24,7 @@ type MessageType = 'sent' | 'received';
 
 @Component({
   selector: 'k-message',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {
@@ -41,53 +41,56 @@ type MessageType = 'sent' | 'received';
     }
 
     <ng-template #messageContentTpl>
-      <ng-container *ngIf="showAvatar()">
+      @if (showAvatar()) {
         <div class="{{ messageAvatarClass() }}">
-          <ng-container *ngIf="avatar(); else avatarSlotTpl">
+          @if (avatar()) {
             <img
               [src]="avatar()!"
               alt=""
               class="w-full h-full rounded-full object-cover"
             />
-          </ng-container>
+          } @else {
+            <ng-content select="[avatar]" />
+          }
         </div>
-      </ng-container>
+      }
 
       <div class="{{ messageContentClass() }}">
-        <div *ngIf="name()" class="{{ messageNameClass() }}">
-          {{ name() }}
-        </div>
-        <div *ngIf="header()" class="{{ messageHeaderClass() }}">
-          {{ header() }}
-        </div>
-        <div class="{{ messageBubbleClass() }}">
-          <div
-            *ngIf="textHeader()"
-            class="{{ messageTextHeaderClass() }}"
-          >
-            {{ textHeader() }}
+        @if (name()) {
+          <div class="{{ messageNameClass() }}">
+            {{ name() }}
           </div>
-          <div
-            *ngIf="text()"
+        }
+        @if (header()) {
+          <div class="{{ messageHeaderClass() }}">
+            {{ header() }}
+          </div>
+        }
+        <div class="{{ messageBubbleClass() }}">
+          @if (textHeader()) {
+            <div class="{{ messageTextHeaderClass() }}">
+              {{ textHeader() }}
+            </div>
+          }
+          @if (text()) {
+            <div
             class="{{ messageTextClass() }}"
             [innerHTML]="safeText() ?? ''"
           ></div>
-          <div
-            *ngIf="textFooter()"
-            class="{{ messageTextFooterClass() }}"
-          >
-            {{ textFooter() }}
-          </div>
+          }
+          @if (textFooter()) {
+            <div class="{{ messageTextFooterClass() }}">
+              {{ textFooter() }}
+            </div>
+          }
           <ng-content />
         </div>
-        <div *ngIf="footer()" class="{{ messageFooterClass() }}">
-          {{ footer() }}
-        </div>
+        @if (footer()) {
+          <div class="{{ messageFooterClass() }}">
+            {{ footer() }}
+          </div>
+        }
       </div>
-    </ng-template>
-
-    <ng-template #avatarSlotTpl>
-      <ng-content select="[avatar]" />
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

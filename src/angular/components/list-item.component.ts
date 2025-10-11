@@ -27,7 +27,7 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
 
 @Component({
   selector: 'k-list-item',
-  standalone: true,
+  
   imports: [CommonModule, RouterModule, KChevronIconComponent],
   template: `
     <li #root [class]="baseClasses()">

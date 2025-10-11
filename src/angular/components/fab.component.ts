@@ -23,7 +23,7 @@ type FabTag = 'a' | 'button' | 'div';
 
 @Component({
   selector: 'k-fab',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <ng-template #fabContent>

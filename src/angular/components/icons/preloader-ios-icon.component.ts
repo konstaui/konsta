@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'k-preloader-ios-icon',
-  standalone: true,
+  
   template: `
     <svg
       [attr.class]="className() ?? null"

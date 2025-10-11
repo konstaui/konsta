@@ -4,7 +4,7 @@ import { KToolbarComponent } from './toolbar.component.js';
 
 @Component({
   selector: 'k-tabbar',
-  standalone: true,
+  
   imports: [CommonModule, KToolbarComponent],
   template: `
     <k-toolbar

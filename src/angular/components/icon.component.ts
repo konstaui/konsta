@@ -19,7 +19,7 @@ type IconTag = 'i' | 'span' | 'div';
 
 @Component({
   selector: 'k-icon',
-  standalone: true,
+  
   imports: [CommonModule, KBadgeComponent],
   template: `
     @switch (componentTag()) {

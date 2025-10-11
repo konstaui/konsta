@@ -20,7 +20,7 @@ import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-tabbar-link',
-  standalone: true,
+  
   imports: [CommonModule, KLinkComponent],
   template: `
     <k-link
@@ -37,22 +37,21 @@ import { cls } from '../../shared/cls.js';
       (clicked)="clicked.emit($event)"
     >
       <span class="{{ contentClasses() }}">
-        <ng-container *ngIf="hasIcon()">
+        @if (hasIcon()) {
           <span class="{{ iconContainerClasses() }}">
             <span class="{{ iconBgClasses() }}"></span>
             <ng-content select="[icon]" />
           </span>
-        </ng-container>
-        <ng-container *ngIf="hasLabel()">
+        }
+        @if (hasLabel()) {
           <span class="{{ labelClasses() }}">
-            <ng-container *ngIf="label(); else labelTpl">
+            @if (label()) {
               {{ label() }}
-            </ng-container>
-            <ng-template #labelTpl>
+            } @else {
               <ng-content select="[label]" />
-            </ng-template>
+            }
           </span>
-        </ng-container>
+        }
         <ng-content select="[content]" />
       </span>
     </k-link>

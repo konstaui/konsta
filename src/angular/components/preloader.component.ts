@@ -20,7 +20,7 @@ type PreloaderTag = 'span' | 'div';
 
 @Component({
   selector: 'k-preloader',
-  standalone: true,
+  
   imports: [
     CommonModule,
     KPreloaderIosIconComponent,

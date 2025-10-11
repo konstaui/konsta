@@ -16,7 +16,7 @@ import { KButtonComponent } from './button.component.js';
 
 @Component({
   selector: 'k-segmented-button',
-  standalone: true,
+  
   imports: [CommonModule, KButtonComponent],
   template: `
     <k-button

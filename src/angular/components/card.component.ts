@@ -18,42 +18,37 @@ import {
 
 @Component({
   selector: 'k-card',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <ng-template #cardContent>
-      <ng-container *ngIf="hasHeader(); else noHeader">
+      @if (hasHeader()) {
         <div class="{{ headerClasses() }}">
-          <ng-container *ngIf="header(); else headerSlot">
+          @if (header()) {
             {{ header() }}
-          </ng-container>
-          <ng-template #headerSlot>
+          } @else {
             <ng-content select="[header]" />
-          </ng-template>
+          }
         </div>
-      </ng-container>
-      <ng-template #noHeader></ng-template>
+      }
 
-      <ng-container *ngIf="contentWrap(); else bareContent">
+      @if (contentWrap()) {
         <div class="{{ contentClasses() }}">
           <ng-content />
         </div>
-      </ng-container>
-      <ng-template #bareContent>
+      } @else {
         <ng-content />
-      </ng-template>
+      }
 
-      <ng-container *ngIf="hasFooter(); else noFooter">
+      @if (hasFooter()) {
         <div class="{{ footerClasses() }}">
-          <ng-container *ngIf="footer(); else footerSlot">
+          @if (footer()) {
             {{ footer() }}
-          </ng-container>
-          <ng-template #footerSlot>
+          } @else {
             <ng-content select="[footer]" />
-          </ng-template>
+          }
         </div>
-      </ng-container>
-      <ng-template #noFooter></ng-template>
+      }
     </ng-template>
 
     @switch (tag()) {

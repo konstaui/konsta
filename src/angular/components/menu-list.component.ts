@@ -8,7 +8,7 @@ import { KListComponent } from './list.component.js';
 
 @Component({
   selector: 'k-menu-list',
-  standalone: true,
+  
   imports: [CommonModule, KListComponent],
   template: `
     <k-list

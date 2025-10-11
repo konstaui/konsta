@@ -22,7 +22,7 @@ type ToastPosition = 'left' | 'right' | 'center';
 
 @Component({
   selector: 'k-toast',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent],
   template: `
     @switch (componentTag()) {

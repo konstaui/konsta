@@ -22,7 +22,7 @@ type DialogState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-dialog',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent],
   template: `
     @if (backdrop()) {

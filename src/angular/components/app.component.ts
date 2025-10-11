@@ -17,7 +17,7 @@ import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-app',
-  standalone: true,
+  
   imports: [CommonModule, KonstaProviderComponent],
   template: `
     <konsta-provider

@@ -22,7 +22,7 @@ type ActionsButtonTag = 'button' | 'a' | string;
 
 @Component({
   selector: 'k-actions-button',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {

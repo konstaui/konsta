@@ -11,7 +11,7 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-table-head',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <thead class="{{ baseClass() }}">

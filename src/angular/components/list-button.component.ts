@@ -27,7 +27,7 @@ type ListButtonLinkTag = 'a' | 'button';
 
 @Component({
   selector: 'k-list-button',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <ng-template #buttonTpl>

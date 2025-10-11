@@ -17,7 +17,7 @@ import { KGlassComponent } from './glass.component.js';
 
 @Component({
   selector: 'k-actions-group',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent],
   template: `
     <k-glass

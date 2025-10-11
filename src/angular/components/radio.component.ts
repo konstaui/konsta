@@ -22,65 +22,156 @@ type RadioTag = 'label' | 'div' | 'span' | 'li';
 
 @Component({
   selector: 'k-radio',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
-    <ng-template #radioContent>
-      <input
-        #input
-        type="radio"
-        class="{{ inputClasses() }}"
-        [attr.name]="name() ?? null"
-        [attr.value]="value() ?? null"
-        [disabled]="disabled()"
-        [readOnly]="readOnly()"
-        [checked]="checked() ?? null"
-        [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
-        (change)="handleChange($event)"
-      />
-      <i class="{{ iconWrapClasses()[state()] }}">
-        <ng-container *ngIf="theme() === 'ios'; else materialIcon">
-          <svg
-            class="{{ iconClasses()[state()] }}"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15.333 6.25 9.04 12.542 6.167 9.667"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </ng-container>
-        <ng-template #materialIcon>
-          <span class="{{ iconClasses()[state()] }}"></span>
-        </ng-template>
-      </i>
-      <ng-content />
-    </ng-template>
-
     @switch (componentTag()) {
       @case ('div') {
         <div #root class="{{ baseClasses() }}">
-          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+          <input
+            #input
+            type="radio"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          <i class="{{ iconWrapClasses()[state()] }}">
+            @if (theme() === 'ios') {
+              <svg
+                class="{{ iconClasses()[state()] }}"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.333 6.25 9.04 12.542 6.167 9.667"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            } @else {
+              <span class="{{ iconClasses()[state()] }}"></span>
+            }
+          </i>
+          <ng-content />
         </div>
       }
       @case ('span') {
         <span #root class="{{ baseClasses() }}">
-          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+          <input
+            #input
+            type="radio"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          <i class="{{ iconWrapClasses()[state()] }}">
+            @if (theme() === 'ios') {
+              <svg
+                class="{{ iconClasses()[state()] }}"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.333 6.25 9.04 12.542 6.167 9.667"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            } @else {
+              <span class="{{ iconClasses()[state()] }}"></span>
+            }
+          </i>
+          <ng-content />
         </span>
       }
       @case ('li') {
         <li #root class="{{ baseClasses() }}">
-          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+          <input
+            #input
+            type="radio"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          <i class="{{ iconWrapClasses()[state()] }}">
+            @if (theme() === 'ios') {
+              <svg
+                class="{{ iconClasses()[state()] }}"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.333 6.25 9.04 12.542 6.167 9.667"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            } @else {
+              <span class="{{ iconClasses()[state()] }}"></span>
+            }
+          </i>
+          <ng-content />
         </li>
       }
       @default {
         <label #root class="{{ baseClasses() }}">
-          <ng-container *ngTemplateOutlet="radioContent"></ng-container>
+          <input
+            #input
+            type="radio"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          <i class="{{ iconWrapClasses()[state()] }}">
+            @if (theme() === 'ios') {
+              <svg
+                class="{{ iconClasses()[state()] }}"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.333 6.25 9.04 12.542 6.167 9.667"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            } @else {
+              <span class="{{ iconClasses()[state()] }}"></span>
+            }
+          </i>
+          <ng-content />
         </label>
       }
     }

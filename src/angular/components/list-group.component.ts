@@ -12,7 +12,7 @@ type ListGroupTag = 'li' | 'div';
 
 @Component({
   selector: 'k-list-group',
-  standalone: true,
+  
   imports: [CommonModule, KListComponent],
   template: `
     @switch (componentTag()) {

@@ -18,7 +18,7 @@ type ProgressbarTag = 'span' | 'div';
 
 @Component({
   selector: 'k-progressbar',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {
@@ -26,12 +26,12 @@ type ProgressbarTag = 'span' | 'div';
         <div class="{{ baseClass() }}">
           <span
             class="{{ innerClass() }}"
-            [ngStyle]="innerStyle()"
+            [style]="innerStyle()"
           ></span>
           @if (isMaterial()) {
             <span
               class="{{ emptyClass() }}"
-              [ngStyle]="emptyStyle()"
+              [style]="emptyStyle()"
             ></span>
             <span class="{{ stopClass() }}"></span>
           }
@@ -42,12 +42,12 @@ type ProgressbarTag = 'span' | 'div';
         <span class="{{ baseClass() }}">
           <span
             class="{{ innerClass() }}"
-            [ngStyle]="innerStyle()"
+            [style]="innerStyle()"
           ></span>
           @if (isMaterial()) {
             <span
               class="{{ emptyClass() }}"
-              [ngStyle]="emptyStyle()"
+              [style]="emptyStyle()"
             ></span>
             <span class="{{ stopClass() }}"></span>
           }

@@ -11,7 +11,7 @@ import { useThemeClasses, useThemeSignal } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-breadcrumbs',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (tag()) {

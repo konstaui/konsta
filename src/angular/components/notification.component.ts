@@ -23,7 +23,7 @@ type NotificationTag = 'div' | 'span';
 
 @Component({
   selector: 'k-notification',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent, KDeleteIconComponent],
   template: `
     @if (isIos()) {
@@ -33,26 +33,26 @@ type NotificationTag = 'div' | 'span';
         [ios]="ios()"
         [material]="material()"
       >
-        <ng-container *ngIf="hasIcon()">
+        @if (hasIcon()) {
           <div class="{{ iconClass() }}">
             <ng-content select="[icon]" />
           </div>
-        </ng-container>
+        }
         <div class="{{ contentClass() }}">
           <div class="{{ headerClass() }}">
-            <ng-container *ngIf="hasTitle()">
+            @if (hasTitle()) {
               <div class="{{ titleClass() }}">
                 {{ title() }}
                 <ng-content select="[title]" />
               </div>
-            </ng-container>
-            <ng-container *ngIf="hasTitleRightText()">
+            }
+            @if (hasTitleRightText()) {
               <div class="{{ titleRightTextClass() }}">
                 {{ titleRightText() }}
                 <ng-content select="[titleRightText]" />
               </div>
-            </ng-container>
-            <ng-container *ngIf="showButton()">
+            }
+            @if (showButton()) {
               <div
                 class="{{ buttonClass() }}"
                 role="button"
@@ -62,20 +62,20 @@ type NotificationTag = 'div' | 'span';
                 <k-delete-icon class="{{ deleteIconClass() }}" />
                 <ng-content select="[button]" />
               </div>
-            </ng-container>
+            }
           </div>
-          <ng-container *ngIf="hasSubtitle()">
+          @if (hasSubtitle()) {
             <div class="{{ subtitleClass() }}">
               {{ subtitle() }}
               <ng-content select="[subtitle]" />
             </div>
-          </ng-container>
-          <ng-container *ngIf="hasText()">
+          }
+          @if (hasText()) {
             <div class="{{ textClass() }}">
               {{ text() }}
               <ng-content select="[text]" />
             </div>
-          </ng-container>
+          }
           <ng-content />
         </div>
       </k-glass>
@@ -84,43 +84,43 @@ type NotificationTag = 'div' | 'span';
         @case ('span') {
           <span class="{{ baseClass() }}">
             <div class="{{ headerClass() }}">
-              <ng-container *ngIf="hasIcon()">
+              @if (hasIcon()) {
                 <div class="{{ iconClass() }}">
                   <ng-content select="[icon]" />
                 </div>
-              </ng-container>
+              }
               <div class="{{ contentWrapperClass() }}">
                 <div class="{{ contentTitleClass() }}">
-                  <ng-container *ngIf="hasTitle()">
+                  @if (hasTitle()) {
                     <div class="{{ titleClass() }}">
                       {{ title() }}
                       <ng-content select="[title]" />
                     </div>
-                  </ng-container>
-                  <ng-container *ngIf="hasTitleRightText()">
+                  }
+                  @if (hasTitleRightText()) {
                     <div class="{{ titleRightTextClass() }}">
                       {{ titleRightText() }}
                       <ng-content select="[titleRightText]" />
                     </div>
-                  </ng-container>
+                  }
                 </div>
                 <div class="{{ contentClass() }}">
-                  <ng-container *ngIf="hasSubtitle()">
+                  @if (hasSubtitle()) {
                     <div class="{{ subtitleClass() }}">
                       {{ subtitle() }}
                       <ng-content select="[subtitle]" />
                     </div>
-                  </ng-container>
-                  <ng-container *ngIf="hasText()">
+                  }
+                  @if (hasText()) {
                     <div class="{{ textClass() }}">
                       {{ text() }}
                       <ng-content select="[text]" />
                     </div>
-                  </ng-container>
+                  }
                   <ng-content />
                 </div>
               </div>
-              <ng-container *ngIf="showButton()">
+              @if (showButton()) {
                 <div
                   class="{{ buttonClass() }}"
                   role="button"
@@ -130,50 +130,50 @@ type NotificationTag = 'div' | 'span';
                   <k-delete-icon class="{{ deleteIconClass() }}" />
                   <ng-content select="[button]" />
                 </div>
-              </ng-container>
+              }
             </div>
           </span>
         }
         @default {
           <div class="{{ baseClass() }}">
             <div class="{{ headerClass() }}">
-              <ng-container *ngIf="hasIcon()">
+              @if (hasIcon()) {
                 <div class="{{ iconClass() }}">
                   <ng-content select="[icon]" />
                 </div>
-              </ng-container>
+              }
               <div class="{{ contentWrapperClass() }}">
                 <div class="{{ contentTitleClass() }}">
-                  <ng-container *ngIf="hasTitle()">
+                  @if (hasTitle()) {
                     <div class="{{ titleClass() }}">
                       {{ title() }}
                       <ng-content select="[title]" />
                     </div>
-                  </ng-container>
-                  <ng-container *ngIf="hasTitleRightText()">
+                  }
+                  @if (hasTitleRightText()) {
                     <div class="{{ titleRightTextClass() }}">
                       {{ titleRightText() }}
                       <ng-content select="[titleRightText]" />
                     </div>
-                  </ng-container>
+                  }
                 </div>
                 <div class="{{ contentClass() }}">
-                  <ng-container *ngIf="hasSubtitle()">
+                  @if (hasSubtitle()) {
                     <div class="{{ subtitleClass() }}">
                       {{ subtitle() }}
                       <ng-content select="[subtitle]" />
                     </div>
-                  </ng-container>
-                  <ng-container *ngIf="hasText()">
+                  }
+                  @if (hasText()) {
                     <div class="{{ textClass() }}">
                       {{ text() }}
                       <ng-content select="[text]" />
                     </div>
-                  </ng-container>
+                  }
                   <ng-content />
                 </div>
               </div>
-              <ng-container *ngIf="showButton()">
+              @if (showButton()) {
                 <div
                   class="{{ buttonClass() }}"
                   role="button"
@@ -183,7 +183,7 @@ type NotificationTag = 'div' | 'span';
                   <k-delete-icon class="{{ deleteIconClass() }}" />
                   <ng-content select="[button]" />
                 </div>
-              </ng-container>
+              }
             </div>
           </div>
         }

@@ -16,7 +16,7 @@ type MessagesTag = 'div' | 'section';
 
 @Component({
   selector: 'k-messages',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {

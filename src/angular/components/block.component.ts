@@ -19,7 +19,7 @@ import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-block',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <div #root class="{{ classes() }}">

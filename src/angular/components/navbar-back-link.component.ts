@@ -18,7 +18,7 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
 
 @Component({
   selector: 'k-navbar-back-link',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @if (component() === 'a') {

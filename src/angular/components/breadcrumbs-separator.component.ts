@@ -12,7 +12,7 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
 
 @Component({
   selector: 'k-breadcrumbs-separator',
-  standalone: true,
+  
   imports: [CommonModule, KChevronIconComponent],
   template: `
     @switch (tag()) {

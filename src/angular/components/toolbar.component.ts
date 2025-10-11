@@ -27,7 +27,7 @@ import {
 
 @Component({
   selector: 'k-toolbar',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (component()) {
@@ -48,17 +48,22 @@ import {
     }
 
     <ng-template #toolbarContent>
-      <div *ngIf="showBgBlur()" class="{{ bgBlurClasses() }}"></div>
-      <div *ngIf="showBg()" class="{{ bgClasses() }}"></div>
+      @if (showBgBlur()) {
+        <div class="{{ bgBlurClasses() }}"></div>
+      }
+      @if (showBg()) {
+        <div class="{{ bgClasses() }}"></div>
+      }
       <div #inner class="{{ innerClasses() }}">
         <ng-content />
       </div>
-      <span
-        *ngIf="hasHighlight()"
+      @if (hasHighlight()) {
+        <span
         #highlight
         class="{{ highlightClasses() }}"
-        [ngStyle]="highlightStyleSignal()"
+        [style]="highlightStyleSignal()"
       ></span>
+      }
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

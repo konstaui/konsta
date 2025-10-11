@@ -18,7 +18,7 @@ type MessagesTitleTag = 'div' | 'span';
 
 @Component({
   selector: 'k-messages-title',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {

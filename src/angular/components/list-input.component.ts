@@ -25,7 +25,7 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
 
 @Component({
   selector: 'k-list-input',
-  standalone: true,
+  
   imports: [CommonModule, KListItemComponent, KDeleteIconComponent],
   template: `
     <k-list-item
@@ -36,19 +36,19 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
       <ng-content select="[media]"></ng-content>
 
       <div inner class="{{ innerClass() }}">
-        <ng-container *ngIf="label() as labelText">
+        @if (label(); as labelText) {
           <div class="{{ labelClass() }}">
             <div class="{{ labelTextClass() }}">{{ labelText }}</div>
           </div>
-        </ng-container>
+        }
 
         <div class="{{ inputWrapClass() }}">
-          <ng-container [ngSwitch]="inputElementTag()">
-            <select
+          @switch (inputElementTag()) {
+            @case ('select') {
+              <select
               #inputEl
-              *ngSwitchCase="'select'"
               class="{{ inputClass() }}"
-              [ngStyle]="inputStyle() ?? null"
+              [style]="inputStyle() ?? null"
               [attr.id]="inputId() ?? null"
               [attr.name]="name() ?? null"
               [attr.size]="size() ?? null"
@@ -79,12 +79,12 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
             >
               <ng-content select="option"></ng-content>
             </select>
-
-            <textarea
+            }
+            @case ('textarea') {
+              <textarea
               #inputEl
-              *ngSwitchCase="'textarea'"
               class="{{ inputClass() }}"
-              [ngStyle]="inputStyle() ?? null"
+              [style]="inputStyle() ?? null"
               [attr.id]="inputId() ?? null"
               [attr.name]="name() ?? null"
               [attr.placeholder]="placeholder() ?? null"
@@ -109,12 +109,12 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
               (focus)="handleFocus($event)"
               (blur)="handleBlur($event)"
             ></textarea>
-
-            <input
+            }
+            @default {
+              <input
               #inputEl
-              *ngSwitchDefault
               class="{{ inputClass() }}"
-              [ngStyle]="inputStyle() ?? null"
+              [style]="inputStyle() ?? null"
               [attr.id]="inputId() ?? null"
               [attr.type]="inputTypeAttr()"
               [attr.name]="name() ?? null"
@@ -145,10 +145,11 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
               (focus)="handleFocus($event)"
               (blur)="handleBlur($event)"
             />
-          </ng-container>
+            }
+          }
 
-          <span
-            *ngIf="showClearButton()"
+          @if (showClearButton()) {
+            <span
             role="button"
             tabindex="0"
             class="{{ clearButtonClass() }}"
@@ -158,8 +159,10 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
           >
             <k-delete-icon />
           </span>
+          }
 
-          <span *ngIf="dropdown()" class="{{ dropdownClass() }}">
+          @if (dropdown()) {
+            <span class="{{ dropdownClass() }}">
             <svg viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
               <path
                 fill-rule="evenodd"
@@ -168,21 +171,28 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
               />
             </svg>
           </span>
+          }
         </div>
 
-        <div *ngIf="showError()" class="{{ errorInfoClass() }} {{ errorTextClass() }}">
-          {{ error() }}
-        </div>
-        <div *ngIf="showInfo()" class="{{ errorInfoClass() }} {{ infoTextClass() }}">
-          {{ info() }}
-        </div>
+        @if (showError()) {
+          <div class="{{ errorInfoClass() }} {{ errorTextClass() }}">
+            {{ error() }}
+          </div>
+        }
+        @if (showInfo()) {
+          <div class="{{ errorInfoClass() }} {{ infoTextClass() }}">
+            {{ info() }}
+          </div>
+        }
       </div>
 
-      <span *ngIf="showBorder()" content class="{{ borderClass() }}"></span>
+      @if (showBorder()) {
+        <span content class="{{ borderClass() }}"></span>
+      }
 
-      <ng-container *ngIf="type() !== 'select'">
+      @if (type() !== 'select') {
         <ng-content></ng-content>
-      </ng-container>
+      }
     </k-list-item>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

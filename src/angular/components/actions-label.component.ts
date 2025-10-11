@@ -16,7 +16,7 @@ import {
 
 @Component({
   selector: 'k-actions-label',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (tag()) {

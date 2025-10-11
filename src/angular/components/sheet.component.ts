@@ -20,7 +20,7 @@ type SheetState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-sheet',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @if (backdrop()) {

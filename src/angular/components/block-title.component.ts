@@ -15,7 +15,7 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-block-title',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <div #root class="{{ classes() }}">

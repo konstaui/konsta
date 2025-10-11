@@ -24,30 +24,32 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
 
 @Component({
   selector: 'k-link',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
-    <ng-container [ngSwitch]="component()">
-      <a
-        *ngSwitchCase="'a'"
-        #root
-        class="{{ classes() }}"
-        [attr.href]="href() ?? null"
-        [attr.target]="target() ?? null"
-        (click)="handleClick($event)"
-      >
-        <ng-content />
-      </a>
-      <button
-        *ngSwitchDefault
-        #root
-        type="button"
-        class="{{ classes() }}"
-        (click)="handleClick($event)"
-      >
-        <ng-content />
-      </button>
-    </ng-container>
+    @switch (component()) {
+      @case ('a') {
+        <a
+          #root
+          class="{{ classes() }}"
+          [attr.href]="href() ?? null"
+          [attr.target]="target() ?? null"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </a>
+      }
+      @default {
+        <button
+          #root
+          type="button"
+          class="{{ classes() }}"
+          (click)="handleClick($event)"
+        >
+          <ng-content />
+        </button>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

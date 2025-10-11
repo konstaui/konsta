@@ -25,7 +25,7 @@ type ButtonComponentTag = 'button' | 'a';
 
 @Component({
   selector: 'k-button',
-  standalone: true,
+  
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (componentTag() === 'a') {

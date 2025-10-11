@@ -16,7 +16,7 @@ import {
 
 @Component({
   selector: 'k-breadcrumbs-item',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (tag()) {

@@ -25,7 +25,7 @@ type MessagebarTag = 'div' | 'span';
 
 @Component({
   selector: 'k-messagebar',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent],
   template: `
     @switch (componentTag()) {
@@ -44,9 +44,11 @@ type MessagebarTag = 'div' | 'span';
     <ng-template #messagebarTemplate>
       <div class="{{ toolbarClass() }}">
         <div class="{{ toolbarInnerClass() }}">
-          <div *ngIf="hasLeft()" class="{{ leftClass() }}">
-            <ng-content select="[left]" />
-          </div>
+          @if (hasLeft()) {
+            <div class="{{ leftClass() }}">
+              <ng-content select="[left]" />
+            </div>
+          }
           <k-glass class="{{ messagebarAreaClass() }}">
             <textarea
               class="{{ messagebarInputClass() }}"
@@ -62,9 +64,11 @@ type MessagebarTag = 'div' | 'span';
               (blur)="handleBlur($event)"
             ></textarea>
           </k-glass>
-          <div *ngIf="hasRight()" class="{{ rightClass() }}">
-            <ng-content select="[right]" />
-          </div>
+          @if (hasRight()) {
+            <div class="{{ rightClass() }}">
+              <ng-content select="[right]" />
+            </div>
+          }
         </div>
       </div>
     </ng-template>

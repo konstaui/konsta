@@ -16,7 +16,7 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-badge',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <span #root class="{{ classes() }}">

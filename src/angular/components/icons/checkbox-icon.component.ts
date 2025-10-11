@@ -3,7 +3,7 @@ import { useThemeSignal } from '../../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-checkbox-icon',
-  standalone: true,
+  
   template: `
     @if (theme() === 'ios') {
       <svg

@@ -20,7 +20,7 @@ type PopupState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-popup',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @if (backdrop()) {

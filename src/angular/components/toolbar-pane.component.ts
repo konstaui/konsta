@@ -21,7 +21,7 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
 
 @Component({
   selector: 'k-toolbar-pane',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <ng-content />

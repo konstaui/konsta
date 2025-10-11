@@ -16,7 +16,7 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-page',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <div #root class="{{ classes() }}">

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'k-search-disable-icon',
-  standalone: true,
+  
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"

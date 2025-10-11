@@ -30,7 +30,7 @@ type CheckboxState = 'checked' | 'notChecked';
 
 @Component({
   selector: 'k-checkbox',
-  standalone: true,
+  
   imports: [CommonModule, KCheckboxIconComponent],
   providers: [
     {

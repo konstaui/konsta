@@ -38,7 +38,7 @@ type SegmentedTag = 'div' | 'span';
 
 @Component({
   selector: 'k-segmented',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent],
   template: `
     @if (useGlass()) {
@@ -77,7 +77,7 @@ type SegmentedTag = 'div' | 'span';
         <span
           #highlight
           class="{{ strongHighlightClass() }}"
-          [ngStyle]="highlightStyle()"
+          [style]="highlightStyle()"
         ></span>
       }
     </ng-template>

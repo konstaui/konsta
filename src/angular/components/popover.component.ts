@@ -16,22 +16,22 @@ import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-popover',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
-    <div
+    @if (opened()) {
+      <div
       class="k-popover-backdrop fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-200"
-      *ngIf="opened()"
       (click)="onBackdropClick()"
     ></div>
-    <div
+      <div
       #popover
-      *ngIf="opened()"
       [class]="classes()"
-      [ngStyle]="style()"
+      [style]="style()"
     >
       <ng-content />
     </div>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

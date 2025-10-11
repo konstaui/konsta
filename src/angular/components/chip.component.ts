@@ -22,21 +22,22 @@ type ChipStyle = 'fill' | 'outline';
 
 @Component({
   selector: 'k-chip',
-  standalone: true,
+  
   imports: [CommonModule, KDeleteIconComponent],
   template: `
     <ng-template #chipContent>
-      <div *ngIf="hasMedia()" class="{{ mediaClasses() }}">
-        <ng-container *ngIf="media(); else mediaSlot">
-          {{ media() }}
-        </ng-container>
-        <ng-template #mediaSlot>
-          <ng-content select="[media]" />
-        </ng-template>
-      </div>
+      @if (hasMedia()) {
+        <div class="{{ mediaClasses() }}">
+          @if (media()) {
+            {{ media() }}
+          } @else {
+            <ng-content select="[media]" />
+          }
+        </div>
+      }
       <ng-content />
-      <div
-        *ngIf="deleteButton()"
+      @if (deleteButton()) {
+        <div
         class="{{ deleteButtonClasses() }}"
         role="button"
         [attr.tabindex]="0"
@@ -48,6 +49,7 @@ type ChipStyle = 'fill' | 'outline';
           [material]="material()"
         />
       </div>
+      }
     </ng-template>
 
     @switch (tag()) {

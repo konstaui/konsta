@@ -28,7 +28,7 @@ type StepperShape = 'rounded' | 'square';
 
 @Component({
   selector: 'k-stepper',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {

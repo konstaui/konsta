@@ -12,7 +12,7 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-actions',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @if (backdrop()) {

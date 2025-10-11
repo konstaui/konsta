@@ -17,7 +17,7 @@ type TableCellTag = 'th' | 'td';
 
 @Component({
   selector: 'k-table-cell',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {

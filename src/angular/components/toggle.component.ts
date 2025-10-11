@@ -22,38 +22,9 @@ type ToggleTag = 'label' | 'div' | 'span' | 'li';
 
 @Component({
   selector: 'k-toggle',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
-    <ng-template #toggleContent>
-      <input
-        #input
-        type="checkbox"
-        class="{{ inputClasses() }}"
-        [attr.name]="name() ?? null"
-        [attr.value]="value() ?? null"
-        [disabled]="disabled()"
-        [readOnly]="readOnly()"
-        [checked]="checked() ?? null"
-        [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
-        (change)="handleChange($event)"
-      />
-      <ng-container *ngIf="theme() === 'ios'; else material">
-        <span class="{{ thumbSideClasses()[state()] }}"></span>
-        <span class="{{ thumbBgClasses()[state()] }}"></span>
-        <span class="{{ thumbShadowClasses()[state()] }}"></span>
-        <span #thumb class="{{ thumbWrapClasses()[state()] }}">
-          <span class="{{ thumbClasses()[state()] }}"></span>
-        </span>
-      </ng-container>
-      <ng-template #material>
-        <span #thumb class="{{ thumbWrapClasses()[state()] }}">
-          <span class="{{ thumbClasses()[state()] }}"></span>
-        </span>
-      </ng-template>
-      <ng-content />
-    </ng-template>
-
     @switch (componentTag()) {
       @case ('div') {
         <div
@@ -62,7 +33,31 @@ type ToggleTag = 'label' | 'div' | 'span' | 'li';
           role="switch"
           [attr.aria-checked]="state() === 'checked'"
         >
-          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+          <input
+            #input
+            type="checkbox"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          @if (theme() === 'ios') {
+            <span class="{{ thumbSideClasses()[state()] }}"></span>
+            <span class="{{ thumbBgClasses()[state()] }}"></span>
+            <span class="{{ thumbShadowClasses()[state()] }}"></span>
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          } @else {
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          }
+          <ng-content />
         </div>
       }
       @case ('span') {
@@ -72,7 +67,31 @@ type ToggleTag = 'label' | 'div' | 'span' | 'li';
           role="switch"
           [attr.aria-checked]="state() === 'checked'"
         >
-          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+          <input
+            #input
+            type="checkbox"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          @if (theme() === 'ios') {
+            <span class="{{ thumbSideClasses()[state()] }}"></span>
+            <span class="{{ thumbBgClasses()[state()] }}"></span>
+            <span class="{{ thumbShadowClasses()[state()] }}"></span>
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          } @else {
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          }
+          <ng-content />
         </span>
       }
       @case ('li') {
@@ -82,12 +101,60 @@ type ToggleTag = 'label' | 'div' | 'span' | 'li';
           role="switch"
           [attr.aria-checked]="state() === 'checked'"
         >
-          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+          <input
+            #input
+            type="checkbox"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          @if (theme() === 'ios') {
+            <span class="{{ thumbSideClasses()[state()] }}"></span>
+            <span class="{{ thumbBgClasses()[state()] }}"></span>
+            <span class="{{ thumbShadowClasses()[state()] }}"></span>
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          } @else {
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          }
+          <ng-content />
         </li>
       }
       @default {
         <label #root class="{{ baseClasses()[state()] }}">
-          <ng-container *ngTemplateOutlet="toggleContent"></ng-container>
+          <input
+            #input
+            type="checkbox"
+            class="{{ inputClasses() }}"
+            [attr.name]="name() ?? null"
+            [attr.value]="value() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [checked]="checked() ?? null"
+            [attr.defaultChecked]="checked() == null && defaultChecked() ? '' : null"
+            (change)="handleChange($event)"
+          />
+          @if (theme() === 'ios') {
+            <span class="{{ thumbSideClasses()[state()] }}"></span>
+            <span class="{{ thumbBgClasses()[state()] }}"></span>
+            <span class="{{ thumbShadowClasses()[state()] }}"></span>
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          } @else {
+            <span #thumb class="{{ thumbWrapClasses()[state()] }}">
+              <span class="{{ thumbClasses()[state()] }}"></span>
+            </span>
+          }
+          <ng-content />
         </label>
       }
     }

@@ -15,7 +15,7 @@ import {
 
 @Component({
   selector: 'k-table-row',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <tr class="{{ baseClass() }}">

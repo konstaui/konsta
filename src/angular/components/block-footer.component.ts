@@ -16,7 +16,7 @@ import {
 
 @Component({
   selector: 'k-block-footer',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <div class="{{ classes() }}">

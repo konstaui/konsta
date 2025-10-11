@@ -26,7 +26,7 @@ type SearchbarTag = 'div' | 'span';
 
 @Component({
   selector: 'k-searchbar',
-  standalone: true,
+  
   imports: [
     CommonModule,
     KGlassComponent,
@@ -85,7 +85,7 @@ type SearchbarTag = 'div' | 'span';
           [attr.spellcheck]="spellCheck()"
           [attr.autofocus]="autoFocus() ? '' : null"
           [disabled]="disabled()"
-          [ngStyle]="inputStyle() ?? null"
+          [style]="inputStyle() ?? null"
           [value]="stringValue()"
           (input)="handleInput($event)"
           (change)="handleChange($event)"
@@ -93,37 +93,38 @@ type SearchbarTag = 'div' | 'span';
           (blur)="handleBlur($event)"
         />
 
-        <button
-          *ngIf="showClearButton()"
+        @if (showClearButton()) {
+          <button
           type="button"
           class="{{ clearButtonClass() }}"
           (click)="handleClear($event)"
         >
           <k-delete-icon class="{{ deleteIconClass() }}" />
         </button>
+        }
       </k-glass>
 
-      <ng-container *ngIf="disableButton()">
-        <k-glass
-          *ngIf="isIos(); else materialCancel"
+      @if (disableButton()) {
+        @if (isIos()) {
+          <k-glass
           component="button"
           buttonType="button"
           [class]="cancelButtonClass()"
           [attr.aria-label]="disableButtonText()"
           [ios]="ios()"
           [material]="material()"
-          [ngStyle]="cancelButtonStyle()"
+          [style]="cancelButtonStyle()"
           (click)="handleDisable()"
           (pointerdown)="preventPointerDown($event)"
         >
           <k-search-disable-icon class="w-4 h-4" />
         </k-glass>
-        <ng-template #materialCancel>
+        } @else {
           <button
             type="button"
             class="{{ cancelButtonClass() }}"
             aria-label="{{ disableButtonText() }}"
-            [ngStyle]="cancelButtonStyle()"
+            [style]="cancelButtonStyle()"
             (click)="handleDisable()"
             (pointerdown)="preventPointerDown($event)"
           >
@@ -138,8 +139,8 @@ type SearchbarTag = 'div' | 'span';
               />
             </svg>
           </button>
-        </ng-template>
-      </ng-container>
+        }
+      }
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

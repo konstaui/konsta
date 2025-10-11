@@ -24,7 +24,7 @@ import {
 
 @Component({
   selector: 'k-navbar',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     <nav #navEl class="{{ baseClasses() }}">
@@ -33,27 +33,36 @@ import {
         <div class="{{ leftClasses() }}">
           <ng-content select="[left]" />
         </div>
-        <div #titleEl class="{{ titleClasses() }}" *ngIf="title() || subtitle()">
-          <ng-container *ngIf="title()">{{ title() }}</ng-container>
-          <div class="{{ subtitleClasses() }}" *ngIf="subtitle()">
-            {{ subtitle() }}
+        @if (title() || subtitle()) {
+          <div #titleEl class="{{ titleClasses() }}">
+            @if (title()) {
+              {{ title() }}
+            }
+            @if (subtitle()) {
+              <div class="{{ subtitleClasses() }}">
+                {{ subtitle() }}
+              </div>
+            }
           </div>
-        </div>
+        }
         <div class="{{ rightClasses() }}">
           <ng-content select="[right]" />
         </div>
         <ng-content />
       </div>
-      <div
-        #titleContainerEl
-        *ngIf="(large() || medium()) && title()"
-        class="{{ titleContainerClasses() }}"
-      >
-        {{ title() }}
-      </div>
-      <div #subnavbarEl *ngIf="subnavbar()" class="{{ subnavbarClasses() }}">
-        <ng-content select="[subnavbar]" />
-      </div>
+      @if ((large() || medium()) && title()) {
+        <div
+          #titleContainerEl
+          class="{{ titleContainerClasses() }}"
+        >
+          {{ title() }}
+        </div>
+      }
+      @if (subnavbar()) {
+        <div #subnavbarEl class="{{ subnavbarClasses() }}">
+          <ng-content select="[subnavbar]" />
+        </div>
+      }
     </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

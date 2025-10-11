@@ -26,7 +26,7 @@ type RangeTag = 'div' | 'span';
 
 @Component({
   selector: 'k-range',
-  standalone: true,
+  
   imports: [CommonModule],
   template: `
     @switch (componentTag()) {
@@ -35,12 +35,12 @@ type RangeTag = 'div' | 'span';
           <span #trackBg class="{{ trackBgClass() }}"></span>
           <span
             class="{{ trackValueClass() }}"
-            [ngStyle]="trackValueStyle()"
+            [style]="trackValueStyle()"
           ></span>
           @if (isMaterial()) {
             <span
               class="{{ trackEmptyClass() }}"
-              [ngStyle]="trackEmptyStyle()"
+              [style]="trackEmptyStyle()"
             ></span>
             <span class="{{ stopClass() }}"></span>
           }
@@ -64,7 +64,7 @@ type RangeTag = 'div' | 'span';
           <span
             #thumbWrap
             class="{{ thumbWrapClass() }}"
-            [ngStyle]="thumbWrapStyle()"
+            [style]="thumbWrapStyle()"
           >
             @if (isIos()) {
               <span class="{{ thumbShadowClass() }}"></span>
@@ -79,12 +79,12 @@ type RangeTag = 'div' | 'span';
           <span #trackBg class="{{ trackBgClass() }}"></span>
           <span
             class="{{ trackValueClass() }}"
-            [ngStyle]="trackValueStyle()"
+            [style]="trackValueStyle()"
           ></span>
           @if (isMaterial()) {
             <span
               class="{{ trackEmptyClass() }}"
-              [ngStyle]="trackEmptyStyle()"
+              [style]="trackEmptyStyle()"
             ></span>
             <span class="{{ stopClass() }}"></span>
           }
@@ -108,7 +108,7 @@ type RangeTag = 'div' | 'span';
           <span
             #thumbWrap
             class="{{ thumbWrapClass() }}"
-            [ngStyle]="thumbWrapStyle()"
+            [style]="thumbWrapStyle()"
           >
             @if (isIos()) {
               <span class="{{ thumbShadowClass() }}"></span>

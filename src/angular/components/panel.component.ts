@@ -23,7 +23,7 @@ type PanelState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-panel',
-  standalone: true,
+  
   imports: [CommonModule, KGlassComponent],
   template: `
     @if (backdrop()) {
