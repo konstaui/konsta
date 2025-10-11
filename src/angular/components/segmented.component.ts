@@ -176,8 +176,7 @@ export class KSegmentedComponent implements AfterViewInit, AfterViewChecked {
   readonly baseClass: Signal<string> = computed(() => {
     const c = this.classes();
     const base = c['base'] as Record<string, string>;
-    const parts = [base['default'] ?? ''];
-    parts.push(this.isRounded() ? base['rounded'] : base['square']);
+    const parts = [this.isRounded() ? base['rounded'] : base['square']];
     if (this.isRaised()) parts.push(c['raised'] as string);
     if (this.isOutline()) parts.push(c['outline'] as string);
     if (this.isStrong()) parts.push(c['strong'] as string);

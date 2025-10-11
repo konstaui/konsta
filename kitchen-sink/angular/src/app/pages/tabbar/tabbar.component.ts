@@ -60,42 +60,40 @@ interface TabDescriptor {
         [labels]="showLabels()"
         [icons]="showIcons()"
       >
-        <k-toolbar-pane>
-          @for (tab of tabs; track tab.id) {
-            <k-tabbar-link
-              [active]="activeTab() === tab.id"
-              (clicked)="setActiveTab(tab.id)"
-            >
-              @if (showLabels()) {
-                <span label>
-                  {{ tab.title }}
-                </span>
-              }
-              @if (showIcons()) {
-                <k-icon icon component="span">
-                  <svg
-                    ios
-                    class="w-7 h-7"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path [attr.d]="tab.iosPath" />
-                  </svg>
-                  <svg
-                    material
-                    class="w-6 h-6"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path [attr.d]="tab.materialPath" />
-                  </svg>
-                </k-icon>
-              }
-            </k-tabbar-link>
-          }
-        </k-toolbar-pane>
+        @for (tab of tabs; track tab.id) {
+          <k-tabbar-link
+            [active]="activeTab() === tab.id"
+            (clicked)="setActiveTab(tab.id)"
+          >
+            @if (showLabels()) {
+              <span label>
+                {{ tab.title }}
+              </span>
+            }
+            @if (showIcons()) {
+              <k-icon icon component="span">
+                <svg
+                  ios
+                  class="w-7 h-7"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path [attr.d]="tab.iosPath" />
+                </svg>
+                <svg
+                  material
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path [attr.d]="tab.materialPath" />
+                </svg>
+              </k-icon>
+            }
+          </k-tabbar-link>
+        }
       </k-tabbar>
 
       <k-list [strong]="true" [inset]="true">

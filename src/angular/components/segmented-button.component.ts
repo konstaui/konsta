@@ -32,6 +32,13 @@ import { KButtonComponent } from './button.component.js';
       <ng-content />
     </k-button>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KSegmentedButtonComponent {

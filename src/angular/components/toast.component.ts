@@ -28,7 +28,7 @@ type ToastPosition = 'left' | 'right' | 'center';
     @switch (componentTag()) {
       @case ('span') {
         <span class="{{ baseClass()[position()] }}">
-          <k-glass class="{{ innerClass() }}">
+          <k-glass [highlight]="false" class="{{ innerClass() }}">
             <div class="{{ contentClass() }}">
               <ng-content />
               @if (hasButton()) {
@@ -47,7 +47,7 @@ type ToastPosition = 'left' | 'right' | 'center';
       }
       @default {
         <div class="{{ baseClass()[position()] }}">
-          <k-glass class="{{ innerClass() }}">
+          <k-glass [highlight]="false" class="{{ innerClass() }}">
             <div class="{{ contentClass() }}">
               <ng-content />
               @if (hasButton()) {

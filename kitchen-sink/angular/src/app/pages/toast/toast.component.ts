@@ -40,6 +40,7 @@ type ToastPosition = 'left' | 'center' | 'right';
             <k-button
               [clear]="true"
               [rounded]="true"
+              [small]="true"
               [inline]="true"
               (clicked)="close('left')"
             >
@@ -53,6 +54,7 @@ type ToastPosition = 'left' | 'center' | 'right';
             <k-button
               [clear]="true"
               [rounded]="true"
+              [small]="true"
               [inline]="true"
               (clicked)="close('center')"
             >
@@ -66,6 +68,7 @@ type ToastPosition = 'left' | 'center' | 'right';
             <k-button
               [clear]="true"
               [rounded]="true"
+              [small]="true"
               [inline]="true"
               (clicked)="close('right')"
             >
