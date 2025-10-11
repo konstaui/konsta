@@ -4,6 +4,7 @@ import {
   Component,
   Signal,
   computed,
+  effect,
   forwardRef,
   input,
 } from '@angular/core';
@@ -25,8 +26,8 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div #root class="{{ baseClasses() }}">
-      <ul class="{{ ulClasses() }}">
+    <div #root [class]="baseClasses()">
+      <ul [class]="ulClasses()">
         <ng-content />
       </ul>
     </div>
@@ -144,4 +145,7 @@ export class KListComponent {
     dividers: this.hasDividers,
     nested: this.nestedSignal,
   });
+
+  constructor() {
+  }
 }

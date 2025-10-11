@@ -44,7 +44,7 @@ type CheckboxState = 'checked' | 'notChecked';
       <input
         #inputEl
         type="checkbox"
-        class="{{ inputClasses() }}"
+        [class]="inputClasses()"
         [attr.name]="name() ?? null"
         [attr.value]="value() ?? null"
         [disabled]="isDisabled()"
@@ -53,17 +53,16 @@ type CheckboxState = 'checked' | 'notChecked';
         (change)="handleChange($event)"
         (blur)="handleBlur()"
       />
-      <i class="{{ iconWrapClasses()[state()] }}">
-        <ng-container *ngIf="indeterminate(); else iconTpl">
-          <span class="{{ indeterminateClasses() }}"></span>
-        </ng-container>
-        <ng-template #iconTpl>
+      <i [class]="iconWrapClasses()[state()]">
+        @if (indeterminate()) {
+          <span [class]="indeterminateClasses()"></span>
+        } @else {
           <k-checkbox-icon
             [class]="iconClasses()[state()]"
             [ios]="ios()"
             [material]="material()"
           />
-        </ng-template>
+        }
       </i>
       <ng-content />
     </ng-template>
@@ -72,7 +71,7 @@ type CheckboxState = 'checked' | 'notChecked';
       @case ('div') {
         <div
           #root
-          class="{{ baseClasses() }}"
+          [class]="baseClasses()"
           [attr.role]="accessibilityRole()"
           [attr.aria-checked]="ariaChecked()"
           [attr.aria-disabled]="ariaDisabled()"
@@ -86,7 +85,7 @@ type CheckboxState = 'checked' | 'notChecked';
       @case ('span') {
         <span
           #root
-          class="{{ baseClasses() }}"
+          [class]="baseClasses()"
           [attr.role]="accessibilityRole()"
           [attr.aria-checked]="ariaChecked()"
           [attr.aria-disabled]="ariaDisabled()"
@@ -100,7 +99,7 @@ type CheckboxState = 'checked' | 'notChecked';
       @case ('li') {
         <li
           #root
-          class="{{ baseClasses() }}"
+          [class]="baseClasses()"
           [attr.role]="accessibilityRole()"
           [attr.aria-checked]="ariaChecked()"
           [attr.aria-disabled]="ariaDisabled()"
@@ -112,7 +111,7 @@ type CheckboxState = 'checked' | 'notChecked';
         </li>
       }
       @default {
-        <label #root class="{{ baseClasses() }}">
+        <label #root [class]="baseClasses()">
           <ng-container *ngTemplateOutlet="checkboxContent"></ng-container>
         </label>
       }
@@ -170,7 +169,16 @@ export class KCheckboxComponent implements ControlValueAccessor {
 
   private readonly classes = computed(() =>
     this.themeClasses(
-      CheckboxClasses({}, this.palette(), this.dark),
+      CheckboxClasses(
+        {
+          indeterminate: this.indeterminate(),
+          disabled: this.isDisabled(),
+          readOnly: this.readOnly(),
+          component: this.component(),
+        },
+        this.palette(),
+        this.dark
+      ),
       this.className()
     ) as Record<string, any>
   );
@@ -249,17 +257,18 @@ export class KCheckboxComponent implements ControlValueAccessor {
     effect(() => {
       const input = this.inputRef()?.nativeElement;
       if (!input) return;
-      input.indeterminate = this.indeterminate();
+      const indeterminate = this.indeterminate();
+      input.indeterminate = indeterminate;
     });
 
-    effect(
-      () => {
-        if (this.controlledChecked() !== null) return;
-        if (this.userInteracted()) return;
-        this.uncontrolledChecked.set(this.defaultChecked());
-      },
-      { allowSignalWrites: true }
-    );
+    effect(() => {
+      if (this.controlledChecked() !== null) return;
+      if (this.userInteracted()) return;
+      const next = this.defaultChecked();
+      if (this.uncontrolledChecked() !== next) {
+        this.uncontrolledChecked.set(next);
+      }
+    });
   }
 
   handleChange(event: Event) {

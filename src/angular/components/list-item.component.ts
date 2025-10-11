@@ -3,10 +3,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Injector,
   Signal,
+  TemplateRef,
   ViewEncapsulation,
   computed,
+  contentChild,
   effect,
   inject,
   input,
@@ -22,90 +23,96 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { useTouchRipple } from '../shared/touch-ripple.js';
+import { KChevronIconComponent } from './icons/chevron-icon.component.js';
 
 @Component({
   selector: 'k-list-item',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, KChevronIconComponent],
   template: `
-    <li #root class="{{ baseClasses() }}">
-      <ng-container *ngIf="groupTitle(); else standardItem">
-        <div class="{{ groupTitleClasses() }}">
+    <li #root [class]="baseClasses()">
+      @if (groupTitle()) {
+        <div [class]="groupTitleClasses()">
           <ng-content select="[media]" />
           <span>{{ title() }}</span>
           <ng-content select="[after]" />
         </div>
-      </ng-container>
-
-      <ng-template #standardItem>
-        <ng-container [ngSwitch]="itemTag()">
-          <a
-            *ngSwitchCase="'a'"
-            #itemContent
-            class="{{ itemContentClasses() }}"
-            [attr.href]="linkHref()"
-            [attr.target]="target() ?? null"
-            [routerLink]="routerLink() ?? null"
-            (click)="handleClick($event)"
-          >
-            <ng-container *ngTemplateOutlet="itemBody"></ng-container>
-          </a>
-          <label
-            *ngSwitchCase="'label'"
-            #itemContent
-            class="{{ itemContentClasses() }}"
-            (click)="handleClick($event)"
-          >
-            <ng-container *ngTemplateOutlet="itemBody"></ng-container>
-          </label>
-          <div
-            *ngSwitchDefault
-            #itemContent
-            class="{{ itemContentClasses() }}"
-          >
-            <ng-container *ngTemplateOutlet="itemBody"></ng-container>
-          </div>
-        </ng-container>
-      </ng-template>
-
-      <ng-template #itemBody>
-        <div class="{{ mediaClasses() }}">
-          <ng-content select="[media]" />
-        </div>
-        <div class="{{ innerClasses() }}">
-          <ng-container *ngIf="header()">
-            <div class="{{ headerClasses() }}">{{ header() }}</div>
-          </ng-container>
-          <div class="{{ titleWrapClasses() }}">
-            <ng-container *ngIf="title(); else projectedTitle">
-              <span class="{{ titleClasses() }}">{{ title() }}</span>
-            </ng-container>
-            <ng-template #projectedTitle>
-              <ng-content select="[title]" />
-            </ng-template>
-            <span class="{{ afterClasses() }}">
-              <ng-container *ngIf="after(); else projectedAfter">
-                {{ after() }}
-              </ng-container>
-              <ng-template #projectedAfter>
-                <ng-content select="[after]" />
-              </ng-template>
-            </span>
-          </div>
-          <ng-container *ngIf="subtitle()">
-            <div class="{{ subtitleClasses() }}">{{ subtitle() }}</div>
-          </ng-container>
-          <ng-container *ngIf="text()">
-            <div class="{{ textClasses() }}">{{ text() }}</div>
-          </ng-container>
-          <ng-container *ngIf="footer()">
-            <div class="{{ footerClasses() }}">{{ footer() }}</div>
-          </ng-container>
-          <ng-content select="[inner]" />
-        </div>
-        <ng-content select="[content]" />
-      </ng-template>
+      } @else {
+        @switch (itemTag()) {
+          @case ('a') {
+            <a
+              #itemContent
+              [class]="itemContentClasses()"
+              [attr.href]="linkHref()"
+              [attr.target]="target() ?? null"
+              [routerLink]="routerLink() ?? null"
+              (click)="handleClick($event)"
+            >
+              <ng-container [ngTemplateOutlet]="itemBody"></ng-container>
+            </a>
+          }
+          @case ('label') {
+            <label
+              #itemContent
+              [class]="itemContentClasses()"
+              (click)="handleClick($event)"
+            >
+              <ng-container [ngTemplateOutlet]="itemBody"></ng-container>
+            </label>
+          }
+          @default {
+            <div #itemContent [class]="itemContentClasses()">
+              <ng-container [ngTemplateOutlet]="itemBody"></ng-container>
+            </div>
+          }
+        }
+      }
     </li>
+
+    <ng-template #itemBody>
+      @if (media() || hasMediaContent()) {
+        <div #mediaContainer [class]="mediaClasses()">
+          @if (media()) {
+            <ng-container *ngTemplateOutlet="media()!" />
+          } @else {
+            <ng-content select="[media],[data-media],[slot='media']" />
+          }
+        </div>
+      }
+      <div [class]="innerClasses()">
+        @if (header()) {
+          <div [class]="headerClasses()">{{ header() }}</div>
+        }
+        <div [class]="titleWrapClasses()">
+          @if (title()) {
+            <span [class]="titleClasses()">{{ title() }}</span>
+          } @else {
+            <ng-content select="[title]" />
+          }
+          <span [class]="afterClasses()">
+            @if (after()) {
+              {{ after() }}
+            } @else {
+              <ng-content select="[after],[slot='after']" />
+            }
+          </span>
+          @if (showChevron()) {
+            <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+          }
+        </div>
+        @if (subtitle()) {
+          <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+        }
+        @if (text()) {
+          <div [class]="textClasses()">{{ text() }}</div>
+        }
+        @if (footer()) {
+          <div [class]="footerClasses()">{{ footer() }}</div>
+        }
+        <ng-content select="[inner]" />
+      </div>
+      <ng-content select="[content]" />
+    </ng-template>
   `,
   styles: [
     `
@@ -122,6 +129,17 @@ export class KListItemComponent {
   private readonly itemContent = viewChild<ElementRef<HTMLElement>>(
     'itemContent'
   );
+  private readonly mediaContainer = viewChild<ElementRef<HTMLElement>>(
+    'mediaContainer'
+  );
+  private readonly projectedMedia =
+    contentChild<ElementRef<HTMLElement>>('[media],[data-media]', {
+      descendants: true,
+    });
+  private readonly projectedMediaSlot =
+    contentChild<ElementRef<HTMLElement>>('[slot="media"]', {
+      descendants: true,
+    });
 
   private readonly listContext = inject(LIST_CONTEXT);
 
@@ -135,6 +153,7 @@ export class KListItemComponent {
   readonly subtitle = input<string | undefined>(undefined);
   readonly text = input<string | undefined>(undefined);
   readonly after = input<string | undefined>(undefined);
+  readonly media = input<TemplateRef<any> | undefined>(undefined);
   readonly header = input<string | undefined>(undefined);
   readonly footer = input<string | undefined>(undefined);
   readonly label = input<boolean>(false);
@@ -153,6 +172,10 @@ export class KListItemComponent {
   readonly titleFontSizeIos = input<string>('text-[17px]');
   readonly titleFontSizeMaterial = input<string>('text-[16px]');
   readonly strongTitle = input<'auto' | boolean>('auto');
+  readonly mediaClassName = input<string | undefined>(undefined);
+  readonly innerClassName = input<string | undefined>(undefined);
+  readonly contentClassName = input<string | undefined>(undefined);
+  readonly titleWrapClassName = input<string | undefined>(undefined);
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -230,10 +253,10 @@ export class KListItemComponent {
             this.dividers() !== undefined
               ? !!this.dividers()
               : this.listContext.dividers(),
-          mediaClassName: '',
-          innerClassName: '',
-          contentClassName: '',
-          titleWrapClassName: '',
+          mediaClassName: this.mediaClassName() ?? '',
+          innerClassName: this.innerClassName() ?? '',
+          contentClassName: this.contentClassName() ?? '',
+          titleWrapClassName: this.titleWrapClassName() ?? '',
           titleFontSizeIos: this.titleFontSizeIos(),
           titleFontSizeMaterial: this.titleFontSizeMaterial(),
           strongTitle: this.strongTitle(),
@@ -263,9 +286,9 @@ export class KListItemComponent {
     const c = this.listClasses()['itemContent'] as Record<string, string>;
     return this.isLink() || this.label() ? c['link'] : c['default'];
   });
-  readonly mediaClasses: Signal<string> = computed(
-    () => this.listClasses()['media']
-  );
+  readonly mediaClasses: Signal<string> = computed(() => {
+    return this.listClasses()['media'] as string;
+  });
   readonly innerClasses: Signal<string> = computed(
     () => this.listClasses()['inner']
   );
@@ -300,12 +323,44 @@ export class KListItemComponent {
   readonly groupTitleClasses: Signal<string> = computed(
     () => this.listClasses()['groupTitle']
   );
+  readonly chevronClasses: Signal<string> = computed(
+    () => this.listClasses()['chevron'] as string
+  );
+  readonly showChevron = computed(() => {
+    if (this.menuListItem()) return false;
+    if (!this.isLink()) return false;
+    const explicit = this.chevron();
+    const resolved =
+      explicit !== undefined
+        ? explicit
+        : this.theme() === 'ios'
+          ? this.chevronIos()
+          : this.chevronMaterial();
+    return !!resolved;
+  });
+
+  readonly hasMediaContent = computed(() => {
+    if (this.projectedMedia() || this.projectedMediaSlot()) {
+      return true;
+    }
+    const mediaEl = this.mediaContainer()?.nativeElement;
+    if (!mediaEl) return false;
+    if (typeof Node === 'undefined') return false;
+    return Array.from(mediaEl.childNodes).some(
+      (node) =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE &&
+          node.textContent?.trim().length)
+    );
+  });
+
 
   constructor() {
     useTouchRipple({
       element: () => this.itemContent()?.nativeElement ?? null,
       needsRipple: () => this.needsTouchRipple(),
     });
+
   }
 
   handleClick(event: Event) {

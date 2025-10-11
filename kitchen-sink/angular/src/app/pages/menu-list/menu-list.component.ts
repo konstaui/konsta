@@ -54,27 +54,21 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           [active]="selected() === 'home'"
           (click)="selected.set('home')"
         >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
+          <app-demo-icon media />
         </k-menu-list-item>
         <k-menu-list-item
           [title]="'Profile'"
           [active]="selected() === 'profile'"
           (click)="selected.set('profile')"
         >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
+          <app-demo-icon media />
         </k-menu-list-item>
         <k-menu-list-item
           [title]="'Settings'"
           [active]="selected() === 'settings'"
           (click)="selected.set('settings')"
         >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
+          <app-demo-icon media />
         </k-menu-list-item>
       </k-menu-list>
 
@@ -85,9 +79,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           [active]="selectedMedia() === 'home'"
           (click)="selectedMedia.set('home')"
         >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
+          <app-demo-icon media />
         </k-menu-list-item>
         <k-menu-list-item
           [title]="'Profile'"
@@ -95,9 +87,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           [active]="selectedMedia() === 'profile'"
           (click)="selectedMedia.set('profile')"
         >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
+          <app-demo-icon media />
         </k-menu-list-item>
         <k-menu-list-item
           [title]="'Settings'"
@@ -105,9 +95,7 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
           [active]="selectedMedia() === 'settings'"
           (click)="selectedMedia.set('settings')"
         >
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
+          <app-demo-icon media />
         </k-menu-list-item>
       </k-menu-list>
     </k-page>

@@ -106,14 +106,13 @@ const MEDIA_ITEMS: readonly MediaItem[] = [
       <k-list [strong]="true" [inset]="true">
         @for (option of groupOptions; track option) {
           <k-list-item [label]="true" [title]="option">
-            <ng-container ngProjectAs="[media]">
-              <k-checkbox
-                [component]="'div'"
-                name="demo-checkbox"
-                [checked]="group().includes(option)"
-                (changed)="toggleGroupValue(option)"
-              ></k-checkbox>
-            </ng-container>
+            <k-checkbox
+              media
+              [component]="'div'"
+              name="demo-checkbox"
+              [checked]="group().includes(option)"
+              (changed)="toggleGroupValue(option)"
+            ></k-checkbox>
           </k-list-item>
         }
       </k-list>
@@ -121,27 +120,25 @@ const MEDIA_ITEMS: readonly MediaItem[] = [
       <k-block-title>Indeterminate State</k-block-title>
       <k-list [strong]="true" [inset]="true">
         <k-list-item [label]="true" [title]="'Movies'">
-          <ng-container ngProjectAs="[media]">
-            <k-checkbox
-              [component]="'div'"
-              [checked]="isAllMoviesSelected()"
-              [indeterminate]="isSomeMoviesSelected()"
-              (changed)="toggleMoviesAll()"
-            ></k-checkbox>
-          </ng-container>
+          <k-checkbox
+            media
+            [component]="'div'"
+            [checked]="isAllMoviesSelected()"
+            [indeterminate]="isSomeMoviesSelected()"
+            (changed)="toggleMoviesAll()"
+          ></k-checkbox>
           <div content>
             <ul class="ps-12">
               @for (movie of movieOptions; track movie) {
                 <k-list-item [label]="true" [title]="movie">
-                  <ng-container ngProjectAs="[media]">
-                    <k-checkbox
-                      [component]="'div'"
-                      name="demo-checkbox"
-                      [value]="movie"
-                      [checked]="movies().includes(movie)"
-                      (changed)="onMovieChange($event)"
-                    ></k-checkbox>
-                  </ng-container>
+                  <k-checkbox
+                    media
+                    [component]="'div'"
+                    name="demo-checkbox"
+                    [value]="movie"
+                    [checked]="movies().includes(movie)"
+                    (changed)="onMovieChange($event)"
+                  ></k-checkbox>
                 </k-list-item>
               }
             </ul>
@@ -159,14 +156,13 @@ const MEDIA_ITEMS: readonly MediaItem[] = [
             [subtitle]="item.subtitle"
             [text]="item.text"
           >
-            <ng-container ngProjectAs="[media]">
-              <k-checkbox
-                [component]="'div'"
-                name="demo-media-checkbox"
-                [checked]="media().includes(item.id)"
-                (changed)="toggleMediaValue(item.id)"
-              ></k-checkbox>
-            </ng-container>
+            <k-checkbox
+              media
+              [component]="'div'"
+              name="demo-media-checkbox"
+              [checked]="media().includes(item.id)"
+              (changed)="toggleMediaValue(item.id)"
+            ></k-checkbox>
           </k-list-item>
         }
       </k-list>

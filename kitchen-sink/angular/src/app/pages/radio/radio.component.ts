@@ -69,14 +69,13 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
       <k-list [strong]="true" [inset]="true">
         @for (option of groupOptions; track option) {
           <k-list-item [label]="true" [title]="option">
-            <ng-container ngProjectAs="[media]">
-              <k-radio
-                component="div"
-                [value]="option"
-                [checked]="groupValue() === option"
-                (changed)="groupValue.set(option)"
-              ></k-radio>
-            </ng-container>
+            <k-radio
+              media
+              component="div"
+              [value]="option"
+              [checked]="groupValue() === option"
+              (changed)="groupValue.set(option)"
+            ></k-radio>
           </k-list-item>
         }
       </k-list>
@@ -84,14 +83,13 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
       <k-list [strong]="true" [inset]="true">
         @for (option of groupOptions; track option) {
           <k-list-item [label]="true" [title]="option">
-            <ng-container ngProjectAs="[after]">
-              <k-radio
-                component="div"
-                [value]="option"
-                [checked]="groupValue() === option"
-                (changed)="groupValue.set(option)"
-              ></k-radio>
-            </ng-container>
+            <k-radio
+              after
+              component="div"
+              [value]="option"
+              [checked]="groupValue() === option"
+              (changed)="groupValue.set(option)"
+            ></k-radio>
           </k-list-item>
         }
       </k-list>
@@ -105,13 +103,12 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           [subtitle]="'New messages from John Doe'"
           [text]="longText"
         >
-          <ng-container ngProjectAs="[media]">
-            <k-radio
-              component="div"
-              [checked]="mediaValue() === 'Item 1'"
-              (changed)="mediaValue.set('Item 1')"
-            ></k-radio>
-          </ng-container>
+          <k-radio
+            media
+            component="div"
+            [checked]="mediaValue() === 'Item 1'"
+            (changed)="mediaValue.set('Item 1')"
+          ></k-radio>
         </k-list-item>
         <k-list-item
           [label]="true"
@@ -120,13 +117,12 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           [subtitle]="'John Doe (@_johndoe) mentioned you on Twitter!'"
           [text]="longText"
         >
-          <ng-container ngProjectAs="[media]">
-            <k-radio
-              component="div"
-              [checked]="mediaValue() === 'Item 2'"
-              (changed)="mediaValue.set('Item 2')"
-            ></k-radio>
-          </ng-container>
+          <k-radio
+            media
+            component="div"
+            [checked]="mediaValue() === 'Item 2'"
+            (changed)="mediaValue.set('Item 2')"
+          ></k-radio>
         </k-list-item>
       </k-list>
     </k-page>

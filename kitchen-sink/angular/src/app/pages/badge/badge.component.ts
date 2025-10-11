@@ -74,39 +74,23 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
 
       <k-list [strong]="true" [inset]="true">
         <k-list-item [title]="'Foo Bar'">
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
-          <ng-container ngProjectAs="[after]">
-            <k-badge [colors]="{ bg: 'bg-gray-500' }">0</k-badge>
-          </ng-container>
+          <app-demo-icon media />
+          <k-badge after [colors]="{ bg: 'bg-gray-500' }">0</k-badge>
         </k-list-item>
 
         <k-list-item [title]="'Ivan Petrov'">
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
-          <ng-container ngProjectAs="[after]">
-            <k-badge>CEO</k-badge>
-          </ng-container>
+          <app-demo-icon media />
+          <k-badge after>CEO</k-badge>
         </k-list-item>
 
         <k-list-item [title]="'John Doe'">
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
-          <ng-container ngProjectAs="[after]">
-            <k-badge [colors]="{ bg: 'bg-green-500' }">5</k-badge>
-          </ng-container>
+          <app-demo-icon media />
+          <k-badge after [colors]="{ bg: 'bg-green-500' }">5</k-badge>
         </k-list-item>
 
         <k-list-item [title]="'Jane Doe'">
-          <ng-container ngProjectAs="[media]">
-            <app-demo-icon />
-          </ng-container>
-          <ng-container ngProjectAs="[after]">
-            <k-badge [colors]="{ bg: 'bg-yellow-500' }">NEW</k-badge>
-          </ng-container>
+          <app-demo-icon media />
+          <k-badge after [colors]="{ bg: 'bg-yellow-500' }">NEW</k-badge>
         </k-list-item>
       </k-list>
     </k-page>

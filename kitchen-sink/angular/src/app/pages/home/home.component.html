@@ -9,61 +9,54 @@
   <k-block-title>Theme</k-block-title>
   <k-list [strong]="true" [inset]="true">
     <k-list-item [label]="true" [title]="'iOS Theme'">
-      <ng-container ngProjectAs="[media]">
-        <k-radio
-          [checked]="theme() === 'ios'"
-          (changed)="setTheme('ios')"
-        ></k-radio>
-      </ng-container>
+      <k-radio
+        media
+        [checked]="theme() === 'ios'"
+        (changed)="setTheme('ios')"
+      ></k-radio>
     </k-list-item>
     <k-list-item [label]="true" [title]="'Material Theme'">
-      <ng-container ngProjectAs="[media]">
-        <k-radio
-          [checked]="theme() === 'material'"
-          (changed)="setTheme('material')"
-        ></k-radio>
-      </ng-container>
+      <k-radio
+        media
+        [checked]="theme() === 'material'"
+        (changed)="setTheme('material')"
+      ></k-radio>
     </k-list-item>
   </k-list>
 
   <k-list [strong]="true" [inset]="true">
     <k-list-item [label]="true" [title]="'Dark Mode'">
-      <ng-container ngProjectAs="[after]">
-        <k-toggle [checked]="dark()" (changed)="toggleDark()"></k-toggle>
-      </ng-container>
+      <k-toggle after [checked]="dark()" (changed)="toggleDark()"></k-toggle>
     </k-list-item>
     <k-list-item
       [title]="'Color Theme'"
       (click)="openColorPicker()"
       class="cursor-pointer"
     >
-      <ng-container ngProjectAs="[after]">
-        <div
-          class="w-6 h-6 rounded-full home-color-picker"
-          [class.bg-brand-primary]="!color()"
-          [class.bg-brand-red]="color() === 'k-color-brand-red'"
-          [class.bg-brand-green]="color() === 'k-color-brand-green'"
-          [class.bg-brand-yellow]="color() === 'k-color-brand-yellow'"
-          [class.bg-brand-purple]="color() === 'k-color-brand-purple'"
-        ></div>
-      </ng-container>
+      <div
+        after
+        class="w-6 h-6 rounded-full home-color-picker"
+        [class.bg-brand-primary]="!color()"
+        [class.bg-brand-red]="color() === 'k-color-brand-red'"
+        [class.bg-brand-green]="color() === 'k-color-brand-green'"
+        [class.bg-brand-yellow]="color() === 'k-color-brand-yellow'"
+        [class.bg-brand-purple]="color() === 'k-color-brand-purple'"
+      ></div>
     </k-list-item>
     @if (theme() === 'material') {
       <k-list-item [label]="true" [title]="'Vibrant Colors'">
-        <ng-container ngProjectAs="[after]">
-          <k-toggle
-            [checked]="vibrant()"
-            (changed)="toggleVibrant()"
-          ></k-toggle>
-        </ng-container>
+        <k-toggle
+          after
+          [checked]="vibrant()"
+          (changed)="toggleVibrant()"
+        ></k-toggle>
       </k-list-item>
       <k-list-item [label]="true" [title]="'Monochrome'">
-        <ng-container ngProjectAs="[after]">
-          <k-toggle
-            [checked]="monochrome()"
-            (changed)="toggleMonochrome()"
-          ></k-toggle>
-        </ng-container>
+        <k-toggle
+          after
+          [checked]="monochrome()"
+          (changed)="toggleMonochrome()"
+        ></k-toggle>
       </k-list-item>
     }
   </k-list>
@@ -100,15 +93,21 @@
       </k-list-item>
     } @else {
       @for (route of routes; track route.path) {
-        <k-list-item>
-          <div title>{{ route.title }}</div>
-          <div content>
-            <a [routerLink]="route.path" class="inline-flex items-center gap-1 text-primary">
-              View <span aria-hidden="true">→</span>
-            </a>
-          </div>
+        <k-list-item
+          [title]="route.title"
+          [link]="true"
+          [routerLink]="route.path"
+          [media]="demoIconTemplate"
+        >
+          <span after class="inline-flex items-center gap-1 text-primary">
+            View <span aria-hidden="true">→</span>
+          </span>
         </k-list-item>
       }
     }
   </k-list>
 </k-page>
+
+<ng-template #demoIconTemplate>
+  <img [src]="demoIconSrc" alt="Demo icon" class="ios:w-7 material:w-6" />
+</ng-template>
