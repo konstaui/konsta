@@ -91,7 +91,11 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
           }
           <span [class]="afterClasses()">
             @if (after()) {
-              {{ after() }}
+              @if (isTemplateRef(after())) {
+                <ng-container *ngTemplateOutlet="after()!" />
+              } @else {
+                {{ after() }}
+              }
             } @else {
               <ng-content select="[after],[slot='after']" />
             }
@@ -152,7 +156,7 @@ export class KListItemComponent {
   readonly title = input<string | undefined>(undefined);
   readonly subtitle = input<string | undefined>(undefined);
   readonly text = input<string | undefined>(undefined);
-  readonly after = input<string | undefined>(undefined);
+  readonly after = input<string | TemplateRef<any> | undefined>(undefined);
   readonly media = input<TemplateRef<any> | undefined>(undefined);
   readonly header = input<string | undefined>(undefined);
   readonly footer = input<string | undefined>(undefined);
@@ -354,6 +358,9 @@ export class KListItemComponent {
     );
   });
 
+  isTemplateRef(value: any): value is TemplateRef<any> {
+    return value instanceof TemplateRef;
+  }
 
   constructor() {
     useTouchRipple({
