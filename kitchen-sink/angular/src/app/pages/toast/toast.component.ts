@@ -36,7 +36,7 @@ type ToastPosition = 'left' | 'center' | 'right';
       <k-block [strong]="true" [inset]="true" class="flex flex-col gap-4">
         <k-toast position="left" [opened]="opened().left">
           <div class="shrink">Hello this is left toast!</div>
-          <div button>
+          <div class="-my-2 shrink-0 ms-4">
             <k-button
               [clear]="true"
               [rounded]="true"
@@ -50,7 +50,7 @@ type ToastPosition = 'left' | 'center' | 'right';
         </k-toast>
         <k-toast position="center" [opened]="opened().center">
           <div class="shrink">Hello this is center toast!</div>
-          <div button>
+          <div class="-my-2 shrink-0 ms-4">
             <k-button
               [clear]="true"
               [rounded]="true"
@@ -64,7 +64,7 @@ type ToastPosition = 'left' | 'center' | 'right';
         </k-toast>
         <k-toast position="right" [opened]="opened().right">
           <div class="shrink">Hello this is right toast!</div>
-          <div button>
+          <div class="-my-2 shrink-0 ms-4">
             <k-button
               [clear]="true"
               [rounded]="true"

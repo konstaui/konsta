@@ -31,16 +31,6 @@ type ToastPosition = 'left' | 'right' | 'center';
           <k-glass [highlight]="false" class="{{ innerClass() }}">
             <div class="{{ contentClass() }}">
               <ng-content />
-              @if (hasButton()) {
-                <div class="{{ buttonClass() }}">
-                  <ng-container *ngIf="button(); else buttonSlotTpl">
-                    {{ button() }}
-                  </ng-container>
-                  <ng-template #buttonSlotTpl>
-                    <ng-content select="[button]" />
-                  </ng-template>
-                </div>
-              }
             </div>
           </k-glass>
         </span>
@@ -50,16 +40,6 @@ type ToastPosition = 'left' | 'right' | 'center';
           <k-glass [highlight]="false" class="{{ innerClass() }}">
             <div class="{{ contentClass() }}">
               <ng-content />
-              @if (hasButton()) {
-                <div class="{{ buttonClass() }}">
-                  <ng-container *ngIf="button(); else buttonSlotTpl2">
-                    {{ button() }}
-                  </ng-container>
-                  <ng-template #buttonSlotTpl2>
-                    <ng-content select="[button]" />
-                  </ng-template>
-                </div>
-              }
             </div>
           </k-glass>
         </div>
@@ -81,7 +61,7 @@ export class KToastComponent {
   readonly button = input<string | undefined>(undefined);
 
   private readonly buttonSlot =
-    contentChild<ElementRef<HTMLElement>>('[button]');
+    contentChild<ElementRef<HTMLElement>>('[data-slot="button"]');
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
