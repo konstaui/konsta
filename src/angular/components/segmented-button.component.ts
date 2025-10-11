@@ -27,7 +27,7 @@ import { KButtonComponent } from './button.component.js';
       [segmentedActive]="active()"
       [segmentedStrong]="contextStrong()"
       [rounded]="roundedValue()"
-      (pressed)="clicked.emit($event)"
+      (clicked)="clicked.emit($event)"
     >
       <ng-content />
     </k-button>

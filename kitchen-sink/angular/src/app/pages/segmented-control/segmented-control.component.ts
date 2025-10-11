@@ -46,7 +46,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -57,7 +57,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -71,7 +71,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -81,7 +81,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -95,7 +95,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -105,7 +105,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -119,7 +119,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>
@@ -130,7 +130,7 @@ import { KBlockTitleComponent } from '../../../../../../src/angular/components/b
           @for (id of segmentIds; track id) {
             <k-segmented-button
               [active]="activeSegment() === id"
-              (pressed)="setActive(id)"
+              (clicked)="setActive(id)"
             >
               Button
             </k-segmented-button>

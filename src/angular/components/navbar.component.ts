@@ -2,10 +2,13 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Signal,
   computed,
+  effect,
   forwardRef,
   input,
+  viewChild,
 } from '@angular/core';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
 import { NavbarColors } from '../../shared/colors/NavbarColors.js';
@@ -24,13 +27,13 @@ import {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <nav class="{{ baseClasses() }}">
-      <div class="{{ bgClasses() }}"></div>
-      <div class="{{ innerClasses() }}">
+    <nav #navEl class="{{ baseClasses() }}">
+      <div #bgEl class="{{ bgClasses() }}"></div>
+      <div #innerEl class="{{ innerClasses() }}">
         <div class="{{ leftClasses() }}">
           <ng-content select="[left]" />
         </div>
-        <div class="{{ titleClasses() }}" *ngIf="title() || subtitle()">
+        <div #titleEl class="{{ titleClasses() }}" *ngIf="title() || subtitle()">
           <ng-container *ngIf="title()">{{ title() }}</ng-container>
           <div class="{{ subtitleClasses() }}" *ngIf="subtitle()">
             {{ subtitle() }}
@@ -42,12 +45,13 @@ import {
         <ng-content />
       </div>
       <div
+        #titleContainerEl
         *ngIf="(large() || medium()) && title()"
         class="{{ titleContainerClasses() }}"
       >
         {{ title() }}
       </div>
-      <div *ngIf="subnavbar()" class="{{ subnavbarClasses() }}">
+      <div #subnavbarEl *ngIf="subnavbar()" class="{{ subnavbarClasses() }}">
         <ng-content select="[subnavbar]" />
       </div>
     </nav>
@@ -62,6 +66,15 @@ import {
   ],
 })
 export class KNavbarComponent {
+  // Template references
+  private readonly navEl = viewChild<ElementRef<HTMLElement>>('navEl');
+  private readonly bgEl = viewChild<ElementRef<HTMLDivElement>>('bgEl');
+  private readonly innerEl = viewChild<ElementRef<HTMLDivElement>>('innerEl');
+  private readonly titleEl = viewChild<ElementRef<HTMLDivElement>>('titleEl');
+  private readonly titleContainerEl = viewChild<ElementRef<HTMLDivElement>>('titleContainerEl');
+  private readonly subnavbarEl = viewChild<ElementRef<HTMLDivElement>>('subnavbarEl');
+
+  // Inputs
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
@@ -76,6 +89,7 @@ export class KNavbarComponent {
   readonly transparent = input<boolean>(false);
   readonly centerTitle = input<boolean | undefined>(undefined);
   readonly subnavbar = input<boolean>(false);
+  readonly scrollEl = input<HTMLElement | undefined>(undefined);
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -150,4 +164,122 @@ export class KNavbarComponent {
   readonly contextValue = createNavbarContext({
     navbar: computed(() => true),
   });
+
+  // Scroll handling
+  private titleContainerHeight = 0;
+  private wasScrollable = false;
+  private scrollListener: ((e: Event) => void) | null = null;
+
+  constructor() {
+    // Set up scroll handling when component inputs change
+    effect((onCleanup) => {
+      this.initScroll();
+      onCleanup(() => this.destroyScroll());
+    });
+  }
+
+  private getScrollEl(): HTMLElement | null {
+    const scrollElInput = this.scrollEl();
+    if (scrollElInput !== undefined) {
+      return scrollElInput;
+    }
+    const navElement = this.navEl()?.nativeElement;
+    return navElement?.parentElement ?? null;
+  }
+
+  private onScroll = (e: Event) => {
+    const target = e.target as HTMLElement;
+    const scrollTop = target.scrollTop;
+    const isTransparent = this.transparent();
+    const large = this.large();
+    const medium = this.medium();
+    const theme = this.theme();
+
+    if (!isTransparent && !large && !medium) {
+      if (this.wasScrollable) {
+        const titleEl = this.titleEl()?.nativeElement;
+        const bgEl = this.bgEl()?.nativeElement;
+        if (titleEl) {
+          titleEl.style.opacity = '';
+        }
+        if (bgEl) {
+          bgEl.style.opacity = '';
+        }
+      }
+      return;
+    }
+
+    const maxTranslate = this.titleContainerHeight;
+    const scrollProgress = Math.max(Math.min(scrollTop / maxTranslate, 1), 0);
+
+    const bgEl = this.bgEl()?.nativeElement;
+    if (bgEl) {
+      if (theme === 'material') {
+        bgEl.style.opacity = isTransparent
+          ? String(-0.5 + scrollProgress * 1.5)
+          : '';
+        if (medium || large) {
+          bgEl.style.transform = `translateY(-${scrollProgress * maxTranslate}px)`;
+        }
+      }
+    }
+
+    const titleContainerEl = this.titleContainerEl()?.nativeElement;
+    if (titleContainerEl) {
+      titleContainerEl.style.transform = `translateY(-${scrollProgress * maxTranslate}px)`;
+      titleContainerEl.style.opacity = String(1 - scrollProgress * 2);
+    }
+
+    const titleEl = this.titleEl()?.nativeElement;
+    if (titleEl) {
+      titleEl.style.opacity = String(-0.5 + scrollProgress * 1.5);
+    }
+
+    if ((medium || large)) {
+      const subnavbarEl = this.subnavbarEl()?.nativeElement;
+      if (subnavbarEl) {
+        subnavbarEl.style.transform = `translateY(-${scrollProgress * maxTranslate}px)`;
+      }
+    }
+  };
+
+  private initScroll() {
+    const large = this.large();
+    const medium = this.medium();
+    const isTransparent = this.transparent();
+
+    if (!large && !medium && !isTransparent) {
+      if (this.wasScrollable) {
+        this.onScroll({ target: { scrollTop: 0 } } as any);
+        this.wasScrollable = false;
+      }
+      return;
+    }
+
+    this.wasScrollable = true;
+
+    const titleContainerEl = this.titleContainerEl()?.nativeElement;
+    const innerEl = this.innerEl()?.nativeElement;
+
+    if (titleContainerEl) {
+      this.titleContainerHeight = titleContainerEl.offsetHeight;
+    } else if (innerEl) {
+      this.titleContainerHeight = innerEl.offsetHeight;
+    }
+
+    const scrollElLocal = this.getScrollEl();
+    if (scrollElLocal) {
+      scrollElLocal.addEventListener('scroll', this.onScroll);
+      this.onScroll({ target: scrollElLocal } as any);
+    } else {
+      this.onScroll({ target: { scrollTop: 0 } } as any);
+    }
+  }
+
+  private destroyScroll() {
+    const scrollElLocal = this.getScrollEl();
+    if (scrollElLocal && this.scrollListener) {
+      scrollElLocal.removeEventListener('scroll', this.onScroll);
+    }
+  }
 }

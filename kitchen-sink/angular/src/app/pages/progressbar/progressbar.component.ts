@@ -50,25 +50,25 @@ import { KSegmentedButtonComponent } from '../../../../../../src/angular/compone
         <k-segmented [strongIos]="true" [outlineMaterial]="true" [roundedIos]="true">
           <k-segmented-button
             [active]="progress() === 0.1"
-            (pressed)="setProgress(0.1)"
+            (clicked)="setProgress(0.1)"
           >
             10%
           </k-segmented-button>
           <k-segmented-button
             [active]="progress() === 0.3"
-            (pressed)="setProgress(0.3)"
+            (clicked)="setProgress(0.3)"
           >
             30%
           </k-segmented-button>
           <k-segmented-button
             [active]="progress() === 0.5"
-            (pressed)="setProgress(0.5)"
+            (clicked)="setProgress(0.5)"
           >
             50%
           </k-segmented-button>
           <k-segmented-button
             [active]="progress() === 1"
-            (pressed)="setProgress(1)"
+            (clicked)="setProgress(1)"
           >
             100%
           </k-segmented-button>

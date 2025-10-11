@@ -28,7 +28,7 @@ type DialogButtonTag = 'button' | 'a';
       [large]="isIos()"
       [tonal]="isIos() ? !isStrong() : undefined"
       [clear]="isMaterial() ? !isStrong() : undefined"
-      (pressed)="clicked.emit($event)"
+      (clicked)="clicked.emit($event)"
     >
       <ng-content />
     </k-button>

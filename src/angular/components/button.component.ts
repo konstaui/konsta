@@ -94,7 +94,7 @@ export class KButtonComponent {
   readonly raisedMaterial = input<boolean | undefined>(undefined);
   readonly tabindex = input<number>(0);
 
-  readonly pressed = output<Event>();
+  readonly clicked = output<Event>();
 
   private readonly element: Signal<HTMLElement | null> = computed(() =>
     this.elementRef()?.nativeElement ?? null
@@ -225,6 +225,6 @@ export class KButtonComponent {
       event.stopImmediatePropagation();
       return;
     }
-    this.pressed.emit(event);
+    this.clicked.emit(event);
   }
 }

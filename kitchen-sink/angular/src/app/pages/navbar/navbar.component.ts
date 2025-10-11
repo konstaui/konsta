@@ -55,7 +55,7 @@ type NavbarSize = 'Default' | 'Medium' | 'Large';
         @if (!isPreview()) {
           <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
         }
-        <k-link right>Right</k-link>
+        <k-link right [navbar]="true">Right</k-link>
       </k-navbar>
       <div class="relative">
         <k-block [strong]="true" [inset]="true">

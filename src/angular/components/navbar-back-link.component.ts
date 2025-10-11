@@ -2,15 +2,19 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Signal,
   computed,
   input,
   output,
+  viewChild,
 } from '@angular/core';
 import { cls } from '../../shared/cls.js';
 import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
 import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+import { LinkColors } from '../../shared/colors/LinkColors.js';
 import { useThemeSignal, useThemeClasses, useDarkClasses } from '../shared/theme-helpers.js';
+import { useTouchRipple } from '../shared/touch-ripple.js';
 
 @Component({
   selector: 'k-navbar-back-link',
@@ -19,6 +23,7 @@ import { useThemeSignal, useThemeClasses, useDarkClasses } from '../shared/theme
   template: `
     @if (component() === 'a') {
       <a
+        #root
         class="{{ baseClass() }}"
         (click)="handleClick($event)"
       >
@@ -54,6 +59,7 @@ import { useThemeSignal, useThemeClasses, useDarkClasses } from '../shared/theme
       </a>
     } @else {
       <button
+        #root
         type="button"
         class="{{ baseClass() }}"
         (click)="handleClick($event)"
@@ -93,18 +99,36 @@ import { useThemeSignal, useThemeClasses, useDarkClasses } from '../shared/theme
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KNavbarBackLinkComponent {
+  private readonly root = viewChild<ElementRef<HTMLElement>>('root');
+
   readonly component = input<'a' | 'button'>('a');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
   readonly text = input('Back');
-  readonly showText = input(true);
+  readonly showText = input(false);
 
   readonly clicked = output<Event>();
 
   private readonly themeClasses = useThemeClasses();
   readonly theme = useThemeSignal();
   private readonly dark = useDarkClasses();
+
+  private readonly palette = computed(() =>
+    LinkColors({}, this.dark)
+  );
+
+  private readonly needsTouchRipple = computed(
+    () => this.theme() === 'material'
+  );
+
+  private readonly textColor = computed(() => {
+    const colors = this.palette() as Record<string, any>;
+    const theme = this.theme();
+    return theme === 'material'
+      ? colors['navbarTextMaterial']
+      : colors['navbarTextIos'];
+  });
 
   private readonly linkClasses = computed(() => {
     return this.themeClasses(
@@ -118,8 +142,8 @@ export class KNavbarBackLinkComponent {
           navbar: true,
         },
         {
-          textColor: '',
-          needsTouchRipple: false,
+          textColor: this.textColor(),
+          needsTouchRipple: this.needsTouchRipple(),
         }
       ),
       undefined
@@ -143,6 +167,13 @@ export class KNavbarBackLinkComponent {
     )
   );
   readonly iconClass: Signal<string> = computed(() => this.backLinkClasses()['icon']);
+
+  constructor() {
+    useTouchRipple({
+      element: () => this.root()?.nativeElement ?? null,
+      needsRipple: () => this.needsTouchRipple(),
+    });
+  }
 
   handleClick(event: Event) {
     this.clicked.emit(event);

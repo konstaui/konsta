@@ -238,71 +238,52 @@ export class KStepperComponent {
     ) as Record<string, any>
   );
 
-  readonly baseClass: Signal<string> = computed(() =>
-    cls(
-      this.classes()['base'] as string,
-      this.themeProps().raised ? (this.classes()['raised'] as string) : '',
-      ((this.classes()['size'] as Record<string, any>)[this.size()][
-        this.theme()
-      ] ?? '') as string,
-      ((this.classes()['shape'] as Record<string, any>)[this.shape()][
-        this.theme()
-      ] ?? '') as string,
-      this.className() ?? ''
-    )
-  );
+  readonly baseClass: Signal<string> = computed(() => {
+    const classes = this.classes() as Record<string, any>;
+    const themed = this.themeProps();
+    const sizeClass =
+      (classes['size'] as Record<StepperSize, string>)[this.size()] ?? '';
+    const shapeClass =
+      (classes['shape'] as Record<StepperShape, string>)[this.shape()] ?? '';
+    return cls(
+      classes['base'] as string,
+      themed.raised ? (classes['raised'] as string) : '',
+      sizeClass,
+      shapeClass
+    );
+  });
 
-  readonly buttonLeftClass: Signal<string> = computed(() =>
-    cls(
-      (this.classes()['button'] as Record<string, any>)['common'] ?? '',
-      (this.classes()['button'] as Record<string, any>)[
-        this.theme()
-      ] ?? '',
-      ((this.classes()['buttonStyle'] as Record<string, any>)[this.style()][
-        'common'
-      ] ?? '') as string,
-      ((this.classes()['buttonStyle'] as Record<string, any>)[this.style()][
-        this.theme()
-      ] ?? '') as string,
-      ((this.classes()['buttonLeftShape'] as Record<string, any>)[
+  readonly buttonLeftClass: Signal<string> = computed(() => {
+    const classes = this.classes() as Record<string, any>;
+    return cls(
+      classes['button'] as string,
+      (classes['buttonStyle'] as Record<StepperStyle, string>)[this.style()] ??
+        '',
+      (classes['buttonLeftShape'] as Record<StepperShape, string>)[
         this.shape()
-      ][this.theme()] ?? '') as string
-    )
-  );
+      ] ?? ''
+    );
+  });
 
-  readonly buttonRightClass: Signal<string> = computed(() =>
-    cls(
-      (this.classes()['button'] as Record<string, any>)['common'] ?? '',
-      (this.classes()['button'] as Record<string, any>)[
-        this.theme()
-      ] ?? '',
-      ((this.classes()['buttonStyle'] as Record<string, any>)[this.style()][
-        'common'
-      ] ?? '') as string,
-      ((this.classes()['buttonStyle'] as Record<string, any>)[this.style()][
-        this.theme()
-      ] ?? '') as string,
-      ((this.classes()['buttonRightShape'] as Record<string, any>)[
+  readonly buttonRightClass: Signal<string> = computed(() => {
+    const classes = this.classes() as Record<string, any>;
+    return cls(
+      classes['button'] as string,
+      (classes['buttonStyle'] as Record<StepperStyle, string>)[this.style()] ??
+        '',
+      (classes['buttonRightShape'] as Record<StepperShape, string>)[
         this.shape()
-      ][this.theme()] ?? '') as string
-    )
-  );
+      ] ?? ''
+    );
+  });
 
   readonly valueClass: Signal<string> = computed(() => {
-    const valueClasses = this.classes()['value'] as Record<string, any>;
-    const base = cls(
-      valueClasses['common'] ?? '',
-      valueClasses[this.theme()] ?? ''
-    );
+    const classes = this.classes() as Record<string, any>;
+    const valueClasses = classes['value'] as Record<string, string>;
     const styleClass =
-      valueClasses[this.style()]?.[this.theme()] ??
-      valueClasses[this.style()]?.['common'] ??
-      '';
-    return cls(
-      this.input() ? (this.classes()['input'] as string) : '',
-      base,
-      styleClass
-    );
+      valueClasses[this.style()] ?? valueClasses['default'] ?? '';
+    const inputClass = this.input() ? (classes['input'] as string) : '';
+    return cls(inputClass, styleClass);
   });
 
   readonly hBarClass: Signal<string> = computed(
