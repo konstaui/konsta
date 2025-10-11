@@ -18,60 +18,41 @@ import {
 
 @Component({
   selector: 'k-card',
-  
+
   imports: [CommonModule],
+  host: {
+    '[class]': 'baseClasses()[style()]',
+  },
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
   template: `
-    <ng-template #cardContent>
-      @if (hasHeader()) {
-        <div class="{{ headerClasses() }}">
-          @if (header()) {
-            {{ header() }}
-          } @else {
-            <ng-content select="[header]" />
-          }
-        </div>
-      }
+    @if (hasHeader()) {
+      <div class="{{ headerClasses() }}">
+        @if (header()) {
+          {{ header() }}
+        } @else {
+          <ng-content select="[header]" />
+        }
+      </div>
+    }
 
-      @if (contentWrap()) {
-        <div class="{{ contentClasses() }}">
-          <ng-content />
-        </div>
-      } @else {
-        <ng-content />
-      }
+    <div [class]="contentWrap() ? contentClasses() : ''">
+      <ng-content />
+    </div>
 
-      @if (hasFooter()) {
-        <div class="{{ footerClasses() }}">
-          @if (footer()) {
-            {{ footer() }}
-          } @else {
-            <ng-content select="[footer]" />
-          }
-        </div>
-      }
-    </ng-template>
-
-    @switch (tag()) {
-      @case ('section') {
-        <section class="{{ baseClasses()[style()] }}">
-          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-        </section>
-      }
-      @case ('article') {
-        <article class="{{ baseClasses()[style()] }}">
-          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-        </article>
-      }
-      @case ('li') {
-        <li class="{{ baseClasses()[style()] }}">
-          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-        </li>
-      }
-      @default {
-        <div class="{{ baseClasses()[style()] }}">
-          <ng-container *ngTemplateOutlet="cardContent"></ng-container>
-        </div>
-      }
+    @if (hasFooter()) {
+      <div class="{{ footerClasses() }}">
+        @if (footer()) {
+          {{ footer() }}
+        } @else {
+          <ng-content select="[footer]" />
+        }
+      </div>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
