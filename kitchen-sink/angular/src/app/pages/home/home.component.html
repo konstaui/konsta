@@ -8,25 +8,31 @@
 
   <k-block-title>Theme</k-block-title>
   <k-list [strong]="true" [inset]="true">
-    <k-list-item [label]="true" [title]="'iOS Theme'">
-      <k-radio
-        media
-        [checked]="theme() === 'ios'"
-        (changed)="setTheme('ios')"
-      ></k-radio>
-    </k-list-item>
-    <k-list-item [label]="true" [title]="'Material Theme'">
-      <k-radio
-        media
-        [checked]="theme() === 'material'"
-        (changed)="setTheme('material')"
-      ></k-radio>
-    </k-list-item>
+    <k-list-item [label]="true" [title]="'iOS Theme'" [media]="iosRadioTpl"></k-list-item>
+    <k-list-item [label]="true" [title]="'Material Theme'" [media]="materialRadioTpl"></k-list-item>
   </k-list>
+
+  <ng-template #iosRadioTpl>
+    <k-radio
+      [component]="'div'"
+      [checked]="theme() === 'ios'"
+      (changed)="setTheme('ios')"
+    ></k-radio>
+  </ng-template>
+
+  <ng-template #materialRadioTpl>
+    <k-radio
+      [component]="'div'"
+      [checked]="theme() === 'material'"
+      (changed)="setTheme('material')"
+    ></k-radio>
+  </ng-template>
 
   <k-list [strong]="true" [inset]="true">
     <k-list-item [label]="true" [title]="'Dark Mode'">
-      <k-toggle after [checked]="dark()" (changed)="toggleDark()"></k-toggle>
+      <div slot="after">
+        <k-toggle [component]="'div'" [checked]="dark()" (changed)="toggleDark()"></k-toggle>
+      </div>
     </k-list-item>
     <k-list-item
       [title]="'Color Theme'"
@@ -45,18 +51,22 @@
     </k-list-item>
     @if (theme() === 'material') {
       <k-list-item [label]="true" [title]="'Vibrant Colors'">
-        <k-toggle
-          after
-          [checked]="vibrant()"
-          (changed)="toggleVibrant()"
-        ></k-toggle>
+        <div slot="after">
+          <k-toggle
+            [component]="'div'"
+            [checked]="vibrant()"
+            (changed)="toggleVibrant()"
+          ></k-toggle>
+        </div>
       </k-list-item>
       <k-list-item [label]="true" [title]="'Monochrome'">
-        <k-toggle
-          after
-          [checked]="monochrome()"
-          (changed)="toggleMonochrome()"
-        ></k-toggle>
+        <div slot="after">
+          <k-toggle
+            [component]="'div'"
+            [checked]="monochrome()"
+            (changed)="toggleMonochrome()"
+          ></k-toggle>
+        </div>
       </k-list-item>
     }
   </k-list>

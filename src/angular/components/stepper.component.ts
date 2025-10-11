@@ -240,16 +240,12 @@ export class KStepperComponent {
 
   readonly baseClass: Signal<string> = computed(() => {
     const classes = this.classes() as Record<string, any>;
-    const themed = this.themeProps();
-    const sizeClass =
-      (classes['size'] as Record<StepperSize, string>)[this.size()] ?? '';
-    const shapeClass =
-      (classes['shape'] as Record<StepperShape, string>)[this.shape()] ?? '';
+    const themeSpecific = this.themeProps();
     return cls(
       classes['base'] as string,
-      themed.raised ? (classes['raised'] as string) : '',
-      sizeClass,
-      shapeClass
+      themeSpecific.raised ? (classes['raised'] as string) : '',
+      (classes['size'] as Record<StepperSize, string>)[this.size()] ?? '',
+      (classes['shape'] as Record<StepperShape, string>)[this.shape()] ?? ''
     );
   });
 
