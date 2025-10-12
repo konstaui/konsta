@@ -26,7 +26,6 @@ type RangeTag = 'div' | 'span';
 
 @Component({
   selector: 'k-range',
-  
   imports: [CommonModule, NgTemplateOutlet],
   template: `
     <ng-template #rangeContent>
@@ -51,7 +50,6 @@ type RangeTag = 'div' | 'span';
         [attr.max]="max()"
         [attr.step]="step()"
         [value]="currentValue()"
-        [attr.defaultValue]="defaultValueAttr()"
         [readOnly]="readOnly()"
         [disabled]="disabled()"
         (input)="handleInput($event)"
@@ -85,6 +83,13 @@ type RangeTag = 'div' | 'span';
       }
     }
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KRangeComponent implements AfterViewInit, OnDestroy {
@@ -134,11 +139,7 @@ export class KRangeComponent implements AfterViewInit, OnDestroy {
     () =>
       this.themeClasses(
         RangeClasses(
-          {
-            step: this.step(),
-            min: this.min(),
-            max: this.max(),
-          },
+          {},
           this.palette(),
           this.dark,
           this.className()
@@ -189,6 +190,7 @@ export class KRangeComponent implements AfterViewInit, OnDestroy {
 
   private readonly thumbOffset = signal(0);
   private readonly thumbPercentOffset = signal(0);
+  private readonly internalValue = signal<number | undefined>(undefined);
 
   private readonly resizeHandler = () => {
     this.calculateThumbOffset();
@@ -205,6 +207,16 @@ export class KRangeComponent implements AfterViewInit, OnDestroy {
     effect(() => {
       this.currentValue();
       this.scheduleThumbUpdate();
+    });
+
+    // Initialize internal value for uncontrolled mode
+    effect(() => {
+      if (this.value() === undefined || this.value() === null) {
+        const def = this.defaultValue();
+        if (def !== undefined && def !== null && this.internalValue() === undefined) {
+          this.internalValue.set(def);
+        }
+      }
     });
   }
 
@@ -225,6 +237,8 @@ export class KRangeComponent implements AfterViewInit, OnDestroy {
   readonly currentValue = computed(() => {
     const val = this.value();
     if (val !== undefined && val !== null) return val;
+    const internal = this.internalValue();
+    if (internal !== undefined && internal !== null) return internal;
     const def = this.defaultValue();
     if (def !== undefined && def !== null) return def;
     return this.min();
@@ -262,14 +276,6 @@ export class KRangeComponent implements AfterViewInit, OnDestroy {
     insetInlineStart: `${this.thumbOffset() * 100}%`,
   }));
 
-  defaultValueAttr() {
-    const val = this.value();
-    if (val !== undefined && val !== null) return null;
-    const def = this.defaultValue();
-    if (def !== undefined && def !== null) return def;
-    return null;
-  }
-
   handleInput(event: Event) {
     const target = event.target as HTMLInputElement;
     const numeric = Number(target.value);
@@ -281,8 +287,8 @@ export class KRangeComponent implements AfterViewInit, OnDestroy {
 
   private updateFromInput(numeric: number) {
     if (this.value() === undefined || this.value() === null) {
-      // uncontrolled mode -> update defaultValue
-      this.defaultValue.set(numeric);
+      // uncontrolled mode -> update internal value
+      this.internalValue.set(numeric);
     }
   }
 

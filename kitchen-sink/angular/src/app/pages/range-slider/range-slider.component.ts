@@ -35,6 +35,63 @@ import { KRangeComponent } from '../../../../../../src/angular/components/range.
     `,
   ],
   template: `
+    <ng-template #volumeInner>
+      <span>0</span>
+      <k-range
+        class="flex-1"
+        [value]="volume()"
+        [step]="10"
+        (input)="onVolumeInput($event)"
+      ></k-range>
+      <span>100</span>
+    </ng-template>
+
+    <ng-template #priceInner>
+      <span>$0</span>
+      <k-range
+        class="flex-1"
+        [value]="price()"
+        [step]="1"
+        [min]="0"
+        [max]="1000"
+        (input)="onPriceInput($event)"
+      ></k-range>
+      <span>$1000</span>
+    </ng-template>
+
+    <ng-template #redInner>
+      <k-range
+        class="flex-1 k-color-brand-red"
+        [value]="red()"
+        [step]="1"
+        [min]="0"
+        [max]="255"
+        (input)="onColorInput($event, 'red')"
+      ></k-range>
+    </ng-template>
+
+    <ng-template #greenInner>
+      <k-range
+        class="flex-1 k-color-brand-green"
+        [value]="green()"
+        [step]="1"
+        [min]="0"
+        [max]="255"
+        (input)="onColorInput($event, 'green')"
+      ></k-range>
+    </ng-template>
+
+    <ng-template #blueInner>
+      <k-range
+        class="flex-1 k-color-brand-blue"
+        [value]="blue()"
+        [step]="1"
+        [min]="0"
+        [max]="255"
+        (input)="onColorInput($event, 'blue')"
+      ></k-range>
+    </ng-template>
+
     <k-page>
       <k-navbar title="Range Slider">
         @if (!isPreview()) {
@@ -45,18 +102,10 @@ import { KRangeComponent } from '../../../../../../src/angular/components/range.
       <k-block-title>Volume: {{ volume() }}</k-block-title>
       <k-block-header>From 0 to 100 with step 10</k-block-header>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item>
-          <div inner class="flex gap-4 items-center w-full">
-            <span>0</span>
-            <k-range
-              class="flex-1"
-              [value]="volume()"
-              [step]="10"
-              (input)="onVolumeInput($event)"
-            ></k-range>
-            <span>100</span>
-          </div>
-        </k-list-item>
+        <k-list-item
+          [inner]="volumeInner"
+          [innerClassName]="'flex gap-4 items-center'"
+        ></k-list-item>
       </k-list>
 
       <k-block-title>
@@ -65,62 +114,28 @@ import { KRangeComponent } from '../../../../../../src/angular/components/range.
       </k-block-title>
       <k-block-header>From 0 to 1000 with step 1</k-block-header>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item>
-          <div inner class="flex gap-4 items-center w-full">
-            <span>$0</span>
-            <k-range
-              class="flex-1"
-              [value]="price()"
-              [step]="1"
-              [min]="0"
-              [max]="1000"
-              (input)="onPriceInput($event)"
-            ></k-range>
-            <span>$1000</span>
-          </div>
-        </k-list-item>
+        <k-list-item
+          [inner]="priceInner"
+          [innerClassName]="'flex gap-4 items-center'"
+        ></k-list-item>
       </k-list>
 
       <k-block-title>
         Color: rgb({{ red() }}, {{ green() }}, {{ blue() }})
       </k-block-title>
       <k-list [strong]="true" [inset]="true">
-        <k-list-item>
-          <div inner class="flex items-center w-full">
-            <k-range
-              class="flex-1 k-color-brand-red"
-              [value]="red()"
-              [step]="1"
-              [min]="0"
-              [max]="255"
-              (input)="onColorInput($event, 'red')"
-            ></k-range>
-          </div>
-        </k-list-item>
-        <k-list-item>
-          <div inner class="flex items-center w-full">
-            <k-range
-              class="flex-1 k-color-brand-green"
-              [value]="green()"
-              [step]="1"
-              [min]="0"
-              [max]="255"
-              (input)="onColorInput($event, 'green')"
-            ></k-range>
-          </div>
-        </k-list-item>
-        <k-list-item>
-          <div inner class="flex items-center w-full">
-            <k-range
-              class="flex-1 k-color-brand-blue"
-              [value]="blue()"
-              [step]="1"
-              [min]="0"
-              [max]="255"
-              (input)="onColorInput($event, 'blue')"
-            ></k-range>
-          </div>
-        </k-list-item>
+        <k-list-item
+          [inner]="redInner"
+          [innerClassName]="'flex items-center'"
+        ></k-list-item>
+        <k-list-item
+          [inner]="greenInner"
+          [innerClassName]="'flex items-center'"
+        ></k-list-item>
+        <k-list-item
+          [inner]="blueInner"
+          [innerClassName]="'flex items-center'"
+        ></k-list-item>
       </k-list>
     </k-page>
   `,

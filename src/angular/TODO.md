@@ -60,7 +60,7 @@
 - [x] Preloader
 - [x] Progressbar
 - [x] Radio
-- [🚧] Range
+- [x] Range
 - [x] Searchbar
 - [x] Segmented
 - [x] SegmentedButton
