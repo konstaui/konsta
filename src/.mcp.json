@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "context7": {
-      "command": "bunx",
+      "command": "npx",
       "args": [
         "-y",
         "context7-mcp@latest"
@@ -9,7 +9,7 @@
       "env": {}
     },
     "playwright": {
-      "command": "bunx",
+      "command": "npx",
       "args": [
         "-y",
         "@playwright/mcp@latest",
