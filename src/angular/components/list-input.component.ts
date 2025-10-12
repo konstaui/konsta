@@ -152,16 +152,12 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
           }
 
           @if (showClearButton()) {
-            <span
-            role="button"
-            tabindex="0"
-            class="{{ clearButtonClass() }}"
-            (click)="handleClear($event)"
-            (keydown.enter)="handleClear($event)"
-            (keydown.space)="handleClear($event)"
-          >
-            <k-delete-icon />
-          </span>
+            <k-delete-icon
+              [class]="clearButtonClass()"
+              [ios]="ios()"
+              [material]="material()"
+              (click)="handleClear($event)"
+            />
           }
 
           @if (dropdown()) {

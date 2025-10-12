@@ -21,17 +21,21 @@ import {
 import { KGlassComponent } from './glass.component.js';
 import { KDeleteIconComponent } from './icons/delete-icon.component.js';
 import { KSearchDisableIconComponent } from './icons/search-disable-icon.component.js';
+import { KSearchIconComponent } from './icons/search-icon.component.js';
 
 type SearchbarTag = 'div' | 'span';
 
 @Component({
   selector: 'k-searchbar',
-  
+  host: {
+    '[style.display]': '"contents"',
+  },
   imports: [
     CommonModule,
     KGlassComponent,
     KDeleteIconComponent,
     KSearchDisableIconComponent,
+    KSearchIconComponent,
   ],
   template: `
     @switch (componentTag()) {
@@ -58,17 +62,11 @@ type SearchbarTag = 'div' | 'span';
     <ng-template #searchbar>
       <k-glass class="{{ innerClass() }}">
         <span class="{{ searchIconWrapClass() }}">
-          <svg
-            class="{{ searchIconClass() }}"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11 4a7 7 0 1 1 4.9 12h-.4l-.3.3 4.1 4.1-1.4 1.4-4.1-4.1-.3.3v.4A7 7 0 0 1 11 4Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"
-              fill="currentColor"
-            />
-          </svg>
+          <k-search-icon
+            [class]="searchIconClass()"
+            [ios]="ios()"
+            [material]="material()"
+          />
         </span>
         <input
           #inputEl
@@ -99,7 +97,11 @@ type SearchbarTag = 'div' | 'span';
           class="{{ clearButtonClass() }}"
           (click)="handleClear($event)"
         >
-          <k-delete-icon class="{{ deleteIconClass() }}" />
+          <k-delete-icon
+            [class]="deleteIconClass()"
+            [ios]="ios()"
+            [material]="material()"
+          />
         </button>
         }
       </k-glass>

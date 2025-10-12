@@ -44,10 +44,12 @@ import { cls } from '../../shared/cls.js';
       (clicked)="clicked.emit($event)"
     >
       <span class="{{ contentClasses() }}">
-        <span class="{{ iconContainerClasses() }}">
-          <span class="{{ iconBgClasses() }}"></span>
-          <ng-content select="[icon]" />
-        </span>
+        @if (hasIcon()) {
+          <span class="{{ iconContainerClasses() }}">
+            <span class="{{ iconBgClasses() }}"></span>
+            <ng-content select="[icon]" />
+          </span>
+        }
         @if (hasLabel()) {
           <span class="{{ labelClasses() }}">
             @if (label()) {

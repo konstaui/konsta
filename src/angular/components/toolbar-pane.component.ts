@@ -104,7 +104,10 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     () => this.theme() === 'ios' && (this.tabbar() ?? this.toolbarCtx.tabbar())
   );
 
-  private readonly highlightStyle = signal<Record<string, string>>({});
+  private readonly highlightStyle = signal<Record<string, string>>({
+    width: '',
+    transform: ''
+  });
   readonly highlightStyleSignal = this.highlightStyle.asReadonly();
 
   private hasTabbarLinks = false;
@@ -124,7 +127,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     if (this.hasHighlight()) {
       this.attachEvents();
       this.observeChanges();
-      this.scheduleHighlightUpdate();
+      // Schedule update with a slight delay to ensure DOM is fully rendered
+      setTimeout(() => this.updateHighlight(), 0);
     }
   }
 
@@ -146,8 +150,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     const glassElNative = this.glassEl()?.nativeElement;
     if (!glassElNative) return;
 
-    // Since k-glass has display: contents, we need to find the actual rendered element
-    const actualElement = glassElNative.querySelector('.k-toolbar-pane') || glassElNative.parentElement?.querySelector('.k-toolbar-pane');
+    // Since k-glass has display: contents, get the first actual child element
+    const actualElement = glassElNative.firstElementChild as HTMLElement;
     if (!actualElement) return;
 
     const linkEls = actualElement.querySelectorAll('a, button');
@@ -175,8 +179,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     const glassElNative = this.glassEl()?.nativeElement;
     if (!glassElNative) return;
 
-    // Since k-glass has display: contents, we need to find the actual rendered element
-    const actualElement = glassElNative.querySelector('.k-toolbar-pane') || glassElNative.parentElement?.querySelector('.k-toolbar-pane');
+    // Since k-glass has display: contents, get the first actual child element
+    const actualElement = glassElNative.firstElementChild as HTMLElement;
     if (!actualElement) return;
 
     this.observer = new MutationObserver(() => {
@@ -195,8 +199,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     const glassElNative = this.glassEl()?.nativeElement;
     if (!glassElNative || !this.hasHighlight()) return;
 
-    // Since k-glass has display: contents, we need to find the actual rendered element
-    const actualElement = glassElNative.querySelector('.k-toolbar-pane') || glassElNative.parentElement?.querySelector('.k-toolbar-pane');
+    // Since k-glass has display: contents, get the first actual child element
+    const actualElement = glassElNative.firstElementChild as HTMLElement;
     if (!actualElement) return;
 
     actualElement.addEventListener('pointerdown', this.onPointer);
@@ -208,8 +212,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     const glassElNative = this.glassEl()?.nativeElement;
     if (!glassElNative) return;
 
-    // Since k-glass has display: contents, we need to find the actual rendered element
-    const actualElement = glassElNative.querySelector('.k-toolbar-pane') || glassElNative.parentElement?.querySelector('.k-toolbar-pane');
+    // Since k-glass has display: contents, get the first actual child element
+    const actualElement = glassElNative.firstElementChild as HTMLElement;
     if (!actualElement) return;
 
     actualElement.removeEventListener('pointerdown', this.onPointer);
@@ -223,8 +227,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     const glassElNative = this.glassEl()?.nativeElement;
     if (!glassElNative) return;
 
-    // Since k-glass has display: contents, we need to find the actual rendered element
-    const actualElement = glassElNative.querySelector('.k-toolbar-pane') || glassElNative.parentElement?.querySelector('.k-toolbar-pane');
+    // Since k-glass has display: contents, get the first actual child element
+    const actualElement = glassElNative.firstElementChild as HTMLElement;
     if (!actualElement) return;
 
     if (e.type === 'pointerdown') {

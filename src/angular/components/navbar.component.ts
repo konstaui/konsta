@@ -21,11 +21,16 @@ import {
   NAVBAR_CONTEXT,
   createNavbarContext,
 } from '../shared/navbar-context.js';
+import { KGlassComponent } from './glass.component.js';
 
 @Component({
   selector: 'k-navbar',
-
-  imports: [CommonModule, NgTemplateOutlet],
+  styles: [`
+    ::ng-deep [subnavbar] {
+      display: contents;
+    }
+  `],
+  imports: [CommonModule, NgTemplateOutlet, KGlassComponent],
   template: `
     <ng-template #leftTemplate>
       <ng-content select="[left]" />
@@ -40,9 +45,9 @@ import {
     <nav #navEl class="{{ baseClasses() }}">
       <div #bgEl class="{{ bgClasses() }}"></div>
       <div #innerEl class="{{ innerClasses() }}">
-        <div class="{{ leftClasses() }}">
+        <k-glass class="{{ leftClasses() }}">
           <ng-container *ngTemplateOutlet="leftTemplate" />
-        </div>
+        </k-glass>
         @if (title() || subtitle()) {
           <div #titleEl class="{{ titleClasses() }}">
             @if (title()) {
@@ -55,9 +60,9 @@ import {
             }
           </div>
         }
-        <div class="{{ rightClasses() }}">
+        <k-glass class="{{ rightClasses() }}">
           <ng-container *ngTemplateOutlet="rightTemplate" />
-        </div>
+        </k-glass>
         <ng-content />
       </div>
       @if ((large() || medium()) && title()) {

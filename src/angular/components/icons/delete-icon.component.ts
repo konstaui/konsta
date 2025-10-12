@@ -7,7 +7,7 @@ import { useThemeSignal } from '../../shared/theme-helpers.js';
   template: `
     @if (theme() === 'ios') {
       <svg
-        [attr.class]="className() ?? null"
+        [class]="className() ?? ''"
         xmlns="http://www.w3.org/2000/svg"
         width="28"
         height="28"
@@ -20,7 +20,7 @@ import { useThemeSignal } from '../../shared/theme-helpers.js';
       </svg>
     } @else {
       <svg
-        [attr.class]="className() ?? null"
+        [class]="className() ?? ''"
         width="24"
         height="24"
         viewBox="0 0 24 24"

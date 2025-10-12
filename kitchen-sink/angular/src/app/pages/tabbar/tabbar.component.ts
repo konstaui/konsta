@@ -66,36 +66,36 @@ interface TabDescriptor {
             [label]="showLabels() ? 'Tab 1' : ''"
             (clicked)="setActiveTab('tab-1')"
           >
-            <span icon [class.hidden]="!showIcons()">
-              <k-icon [icon]="true" component="span">
+            @if (showIcons()) {
+              <k-icon icon>
                 <i ios class="f7-icons w-7 h-7">envelope_fill</i>
                 <i material class="f7-icons w-6 h-6">envelope_fill</i>
               </k-icon>
-            </span>
+            }
           </k-tabbar-link>
           <k-tabbar-link
             [active]="activeTab() === 'tab-2'"
             [label]="showLabels() ? 'Tab 2' : ''"
             (clicked)="setActiveTab('tab-2')"
           >
-            <span icon [class.hidden]="!showIcons()">
-              <k-icon [icon]="true" component="span">
+            @if (showIcons()) {
+              <k-icon icon>
                 <i ios class="f7-icons w-7 h-7">calendar</i>
                 <i material class="f7-icons w-6 h-6">calendar</i>
               </k-icon>
-            </span>
+            }
           </k-tabbar-link>
           <k-tabbar-link
             [active]="activeTab() === 'tab-3'"
             [label]="showLabels() ? 'Tab 3' : ''"
             (clicked)="setActiveTab('tab-3')"
           >
-            <span icon [class.hidden]="!showIcons()">
-              <k-icon [icon]="true" component="span">
+            @if (showIcons()) {
+              <k-icon icon>
                 <i ios class="f7-icons w-7 h-7">cloud_upload_fill</i>
                 <i material class="f7-icons w-6 h-6">cloud_upload_fill</i>
               </k-icon>
-            </span>
+            }
           </k-tabbar-link>
         </k-toolbar-pane>
       </k-tabbar>

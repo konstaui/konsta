@@ -18,7 +18,9 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
 
 @Component({
   selector: 'k-navbar-back-link',
-  
+  host: {
+    '[style.display]': '"contents"',
+  },
   imports: [CommonModule, NgTemplateOutlet],
   template: `
     <ng-template #contentTemplate>

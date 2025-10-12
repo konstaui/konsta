@@ -18,7 +18,9 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
 
 @Component({
   selector: 'k-glass',
-
+  host: {
+    '[style.display]': '"contents"',
+  },
   imports: [CommonModule, NgTemplateOutlet],
   template: `
     @switch (component()) {
