@@ -2,12 +2,9 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   Signal,
   computed,
-  effect,
   input,
-  viewChild,
 } from '@angular/core';
 import { cls } from '../../shared/cls.js';
 import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
@@ -16,18 +13,24 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-badge',
-  
+
   imports: [CommonModule],
   template: `
-    <span #root class="{{ classes() }}">
-      <ng-content />
-    </span>
+    <ng-content />
   `,
+  styles: [
+    `
+      :host {
+        display: inline-block;
+      }
+    `,
+  ],
+  host: {
+    '[class]': 'classes()',
+  },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KBadgeComponent {
-  private readonly host = viewChild<ElementRef<HTMLElement>>('root');
-
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
@@ -59,12 +62,4 @@ export class KBadgeComponent {
     const base = themed['base'] as Record<string, string>;
     return cls(base[this.small() ? 'sm' : 'md'], this.className());
   });
-
-  constructor() {
-    effect(() => {
-      const el = this.host()?.nativeElement;
-      if (!el) return;
-      el.setAttribute('class', this.classes());
-    });
-  }
 }

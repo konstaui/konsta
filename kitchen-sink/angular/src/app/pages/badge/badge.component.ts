@@ -77,30 +77,27 @@ const DEMO_ICON_SRC = '/demo-icon.png';
         <img [src]="demoIconSrc" alt="Demo icon" class="ios:w-7 material:w-6" />
       </ng-template>
 
+      <ng-template #badge0>
+        <k-badge [colors]="{ bg: 'bg-gray-500' }">0</k-badge>
+      </ng-template>
+
+      <ng-template #badgeCEO>
+        <k-badge>CEO</k-badge>
+      </ng-template>
+
+      <ng-template #badge5>
+        <k-badge [colors]="{ bg: 'bg-green-500' }">5</k-badge>
+      </ng-template>
+
+      <ng-template #badgeNEW>
+        <k-badge [colors]="{ bg: 'bg-yellow-500' }">NEW</k-badge>
+      </ng-template>
+
       <k-list [strong]="true" [inset]="true">
-        <k-list-item [title]="'Foo Bar'" [media]="demoIconTemplate">
-          <div slot="after">
-            <k-badge [colors]="{ bg: 'bg-gray-500' }">0</k-badge>
-          </div>
-        </k-list-item>
-
-        <k-list-item [title]="'Ivan Petrov'" [media]="demoIconTemplate">
-          <div slot="after">
-            <k-badge>CEO</k-badge>
-          </div>  
-        </k-list-item>
-
-        <k-list-item [title]="'John Doe'" [media]="demoIconTemplate">
-          <div slot="after">
-            <k-badge [colors]="{ bg: 'bg-green-500' }">5</k-badge>
-          </div>  
-        </k-list-item>
-
-        <k-list-item [title]="'Jane Doe'" [media]="demoIconTemplate">
-          <div slot="after">
-            <k-badge [colors]="{ bg: 'bg-yellow-500' }">NEW</k-badge>
-          </div>
-        </k-list-item>
+        <k-list-item [title]="'Foo Bar'" [media]="demoIconTemplate" [after]="badge0" />
+        <k-list-item [title]="'Ivan Petrov'" [media]="demoIconTemplate" [after]="badgeCEO" />
+        <k-list-item [title]="'John Doe'" [media]="demoIconTemplate" [after]="badge5" />
+        <k-list-item [title]="'Jane Doe'" [media]="demoIconTemplate" [after]="badgeNEW" />
       </k-list>
     </k-page>
   `,
@@ -109,7 +106,10 @@ const DEMO_ICON_SRC = '/demo-icon.png';
 export class BadgeComponent {
   readonly demoIconSrc = DEMO_ICON_SRC;
   readonly demoIconTemplate = viewChild<TemplateRef<any>>('demoIconTemplate');
-
+  readonly badge0 = viewChild<TemplateRef<any>>('badge0');
+  readonly badgeCEO = viewChild<TemplateRef<any>>('badgeCEO');
+  readonly badge5 = viewChild<TemplateRef<any>>('badge5');
+  readonly badgeNEW = viewChild<TemplateRef<any>>('badgeNEW');
 
   readonly isPreview = computed(
     () =>
