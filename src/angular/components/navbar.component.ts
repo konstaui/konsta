@@ -43,9 +43,6 @@ import { KGlassComponent } from './glass.component.js';
     <ng-template #rightTemplate>
       <ng-content select="[right]" />
     </ng-template>
-    <ng-template #subnavbarTemplate>
-      <ng-content select="[subnavbar]" />
-    </ng-template>
 
     @switch (component()) {
       @case ('nav') {
@@ -113,7 +110,7 @@ import { KGlassComponent } from './glass.component.js';
       }
       @if (subnavbar()) {
         <div #subnavbarEl class="{{ subnavbarClasses() }}">
-          <ng-container *ngTemplateOutlet="subnavbarTemplate" />
+          <ng-content select="[subnavbar]" />
         </div>
       }
     </ng-template>
