@@ -79,17 +79,12 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
           Dialog is a type of modal window that appears in front of app content
           to provide critical information, or prompt for a decision to be made.
         </div>
-        <div buttons class="flex justify-end gap-2">
-          <k-dialog-button (clicked)="basicOpened.set(false)">
-            Action 2
-          </k-dialog-button>
-          <k-dialog-button
-            [strong]="true"
-            (clicked)="basicOpened.set(false)"
-          >
-            Action 1
-          </k-dialog-button>
-        </div>
+        <k-dialog-button buttons (clicked)="basicOpened.set(false)">
+          Action 2
+        </k-dialog-button>
+        <k-dialog-button buttons [strong]="true" (clicked)="basicOpened.set(false)">
+          Action 1
+        </k-dialog-button>
       </k-dialog>
 
       <k-dialog
@@ -98,11 +93,7 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
       >
         <div title>Konsta UI</div>
         <div>Hello world!</div>
-        <k-dialog-button
-          buttons
-          [strong]="true"
-          (clicked)="alertOpened.set(false)"
-        >
+        <k-dialog-button buttons [strong]="true" (clicked)="alertOpened.set(false)">
           Ok
         </k-dialog-button>
       </k-dialog>
@@ -113,17 +104,12 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
       >
         <div title>Konsta UI</div>
         <div>All good today?</div>
-        <div buttons class="flex justify-end gap-2">
-          <k-dialog-button (clicked)="confirmOpened.set(false)">
-            No
-          </k-dialog-button>
-          <k-dialog-button
-            [strong]="true"
-            (clicked)="confirmOpened.set(false)"
-          >
-            Yes
-          </k-dialog-button>
-        </div>
+        <k-dialog-button buttons (clicked)="confirmOpened.set(false)">
+          No
+        </k-dialog-button>
+        <k-dialog-button buttons [strong]="true" (clicked)="confirmOpened.set(false)">
+          Yes
+        </k-dialog-button>
       </k-dialog>
 
       <k-dialog
@@ -165,11 +151,7 @@ import { KRadioComponent } from '../../../../../../src/angular/components/radio.
             ></k-radio>
           </ng-template>
         </k-list>
-        <k-dialog-button
-          buttons
-          [strong]="true"
-          (clicked)="listOpened.set(false)"
-        >
+        <k-dialog-button buttons [strong]="true" (clicked)="listOpened.set(false)">
           Confirm
         </k-dialog-button>
       </k-dialog>

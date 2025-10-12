@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,22 +17,33 @@ type TableCellTag = 'th' | 'td';
 
 @Component({
   selector: 'k-table-cell',
-  
-  imports: [CommonModule],
+
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
+    <ng-template #contentTemplate>
+      <ng-content />
+    </ng-template>
+
     @switch (componentTag()) {
       @case ('th') {
         <th class="{{ baseClass() }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="contentTemplate" />
         </th>
       }
       @default {
         <td class="{{ baseClass() }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="contentTemplate" />
         </td>
       }
     }
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KTableCellComponent {

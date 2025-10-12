@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, viewChild, TemplateRef } from '@angular/core';
 import { KPageComponent } from '../../../../../../src/angular/components/page.component.js';
 import { KNavbarComponent } from '../../../../../../src/angular/components/navbar.component.js';
 import { KNavbarBackLinkComponent } from '../../../../../../src/angular/components/navbar-back-link.component.js';
@@ -10,7 +10,8 @@ import { KTabbarLinkComponent } from '../../../../../../src/angular/components/t
 import { KToolbarPaneComponent } from '../../../../../../src/angular/components/toolbar-pane.component.js';
 import { KListComponent } from '../../../../../../src/angular/components/list.component.js';
 import { KListItemComponent } from '../../../../../../src/angular/components/list-item.component.js';
-import { DemoIconComponent } from '../../components/demo-icon.component.js';
+import { DemoIconComponent } from '../../components/demo-icon.component';
+const DEMO_ICON_SRC = '/demo-icon.png';
 
 @Component({
   selector: 'app-badge',
@@ -72,25 +73,33 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
         </k-toolbar-pane>
       </k-tabbar>
 
+      <ng-template #demoIconTemplate>
+        <img [src]="demoIconSrc" alt="Demo icon" class="ios:w-7 material:w-6" />
+      </ng-template>
+
       <k-list [strong]="true" [inset]="true">
-        <k-list-item [title]="'Foo Bar'">
-          <app-demo-icon media />
-          <k-badge after [colors]="{ bg: 'bg-gray-500' }">0</k-badge>
+        <k-list-item [title]="'Foo Bar'" [media]="demoIconTemplate">
+          <div slot="after">
+            <k-badge [colors]="{ bg: 'bg-gray-500' }">0</k-badge>
+          </div>
         </k-list-item>
 
-        <k-list-item [title]="'Ivan Petrov'">
-          <app-demo-icon media />
-          <k-badge after>CEO</k-badge>
+        <k-list-item [title]="'Ivan Petrov'" [media]="demoIconTemplate">
+          <div slot="after">
+            <k-badge>CEO</k-badge>
+          </div>  
         </k-list-item>
 
-        <k-list-item [title]="'John Doe'">
-          <app-demo-icon media />
-          <k-badge after [colors]="{ bg: 'bg-green-500' }">5</k-badge>
+        <k-list-item [title]="'John Doe'" [media]="demoIconTemplate">
+          <div slot="after">
+            <k-badge [colors]="{ bg: 'bg-green-500' }">5</k-badge>
+          </div>  
         </k-list-item>
 
-        <k-list-item [title]="'Jane Doe'">
-          <app-demo-icon media />
-          <k-badge after [colors]="{ bg: 'bg-yellow-500' }">NEW</k-badge>
+        <k-list-item [title]="'Jane Doe'" [media]="demoIconTemplate">
+          <div slot="after">
+            <k-badge [colors]="{ bg: 'bg-yellow-500' }">NEW</k-badge>
+          </div>
         </k-list-item>
       </k-list>
     </k-page>
@@ -98,6 +107,10 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BadgeComponent {
+  readonly demoIconSrc = DEMO_ICON_SRC;
+  readonly demoIconTemplate = viewChild<TemplateRef<any>>('demoIconTemplate');
+
+
   readonly isPreview = computed(
     () =>
       typeof document !== 'undefined' &&

@@ -2,34 +2,32 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   Signal,
   computed,
   input,
-  viewChild,
 } from '@angular/core';
 import { BlockClasses } from '../../shared/classes/BlockClasses.js';
 import { BlockColors } from '../../shared/colors/BlockColors.js';
 import {
   useDarkClasses,
   useThemeClasses,
-  useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-block',
-  
+
   imports: [CommonModule],
+  host: {
+    '[class]': 'classes()',
+  },
+  styles: [],
   template: `
-    <div #root class="{{ classes() }}">
-      <ng-content />
-    </div>
+    <ng-content />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KBlockComponent {
-  private readonly host = viewChild<ElementRef<HTMLElement>>('root');
 
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -42,10 +40,6 @@ export class KBlockComponent {
   readonly strong = input<boolean>(false);
   readonly outline = input<boolean>(false);
 
-  private readonly theme = useThemeSignal(() => ({
-    ios: this.ios() === true,
-    material: this.material() === true,
-  }));
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
     material: this.material() === true,

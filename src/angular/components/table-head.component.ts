@@ -11,13 +11,20 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-table-head',
-  
+
   imports: [CommonModule],
   template: `
     <thead class="{{ baseClass() }}">
       <ng-content />
     </thead>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KTableHeadComponent {

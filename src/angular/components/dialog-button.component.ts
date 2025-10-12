@@ -19,7 +19,7 @@ type DialogButtonTag = 'button' | 'a';
   template: `
     <k-button
       [component]="componentTag()"
-      [class]="className() ?? undefined"
+      [class]="computedClass()"
       [disabled]="disabled()"
       [ios]="ios()"
       [material]="material()"
@@ -69,4 +69,12 @@ export class KDialogButtonComponent {
 
   readonly isIos = computed(() => this.theme() === 'ios');
   readonly isMaterial = computed(() => this.theme() === 'material');
+
+  readonly computedClass = computed(() => {
+    const base = this.className() ?? '';
+    if (this.isIos()) {
+      return base ? `flex-1 ${base}` : 'flex-1';
+    }
+    return base;
+  });
 }

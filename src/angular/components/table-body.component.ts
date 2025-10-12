@@ -11,13 +11,20 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-table-body',
-  
+
   imports: [CommonModule],
   template: `
     <tbody class="{{ baseClass() }}">
       <ng-content />
     </tbody>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KTableBodyComponent {

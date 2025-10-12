@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   Signal,
   computed,
-  contentChild,
   input,
   output,
 } from '@angular/core';
@@ -38,32 +36,25 @@ type DialogState = 'opened' | 'closed';
       [highlight]="false"
     >
       <div class="{{ contentWrapClasses() }}">
-        @if (hasTitle()) {
-          <div class="{{ titleClasses() }}">
-            @if (title() !== undefined && title() !== null) {
-              {{ title() }}
-            } @else {
-              <ng-content select="[title]" />
-            }
-          </div>
-        }
+        <div class="{{ titleClasses() }}">
+          @if (title() !== undefined && title() !== null) {
+            {{ title() }}
+          }
+          <ng-content select="[title]" />
+        </div>
         <div class="{{ contentClasses() }}">
           @if (content() !== undefined && content() !== null) {
             {{ content() }}
-          } @else {
-            <ng-content />
           }
+          <ng-content />
         </div>
       </div>
-      @if (hasButtons()) {
-        <div class="{{ buttonsClasses() }}">
-          @if (buttons() !== undefined && buttons() !== null) {
-            {{ buttons() }}
-          } @else {
-            <ng-content select="[buttons]" />
-          }
-        </div>
-      }
+      <div class="{{ buttonsClasses() }}">
+        @if (buttons() !== undefined && buttons() !== null) {
+          {{ buttons() }}
+        }
+        <ng-content select="[buttons]" />
+      </div>
     </k-glass>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -87,11 +78,6 @@ export class KDialogComponent {
   readonly buttons = input<string | number | undefined>(undefined);
 
   readonly backdropClick = output<Event>();
-
-  private readonly titleSlot =
-    contentChild<ElementRef<HTMLElement>>('[title]');
-  private readonly buttonsSlot =
-    contentChild<ElementRef<HTMLElement>>('[buttons]');
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
@@ -141,14 +127,6 @@ export class KDialogComponent {
   );
   readonly backdropClasses: Signal<Record<DialogState, string>> = computed(
     () => this.classes()['backdrop'] as Record<DialogState, string>
-  );
-
-  readonly hasTitle = computed(
-    () => this.title() !== undefined && this.title() !== null || !!this.titleSlot()
-  );
-
-  readonly hasButtons = computed(
-    () => this.buttons() !== undefined && this.buttons() !== null || !!this.buttonsSlot()
   );
 
   readonly componentTag: Signal<string> = computed(() => {

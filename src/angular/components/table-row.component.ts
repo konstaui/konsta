@@ -15,13 +15,20 @@ import {
 
 @Component({
   selector: 'k-table-row',
-  
+
   imports: [CommonModule],
   template: `
     <tr class="{{ baseClass() }}">
       <ng-content />
     </tr>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KTableRowComponent {

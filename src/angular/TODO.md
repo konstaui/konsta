@@ -14,71 +14,71 @@
 - [ ] Recreate list, navbar, segmented, and toolbar context equivalents via injectables
 
 ## Components
-- [ ] Actions
-- [ ] ActionsButton
-- [ ] ActionsGroup
-- [ ] ActionsLabel
+- [x] Actions
+- [x] ActionsButton
+- [x] ActionsGroup
+- [x] ActionsLabel
 - [x] App
-- [x] Badge
+- [🚧] Badge
 - [x] Block
-- [ ] BlockFooter
-- [ ] BlockHeader
+- [🚧] BlockFooter
+- [🚧] BlockHeader
 - [x] BlockTitle
-- [ ] Breadcrumbs
-- [ ] BreadcrumbsCollapsed
-- [ ] BreadcrumbsItem
-- [ ] BreadcrumbsSeparator
+- [x] Breadcrumbs
+- [x] BreadcrumbsCollapsed
+- [x] BreadcrumbsItem
+- [x] BreadcrumbsSeparator
 - [x] Button
-- [ ] Card
-- [ ] Checkbox
-- [ ] Chip
-- [ ] Dialog
-- [ ] DialogButton
-- [ ] Fab
-- [ ] Glass
-- [ ] Icon
+- [🚧] Card
+- [🚧] Checkbox
+- [x] Chip
+- [x] Dialog
+- [🚧] DialogButton
+- [x] Fab
+- [🚧] Glass
+- [x] Icon
 - [x] Link
 - [x] List
-- [ ] ListButton
-- [ ] ListGroup
-- [ ] ListInput
+- [x] ListButton
+- [x] ListGroup
+- [x] ListInput
 - [x] ListItem
-- [ ] MenuList
-- [ ] MenuListItem
-- [ ] Message
-- [ ] Messagebar
-- [ ] Messages
-- [ ] MessagesTitle
+- [🚧] MenuList
+- [🚧] MenuListItem
+- [🚧] Message
+- [🚧] Messagebar
+- [🚧] Messages
+- [🚧] MessagesTitle
 - [x] Navbar
 - [x] NavbarBackLink
-- [ ] NavbarContext
-- [ ] Notification
+- [🚧] NavbarContext
+- [🚧] Notification
 - [x] Page
-- [ ] Panel
+- [🚧] Panel
 - [x] Popover
-- [ ] Popup
-- [ ] Preloader
-- [ ] Progressbar
+- [🚧] Popup
+- [x] Preloader
+- [x] Progressbar
 - [x] Radio
-- [ ] Range
-- [ ] Searchbar
-- [ ] Segmented
-- [ ] SegmentedButton
-- [ ] SegmentedContext
+- [🚧] Range
+- [🚧] Searchbar
+- [🚧] Segmented
+- [🚧] SegmentedButton
+- [🚧] SegmentedContext
 - [ ] Sheet
-- [ ] Stepper
-- [ ] Tabbar
-- [ ] TabbarLink
-- [ ] Table
-- [ ] TableBody
-- [ ] TableCell
-- [ ] TableHead
-- [ ] TableRow
-- [ ] Toast
+- [x] Stepper
+- [🚧] Tabbar
+- [🚧] TabbarLink
+- [🚧] Table
+- [🚧] TableBody
+- [🚧] TableCell
+- [🚧] TableHead
+- [🚧] TableRow
+- [x] Toast
 - [x] Toggle
-- [ ] Toolbar
-- [ ] ToolbarContext
-- [ ] ToolbarPane
+- [🚧] Toolbar
+- [🚧] ToolbarContext
+- [🚧] ToolbarPane
 
 ## Kitchen Sink
 - [x] Scaffold Angular kitchen-sink application with Angular CLI

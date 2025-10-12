@@ -60,11 +60,13 @@ type ButtonComponentTag = 'button' | 'a';
       }
     }
   `,
-  host: {
-    '[class.w-full]': '!inline()',
-    '[class.inline-flex]': 'inline()',
-  },
-  styles: [],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
 })
 export class KButtonComponent {
   private readonly ctx = injectKonstaContext();
