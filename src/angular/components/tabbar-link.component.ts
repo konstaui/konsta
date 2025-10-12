@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,9 +20,26 @@ import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-tabbar-link',
-  
-  imports: [CommonModule, KLinkComponent],
+
+  imports: [CommonModule, KLinkComponent, NgTemplateOutlet],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   template: `
+    <ng-template #iconContent>
+      <ng-content select="[icon]" />
+    </ng-template>
+    <ng-template #labelContent>
+      <ng-content select="[label]" />
+    </ng-template>
+    <ng-template #otherContent>
+      <ng-content select="[content]" />
+    </ng-template>
+
     <k-link
       [component]="component()"
       [class]="linkClasses()"
@@ -40,7 +57,7 @@ import { cls } from '../../shared/cls.js';
         @if (hasIcon()) {
           <span class="{{ iconContainerClasses() }}">
             <span class="{{ iconBgClasses() }}"></span>
-            <ng-content select="[icon]" />
+            <ng-container *ngTemplateOutlet="iconContent" />
           </span>
         }
         @if (hasLabel()) {
@@ -48,11 +65,11 @@ import { cls } from '../../shared/cls.js';
             @if (label()) {
               {{ label() }}
             } @else {
-              <ng-content select="[label]" />
+              <ng-container *ngTemplateOutlet="labelContent" />
             }
           </span>
         }
-        <ng-content select="[content]" />
+        <ng-container *ngTemplateOutlet="otherContent" />
       </span>
     </k-link>
   `,
@@ -80,7 +97,7 @@ export class KTabbarLinkComponent {
 
   readonly hasIcon: Signal<boolean> = computed(() => !!this.iconSlot());
   readonly hasLabel: Signal<boolean> = computed(
-    () => !!this.label() || !!this.labelSlot()
+    () => (this.label() != null && this.label() !== '') || !!this.labelSlot()
   );
 
   private readonly themeClasses = useThemeClasses(() => ({

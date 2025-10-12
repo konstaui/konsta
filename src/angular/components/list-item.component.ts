@@ -85,8 +85,11 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                 <ng-content select="[inner]" />
               }
             </div>
+            @if (content()) {
+              <ng-container *ngTemplateOutlet="content()!" />
+            }
+            <ng-content select="[content]" />
           </label>
-          <ng-content select="[content]" />
         } @else if (itemTag() === 'a') {
           <a #itemContent [class]="itemContentClasses()" [href]="linkHref()" [routerLink]="routerLink()" [target]="target()">
             <div #mediaContainer [class]="mediaClasses()">
@@ -135,8 +138,11 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                 <ng-content select="[inner]" />
               }
             </div>
+            @if (content()) {
+              <ng-container *ngTemplateOutlet="content()!" />
+            }
+            <ng-content select="[content]" />
           </a>
-          <ng-content select="[content]" />
         } @else {
           <div #itemContent [class]="itemContentClasses()">
             <div #mediaContainer [class]="mediaClasses()">
@@ -185,8 +191,11 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                 <ng-content select="[inner]" />
               }
             </div>
+            @if (content()) {
+              <ng-container *ngTemplateOutlet="content()!" />
+            }
+            <ng-content select="[content]" />
           </div>
-          <ng-content select="[content]" />
         }
       </li>
     }
@@ -232,6 +241,7 @@ export class KListItemComponent {
   readonly after = input<string | TemplateRef<any> | undefined>(undefined);
   readonly media = input<TemplateRef<any> | undefined>(undefined);
   readonly inner = input<TemplateRef<any> | undefined>(undefined);
+  readonly content = input<TemplateRef<any> | undefined>(undefined);
   readonly header = input<string | undefined>(undefined);
   readonly footer = input<string | undefined>(undefined);
   readonly label = input<boolean>(false);

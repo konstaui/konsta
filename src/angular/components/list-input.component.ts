@@ -31,9 +31,11 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
   template: `
     <k-list-item
       [class]="baseClass()"
+      [contentClassName]="itemContentClass()"
       [dividers]="dividers()"
       [media]="mediaTemplate()"
       [inner]="innerTemplate()"
+      [content]="contentTemplate()"
     >
       <ng-template #innerTemplateRef>
         <div class="{{ innerClass() }}">
@@ -186,15 +188,17 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
           </div>
         }
         </div>
-
-        @if (showBorder()) {
-          <span content class="{{ borderClass() }}"></span>
-        }
       </ng-template>
 
       @if (type() !== 'select') {
         <ng-content></ng-content>
       }
+
+      <ng-template #contentTemplateRef>
+        @if (showBorder()) {
+          <span class="{{ borderClass() }}"></span>
+        }
+      </ng-template>
     </k-list-item>
 
     <ng-template #mediaTemplateRef>
@@ -209,6 +213,7 @@ export class KListInputComponent {
 
   private readonly mediaTemplate = viewChild<TemplateRef<any>>('mediaTemplateRef');
   private readonly innerTemplate = viewChild<TemplateRef<any>>('innerTemplateRef');
+  private readonly contentTemplate = viewChild<TemplateRef<any>>('contentTemplateRef');
 
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -358,6 +363,9 @@ export class KListInputComponent {
 
   readonly baseClass: Signal<string> = computed(
     () => this.classes()['base'] as string
+  );
+  readonly itemContentClass: Signal<string> = computed(
+    () => this.classes()['itemContent'] as string
   );
   readonly innerClass: Signal<string> = computed(() => {
     const inner = this.classes()['inner'] as Record<string, string>;

@@ -66,8 +66,8 @@ interface TabDescriptor {
             [label]="showLabels() ? 'Tab 1' : ''"
             (clicked)="setActiveTab('tab-1')"
           >
-            @if (showIcons()) {
-              <k-icon icon component="span">
+            <span icon [class.hidden]="!showIcons()">
+              <k-icon [icon]="true" component="span">
                 <svg
                   ios
                   class="w-7 h-7"
@@ -87,15 +87,15 @@ interface TabDescriptor {
                   <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 14H4V8h16v10Zm0-12H4V6h16v-2Z" />
                 </svg>
               </k-icon>
-            }
+            </span>
           </k-tabbar-link>
           <k-tabbar-link
             [active]="activeTab() === 'tab-2'"
             [label]="showLabels() ? 'Tab 2' : ''"
             (clicked)="setActiveTab('tab-2')"
           >
-            @if (showIcons()) {
-              <k-icon icon component="span">
+            <span icon [class.hidden]="!showIcons()">
+              <k-icon [icon]="true" component="span">
                 <svg
                   ios
                   class="w-7 h-7"
@@ -115,15 +115,15 @@ interface TabDescriptor {
                   <path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v15c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2Zm0 17H4V8h16v12Zm0-14H4V5h16v1Z" />
                 </svg>
               </k-icon>
-            }
+            </span>
           </k-tabbar-link>
           <k-tabbar-link
             [active]="activeTab() === 'tab-3'"
             [label]="showLabels() ? 'Tab 3' : ''"
             (clicked)="setActiveTab('tab-3')"
           >
-            @if (showIcons()) {
-              <k-icon icon component="span">
+            <span icon [class.hidden]="!showIcons()">
+              <k-icon [icon]="true" component="span">
                 <svg
                   ios
                   class="w-7 h-7"
@@ -143,7 +143,7 @@ interface TabDescriptor {
                   <path d="M5 4v2h4v10h2V6h4V4H5Zm12 4h-3v2h2v10h2V8Z" />
                 </svg>
               </k-icon>
-            }
+            </span>
           </k-tabbar-link>
         </k-toolbar-pane>
       </k-tabbar>
@@ -153,7 +153,6 @@ interface TabDescriptor {
 
         <ng-template #labelsToggleTpl>
           <k-toggle
-            component="div"
             [checked]="showLabels()"
             (changed)="toggleLabels()"
           ></k-toggle>
@@ -163,7 +162,6 @@ interface TabDescriptor {
 
         <ng-template #iconsToggleTpl>
           <k-toggle
-            component="div"
             [checked]="showIcons()"
             (changed)="toggleIcons()"
           ></k-toggle>
