@@ -47,39 +47,43 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             </div>
 
             <div [class]="innerClasses()">
-              @if (header()) {
-                <div [class]="headerClasses()">{{ header() }}</div>
-              }
-              <div [class]="titleWrapClasses()">
-                @if (title()) {
-                  <span [class]="titleClasses()">{{ title() }}</span>
-                } @else {
-                  <ng-content select="[title]" />
+              @if (inner()) {
+                <ng-container *ngTemplateOutlet="inner()!" />
+              } @else {
+                @if (header()) {
+                  <div [class]="headerClasses()">{{ header() }}</div>
                 }
-                <span [class]="afterClasses()">
-                  @if (after()) {
-                    @if (isTemplateRef(after())) {
-                      <ng-container *ngTemplateOutlet="after()!" />
-                    } @else {
-                      {{ after() }}
-                    }
+                <div [class]="titleWrapClasses()">
+                  @if (title()) {
+                    <span [class]="titleClasses()">{{ title() }}</span>
+                  } @else {
+                    <ng-content select="[title]" />
                   }
-                  <ng-content select="[after],[slot='after']" />
-                </span>
-                @if (showChevron()) {
-                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                  <span [class]="afterClasses()">
+                    @if (after()) {
+                      @if (isTemplateRef(after())) {
+                        <ng-container *ngTemplateOutlet="after()!" />
+                      } @else {
+                        {{ after() }}
+                      }
+                    }
+                    <ng-content select="[after],[slot='after']" />
+                  </span>
+                  @if (showChevron()) {
+                    <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                  }
+                </div>
+                @if (subtitle()) {
+                  <div [class]="subtitleClasses()">{{ subtitle() }}</div>
                 }
-              </div>
-              @if (subtitle()) {
-                <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+                @if (text()) {
+                  <div [class]="textClasses()">{{ text() }}</div>
+                }
+                @if (footer()) {
+                  <div [class]="footerClasses()">{{ footer() }}</div>
+                }
+                <ng-content select="[inner]" />
               }
-              @if (text()) {
-                <div [class]="textClasses()">{{ text() }}</div>
-              }
-              @if (footer()) {
-                <div [class]="footerClasses()">{{ footer() }}</div>
-              }
-              <ng-content select="[inner]" />
             </div>
           </label>
           <ng-content select="[content]" />
@@ -93,39 +97,43 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             </div>
 
             <div [class]="innerClasses()">
-              @if (header()) {
-                <div [class]="headerClasses()">{{ header() }}</div>
-              }
-              <div [class]="titleWrapClasses()">
-                @if (title()) {
-                  <span [class]="titleClasses()">{{ title() }}</span>
-                } @else {
-                  <ng-content select="[title]" />
+              @if (inner()) {
+                <ng-container *ngTemplateOutlet="inner()!" />
+              } @else {
+                @if (header()) {
+                  <div [class]="headerClasses()">{{ header() }}</div>
                 }
-                <span [class]="afterClasses()">
-                  @if (after()) {
-                    @if (isTemplateRef(after())) {
-                      <ng-container *ngTemplateOutlet="after()!" />
-                    } @else {
-                      {{ after() }}
-                    }
+                <div [class]="titleWrapClasses()">
+                  @if (title()) {
+                    <span [class]="titleClasses()">{{ title() }}</span>
+                  } @else {
+                    <ng-content select="[title]" />
                   }
-                  <ng-content select="[after],[slot='after']" />
-                </span>
-                @if (showChevron()) {
-                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                  <span [class]="afterClasses()">
+                    @if (after()) {
+                      @if (isTemplateRef(after())) {
+                        <ng-container *ngTemplateOutlet="after()!" />
+                      } @else {
+                        {{ after() }}
+                      }
+                    }
+                    <ng-content select="[after],[slot='after']" />
+                  </span>
+                  @if (showChevron()) {
+                    <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                  }
+                </div>
+                @if (subtitle()) {
+                  <div [class]="subtitleClasses()">{{ subtitle() }}</div>
                 }
-              </div>
-              @if (subtitle()) {
-                <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+                @if (text()) {
+                  <div [class]="textClasses()">{{ text() }}</div>
+                }
+                @if (footer()) {
+                  <div [class]="footerClasses()">{{ footer() }}</div>
+                }
+                <ng-content select="[inner]" />
               }
-              @if (text()) {
-                <div [class]="textClasses()">{{ text() }}</div>
-              }
-              @if (footer()) {
-                <div [class]="footerClasses()">{{ footer() }}</div>
-              }
-              <ng-content select="[inner]" />
             </div>
           </a>
           <ng-content select="[content]" />
@@ -139,39 +147,43 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             </div>
 
             <div [class]="innerClasses()">
-              @if (header()) {
-                <div [class]="headerClasses()">{{ header() }}</div>
-              }
-              <div [class]="titleWrapClasses()">
-                @if (title()) {
-                  <span [class]="titleClasses()">{{ title() }}</span>
-                } @else {
-                  <ng-content select="[title]" />
+              @if (inner()) {
+                <ng-container *ngTemplateOutlet="inner()!" />
+              } @else {
+                @if (header()) {
+                  <div [class]="headerClasses()">{{ header() }}</div>
                 }
-                <span [class]="afterClasses()">
-                  @if (after()) {
-                    @if (isTemplateRef(after())) {
-                      <ng-container *ngTemplateOutlet="after()!" />
-                    } @else {
-                      {{ after() }}
-                    }
+                <div [class]="titleWrapClasses()">
+                  @if (title()) {
+                    <span [class]="titleClasses()">{{ title() }}</span>
+                  } @else {
+                    <ng-content select="[title]" />
                   }
-                  <ng-content select="[after],[slot='after']" />
-                </span>
-                @if (showChevron()) {
-                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                  <span [class]="afterClasses()">
+                    @if (after()) {
+                      @if (isTemplateRef(after())) {
+                        <ng-container *ngTemplateOutlet="after()!" />
+                      } @else {
+                        {{ after() }}
+                      }
+                    }
+                    <ng-content select="[after],[slot='after']" />
+                  </span>
+                  @if (showChevron()) {
+                    <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                  }
+                </div>
+                @if (subtitle()) {
+                  <div [class]="subtitleClasses()">{{ subtitle() }}</div>
                 }
-              </div>
-              @if (subtitle()) {
-                <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+                @if (text()) {
+                  <div [class]="textClasses()">{{ text() }}</div>
+                }
+                @if (footer()) {
+                  <div [class]="footerClasses()">{{ footer() }}</div>
+                }
+                <ng-content select="[inner]" />
               }
-              @if (text()) {
-                <div [class]="textClasses()">{{ text() }}</div>
-              }
-              @if (footer()) {
-                <div [class]="footerClasses()">{{ footer() }}</div>
-              }
-              <ng-content select="[inner]" />
             </div>
           </div>
           <ng-content select="[content]" />
@@ -219,6 +231,7 @@ export class KListItemComponent {
   readonly text = input<string | undefined>(undefined);
   readonly after = input<string | TemplateRef<any> | undefined>(undefined);
   readonly media = input<TemplateRef<any> | undefined>(undefined);
+  readonly inner = input<TemplateRef<any> | undefined>(undefined);
   readonly header = input<string | undefined>(undefined);
   readonly footer = input<string | undefined>(undefined);
   readonly label = input<boolean>(false);

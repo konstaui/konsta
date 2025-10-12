@@ -32,10 +32,11 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
     <k-list-item
       [class]="baseClass()"
       [dividers]="dividers()"
-      [label]="true"
       [media]="mediaTemplate()"
+      [inner]="innerTemplate()"
     >
-      <div inner class="{{ innerClass() }}">
+      <ng-template #innerTemplateRef>
+        <div class="{{ innerClass() }}">
         @if (label(); as labelText) {
           <div class="{{ labelClass() }}">
             <div class="{{ labelTextClass() }}">{{ labelText }}</div>
@@ -184,11 +185,12 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
             {{ info() }}
           </div>
         }
-      </div>
+        </div>
 
-      @if (showBorder()) {
-        <span content class="{{ borderClass() }}"></span>
-      }
+        @if (showBorder()) {
+          <span content class="{{ borderClass() }}"></span>
+        }
+      </ng-template>
 
       @if (type() !== 'select') {
         <ng-content></ng-content>
@@ -206,6 +208,7 @@ export class KListInputComponent {
     viewChild<ElementRef<ListInputElement>>('inputEl');
 
   private readonly mediaTemplate = viewChild<TemplateRef<any>>('mediaTemplateRef');
+  private readonly innerTemplate = viewChild<TemplateRef<any>>('innerTemplateRef');
 
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',

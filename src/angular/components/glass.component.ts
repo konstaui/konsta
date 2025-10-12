@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,18 +18,18 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
 
 @Component({
   selector: 'k-glass',
-  
-  imports: [CommonModule],
+
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
     @switch (component()) {
       @case ('span') {
         <span #root class="{{ classes() }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="content"></ng-container>
         </span>
       }
       @case ('section') {
         <section #root class="{{ classes() }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="content"></ng-container>
         </section>
       }
       @case ('button') {
@@ -38,15 +38,19 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
           class="{{ classes() }}"
           [attr.type]="buttonType() ?? 'button'"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="content"></ng-container>
         </button>
       }
       @default {
         <div #root class="{{ classes() }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="content"></ng-container>
         </div>
       }
     }
+
+    <ng-template #content>
+      <ng-content />
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  OnInit,
   Signal,
   computed,
   inject,
@@ -17,21 +15,31 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { TOOLBAR_CONTEXT } from '../shared/toolbar-context.js';
-import { useIosHighlight } from '../shared/ios-highlight.js';
+import { KGlassComponent } from './glass.component.js';
 
 @Component({
   selector: 'k-toolbar-pane',
-  
-  imports: [CommonModule],
+
+  imports: [CommonModule, KGlassComponent],
   template: `
-    <ng-content />
+    @if (theme() === 'material') {
+      <ng-content />
+    } @else {
+      <k-glass [component]="component()" [class]="classes()['base']">
+        <ng-content />
+      </k-glass>
+    }
   `,
-  host: {
-    '[class]': 'hostClasses()',
-  },
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class KToolbarPaneComponent implements OnInit {
+export class KToolbarPaneComponent {
   readonly component = input<'div' | 'nav'>('div');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -40,7 +48,6 @@ export class KToolbarPaneComponent implements OnInit {
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
 
-  private readonly elementRef = inject(ElementRef);
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
     material: this.material() === true,
@@ -69,31 +76,4 @@ export class KToolbarPaneComponent implements OnInit {
       this.className()
     ) as Record<string, any>
   );
-
-  readonly hostClasses: Signal<string> = computed(() => {
-    const theme = this.theme();
-    if (theme === 'material') {
-      return '';
-    }
-    // For iOS, apply glass classes
-    return this.classes()['base'] || '';
-  });
-
-  readonly themeSignal = this.theme;
-
-  constructor() {
-    useIosHighlight({
-      element: () => this.elementRef.nativeElement,
-      enabled: () => this.theme() === 'ios',
-    });
-  }
-
-  ngOnInit(): void {
-    // Apply component type if needed
-    const comp = this.component();
-    if (comp && comp !== 'div') {
-      // Angular components are divs by default, we'd need to handle this differently
-      console.warn('ToolbarPane: component input is not fully supported in Angular');
-    }
-  }
 }

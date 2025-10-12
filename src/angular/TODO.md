@@ -30,10 +30,10 @@
 - [x] BreadcrumbsSeparator
 - [x] Button
 - [x] Card
-- [🚧] Checkbox
+- [x] Checkbox
 - [x] Chip
 - [x] Dialog
-- [🚧] DialogButton
+- [x] DialogButton
 - [x] Fab
 - [🚧] Glass
 - [x] Icon
@@ -49,8 +49,8 @@
 - [🚧] Messagebar
 - [🚧] Messages
 - [🚧] MessagesTitle
-- [x] Navbar
-- [x] NavbarBackLink
+- [🚧] Navbar
+- [🚧] NavbarBackLink
 - [🚧] NavbarContext
 - [🚧] Notification
 - [x] Page
