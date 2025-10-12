@@ -33,11 +33,9 @@ type NotificationTag = 'div' | 'span';
         [ios]="ios()"
         [material]="material()"
       >
-        @if (hasIcon()) {
-          <div class="{{ iconClass() }}">
-            <ng-content select="[icon]" />
-          </div>
-        }
+        <div class="{{ iconClass() }}">
+          <ng-content select="[icon]" />
+        </div>
         <div class="{{ contentClass() }}">
           <div class="{{ headerClass() }}">
             @if (hasTitle()) {
@@ -165,18 +163,12 @@ export class KNotificationComponent {
 
   readonly close = output<Event>();
 
-  private readonly iconSlot =
-    contentChild<ElementRef<HTMLElement>>('[icon]');
-  private readonly buttonSlot =
-    contentChild<ElementRef<HTMLElement>>('[button]');
-  private readonly titleSlot =
-    contentChild<ElementRef<HTMLElement>>('[title]');
-  private readonly titleRightSlot =
-    contentChild<ElementRef<HTMLElement>>('[titleRightText]');
-  private readonly subtitleSlot =
-    contentChild<ElementRef<HTMLElement>>('[subtitle]');
-  private readonly textSlot =
-    contentChild<ElementRef<HTMLElement>>('[text]');
+  private readonly iconSlot = contentChild('[icon]');
+  private readonly buttonSlot = contentChild('[button]');
+  private readonly titleSlot = contentChild('[title]');
+  private readonly titleRightSlot = contentChild('[titleRightText]');
+  private readonly subtitleSlot = contentChild('[subtitle]');
+  private readonly textSlot = contentChild('[text]');
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -253,36 +245,30 @@ export class KNotificationComponent {
     return 'div';
   });
 
-  readonly hasIcon = computed(
-    () => !!this.iconSlot()?.nativeElement
-  );
+  readonly hasIcon = computed(() => !!this.iconSlot());
   readonly showButton = computed(
-    () =>
-      this.button() === true || !!this.buttonSlot()?.nativeElement
+    () => this.button() === true || !!this.buttonSlot()
   );
   readonly hasTitle = computed(
     () =>
-      this.title() !== undefined &&
-      this.title() !== null ||
-      !!this.titleSlot()?.nativeElement
+      (this.title() !== undefined && this.title() !== null) ||
+      !!this.titleSlot()
   );
   readonly hasTitleRightText = computed(
     () =>
-      this.titleRightText() !== undefined &&
-      this.titleRightText() !== null ||
-      !!this.titleRightSlot()?.nativeElement
+      (this.titleRightText() !== undefined &&
+        this.titleRightText() !== null) ||
+      !!this.titleRightSlot()
   );
   readonly hasSubtitle = computed(
     () =>
-      this.subtitle() !== undefined &&
-      this.subtitle() !== null ||
-      !!this.subtitleSlot()?.nativeElement
+      (this.subtitle() !== undefined && this.subtitle() !== null) ||
+      !!this.subtitleSlot()
   );
   readonly hasText = computed(
     () =>
-      this.text() !== undefined &&
-      this.text() !== null ||
-      !!this.textSlot()?.nativeElement
+      (this.text() !== undefined && this.text() !== null) ||
+      !!this.textSlot()
   );
 
   handleClose(event: Event) {

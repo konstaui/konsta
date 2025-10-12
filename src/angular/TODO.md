@@ -52,7 +52,7 @@
 - [x] Navbar
 - [x] NavbarBackLink
 - [x] NavbarContext
-- [🚧] Notification
+- [x] Notification
 - [x] Page
 - [🚧] Panel
 - [x] Popover

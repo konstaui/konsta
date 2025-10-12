@@ -112,29 +112,23 @@ interface NotificationState {
           Konsta UI comes with simple Notifications component that allows you to
           show some useful messages to user and request basic actions.
         </p>
-        <p>
+        <div class="grid gap-4 sm:grid-cols-2">
           <k-button [rounded]="true" (clicked)="open('notificationFull')">
             Full layout notification
           </k-button>
-        </p>
-        <p>
           <k-button [rounded]="true" (clicked)="open('notificationWithButton')">
             With Close Button
           </k-button>
-        </p>
-        <p>
           <k-button [rounded]="true" (clicked)="open('notificationCloseOnClick')">
             Click to Close
           </k-button>
-        </p>
-        <p>
           <k-button
             [rounded]="true"
             (clicked)="open('notificationCallbackOnClose')"
           >
             Callback on Close
           </k-button>
-        </p>
+        </div>
       </k-block>
     </k-page>
   `,

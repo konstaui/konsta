@@ -3,7 +3,11 @@ import { useThemeSignal } from '../../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-delete-icon',
-  
+  styles: [`
+    :host {
+      display: contents;
+    }
+  `],
   template: `
     @if (theme() === 'ios') {
       <svg
