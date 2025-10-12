@@ -38,7 +38,7 @@ import { cls } from '../../shared/cls.js';
       [tabbar]="true"
       [tabbarActive]="active()"
       [tabbarLabels]="hasLabel()"
-      [tabbarIcons]="true"
+      [tabbarIcons]="hasIcon()"
       [ios]="ios()"
       [material]="material()"
       (clicked)="clicked.emit($event)"
