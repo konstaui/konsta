@@ -22,7 +22,9 @@ type ActionsButtonTag = 'button' | 'a' | string;
 
 @Component({
   selector: 'k-actions-button',
-  
+  host: {
+    '[style.display]': '"contents"',
+  },
   imports: [CommonModule, NgTemplateOutlet],
   template: `
     <ng-template #buttonContent>

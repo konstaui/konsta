@@ -22,7 +22,7 @@ import { KGlassComponent } from './glass.component.js';
   template: `
     <k-glass
       [component]="component()"
-      [class]="classes()"
+      [class]="glassClasses()"
       [ios]="ios()"
       [material]="material()"
     >
@@ -61,7 +61,7 @@ export class KActionsGroupComponent {
     return this.theme() === 'ios';
   });
 
-  readonly classes: Signal<string> = computed(() => {
+  readonly glassClasses: Signal<string> = computed(() => {
     const c = this.themeClasses(
       ActionsGroupClasses(
         {

@@ -54,7 +54,7 @@
 - [x] NavbarContext
 - [x] Notification
 - [x] Page
-- [🚧] Panel
+- [x] Panel
 - [x] Popover
 - [x] Popup
 - [x] Preloader

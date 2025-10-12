@@ -16,7 +16,9 @@ import {
 
 @Component({
   selector: 'k-actions-label',
-  
+  host: {
+    '[style.display]': '"contents"',
+  },
   imports: [CommonModule],
   template: `
     @switch (tag()) {
