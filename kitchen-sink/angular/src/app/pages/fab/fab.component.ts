@@ -65,34 +65,9 @@ import { ThemeService } from '../../shared/theme.service';
 
       <ng-template #plusIconTpl>
         @if (isIos()) {
-          <svg
-            class="w-6 h-6"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 5V19"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-            <path
-              d="M5 12H19"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
+          <i class="f7-icons" style="font-size: 24px;">plus</i>
         } @else {
-          <svg
-            class="w-6 h-6"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z" />
-          </svg>
+          <i class="material-icons" style="font-size: 24px;">add</i>
         }
       </ng-template>
 

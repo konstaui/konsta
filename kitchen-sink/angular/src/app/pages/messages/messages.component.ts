@@ -86,27 +86,8 @@ interface MessageItem {
         <k-toolbar-pane left class="ios:h-10" left>
           <k-link [iconOnly]="true">
             <k-icon>
-              <span ios>
-                <svg
-                  class="w-5 h-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M4 6a2 2 0 0 1 2-2h2.4l1-1.5A1 1 0 0 1 10.3 2h3.4a1 1 0 0 1 .9.5l1 1.5H18a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm8 3.5A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm0 1.5a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z" />
-                </svg>
-              </span>
-              <span material>
-                <svg
-                  class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 5c-3.86 0-7 3.14-7 7s3.14 7 7 7a6.99 6.99 0 0 0 5.65-2.9l2.02 2.02 1.41-1.42-2-2.01A6.99 6.99 0 0 0 19 12c0-3.86-3.14-7-7-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm-.5-8H11v3l2.62 1.58.38-.62-2-1.21V9z"
-                  />
-                </svg>
-              </span>
+              <i ios class="f7-icons" style="font-size: 20px;">camera_fill</i>
+              <i material class="material-icons text-black dark:text-md-dark-on-surface" style="font-size: 24px;">photo_camera</i>
             </k-icon>
           </k-link>
         </k-toolbar-pane>
@@ -117,31 +98,8 @@ interface MessageItem {
             (clicked)="onSendClick()"
           >
             <k-icon>
-              <span ios>
-                <svg
-                  class="w-7 h-7 transition-colors"
-                  [class.text-primary]="isClickable()"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm3.54 11.91-6.2 2.67a1 1 0 0 1-1.34-1.18l1.5-5.5a1 1 0 0 1 1.68-.45l.54.53 1.8-1.8a.5.5 0 0 1 .85.35v5.5a.5.5 0 0 1-.73.45l-2.13-1.06-.78.78 4.51-1.94-1.8 3.21a1 1 0 0 1-1.46.38Z"
-                  />
-                </svg>
-              </span>
-              <span material>
-                <svg
-                  class="w-6 h-6 fill-black dark:fill-md-dark-on-surface"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"
-                    [attr.opacity]="isClickable() ? 1 : 0.4"
-                  />
-                </svg>
-              </span>
+              <i ios class="f7-icons transition-colors" [class.text-primary]="isClickable()" style="font-size: 28px;">arrow_up_circle_fill</i>
+              <i material class="material-icons text-black dark:text-md-dark-on-surface" [style.opacity]="isClickable() ? 1 : 0.4" style="font-size: 24px;">send</i>
             </k-icon>
           </k-link>
         </k-toolbar-pane>

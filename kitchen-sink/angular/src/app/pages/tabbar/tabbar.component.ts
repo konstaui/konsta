@@ -60,7 +60,7 @@ interface TabDescriptor {
         [labels]="showLabels()"
         [icons]="showIcons()"
       >
-        <k-toolbar-pane>
+        <k-toolbar-pane [tabbar]="true">
           <k-tabbar-link
             [active]="activeTab() === 'tab-1'"
             [label]="showLabels() ? 'Tab 1' : ''"
