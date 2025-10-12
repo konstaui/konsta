@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Signal,
+  TemplateRef,
   computed,
   contentChild,
   input,
@@ -34,7 +35,11 @@ import {
     @if (hasHeader()) {
       <div class="{{ headerClasses() }}">
         @if (header()) {
-          {{ header() }}
+          @if (isTemplateRef(header())) {
+            <ng-container *ngTemplateOutlet="header()!" />
+          } @else {
+            {{ header() }}
+          }
         } @else {
           <ng-content select="[header]" />
         }
@@ -48,7 +53,11 @@ import {
     @if (hasFooter()) {
       <div class="{{ footerClasses() }}">
         @if (footer()) {
-          {{ footer() }}
+          @if (isTemplateRef(footer())) {
+            <ng-container *ngTemplateOutlet="footer()!" />
+          } @else {
+            {{ footer() }}
+          }
         } @else {
           <ng-content select="[footer]" />
         }
@@ -65,8 +74,8 @@ export class KCardComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly header = input<string | number | undefined>(undefined);
-  readonly footer = input<string | number | undefined>(undefined);
+  readonly header = input<string | number | TemplateRef<any> | undefined>(undefined);
+  readonly footer = input<string | number | TemplateRef<any> | undefined>(undefined);
   readonly contentWrap = input<boolean>(true);
   readonly contentWrapPadding = input<string>('p-4');
   readonly raised = input<boolean | undefined>(undefined);
@@ -164,4 +173,8 @@ export class KCardComponent {
   readonly hasFooter = computed(
     () => !!this.footer() || !!this.footerContent()
   );
+
+  isTemplateRef(value: any): value is TemplateRef<any> {
+    return value instanceof TemplateRef;
+  }
 }

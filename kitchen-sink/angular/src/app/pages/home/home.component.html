@@ -27,26 +27,24 @@
   </ng-template>
 
   <k-list [strong]="true" [inset]="true">
-    <k-list-item [label]="true" [title]="'Dark Mode'">
-      <div slot="after">
-        <k-toggle [component]="'div'" [checked]="dark()" (changed)="toggleDark()"></k-toggle>
-      </div>
-    </k-list-item>
+    <k-list-item [label]="true" [title]="'Dark Mode'" [after]="darkModeToggle"></k-list-item>
     <k-list-item
+      [link]="true"
       [title]="'Color Theme'"
+      [after]="colorThemeIndicator"
       (click)="openColorPicker()"
-      class="cursor-pointer"
-    >
-      <div
-        after
-        class="w-6 h-6 rounded-full home-color-picker"
-        [class.bg-brand-primary]="!color()"
-        [class.bg-brand-red]="color() === 'k-color-brand-red'"
-        [class.bg-brand-green]="color() === 'k-color-brand-green'"
-        [class.bg-brand-yellow]="color() === 'k-color-brand-yellow'"
-        [class.bg-brand-purple]="color() === 'k-color-brand-purple'"
-      ></div>
-    </k-list-item>
+    ></k-list-item>
+  </k-list>
+
+  <ng-template #darkModeToggle>
+    <k-toggle [component]="'div'" [checked]="dark()" (changed)="toggleDark()"></k-toggle>
+  </ng-template>
+
+  <ng-template #colorThemeIndicator>
+    <div class="w-6 h-6 rounded-full bg-primary home-color-picker"></div>
+  </ng-template>
+
+  <k-list [strong]="true" [inset]="true">
     @if (theme() === 'material') {
       <k-list-item [label]="true" [title]="'Vibrant Colors'">
         <div slot="after">
@@ -73,21 +71,27 @@
     [opened]="colorPickerOpened()"
     target=".home-color-picker"
     (backdropClick)="closeColorPicker()"
+    class="w-auto"
   >
-    <div class="grid grid-cols-3 gap-2 py-2">
-      <k-link component="button" class="color-swatch" (clicked)="clearColor()">
+    <div class="grid grid-cols-3 py-2 ios:px-2">
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="clearColor()">
+        <span class="bg-brand-primary w-6 h-6 rounded-full"></span>
         <span class="sr-only">Default</span>
       </k-link>
-      <k-link component="button" class="color-swatch bg-brand-red" (clicked)="setColor('k-color-brand-red')">
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-red')">
+        <span class="bg-brand-red w-6 h-6 rounded-full"></span>
         <span class="sr-only">Red</span>
       </k-link>
-      <k-link component="button" class="color-swatch bg-brand-green" (clicked)="setColor('k-color-brand-green')">
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-green')">
+        <span class="bg-brand-green w-6 h-6 rounded-full"></span>
         <span class="sr-only">Green</span>
       </k-link>
-      <k-link component="button" class="color-swatch bg-brand-yellow" (clicked)="setColor('k-color-brand-yellow')">
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-yellow')">
+        <span class="bg-brand-yellow w-6 h-6 rounded-full"></span>
         <span class="sr-only">Yellow</span>
       </k-link>
-      <k-link component="button" class="color-swatch bg-brand-purple" (clicked)="setColor('k-color-brand-purple')">
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-purple')">
+        <span class="bg-brand-purple w-6 h-6 rounded-full"></span>
         <span class="sr-only">Purple</span>
       </k-link>
     </div>
