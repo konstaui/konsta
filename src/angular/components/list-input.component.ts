@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Signal,
+  TemplateRef,
   computed,
   effect,
   input,
@@ -32,9 +33,8 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
       [class]="baseClass()"
       [dividers]="dividers()"
       [label]="true"
+      [media]="mediaTemplate()"
     >
-      <ng-content select="[media]"></ng-content>
-
       <div inner class="{{ innerClass() }}">
         @if (label(); as labelText) {
           <div class="{{ labelClass() }}">
@@ -194,12 +194,18 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
         <ng-content></ng-content>
       }
     </k-list-item>
+
+    <ng-template #mediaTemplateRef>
+      <ng-content select="[media]"></ng-content>
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KListInputComponent {
   private readonly inputEl =
     viewChild<ElementRef<ListInputElement>>('inputEl');
+
+  private readonly mediaTemplate = viewChild<TemplateRef<any>>('mediaTemplateRef');
 
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',

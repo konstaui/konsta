@@ -81,8 +81,8 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
               }
               <ng-content select="[inner]" />
             </div>
-            <ng-content select="[content]" />
           </label>
+          <ng-content select="[content]" />
         } @else if (itemTag() === 'a') {
           <a #itemContent [class]="itemContentClasses()" [href]="linkHref()" [routerLink]="routerLink()" [target]="target()">
             <div #mediaContainer [class]="mediaClasses()">
@@ -127,8 +127,8 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
               }
               <ng-content select="[inner]" />
             </div>
-            <ng-content select="[content]" />
           </a>
+          <ng-content select="[content]" />
         } @else {
           <div #itemContent [class]="itemContentClasses()">
             <div #mediaContainer [class]="mediaClasses()">
@@ -173,8 +173,8 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
               }
               <ng-content select="[inner]" />
             </div>
-            <ng-content select="[content]" />
           </div>
+          <ng-content select="[content]" />
         }
       </li>
     }

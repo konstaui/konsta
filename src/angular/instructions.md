@@ -39,6 +39,8 @@ DO not try to buils or run server yourself all is realy running and auto reloadi
 angular server run in http://localhost:5173/
 react server run in http://localhost:5174/
 
+page url use non hash based routing like http://localhost:5173/checkbox
+
 Do screenshot and dom inspect to compare structure and styles.
 We fix only angular code never shared one, we mostly dont use custom style unless react has it already.
 
