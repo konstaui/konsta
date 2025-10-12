@@ -14,8 +14,15 @@ type DialogButtonTag = 'button' | 'a';
 
 @Component({
   selector: 'k-dialog-button',
-  
+
   imports: [CommonModule, KButtonComponent],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   template: `
     <k-button
       [component]="componentTag()"
