@@ -65,14 +65,14 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
             </k-link>
           </k-toolbar-pane>
         </k-toolbar>
-        <k-block>
+        <k-block class="ios:mt-4">
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ad
             excepturi nesciunt nobis aliquam. Quibusdam ducimus neque
             necessitatibus, molestias cupiditate velit nihil alias incidunt,
             excepturi voluptatem dolore itaque sapiente dolores!
           </p>
-          <div class="mt-4">
+          <div class="mt-8">
             <k-button [large]="true" [rounded]="true" (clicked)="sheetOpened.set(false)">
               Action
             </k-button>

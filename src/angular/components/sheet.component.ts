@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,25 +20,28 @@ type SheetState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-sheet',
-  
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
     @if (backdrop()) {
       <div
         class="{{ backdropClasses()[state()] }}"
-        (click)="onBackdropClick()"
+        (click)="handleBackdropClick($event)"
       ></div>
     }
+
+    <ng-template #content>
+      <ng-content />
+    </ng-template>
 
     @switch (componentTag()) {
       @case ('span') {
         <span class="{{ baseClasses()[state()] }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="content" />
         </span>
       }
       @default {
         <div class="{{ baseClasses()[state()] }}">
-          <ng-content />
+          <ng-container *ngTemplateOutlet="content" />
         </div>
       }
     }
@@ -103,7 +106,7 @@ export class KSheetComponent {
     return 'div';
   });
 
-  onBackdropClick() {
-    this.backdropClick.emit(new Event('backdropClick'));
+  handleBackdropClick(event: Event) {
+    this.backdropClick.emit(event);
   }
 }

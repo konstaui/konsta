@@ -44,3 +44,4 @@ We fix only angular code never shared one, we mostly dont use custom style unles
 
 uses the correct pattern with <ng-template> and *ngTemplateOutlet to properly handle content projection in switch statements.
 run always playwright headless to not disrupt user workflow
+Ensure angular emulated as much as possible react structure and styles. with the components strucuture Angular need to make the custom elements be empty to render div as react/svelte/vue do.
