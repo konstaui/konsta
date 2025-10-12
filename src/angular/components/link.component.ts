@@ -38,6 +38,10 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
     `,
   ],
   template: `
+    <ng-template #contentTemplate>
+      <ng-content />
+    </ng-template>
+
     @if (component() === 'a') {
       <a
         #root
@@ -46,7 +50,7 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
         [attr.target]="target() ?? null"
         (click)="handleClick($event)"
       >
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTemplate" />
       </a>
     }
     @if (component() === 'button') {
@@ -56,7 +60,7 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
         class="{{ classes() }}"
         (click)="handleClick($event)"
       >
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTemplate" />
       </button>
     }
   `,

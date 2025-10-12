@@ -47,7 +47,7 @@ import {
     }
 
     <div [class]="contentWrap() ? contentClasses() : ''">
-      <ng-content />
+      <ng-content select=":not([header]):not([footer])" />
     </div>
 
     @if (hasFooter()) {
@@ -89,8 +89,12 @@ export class KCardComponent {
   readonly headerFontSizeIos = input<string>('text-[17px]');
   readonly headerFontSizeMaterial = input<string>('text-[22px]');
 
-  private readonly headerContent = contentChild('[header]');
-  private readonly footerContent = contentChild('[footer]');
+  private readonly headerContent = contentChild<ElementRef<HTMLElement>>('[header]', {
+    descendants: true,
+  });
+  private readonly footerContent = contentChild<ElementRef<HTMLElement>>('[footer]', {
+    descendants: true,
+  });
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,

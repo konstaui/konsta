@@ -152,10 +152,34 @@ export class KPopoverComponent {
   private resolveTarget(): HTMLElement | null {
     const target = this.target();
     if (!target) return null;
+
+    let element: HTMLElement | null = null;
+
     if (typeof target === 'string') {
-      return document.querySelector(target);
+      element = document.querySelector(target);
+    } else {
+      element = target;
     }
-    return target;
+
+    if (!element) return null;
+
+    // If the element has no dimensions (display: contents), try to find the actual rendered element
+    if (element.offsetWidth === 0 && element.offsetHeight === 0) {
+      // Try to find the first child with dimensions
+      const children = element.querySelectorAll('*');
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i] as HTMLElement;
+        if (child.offsetWidth > 0) {
+          return child;
+        }
+      }
+      // If no child found, try first child
+      if (element.children.length > 0) {
+        return element.children[0] as HTMLElement;
+      }
+    }
+
+    return element;
   }
 
   onBackdropClick() {
@@ -182,6 +206,7 @@ export class KPopoverComponent {
       needsAngle: false,
       theme: this.theme(),
     });
+
     this.styleSig.set({ top: popoverTop, left: popoverLeft });
     this.positionSig.set(popoverPosition);
   }

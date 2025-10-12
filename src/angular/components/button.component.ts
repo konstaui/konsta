@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -25,31 +26,38 @@ type ButtonComponentTag = 'button' | 'a';
 
 @Component({
   selector: 'k-button',
-  
+  imports: [NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    @if (componentTag() === 'a') {
-      <a
-        #el
-        [class]="classes()"
-        [attr.href]="disabled() ? null : href() ?? ''"
-        [attr.role]="'button'"
-        [attr.tabindex]="disabled() ? -1 : tabindex()"
-        [attr.aria-disabled]="disabled()"
-        (click)="onClick($event)"
-      >
-        <ng-content />
-      </a>
-    } @else {
-      <button
-        #el
-        [class]="classes()"
-        [disabled]="disabled()"
-        [attr.type]="type()"
-        (click)="onClick($event)"
-      >
-        <ng-content />
-      </button>
+    <ng-template #contentTemplate>
+      <ng-content />
+    </ng-template>
+
+    @switch (componentTag()) {
+      @case ('a') {
+        <a
+          #el
+          [class]="classes()"
+          [attr.href]="disabled() ? null : href() ?? ''"
+          [attr.role]="'button'"
+          [attr.tabindex]="disabled() ? -1 : tabindex()"
+          [attr.aria-disabled]="disabled()"
+          (click)="onClick($event)"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate" />
+        </a>
+      }
+      @default {
+        <button
+          #el
+          [class]="classes()"
+          [disabled]="disabled()"
+          [attr.type]="type()"
+          (click)="onClick($event)"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate" />
+        </button>
+      }
     }
   `,
   host: {

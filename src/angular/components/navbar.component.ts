@@ -24,14 +24,24 @@ import {
 
 @Component({
   selector: 'k-navbar',
-  
+
   imports: [CommonModule],
   template: `
+    <ng-template #leftTemplate>
+      <ng-content select="[left]" />
+    </ng-template>
+    <ng-template #rightTemplate>
+      <ng-content select="[right]" />
+    </ng-template>
+    <ng-template #subnavbarTemplate>
+      <ng-content select="[subnavbar]" />
+    </ng-template>
+
     <nav #navEl class="{{ baseClasses() }}">
       <div #bgEl class="{{ bgClasses() }}"></div>
       <div #innerEl class="{{ innerClasses() }}">
         <div class="{{ leftClasses() }}">
-          <ng-content select="[left]" />
+          <ng-container *ngTemplateOutlet="leftTemplate" />
         </div>
         @if (title() || subtitle()) {
           <div #titleEl class="{{ titleClasses() }}">
@@ -46,7 +56,7 @@ import {
           </div>
         }
         <div class="{{ rightClasses() }}">
-          <ng-content select="[right]" />
+          <ng-container *ngTemplateOutlet="rightTemplate" />
         </div>
         <ng-content />
       </div>
@@ -60,7 +70,7 @@ import {
       }
       @if (subnavbar()) {
         <div #subnavbarEl class="{{ subnavbarClasses() }}">
-          <ng-content select="[subnavbar]" />
+          <ng-container *ngTemplateOutlet="subnavbarTemplate" />
         </div>
       }
     </nav>
