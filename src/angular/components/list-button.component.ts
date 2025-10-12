@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -28,7 +28,7 @@ type ListButtonLinkTag = 'a' | 'button';
 @Component({
   selector: 'k-list-button',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
     <ng-template #buttonTpl>
       @if (isLink()) {

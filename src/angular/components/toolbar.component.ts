@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -28,7 +28,7 @@ import {
 @Component({
   selector: 'k-toolbar',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
     @switch (component()) {
       @case ('nav') {

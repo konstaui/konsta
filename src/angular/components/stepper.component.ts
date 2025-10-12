@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,89 +29,57 @@ type StepperShape = 'rounded' | 'square';
 @Component({
   selector: 'k-stepper',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
+    <ng-template #stepperContent>
+      <span
+        #minusButton
+        class="{{ buttonLeftClass() }}"
+        role="button"
+        tabindex="0"
+        (click)="handleMinus($event)"
+      >
+        <span class="{{ hBarClass() }}"></span>
+      </span>
+      @if (showInput()) {
+        <input
+          class="{{ valueClass() }}"
+          [attr.type]="inputType()"
+          [attr.placeholder]="inputPlaceholder() ?? null"
+          [value]="value() ?? defaultValue() ?? 0"
+          [disabled]="inputDisabled()"
+          [readOnly]="inputReadOnly()"
+          (input)="inputEvent.emit($event)"
+          (change)="changeEvent.emit($event)"
+          (focus)="focusEvent.emit($event)"
+          (blur)="blurEvent.emit($event)"
+        />
+      } @else if (!buttonsOnly()) {
+        <span class="{{ valueClass() }}">
+          {{ value() ?? defaultValue() ?? 0 }}
+        </span>
+      }
+      <span
+        #plusButton
+        class="{{ buttonRightClass() }}"
+        role="button"
+        tabindex="0"
+        (click)="handlePlus($event)"
+      >
+        <span class="{{ hBarClass() }}"></span>
+        <span class="{{ vBarClass() }}"></span>
+      </span>
+    </ng-template>
+
     @switch (componentTag()) {
       @case ('span') {
         <span class="{{ baseClass() }}">
-          <span
-            #minusButton
-            class="{{ buttonLeftClass() }}"
-            role="button"
-            tabindex="0"
-            (click)="handleMinus($event)"
-          >
-            <span class="{{ hBarClass() }}"></span>
-          </span>
-          @if (showInput()) {
-            <input
-              class="{{ valueClass() }}"
-              [attr.type]="inputType()"
-              [attr.placeholder]="inputPlaceholder() ?? null"
-              [value]="value() ?? defaultValue() ?? 0"
-              [disabled]="inputDisabled()"
-              [readOnly]="inputReadOnly()"
-              (input)="inputEvent.emit($event)"
-              (change)="changeEvent.emit($event)"
-              (focus)="focusEvent.emit($event)"
-              (blur)="blurEvent.emit($event)"
-            />
-          } @else if (!buttonsOnly()) {
-            <span class="{{ valueClass() }}">
-              {{ value() ?? defaultValue() ?? 0 }}
-            </span>
-          }
-          <span
-            #plusButton
-            class="{{ buttonRightClass() }}"
-            role="button"
-            tabindex="0"
-            (click)="handlePlus($event)"
-          >
-            <span class="{{ hBarClass() }}"></span>
-            <span class="{{ vBarClass() }}"></span>
-          </span>
+          <ng-container *ngTemplateOutlet="stepperContent"></ng-container>
         </span>
       }
       @default {
         <div class="{{ baseClass() }}">
-          <span
-            #minusButton
-            class="{{ buttonLeftClass() }}"
-            role="button"
-            tabindex="0"
-            (click)="handleMinus($event)"
-          >
-            <span class="{{ hBarClass() }}"></span>
-          </span>
-          @if (showInput()) {
-            <input
-              class="{{ valueClass() }}"
-              [attr.type]="inputType()"
-              [attr.placeholder]="inputPlaceholder() ?? null"
-              [value]="value() ?? defaultValue() ?? 0"
-              [disabled]="inputDisabled()"
-              [readOnly]="inputReadOnly()"
-              (input)="inputEvent.emit($event)"
-              (change)="changeEvent.emit($event)"
-              (focus)="focusEvent.emit($event)"
-              (blur)="blurEvent.emit($event)"
-            />
-          } @else if (!buttonsOnly()) {
-            <span class="{{ valueClass() }}">
-              {{ value() ?? defaultValue() ?? 0 }}
-            </span>
-          }
-          <span
-            #plusButton
-            class="{{ buttonRightClass() }}"
-            role="button"
-            tabindex="0"
-            (click)="handlePlus($event)"
-          >
-            <span class="{{ hBarClass() }}"></span>
-            <span class="{{ vBarClass() }}"></span>
-          </span>
+          <ng-container *ngTemplateOutlet="stepperContent"></ng-container>
         </div>
       }
     }

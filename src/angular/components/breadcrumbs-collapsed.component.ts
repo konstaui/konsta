@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,8 +17,15 @@ import {
 @Component({
   selector: 'k-breadcrumbs-collapsed',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
+    <ng-template #collapsedContent>
+      <span class="{{ dotClasses() }}"></span>
+      <span class="{{ dotClasses() }}"></span>
+      <span class="{{ dotClasses() }}"></span>
+      <ng-content />
+    </ng-template>
+
     @switch (tag()) {
       @case ('button') {
         <button
@@ -28,10 +35,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="collapsedContent"></ng-container>
         </button>
       }
       @case ('a') {
@@ -41,10 +45,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="collapsedContent"></ng-container>
         </a>
       }
       @case ('span') {
@@ -54,10 +55,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="collapsedContent"></ng-container>
         </span>
       }
       @case ('li') {
@@ -67,10 +65,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="collapsedContent"></ng-container>
         </li>
       }
       @default {
@@ -80,10 +75,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <span class="{{ dotClasses() }}"></span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="collapsedContent"></ng-container>
         </div>
       }
     }

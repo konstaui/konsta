@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +24,7 @@ type NotificationTag = 'div' | 'span';
 @Component({
   selector: 'k-notification',
   
-  imports: [CommonModule, KGlassComponent, KDeleteIconComponent],
+  imports: [CommonModule, NgTemplateOutlet, KGlassComponent, KDeleteIconComponent],
   template: `
     @if (isIos()) {
       <k-glass
@@ -80,111 +80,67 @@ type NotificationTag = 'div' | 'span';
         </div>
       </k-glass>
     } @else {
-      @switch (componentTag()) {
-        @case ('span') {
-          <span class="{{ baseClass() }}">
-            <div class="{{ headerClass() }}">
-              @if (hasIcon()) {
-                <div class="{{ iconClass() }}">
-                  <ng-content select="[icon]" />
+      <ng-template #notificationContent>
+        <div class="{{ headerClass() }}">
+          @if (hasIcon()) {
+            <div class="{{ iconClass() }}">
+              <ng-content select="[icon]" />
+            </div>
+          }
+          <div class="{{ contentWrapperClass() }}">
+            <div class="{{ contentTitleClass() }}">
+              @if (hasTitle()) {
+                <div class="{{ titleClass() }}">
+                  {{ title() }}
+                  <ng-content select="[title]" />
                 </div>
               }
-              <div class="{{ contentWrapperClass() }}">
-                <div class="{{ contentTitleClass() }}">
-                  @if (hasTitle()) {
-                    <div class="{{ titleClass() }}">
-                      {{ title() }}
-                      <ng-content select="[title]" />
-                    </div>
-                  }
-                  @if (hasTitleRightText()) {
-                    <div class="{{ titleRightTextClass() }}">
-                      {{ titleRightText() }}
-                      <ng-content select="[titleRightText]" />
-                    </div>
-                  }
-                </div>
-                <div class="{{ contentClass() }}">
-                  @if (hasSubtitle()) {
-                    <div class="{{ subtitleClass() }}">
-                      {{ subtitle() }}
-                      <ng-content select="[subtitle]" />
-                    </div>
-                  }
-                  @if (hasText()) {
-                    <div class="{{ textClass() }}">
-                      {{ text() }}
-                      <ng-content select="[text]" />
-                    </div>
-                  }
-                  <ng-content />
-                </div>
-              </div>
-              @if (showButton()) {
-                <div
-                  class="{{ buttonClass() }}"
-                  role="button"
-                  tabindex="0"
-                  (click)="handleClose($event)"
-                >
-                  <k-delete-icon class="{{ deleteIconClass() }}" />
-                  <ng-content select="[button]" />
+              @if (hasTitleRightText()) {
+                <div class="{{ titleRightTextClass() }}">
+                  {{ titleRightText() }}
+                  <ng-content select="[titleRightText]" />
                 </div>
               }
             </div>
+            <div class="{{ contentClass() }}">
+              @if (hasSubtitle()) {
+                <div class="{{ subtitleClass() }}">
+                  {{ subtitle() }}
+                  <ng-content select="[subtitle]" />
+                </div>
+              }
+              @if (hasText()) {
+                <div class="{{ textClass() }}">
+                  {{ text() }}
+                  <ng-content select="[text]" />
+                </div>
+              }
+              <ng-content />
+            </div>
+          </div>
+          @if (showButton()) {
+            <div
+              class="{{ buttonClass() }}"
+              role="button"
+              tabindex="0"
+              (click)="handleClose($event)"
+            >
+              <k-delete-icon class="{{ deleteIconClass() }}" />
+              <ng-content select="[button]" />
+            </div>
+          }
+        </div>
+      </ng-template>
+
+      @switch (componentTag()) {
+        @case ('span') {
+          <span class="{{ baseClass() }}">
+            <ng-container *ngTemplateOutlet="notificationContent"></ng-container>
           </span>
         }
         @default {
           <div class="{{ baseClass() }}">
-            <div class="{{ headerClass() }}">
-              @if (hasIcon()) {
-                <div class="{{ iconClass() }}">
-                  <ng-content select="[icon]" />
-                </div>
-              }
-              <div class="{{ contentWrapperClass() }}">
-                <div class="{{ contentTitleClass() }}">
-                  @if (hasTitle()) {
-                    <div class="{{ titleClass() }}">
-                      {{ title() }}
-                      <ng-content select="[title]" />
-                    </div>
-                  }
-                  @if (hasTitleRightText()) {
-                    <div class="{{ titleRightTextClass() }}">
-                      {{ titleRightText() }}
-                      <ng-content select="[titleRightText]" />
-                    </div>
-                  }
-                </div>
-                <div class="{{ contentClass() }}">
-                  @if (hasSubtitle()) {
-                    <div class="{{ subtitleClass() }}">
-                      {{ subtitle() }}
-                      <ng-content select="[subtitle]" />
-                    </div>
-                  }
-                  @if (hasText()) {
-                    <div class="{{ textClass() }}">
-                      {{ text() }}
-                      <ng-content select="[text]" />
-                    </div>
-                  }
-                  <ng-content />
-                </div>
-              </div>
-              @if (showButton()) {
-                <div
-                  class="{{ buttonClass() }}"
-                  role="button"
-                  tabindex="0"
-                  (click)="handleClose($event)"
-                >
-                  <k-delete-icon class="{{ deleteIconClass() }}" />
-                  <ng-content select="[button]" />
-                </div>
-              }
-            </div>
+            <ng-container *ngTemplateOutlet="notificationContent"></ng-container>
           </div>
         }
       }

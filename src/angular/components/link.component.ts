@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,8 +24,8 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
 
 @Component({
   selector: 'k-link',
-  
-  imports: [CommonModule],
+
+  imports: [CommonModule, NgTemplateOutlet],
   styles: [
     `
       :host {
@@ -42,26 +42,28 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
       <ng-content />
     </ng-template>
 
-    @if (component() === 'a') {
-      <a
-        #root
-        class="{{ classes() }}"
-        [attr.href]="href() ?? null"
-        [attr.target]="target() ?? null"
-        (click)="handleClick($event)"
-      >
-        <ng-container *ngTemplateOutlet="contentTemplate" />
-      </a>
-    }
-    @if (component() === 'button') {
-      <button
-        #root
-        type="button"
-        class="{{ classes() }}"
-        (click)="handleClick($event)"
-      >
-        <ng-container *ngTemplateOutlet="contentTemplate" />
-      </button>
+    @switch (component()) {
+      @case ('a') {
+        <a
+          #root
+          class="{{ classes() }}"
+          [attr.href]="href() ?? null"
+          [attr.target]="target() ?? null"
+          (click)="handleClick($event)"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate" />
+        </a>
+      }
+      @case ('button') {
+        <button
+          #root
+          type="button"
+          class="{{ classes() }}"
+          (click)="handleClick($event)"
+        >
+          <ng-container *ngTemplateOutlet="contentTemplate" />
+        </button>
+      }
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

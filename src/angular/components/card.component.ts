@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,7 +20,7 @@ import {
 @Component({
   selector: 'k-card',
 
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   host: {
     '[class]': 'baseClasses()[style()]',
   },
@@ -50,19 +50,17 @@ import {
       <ng-content select=":not([header]):not([footer])" />
     </div>
 
-    @if (hasFooter()) {
-      <div class="{{ footerClasses() }}">
-        @if (footer()) {
-          @if (isTemplateRef(footer())) {
-            <ng-container *ngTemplateOutlet="footer()!" />
-          } @else {
-            {{ footer() }}
-          }
+    <div class="{{ footerClasses() }}">
+      @if (footer()) {
+        @if (isTemplateRef(footer())) {
+          <ng-container *ngTemplateOutlet="footer()!" />
         } @else {
-          <ng-content select="[footer]" />
+          {{ footer() }}
         }
-      </div>
-    }
+      } @else {
+        <ng-content select="[footer]" />
+      }
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -89,11 +87,11 @@ export class KCardComponent {
   readonly headerFontSizeIos = input<string>('text-[17px]');
   readonly headerFontSizeMaterial = input<string>('text-[22px]');
 
-  private readonly headerContent = contentChild<ElementRef<HTMLElement>>('[header]', {
-    descendants: true,
+  private readonly headerContent = contentChild('[header]', {
+    read: ElementRef,
   });
-  private readonly footerContent = contentChild<ElementRef<HTMLElement>>('[footer]', {
-    descendants: true,
+  private readonly footerContent = contentChild('[footer]', {
+    read: ElementRef,
   });
 
   private readonly theme = useThemeSignal(() => ({

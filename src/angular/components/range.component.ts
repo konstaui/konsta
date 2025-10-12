@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -27,95 +27,60 @@ type RangeTag = 'div' | 'span';
 @Component({
   selector: 'k-range',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
+    <ng-template #rangeContent>
+      <span #trackBg class="{{ trackBgClass() }}"></span>
+      <span
+        class="{{ trackValueClass() }}"
+        [style]="trackValueStyle()"
+      ></span>
+      @if (isMaterial()) {
+        <span
+          class="{{ trackEmptyClass() }}"
+          [style]="trackEmptyStyle()"
+        ></span>
+        <span class="{{ stopClass() }}"></span>
+      }
+      <input
+        class="{{ inputClass() }}"
+        type="range"
+        [attr.id]="inputId() ?? null"
+        [attr.name]="name() ?? null"
+        [attr.min]="min()"
+        [attr.max]="max()"
+        [attr.step]="step()"
+        [value]="currentValue()"
+        [attr.defaultValue]="defaultValueAttr()"
+        [readOnly]="readOnly()"
+        [disabled]="disabled()"
+        (input)="handleInput($event)"
+        (change)="change.emit($event)"
+        (focus)="focus.emit($event)"
+        (blur)="blur.emit($event)"
+      />
+      <span
+        #thumbWrap
+        class="{{ thumbWrapClass() }}"
+        [style]="thumbWrapStyle()"
+      >
+        @if (isIos()) {
+          <span class="{{ thumbShadowClass() }}"></span>
+        }
+        <span class="{{ thumbClass() }}"></span>
+      </span>
+      <ng-content />
+    </ng-template>
+
     @switch (componentTag()) {
       @case ('span') {
         <span class="{{ baseClass() }}">
-          <span #trackBg class="{{ trackBgClass() }}"></span>
-          <span
-            class="{{ trackValueClass() }}"
-            [style]="trackValueStyle()"
-          ></span>
-          @if (isMaterial()) {
-            <span
-              class="{{ trackEmptyClass() }}"
-              [style]="trackEmptyStyle()"
-            ></span>
-            <span class="{{ stopClass() }}"></span>
-          }
-          <input
-            class="{{ inputClass() }}"
-            type="range"
-            [attr.id]="inputId() ?? null"
-            [attr.name]="name() ?? null"
-            [attr.min]="min()"
-            [attr.max]="max()"
-            [attr.step]="step()"
-            [value]="currentValue()"
-            [attr.defaultValue]="defaultValueAttr()"
-            [readOnly]="readOnly()"
-            [disabled]="disabled()"
-            (input)="handleInput($event)"
-            (change)="change.emit($event)"
-            (focus)="focus.emit($event)"
-            (blur)="blur.emit($event)"
-          />
-          <span
-            #thumbWrap
-            class="{{ thumbWrapClass() }}"
-            [style]="thumbWrapStyle()"
-          >
-            @if (isIos()) {
-              <span class="{{ thumbShadowClass() }}"></span>
-            }
-            <span class="{{ thumbClass() }}"></span>
-          </span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="rangeContent"></ng-container>
         </span>
       }
       @default {
         <div class="{{ baseClass() }}">
-          <span #trackBg class="{{ trackBgClass() }}"></span>
-          <span
-            class="{{ trackValueClass() }}"
-            [style]="trackValueStyle()"
-          ></span>
-          @if (isMaterial()) {
-            <span
-              class="{{ trackEmptyClass() }}"
-              [style]="trackEmptyStyle()"
-            ></span>
-            <span class="{{ stopClass() }}"></span>
-          }
-          <input
-            class="{{ inputClass() }}"
-            type="range"
-            [attr.id]="inputId() ?? null"
-            [attr.name]="name() ?? null"
-            [attr.min]="min()"
-            [attr.max]="max()"
-            [attr.step]="step()"
-            [value]="currentValue()"
-            [attr.defaultValue]="defaultValueAttr()"
-            [readOnly]="readOnly()"
-            [disabled]="disabled()"
-            (input)="handleInput($event)"
-            (change)="change.emit($event)"
-            (focus)="focus.emit($event)"
-            (blur)="blur.emit($event)"
-          />
-          <span
-            #thumbWrap
-            class="{{ thumbWrapClass() }}"
-            [style]="thumbWrapStyle()"
-          >
-            @if (isIos()) {
-              <span class="{{ thumbShadowClass() }}"></span>
-            }
-            <span class="{{ thumbClass() }}"></span>
-          </span>
-          <ng-content />
+          <ng-container *ngTemplateOutlet="rangeContent"></ng-container>
         </div>
       }
     }

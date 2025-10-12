@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -25,7 +25,7 @@ import {
 @Component({
   selector: 'k-navbar',
 
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
     <ng-template #leftTemplate>
       <ng-content select="[left]" />

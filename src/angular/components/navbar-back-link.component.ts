@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -19,10 +19,15 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
 @Component({
   selector: 'k-navbar-back-link',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
-    @if (component() === 'a') {
-      <a
+    <ng-template #contentTemplate>
+      <ng-content />
+    </ng-template>
+
+    @switch (component()) {
+      @case ('a') {
+        <a
         #root
         class="{{ baseClass() }}"
         (click)="handleClick($event)"
@@ -55,10 +60,11 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
         @if (showText()) {
           <span>{{ text() }}</span>
         }
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTemplate" />
       </a>
-    } @else {
-      <button
+      }
+      @default {
+        <button
         #root
         type="button"
         class="{{ baseClass() }}"
@@ -92,8 +98,9 @@ import { useTouchRipple } from '../shared/touch-ripple.js';
         @if (showText()) {
           <span>{{ text() }}</span>
         }
-        <ng-content />
+        <ng-container *ngTemplateOutlet="contentTemplate" />
       </button>
+      }
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

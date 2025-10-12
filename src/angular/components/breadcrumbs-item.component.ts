@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,8 +17,12 @@ import {
 @Component({
   selector: 'k-breadcrumbs-item',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
+    <ng-template #itemContent>
+      <ng-content />
+    </ng-template>
+
     @switch (tag()) {
       @case ('a') {
         <a
@@ -27,7 +31,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="itemContent"></ng-container>
         </a>
       }
       @case ('button') {
@@ -38,7 +42,7 @@ import {
           type="button"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="itemContent"></ng-container>
         </button>
       }
       @case ('span') {
@@ -48,7 +52,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="itemContent"></ng-container>
         </span>
       }
       @case ('li') {
@@ -58,7 +62,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="itemContent"></ng-container>
         </li>
       }
       @default {
@@ -68,7 +72,7 @@ import {
           tabindex="0"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="itemContent"></ng-container>
         </div>
       }
     }

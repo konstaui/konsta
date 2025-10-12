@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -20,67 +20,41 @@ type IconTag = 'i' | 'span' | 'div';
 @Component({
   selector: 'k-icon',
   
-  imports: [CommonModule, KBadgeComponent],
+  imports: [CommonModule, NgTemplateOutlet, KBadgeComponent],
   template: `
+    <ng-template #iconContent>
+      @if (theme() === 'ios') {
+        <ng-content select="[ios]" />
+      } @else {
+        <ng-content select="[material]" />
+      }
+      <ng-content />
+      @if (hasBadge()) {
+        <k-badge
+          small
+          [colors]="badgeColors() ?? undefined"
+          class="{{ badgeClass() }}"
+        >
+          {{ badge() }}
+          <ng-content select="[badge]" />
+        </k-badge>
+      }
+    </ng-template>
+
     @switch (componentTag()) {
       @case ('span') {
         <span class="{{ baseClass() }}">
-          @if (theme() === 'ios') {
-            <ng-content select="[ios]" />
-          } @else {
-            <ng-content select="[material]" />
-          }
-          <ng-content />
-          @if (hasBadge()) {
-            <k-badge
-              small
-              [colors]="badgeColors() ?? undefined"
-              class="{{ badgeClass() }}"
-            >
-              {{ badge() }}
-              <ng-content select="[badge]" />
-            </k-badge>
-          }
+          <ng-container *ngTemplateOutlet="iconContent"></ng-container>
         </span>
       }
       @case ('div') {
         <div class="{{ baseClass() }}">
-          @if (theme() === 'ios') {
-            <ng-content select="[ios]" />
-          } @else {
-            <ng-content select="[material]" />
-          }
-          <ng-content />
-          @if (hasBadge()) {
-            <k-badge
-              small
-              [colors]="badgeColors() ?? undefined"
-              class="{{ badgeClass() }}"
-            >
-              {{ badge() }}
-              <ng-content select="[badge]" />
-            </k-badge>
-          }
+          <ng-container *ngTemplateOutlet="iconContent"></ng-container>
         </div>
       }
       @default {
         <i class="{{ baseClass() }}">
-          @if (theme() === 'ios') {
-            <ng-content select="[ios]" />
-          } @else {
-            <ng-content select="[material]" />
-          }
-          <ng-content />
-          @if (hasBadge()) {
-            <k-badge
-              small
-              [colors]="badgeColors() ?? undefined"
-              class="{{ badgeClass() }}"
-            >
-              {{ badge() }}
-              <ng-content select="[badge]" />
-            </k-badge>
-          }
+          <ng-container *ngTemplateOutlet="iconContent"></ng-container>
         </i>
       }
     }

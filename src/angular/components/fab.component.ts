@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,7 +24,7 @@ type FabTag = 'a' | 'button' | 'div';
 @Component({
   selector: 'k-fab',
   
-  imports: [CommonModule],
+  imports: [CommonModule, NgTemplateOutlet],
   template: `
     <ng-template #fabContent>
       @if (hasText() && textPosition() === 'before') {

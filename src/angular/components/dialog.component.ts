@@ -14,7 +14,6 @@ import { DialogColors } from '../../shared/colors/DialogColors.js';
 import {
   useDarkClasses,
   useThemeClasses,
-  useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { KGlassComponent } from './glass.component.js';
 
@@ -36,6 +35,7 @@ type DialogState = 'opened' | 'closed';
       [class]="baseClasses()[state()]"
       [ios]="ios()"
       [material]="material()"
+      [highlight]="false"
     >
       <div class="{{ contentWrapClasses() }}">
         @if (hasTitle()) {
@@ -93,10 +93,6 @@ export class KDialogComponent {
   private readonly buttonsSlot =
     contentChild<ElementRef<HTMLElement>>('[buttons]');
 
-  private readonly theme = useThemeSignal(() => ({
-    ios: this.ios() === true,
-    material: this.material() === true,
-  }));
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
     material: this.material() === true,
