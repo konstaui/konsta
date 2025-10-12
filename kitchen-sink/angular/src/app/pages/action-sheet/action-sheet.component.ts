@@ -57,7 +57,7 @@ import { KActionsButtonComponent } from '../../../../../../src/angular/component
       <k-block
         [strong]="true"
         [inset]="true"
-        class="flex space-x-4 rtl:space-x-reverse"
+        class="flex gap-x-4"
       >
         <k-button [rounded]="true" (clicked)="actionsOneOpened.set(true)">
           One group

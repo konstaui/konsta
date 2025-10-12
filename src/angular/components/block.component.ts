@@ -18,12 +18,17 @@ import { cls } from '../../shared/cls.js';
   selector: 'k-block',
 
   imports: [CommonModule],
-  host: {
-    '[class]': 'classes()',
-  },
-  styles: [],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   template: `
-    <ng-content />
+    <div [class]="classes()">
+      <ng-content />
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -51,7 +56,7 @@ export class KBlockComponent {
   );
 
   readonly classes: Signal<string> = computed(() => {
-    const blockClasses = this.themeClasses(
+    const c = this.themeClasses(
       BlockClasses(
         {
           inset: this.inset(),
@@ -60,13 +65,14 @@ export class KBlockComponent {
           outline: this.outline(),
         },
         this.palette()
-      ),
-      this.className()
+      )
     ) as Record<string, any>;
 
-    const base = blockClasses['base'];
-    const insetClass = this.inset() ? blockClasses['inset'] : '';
-    return cls(base, insetClass, this.className());
+    return cls(
+      c.base,
+      this.inset() && c.inset,
+      this.className()
+    );
   });
 
   constructor() {
