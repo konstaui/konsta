@@ -156,6 +156,7 @@ export class KNotificationComponent {
   readonly material = input<boolean | undefined>(undefined);
   readonly opened = input<boolean>(false);
   readonly button = input<boolean>(false);
+  readonly icon = input<boolean>(false);
   readonly title = input<string | number | undefined>(undefined);
   readonly titleRightText = input<string | number | undefined>(undefined);
   readonly subtitle = input<string | number | undefined>(undefined);
@@ -245,7 +246,7 @@ export class KNotificationComponent {
     return 'div';
   });
 
-  readonly hasIcon = computed(() => !!this.iconSlot());
+  readonly hasIcon = computed(() => this.icon() === true || !!this.iconSlot());
   readonly showButton = computed(
     () => this.button() === true || !!this.buttonSlot()
   );

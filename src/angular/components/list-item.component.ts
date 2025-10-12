@@ -53,26 +53,28 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                 @if (header()) {
                   <div [class]="headerClasses()">{{ header() }}</div>
                 }
-                <div [class]="titleWrapClasses()">
-                  @if (title()) {
-                    <span [class]="titleClasses()">{{ title() }}</span>
-                  } @else {
-                    <ng-content select="[title]" />
-                  }
-                  <span [class]="afterClasses()">
+                @if (title() || after() || showChevron()) {
+                  <div [class]="titleWrapClasses()">
+                    @if (title()) {
+                      <div [class]="titleClasses()">{{ title() }}</div>
+                    } @else {
+                      <ng-content select="[title]" />
+                    }
                     @if (after()) {
-                      @if (isTemplateRef(after())) {
-                        <ng-container *ngTemplateOutlet="after()!" />
-                      } @else {
-                        {{ after() }}
-                      }
+                      <div [class]="afterClasses()">
+                        @if (isTemplateRef(after())) {
+                          <ng-container *ngTemplateOutlet="after()!" />
+                        } @else {
+                          {{ after() }}
+                        }
+                      </div>
                     }
                     <ng-content select="[after],[slot='after']" />
-                  </span>
-                  @if (showChevron()) {
-                    <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
-                  }
-                </div>
+                    @if (showChevron()) {
+                      <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                    }
+                  </div>
+                }
                 @if (subtitle()) {
                   <div [class]="subtitleClasses()">{{ subtitle() }}</div>
                 }
@@ -106,26 +108,28 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                 @if (header()) {
                   <div [class]="headerClasses()">{{ header() }}</div>
                 }
-                <div [class]="titleWrapClasses()">
-                  @if (title()) {
-                    <span [class]="titleClasses()">{{ title() }}</span>
-                  } @else {
-                    <ng-content select="[title]" />
-                  }
-                  <span [class]="afterClasses()">
+                @if (title() || after() || showChevron()) {
+                  <div [class]="titleWrapClasses()">
+                    @if (title()) {
+                      <div [class]="titleClasses()">{{ title() }}</div>
+                    } @else {
+                      <ng-content select="[title]" />
+                    }
                     @if (after()) {
-                      @if (isTemplateRef(after())) {
-                        <ng-container *ngTemplateOutlet="after()!" />
-                      } @else {
-                        {{ after() }}
-                      }
+                      <div [class]="afterClasses()">
+                        @if (isTemplateRef(after())) {
+                          <ng-container *ngTemplateOutlet="after()!" />
+                        } @else {
+                          {{ after() }}
+                        }
+                      </div>
                     }
                     <ng-content select="[after],[slot='after']" />
-                  </span>
-                  @if (showChevron()) {
-                    <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
-                  }
-                </div>
+                    @if (showChevron()) {
+                      <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                    }
+                  </div>
+                }
                 @if (subtitle()) {
                   <div [class]="subtitleClasses()">{{ subtitle() }}</div>
                 }
@@ -159,26 +163,28 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                 @if (header()) {
                   <div [class]="headerClasses()">{{ header() }}</div>
                 }
-                <div [class]="titleWrapClasses()">
-                  @if (title()) {
-                    <span [class]="titleClasses()">{{ title() }}</span>
-                  } @else {
-                    <ng-content select="[title]" />
-                  }
-                  <span [class]="afterClasses()">
+                @if (title() || after() || showChevron()) {
+                  <div [class]="titleWrapClasses()">
+                    @if (title()) {
+                      <div [class]="titleClasses()">{{ title() }}</div>
+                    } @else {
+                      <ng-content select="[title]" />
+                    }
                     @if (after()) {
-                      @if (isTemplateRef(after())) {
-                        <ng-container *ngTemplateOutlet="after()!" />
-                      } @else {
-                        {{ after() }}
-                      }
+                      <div [class]="afterClasses()">
+                        @if (isTemplateRef(after())) {
+                          <ng-container *ngTemplateOutlet="after()!" />
+                        } @else {
+                          {{ after() }}
+                        }
+                      </div>
                     }
                     <ng-content select="[after],[slot='after']" />
-                  </span>
-                  @if (showChevron()) {
-                    <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
-                  }
-                </div>
+                    @if (showChevron()) {
+                      <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                    }
+                  </div>
+                }
                 @if (subtitle()) {
                   <div [class]="subtitleClasses()">{{ subtitle() }}</div>
                 }

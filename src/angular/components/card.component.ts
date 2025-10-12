@@ -46,11 +46,20 @@ import {
       </div>
     }
 
-    <div [class]="contentWrap() ? contentClasses() : ''">
+    @if (contentWrap()) {
+      <div [class]="contentClasses()">
+        <ng-content select=":not([header]):not([footer])" />
+      </div>
+    } @else {
       <ng-content select=":not([header]):not([footer])" />
-    </div>
+    }
 
-    <div class="{{ footerClasses() }}">
+    <div
+      class="{{ footerClasses() }}"
+      [style.padding]="hasFooter() ? null : '0'"
+      [style.borderTopWidth]="hasFooter() ? null : '0'"
+      [class.border-t]="footerDivider() && hasFooter()"
+    >
       @if (footer()) {
         @if (isTemplateRef(footer())) {
           <ng-container *ngTemplateOutlet="footer()!" />
@@ -89,9 +98,11 @@ export class KCardComponent {
 
   private readonly headerContent = contentChild('[header]', {
     read: ElementRef,
+    descendants: true,
   });
   private readonly footerContent = contentChild('[footer]', {
     read: ElementRef,
+    descendants: true,
   });
 
   private readonly theme = useThemeSignal(() => ({
@@ -170,10 +181,10 @@ export class KCardComponent {
   );
 
   readonly hasHeader = computed(
-    () => !!this.header() || !!this.headerContent()
+    () => !!this.header() || !!this.headerContent()?.nativeElement
   );
   readonly hasFooter = computed(
-    () => !!this.footer() || !!this.footerContent()
+    () => !!this.footer() || !!this.footerContent()?.nativeElement
   );
 
   isTemplateRef(value: any): value is TemplateRef<any> {

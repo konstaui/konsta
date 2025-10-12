@@ -275,15 +275,16 @@ export class KSegmentedComponent implements AfterViewInit, AfterViewChecked {
     const container = highlightEl.parentElement;
     if (!container) return;
 
-    const children = Array.from(container.children);
-    const buttonsLength = Math.max(children.length - 1, 1);
+    // Find all button elements (they might be nested in a wrapper with display: contents)
+    const buttons = Array.from(container.querySelectorAll('.k-button'));
+    const buttonsLength = Math.max(buttons.length, 1);
     const activeEl = container.querySelector(
       '.k-segmented-strong-button-active'
     ) as HTMLElement | null;
 
     const activeIndex = Math.max(
       0,
-      activeEl ? children.indexOf(activeEl) : 0
+      activeEl ? buttons.indexOf(activeEl) : 0
     );
 
     const between = '4px';

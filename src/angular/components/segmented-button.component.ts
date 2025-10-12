@@ -51,6 +51,10 @@ export class KSegmentedButtonComponent {
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
   readonly active = input<boolean>(false);
+  readonly outline = input<boolean | undefined>(undefined);
+  readonly strong = input<boolean | undefined>(undefined);
+  readonly rounded = input<boolean | undefined>(undefined);
+  readonly raised = input<boolean | undefined>(undefined);
 
   readonly clicked = output<Event>();
 
@@ -62,7 +66,7 @@ export class KSegmentedButtonComponent {
     this.context.rounded()
   );
 
-  readonly roundedValue = computed(
-    () => this.contextStrong() && this.contextRounded()
+  readonly roundedValue = computed(() =>
+    this.contextRounded() && this.contextStrong()
   );
 }

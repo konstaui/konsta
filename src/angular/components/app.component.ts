@@ -40,15 +40,15 @@ export class KAppComponent {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
-  readonly themeInput = input<KonstaTheme | 'parent' | undefined>('material');
+  readonly theme = input<KonstaTheme | 'parent' | undefined>('material');
   readonly dark = input<boolean>(true);
   readonly materialTouchRipple = input<boolean>(true);
   readonly iosHoverHighlight = input<boolean>(true);
   readonly safeAreas = input<boolean>(true);
 
   readonly themePref: Signal<KonstaTheme> = useThemeSignal(() => ({
-    ios: this.themeInput() === 'ios',
-    material: this.themeInput() === 'material',
+    ios: this.theme() === 'ios',
+    material: this.theme() === 'material',
   }));
 
   readonly classes = computed(() =>

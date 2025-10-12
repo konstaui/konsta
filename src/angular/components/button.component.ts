@@ -75,7 +75,7 @@ export class KButtonComponent {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
-  readonly colorsProp = input<Record<string, string> | undefined>(undefined);
+  readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly component = input<ButtonComponentTag | undefined>(undefined);
   readonly href = input<string | undefined>(undefined);
   readonly type = input<string>('button');
@@ -127,8 +127,8 @@ export class KButtonComponent {
   }));
   private readonly dark = useDarkClasses();
 
-  private readonly colors = computed(() =>
-    ButtonColors(this.colorsProp() ?? {}, this.dark)
+  private readonly colorsPalette = computed(() =>
+    ButtonColors(this.colors() ?? {}, this.dark)
   );
 
   private readonly themeSpecific = computed(() =>
@@ -171,15 +171,16 @@ export class KButtonComponent {
 
   private readonly style = computed(() => {
     const props = this.themeSpecific();
-    if (props.outline) return 'outline';
-    if (props.clear || (this.segmented() && !this.segmentedActive())) {
-      return 'clear';
-    }
-    if (props.tonal) return 'tonal';
-    if (this.segmentedStrong()) {
-      return this.segmentedActive() ? 'segmentedStrongActive' : 'segmentedStrong';
-    }
-    return 'fill';
+    let style = props.outline
+      ? 'outline'
+      : props.clear || (this.segmented() && !this.segmentedActive())
+        ? 'clear'
+        : props.tonal
+          ? 'tonal'
+          : 'fill';
+    if (this.segmentedStrong()) style = 'segmentedStrong';
+    if (this.segmentedStrong() && this.segmentedActive()) style = 'segmentedStrongActive';
+    return style;
   });
 
   readonly componentTag = computed<ButtonComponentTag>(() => {
@@ -206,7 +207,7 @@ export class KButtonComponent {
           large: themeSpecific.large,
           raised: themeSpecific.raised,
         },
-        this.colors(),
+        this.colorsPalette(),
         this.dark
       ),
       ''

@@ -116,11 +116,19 @@ export class KNavbarBackLinkComponent {
   });
   readonly text = input('Back');
   readonly showText = input(false);
+  readonly ios = input<boolean | undefined>(undefined);
+  readonly material = input<boolean | undefined>(undefined);
 
   readonly clicked = output<Event>();
 
-  private readonly themeClasses = useThemeClasses();
-  readonly theme = useThemeSignal();
+  private readonly themeClasses = useThemeClasses(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
+  readonly theme = useThemeSignal(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
   private readonly dark = useDarkClasses();
 
   private readonly palette = computed(() =>

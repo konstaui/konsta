@@ -23,7 +23,7 @@ import {
 
 @Component({
   selector: 'k-list',
-  
+
   imports: [CommonModule],
   template: `
     <div #root [class]="baseClasses()">
@@ -32,6 +32,13 @@ import {
       </ul>
     </div>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
