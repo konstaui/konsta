@@ -12,7 +12,7 @@ import { KPopupComponent } from '../../../../../../src/angular/components/popup.
 import { KBlockComponent } from '../../../../../../src/angular/components/block.component.js';
 import { KLinkComponent } from '../../../../../../src/angular/components/link.component.js';
 import { KButtonComponent } from '../../../../../../src/angular/components/button.component.js';
-import { KDeleteIconComponent } from '../../../../../../src/angular/components/icons/delete-icon.component.js';
+import { KCloseIconComponent } from '../../../../../../src/angular/components/icons/close-icon.component.js';
 
 @Component({
   selector: 'app-popup',
@@ -25,7 +25,7 @@ import { KDeleteIconComponent } from '../../../../../../src/angular/components/i
     KBlockComponent,
     KLinkComponent,
     KButtonComponent,
-    KDeleteIconComponent,
+    KCloseIconComponent,
   ],
   styles: [
     `
@@ -66,7 +66,7 @@ import { KDeleteIconComponent } from '../../../../../../src/angular/components/i
               [iconOnly]="true"
               (clicked)="popupOpened.set(false)"
             >
-              <k-delete-icon />
+              <k-close-icon />
             </k-link>
           </k-navbar>
           <k-block [strong]="true" [inset]="true" class="space-y-4">

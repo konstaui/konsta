@@ -56,7 +56,7 @@
 - [x] Page
 - [🚧] Panel
 - [x] Popover
-- [🚧] Popup
+- [x] Popup
 - [x] Preloader
 - [x] Progressbar
 - [x] Radio
