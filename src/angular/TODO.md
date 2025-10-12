@@ -46,8 +46,8 @@
 - [x] MenuList
 - [x] MenuListItem
 - [x] Message
-- [🚧] Messagebar
-- [🚧] Messages
+- [x] Messagebar
+- [x] Messages
 - [x] MessagesTitle
 - [x] Navbar
 - [x] NavbarBackLink
@@ -62,10 +62,10 @@
 - [x] Radio
 - [🚧] Range
 - [x] Searchbar
-- [🚧] Segmented
-- [🚧] SegmentedButton
-- [🚧] SegmentedContext
-- [🚧] SegmentedContext
+- [x] Segmented
+- [x] SegmentedButton
+- [x] SegmentedContext
+- [x] SegmentedContext
 - [x] Sheet
 - [x] Stepper
 - [x] Tabbar

@@ -20,6 +20,7 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { KGlassComponent } from './glass.component.js';
+import { KToolbarComponent } from './toolbar.component.js';
 import { KToolbarPaneComponent } from './toolbar-pane.component.js';
 import { KLinkComponent } from './link.component.js';
 import { KIconComponent } from './icon.component.js';
@@ -29,7 +30,7 @@ type MessagebarTag = 'div' | 'span';
 @Component({
   selector: 'k-messagebar',
 
-  imports: [CommonModule, KGlassComponent, KToolbarPaneComponent, KLinkComponent, KIconComponent],
+  imports: [CommonModule, KGlassComponent, KToolbarComponent, KToolbarPaneComponent, KLinkComponent, KIconComponent],
   template: `
     @switch (componentTag()) {
       @case ('span') {
@@ -45,31 +46,36 @@ type MessagebarTag = 'div' | 'span';
     }
 
     <ng-template #messagebarTemplate>
-      <div class="{{ toolbarClass() }}">
-        <div class="{{ toolbarInnerClass() }}">
-          <div class="{{ leftClass() }}">
-            <ng-content select="[left]" />
-          </div>
-          <k-glass class="{{ messagebarAreaClass() }}">
-            <textarea
-              class="{{ messagebarInputClass() }}"
-              [attr.id]="textareaId() ?? null"
-              [attr.name]="name() ?? null"
-              [attr.placeholder]="placeholder()"
-              [attr.disabled]="disabled() ? '' : null"
-              [attr.size]="size() ?? null"
-              [value]="stringValue()"
-              (input)="handleInput($event)"
-              (change)="handleChange($event)"
-              (focus)="handleFocus($event)"
-              (blur)="handleBlur($event)"
-            ></textarea>
-          </k-glass>
-          <div class="{{ rightClass() }}">
-            <ng-content select="[right]" />
-          </div>
+      <k-toolbar
+        [class]="toolbarClass()"
+        [innerClassName]="toolbarInnerClass()"
+        [colors]="colors()"
+        [outline]="outline()"
+        [ios]="ios()"
+        [material]="material()"
+      >
+        <div [class]="leftClass()">
+          <ng-content select="[left]" />
         </div>
-      </div>
+        <k-glass [class]="messagebarAreaClass()">
+          <textarea
+            [class]="messagebarInputClass()"
+            [attr.id]="textareaId() ?? null"
+            [attr.name]="name() ?? null"
+            [attr.placeholder]="placeholder()"
+            [attr.disabled]="disabled() ? '' : null"
+            [attr.size]="size() ?? null"
+            [value]="stringValue()"
+            (input)="handleInput($event)"
+            (change)="handleChange($event)"
+            (focus)="handleFocus($event)"
+            (blur)="handleBlur($event)"
+          ></textarea>
+        </k-glass>
+        <div [class]="rightClass()">
+          <ng-content select="[right]" />
+        </div>
+      </k-toolbar>
     </ng-template>
   `,
   styles: [
