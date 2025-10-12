@@ -59,6 +59,13 @@ type IconTag = 'i' | 'span' | 'div';
       }
     }
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KIconComponent {

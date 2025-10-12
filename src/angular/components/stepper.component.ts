@@ -84,6 +84,13 @@ type StepperShape = 'rounded' | 'square';
       }
     }
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KStepperComponent {

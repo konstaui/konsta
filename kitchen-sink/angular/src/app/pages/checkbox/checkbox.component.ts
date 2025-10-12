@@ -127,22 +127,20 @@ const MEDIA_ITEMS: readonly MediaItem[] = [
             [indeterminate]="isSomeMoviesSelected()"
             (changed)="toggleMoviesAll()"
           ></k-checkbox>
-          <div content>
-            <ul class="ps-12">
-              @for (movie of movieOptions; track movie) {
-                <k-list-item [label]="true" [title]="movie">
-                  <k-checkbox
-                    media
-                    component="div"
-                    name="demo-checkbox"
-                    [value]="movie"
-                    [checked]="movies().includes(movie)"
-                    (changed)="onMovieChange($event)"
-                  ></k-checkbox>
-                </k-list-item>
-              }
-            </ul>
-          </div>
+          <ul class="ps-12" content>
+            @for (movie of movieOptions; track movie) {
+              <k-list-item [label]="true" [title]="movie">
+                <k-checkbox
+                  media
+                  component="div"
+                  name="demo-checkbox"
+                  [value]="movie"
+                  [checked]="movies().includes(movie)"
+                  (changed)="onMovieChange($event)"
+                ></k-checkbox>
+              </k-list-item>
+            }
+          </ul>
         </k-list-item>
       </k-list>
 

@@ -91,6 +91,13 @@ type ToggleTag = 'label' | 'div' | 'span' | 'li';
       }
     }
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KToggleComponent {
