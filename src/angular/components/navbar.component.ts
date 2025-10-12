@@ -1,13 +1,18 @@
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
+  afterNextRender,
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Injector,
+  OnDestroy,
   Signal,
   computed,
   effect,
   forwardRef,
   input,
+  signal,
   viewChild,
 } from '@angular/core';
 import { NavbarClasses } from '../../shared/classes/NavbarClasses.js';
@@ -43,11 +48,20 @@ import { KGlassComponent } from './glass.component.js';
     </ng-template>
 
     <nav #navEl class="{{ baseClasses() }}">
+      @if (theme() === 'ios') {
+        <div class="{{ bgBlurClasses() }}"></div>
+      }
       <div #bgEl class="{{ bgClasses() }}"></div>
       <div #innerEl class="{{ innerClasses() }}">
-        <k-glass class="{{ leftClasses() }}">
-          <ng-container *ngTemplateOutlet="leftTemplate" />
-        </k-glass>
+        <div #leftWrapper [style.display]="'contents'">
+          @if (hasLeftContent()) {
+            <k-glass class="{{ leftClasses() }}">
+              <ng-container *ngTemplateOutlet="leftTemplate" />
+            </k-glass>
+          } @else {
+            <ng-container *ngTemplateOutlet="leftTemplate" />
+          }
+        </div>
         @if (title() || subtitle()) {
           <div #titleEl class="{{ titleClasses() }}">
             @if (title()) {
@@ -60,9 +74,15 @@ import { KGlassComponent } from './glass.component.js';
             }
           </div>
         }
-        <k-glass class="{{ rightClasses() }}">
-          <ng-container *ngTemplateOutlet="rightTemplate" />
-        </k-glass>
+        <div #rightWrapper [style.display]="'contents'">
+          @if (hasRightContent()) {
+            <k-glass class="{{ rightClasses() }}">
+              <ng-container *ngTemplateOutlet="rightTemplate" />
+            </k-glass>
+          } @else {
+            <ng-container *ngTemplateOutlet="rightTemplate" />
+          }
+        </div>
         <ng-content />
       </div>
       @if ((large() || medium()) && title()) {
@@ -89,7 +109,7 @@ import { KGlassComponent } from './glass.component.js';
     },
   ],
 })
-export class KNavbarComponent {
+export class KNavbarComponent implements AfterViewInit, OnDestroy {
   // Template references
   private readonly navEl = viewChild<ElementRef<HTMLElement>>('navEl');
   private readonly bgEl = viewChild<ElementRef<HTMLDivElement>>('bgEl');
@@ -97,6 +117,14 @@ export class KNavbarComponent {
   private readonly titleEl = viewChild<ElementRef<HTMLDivElement>>('titleEl');
   private readonly titleContainerEl = viewChild<ElementRef<HTMLDivElement>>('titleContainerEl');
   private readonly subnavbarEl = viewChild<ElementRef<HTMLDivElement>>('subnavbarEl');
+  private readonly leftWrapper = viewChild<ElementRef<HTMLDivElement>>('leftWrapper');
+  private readonly rightWrapper = viewChild<ElementRef<HTMLDivElement>>('rightWrapper');
+
+  // Signals to track if there's content (default to false, will be set in ngAfterViewInit)
+  private readonly _hasLeftContent = signal(false);
+  private readonly _hasRightContent = signal(false);
+  readonly hasLeftContent = this._hasLeftContent.asReadonly();
+  readonly hasRightContent = this._hasRightContent.asReadonly();
 
   // Inputs
   readonly className = input<string | undefined>(undefined, {
@@ -160,6 +188,9 @@ export class KNavbarComponent {
   readonly baseClasses: Signal<string> = computed(
     () => this.classes()['base']
   );
+  readonly bgBlurClasses: Signal<string> = computed(
+    () => this.classes()['bgBlur']
+  );
   readonly bgClasses: Signal<string> = computed(
     () => this.classes()['bg']
   );
@@ -194,12 +225,95 @@ export class KNavbarComponent {
   private wasScrollable = false;
   private scrollListener: ((e: Event) => void) | null = null;
 
-  constructor() {
+  // Mutation observers to watch for content changes
+  private leftObserver: MutationObserver | null = null;
+  private rightObserver: MutationObserver | null = null;
+
+  constructor(private injector: Injector) {
     // Set up scroll handling when component inputs change
     effect((onCleanup) => {
       this.initScroll();
       onCleanup(() => this.destroyScroll());
     });
+
+    // Check for content after every render cycle
+    afterNextRender(() => {
+      this.checkContent();
+    }, {
+      injector: this.injector,
+      // Run on every render to catch dynamic content changes
+      phase: 'read'
+    });
+
+    // Also use an effect to re-check when wrappers might have new content
+    effect(() => {
+      const leftWrapper = this.leftWrapper();
+      const rightWrapper = this.rightWrapper();
+      // This effect will re-run when the viewChild signals change
+      if (leftWrapper || rightWrapper) {
+        // Use setTimeout to defer checking until after Angular finishes rendering
+        setTimeout(() => this.checkContent(), 0);
+      }
+    });
+  }
+
+  ngAfterViewInit() {
+    // Also check on view init for cases where afterNextRender might not catch it
+    this.checkContent();
+    this.setupMutationObservers();
+  }
+
+  private setupMutationObservers() {
+    const leftWrapperEl = this.leftWrapper()?.nativeElement;
+    const rightWrapperEl = this.rightWrapper()?.nativeElement;
+
+    // Set up observer for left wrapper
+    if (leftWrapperEl) {
+      this.leftObserver = new MutationObserver(() => {
+        const hasElements = Array.from(leftWrapperEl.childNodes).some(
+          node => node.nodeType === Node.ELEMENT_NODE
+        );
+        this._hasLeftContent.set(hasElements);
+      });
+      this.leftObserver.observe(leftWrapperEl, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    // Set up observer for right wrapper
+    if (rightWrapperEl) {
+      this.rightObserver = new MutationObserver(() => {
+        const hasElements = Array.from(rightWrapperEl.childNodes).some(
+          node => node.nodeType === Node.ELEMENT_NODE
+        );
+        this._hasRightContent.set(hasElements);
+      });
+      this.rightObserver.observe(rightWrapperEl, {
+        childList: true,
+        subtree: true
+      });
+    }
+  }
+
+  private checkContent() {
+    // Check if there are actual element children (not just comments)
+    const leftWrapperEl = this.leftWrapper()?.nativeElement;
+    const rightWrapperEl = this.rightWrapper()?.nativeElement;
+
+    if (leftWrapperEl) {
+      const hasElements = Array.from(leftWrapperEl.childNodes).some(
+        node => node.nodeType === Node.ELEMENT_NODE
+      );
+      this._hasLeftContent.set(hasElements);
+    }
+
+    if (rightWrapperEl) {
+      const hasElements = Array.from(rightWrapperEl.childNodes).some(
+        node => node.nodeType === Node.ELEMENT_NODE
+      );
+      this._hasRightContent.set(hasElements);
+    }
   }
 
   private getScrollEl(): HTMLElement | null {
@@ -260,7 +374,7 @@ export class KNavbarComponent {
     const titleContainerEl = this.titleContainerEl()?.nativeElement;
     if (titleContainerEl) {
       titleContainerEl.style.transform = `translateY(-${scrollProgress * maxTranslate}px)`;
-      titleContainerEl.style.opacity = String(1 - scrollProgress * 2);
+      titleContainerEl.style.opacity = String(Math.max(0, 1 - scrollProgress * 2));
     }
 
     const titleEl = this.titleEl()?.nativeElement;
@@ -313,6 +427,18 @@ export class KNavbarComponent {
     const scrollElLocal = this.getScrollEl();
     if (scrollElLocal && this.scrollListener) {
       scrollElLocal.removeEventListener('scroll', this.onScroll);
+    }
+  }
+
+  ngOnDestroy() {
+    // Clean up mutation observers
+    if (this.leftObserver) {
+      this.leftObserver.disconnect();
+      this.leftObserver = null;
+    }
+    if (this.rightObserver) {
+      this.rightObserver.disconnect();
+      this.rightObserver = null;
     }
   }
 }
