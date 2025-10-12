@@ -31,6 +31,10 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
       :host {
         display: contents;
       }
+      button {
+        font-size: 17px;
+        line-height: 1.42857;
+      }
     `,
   ],
   template: `
