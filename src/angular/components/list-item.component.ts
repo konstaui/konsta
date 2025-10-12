@@ -353,9 +353,9 @@ export class KListItemComponent {
   });
   readonly mediaClasses: Signal<string> = computed(() => {
     const baseClasses = this.listClasses()['media'] as string;
-    // Remove margin when media is empty and list is nested (like in popovers)
-    if (!this.hasMediaContent() && this.listContext?.nested()) {
-      return baseClasses.replace(/me-\d+/g, '');
+    // Hide media container when empty to match React behavior
+    if (!this.media() && !this.projectedMedia() && !this.projectedMediaSlot()) {
+      return `${baseClasses.replace(/me-\d+/g, '')} hidden`;
     }
     return baseClasses;
   });

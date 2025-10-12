@@ -43,6 +43,7 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
           <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
         }
         <k-link
+          [navbar]="true"
           right
           class="popover-navbar-link"
           (clicked)="openPopover('.popover-navbar-link')"
@@ -52,15 +53,13 @@ import { KListItemComponent } from '../../../../../../src/angular/components/lis
       </k-navbar>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">
-        <p>
-          <k-button
-            [rounded]="true"
-            class="popover-button"
-            (clicked)="openPopover('.popover-button')"
-          >
-            Open popover on me
-          </k-button>
-        </p>
+        <k-button
+          [rounded]="true"
+          class="popover-button"
+          (clicked)="openPopover('.popover-button')"
+        >
+          Open popover on me
+        </k-button>
       </k-block>
 
       <k-block [strong]="true" [inset]="true" class="space-y-4">
