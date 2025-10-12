@@ -2,9 +2,12 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Signal,
   computed,
+  effect,
   input,
+  viewChild,
 } from '@angular/core';
 import { cls } from '../../shared/cls.js';
 import { BadgeClasses } from '../../shared/classes/BadgeClasses.js';
@@ -13,50 +16,25 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-badge',
-
+  
   imports: [CommonModule],
   template: `
-    @switch (component()) {
-      @case ('span') {
-        <span [class]="classes()">
-          <ng-content />
-        </span>
-      }
-      @case ('div') {
-        <div [class]="classes()">
-          <ng-content />
-        </div>
-      }
-      @case ('a') {
-        <a [class]="classes()">
-          <ng-content />
-        </a>
-      }
-      @case ('button') {
-        <button [class]="classes()">
-          <ng-content />
-        </button>
-      }
-    }
+    <span #root class="{{ classes() }}">
+      <ng-content />
+    </span>
   `,
-  styles: [
-    `
-      :host {
-        display: contents;
-      }
-    `,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KBadgeComponent {
+  private readonly host = viewChild<ElementRef<HTMLElement>>('root');
+
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly small = input<boolean | undefined>(undefined);
-  readonly component = input<'span' | 'div' | 'a' | 'button'>('span');
+  readonly small = input<boolean>(false);
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
@@ -79,7 +57,14 @@ export class KBadgeComponent {
     ) as Record<string, any>;
 
     const base = themed['base'] as Record<string, string>;
-    const isSmall = this.small();
-    return cls(base[isSmall ? 'sm' : 'md'], this.className());
+    return cls(base[this.small() ? 'sm' : 'md'], this.className());
   });
+
+  constructor() {
+    effect(() => {
+      const el = this.host()?.nativeElement;
+      if (!el) return;
+      el.setAttribute('class', this.classes());
+    });
+  }
 }
