@@ -65,7 +65,8 @@
 - [🚧] Segmented
 - [🚧] SegmentedButton
 - [🚧] SegmentedContext
-- [ ] Sheet
+- [🚧] SegmentedContext
+- [🚧] Sheet
 - [x] Stepper
 - [🚧] Tabbar
 - [🚧] TabbarLink
