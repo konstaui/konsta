@@ -1,4 +1,4 @@
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   AfterViewChecked,
   AfterViewInit,
@@ -13,7 +13,6 @@ import {
   input,
   signal,
   viewChild,
-  viewProviders,
 } from '@angular/core';
 import { cls } from '../../shared/cls.js';
 import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
@@ -38,8 +37,18 @@ type SegmentedTag = 'div' | 'span';
 
 @Component({
   selector: 'k-segmented',
-  
+
   imports: [CommonModule, KGlassComponent],
+  host: {
+    '[style.display]': '"contents"',
+  },
+  styles: [`
+    /* Remove margin from the first segmented div in a space-y container */
+    :host:first-of-type > div,
+    :host:first-of-type > span {
+      margin-top: 0 !important;
+    }
+  `],
   template: `
     @if (useGlass()) {
       <k-glass
@@ -48,39 +57,49 @@ type SegmentedTag = 'div' | 'span';
         [ios]="ios()"
         [material]="material()"
       >
-        <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+        <span [class]="contentWrapperClass()" [style.display]="isOutline() ? null : 'contents'">
+          <ng-content />
+        </span>
+        @if (isStrong()) {
+          <span
+            #highlight
+            [class]="strongHighlightClass()"
+            [style]="highlightStyle()"
+          ></span>
+        }
       </k-glass>
     } @else {
       @switch (componentTag()) {
         @case ('span') {
-          <span class="{{ baseClass() }}">
-            <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+          <span [class]="baseClass()">
+            <span [class]="contentWrapperClass()" [style.display]="isOutline() ? null : 'contents'">
+              <ng-content />
+            </span>
+            @if (isStrong()) {
+              <span
+                #highlight
+                [class]="strongHighlightClass()"
+                [style]="highlightStyle()"
+              ></span>
+            }
           </span>
         }
         @default {
-          <div class="{{ baseClass() }}">
-            <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+          <div [class]="baseClass()">
+            <span [class]="contentWrapperClass()" [style.display]="isOutline() ? null : 'contents'">
+              <ng-content />
+            </span>
+            @if (isStrong()) {
+              <span
+                #highlight
+                [class]="strongHighlightClass()"
+                [style]="highlightStyle()"
+              ></span>
+            }
           </div>
         }
       }
     }
-
-    <ng-template #contentTpl>
-      @if (isOutline()) {
-        <span class="{{ outlineInnerClass() }}">
-          <ng-content />
-        </span>
-      } @else {
-        <ng-content />
-      }
-      @if (isStrong()) {
-        <span
-          #highlight
-          class="{{ strongHighlightClass() }}"
-          [style]="highlightStyle()"
-        ></span>
-      }
-    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -93,7 +112,6 @@ type SegmentedTag = 'div' | 'span';
   ],
 })
 export class KSegmentedComponent implements AfterViewInit, AfterViewChecked {
-  private readonly host = inject(ElementRef<HTMLElement>);
   private readonly navbarContext =
     inject<NavbarContextValue>(NAVBAR_CONTEXT);
 
@@ -180,6 +198,10 @@ export class KSegmentedComponent implements AfterViewInit, AfterViewChecked {
     if (this.isRaised()) parts.push(c['raised'] as string);
     if (this.isOutline()) parts.push(c['outline'] as string);
     if (this.isStrong()) parts.push(c['strong'] as string);
+    // Add spacing between segmented controls when in a space-y container
+    // This compensates for display: contents not working with Tailwind's space-y
+    // Apply margin, then override for first div using first-of-type
+    parts.push('[.space-y-4_&]:mt-4 [.space-y-2_&]:mt-2 [.space-y-1_&]:mt-1');
     if (this.className()) parts.push(this.className()!);
     return cls(...parts);
   });
@@ -187,6 +209,14 @@ export class KSegmentedComponent implements AfterViewInit, AfterViewChecked {
   readonly outlineInnerClass: Signal<string> = computed(
     () => this.classes()['outlineInner'] as string
   );
+
+  readonly contentWrapperClass: Signal<string> = computed(() => {
+    if (this.isOutline()) {
+      return this.outlineInnerClass();
+    }
+    // Return empty string when not outline (wrapper will have display: contents from style binding)
+    return '';
+  });
 
   readonly strongHighlightClass: Signal<string> = computed(
     () => this.classes()['strongHighlight'] as string

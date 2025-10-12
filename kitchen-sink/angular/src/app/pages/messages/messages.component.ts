@@ -76,7 +76,7 @@ interface MessageItem {
         (disable)="onMessagebarDisable()"
       >
         <k-toolbar-pane left class="ios:h-10">
-          <k-link [iconOnly]="true">
+          <k-link [iconOnly]="true" class="!text-inherit">
             <k-icon>
               <i ios class="f7-icons" style="font-size: 20px;">camera_fill</i>
               <i material class="material-icons text-black dark:text-md-dark-on-surface" style="font-size: 24px;">photo_camera</i>
@@ -86,6 +86,7 @@ interface MessageItem {
         <k-toolbar-pane right class="ios:h-10">
           <k-link
             [iconOnly]="true"
+            class="!text-inherit"
             [class]="sendButtonClass()"
             (clicked)="onSendClick()"
           >

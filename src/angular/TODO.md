@@ -35,7 +35,7 @@
 - [x] Dialog
 - [x] DialogButton
 - [x] Fab
-- [🚧] Glass
+- [x] Glass
 - [x] Icon
 - [x] Link
 - [x] List
@@ -45,13 +45,13 @@
 - [x] ListItem
 - [x] MenuList
 - [x] MenuListItem
-- [🚧] Message
+- [x] Message
 - [🚧] Messagebar
 - [🚧] Messages
-- [🚧] MessagesTitle
-- [🚧] Navbar
-- [🚧] NavbarBackLink
-- [🚧] NavbarContext
+- [x] MessagesTitle
+- [x] Navbar
+- [x] NavbarBackLink
+- [x] NavbarContext
 - [🚧] Notification
 - [x] Page
 - [🚧] Panel
@@ -61,15 +61,15 @@
 - [x] Progressbar
 - [x] Radio
 - [🚧] Range
-- [🚧] Searchbar
+- [x] Searchbar
 - [🚧] Segmented
 - [🚧] SegmentedButton
 - [🚧] SegmentedContext
 - [🚧] SegmentedContext
 - [x] Sheet
 - [x] Stepper
-- [🚧] Tabbar
-- [🚧] TabbarLink
+- [x] Tabbar
+- [x] TabbarLink
 - [x] Table
 - [x] TableBody
 - [x] TableCell
@@ -77,9 +77,9 @@
 - [x] TableRow
 - [x] Toast
 - [x] Toggle
-- [🚧] Toolbar
-- [🚧] ToolbarContext
-- [🚧] ToolbarPane
+- [x] Toolbar
+- [x] ToolbarContext
+- [x] ToolbarPane
 
 ## Kitchen Sink
 - [x] Scaffold Angular kitchen-sink application with Angular CLI

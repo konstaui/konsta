@@ -21,13 +21,15 @@ import {
 } from '../shared/theme-helpers.js';
 import { KGlassComponent } from './glass.component.js';
 import { KToolbarPaneComponent } from './toolbar-pane.component.js';
+import { KLinkComponent } from './link.component.js';
+import { KIconComponent } from './icon.component.js';
 
 type MessagebarTag = 'div' | 'span';
 
 @Component({
   selector: 'k-messagebar',
 
-  imports: [CommonModule, KGlassComponent, KToolbarPaneComponent],
+  imports: [CommonModule, KGlassComponent, KToolbarPaneComponent, KLinkComponent, KIconComponent],
   template: `
     @switch (componentTag()) {
       @case ('span') {
@@ -45,11 +47,9 @@ type MessagebarTag = 'div' | 'span';
     <ng-template #messagebarTemplate>
       <div class="{{ toolbarClass() }}">
         <div class="{{ toolbarInnerClass() }}">
-          @if (hasLeft()) {
-            <div class="{{ leftClass() }}">
-              <ng-content select="[left]" />
-            </div>
-          }
+          <div class="{{ leftClass() }}">
+            <ng-content select="[left]" />
+          </div>
           <k-glass class="{{ messagebarAreaClass() }}">
             <textarea
               class="{{ messagebarInputClass() }}"
@@ -65,15 +65,20 @@ type MessagebarTag = 'div' | 'span';
               (blur)="handleBlur($event)"
             ></textarea>
           </k-glass>
-          @if (hasRight()) {
-            <div class="{{ rightClass() }}">
-              <ng-content select="[right]" />
-            </div>
-          }
+          <div class="{{ rightClass() }}">
+            <ng-content select="[right]" />
+          </div>
         </div>
       </div>
     </ng-template>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KMessagebarComponent {
@@ -147,11 +152,14 @@ export class KMessagebarComponent {
       this.theme() === 'ios'
         ? this.palette()['bgIos'] ?? ''
         : this.palette()['bgMaterial'] ?? '';
-    return cls(base, bg);
+    // Add padding classes to match React structure
+    return cls(base, bg, 'pb-safe-4 px-safe-4');
   });
-  readonly toolbarInnerClass: Signal<string> = computed(
-    () => this.classes()['toolbarInner'] as string
-  );
+  readonly toolbarInnerClass: Signal<string> = computed(() => {
+    const base = this.classes()['toolbarInner'] as string;
+    // Add necessary classes to match React structure: height, flex layout, positioning
+    return cls(base, 'h-12 flex relative justify-between');
+  });
   readonly leftClass: Signal<string> = computed(
     () => this.classes()['left'] as string
   );
