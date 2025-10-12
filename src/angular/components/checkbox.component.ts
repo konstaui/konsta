@@ -1,4 +1,4 @@
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,8 +30,7 @@ type CheckboxState = 'checked' | 'notChecked';
 
 @Component({
   selector: 'k-checkbox',
-  
-  imports: [CommonModule, KCheckboxIconComponent],
+  imports: [NgTemplateOutlet, KCheckboxIconComponent],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -117,6 +116,13 @@ type CheckboxState = 'checked' | 'notChecked';
       }
     }
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KCheckboxComponent implements ControlValueAccessor {
@@ -129,7 +135,6 @@ export class KCheckboxComponent implements ControlValueAccessor {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
-  readonly mediaAttr = input<boolean>(false, { alias: 'media' });
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);

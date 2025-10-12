@@ -70,11 +70,11 @@
 - [x] Stepper
 - [🚧] Tabbar
 - [🚧] TabbarLink
-- [🚧] Table
-- [🚧] TableBody
-- [🚧] TableCell
-- [🚧] TableHead
-- [🚧] TableRow
+- [x] Table
+- [x] TableBody
+- [x] TableCell
+- [x] TableHead
+- [x] TableRow
 - [x] Toast
 - [x] Toggle
 - [🚧] Toolbar
