@@ -57,7 +57,7 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
         [opened]="sheetOpened()"
         (backdropClick)="sheetOpened.set(false)"
       >
-        <k-toolbar [top]="true" class="justify-end ios:pt-4">
+        <k-toolbar [top]="true" [tabbarIcons]="false" [tabbarLabels]="false" class="justify-end ios:pt-4">
           <div class="ios:hidden"></div>
           <k-toolbar-pane>
             <k-link [iconOnly]="true" (clicked)="sheetOpened.set(false)">
@@ -81,6 +81,11 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
       </k-sheet>
     </k-page>
   `,
+  styles: [`
+    k-sheet k-toolbar {
+      display: contents;
+    }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SheetModalComponent {

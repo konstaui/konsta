@@ -92,8 +92,8 @@ export class KToolbarComponent implements AfterViewInit, OnDestroy {
   readonly innerClassName = input<string | undefined>(undefined);
   readonly outline = input<boolean | undefined>(undefined);
   readonly tabbar = input<boolean>(false);
-  readonly tabbarIcons = input<boolean>(false);
-  readonly tabbarLabels = input<boolean>(false);
+  readonly tabbarIcons = input<boolean>(true);
+  readonly tabbarLabels = input<boolean>(true);
   readonly top = input<boolean>(false);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
