@@ -30,22 +30,21 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
 
   imports: [CommonModule, RouterModule, KChevronIconComponent],
   template: `
-    <li #root [class]="baseClasses()">
-      <div
-        #itemContent
-        [class]="groupTitle() ? groupTitleClasses() : itemContentClasses()"
-      >
-        <div
-          #mediaContainer
-          [class]="groupTitle() ? 'contents' : mediaClasses()"
-        >
-          @if (media()) {
-            <ng-container *ngTemplateOutlet="media()!" />
-          }
-          <ng-content select="[media],[data-media],[slot='media']" />
-        </div>
+    @if (groupTitle()) {
+      <li #root [class]="groupTitleClasses()">
+        {{ title() }}
+        <ng-content />
+      </li>
+    } @else {
+      <li #root [class]="baseClasses()">
+        <div #itemContent [class]="itemContentClasses()">
+          <div #mediaContainer [class]="mediaClasses()">
+            @if (media()) {
+              <ng-container *ngTemplateOutlet="media()!" />
+            }
+            <ng-content select="[media],[data-media],[slot='media']" />
+          </div>
 
-        @if (!groupTitle()) {
           <div [class]="innerClasses()">
             @if (header()) {
               <div [class]="headerClasses()">{{ header() }}</div>
@@ -82,11 +81,9 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             <ng-content select="[inner]" />
           </div>
           <ng-content select="[content]" />
-        } @else {
-          <span>{{ title() }}</span>
-        }
-      </div>
-    </li>
+        </div>
+      </li>
+    }
   `,
   styles: [
     `
@@ -294,9 +291,11 @@ export class KListItemComponent {
   readonly headerClasses: Signal<string> = computed(
     () => this.listClasses()['header']
   );
-  readonly groupTitleClasses: Signal<string> = computed(
-    () => this.listClasses()['groupTitle']
-  );
+  readonly groupTitleClasses: Signal<string> = computed(() => {
+    const classes = this.listClasses()['groupTitle'];
+    const customClass = this.className();
+    return customClass ? `${classes} ${customClass}` : classes;
+  });
   readonly chevronClasses: Signal<string> = computed(
     () => this.listClasses()['chevron'] as string
   );

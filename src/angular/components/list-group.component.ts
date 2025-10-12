@@ -14,50 +14,31 @@ type ListGroupTag = 'li' | 'div';
   selector: 'k-list-group',
 
   imports: [CommonModule, KListComponent],
+  host: {
+    '[class]': 'className()',
+  },
   styles: [
     `
       :host {
-        display: contents;
+        display: list-item;
       }
     `,
   ],
   template: `
-    @if (componentTag() === 'li') {
-      <li [class]="className() ?? null">
-        <k-list
-          [class]="listClass() ?? undefined"
-          [colors]="colors()"
-          [ios]="ios()"
-          [material]="material()"
-          [dividers]="dividers()"
-          [inset]="inset()"
-          [strong]="strong()"
-          [outline]="outline()"
-          [menuList]="menuList()"
-          [nested]="true"
-        >
-          <ng-content />
-        </k-list>
-      </li>
-    }
-    @if (componentTag() === 'div') {
-      <div [class]="className() ?? null">
-        <k-list
-          [class]="listClass() ?? undefined"
-          [colors]="colors()"
-          [ios]="ios()"
-          [material]="material()"
-          [dividers]="dividers()"
-          [inset]="inset()"
-          [strong]="strong()"
-          [outline]="outline()"
-          [menuList]="menuList()"
-          [nested]="true"
-        >
-          <ng-content />
-        </k-list>
-      </div>
-    }
+    <k-list
+      [class]="listClass() ?? undefined"
+      [colors]="colors()"
+      [ios]="ios()"
+      [material]="material()"
+      [dividers]="dividers()"
+      [inset]="inset()"
+      [strong]="strong()"
+      [outline]="outline()"
+      [menuList]="menuList()"
+      [nested]="true"
+    >
+      <ng-content />
+    </k-list>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
