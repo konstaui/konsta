@@ -118,7 +118,11 @@ export class KBreadcrumbsItemComponent {
       ),
       this.className()
     ) as Record<string, any>;
-    return c['base'] as string;
+    let classString = c['base'] as string;
+    if (this.active()) {
+      classString += ' font-semibold';
+    }
+    return classString;
   });
 
   handleClick(event: Event) {

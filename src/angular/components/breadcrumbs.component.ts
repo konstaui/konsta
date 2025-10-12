@@ -46,8 +46,8 @@ export class KBreadcrumbsComponent {
   });
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly fontSizeIos = input<string>('text-sm');
-  readonly fontSizeMaterial = input<string>('text-sm');
+  readonly fontSizeIos = input<string>('text-[17px]');
+  readonly fontSizeMaterial = input<string>('text-[14px]');
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
