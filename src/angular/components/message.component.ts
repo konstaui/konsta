@@ -24,7 +24,9 @@ type MessageType = 'sent' | 'received';
 
 @Component({
   selector: 'k-message',
-  
+  host: {
+    '[style.display]': '"contents"',
+  },
   imports: [CommonModule, NgTemplateOutlet],
   template: `
     @switch (componentTag()) {

@@ -62,16 +62,8 @@ interface MessageItem {
             [type]="message.type"
             [name]="message.name"
             [text]="message.text"
-          >
-            @if (message.type === 'received' && message.avatar) {
-              <img
-                avatar
-                [src]="message.avatar"
-                alt=""
-                class="w-8 h-8 rounded-full"
-              />
-            }
-          </k-message>
+            [avatar]="message.avatar"
+          />
         }
       </k-messages>
 
@@ -83,7 +75,7 @@ interface MessageItem {
         (valueChange)="onMessageTextSet($event)"
         (disable)="onMessagebarDisable()"
       >
-        <k-toolbar-pane left class="ios:h-10" left>
+        <k-toolbar-pane left class="ios:h-10">
           <k-link [iconOnly]="true">
             <k-icon>
               <i ios class="f7-icons" style="font-size: 20px;">camera_fill</i>
@@ -91,7 +83,7 @@ interface MessageItem {
             </k-icon>
           </k-link>
         </k-toolbar-pane>
-        <k-toolbar-pane right class="ios:h-10" right>
+        <k-toolbar-pane right class="ios:h-10">
           <k-link
             [iconOnly]="true"
             [class]="sendButtonClass()"

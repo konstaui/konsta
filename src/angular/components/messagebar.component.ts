@@ -20,13 +20,14 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { KGlassComponent } from './glass.component.js';
+import { KToolbarPaneComponent } from './toolbar-pane.component.js';
 
 type MessagebarTag = 'div' | 'span';
 
 @Component({
   selector: 'k-messagebar',
-  
-  imports: [CommonModule, KGlassComponent],
+
+  imports: [CommonModule, KGlassComponent, KToolbarPaneComponent],
   template: `
     @switch (componentTag()) {
       @case ('span') {

@@ -18,20 +18,28 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
 
 @Component({
   selector: 'k-glass',
-  host: {
-    '[style.display]': '"contents"',
-  },
+  styles: [`
+    :host {
+      display: contents;
+    }
+  `],
   imports: [CommonModule, NgTemplateOutlet],
   template: `
     @switch (component()) {
       @case ('span') {
         <span #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
           <ng-container *ngTemplateOutlet="content"></ng-container>
+          @if (afterContent()) {
+            <ng-container *ngTemplateOutlet="afterContent()!" />
+          }
         </span>
       }
       @case ('section') {
         <section #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
           <ng-container *ngTemplateOutlet="content"></ng-container>
+          @if (afterContent()) {
+            <ng-container *ngTemplateOutlet="afterContent()!" />
+          }
         </section>
       }
       @case ('button') {
@@ -42,11 +50,17 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
           [ngStyle]="style() ?? {}"
         >
           <ng-container *ngTemplateOutlet="content"></ng-container>
+          @if (afterContent()) {
+            <ng-container *ngTemplateOutlet="afterContent()!" />
+          }
         </button>
       }
       @default {
         <div #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
           <ng-container *ngTemplateOutlet="content"></ng-container>
+          @if (afterContent()) {
+            <ng-container *ngTemplateOutlet="afterContent()!" />
+          }
         </div>
       }
     }
@@ -69,6 +83,7 @@ export class KGlassComponent {
   readonly material = input<boolean | undefined>(undefined);
   readonly highlight = input<boolean>(true);
   readonly buttonType = input<string | undefined>(undefined);
+  readonly afterContent = input<any | undefined>(undefined);
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
