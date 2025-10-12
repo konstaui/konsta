@@ -83,7 +83,7 @@ type SegmentedTag = 'div' | 'span';
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [
+  providers: [
     {
       provide: SEGMENTED_CONTEXT,
       useFactory: (component: KSegmentedComponent) =>

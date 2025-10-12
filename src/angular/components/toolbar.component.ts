@@ -74,7 +74,7 @@ import {
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [
+  providers: [
     {
       provide: TOOLBAR_CONTEXT,
       useFactory: (component: KToolbarComponent) => component.contextValue,
@@ -92,8 +92,8 @@ export class KToolbarComponent implements AfterViewInit, OnDestroy {
   readonly innerClassName = input<string | undefined>(undefined);
   readonly outline = input<boolean | undefined>(undefined);
   readonly tabbar = input<boolean>(false);
-  readonly tabbarIcons = input<boolean>(true);
-  readonly tabbarLabels = input<boolean>(true);
+  readonly tabbarIcons = input<boolean | undefined>(undefined);
+  readonly tabbarLabels = input<boolean | undefined>(undefined);
   readonly top = input<boolean>(false);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
@@ -166,8 +166,8 @@ export class KToolbarComponent implements AfterViewInit, OnDestroy {
 
   readonly contextValue = createToolbarContext({
     tabbar: computed(() => this.tabbar()),
-    tabbarIcons: computed(() => this.tabbarIcons()),
-    tabbarLabels: computed(() => this.tabbarLabels()),
+    tabbarIcons: computed(() => this.tabbarIcons() ?? true),
+    tabbarLabels: computed(() => this.tabbarLabels() ?? true),
     toolbar: computed(() => true),
   });
 

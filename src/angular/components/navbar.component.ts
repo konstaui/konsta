@@ -76,7 +76,7 @@ import {
     </nav>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  viewProviders: [
+  providers: [
     {
       provide: NAVBAR_CONTEXT,
       useFactory: (component: KNavbarComponent) => component.contextValue,
