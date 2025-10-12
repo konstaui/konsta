@@ -52,13 +52,11 @@ type ButtonComponentTag = 'button' | 'a';
       </button>
     }
   `,
-  styles: [
-    `
-      :host {
-        display: contents;
-      }
-    `,
-  ],
+  host: {
+    '[class.w-full]': '!inline()',
+    '[class.inline-flex]': 'inline()',
+  },
+  styles: [],
 })
 export class KButtonComponent {
   private readonly ctx = injectKonstaContext();

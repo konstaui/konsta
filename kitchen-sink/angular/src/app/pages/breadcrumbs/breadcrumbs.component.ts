@@ -82,19 +82,19 @@ import { KLinkComponent } from '../../../../../../src/angular/components/link.co
       <k-block [strong]="true" [outline]="true">
         <k-breadcrumbs>
           <k-breadcrumbs-item>
-            <k-link>Home</k-link>
+            <k-link component="button">Home</k-link>
           </k-breadcrumbs-item>
           <k-breadcrumbs-separator></k-breadcrumbs-separator>
           <k-breadcrumbs-item>
-            <k-link>Catalog</k-link>
+            <k-link component="button">Catalog</k-link>
           </k-breadcrumbs-item>
           <k-breadcrumbs-separator></k-breadcrumbs-separator>
           <k-breadcrumbs-item>
-            <k-link>Phones</k-link>
+            <k-link component="button">Phones</k-link>
           </k-breadcrumbs-item>
           <k-breadcrumbs-separator></k-breadcrumbs-separator>
           <k-breadcrumbs-item>
-            <k-link>Apple</k-link>
+            <k-link component="button">Apple</k-link>
           </k-breadcrumbs-item>
           <k-breadcrumbs-separator></k-breadcrumbs-separator>
           <k-breadcrumbs-item [active]="true">
@@ -107,7 +107,7 @@ import { KLinkComponent } from '../../../../../../src/angular/components/link.co
       <k-block [strong]="true" [outline]="true">
         <k-breadcrumbs>
           <k-breadcrumbs-item>
-            <k-link>Home</k-link>
+            <k-link component="button">Home</k-link>
           </k-breadcrumbs-item>
           <k-breadcrumbs-separator></k-breadcrumbs-separator>
           <k-breadcrumbs-collapsed

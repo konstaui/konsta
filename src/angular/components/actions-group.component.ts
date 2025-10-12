@@ -58,7 +58,7 @@ export class KActionsGroupComponent {
   private readonly hasDividers = computed(() => {
     const value = this.dividers();
     if (value !== undefined && value !== null) return value;
-    return true;
+    return this.theme() === 'ios';
   });
 
   readonly classes: Signal<string> = computed(() => {

@@ -52,7 +52,7 @@ export class KActionsLabelComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly fontSizeIos = input<string>('text-xl');
+  readonly fontSizeIos = input<string>('text-sm');
   readonly fontSizeMaterial = input<string>('text-sm');
   readonly dividers = input<boolean | undefined>(undefined);
 
@@ -80,7 +80,7 @@ export class KActionsLabelComponent {
   private readonly hasDividers = computed(() => {
     const value = this.dividers();
     if (value !== undefined && value !== null) return value;
-    return true;
+    return this.theme() === 'ios';
   });
 
   readonly classes: Signal<string> = computed(() => {

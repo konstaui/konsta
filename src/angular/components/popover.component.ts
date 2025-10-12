@@ -16,12 +16,19 @@ import { cls } from '../../shared/cls.js';
 
 @Component({
   selector: 'k-popover',
-  
+
   imports: [CommonModule],
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   template: `
     @if (opened()) {
       <div
-      class="k-popover-backdrop fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-200"
+      class="k-popover-backdrop fixed inset-0 bg-black/50 transition-opacity duration-200 z-20"
       (click)="onBackdropClick()"
     ></div>
       <div

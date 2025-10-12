@@ -25,6 +25,10 @@ type ActionsButtonTag = 'button' | 'a' | string;
   
   imports: [CommonModule],
   template: `
+    <ng-template #buttonContent>
+      <ng-content />
+    </ng-template>
+
     @switch (componentTag()) {
       @case ('a') {
         <a
@@ -35,7 +39,7 @@ type ActionsButtonTag = 'button' | 'a' | string;
           [attr.tabindex]="0"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
         </a>
       }
       @case ('button') {
@@ -45,7 +49,7 @@ type ActionsButtonTag = 'button' | 'a' | string;
           [attr.type]="type()"
           (click)="handleClick($event)"
         >
-          <ng-content />
+          <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
         </button>
       }
       @default {
@@ -58,7 +62,7 @@ type ActionsButtonTag = 'button' | 'a' | string;
               tabindex="0"
               (click)="handleClick($event)"
             >
-              <ng-content />
+              <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
             </span>
           }
           @default {
@@ -69,7 +73,7 @@ type ActionsButtonTag = 'button' | 'a' | string;
               tabindex="0"
               (click)="handleClick($event)"
             >
-              <ng-content />
+              <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
             </div>
           }
         }

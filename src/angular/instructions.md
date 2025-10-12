@@ -42,3 +42,4 @@ react server run in http://localhost:5174/
 Do screenshot and dom inspect to compare structure and styles.
 We fix only angular code never shared one, we mostly dont use custom style unless react has it already.
 
+uses the correct pattern with <ng-template> and *ngTemplateOutlet to properly handle content projection in switch statements.

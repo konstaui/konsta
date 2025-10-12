@@ -6,8 +6,8 @@ import {
   Signal,
   computed,
   effect,
+  inject,
   input,
-  viewChild,
 } from '@angular/core';
 import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
 import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
@@ -15,17 +15,29 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
 
 @Component({
   selector: 'k-block-title',
-  
+
   imports: [CommonModule],
   template: `
-    <div #root class="{{ classes() }}">
-      <ng-content />
-    </div>
+    <ng-content />
   `,
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+      :host:has(+ k-block),
+      :host:has(+ k-block-header),
+      :host:has(+ k-block-footer),
+      :host:has(+ k-list),
+      :host:has(+ k-table) {
+        margin-bottom: -1.5rem !important;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KBlockTitleComponent {
-  private readonly host = viewChild<ElementRef<HTMLElement>>('root');
+  private readonly host = inject(ElementRef);
 
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -62,7 +74,7 @@ export class KBlockTitleComponent {
 
   constructor() {
     effect(() => {
-      const el = this.host()?.nativeElement;
+      const el = this.host.nativeElement;
       if (!el) return;
       el.setAttribute('class', this.classes());
     });

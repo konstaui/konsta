@@ -37,51 +37,145 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
       </li>
     } @else {
       <li #root [class]="baseClasses()">
-        <div #itemContent [class]="itemContentClasses()">
-          <div #mediaContainer [class]="mediaClasses()">
-            @if (media()) {
-              <ng-container *ngTemplateOutlet="media()!" />
-            }
-            <ng-content select="[media],[data-media],[slot='media']" />
-          </div>
-
-          <div [class]="innerClasses()">
-            @if (header()) {
-              <div [class]="headerClasses()">{{ header() }}</div>
-            }
-            <div [class]="titleWrapClasses()">
-              @if (title()) {
-                <span [class]="titleClasses()">{{ title() }}</span>
-              } @else {
-                <ng-content select="[title]" />
+        @if (itemTag() === 'label') {
+          <label #itemContent [class]="itemContentClasses()">
+            <div #mediaContainer [class]="mediaClasses()">
+              @if (media()) {
+                <ng-container *ngTemplateOutlet="media()!" />
               }
-              <span [class]="afterClasses()">
-                @if (after()) {
-                  @if (isTemplateRef(after())) {
-                    <ng-container *ngTemplateOutlet="after()!" />
-                  } @else {
-                    {{ after() }}
-                  }
-                }
-                <ng-content select="[after],[slot='after']" />
-              </span>
-              @if (showChevron()) {
-                <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
-              }
+              <ng-content select="[media],[data-media],[slot='media']" />
             </div>
-            @if (subtitle()) {
-              <div [class]="subtitleClasses()">{{ subtitle() }}</div>
-            }
-            @if (text()) {
-              <div [class]="textClasses()">{{ text() }}</div>
-            }
-            @if (footer()) {
-              <div [class]="footerClasses()">{{ footer() }}</div>
-            }
-            <ng-content select="[inner]" />
+
+            <div [class]="innerClasses()">
+              @if (header()) {
+                <div [class]="headerClasses()">{{ header() }}</div>
+              }
+              <div [class]="titleWrapClasses()">
+                @if (title()) {
+                  <span [class]="titleClasses()">{{ title() }}</span>
+                } @else {
+                  <ng-content select="[title]" />
+                }
+                <span [class]="afterClasses()">
+                  @if (after()) {
+                    @if (isTemplateRef(after())) {
+                      <ng-container *ngTemplateOutlet="after()!" />
+                    } @else {
+                      {{ after() }}
+                    }
+                  }
+                  <ng-content select="[after],[slot='after']" />
+                </span>
+                @if (showChevron()) {
+                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                }
+              </div>
+              @if (subtitle()) {
+                <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+              }
+              @if (text()) {
+                <div [class]="textClasses()">{{ text() }}</div>
+              }
+              @if (footer()) {
+                <div [class]="footerClasses()">{{ footer() }}</div>
+              }
+              <ng-content select="[inner]" />
+            </div>
+            <ng-content select="[content]" />
+          </label>
+        } @else if (itemTag() === 'a') {
+          <a #itemContent [class]="itemContentClasses()" [href]="linkHref()" [routerLink]="routerLink()" [target]="target()">
+            <div #mediaContainer [class]="mediaClasses()">
+              @if (media()) {
+                <ng-container *ngTemplateOutlet="media()!" />
+              }
+              <ng-content select="[media],[data-media],[slot='media']" />
+            </div>
+
+            <div [class]="innerClasses()">
+              @if (header()) {
+                <div [class]="headerClasses()">{{ header() }}</div>
+              }
+              <div [class]="titleWrapClasses()">
+                @if (title()) {
+                  <span [class]="titleClasses()">{{ title() }}</span>
+                } @else {
+                  <ng-content select="[title]" />
+                }
+                <span [class]="afterClasses()">
+                  @if (after()) {
+                    @if (isTemplateRef(after())) {
+                      <ng-container *ngTemplateOutlet="after()!" />
+                    } @else {
+                      {{ after() }}
+                    }
+                  }
+                  <ng-content select="[after],[slot='after']" />
+                </span>
+                @if (showChevron()) {
+                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                }
+              </div>
+              @if (subtitle()) {
+                <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+              }
+              @if (text()) {
+                <div [class]="textClasses()">{{ text() }}</div>
+              }
+              @if (footer()) {
+                <div [class]="footerClasses()">{{ footer() }}</div>
+              }
+              <ng-content select="[inner]" />
+            </div>
+            <ng-content select="[content]" />
+          </a>
+        } @else {
+          <div #itemContent [class]="itemContentClasses()">
+            <div #mediaContainer [class]="mediaClasses()">
+              @if (media()) {
+                <ng-container *ngTemplateOutlet="media()!" />
+              }
+              <ng-content select="[media],[data-media],[slot='media']" />
+            </div>
+
+            <div [class]="innerClasses()">
+              @if (header()) {
+                <div [class]="headerClasses()">{{ header() }}</div>
+              }
+              <div [class]="titleWrapClasses()">
+                @if (title()) {
+                  <span [class]="titleClasses()">{{ title() }}</span>
+                } @else {
+                  <ng-content select="[title]" />
+                }
+                <span [class]="afterClasses()">
+                  @if (after()) {
+                    @if (isTemplateRef(after())) {
+                      <ng-container *ngTemplateOutlet="after()!" />
+                    } @else {
+                      {{ after() }}
+                    }
+                  }
+                  <ng-content select="[after],[slot='after']" />
+                </span>
+                @if (showChevron()) {
+                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                }
+              </div>
+              @if (subtitle()) {
+                <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+              }
+              @if (text()) {
+                <div [class]="textClasses()">{{ text() }}</div>
+              }
+              @if (footer()) {
+                <div [class]="footerClasses()">{{ footer() }}</div>
+              }
+              <ng-content select="[inner]" />
+            </div>
+            <ng-content select="[content]" />
           </div>
-          <ng-content select="[content]" />
-        </div>
+        }
       </li>
     }
   `,

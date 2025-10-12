@@ -8,8 +8,8 @@
 
   <k-block-title>Theme</k-block-title>
   <k-list [strong]="true" [inset]="true">
-    <k-list-item [title]="'iOS Theme'" [media]="iosRadio" (click)="setTheme('ios')"></k-list-item>
-    <k-list-item [title]="'Material Theme'" [media]="materialRadio" (click)="setTheme('material')"></k-list-item>
+    <k-list-item [label]="true" [title]="'iOS Theme'" [media]="iosRadio" (click)="setTheme('ios')"></k-list-item>
+    <k-list-item [label]="true" [title]="'Material Theme'" [media]="materialRadio" (click)="setTheme('material')"></k-list-item>
   </k-list>
 
   <ng-template #iosRadio>
