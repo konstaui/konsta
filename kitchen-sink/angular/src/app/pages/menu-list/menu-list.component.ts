@@ -49,54 +49,56 @@ import { DemoIconComponent } from '../../components/demo-icon.component.js';
       </k-block>
 
       <k-menu-list [strongIos]="true" [outlineIos]="true">
+        <ng-template #mediaIcon>
+          <app-demo-icon />
+        </ng-template>
+
         <k-menu-list-item
           [title]="'Home'"
           [active]="selected() === 'home'"
           (click)="selected.set('home')"
-        >
-          <app-demo-icon media />
-        </k-menu-list-item>
+          [media]="mediaIcon"
+        />
         <k-menu-list-item
           [title]="'Profile'"
           [active]="selected() === 'profile'"
           (click)="selected.set('profile')"
-        >
-          <app-demo-icon media />
-        </k-menu-list-item>
+          [media]="mediaIcon"
+        />
         <k-menu-list-item
           [title]="'Settings'"
           [active]="selected() === 'settings'"
           (click)="selected.set('settings')"
-        >
-          <app-demo-icon media />
-        </k-menu-list-item>
+          [media]="mediaIcon"
+        />
       </k-menu-list>
 
       <k-menu-list [strongIos]="true" [outlineIos]="true">
+        <ng-template #mediaIcon2>
+          <app-demo-icon />
+        </ng-template>
+
         <k-menu-list-item
           [title]="'Home'"
           [subtitle]="'Home subtitle'"
           [active]="selectedMedia() === 'home'"
           (click)="selectedMedia.set('home')"
-        >
-          <app-demo-icon media />
-        </k-menu-list-item>
+          [media]="mediaIcon2"
+        />
         <k-menu-list-item
           [title]="'Profile'"
           [subtitle]="'Profile subtitle'"
           [active]="selectedMedia() === 'profile'"
           (click)="selectedMedia.set('profile')"
-        >
-          <app-demo-icon media />
-        </k-menu-list-item>
+          [media]="mediaIcon2"
+        />
         <k-menu-list-item
           [title]="'Settings'"
           [subtitle]="'Settings subtitle'"
           [active]="selectedMedia() === 'settings'"
           (click)="selectedMedia.set('settings')"
-        >
-          <app-demo-icon media />
-        </k-menu-list-item>
+          [media]="mediaIcon2"
+        />
       </k-menu-list>
     </k-page>
   `,

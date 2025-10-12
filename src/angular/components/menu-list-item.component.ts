@@ -1,15 +1,16 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  TemplateRef,
   input,
 } from '@angular/core';
 import { KListItemComponent } from './list-item.component.js';
 
 @Component({
   selector: 'k-menu-list-item',
-  
-  imports: [CommonModule, KListItemComponent],
+
+  imports: [CommonModule, KListItemComponent, NgTemplateOutlet],
   template: `
     <k-list-item
       [class]="className() ?? undefined"
@@ -24,18 +25,22 @@ import { KListItemComponent } from './list-item.component.js';
       [footer]="footer()"
       [menuListItem]="true"
       [menuListItemActive]="active()"
-      [href]="href() ?? undefined"
+      [href]="href() ?? false"
       [target]="target() ?? undefined"
       [routerLink]="routerLink() ?? undefined"
-      [link]="link()"
+      [link]="link() || !href() && !routerLink()"
+      [media]="media()"
     >
-      <ng-content select="[media]" />
-      <ng-content select="[title]" />
-      <ng-content select="[after]" />
-      <ng-content select="[inner]" />
       <ng-content />
     </k-list-item>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KMenuListItemComponent {
@@ -49,6 +54,7 @@ export class KMenuListItemComponent {
   readonly subtitle = input<string | undefined>(undefined);
   readonly text = input<string | undefined>(undefined);
   readonly after = input<string | undefined>(undefined);
+  readonly media = input<TemplateRef<any> | undefined>(undefined);
   readonly header = input<string | undefined>(undefined);
   readonly footer = input<string | undefined>(undefined);
   readonly active = input<boolean>(false);

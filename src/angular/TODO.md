@@ -43,8 +43,8 @@
 - [x] ListGroup
 - [x] ListInput
 - [x] ListItem
-- [🚧] MenuList
-- [🚧] MenuListItem
+- [x] MenuList
+- [x] MenuListItem
 - [🚧] Message
 - [🚧] Messagebar
 - [🚧] Messages

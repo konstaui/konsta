@@ -8,7 +8,7 @@ import { KListComponent } from './list.component.js';
 
 @Component({
   selector: 'k-menu-list',
-  
+
   imports: [CommonModule, KListComponent],
   template: `
     <k-list
@@ -33,6 +33,13 @@ import { KListComponent } from './list.component.js';
       <ng-content />
     </k-list>
   `,
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KMenuListComponent {

@@ -1,4 +1,4 @@
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,7 +21,7 @@ import { cls } from '../../shared/cls.js';
 @Component({
   selector: 'k-tabbar-link',
 
-  imports: [CommonModule, KLinkComponent, NgTemplateOutlet],
+  imports: [CommonModule, KLinkComponent],
   styles: [
     `
       :host {
@@ -30,16 +30,6 @@ import { cls } from '../../shared/cls.js';
     `,
   ],
   template: `
-    <ng-template #iconContent>
-      <ng-content select="[icon]" />
-    </ng-template>
-    <ng-template #labelContent>
-      <ng-content select="[label]" />
-    </ng-template>
-    <ng-template #otherContent>
-      <ng-content select="[content]" />
-    </ng-template>
-
     <k-link
       [component]="component()"
       [class]="linkClasses()"
@@ -48,28 +38,26 @@ import { cls } from '../../shared/cls.js';
       [tabbar]="true"
       [tabbarActive]="active()"
       [tabbarLabels]="hasLabel()"
-      [tabbarIcons]="hasIcon()"
+      [tabbarIcons]="true"
       [ios]="ios()"
       [material]="material()"
       (clicked)="clicked.emit($event)"
     >
       <span class="{{ contentClasses() }}">
-        @if (hasIcon()) {
-          <span class="{{ iconContainerClasses() }}">
-            <span class="{{ iconBgClasses() }}"></span>
-            <ng-container *ngTemplateOutlet="iconContent" />
-          </span>
-        }
+        <span class="{{ iconContainerClasses() }}">
+          <span class="{{ iconBgClasses() }}"></span>
+          <ng-content select="[icon]" />
+        </span>
         @if (hasLabel()) {
           <span class="{{ labelClasses() }}">
             @if (label()) {
               {{ label() }}
             } @else {
-              <ng-container *ngTemplateOutlet="labelContent" />
+              <ng-content select="[label]" />
             }
           </span>
         }
-        <ng-container *ngTemplateOutlet="otherContent" />
+        <ng-content select="[content]" />
       </span>
     </k-link>
   `,

@@ -5,10 +5,6 @@ const ICON_SRC = new URL('../../images/demo-icon.png', import.meta.url).href;
 @Component({
   selector: 'app-demo-icon',
   standalone: true,
-  host: {
-    'media': '',
-    'style': 'display: contents;'
-  },
   template: `<img [src]="iconSrc" alt="Demo icon" class="ios:w-7 material:w-6" />`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
