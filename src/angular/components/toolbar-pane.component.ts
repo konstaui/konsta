@@ -71,7 +71,7 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly tabbar = input<boolean | undefined>(undefined);
+  readonly tabbar = input<boolean>(true);
 
   private readonly glassEl = viewChild<KGlassComponent>('glassEl');
   private readonly highlightEl = viewChild<ElementRef<HTMLElement>>('highlightEl');

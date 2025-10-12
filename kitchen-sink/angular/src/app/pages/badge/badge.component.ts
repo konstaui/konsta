@@ -52,7 +52,7 @@ const DEMO_ICON_SRC = '/demo-icon.png';
       </k-navbar>
 
       <k-tabbar [labels]="true" [icons]="true" class="left-0 bottom-0 fixed">
-        <k-toolbar-pane [tabbar]="true">
+        <k-toolbar-pane>
           <k-tabbar-link
             [active]="true"
             [label]="'Inbox'"
