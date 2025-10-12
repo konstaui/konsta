@@ -47,7 +47,11 @@ import { cls } from '../../shared/cls.js';
         @if (hasIcon()) {
           <span class="{{ iconContainerClasses() }}">
             <span class="{{ iconBgClasses() }}"></span>
-            <ng-content select="[icon]" />
+            @if (icon()) {
+              <ng-container *ngTemplateOutlet="icon()!" />
+            } @else {
+              <ng-content select="[icon]" />
+            }
           </span>
         }
         @if (hasLabel()) {
@@ -77,6 +81,7 @@ export class KTabbarLinkComponent {
   readonly href = input<string | undefined>(undefined);
   readonly target = input<string | undefined>(undefined);
   readonly label = input<string | undefined>(undefined);
+  readonly icon = input<any | undefined>(undefined);
 
   readonly clicked = output<Event>();
 
@@ -85,7 +90,7 @@ export class KTabbarLinkComponent {
   private readonly labelSlot =
     contentChild<ElementRef<HTMLElement>>('[label]');
 
-  readonly hasIcon: Signal<boolean> = computed(() => !!this.iconSlot());
+  readonly hasIcon: Signal<boolean> = computed(() => !!this.icon() || !!this.iconSlot());
   readonly hasLabel: Signal<boolean> = computed(
     () => (this.label() != null && this.label() !== '') || !!this.labelSlot()
   );

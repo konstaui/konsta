@@ -189,7 +189,10 @@ export class KLinkComponent {
       linkClasses['base'],
       this.isToolbar() && linkClasses['toolbar'],
       this.isNavbar() && linkClasses['navbar'],
+      this.isTabbar() && tabbarClasses['common'],
+      this.isTabbar() && tabbarClasses[theme],
       this.isTabbar() && tabbarClasses[this.tabbarActive() ? 'active' : 'inactive'],
+      this.isTabbar() && theme === 'ios' && 'z-10',
       this.className()
     );
   });

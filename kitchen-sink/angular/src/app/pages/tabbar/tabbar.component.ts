@@ -5,6 +5,7 @@ import {
   computed,
   signal,
 } from '@angular/core';
+import { useThemeSignal } from '../../../../../../src/angular/shared/theme-helpers.js';
 import { KPageComponent } from '../../../../../../src/angular/components/page.component.js';
 import { KNavbarComponent } from '../../../../../../src/angular/components/navbar.component.js';
 import { KNavbarBackLinkComponent } from '../../../../../../src/angular/components/navbar-back-link.component.js';
@@ -64,39 +65,21 @@ interface TabDescriptor {
           <k-tabbar-link
             [active]="activeTab() === 'tab-1'"
             [label]="showLabels() ? 'Tab 1' : ''"
+            [icon]="showIcons() ? tab1IconTpl : undefined"
             (clicked)="setActiveTab('tab-1')"
-          >
-            @if (showIcons()) {
-              <k-icon icon>
-                <i ios class="f7-icons w-7 h-7">envelope_fill</i>
-                <i material class="f7-icons w-6 h-6">envelope_fill</i>
-              </k-icon>
-            }
-          </k-tabbar-link>
+          ></k-tabbar-link>
           <k-tabbar-link
             [active]="activeTab() === 'tab-2'"
             [label]="showLabels() ? 'Tab 2' : ''"
+            [icon]="showIcons() ? tab2IconTpl : undefined"
             (clicked)="setActiveTab('tab-2')"
-          >
-            @if (showIcons()) {
-              <k-icon icon>
-                <i ios class="f7-icons w-7 h-7">calendar</i>
-                <i material class="f7-icons w-6 h-6">calendar</i>
-              </k-icon>
-            }
-          </k-tabbar-link>
+          ></k-tabbar-link>
           <k-tabbar-link
             [active]="activeTab() === 'tab-3'"
             [label]="showLabels() ? 'Tab 3' : ''"
+            [icon]="showIcons() ? tab3IconTpl : undefined"
             (clicked)="setActiveTab('tab-3')"
-          >
-            @if (showIcons()) {
-              <k-icon icon>
-                <i ios class="f7-icons w-7 h-7">cloud_upload_fill</i>
-                <i material class="f7-icons w-6 h-6">cloud_upload_fill</i>
-              </k-icon>
-            }
-          </k-tabbar-link>
+          ></k-tabbar-link>
         </k-toolbar-pane>
       </k-tabbar>
 
@@ -214,16 +197,44 @@ interface TabDescriptor {
           </p>
         </k-block>
       }
+
+      <ng-template #tab1IconTpl>
+        @if (isIos()) {
+          <i class="f7-icons w-7 h-7">envelope_fill</i>
+        } @else {
+          <i class="f7-icons w-6 h-6">envelope_fill</i>
+        }
+      </ng-template>
+
+      <ng-template #tab2IconTpl>
+        @if (isIos()) {
+          <i class="f7-icons w-7 h-7">calendar</i>
+        } @else {
+          <i class="f7-icons w-6 h-6">calendar</i>
+        }
+      </ng-template>
+
+      <ng-template #tab3IconTpl>
+        @if (isIos()) {
+          <i class="f7-icons w-7 h-7">cloud_upload_fill</i>
+        } @else {
+          <i class="f7-icons w-6 h-6">cloud_upload_fill</i>
+        }
+      </ng-template>
     </k-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabbarComponent {
+  private readonly theme = useThemeSignal();
+
   readonly isPreview = computed(
     () =>
       typeof document !== 'undefined' &&
       document.location.href.includes('examplePreview')
   );
+
+  readonly isIos = computed(() => this.theme() === 'ios');
 
   readonly activeTab = signal<'tab-1' | 'tab-2' | 'tab-3'>('tab-1');
   readonly showLabels = signal(true);

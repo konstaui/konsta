@@ -73,8 +73,8 @@ type SearchbarTag = 'div' | 'span';
           class="{{ inputClass() }}"
           type="text"
           [attr.id]="inputId() ?? null"
-          [attr.name]="name() ?? null"
-          [attr.placeholder]="placeholder() ?? null"
+          [attr.name]="name()"
+          [attr.placeholder]="placeholder()"
           [attr.inputmode]="inputMode() ?? null"
           [attr.size]="size() ?? null"
           [attr.autocomplete]="autoComplete() ?? null"
@@ -160,13 +160,13 @@ export class KSearchbarComponent {
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
 
-  readonly placeholder = input<string | undefined>(undefined);
+  readonly placeholder = input<string>('Search');
   readonly value = input<string | null | undefined>(undefined);
   readonly inputId = input<string | undefined>(undefined);
   readonly inputStyle = input<Record<string, any> | null | undefined>(
     undefined
   );
-  readonly name = input<string | undefined>(undefined);
+  readonly name = input<string>('search');
   readonly inputMode = input<string | undefined>(undefined);
   readonly size = input<number | string | undefined>(undefined);
   readonly autoComplete = input<string | undefined>(undefined);

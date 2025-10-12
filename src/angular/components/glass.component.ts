@@ -25,12 +25,12 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
   template: `
     @switch (component()) {
       @case ('span') {
-        <span #root class="{{ classes() }}">
+        <span #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
           <ng-container *ngTemplateOutlet="content"></ng-container>
         </span>
       }
       @case ('section') {
-        <section #root class="{{ classes() }}">
+        <section #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
           <ng-container *ngTemplateOutlet="content"></ng-container>
         </section>
       }
@@ -39,12 +39,13 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
           #root
           class="{{ classes() }}"
           [attr.type]="buttonType() ?? 'button'"
+          [ngStyle]="style() ?? {}"
         >
           <ng-container *ngTemplateOutlet="content"></ng-container>
         </button>
       }
       @default {
-        <div #root class="{{ classes() }}">
+        <div #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
           <ng-container *ngTemplateOutlet="content"></ng-container>
         </div>
       }
@@ -63,6 +64,7 @@ export class KGlassComponent {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
+  readonly style = input<Record<string, any> | null | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
   readonly highlight = input<boolean>(true);
