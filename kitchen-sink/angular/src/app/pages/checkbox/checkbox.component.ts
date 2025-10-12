@@ -127,7 +127,7 @@ const MEDIA_ITEMS: readonly MediaItem[] = [
             [indeterminate]="isSomeMoviesSelected()"
             (changed)="toggleMoviesAll()"
           ></k-checkbox>
-          <ul class="ps-12" content>
+          <ul class="ps-12">
             @for (movie of movieOptions; track movie) {
               <k-list-item [label]="true" [title]="movie">
                 <k-checkbox

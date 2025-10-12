@@ -40,11 +40,13 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
         @case ('div') {
           <div #root [class]="baseClasses()">
             <ng-container *ngTemplateOutlet="itemContentTemplate"></ng-container>
+            <ng-content />
           </div>
         }
         @default {
           <li #root [class]="baseClasses()">
             <ng-container *ngTemplateOutlet="itemContentTemplate"></ng-container>
+            <ng-content />
           </li>
         }
       }
