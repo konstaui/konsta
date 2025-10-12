@@ -37,7 +37,7 @@ export class KBadgeComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly small = input<boolean>(false);
+  readonly small = input<boolean | undefined>(undefined);
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
@@ -60,6 +60,7 @@ export class KBadgeComponent {
     ) as Record<string, any>;
 
     const base = themed['base'] as Record<string, string>;
-    return cls(base[this.small() ? 'sm' : 'md'], this.className());
+    const isSmall = this.small();
+    return cls(base[isSmall ? 'sm' : 'md'], this.className());
   });
 }

@@ -107,7 +107,40 @@ export const useThemeClasses = (overrides?: ThemeOverrideFactory) => {
 };
 
 export const useDarkClasses = () => {
-  const ctx = injectKonstaContext();
-  const enabled = computed(() => ctx.dark());
   return (classNames: string) => classNames;
+};
+
+/**
+ * Resolves theme-specific props based on the current theme.
+ * For each property in obj, if the value is undefined, it will check
+ * for theme-specific variants (e.g., insetIos, insetMaterial) in allProps.
+ *
+ * @param theme - Current theme signal
+ * @param obj - Object with base properties to resolve
+ * @param allProps - Object containing all props including theme-specific variants
+ * @returns Computed signal with resolved properties
+ */
+export const useThemeSpecificProps = <T extends Record<string, any>>(
+  theme: Signal<KonstaTheme>,
+  obj: () => T,
+  allProps: () => Record<string, any>
+): Signal<T> => {
+  return computed(() => {
+    const result = {} as T;
+    const baseObj = obj();
+    const props = allProps();
+    const currentTheme = theme();
+
+    Object.keys(baseObj).forEach((key) => {
+      const baseValue = baseObj[key];
+      result[key as keyof T] =
+        typeof baseValue === 'undefined'
+          ? currentTheme === 'ios'
+            ? props[`${key}Ios`]
+            : props[`${key}Material`]
+          : baseValue;
+    });
+
+    return result;
+  });
 };

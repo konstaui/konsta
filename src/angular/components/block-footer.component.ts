@@ -12,6 +12,7 @@ import {
   useDarkClasses,
   useThemeClasses,
   useThemeSignal,
+  useThemeSpecificProps,
 } from '../shared/theme-helpers.js';
 
 @Component({
@@ -32,7 +33,9 @@ export class KBlockFooterComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly inset = input<boolean>(false);
+  readonly inset = input<boolean | undefined>(undefined);
+  readonly insetIos = input<boolean | undefined>(undefined);
+  readonly insetMaterial = input<boolean | undefined>(undefined);
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -48,11 +51,23 @@ export class KBlockFooterComponent {
     BlockFooterColors(this.colors() ?? {}, this.dark)
   );
 
+  private readonly resolvedProps = useThemeSpecificProps(
+    this.theme,
+    () => ({
+      inset: this.inset(),
+    }),
+    () => ({
+      insetIos: this.insetIos(),
+      insetMaterial: this.insetMaterial(),
+    })
+  );
+
   readonly classes: Signal<string> = computed(() => {
+    const resolved = this.resolvedProps();
     const c = this.themeClasses(
       BlockFooterClasses(
         {
-          inset: this.inset(),
+          inset: resolved.inset,
         },
         this.palette()
       ),

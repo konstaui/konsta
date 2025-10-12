@@ -11,6 +11,8 @@ import { BlockColors } from '../../shared/colors/BlockColors.js';
 import {
   useDarkClasses,
   useThemeClasses,
+  useThemeSignal,
+  useThemeSpecificProps,
 } from '../shared/theme-helpers.js';
 import { cls } from '../../shared/cls.js';
 
@@ -40,11 +42,21 @@ export class KBlockComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
-  readonly inset = input<boolean>(false);
+  readonly inset = input<boolean | undefined>(undefined);
+  readonly insetIos = input<boolean | undefined>(undefined);
+  readonly insetMaterial = input<boolean | undefined>(undefined);
   readonly nested = input<boolean>(false);
-  readonly strong = input<boolean>(false);
-  readonly outline = input<boolean>(false);
+  readonly strong = input<boolean | undefined>(undefined);
+  readonly strongIos = input<boolean | undefined>(undefined);
+  readonly strongMaterial = input<boolean | undefined>(undefined);
+  readonly outline = input<boolean | undefined>(undefined);
+  readonly outlineIos = input<boolean | undefined>(undefined);
+  readonly outlineMaterial = input<boolean | undefined>(undefined);
 
+  private readonly theme = useThemeSignal(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
     material: this.material() === true,
@@ -55,14 +67,32 @@ export class KBlockComponent {
     BlockColors(this.colors() ?? {}, this.dark)
   );
 
+  private readonly resolvedProps = useThemeSpecificProps(
+    this.theme,
+    () => ({
+      inset: this.inset(),
+      strong: this.strong(),
+      outline: this.outline(),
+    }),
+    () => ({
+      insetIos: this.insetIos(),
+      insetMaterial: this.insetMaterial(),
+      strongIos: this.strongIos(),
+      strongMaterial: this.strongMaterial(),
+      outlineIos: this.outlineIos(),
+      outlineMaterial: this.outlineMaterial(),
+    })
+  );
+
   readonly classes: Signal<string> = computed(() => {
+    const resolved = this.resolvedProps();
     const c = this.themeClasses(
       BlockClasses(
         {
-          inset: this.inset(),
+          inset: resolved.inset,
           nested: this.nested(),
-          strong: this.strong(),
-          outline: this.outline(),
+          strong: resolved.strong,
+          outline: resolved.outline,
         },
         this.palette()
       )
@@ -70,7 +100,7 @@ export class KBlockComponent {
 
     return cls(
       c.base,
-      this.inset() && c.inset,
+      resolved.inset && c.inset,
       this.className()
     );
   });
