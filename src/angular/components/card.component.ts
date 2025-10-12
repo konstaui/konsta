@@ -80,10 +80,8 @@ export class KCardComponent {
   readonly headerFontSizeIos = input<string>('text-[17px]');
   readonly headerFontSizeMaterial = input<string>('text-[22px]');
 
-  private readonly headerContent =
-    contentChild<ElementRef<HTMLElement>>('[header]');
-  private readonly footerContent =
-    contentChild<ElementRef<HTMLElement>>('[footer]');
+  private readonly headerContent = contentChild('[header]');
+  private readonly footerContent = contentChild('[footer]');
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,

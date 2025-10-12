@@ -352,7 +352,12 @@ export class KListItemComponent {
     return this.isLink() || this.label() ? c['link'] : c['default'];
   });
   readonly mediaClasses: Signal<string> = computed(() => {
-    return this.listClasses()['media'] as string;
+    const baseClasses = this.listClasses()['media'] as string;
+    // Remove margin when media is empty and list is nested (like in popovers)
+    if (!this.hasMediaContent() && this.listContext?.nested()) {
+      return baseClasses.replace(/me-\d+/g, '');
+    }
+    return baseClasses;
   });
   readonly innerClasses: Signal<string> = computed(
     () => this.listClasses()['inner']
