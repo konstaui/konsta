@@ -112,8 +112,21 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
       </k-card>
 
       <k-block-title>Styled Cards</k-block-title>
+      <ng-template #cardFooter>
+        <div class="flex justify-between material:hidden">
+          <k-link>Like</k-link>
+          <k-link>Read more</k-link>
+        </div>
+        <div class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse">
+          <k-button [rounded]="true" [inline]="true">Like</k-button>
+          <k-button [rounded]="true" [inline]="true" [outline]="true">
+            Read more
+          </k-button>
+        </div>
+      </ng-template>
+
       <div class="lg:grid lg:grid-cols-2">
-        <k-card [outline]="true">
+        <k-card [outline]="true" [footer]="cardFooter">
           <div
             class="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
             [style.backgroundImage]="natureImage"
@@ -125,21 +138,8 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
             Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
             efficitur vitae non felis. Phasellus quis nibh hendrerit...
           </p>
-
-          <div footer>
-            <div class="flex justify-between material:hidden">
-              <k-link>Like</k-link>
-              <k-link>Read more</k-link>
-            </div>
-            <div class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse">
-              <k-button [rounded]="true" [inline]="true">Like</k-button>
-              <k-button [rounded]="true" [inline]="true" [outline]="true">
-                Read more
-              </k-button>
-            </div>
-          </div>
         </k-card>
-        <k-card>
+        <k-card [footer]="cardFooter">
           <div
             class="ios:-mx-4 ios:-mt-4 h-48 p-4 flex items-end text-white ios:font-bold bg-cover bg-center material:rounded-xl mb-4 material:text-[22px]"
             [style.backgroundImage]="peopleImage"
@@ -151,19 +151,6 @@ import { KButtonComponent } from '../../../../../../src/angular/components/butto
             Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies
             efficitur vitae non felis. Phasellus quis nibh hendrerit...
           </p>
-
-          <div footer>
-            <div class="flex justify-between material:hidden">
-              <k-link>Like</k-link>
-              <k-link>Read more</k-link>
-            </div>
-            <div class="flex justify-start ios:hidden space-x-2 rtl:space-x-reverse">
-              <k-button [rounded]="true" [inline]="true">Like</k-button>
-              <k-button [rounded]="true" [inline]="true" [outline]="true">
-                Read more
-              </k-button>
-            </div>
-          </div>
         </k-card>
       </div>
     </k-page>

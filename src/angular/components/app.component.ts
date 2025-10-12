@@ -15,9 +15,11 @@ import { AppClasses } from '../../shared/classes/AppClasses.js';
 import { useThemeSignal } from '../shared/theme-helpers.js';
 import { cls } from '../../shared/cls.js';
 
+type AppTag = 'div' | 'section' | 'main' | 'article';
+
 @Component({
   selector: 'k-app',
-  
+
   imports: [CommonModule, KonstaProviderComponent],
   template: `
     <konsta-provider
@@ -27,16 +29,36 @@ import { cls } from '../../shared/cls.js';
       [iosHoverHighlight]="iosHoverHighlight()"
       [autoThemeDetection]="false"
     >
-      <div #root class="{{ classes() }}">
-        <ng-content />
-      </div>
+      @switch (component()) {
+        @case ('section') {
+          <section #root class="{{ classes() }}">
+            <ng-content />
+          </section>
+        }
+        @case ('main') {
+          <main #root class="{{ classes() }}">
+            <ng-content />
+          </main>
+        }
+        @case ('article') {
+          <article #root class="{{ classes() }}">
+            <ng-content />
+          </article>
+        }
+        @default {
+          <div #root class="{{ classes() }}">
+            <ng-content />
+          </div>
+        }
+      }
     </konsta-provider>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KAppComponent {
-  private readonly host = viewChild<ElementRef<HTMLDivElement>>('root');
+  private readonly host = viewChild<ElementRef<HTMLElement>>('root');
 
+  readonly component = input<AppTag>('div');
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });

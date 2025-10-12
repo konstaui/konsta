@@ -34,12 +34,12 @@ type MessagebarTag = 'div' | 'span';
   template: `
     @switch (componentTag()) {
       @case ('span') {
-        <span class="{{ baseClass() }}">
+        <span class="{{ baseClass() }}" [attr.id]="id() ?? null" [ngStyle]="style()">
           <ng-container *ngTemplateOutlet="messagebarTemplate"></ng-container>
         </span>
       }
       @default {
-        <div class="{{ baseClass() }}">
+        <div class="{{ baseClass() }}" [attr.id]="id() ?? null" [ngStyle]="style()">
           <ng-container *ngTemplateOutlet="messagebarTemplate"></ng-container>
         </div>
       }
@@ -100,6 +100,8 @@ export class KMessagebarComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly id = input<string | undefined>(undefined);
+  readonly style = input<Record<string, any> | undefined>(undefined);
 
   readonly placeholder = input<string>('Message');
   readonly value = input<string | null | undefined>(undefined);

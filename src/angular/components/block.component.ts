@@ -28,9 +28,18 @@ import { cls } from '../../shared/cls.js';
     `,
   ],
   template: `
-    <div [class]="classes()">
-      <ng-content />
-    </div>
+    @switch (component()) {
+      @case ('section') {
+        <section [class]="classes()">
+          <ng-content />
+        </section>
+      }
+      @default {
+        <div [class]="classes()">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -42,6 +51,7 @@ export class KBlockComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly component = input<'div' | 'section'>('div');
   readonly inset = input<boolean | undefined>(undefined);
   readonly insetIos = input<boolean | undefined>(undefined);
   readonly insetMaterial = input<boolean | undefined>(undefined);

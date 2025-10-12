@@ -39,6 +39,7 @@ type ListButtonLinkTag = 'a' | 'button';
               class="{{ buttonClass() }}"
               [attr.href]="hrefAttr() ?? null"
               [attr.target]="target() ?? null"
+              [attr]="linkPropsAttrs()"
             >
               <ng-content />
             </a>
@@ -49,6 +50,7 @@ type ListButtonLinkTag = 'a' | 'button';
               class="{{ buttonClass() }}"
               type="button"
               [attr.value]="valueAttr()"
+              [attr]="linkPropsAttrs()"
             >
               <ng-content />
             </button>
@@ -104,6 +106,7 @@ export class KListButtonComponent {
   readonly type = input<string | undefined>(undefined);
   readonly value = input<string | number | undefined>(undefined);
   readonly linkComponent = input<ListButtonLinkTag>('a');
+  readonly linkProps = input<Record<string, any>>({});
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -172,6 +175,8 @@ export class KListButtonComponent {
     if (value === 'button') return 'button';
     return 'a';
   });
+
+  readonly linkPropsAttrs = computed(() => this.linkProps());
 
   constructor() {
     useTouchRipple({

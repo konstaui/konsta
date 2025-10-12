@@ -19,9 +19,23 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
   
   imports: [CommonModule],
   template: `
-    <div #root class="{{ classes() }}">
-      <ng-content />
-    </div>
+    @switch (component()) {
+      @case ('section') {
+        <section #root class="{{ classes() }}">
+          <ng-content />
+        </section>
+      }
+      @case ('main') {
+        <main #root class="{{ classes() }}">
+          <ng-content />
+        </main>
+      }
+      @default {
+        <div #root class="{{ classes() }}">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,6 +48,7 @@ export class KPageComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly component = input<'div' | 'section' | 'main'>('div');
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,

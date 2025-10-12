@@ -54,22 +54,22 @@ import {
       <ng-content select=":not([header]):not([footer])" />
     }
 
-    <div
-      class="{{ footerClasses() }}"
-      [style.padding]="hasFooter() ? null : '0'"
-      [style.borderTopWidth]="hasFooter() ? null : '0'"
-      [class.border-t]="footerDivider() && hasFooter()"
-    >
-      @if (footer()) {
-        @if (isTemplateRef(footer())) {
-          <ng-container *ngTemplateOutlet="footer()!" />
+    @if (hasFooter()) {
+      <div
+        class="{{ footerClasses() }}"
+        [class.border-t]="footerDivider()"
+      >
+        @if (footer()) {
+          @if (isTemplateRef(footer())) {
+            <ng-container *ngTemplateOutlet="footer()!" />
+          } @else {
+            {{ footer() }}
+          }
         } @else {
-          {{ footer() }}
+          <ng-content select="[footer]" />
         }
-      } @else {
-        <ng-content select="[footer]" />
-      }
-    </div>
+      </div>
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

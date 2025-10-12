@@ -21,12 +21,12 @@ type MessagesTag = 'div' | 'section';
   template: `
     @switch (componentTag()) {
       @case ('section') {
-        <section class="{{ baseClass() }}">
+        <section class="{{ baseClass() }}" [attr.id]="id() ?? null">
           <ng-content />
         </section>
       }
       @default {
-        <div class="{{ baseClass() }}">
+        <div class="{{ baseClass() }}" [attr.id]="id() ?? null">
           <ng-content />
         </div>
       }
@@ -39,6 +39,8 @@ export class KMessagesComponent {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
+  readonly id = input<string | undefined>(undefined);
+  readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
 

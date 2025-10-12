@@ -20,9 +20,18 @@ import {
   
   imports: [CommonModule],
   template: `
-    <div class="{{ classes() }}">
-      <ng-content />
-    </div>
+    @switch (component()) {
+      @case ('p') {
+        <p class="{{ classes() }}">
+          <ng-content />
+        </p>
+      }
+      @default {
+        <div class="{{ classes() }}">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -33,6 +42,7 @@ export class KBlockHeaderComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly component = input<'div' | 'p'>('div');
   readonly inset = input<boolean | undefined>(undefined);
   readonly insetIos = input<boolean | undefined>(undefined);
   readonly insetMaterial = input<boolean | undefined>(undefined);

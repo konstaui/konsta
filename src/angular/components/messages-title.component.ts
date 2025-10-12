@@ -23,12 +23,12 @@ type MessagesTitleTag = 'div' | 'span';
   template: `
     @switch (componentTag()) {
       @case ('span') {
-        <span class="{{ baseClass() }}">
+        <span class="{{ baseClass() }}" [attr.id]="id() ?? null">
           <ng-content />
         </span>
       }
       @default {
-        <div class="{{ baseClass() }}">
+        <div class="{{ baseClass() }}" [attr.id]="id() ?? null">
           <ng-content />
         </div>
       }
@@ -44,6 +44,7 @@ export class KMessagesTitleComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly id = input<string | undefined>(undefined);
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,

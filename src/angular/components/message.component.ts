@@ -31,12 +31,12 @@ type MessageType = 'sent' | 'received';
   template: `
     @switch (componentTag()) {
       @case ('span') {
-        <span class="{{ messageClass() }}">
+        <span class="{{ messageClass() }}" [attr.id]="id() ?? null">
           <ng-container *ngTemplateOutlet="messageContentTpl"></ng-container>
         </span>
       }
       @default {
-        <div class="{{ messageClass() }}">
+        <div class="{{ messageClass() }}" [attr.id]="id() ?? null">
           <ng-container *ngTemplateOutlet="messageContentTpl"></ng-container>
         </div>
       }
@@ -109,6 +109,7 @@ export class KMessageComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly id = input<string | undefined>(undefined);
 
   readonly type = input<MessageType>('sent');
   readonly text = input<string | undefined>(undefined);

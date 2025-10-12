@@ -16,18 +16,36 @@ import { useThemeClasses } from '../shared/theme-helpers.js';
 
   imports: [CommonModule],
   template: `
-    <ng-content />
+    @switch (component()) {
+      @case ('span') {
+        <span [class]="classes()">
+          <ng-content />
+        </span>
+      }
+      @case ('div') {
+        <div [class]="classes()">
+          <ng-content />
+        </div>
+      }
+      @case ('a') {
+        <a [class]="classes()">
+          <ng-content />
+        </a>
+      }
+      @case ('button') {
+        <button [class]="classes()">
+          <ng-content />
+        </button>
+      }
+    }
   `,
   styles: [
     `
       :host {
-        display: inline-block;
+        display: contents;
       }
     `,
   ],
-  host: {
-    '[class]': 'classes()',
-  },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KBadgeComponent {
@@ -38,6 +56,7 @@ export class KBadgeComponent {
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
   readonly small = input<boolean | undefined>(undefined);
+  readonly component = input<'span' | 'div' | 'a' | 'button'>('span');
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,

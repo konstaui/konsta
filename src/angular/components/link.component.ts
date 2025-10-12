@@ -49,6 +49,7 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
           class="{{ classes() }}"
           [attr.href]="href() ?? null"
           [attr.target]="target() ?? null"
+          [attr]="linkPropsAttrs()"
           (click)="handleClick($event)"
         >
           <ng-container *ngTemplateOutlet="contentTemplate" />
@@ -59,6 +60,7 @@ import { NAVBAR_CONTEXT } from '../shared/navbar-context.js';
           #root
           type="button"
           class="{{ classes() }}"
+          [attr]="linkPropsAttrs()"
           (click)="handleClick($event)"
         >
           <ng-container *ngTemplateOutlet="contentTemplate" />
@@ -87,6 +89,7 @@ export class KLinkComponent {
   readonly toolbar = input<boolean | undefined>(undefined);
   readonly navbar = input<boolean | undefined>(undefined);
   readonly iconOnly = input<boolean>(false);
+  readonly linkProps = input<Record<string, any>>({});
 
   readonly clicked = output<Event>();
 
@@ -162,6 +165,8 @@ export class KLinkComponent {
     }
     return themeTextColor;
   });
+
+  readonly linkPropsAttrs = computed(() => this.linkProps());
 
   readonly classes: Signal<string> = computed(() => {
     const theme = this.theme();

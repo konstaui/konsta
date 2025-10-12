@@ -33,8 +33,9 @@ type ListInputElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectEleme
       [class]="baseClass()"
       [contentClassName]="itemContentClass()"
       [dividers]="dividers()"
-      [media]="mediaTemplate()"
-      [inner]="innerTemplate()"
+      [component]="component()"
+      [media]="media() ?? mediaTemplate()"
+      [inner]="input() ?? innerTemplate()"
       [content]="contentTemplate()"
     >
       <ng-template #innerTemplateRef>
@@ -217,6 +218,9 @@ export class KListInputComponent {
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly component = input<'li' | 'div'>('li');
+  readonly media = input<TemplateRef<any> | undefined>(undefined);
+  readonly input = input<TemplateRef<any> | undefined>(undefined);
 
   readonly label = input<string | undefined>(undefined);
   readonly floatingLabel = input<boolean>(false);

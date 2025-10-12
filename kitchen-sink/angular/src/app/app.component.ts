@@ -15,7 +15,7 @@ import { ThemeService } from './shared/theme.service';
   imports: [CommonModule, RouterOutlet, KAppComponent],
   template: `
     <k-app
-      [themeInput]="theme()"
+      [theme]="theme()"
       [dark]="dark()"
       [materialTouchRipple]="true"
       [iosHoverHighlight]="true"

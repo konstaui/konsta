@@ -26,11 +26,22 @@ import {
 
   imports: [CommonModule],
   template: `
-    <div #root [class]="baseClasses()">
-      <ul [class]="ulClasses()">
-        <ng-content />
-      </ul>
-    </div>
+    @switch (component()) {
+      @case ('section') {
+        <section #root [class]="baseClasses()">
+          <ul [class]="ulClasses()">
+            <ng-content />
+          </ul>
+        </section>
+      }
+      @default {
+        <div #root [class]="baseClasses()">
+          <ul [class]="ulClasses()">
+            <ng-content />
+          </ul>
+        </div>
+      }
+    }
   `,
   styles: [
     `
@@ -56,6 +67,7 @@ export class KListComponent {
 
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly component = input<'div' | 'section'>('div');
 
   readonly dividers = input<boolean | undefined>(undefined);
   readonly dividersIos = input<boolean | undefined>(true);

@@ -8,6 +8,7 @@ import {
   effect,
   inject,
   input,
+  viewChild,
 } from '@angular/core';
 import { BlockTitleClasses } from '../../shared/classes/BlockTitleClasses.js';
 import { BlockTitleColors } from '../../shared/colors/BlockTitleColors.js';
@@ -18,7 +19,33 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
 
   imports: [CommonModule],
   template: `
-    <ng-content />
+    @switch (component()) {
+      @case ('h1') {
+        <h1 #wrapper [class]="classes()">
+          <ng-content />
+        </h1>
+      }
+      @case ('h2') {
+        <h2 #wrapper [class]="classes()">
+          <ng-content />
+        </h2>
+      }
+      @case ('h3') {
+        <h3 #wrapper [class]="classes()">
+          <ng-content />
+        </h3>
+      }
+      @case ('h4') {
+        <h4 #wrapper [class]="classes()">
+          <ng-content />
+        </h4>
+      }
+      @default {
+        <div #wrapper [class]="classes()">
+          <ng-content />
+        </div>
+      }
+    }
   `,
   styles: [
     `
@@ -38,6 +65,7 @@ import { useDarkClasses, useThemeClasses } from '../shared/theme-helpers.js';
 })
 export class KBlockTitleComponent {
   private readonly host = inject(ElementRef);
+  private readonly wrapper = viewChild<ElementRef<HTMLElement>>('wrapper');
 
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
@@ -47,6 +75,7 @@ export class KBlockTitleComponent {
   readonly large = input<boolean | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
+  readonly component = input<'div' | 'h1' | 'h2' | 'h3' | 'h4'>('div');
 
   private readonly themeClasses = useThemeClasses(() => ({
     ios: this.ios() === true,
@@ -73,10 +102,6 @@ export class KBlockTitleComponent {
   });
 
   constructor() {
-    effect(() => {
-      const el = this.host.nativeElement;
-      if (!el) return;
-      el.setAttribute('class', this.classes());
-    });
+    // No longer need this effect since the wrapper element handles classes
   }
 }

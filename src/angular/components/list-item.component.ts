@@ -36,7 +36,21 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
         <ng-content />
       </li>
     } @else {
-      <li #root [class]="baseClasses()">
+      @switch (component()) {
+        @case ('div') {
+          <div #root [class]="baseClasses()">
+            <ng-container *ngTemplateOutlet="itemContentTemplate"></ng-container>
+          </div>
+        }
+        @default {
+          <li #root [class]="baseClasses()">
+            <ng-container *ngTemplateOutlet="itemContentTemplate"></ng-container>
+          </li>
+        }
+      }
+    }
+
+    <ng-template #itemContentTemplate>
         @if (itemTag() === 'label') {
           <label #itemContent [class]="itemContentClasses()">
             <div #mediaContainer [class]="mediaClasses()">
@@ -49,6 +63,8 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             <div [class]="innerClasses()">
               @if (inner()) {
                 <ng-container *ngTemplateOutlet="inner()!" />
+              } @else if (innerChildren()) {
+                <ng-container *ngTemplateOutlet="innerChildren()!" />
               } @else {
                 @if (header()) {
                   <div [class]="headerClasses()">{{ header() }}</div>
@@ -71,7 +87,11 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                     }
                     <ng-content select="[after],[slot='after']" />
                     @if (showChevron()) {
-                      <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                      @if (chevronIcon()) {
+                        <ng-container *ngTemplateOutlet="chevronIcon()!" />
+                      } @else {
+                        <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                      }
                     }
                   </div>
                 }
@@ -89,64 +109,87 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             </div>
             @if (content()) {
               <ng-container *ngTemplateOutlet="content()!" />
+            } @else if (contentChildren()) {
+              <ng-container *ngTemplateOutlet="contentChildren()!" />
             }
             <ng-content select="[content]" />
           </label>
         } @else if (itemTag() === 'a') {
-          <a #itemContent [class]="itemContentClasses()" [href]="linkHref()" [routerLink]="routerLink()" [target]="target()">
-            <div #mediaContainer [class]="mediaClasses()">
-              @if (media()) {
-                <ng-container *ngTemplateOutlet="media()!" />
-              }
-              <ng-content select="[media],[data-media],[slot='media']" />
-            </div>
-
-            <div [class]="innerClasses()">
-              @if (inner()) {
-                <ng-container *ngTemplateOutlet="inner()!" />
-              } @else {
-                @if (header()) {
-                  <div [class]="headerClasses()">{{ header() }}</div>
-                }
-                @if (title() || after() || showChevron()) {
-                  <div [class]="titleWrapClasses()">
-                    @if (title()) {
-                      <div [class]="titleClasses()">{{ title() }}</div>
-                    } @else {
-                      <ng-content select="[title]" />
-                    }
-                    @if (after()) {
-                      <div [class]="afterClasses()">
-                        @if (isTemplateRef(after())) {
-                          <ng-container *ngTemplateOutlet="after()!" />
-                        } @else {
-                          {{ after() }}
-                        }
-                      </div>
-                    }
-                    <ng-content select="[after],[slot='after']" />
-                    @if (showChevron()) {
-                      <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
-                    }
-                  </div>
-                }
-                @if (subtitle()) {
-                  <div [class]="subtitleClasses()">{{ subtitle() }}</div>
-                }
-                @if (text()) {
-                  <div [class]="textClasses()">{{ text() }}</div>
-                }
-                @if (footer()) {
-                  <div [class]="footerClasses()">{{ footer() }}</div>
-                }
-                <ng-content select="[inner]" />
-              }
-            </div>
-            @if (content()) {
-              <ng-container *ngTemplateOutlet="content()!" />
+          @switch (linkComponent()) {
+            @case ('button') {
+              <button #itemContent type="button" [class]="itemContentClasses()">
+                <ng-container *ngTemplateOutlet="linkContentTemplate"></ng-container>
+              </button>
             }
-            <ng-content select="[content]" />
-          </a>
+            @default {
+              <a #itemContent [class]="itemContentClasses()" [href]="linkHref()" [routerLink]="routerLink()" [target]="target()">
+                <ng-container *ngTemplateOutlet="linkContentTemplate"></ng-container>
+              </a>
+            }
+          }
+
+    <ng-template #linkContentTemplate>
+      <div #mediaContainer [class]="mediaClasses()">
+        @if (media()) {
+          <ng-container *ngTemplateOutlet="media()!" />
+        }
+        <ng-content select="[media],[data-media],[slot='media']" />
+      </div>
+
+      <div [class]="innerClasses()">
+        @if (inner()) {
+          <ng-container *ngTemplateOutlet="inner()!" />
+        } @else if (innerChildren()) {
+          <ng-container *ngTemplateOutlet="innerChildren()!" />
+        } @else {
+          @if (header()) {
+            <div [class]="headerClasses()">{{ header() }}</div>
+          }
+          @if (title() || after() || showChevron()) {
+            <div [class]="titleWrapClasses()">
+              @if (title()) {
+                <div [class]="titleClasses()">{{ title() }}</div>
+              } @else {
+                <ng-content select="[title]" />
+              }
+              @if (after()) {
+                <div [class]="afterClasses()">
+                  @if (isTemplateRef(after())) {
+                    <ng-container *ngTemplateOutlet="after()!" />
+                  } @else {
+                    {{ after() }}
+                  }
+                </div>
+              }
+              <ng-content select="[after],[slot='after']" />
+              @if (showChevron()) {
+                @if (chevronIcon()) {
+                  <ng-container *ngTemplateOutlet="chevronIcon()!" />
+                } @else {
+                  <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                }
+              }
+            </div>
+          }
+          @if (subtitle()) {
+            <div [class]="subtitleClasses()">{{ subtitle() }}</div>
+          }
+          @if (text()) {
+            <div [class]="textClasses()">{{ text() }}</div>
+          }
+          @if (footer()) {
+            <div [class]="footerClasses()">{{ footer() }}</div>
+          }
+          <ng-content select="[inner]" />
+        }
+      </div>
+      @if (content()) {
+        <ng-container *ngTemplateOutlet="content()!" />
+      } @else if (contentChildren()) {
+        <ng-container *ngTemplateOutlet="contentChildren()!" />
+      }
+      <ng-content select="[content]" />
+    </ng-template>
         } @else {
           <div #itemContent [class]="itemContentClasses()">
             <div #mediaContainer [class]="mediaClasses()">
@@ -159,6 +202,8 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             <div [class]="innerClasses()">
               @if (inner()) {
                 <ng-container *ngTemplateOutlet="inner()!" />
+              } @else if (innerChildren()) {
+                <ng-container *ngTemplateOutlet="innerChildren()!" />
               } @else {
                 @if (header()) {
                   <div [class]="headerClasses()">{{ header() }}</div>
@@ -181,7 +226,11 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
                     }
                     <ng-content select="[after],[slot='after']" />
                     @if (showChevron()) {
-                      <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                      @if (chevronIcon()) {
+                        <ng-container *ngTemplateOutlet="chevronIcon()!" />
+                      } @else {
+                        <k-chevron-icon [class]="chevronClasses()"></k-chevron-icon>
+                      }
                     }
                   </div>
                 }
@@ -199,12 +248,13 @@ import { KChevronIconComponent } from './icons/chevron-icon.component.js';
             </div>
             @if (content()) {
               <ng-container *ngTemplateOutlet="content()!" />
+            } @else if (contentChildren()) {
+              <ng-container *ngTemplateOutlet="contentChildren()!" />
             }
             <ng-content select="[content]" />
           </div>
         }
-      </li>
-    }
+    </ng-template>
   `,
   styles: [
     `
@@ -247,7 +297,9 @@ export class KListItemComponent {
   readonly after = input<string | TemplateRef<any> | undefined>(undefined);
   readonly media = input<TemplateRef<any> | undefined>(undefined);
   readonly inner = input<TemplateRef<any> | undefined>(undefined);
+  readonly innerChildren = input<TemplateRef<any> | undefined>(undefined);
   readonly content = input<TemplateRef<any> | undefined>(undefined);
+  readonly contentChildren = input<TemplateRef<any> | undefined>(undefined);
   readonly header = input<string | undefined>(undefined);
   readonly footer = input<string | undefined>(undefined);
   readonly label = input<boolean>(false);
@@ -263,6 +315,10 @@ export class KListItemComponent {
   readonly groupTitle = input<boolean>(false);
   readonly dividers = input<boolean | undefined>(undefined);
   readonly contacts = input<boolean>(false);
+  readonly component = input<'li' | 'div'>('li');
+  readonly chevronIcon = input<TemplateRef<any> | undefined>(undefined);
+  readonly linkComponent = input<'a' | 'button'>('a');
+  readonly linkProps = input<Record<string, any>>({});
   readonly titleFontSizeIos = input<string>('text-[17px]');
   readonly titleFontSizeMaterial = input<string>('text-[16px]');
   readonly strongTitle = input<'auto' | boolean>('auto');

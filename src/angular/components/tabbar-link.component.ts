@@ -41,6 +41,7 @@ import { cls } from '../../shared/cls.js';
       [tabbarIcons]="hasIcon()"
       [ios]="ios()"
       [material]="material()"
+      [linkProps]="linkProps()"
       (clicked)="clicked.emit($event)"
     >
       <span class="{{ contentClasses() }}">
@@ -82,6 +83,7 @@ export class KTabbarLinkComponent {
   readonly target = input<string | undefined>(undefined);
   readonly label = input<string | undefined>(undefined);
   readonly icon = input<any | undefined>(undefined);
+  readonly linkProps = input<Record<string, any>>({});
 
   readonly clicked = output<Event>();
 

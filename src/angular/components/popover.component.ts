@@ -36,30 +36,65 @@ import { KGlassComponent } from './glass.component.js';
           (click)="onBackdropClick()"
         ></div>
       }
-      <div
-        #popover
-        [class]="classes()"
-        [style]="style()"
-      >
+      @switch (component()) {
+        @case ('section') {
+          <section
+            #popover
+            [class]="classes()"
+            [style]="style()"
+          >
+            <ng-container *ngTemplateOutlet="popoverContent"></ng-container>
+          </section>
+        }
+        @default {
+          <div
+            #popover
+            [class]="classes()"
+            [style]="style()"
+          >
+            <ng-container *ngTemplateOutlet="popoverContent"></ng-container>
+          </div>
+        }
+      }
+
+      <ng-template #popoverContent>
+        @if (angle()) {
+          <div
+            #angleEl
+            [style]="angleStyle()"
+            [class]="angleWrapClasses()"
+          >
+            <div [class]="angleArrowClasses()"></div>
+          </div>
+        }
         <k-glass [class]="innerClasses()">
           <ng-content />
         </k-glass>
-      </div>
+      </ng-template>
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KPopoverComponent {
   private readonly popoverRef = viewChild<ElementRef<HTMLDivElement>>('popover');
+  private readonly angleRef = viewChild<ElementRef<HTMLDivElement>>('angleEl');
 
   readonly opened = input<boolean>(false);
   readonly target = input<string | HTMLElement | null>(null);
+  readonly targetX = input<number | undefined>(undefined);
+  readonly targetY = input<number | undefined>(undefined);
+  readonly targetWidth = input<number | undefined>(undefined);
+  readonly targetHeight = input<number | undefined>(undefined);
   readonly backdrop = input<boolean>(true);
+  readonly angle = input<boolean>(false);
+  readonly angleClassName = input<string>('');
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
+  readonly component = input<'div' | 'section'>('div');
+  readonly colors = input<Record<string, string> | undefined>(undefined);
 
   readonly backdropClick = output<void>();
 
@@ -77,15 +112,18 @@ export class KPopoverComponent {
 
   private readonly styleSig = signal<Record<string, string>>({});
   private readonly positionSig = signal<string>('top-left');
+  private readonly angleStyleSig = signal<Record<string, string>>({});
+  private readonly anglePositionSig = signal<string>('bottom');
 
   readonly style = this.styleSig.asReadonly();
+  readonly angleStyle = this.angleStyleSig.asReadonly();
 
-  private readonly colors = computed(() =>
-    PopoverColors({}, this.dark)
+  private readonly colorsComputed = computed(() =>
+    PopoverColors(this.colors() ?? {}, this.dark)
   );
 
   private readonly classesObj = computed(() =>
-    PopoverClasses({}, this.colors(), this.dark)
+    PopoverClasses({ angleClassName: this.angleClassName() }, this.colorsComputed(), this.dark)
   );
 
   readonly state = computed(() => this.opened() ? 'opened' : 'closed');
@@ -119,6 +157,18 @@ export class KPopoverComponent {
     const c = this.themeClasses(this.classesObj());
     const state = this.state();
     return c.inner[state];
+  });
+
+  readonly angleWrapClasses = computed(() => {
+    const c = this.themeClasses(this.classesObj());
+    const position = this.anglePositionSig() as 'top' | 'bottom' | 'left' | 'right';
+    return c.angleWrap?.[position] ?? '';
+  });
+
+  readonly angleArrowClasses = computed(() => {
+    const c = this.themeClasses(this.classesObj());
+    const position = this.anglePositionSig() as 'top' | 'bottom' | 'left' | 'right';
+    return c.angleArrow?.[position] ?? '';
   });
 
   constructor() {
@@ -200,14 +250,32 @@ export class KPopoverComponent {
       return;
     }
 
-    const { popoverTop, popoverLeft, popoverPosition } = calcPopoverPosition({
+    const angleEl = this.angleRef()?.nativeElement;
+    const {
+      popoverTop,
+      popoverLeft,
+      popoverPosition,
+      angleTop,
+      angleLeft,
+      anglePosition
+    } = calcPopoverPosition({
       popoverEl,
       targetEl: target,
-      needsAngle: false,
+      angleEl,
+      needsAngle: this.angle(),
+      targetX: this.targetX(),
+      targetY: this.targetY(),
+      targetWidth: this.targetWidth(),
+      targetHeight: this.targetHeight(),
       theme: this.theme(),
     });
 
     this.styleSig.set({ top: popoverTop, left: popoverLeft });
     this.positionSig.set(popoverPosition);
+
+    if (this.angle() && angleTop !== undefined && angleLeft !== undefined) {
+      this.angleStyleSig.set({ top: angleTop, left: angleLeft });
+      this.anglePositionSig.set(anglePosition);
+    }
   }
 }

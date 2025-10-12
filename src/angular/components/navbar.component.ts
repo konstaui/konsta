@@ -47,7 +47,25 @@ import { KGlassComponent } from './glass.component.js';
       <ng-content select="[subnavbar]" />
     </ng-template>
 
-    <nav #navEl class="{{ baseClasses() }}">
+    @switch (component()) {
+      @case ('nav') {
+        <nav #navEl class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="navbarContent"></ng-container>
+        </nav>
+      }
+      @case ('header') {
+        <header #navEl class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="navbarContent"></ng-container>
+        </header>
+      }
+      @default {
+        <div #navEl class="{{ baseClasses() }}">
+          <ng-container *ngTemplateOutlet="navbarContent"></ng-container>
+        </div>
+      }
+    }
+
+    <ng-template #navbarContent>
       @if (theme() === 'ios') {
         <div class="{{ bgBlurClasses() }}"></div>
       }
@@ -98,7 +116,7 @@ import { KGlassComponent } from './glass.component.js';
           <ng-container *ngTemplateOutlet="subnavbarTemplate" />
         </div>
       }
-    </nav>
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -130,6 +148,13 @@ export class KNavbarComponent implements AfterViewInit, OnDestroy {
   readonly className = input<string | undefined>(undefined, {
     alias: 'class',
   });
+  readonly bgClassName = input<string>('');
+  readonly innerClassName = input<string>('');
+  readonly leftClassName = input<string>('');
+  readonly titleClassName = input<string>('');
+  readonly subtitleClassName = input<string>('');
+  readonly rightClassName = input<string>('');
+  readonly subnavbarClassName = input<string>('');
   readonly colors = input<Record<string, string> | undefined>(undefined);
   readonly ios = input<boolean | undefined>(undefined);
   readonly material = input<boolean | undefined>(undefined);
@@ -142,6 +167,7 @@ export class KNavbarComponent implements AfterViewInit, OnDestroy {
   readonly centerTitle = input<boolean | undefined>(undefined);
   readonly subnavbar = input<boolean>(false);
   readonly scrollEl = input<HTMLElement | undefined>(undefined);
+  readonly component = input<'div' | 'nav' | 'header'>('div');
 
   private readonly theme = useThemeSignal(() => ({
     ios: this.ios() === true,
@@ -177,6 +203,13 @@ export class KNavbarComponent implements AfterViewInit, OnDestroy {
           titleMediumFontSizeIos: 'text-[24px]',
           titleMediumFontSizeMaterial: 'text-[24px]',
           centerTitle: this.centerTitle() ?? this.theme() === 'ios',
+          bgClassName: this.bgClassName(),
+          innerClassName: this.innerClassName(),
+          leftClassName: this.leftClassName(),
+          titleClassName: this.titleClassName(),
+          subtitleClassName: this.subtitleClassName(),
+          rightClassName: this.rightClassName(),
+          subnavbarClassName: this.subnavbarClassName(),
         },
         this.palette(),
         this.className()
@@ -240,9 +273,7 @@ export class KNavbarComponent implements AfterViewInit, OnDestroy {
     afterNextRender(() => {
       this.checkContent();
     }, {
-      injector: this.injector,
-      // Run on every render to catch dynamic content changes
-      phase: 'read'
+      injector: this.injector
     });
 
     // Also use an effect to re-check when wrappers might have new content
