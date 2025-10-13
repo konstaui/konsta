@@ -22,18 +22,23 @@ import { KSegmentedButtonComponent } from '../../../../../../src/angular/compone
   ],
   template: `
     <k-page>
-      <k-navbar title="Subnavbar" [subnavbar]="true">
+      <k-navbar
+        title="Subnavbar"
+        [subnavbar]="true"
+        [subnavbarContent]="subnavbarTemplate"
+      >
         @if (!isPreview()) {
           <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
         }
-        <div subnavbar>
-          <k-segmented [strong]="true" [rounded]="true">
-            <k-segmented-button [active]="true">Button</k-segmented-button>
-            <k-segmented-button>Button</k-segmented-button>
-            <k-segmented-button>Button</k-segmented-button>
-          </k-segmented>
-        </div>
       </k-navbar>
+
+      <ng-template #subnavbarTemplate>
+        <k-segmented [strong]="true" [rounded]="true">
+          <k-segmented-button [active]="true">Button</k-segmented-button>
+          <k-segmented-button>Button</k-segmented-button>
+          <k-segmented-button>Button</k-segmented-button>
+        </k-segmented>
+      </ng-template>
 
       <div class="relative">
         <k-block [strong]="true" [inset]="true">
