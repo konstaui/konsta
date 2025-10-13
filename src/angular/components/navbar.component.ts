@@ -8,6 +8,7 @@ import {
   Injector,
   OnDestroy,
   Signal,
+  TemplateRef,
   computed,
   effect,
   forwardRef,
@@ -108,7 +109,11 @@ import { KGlassComponent } from './glass.component.js';
           {{ title() }}
         </div>
       }
-      @if (subnavbar()) {
+      @if (subnavbar() && subnavbarContent()) {
+        <div #subnavbarEl class="{{ subnavbarClasses() }}">
+          <ng-container *ngTemplateOutlet="subnavbarContent()!" />
+        </div>
+      } @else if (subnavbar()) {
         <div #subnavbarEl class="{{ subnavbarClasses() }}">
           <ng-content select="[subnavbar]" />
         </div>
@@ -163,6 +168,7 @@ export class KNavbarComponent implements AfterViewInit, OnDestroy {
   readonly transparent = input<boolean>(false);
   readonly centerTitle = input<boolean | undefined>(undefined);
   readonly subnavbar = input<boolean>(false);
+  readonly subnavbarContent = input<TemplateRef<any> | undefined>(undefined);
   readonly scrollEl = input<HTMLElement | undefined>(undefined);
   readonly component = input<'div' | 'nav' | 'header'>('div');
 
