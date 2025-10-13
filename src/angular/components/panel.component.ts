@@ -15,7 +15,7 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 type PanelTag = 'div' | 'span' | 'section';
 type PanelSide = 'left' | 'right';
@@ -24,7 +24,7 @@ type PanelState = 'opened' | 'closed';
 @Component({
   selector: 'k-panel',
 
-  imports: [CommonModule, NgTemplateOutlet, KGlassComponent],
+  imports: [CommonModule, NgTemplateOutlet, KGlassDirective],
   template: `
     <ng-template #panelContent>
       <ng-content />
@@ -38,7 +38,7 @@ type PanelState = 'opened' | 'closed';
     }
 
     @if (useGlass()) {
-      <k-glass
+      <div kGlass
         [class]="panelClass()"
         [component]="componentTag()"
         [ios]="ios()"
@@ -46,7 +46,7 @@ type PanelState = 'opened' | 'closed';
         [highlight]="false"
       >
         <ng-container *ngTemplateOutlet="panelContent" />
-      </k-glass>
+      </div>
     } @else {
       @switch (componentTag()) {
         @case ('span') {

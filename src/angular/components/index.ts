@@ -23,7 +23,7 @@ export * from './icons/delete-icon.component.js';
 export * from './icons/search-disable-icon.component.js';
 export * from './icons/preloader-ios-icon.component.js';
 export * from './icons/preloader-material-icon.component.js';
-export * from './glass.component.js';
+export * from '../directives/glass.directive.js';
 export * from './link.component.js';
 export * from './list-item.component.js';
 export * from './list.component.js';

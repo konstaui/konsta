@@ -15,33 +15,33 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 type ToastTag = 'div' | 'span';
 type ToastPosition = 'left' | 'right' | 'center';
 
 @Component({
   selector: 'k-toast',
-  
-  imports: [CommonModule, KGlassComponent],
+
+  imports: [CommonModule, KGlassDirective],
   template: `
     @switch (componentTag()) {
       @case ('span') {
         <span class="{{ baseClass()[position()] }}">
-          <k-glass [highlight]="false" class="{{ innerClass() }}">
+          <div kGlass [highlight]="false" class="{{ innerClass() }}">
             <div class="{{ contentClass() }}">
               <ng-content />
             </div>
-          </k-glass>
+          </div>
         </span>
       }
       @default {
         <div class="{{ baseClass()[position()] }}">
-          <k-glass [highlight]="false" class="{{ innerClass() }}">
+          <div kGlass [highlight]="false" class="{{ innerClass() }}">
             <div class="{{ contentClass() }}">
               <ng-content />
             </div>
-          </k-glass>
+          </div>
         </div>
       }
     }

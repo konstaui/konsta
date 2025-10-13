@@ -13,21 +13,21 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 @Component({
   selector: 'k-actions-group',
   
-  imports: [CommonModule, KGlassComponent],
+  imports: [CommonModule, KGlassDirective],
   template: `
-    <k-glass
+    <div kGlass
       [component]="component()"
       [class]="glassClasses()"
       [ios]="ios()"
       [material]="material()"
     >
       <ng-content />
-    </k-glass>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

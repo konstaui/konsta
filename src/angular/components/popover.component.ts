@@ -15,12 +15,12 @@ import { useThemeSignal, useThemeClasses, useDarkClasses } from '../shared/theme
 import { cls } from '../../shared/cls.js';
 import { PopoverClasses } from '../../shared/classes/PopoverClasses.js';
 import { PopoverColors } from '../../shared/colors/PopoverColors.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 @Component({
   selector: 'k-popover',
 
-  imports: [CommonModule, KGlassComponent],
+  imports: [CommonModule, KGlassDirective],
   styles: [
     `
       :host {
@@ -67,9 +67,9 @@ import { KGlassComponent } from './glass.component.js';
             <div [class]="angleArrowClasses()"></div>
           </div>
         }
-        <k-glass [class]="innerClasses()">
+        <div kGlass [class]="innerClasses()">
           <ng-content />
-        </k-glass>
+        </div>
       </ng-template>
     }
   `,

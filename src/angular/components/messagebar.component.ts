@@ -19,7 +19,7 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 import { KToolbarComponent } from './toolbar.component.js';
 import { KToolbarPaneComponent } from './toolbar-pane.component.js';
 import { KLinkComponent } from './link.component.js';
@@ -30,7 +30,7 @@ type MessagebarTag = 'div' | 'span';
 @Component({
   selector: 'k-messagebar',
 
-  imports: [CommonModule, KGlassComponent, KToolbarComponent, KToolbarPaneComponent, KLinkComponent, KIconComponent],
+  imports: [CommonModule, KGlassDirective, KToolbarComponent, KToolbarPaneComponent, KLinkComponent, KIconComponent],
   template: `
     @switch (componentTag()) {
       @case ('span') {
@@ -57,7 +57,7 @@ type MessagebarTag = 'div' | 'span';
         <div [class]="leftClass()">
           <ng-content select="[left]" />
         </div>
-        <k-glass [class]="messagebarAreaClass()">
+        <div kGlass [class]="messagebarAreaClass()">
           <textarea
             [class]="messagebarInputClass()"
             [attr.id]="textareaId() ?? null"
@@ -71,7 +71,7 @@ type MessagebarTag = 'div' | 'span';
             (focus)="handleFocus($event)"
             (blur)="handleBlur($event)"
           ></textarea>
-        </k-glass>
+        </div>
         <div [class]="rightClass()">
           <ng-content select="[right]" />
         </div>

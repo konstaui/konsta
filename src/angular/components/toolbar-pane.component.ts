@@ -21,26 +21,21 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { TOOLBAR_CONTEXT } from '../shared/toolbar-context.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 @Component({
   selector: 'k-toolbar-pane',
 
-  imports: [CommonModule, KGlassComponent],
+  imports: [CommonModule, KGlassDirective],
   template: `
     @if (theme() === 'material') {
       <ng-content />
     } @else {
-      <k-glass
+      <div kGlass
         #glassEl
-        [component]="component()"
         [class]="classes()['base']"
-        [afterContent]="highlightTpl"
       >
         <ng-content />
-      </k-glass>
-
-      <ng-template #highlightTpl>
         <span
           #highlightEl
           class="{{ classes()['highlight'] }}"
@@ -51,7 +46,7 @@ import { KGlassComponent } from './glass.component.js';
           <span #highlightInnerEl class="{{ classes()['highlightInner'] }}"></span>
           <span #highlightThumbEl class="{{ classes()['highlightThumb'] }}"></span>
         </span>
-      </ng-template>
+      </div>
     }
   `,
   styles: [
@@ -73,7 +68,7 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
   readonly material = input<boolean | undefined>(undefined);
   readonly tabbar = input<boolean>(true);
 
-  private readonly glassEl = viewChild<KGlassComponent>('glassEl');
+  private readonly glassEl = viewChild<ElementRef<HTMLElement>>('glassEl');
   private readonly highlightEl = viewChild<ElementRef<HTMLElement>>('highlightEl');
   private readonly highlightInnerEl = viewChild<ElementRef<HTMLElement>>('highlightInnerEl');
   private readonly highlightThumbEl = viewChild<ElementRef<HTMLElement>>('highlightThumbEl');
@@ -154,16 +149,9 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
   }
 
   private updateHighlight() {
-    const glassComponent = this.glassEl();
-    if (!glassComponent) {
-      console.log('[toolbar-pane] glassComponent not found');
-      return;
-    }
-
-    // Get the root element from the glass component (private access via any)
-    const actualElement = (glassComponent as any).root?.()?.nativeElement as HTMLElement;
+    const actualElement = this.glassEl()?.nativeElement;
     if (!actualElement) {
-      console.log('[toolbar-pane] actualElement not found, glassComponent:', glassComponent);
+      console.log('[toolbar-pane] glassEl not found');
       return;
     }
 
@@ -199,11 +187,7 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
 
   private observeChanges() {
     if (typeof window === 'undefined') return;
-    const glassComponent = this.glassEl();
-    if (!glassComponent) return;
-
-    // Get the root element from the glass component
-    const actualElement = (glassComponent as any).root?.()?.nativeElement as HTMLElement;
+    const actualElement = this.glassEl()?.nativeElement;
     if (!actualElement) return;
 
     this.observer = new MutationObserver(() => {
@@ -219,12 +203,8 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
   }
 
   private attachEvents() {
-    const glassComponent = this.glassEl();
-    if (!glassComponent || !this.hasHighlight()) return;
-
-    // Get the root element from the glass component
-    const actualElement = (glassComponent as any).root?.()?.nativeElement as HTMLElement;
-    if (!actualElement) return;
+    const actualElement = this.glassEl()?.nativeElement;
+    if (!actualElement || !this.hasHighlight()) return;
 
     actualElement.addEventListener('pointerdown', this.onPointer);
     document.addEventListener('pointermove', this.onPointer);
@@ -232,11 +212,7 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
   }
 
   private detachEvents() {
-    const glassComponent = this.glassEl();
-    if (!glassComponent) return;
-
-    // Get the root element from the glass component
-    const actualElement = (glassComponent as any).root?.()?.nativeElement as HTMLElement;
+    const actualElement = this.glassEl()?.nativeElement;
     if (!actualElement) return;
 
     actualElement.removeEventListener('pointerdown', this.onPointer);
@@ -247,11 +223,7 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
   private onPointer = (e: PointerEvent) => {
     if (e.pointerType !== 'touch') return;
 
-    const glassComponent = this.glassEl();
-    if (!glassComponent) return;
-
-    // Get the root element from the glass component
-    const actualElement = (glassComponent as any).root?.()?.nativeElement as HTMLElement;
+    const actualElement = this.glassEl()?.nativeElement;
     if (!actualElement) return;
 
     if (e.type === 'pointerdown') {

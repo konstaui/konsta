@@ -13,14 +13,14 @@ import {
   useDarkClasses,
   useThemeClasses,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 type DialogState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-dialog',
   
-  imports: [CommonModule, KGlassComponent],
+  imports: [CommonModule, KGlassDirective],
   template: `
     @if (backdrop()) {
       <div
@@ -28,7 +28,7 @@ type DialogState = 'opened' | 'closed';
         (click)="handleBackdropClick($event)"
       ></div>
     }
-    <k-glass
+    <div kGlass
       [component]="componentTag()"
       [class]="baseClasses()[state()]"
       [ios]="ios()"
@@ -55,7 +55,7 @@ type DialogState = 'opened' | 'closed';
         }
         <ng-content select="[buttons]" />
       </div>
-    </k-glass>
+    </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

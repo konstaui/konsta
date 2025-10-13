@@ -18,7 +18,7 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 import { KDeleteIconComponent } from './icons/delete-icon.component.js';
 import { KSearchDisableIconComponent } from './icons/search-disable-icon.component.js';
 import { KSearchIconComponent } from './icons/search-icon.component.js';
@@ -32,7 +32,7 @@ type SearchbarTag = 'div' | 'span';
   },
   imports: [
     CommonModule,
-    KGlassComponent,
+    KGlassDirective,
     KDeleteIconComponent,
     KSearchDisableIconComponent,
     KSearchIconComponent,
@@ -60,7 +60,7 @@ type SearchbarTag = 'div' | 'span';
     }
 
     <ng-template #searchbar>
-      <k-glass class="{{ innerClass() }}">
+      <div kGlass class="{{ innerClass() }}">
         <span class="{{ searchIconWrapClass() }}">
           <k-search-icon
             [class]="searchIconClass()"
@@ -104,11 +104,11 @@ type SearchbarTag = 'div' | 'span';
           />
         </button>
         }
-      </k-glass>
+      </div>
 
       @if (disableButton()) {
         @if (isIos()) {
-          <k-glass
+          <div kGlass
           component="button"
           buttonType="button"
           [class]="cancelButtonClass()"
@@ -120,7 +120,7 @@ type SearchbarTag = 'div' | 'span';
           (pointerdown)="preventPointerDown($event)"
         >
           <k-search-disable-icon class="w-4 h-4" />
-        </k-glass>
+        </div>
         } @else {
           <button
             type="button"

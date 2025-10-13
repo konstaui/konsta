@@ -31,14 +31,14 @@ import {
   useThemeSignal,
 } from '../shared/theme-helpers.js';
 import { getThemeSpecificProps } from '../shared/get-theme-specific-props.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 
 type SegmentedTag = 'div' | 'span';
 
 @Component({
   selector: 'k-segmented',
 
-  imports: [CommonModule, KGlassComponent],
+  imports: [CommonModule, KGlassDirective],
   host: {
     '[style.display]': '"contents"',
   },
@@ -51,23 +51,44 @@ type SegmentedTag = 'div' | 'span';
   `],
   template: `
     @if (useGlass()) {
-      <k-glass
-        [component]="componentTag()"
-        [class]="baseClass()"
-        [ios]="ios()"
-        [material]="material()"
-      >
-        <span [class]="contentWrapperClass()" [style.display]="isOutline() ? null : 'contents'">
-          <ng-content />
-        </span>
-        @if (isStrong()) {
-          <span
-            #highlight
-            [class]="strongHighlightClass()"
-            [style]="highlightStyle()"
-          ></span>
+      @switch (componentTag()) {
+        @case ('span') {
+          <span kGlass
+            [class]="baseClass()"
+            [ios]="ios()"
+            [material]="material()"
+          >
+            <span [class]="contentWrapperClass()" [style.display]="isOutline() ? null : 'contents'">
+              <ng-content />
+            </span>
+            @if (isStrong()) {
+              <span
+                #highlight
+                [class]="strongHighlightClass()"
+                [style]="highlightStyle()"
+              ></span>
+            }
+          </span>
         }
-      </k-glass>
+        @default {
+          <div kGlass
+            [class]="baseClass()"
+            [ios]="ios()"
+            [material]="material()"
+          >
+            <span [class]="contentWrapperClass()" [style.display]="isOutline() ? null : 'contents'">
+              <ng-content />
+            </span>
+            @if (isStrong()) {
+              <span
+                #highlight
+                [class]="strongHighlightClass()"
+                [style]="highlightStyle()"
+              ></span>
+            }
+          </div>
+        }
+      }
     } @else {
       @switch (componentTag()) {
         @case ('span') {

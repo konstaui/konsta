@@ -16,7 +16,7 @@ import {
   useThemeClasses,
   useThemeSignal,
 } from '../shared/theme-helpers.js';
-import { KGlassComponent } from './glass.component.js';
+import { KGlassDirective } from '../directives/glass.directive.js';
 import { KDeleteIconComponent } from './icons/delete-icon.component.js';
 
 type NotificationTag = 'div' | 'span';
@@ -24,10 +24,10 @@ type NotificationTag = 'div' | 'span';
 @Component({
   selector: 'k-notification',
   
-  imports: [CommonModule, NgTemplateOutlet, KGlassComponent, KDeleteIconComponent],
+  imports: [CommonModule, NgTemplateOutlet, KGlassDirective, KDeleteIconComponent],
   template: `
     @if (isIos()) {
-      <k-glass
+      <div kGlass
         [component]="componentTag()"
         [class]="baseClass()"
         [ios]="ios()"
@@ -76,7 +76,7 @@ type NotificationTag = 'div' | 'span';
           }
           <ng-content />
         </div>
-      </k-glass>
+      </div>
     } @else {
       <ng-template #notificationContent>
         <div class="{{ headerClass() }}">
