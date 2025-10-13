@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -23,9 +23,13 @@ type PanelState = 'opened' | 'closed';
 
 @Component({
   selector: 'k-panel',
-  
-  imports: [CommonModule, KGlassComponent],
+
+  imports: [CommonModule, NgTemplateOutlet, KGlassComponent],
   template: `
+    <ng-template #panelContent>
+      <ng-content />
+    </ng-template>
+
     @if (backdrop()) {
       <div
         class="{{ backdropClasses()[state()] }}"
@@ -39,24 +43,25 @@ type PanelState = 'opened' | 'closed';
         [component]="componentTag()"
         [ios]="ios()"
         [material]="material()"
+        [highlight]="false"
       >
-        <ng-content />
+        <ng-container *ngTemplateOutlet="panelContent" />
       </k-glass>
     } @else {
       @switch (componentTag()) {
         @case ('span') {
           <span class="{{ panelClass() }}">
-            <ng-content />
+            <ng-container *ngTemplateOutlet="panelContent" />
           </span>
         }
         @case ('section') {
           <section class="{{ panelClass() }}">
-            <ng-content />
+            <ng-container *ngTemplateOutlet="panelContent" />
           </section>
         }
         @default {
           <div class="{{ panelClass() }}">
-            <ng-content />
+            <ng-container *ngTemplateOutlet="panelContent" />
           </div>
         }
       }

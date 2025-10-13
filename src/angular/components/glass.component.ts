@@ -28,7 +28,7 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
     @switch (component()) {
       @case ('span') {
         <span #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
-          <ng-container *ngTemplateOutlet="content"></ng-container>
+          <ng-content />
           @if (afterContent()) {
             <ng-container *ngTemplateOutlet="afterContent()!" />
           }
@@ -36,7 +36,7 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
       }
       @case ('section') {
         <section #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
-          <ng-container *ngTemplateOutlet="content"></ng-container>
+          <ng-content />
           @if (afterContent()) {
             <ng-container *ngTemplateOutlet="afterContent()!" />
           }
@@ -49,7 +49,7 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
           [attr.type]="buttonType() ?? 'button'"
           [ngStyle]="style() ?? {}"
         >
-          <ng-container *ngTemplateOutlet="content"></ng-container>
+          <ng-content />
           @if (afterContent()) {
             <ng-container *ngTemplateOutlet="afterContent()!" />
           }
@@ -57,17 +57,13 @@ import { useIosHighlight } from '../shared/ios-highlight.js';
       }
       @default {
         <div #root class="{{ classes() }}" [ngStyle]="style() ?? {}">
-          <ng-container *ngTemplateOutlet="content"></ng-container>
+          <ng-content />
           @if (afterContent()) {
             <ng-container *ngTemplateOutlet="afterContent()!" />
           }
         </div>
       }
     }
-
-    <ng-template #content>
-      <ng-content />
-    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
