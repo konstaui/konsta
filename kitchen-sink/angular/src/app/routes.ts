@@ -152,6 +152,14 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'notification',
+    title: 'Notification',
+    loadComponent: () =>
+      import('./pages/notification/notification.component').then(
+        (m) => m.NotificationComponent
+      ),
+  },
+  {
     path: 'popover',
     title: 'Popover',
     loadComponent: () =>
@@ -165,14 +173,6 @@ export const demoRoutes: DemoRoute[] = [
     loadComponent: () =>
       import('./pages/popup/popup.component').then(
         (m) => m.PopupComponent
-      ),
-  },
-  {
-    path: 'notification',
-    title: 'Notification',
-    loadComponent: () =>
-      import('./pages/notification/notification.component').then(
-        (m) => m.NotificationComponent
       ),
   },
   {
@@ -192,6 +192,14 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'radio',
+    title: 'Radio',
+    loadComponent: () =>
+      import('./pages/radio/radio.component').then(
+        (m) => m.RadioComponent
+      ),
+  },
+  {
     path: 'range-slider',
     title: 'Range Slider',
     loadComponent: () =>
@@ -205,14 +213,6 @@ export const demoRoutes: DemoRoute[] = [
     loadComponent: () =>
       import('./pages/searchbar/searchbar.component').then(
         (m) => m.SearchbarComponent
-      ),
-  },
-  {
-    path: 'radio',
-    title: 'Radio',
-    loadComponent: () =>
-      import('./pages/radio/radio.component').then(
-        (m) => m.RadioComponent
       ),
   },
   {
@@ -233,18 +233,10 @@ export const demoRoutes: DemoRoute[] = [
   },
   {
     path: 'side-panels',
-    title: 'Side Panels',
+    title: 'Panel / Side Panels',
     loadComponent: () =>
       import('./pages/side-panels/side-panels.component').then(
         (m) => m.SidePanelsComponent
-      ),
-  },
-  {
-    path: 'subnavbar',
-    title: 'Subnavbar',
-    loadComponent: () =>
-      import('./pages/subnavbar/subnavbar.component').then(
-        (m) => m.SubnavbarComponent
       ),
   },
   {
@@ -253,6 +245,14 @@ export const demoRoutes: DemoRoute[] = [
     loadComponent: () =>
       import('./pages/stepper/stepper.component').then(
         (m) => m.StepperComponent
+      ),
+  },
+  {
+    path: 'subnavbar',
+    title: 'Subnavbar',
+    loadComponent: () =>
+      import('./pages/subnavbar/subnavbar.component').then(
+        (m) => m.SubnavbarComponent
       ),
   },
   {

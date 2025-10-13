@@ -118,17 +118,11 @@ export class KPanelComponent {
     () => this.classes()['base'] as string
   );
 
-  private readonly sideClasses = computed(() => {
-    const side = this.side() === 'right' ? 'right' : 'left';
-    return this.classes()[side] as Record<string, string>;
-  });
-
   readonly sideStateClass: Signal<string> = computed(() => {
     const state = this.state();
-    const side = this.sideClasses();
-    const base = side['default'] ?? '';
-    const stateClass = side[state] ?? '';
-    return cls(base, stateClass);
+    const side = this.side() === 'right' ? 'right' : 'left';
+    const sideClasses = this.classes()[side] as Record<string, string>;
+    return sideClasses[state] ?? '';
   });
 
   readonly panelClass: Signal<string> = computed(() =>

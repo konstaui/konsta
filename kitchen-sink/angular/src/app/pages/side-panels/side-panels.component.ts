@@ -44,7 +44,7 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
           custom content, etc.
         </p>
       </k-block>
-      <k-block [strong]="true" [inset]="true" class="flex space-x-4 rtl:space-x-reverse">
+      <k-block [strong]="true" [inset]="true" class="flex gap-x-4">
         <k-button [rounded]="true" (clicked)="leftPanelOpened.set(true)">
           Left Panel
         </k-button>
@@ -54,7 +54,7 @@ import { CloseIconComponent } from '../../components/close-icon.component.js';
       </k-block>
 
       <k-block-title>Floating Panels</k-block-title>
-      <k-block [strong]="true" [inset]="true" class="flex space-x-4 rtl:space-x-reverse">
+      <k-block [strong]="true" [inset]="true" class="flex gap-x-4">
         <k-button [rounded]="true" (clicked)="leftFloatingPanelOpened.set(true)">
           Left Panel
         </k-button>
