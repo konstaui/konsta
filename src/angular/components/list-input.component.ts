@@ -268,7 +268,7 @@ export class KListInputComponent {
   readonly rows = input<number | string | undefined>(undefined);
   readonly cols = input<number | string | undefined>(undefined);
 
-  readonly input = output<Event>();
+  readonly inputChange = output<Event>();
   readonly change = output<Event>();
   readonly focus = output<Event>();
   readonly blur = output<Event>();
@@ -470,7 +470,7 @@ export class KListInputComponent {
     const target = event.target as ListInputElement;
     const newValue = (target as HTMLInputElement).value;
     this.internalValue.set(newValue);
-    this.input.emit(event);
+    this.inputChange.emit(event);
     this.valueChange.emit(newValue);
   }
 

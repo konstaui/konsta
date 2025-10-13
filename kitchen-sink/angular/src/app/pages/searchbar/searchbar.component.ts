@@ -50,21 +50,26 @@ const ITEMS: SearchItem[] = [
   ],
   template: `
     <k-page>
-      <k-navbar title="Searchbar" [subnavbar]="true">
+      <k-navbar
+        title="Searchbar"
+        [subnavbar]="true"
+        [subnavbarContent]="subnavbarTemplate"
+      >
         @if (!isPreview()) {
           <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
         }
-        <div subnavbar>
-          <k-searchbar
-            [value]="searchQuery()"
-            [disableButton]="true"
-            disableButtonText="Cancel"
-            (input)="handleSearch($event)"
-            (clear)="handleClear()"
-            (disable)="handleDisable()"
-          ></k-searchbar>
-        </div>
       </k-navbar>
+
+      <ng-template #subnavbarTemplate>
+        <k-searchbar
+          [value]="searchQuery()"
+          [disableButton]="true"
+          disableButtonText="Cancel"
+          (input)="handleSearch($event)"
+          (clear)="handleClear()"
+          (disable)="handleDisable()"
+        ></k-searchbar>
+      </ng-template>
 
       <k-list [strong]="true" [inset]="true">
         @if (filteredItems().length === 0) {
