@@ -160,6 +160,14 @@ export const demoRoutes: DemoRoute[] = [
       ),
   },
   {
+    path: 'side-panels',
+    title: 'Panel / Side Panels',
+    loadComponent: () =>
+      import('./pages/side-panels/side-panels.component').then(
+        (m) => m.SidePanelsComponent
+      ),
+  },
+  {
     path: 'popover',
     title: 'Popover',
     loadComponent: () =>
@@ -229,14 +237,6 @@ export const demoRoutes: DemoRoute[] = [
     loadComponent: () =>
       import('./pages/sheet-modal/sheet-modal.component').then(
         (m) => m.SheetModalComponent
-      ),
-  },
-  {
-    path: 'side-panels',
-    title: 'Panel / Side Panels',
-    loadComponent: () =>
-      import('./pages/side-panels/side-panels.component').then(
-        (m) => m.SidePanelsComponent
       ),
   },
   {
