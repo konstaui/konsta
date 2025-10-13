@@ -177,17 +177,24 @@ export class KToolbarPaneComponent implements AfterViewInit, OnDestroy {
     this.hasTabbarLinks = true;
     const activeLinkEl = actualElement.querySelector('.k-tabbar-link-active');
     const width = (1 / linkEls.length) * 100;
-    const activeIndex = activeLinkEl ? [...linkEls].indexOf(activeLinkEl) : 0;
+    const activeIndex = activeLinkEl ? [...linkEls].indexOf(activeLinkEl) : -1;
 
     console.log('[toolbar-pane] Update highlight:', { width: `${width}%`, transform: `translateX(${activeIndex * 100}%)`, activeIndex, activeLink: activeLinkEl });
 
     this.highlightData.linkEls = linkEls;
     this.highlightData.activeIndex = activeIndex;
 
-    this.highlightStyle.set({
-      width: `${width}%`,
-      transform: `translateX(${activeIndex * 100}%)`,
-    });
+    if (activeIndex >= 0) {
+      this.highlightStyle.set({
+        width: `${width}%`,
+        transform: `translateX(${activeIndex * 100}%)`,
+      });
+    } else {
+      this.highlightStyle.set({
+        width: '0',
+        transform: '',
+      });
+    }
   }
 
   private observeChanges() {
