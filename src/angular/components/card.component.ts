@@ -1,0 +1,193 @@
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Signal,
+  TemplateRef,
+  computed,
+  contentChild,
+  input,
+} from '@angular/core';
+import { CardClasses } from '../../shared/classes/CardClasses.js';
+import { CardColors } from '../../shared/colors/CardColors.js';
+import {
+  useDarkClasses,
+  useThemeClasses,
+  useThemeSignal,
+} from '../shared/theme-helpers.js';
+
+@Component({
+  selector: 'k-card',
+
+  imports: [CommonModule, NgTemplateOutlet],
+  host: {
+    '[class]': 'baseClasses()[style()]',
+  },
+  styles: [
+    `
+      :host {
+        display: block;
+      }
+    `,
+  ],
+  template: `
+    @if (hasHeader()) {
+      <div class="{{ headerClasses() }}">
+        @if (header()) {
+          @if (isTemplateRef(header())) {
+            <ng-container *ngTemplateOutlet="header()!" />
+          } @else {
+            {{ header() }}
+          }
+        } @else {
+          <ng-content select="[header]" />
+        }
+      </div>
+    }
+
+    @if (contentWrap()) {
+      <div [class]="contentClasses()">
+        <ng-content select=":not([header]):not([footer])" />
+      </div>
+    } @else {
+      <ng-content select=":not([header]):not([footer])" />
+    }
+
+    @if (hasFooter()) {
+      <div
+        class="{{ footerClasses() }}"
+        [class.border-t]="footerDivider()"
+      >
+        @if (footer()) {
+          @if (isTemplateRef(footer())) {
+            <ng-container *ngTemplateOutlet="footer()!" />
+          } @else {
+            {{ footer() }}
+          }
+        } @else {
+          <ng-content select="[footer]" />
+        }
+      </div>
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class KCardComponent {
+  readonly component = input<string>('div');
+  readonly className = input<string | undefined>(undefined, {
+    alias: 'class',
+  });
+  readonly colors = input<Record<string, string> | undefined>(undefined);
+  readonly ios = input<boolean | undefined>(undefined);
+  readonly material = input<boolean | undefined>(undefined);
+  readonly header = input<string | number | TemplateRef<any> | undefined>(undefined);
+  readonly footer = input<string | number | TemplateRef<any> | undefined>(undefined);
+  readonly contentWrap = input<boolean>(true);
+  readonly contentWrapPadding = input<string>('p-4');
+  readonly raised = input<boolean | undefined>(undefined);
+  readonly raisedIos = input<boolean | undefined>(undefined);
+  readonly raisedMaterial = input<boolean | undefined>(undefined);
+  readonly outline = input<boolean | undefined>(undefined);
+  readonly outlineIos = input<boolean | undefined>(undefined);
+  readonly outlineMaterial = input<boolean | undefined>(undefined);
+  readonly headerDivider = input<boolean>(false);
+  readonly footerDivider = input<boolean>(false);
+  readonly headerFontSizeIos = input<string>('text-[17px]');
+  readonly headerFontSizeMaterial = input<string>('text-[22px]');
+
+  private readonly headerContent = contentChild('[header]', {
+    read: ElementRef,
+    descendants: true,
+  });
+  private readonly footerContent = contentChild('[footer]', {
+    read: ElementRef,
+    descendants: true,
+  });
+
+  private readonly theme = useThemeSignal(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
+  private readonly themeClasses = useThemeClasses(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
+  private readonly dark = useDarkClasses();
+  private static readonly SUPPORTED_TAGS = new Set(['div', 'section', 'article', 'li']);
+  readonly tag: Signal<'div' | 'section' | 'article' | 'li'> = computed(() => {
+    const raw = (this.component() ?? 'div').toLowerCase();
+    return (KCardComponent.SUPPORTED_TAGS.has(raw)
+      ? raw
+      : 'div') as 'div' | 'section' | 'article' | 'li';
+  });
+
+  private readonly palette = computed(() =>
+    CardColors(this.colors() ?? {}, this.dark)
+  );
+
+  private readonly isOutline = computed(() => {
+    const value = this.outline();
+    if (value !== undefined && value !== null) return value;
+    return this.theme() === 'ios'
+      ? !!this.outlineIos()
+      : !!this.outlineMaterial();
+  });
+
+  private readonly isRaised = computed(() => {
+    const value = this.raised();
+    if (value !== undefined && value !== null) return value;
+    return this.theme() === 'ios'
+      ? !!this.raisedIos()
+      : !!this.raisedMaterial();
+  });
+
+  readonly style: Signal<'outline' | 'raised' | 'plain'> = computed(() => {
+    if (this.isOutline()) return 'outline';
+    if (this.isRaised()) return 'raised';
+    return 'plain';
+  });
+
+  private readonly classes = computed(() =>
+    this.themeClasses(
+      CardClasses(
+        {
+          contentWrapPadding: this.contentWrapPadding(),
+          headerDivider: this.headerDivider(),
+          footerDivider: this.footerDivider(),
+          headerFontSizeIos: this.headerFontSizeIos(),
+          headerFontSizeMaterial: this.headerFontSizeMaterial(),
+          outline: this.isOutline(),
+          raised: this.isRaised(),
+        },
+        this.palette(),
+        this.className()
+      ),
+      this.className()
+    ) as Record<string, any>
+  );
+
+  readonly baseClasses: Signal<Record<string, string>> = computed(
+    () => this.classes()['base'] as Record<string, string>
+  );
+  readonly headerClasses: Signal<string> = computed(
+    () => this.classes()['header'] as string
+  );
+  readonly contentClasses: Signal<string> = computed(
+    () => this.classes()['content'] as string
+  );
+  readonly footerClasses: Signal<string> = computed(
+    () => this.classes()['footer'] as string
+  );
+
+  readonly hasHeader = computed(
+    () => !!this.header() || !!this.headerContent()?.nativeElement
+  );
+  readonly hasFooter = computed(
+    () => !!this.footer() || !!this.footerContent()?.nativeElement
+  );
+
+  isTemplateRef(value: any): value is TemplateRef<any> {
+    return value instanceof TemplateRef;
+  }
+}

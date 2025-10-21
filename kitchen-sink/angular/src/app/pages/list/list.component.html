@@ -1,0 +1,171 @@
+<k-page>
+  <k-navbar title="List">
+    @if (!isPreview()) {
+      <k-navbar-back-link left (clicked)="back()"></k-navbar-back-link>
+    }
+  </k-navbar>
+
+  <k-block-title>Simple List</k-block-title>
+  <k-list>
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong List</k-block-title>
+  <k-list [strong]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong Outline List</k-block-title>
+  <k-list [strong]="true" [outline]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong Inset List</k-block-title>
+  <k-list [strong]="true" [inset]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Strong Outline Inset List</k-block-title>
+  <k-list [strong]="true" [outline]="true" [inset]="true">
+    <k-list-item title="Item 1"></k-list-item>
+    <k-list-item title="Item 2"></k-list-item>
+    <k-list-item title="Item 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Simple Links List</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item [link]="true" title="Link 1"></k-list-item>
+    <k-list-item [link]="true" title="Link 2"></k-list-item>
+    <k-list-item [link]="true" title="Link 3"></k-list-item>
+  </k-list>
+
+  <k-block-title>Data list, with icons</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item title="Ivan Petrov" after="CEO" [media]="demoIconTpl"></k-list-item>
+    <k-list-item title="John Doe" [media]="demoIconTpl" [after]="badge5Tpl"></k-list-item>
+    <k-list-item title="Jenna Smith" [media]="demoIconTpl"></k-list-item>
+  </k-list>
+
+  <ng-template #demoIconTpl>
+    <app-demo-icon></app-demo-icon>
+  </ng-template>
+
+  <ng-template #badge5Tpl>
+    <k-badge>5</k-badge>
+  </ng-template>
+
+  <k-block-title>Links</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item [link]="true" title="Ivan Petrov" after="CEO" [media]="demoIconTpl"></k-list-item>
+    <k-list-item [link]="true" title="John Doe" after="Cleaner" [media]="demoIconTpl"></k-list-item>
+    <k-list-item [link]="true" title="Jenna Smith" [media]="demoIconTpl"></k-list-item>
+  </k-list>
+
+  <k-block-title>Links, Header, Footer</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item [link]="true" header="Name" title="John Doe" after="Edit" [media]="demoIconTpl"></k-list-item>
+    <k-list-item
+      [link]="true"
+      header="Phone"
+      title="+7 90 111-22-3344"
+      after="Edit"
+      [media]="demoIconTpl"
+    ></k-list-item>
+    <k-list-item
+      [link]="true"
+      header="Email"
+      title="john@doe"
+      footer="Home"
+      after="Edit"
+      [media]="demoIconTpl"
+    ></k-list-item>
+    <k-list-item
+      [link]="true"
+      header="Email"
+      title="john@konsta"
+      footer="Work"
+      after="Edit"
+      [media]="demoIconTpl"
+    ></k-list-item>
+  </k-list>
+
+  <k-block-title>Links, no icons</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    <k-list-item [link]="true" title="Ivan Petrov"></k-list-item>
+    <k-list-item [link]="true" title="John Doe"></k-list-item>
+    <k-list-item [groupTitle]="true" title="Group title Here"></k-list-item>
+    <k-list-item [link]="true" title="Ivan Petrov"></k-list-item>
+    <k-list-item [link]="true" title="Jenna Smith"></k-list-item>
+  </k-list>
+
+  <k-block-title>Grouped with sticky titles</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    @for (group of groupedNames; track group.title) {
+      <k-list-group>
+        <k-list-item
+          [groupTitle]="true"
+          [title]="group.title"
+          class="ios:top-safe-15 material:top-16-safe sticky"
+        ></k-list-item>
+        @for (name of group.items; track name) {
+          <k-list-item [title]="name"></k-list-item>
+        }
+      </k-list-group>
+    }
+  </k-list>
+
+  <k-block-title class="text-2xl">Media Lists</k-block-title>
+  <k-block>
+    <p>
+      Media Lists are almost the same as Data Lists, but with a more flexible
+      layout for visualization of more complex data, like products, services,
+      user, etc.
+    </p>
+  </k-block>
+
+  <k-block-title>Songs</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    @for (song of songs; track song.title) {
+      <k-list-item
+        [link]="true"
+        [chevronMaterial]="false"
+        [title]="song.title"
+        [after]="song.price"
+        [subtitle]="song.artist"
+        [text]="longText"
+        [media]="songImageTpl"
+      ></k-list-item>
+
+      <ng-template #songImageTpl>
+        <img
+          [src]="song.image"
+          width="80"
+          class="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
+          [alt]="song.title + ' cover'"
+        />
+      </ng-template>
+    }
+  </k-list>
+
+  <k-block-title>Mail App</k-block-title>
+  <k-list [strongIos]="true" [outlineIos]="true">
+    @for (item of mailItems; track item.title) {
+      <k-list-item
+        [link]="true"
+        [chevronMaterial]="false"
+        [title]="item.title"
+        [after]="item.time"
+        [subtitle]="item.subtitle"
+        [text]="longText"
+      ></k-list-item>
+    }
+  </k-list>
+</k-page>

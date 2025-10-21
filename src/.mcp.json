@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "context7-mcp@latest"
+      ],
+      "env": {}
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--headless"
+      ],
+      "env": {}
+    },
+    "claude": {
+      "command": "claude",
+      "args": [
+        "mcp",
+        "serve",
+        "--permission-mode",
+        "bypassPermissions",
+        "--transport",
+        "stdio"
+      ],
+      "env": {}
+    }
+  }
+}

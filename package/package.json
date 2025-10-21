@@ -24,6 +24,11 @@
   "exports": {
     "./package.json": "./package.json",
     "./theme.css": "./theme.css",
+    "./angular": {
+      "types": "./angular/konsta-angular.d.ts",
+      "import": "./angular/konsta-angular.js"
+    },
+    "./angular/theme.css": "./angular/theme.css",
     "./react": {
       "types": "./react/konsta-react.d.ts",
       "import": "./react/konsta-react.js"

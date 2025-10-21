@@ -1,0 +1,125 @@
+<k-page>
+  <k-navbar
+    [title]="'Konsta UI'"
+    [large]="true"
+    [transparent]="true"
+    [centerTitle]="true"
+  ></k-navbar>
+
+  <k-block-title>Theme</k-block-title>
+  <k-list [strong]="true" [inset]="true">
+    <k-list-item [label]="true" [title]="'iOS Theme'" [media]="iosRadio" (click)="setTheme('ios')"></k-list-item>
+    <k-list-item [label]="true" [title]="'Material Theme'" [media]="materialRadio" (click)="setTheme('material')"></k-list-item>
+  </k-list>
+
+  <ng-template #iosRadio>
+    <k-radio
+      component="div"
+      [checked]="theme() === 'ios'"
+    ></k-radio>
+  </ng-template>
+
+  <ng-template #materialRadio>
+    <k-radio
+      component="div"
+      [checked]="theme() === 'material'"
+    ></k-radio>
+  </ng-template>
+
+  <k-list [strong]="true" [inset]="true">
+    <k-list-item [label]="true" [title]="'Dark Mode'" [after]="darkModeToggle"></k-list-item>
+    <k-list-item
+      [link]="true"
+      [title]="'Color Theme'"
+      [after]="colorThemeIndicator"
+      (click)="openColorPicker()"
+    ></k-list-item>
+  </k-list>
+
+  <ng-template #darkModeToggle>
+    <k-toggle [component]="'div'" [checked]="dark()" (changed)="toggleDark()"></k-toggle>
+  </ng-template>
+
+  <ng-template #colorThemeIndicator>
+    <div class="w-6 h-6 rounded-full bg-primary home-color-picker"></div>
+  </ng-template>
+
+  <k-list [strong]="true" [inset]="true">
+    @if (theme() === 'material') {
+      <k-list-item [label]="true" [title]="'Vibrant Colors'">
+        <div slot="after">
+          <k-toggle
+            [component]="'div'"
+            [checked]="vibrant()"
+            (changed)="toggleVibrant()"
+          ></k-toggle>
+        </div>
+      </k-list-item>
+      <k-list-item [label]="true" [title]="'Monochrome'">
+        <div slot="after">
+          <k-toggle
+            [component]="'div'"
+            [checked]="monochrome()"
+            (changed)="toggleMonochrome()"
+          ></k-toggle>
+        </div>
+      </k-list-item>
+    }
+  </k-list>
+
+  <k-popover
+    [opened]="colorPickerOpened()"
+    target=".home-color-picker"
+    (backdropClick)="closeColorPicker()"
+    class="w-auto"
+  >
+    <div class="grid grid-cols-3 py-2 ios:px-2">
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="clearColor()">
+        <span class="bg-brand-primary w-6 h-6 rounded-full"></span>
+        <span class="sr-only">Default</span>
+      </k-link>
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-red')">
+        <span class="bg-brand-red w-6 h-6 rounded-full"></span>
+        <span class="sr-only">Red</span>
+      </k-link>
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-green')">
+        <span class="bg-brand-green w-6 h-6 rounded-full"></span>
+        <span class="sr-only">Green</span>
+      </k-link>
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-yellow')">
+        <span class="bg-brand-yellow w-6 h-6 rounded-full"></span>
+        <span class="sr-only">Yellow</span>
+      </k-link>
+      <k-link component="button" class="overflow-hidden h-12 w-12" (clicked)="setColor('k-color-brand-purple')">
+        <span class="bg-brand-purple w-6 h-6 rounded-full"></span>
+        <span class="sr-only">Purple</span>
+      </k-link>
+    </div>
+  </k-popover>
+
+  <k-block-title>Components</k-block-title>
+  <k-list [strong]="true" [inset]="true">
+    @if (routes.length === 0) {
+      <k-list-item>
+        <div title>Angular component demos are in progress.</div>
+      </k-list-item>
+    } @else {
+      @for (route of routes; track route.path) {
+        <k-list-item
+          [title]="route.title"
+          [link]="true"
+          [routerLink]="route.path"
+          [media]="demoIconTemplate"
+        >
+          <span after class="inline-flex items-center gap-1 text-primary">
+            View <span aria-hidden="true">→</span>
+          </span>
+        </k-list-item>
+      }
+    }
+  </k-list>
+</k-page>
+
+<ng-template #demoIconTemplate>
+  <img [src]="demoIconSrc" alt="Demo icon" class="ios:w-7 material:w-6" />
+</ng-template>

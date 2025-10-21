@@ -1,0 +1,198 @@
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Signal,
+  computed,
+  input,
+  output,
+  viewChild,
+} from '@angular/core';
+import { cls } from '../../shared/cls.js';
+import { NavbarBackLinkClasses } from '../../shared/classes/NavbarBackLinkClasses.js';
+import { LinkClasses } from '../../shared/classes/LinkClasses.js';
+import { LinkColors } from '../../shared/colors/LinkColors.js';
+import { useThemeSignal, useThemeClasses, useDarkClasses } from '../shared/theme-helpers.js';
+import { useTouchRipple } from '../shared/touch-ripple.js';
+
+@Component({
+  selector: 'k-navbar-back-link',
+  host: {
+    '[style.display]': '"contents"',
+  },
+  imports: [CommonModule, NgTemplateOutlet],
+  template: `
+    <ng-template #contentTemplate>
+      <ng-content />
+    </ng-template>
+
+    @switch (component()) {
+      @case ('a') {
+        <a
+        #root
+        class="{{ baseClass() }}"
+        (click)="handleClick($event)"
+      >
+        <span class="{{ iconClass() }}" aria-hidden="true">
+          @if (theme() === 'ios') {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="20"
+              viewBox="0 0 12 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.6738 1.29289C11.0343 1.65335 11.062 2.22055 10.757 2.61282L10.6737 2.70706 3.76757 9.61235C3.594 9.78591 3.57469 10.0553 3.70967 10.2502L3.76753 10.3195 10.6738 17.2262C11.0643 17.6168 11.0643 18.2499 10.6738 18.6405 10.2833 19.031 9.6501 19.031 9.25958 18.6405L1.29289 10.6738C0.902369 10.2833 0.902369 9.6501 1.29289 9.25958L9.25958 1.29289C9.62006 0.932409 10.1873 0.90468 10.5796 1.2097L10.6738 1.29289Z"
+              />
+            </svg>
+          } @else {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+            >
+              <polygon points="16 7 3.83 7 9.42 1.41 8 0 0 8 8 16 9.41 14.59 3.83 9 16 9" />
+            </svg>
+          }
+        </span>
+        @if (showText()) {
+          <span>{{ text() }}</span>
+        }
+        <ng-container *ngTemplateOutlet="contentTemplate" />
+      </a>
+      }
+      @default {
+        <button
+        #root
+        type="button"
+        class="{{ baseClass() }}"
+        (click)="handleClick($event)"
+      >
+        <span class="{{ iconClass() }}" aria-hidden="true">
+          @if (theme() === 'ios') {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="20"
+              viewBox="0 0 12 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.6738 1.29289C11.0343 1.65335 11.062 2.22055 10.757 2.61282L10.6737 2.70706 3.76757 9.61235C3.594 9.78591 3.57469 10.0553 3.70967 10.2502L3.76753 10.3195 10.6738 17.2262C11.0643 17.6168 11.0643 18.2499 10.6738 18.6405 10.2833 19.031 9.6501 19.031 9.25958 18.6405L1.29289 10.6738C0.902369 10.2833 0.902369 9.6501 1.29289 9.25958L9.25958 1.29289C9.62006 0.932409 10.1873 0.90468 10.5796 1.2097L10.6738 1.29289Z"
+              />
+            </svg>
+          } @else {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+            >
+              <polygon points="16 7 3.83 7 9.42 1.41 8 0 0 8 8 16 9.41 14.59 3.83 9 16 9" />
+            </svg>
+          }
+        </span>
+        @if (showText()) {
+          <span>{{ text() }}</span>
+        }
+        <ng-container *ngTemplateOutlet="contentTemplate" />
+      </button>
+      }
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class KNavbarBackLinkComponent {
+  private readonly root = viewChild<ElementRef<HTMLElement>>('root');
+
+  readonly component = input<'a' | 'button'>('a');
+  readonly className = input<string | undefined>(undefined, {
+    alias: 'class',
+  });
+  readonly text = input('Back');
+  readonly showText = input(false);
+  readonly ios = input<boolean | undefined>(undefined);
+  readonly material = input<boolean | undefined>(undefined);
+
+  readonly clicked = output<Event>();
+
+  private readonly themeClasses = useThemeClasses(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
+  readonly theme = useThemeSignal(() => ({
+    ios: this.ios() === true,
+    material: this.material() === true,
+  }));
+  private readonly dark = useDarkClasses();
+
+  private readonly palette = computed(() =>
+    LinkColors({}, this.dark)
+  );
+
+  private readonly needsTouchRipple = computed(
+    () => this.theme() === 'material'
+  );
+
+  private readonly textColor = computed(() => {
+    const colors = this.palette() as Record<string, any>;
+    const theme = this.theme();
+    return theme === 'material'
+      ? colors['navbarTextMaterial']
+      : colors['navbarTextIos'];
+  });
+
+  private readonly linkClasses = computed(() => {
+    return this.themeClasses(
+      LinkClasses(
+        {
+          iconOnly: false,
+          tabbar: false,
+          tabbarLabels: false,
+          tabbarIcons: false,
+          toolbar: false,
+          navbar: true,
+        },
+        {
+          textColor: this.textColor(),
+          needsTouchRipple: this.needsTouchRipple(),
+        }
+      ),
+      undefined
+    ) as Record<string, any>;
+  });
+
+  private readonly backLinkClasses = computed(
+    () =>
+      this.themeClasses(NavbarBackLinkClasses(), this.className()) as Record<
+        string,
+        any
+      >
+  );
+
+  readonly baseClass: Signal<string> = computed(() =>
+    cls(
+      this.linkClasses()['base'],
+      this.linkClasses()['navbar'],
+      this.backLinkClasses()['base'],
+      this.className()
+    )
+  );
+  readonly iconClass: Signal<string> = computed(() => this.backLinkClasses()['icon']);
+
+  constructor() {
+    useTouchRipple({
+      element: () => this.root()?.nativeElement ?? null,
+      needsRipple: () => this.needsTouchRipple(),
+    });
+  }
+
+  handleClick(event: Event) {
+    this.clicked.emit(event);
+  }
+}
