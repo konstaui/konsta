@@ -1,5 +1,15 @@
 # Changelog
 
+# [5.0.3](https://github.com/konstaui/konsta/compare/v5.0.2...v5.0.3) (2025-10-21)
+
+### Bug Fixes
+
+- fix range slider appearance in Firefox ([cbe363e](https://github.com/konstaui/konsta/commit/cbe363e358db7aa633b62fdce7c4dd556ad95566)), closes [#244](https://github.com/konstaui/konsta/issues/244)
+
+### Features
+
+- **svelte:** update type definition to allow string in Snippet return type ([#246](https://github.com/konstaui/konsta/issues/246)) ([e13585e](https://github.com/konstaui/konsta/commit/e13585eac40111155e398aa9edc1ba9b7304cf08))
+
 # [5.0.2](https://github.com/konstaui/konsta/compare/v5.0.0...v5.0.2) (2025-10-09)
 
 - fixed issue with Sheet Modal backdrop visibility
