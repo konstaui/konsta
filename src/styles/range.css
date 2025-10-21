@@ -1,10 +1,12 @@
 @custom-variant range-thumb {
-  &::-webkit-slider-thumb {
+  &::-webkit-slider-thumb,
+  &::-moz-range-thumb {
     @slot;
   }
 }
 @custom-variant range-track {
-  &::-webkit-slider-runnable-track {
+  &::-webkit-slider-runnable-track,
+  &::-moz-range-track {
     @slot;
   }
 }
