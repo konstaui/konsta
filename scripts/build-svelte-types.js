@@ -118,7 +118,7 @@ const createComponentTypes = (componentName, propsContent) => {
       });
       if (shouldBeRemoved) return '';
       if (line.includes('React.ReactNode')) {
-        return `${line.split('?:')[0]}?: Snippet;`;
+        return `${line.split('?:')[0]}?: Snippet | string;`;
       }
 
       return line;
