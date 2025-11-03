@@ -42,18 +42,6 @@ export class KGlassDirective {
   ) {
     // Apply classes when they change
     effect(() => {
-      // Check if element has children
-      const hasChildren = this.el.nativeElement.children.length > 0;
-
-      if (!hasChildren) {
-        // Hide when empty
-        this.renderer.setStyle(this.el.nativeElement, 'display', 'none');
-        return;
-      }
-
-      // Show when has content
-      this.renderer.removeStyle(this.el.nativeElement, 'display');
-
       // Remove previously applied glass classes
       this.appliedGlassClasses.forEach(cls => {
         this.renderer.removeClass(this.el.nativeElement, cls);

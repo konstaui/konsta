@@ -38,15 +38,38 @@ type PanelState = 'opened' | 'closed';
     }
 
     @if (useGlass()) {
-      <div kGlass
-        [class]="panelClass()"
-        [component]="componentTag()"
-        [ios]="ios()"
-        [material]="material()"
-        [highlight]="false"
-      >
-        <ng-container *ngTemplateOutlet="panelContent" />
-      </div>
+      @switch (componentTag()) {
+        @case ('span') {
+          <span kGlass
+            [class]="panelClass()"
+            [ios]="ios()"
+            [material]="material()"
+            [highlight]="false"
+          >
+            <ng-container *ngTemplateOutlet="panelContent" />
+          </span>
+        }
+        @case ('section') {
+          <section kGlass
+            [class]="panelClass()"
+            [ios]="ios()"
+            [material]="material()"
+            [highlight]="false"
+          >
+            <ng-container *ngTemplateOutlet="panelContent" />
+          </section>
+        }
+        @default {
+          <div kGlass
+            [class]="panelClass()"
+            [ios]="ios()"
+            [material]="material()"
+            [highlight]="false"
+          >
+            <ng-container *ngTemplateOutlet="panelContent" />
+          </div>
+        }
+      }
     } @else {
       @switch (componentTag()) {
         @case ('span') {
