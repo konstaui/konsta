@@ -42,6 +42,15 @@
     },
     "./svelte/theme.css": "./svelte/theme.css",
     "./config": "./config.js",
-    "./config.js": "./config.js"
+    "./config.js": "./config.js",
+    "./shared/utils": {
+      "import": "./shared/index.js"
+    },
+    "./shared/classes": {
+      "import": "./shared/classes/index.js"
+    },
+    "./shared/colors": {
+      "import": "./shared/colors/index.js"
+    }
   }
 }

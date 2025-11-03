@@ -6,6 +6,9 @@ import buildVueTypes from './build-vue-types.js';
 import buildSvelte from './build-svelte.js';
 import buildSvelteTypes from './build-svelte-types.js';
 import buildShared from './build-shared.js';
+import buildExportClasses from './build-export-classes.js';
+import buildExportColors from './build-export-colors.js';
+import buildExportShared from './build-export-shared.js';
 
 (async () => {
   const env = process.env.NODE_ENV || 'development';
@@ -19,6 +22,9 @@ import buildShared from './build-shared.js';
     buildReactTypes(),
     buildVueTypes(),
     buildSvelteTypes(),
+    buildExportClasses(),
+    buildExportColors(),
+    buildExportShared(),
   ]).catch((err) => {
     // eslint-disable-next-line
     console.error(err);
