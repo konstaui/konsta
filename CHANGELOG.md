@@ -1,5 +1,11 @@
 # Changelog
 
+# [5.0.4](https://github.com/konstaui/konsta/compare/v5.0.3...v5.0.4) (2025-11-02)
+
+### Features
+
+- **package:** add `shared/utils` `shared/classes` `shared/colors` exports ([d038a97](https://github.com/konstaui/konsta/commit/d038a9715480fea4b35d5bd73f02da7c7acaa1d5))
+
 # [5.0.3](https://github.com/konstaui/konsta/compare/v5.0.2...v5.0.3) (2025-10-21)
 
 ### Bug Fixes
