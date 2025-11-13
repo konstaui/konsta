@@ -57,6 +57,7 @@
     "svelte": "^5.37.1",
     "tailwindcss": "^4.1.11",
     "vite": "^7.0.6",
+    "vite-plugin-pwa": "^1.1.0",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },
