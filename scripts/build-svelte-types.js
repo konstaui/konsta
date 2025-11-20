@@ -55,6 +55,7 @@ const componentNativeElementInheritance = {
   Toast: 'HTMLDivElement',
   Toggle: 'HTMLLabelElement',
   Toolbar: 'HTMLDivElement',
+  ToolbarPane: 'HTMLDivElement',
 };
 
 const addOnClick = [
