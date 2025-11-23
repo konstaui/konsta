@@ -56,6 +56,8 @@ const componentNativeElementInheritance = {
   Toggle: 'HTMLLabelElement',
   Toolbar: 'HTMLDivElement',
   ToolbarPane: 'HTMLDivElement',
+  Dialog: 'HTMLDivElement',
+  DialogButton: 'HTMLButtonElement',
 };
 
 const addOnClick = [
