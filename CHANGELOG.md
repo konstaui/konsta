@@ -1,5 +1,12 @@
 # Changelog
 
+# [v5.0.5](https://github.com/konstaui/konsta/compare/v5.0.4...v5.0.5) (2025-11-24)
+
+### Bug Fixes
+
+- **svelte:** add base element to ToolbarPane ([#251](https://github.com/konstaui/konsta/issues/251)) ([ea24993](https://github.com/konstaui/konsta/commit/ea24993739b60b16b53ed9f6847872adc4075b78))
+- **svelte:** add missing children on dialog and dialog button ([#253](https://github.com/konstaui/konsta/issues/253)) ([b26c05a](https://github.com/konstaui/konsta/commit/b26c05a6417a97cd56c115af8d9415633355c7b9))
+
 # [5.0.4](https://github.com/konstaui/konsta/compare/v5.0.3...v5.0.4) (2025-11-02)
 
 ### Features
