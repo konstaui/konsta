@@ -25,6 +25,10 @@
         type: Boolean,
         default: true,
       },
+      iosTouchHighlight: {
+        type: Boolean,
+        default: true,
+      },
       autoThemeDetection: {
         type: Boolean,
         default: true,
