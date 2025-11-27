@@ -1,5 +1,11 @@
 # Changelog
 
+# [v5.0.6](https://github.com/konstaui/konsta/compare/v5.0.5...v5.0.6) (2025-11-27)
+
+### Bug Fixes
+
+- vue: Add missing attribute iosTouchHighlight #254 (#255)
+
 # [v5.0.5](https://github.com/konstaui/konsta/compare/v5.0.4...v5.0.5) (2025-11-24)
 
 ### Bug Fixes
