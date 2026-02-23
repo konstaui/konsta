@@ -63,6 +63,13 @@ const componentNativeElementInheritance = {
   ToolbarPane: 'HTMLDivElement',
   Dialog: 'HTMLDivElement',
   DialogButton: 'HTMLButtonElement',
+  Glass: 'HTMLDivElement',
+  Message: 'HTMLDivElement',
+  Messagebar: 'HTMLDivElement',
+  Messages: 'HTMLDivElement',
+  MessagesTitle: 'HTMLDivElement',
+  Notification: 'HTMLDivElement',
+  Searchbar: 'HTMLDivElement',
 };
 
 const addOnClick = [
