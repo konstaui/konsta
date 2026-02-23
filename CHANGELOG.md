@@ -1,5 +1,14 @@
 # Changelog
 
+# [v5.0.7](https://github.com/konstaui/konsta/compare/v5.0.6...v5.0.7) (2026-02-23)
+
+### Bug Fixes
+
+- **react:** add import statement for React in SearchDisableIcon ([#265](https://github.com/konstaui/konsta/issues/265)) ([d8fbad9](https://github.com/konstaui/konsta/commit/d8fbad97150ed3d02c6c33e991f406862533e91b))
+- **svelte:** add HTML table element types to build script ([#264](https://github.com/konstaui/konsta/issues/264)) ([6dd3e70](https://github.com/konstaui/konsta/commit/6dd3e700258adf551a466d8ba4e330a4ec4e965b))
+- **svelte:** add missing component element types to build script ([87a797a](https://github.com/konstaui/konsta/commit/87a797a262b0a9540d52ca87bfc571da9fae0863))
+- **types:** avoid svelte type collisions between element and component props ([#266](https://github.com/konstaui/konsta/issues/266)) ([8768f45](https://github.com/konstaui/konsta/commit/8768f450e709ed3c68b8caed1a32cdd5cdb824cb))
+
 # [v5.0.6](https://github.com/konstaui/konsta/compare/v5.0.5...v5.0.6) (2025-11-27)
 
 ### Bug Fixes
