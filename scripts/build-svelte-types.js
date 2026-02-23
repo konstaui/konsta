@@ -147,9 +147,9 @@ interface ${componentName}Events extends Record<'',{}>{}
 declare class ${componentName} extends SvelteComponent<
   ${componentName}Props${
     svelteElementType
-      ? ` & ${svelteElementType}`
+      ? ` & Omit<${svelteElementType}, keyof Props>`
       : nativeElementType
-        ? ` & HTMLAttributes<${nativeElementType}>`
+        ? ` & Omit<HTMLAttributes<${nativeElementType}>, keyof Props>`
         : ''
   },
   ${componentName}Events,
