@@ -1,5 +1,13 @@
 # Changelog
 
+# [v5.0.8](https://github.com/konstaui/konsta/compare/v5.0.7...v5.0.8) (2026-03-17)
+
+### Bug Fixes
+
+- **ios**: prevent double onClick on TabbarLink in touch mode (#263)
+- **types**: widen component prop type to accept React components
+- add .js extensions to ESM imports in ActionsGroupColors
+
 # [v5.0.7](https://github.com/konstaui/konsta/compare/v5.0.6...v5.0.7) (2026-02-23)
 
 ### Bug Fixes
