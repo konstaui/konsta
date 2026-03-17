@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'div'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
   /**
    * Marks breadcrumb item as active/current (usually last item in breadcrumbs)
    *

@@ -136,7 +136,7 @@ const createComponentTypes = (componentName, propsContent) => {
         return `${line.split('?:')[0]}?: Snippet | string;`;
       }
 
-      return line;
+      return line.replace('React.ComponentType<any>', 'typeof SvelteComponent');
     })
     .join('\n');
   const slotsContent = slots.map((slot) => `'${slot}': {};`).join('\n    ');

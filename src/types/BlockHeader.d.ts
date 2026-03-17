@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'div'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
 
   /**
    * Makes block header inset, overwrites `insetIos` and `insetMaterial`

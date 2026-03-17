@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'div'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
 
   /**
    * Object with Tailwind CSS colors classes

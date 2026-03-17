@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'div'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
 
   /**
    * Renders group outer hairlines (borders). (in Material theme only)

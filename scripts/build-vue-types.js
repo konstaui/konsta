@@ -26,8 +26,12 @@ const createComponentTypes = (componentName, propsContent) => {
         .filter((t) => !t.includes('ReactNode'))
         .join(' | ');
     if (type.includes(' | '))
-      return `PropType<${type}>`.replace('React.Ref<HTMLElement>', 'Ref<any>');
-    return atomicType(type).replace('React.Ref<HTMLElement>', 'Ref<any>');
+      return `PropType<${type}>`
+        .replace('React.Ref<HTMLElement>', 'Ref<any>')
+        .replace('React.ComponentType<any>', 'Component');
+    return atomicType(type)
+      .replace('React.Ref<HTMLElement>', 'Ref<any>')
+      .replace('React.ComponentType<any>', 'Component');
   };
   const getPropName = (name) => {
     if (name.includes('ClassName')) return name.replace('ClassName', 'Class');
@@ -156,7 +160,7 @@ const createComponentTypes = (componentName, propsContent) => {
     .join('\n');
 
   return `
-import { ComponentOptionsMixin, DefineComponent, PropType, StyleValue, Ref } from 'vue';
+import { Component, ComponentOptionsMixin, DefineComponent, PropType, StyleValue, Ref } from 'vue';
 
 declare const ${componentName}: DefineComponent<
   {

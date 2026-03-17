@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'i'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
 
   /**
    * Icon badge

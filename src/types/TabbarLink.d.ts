@@ -56,7 +56,7 @@ interface Props {
    *
    * @default 'a'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
   /**
    * Object with additional props (attributes) to pass to the Link/Button
    */

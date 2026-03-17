@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'div'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
   /**
    * Allows to open/close Action Sheet and set its initial state
    *

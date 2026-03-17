@@ -4,7 +4,7 @@ interface Props {
    *
    * @default 'a'
    */
-  component?: string;
+  component?: string | React.ComponentType<any>;
   /**
    * Text content of the back link
    *
