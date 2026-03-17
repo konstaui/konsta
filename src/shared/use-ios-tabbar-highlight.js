@@ -60,6 +60,13 @@ export const useIosTabbarHighlight = (params) => {
     startAnimation();
   };
 
+  const onContainerClick = (e) => {
+    if (data.suppressNativeClick && e.isTrusted) {
+      data.suppressNativeClick = false;
+      e.stopPropagation();
+    }
+  };
+
   const unsetHighlightOnTouch = () => {
     if (!getHasTabbarLinks()) return;
     cancelAnimationFrame(data.raf);
@@ -73,6 +80,7 @@ export const useIosTabbarHighlight = (params) => {
     const { activeIndex, newActiveIndex, linkEls } = data;
     if (activeIndex !== newActiveIndex) {
       linkEls[newActiveIndex].click();
+      data.suppressNativeClick = true;
     }
     getHighlightEl().style.transform = `translateX(${newActiveIndex * 100}%)`;
     getHighlightEl().style.transitionTimingFunction = '';
@@ -137,6 +145,7 @@ export const useIosTabbarHighlight = (params) => {
     const el = getEl();
     if (!el || !getHasHighlight()) return;
     el.addEventListener('pointerdown', onPointer);
+    el.addEventListener('click', onContainerClick, true);
     document.addEventListener('pointermove', onPointer);
     document.addEventListener('pointerup', onPointer);
   };
@@ -144,6 +153,7 @@ export const useIosTabbarHighlight = (params) => {
     const el = getEl();
     if (!el || !getHasHighlight()) return;
     el.removeEventListener('pointerdown', onPointer);
+    el.removeEventListener('click', onContainerClick, true);
     document.removeEventListener('pointermove', onPointer);
     document.removeEventListener('pointerup', onPointer);
   };
