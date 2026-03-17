@@ -1,5 +1,5 @@
-import { cls } from '../cls';
-import { filterColors } from '../filter-colors';
+import { cls } from '../cls.js';
+import { filterColors } from '../filter-colors.js';
 
 export const ActionsGroupColors = (colorsProp = {}, dark) => {
   return {
