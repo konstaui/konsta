@@ -33,7 +33,9 @@ const inlineExtendedProps = (propsContent, typesDir) => {
     fs.readFileSync(parentPath, 'utf-8'),
     typesDir
   );
-  const parentBodyMatch = parentContent.match(/interface Props \{([\s\S]*?)\n\}/);
+  const parentBodyMatch = parentContent.match(
+    /interface Props \{([\s\S]*?)\n\}/
+  );
   if (!parentBodyMatch) return propsContent;
 
   const parentBody = parentBodyMatch[1];

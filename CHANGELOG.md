@@ -1,5 +1,16 @@
 # Changelog
 
+# [5.0.9](https://github.com/konstaui/konsta/compare/v5.0.8...v5.0.9) (2026-04-29)
+
+### Bug Fixes
+
+- correctly extend Toolbar props in Tabbar ([df87bc9](https://github.com/konstaui/konsta/commit/df87bc97ab01967e15a72c37e11e1a3a562dc5a1)), closes [#270](https://github.com/konstaui/konsta/issues/270)
+- **svelte:** bypass media prop in ListInput ([1c2938f](https://github.com/konstaui/konsta/commit/1c2938f160519fb68ac366e693309a2e302811d2)), closes [#271](https://github.com/konstaui/konsta/issues/271)
+
+### Features
+
+- **package:** correct package types for CSS exports ([8eb6c28](https://github.com/konstaui/konsta/commit/8eb6c28c70b07f3c3c54a22b080ceaa7ecfc622f))
+
 # [v5.0.8](https://github.com/konstaui/konsta/compare/v5.0.7...v5.0.8) (2026-03-17)
 
 ### Bug Fixes
