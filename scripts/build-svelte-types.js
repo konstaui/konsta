@@ -113,8 +113,8 @@ const createComponentTypes = (componentName, propsContent) => {
   ];
   propsContent = propsContent
     .replace(
-      'interface Props {',
-      `export interface Props {\n  class?: string;${addOnClickProp(
+      /^interface Props(.*?)\{/m,
+      `export interface Props$1{\n  class?: string;${addOnClickProp(
         componentName,
         propsContent
       )}`

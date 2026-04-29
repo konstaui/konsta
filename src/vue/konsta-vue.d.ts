@@ -41,7 +41,7 @@ declare const kProvider: DefineComponent<
       default: true;
     };
   },
-  () => JSX.Element,
+  {},
   unknown,
   {},
   {},

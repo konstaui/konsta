@@ -4,8 +4,47 @@ import { getDirname } from './get-dirname.js';
 
 const __dirname = getDirname(import.meta.url);
 
-const createComponentTypes = (componentName, propsContent) => {
-  propsContent = propsContent.replace(
+const inlineExtendedProps = (propsContent, typesDir) => {
+  const extendsMatch = propsContent.match(/interface Props extends (\w+)\s*\{/);
+  if (!extendsMatch) return propsContent;
+  const baseInterfaceName = extendsMatch[1];
+
+  let parentFileName = null;
+  const importRegex = /import\s*\{([^}]+)\}\s*from\s*['"]\.\/([^'"]+)['"]/g;
+  let importMatch;
+  while ((importMatch = importRegex.exec(propsContent)) !== null) {
+    const namedImports = importMatch[1].split(',').map((s) => s.trim());
+    const matched = namedImports.some((named) => {
+      const aliasMatch = named.match(/^\w+\s+as\s+(\w+)$/);
+      const importedAs = aliasMatch ? aliasMatch[1] : named;
+      return importedAs === baseInterfaceName;
+    });
+    if (matched) {
+      parentFileName = importMatch[2];
+      break;
+    }
+  }
+  if (!parentFileName) return propsContent;
+
+  const parentPath = path.resolve(typesDir, `${parentFileName}.d.ts`);
+  if (!fs.existsSync(parentPath)) return propsContent;
+
+  const parentContent = inlineExtendedProps(
+    fs.readFileSync(parentPath, 'utf-8'),
+    typesDir
+  );
+  const parentBodyMatch = parentContent.match(/interface Props \{([\s\S]*?)\n\}/);
+  if (!parentBodyMatch) return propsContent;
+
+  const parentBody = parentBodyMatch[1];
+  return propsContent.replace(
+    /interface Props extends \w+\s*\{/,
+    `interface Props {${parentBody}\n`
+  );
+};
+
+const createComponentTypes = (componentName, propsContent, typesDir) => {
+  propsContent = inlineExtendedProps(propsContent, typesDir).replace(
     'interface Props {',
     'export interface Props {'
   );
@@ -166,7 +205,7 @@ declare const ${componentName}: DefineComponent<
   {
     ${propsContentFormatted}
   },
-  () => JSX.Element,
+  {},
   unknown,
   {},
   {},
@@ -195,7 +234,11 @@ export default async (outputDir = 'package') => {
     );
     const componentName = fileName.split('.d.ts')[0];
     components.push(componentName);
-    const componentTypes = createComponentTypes(componentName, propsContent);
+    const componentTypes = createComponentTypes(
+      componentName,
+      propsContent,
+      typesDir
+    );
     if (!fs.existsSync(path.resolve(outputDir, 'vue', 'types'))) {
       fs.mkdirSync(path.resolve(outputDir, 'vue', 'types'));
     }

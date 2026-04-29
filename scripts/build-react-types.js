@@ -22,8 +22,8 @@ const createComponentTypes = (componentName, propsContent) => {
     }[componentName] || 'div';
 
   propsContent = propsContent.replace(
-    'interface Props {',
-    'export interface Props {'
+    /^interface Props\b/m,
+    'export interface Props'
   );
   return `
 import * as React from 'react';

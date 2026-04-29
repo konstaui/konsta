@@ -1,4 +1,6 @@
-interface Props {
+import { Props as ToolbarProps } from './Toolbar';
+
+interface Props extends ToolbarProps {
   /**
    * Enables Tabbar with labels
    *
