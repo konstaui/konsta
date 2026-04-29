@@ -195,17 +195,12 @@
   withMedia={!!media}
   withTitle={!!label}
   dividers={theme === 'material' || isOutline ? false : undefined}
+  {media}
   {...restProps}
 >
   {#snippet content()}
     {#if isOutline || theme === 'material'}
       <span class={c.border}></span>
-    {/if}
-  {/snippet}
-
-  {#snippet media()}
-    {#if media}
-      {@render media()}
     {/if}
   {/snippet}
 
