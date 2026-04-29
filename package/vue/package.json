@@ -13,6 +13,9 @@
       "vue": "./konsta-vue.js",
       "import": "./konsta-vue.js"
     },
-    "./theme.css": "./theme.css"
+    "./theme.css": {
+      "types": "./theme.css.d.ts",
+      "default": "./theme.css"
+    }
   }
 }
