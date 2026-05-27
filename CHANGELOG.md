@@ -1,5 +1,17 @@
 # Changelog
 
+# [5.1.0](https://github.com/konstaui/konsta/compare/v5.0.9...v5.1.0) (2026-05-27)
+
+
+### Bug Fixes
+
+* fix missing ref in Message, Sheet and Toast components ([35950d3](https://github.com/konstaui/konsta/commit/35950d3cdec7ddc5ced9e9ebe72090f3d1386b01)), closes [#258](https://github.com/konstaui/konsta/issues/258)
+* fix wrong position and size of segemented button in Navbar subtitle snippet postion and size ([e8088c1](https://github.com/konstaui/konsta/commit/e8088c1ea7029bca9a5d9a4d6ae6f9446df2962f)), closes [#276](https://github.com/konstaui/konsta/issues/276) [#277](https://github.com/konstaui/konsta/issues/277)
+* **svelte:** use element-specific attribute types for component prop inheritance ([7d6e4cc](https://github.com/konstaui/konsta/commit/7d6e4ccf1f967a3ca308787c3800009241267785)), closes [#256](https://github.com/konstaui/konsta/issues/256)
+* **vue:** pass subnavbar slot to NavbarClasses for correct bgBlur/bg height ([256f1d8](https://github.com/konstaui/konsta/commit/256f1d813ff2385a7bcabc0fd83e31c3cd7ad720))
+
+
+
 # [5.0.9](https://github.com/konstaui/konsta/compare/v5.0.8...v5.0.9) (2026-04-29)
 
 ### Bug Fixes
