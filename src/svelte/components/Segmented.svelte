@@ -37,6 +37,7 @@
   export { el };
 
   let highlightElRef = $state(null);
+  let outlineInnerElRef = $state(null);
 
   const dark = useDarkClasses();
 
@@ -120,9 +121,15 @@
 
   const setHighlight = () => {
     if (isStrong && highlightElRef) {
-      const buttonsEl = highlightElRef.parentElement;
-      const buttonsLength = buttonsEl.children.length - 1;
-      const activeIndex = [...buttonsEl.children].indexOf(
+      const buttonsEl = isOutline
+        ? outlineInnerElRef
+        : highlightElRef.parentElement;
+      if (!buttonsEl) return;
+      const buttons = [...buttonsEl.children].filter(
+        (child) => child.tagName === 'BUTTON' || child.tagName === 'A'
+      );
+      const buttonsLength = buttons.length;
+      const activeIndex = buttons.indexOf(
         buttonsEl.querySelector('.k-segmented-strong-button-active')
       );
 
@@ -153,7 +160,7 @@
 {#if theme === 'ios' && navbar}
   <Glass bind:this={el} class={classes} {...restProps}>
     {#if isOutline}
-      <span class={c.outlineInner}>
+      <span bind:this={outlineInnerElRef} class={c.outlineInner}>
         {@render children?.()}
       </span>
     {:else}
@@ -173,7 +180,7 @@
 {:else}
   <div bind:this={el} class={classes} {...restProps}>
     {#if isOutline}
-      <span class={c.outlineInner}>
+      <span bind:this={outlineInnerElRef} class={c.outlineInner}>
         {@render children?.()}
       </span>
     {:else}

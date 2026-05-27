@@ -43,6 +43,7 @@ const Segmented = (props) => {
 
   const elRef = useRef(null);
   const highlightElRef = useRef(null);
+  const outlineInnerElRef = useRef(null);
 
   const [highlightStyle, setHighlightStyle] = useState({
     transform: '',
@@ -88,9 +89,15 @@ const Segmented = (props) => {
 
   useEffect(() => {
     if (themeProps.strong && highlightElRef.current) {
-      const buttonsEl = highlightElRef.current.parentElement;
-      const buttonsLength = buttonsEl.children.length - 1;
-      const activeIndex = [...buttonsEl.children].indexOf(
+      const buttonsEl = themeProps.outline
+        ? outlineInnerElRef.current
+        : highlightElRef.current.parentElement;
+      if (!buttonsEl) return;
+      const buttons = [...buttonsEl.children].filter(
+        (child) => child.tagName === 'BUTTON' || child.tagName === 'A'
+      );
+      const buttonsLength = buttons.length;
+      const activeIndex = buttons.indexOf(
         buttonsEl.querySelector('.k-segmented-strong-button-active')
       );
 
@@ -124,7 +131,9 @@ const Segmented = (props) => {
         }}
       >
         {themeProps.outline ? (
-          <span className={c.outlineInner}>{children}</span>
+          <span ref={outlineInnerElRef} className={c.outlineInner}>
+            {children}
+          </span>
         ) : (
           children
         )}

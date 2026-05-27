@@ -3,7 +3,9 @@
     :is="theme === 'ios' && navbar ? 'k-glass' : component"
     :class="classes"
   >
-    <span v-if="isOutline" :class="c.outlineInner"><slot /></span>
+    <span v-if="isOutline" ref="outlineInnerElRef" :class="c.outlineInner"
+      ><slot
+    /></span>
     <slot v-else />
     <span
       v-if="isStrong"
@@ -64,6 +66,7 @@
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
       const highlightElRef = ref(null);
+      const outlineInnerElRef = ref(null);
       const highlightStyle = ref({
         transform: '',
         width: '',
@@ -142,9 +145,15 @@
 
       const setHighlight = () => {
         if (isStrong.value && highlightElRef.value) {
-          const buttonsEl = highlightElRef.value.parentElement;
-          const buttonsLength = buttonsEl.children.length - 1;
-          const activeIndex = [...buttonsEl.children].indexOf(
+          const buttonsEl = isOutline.value
+            ? outlineInnerElRef.value
+            : highlightElRef.value.parentElement;
+          if (!buttonsEl) return;
+          const buttons = [...buttonsEl.children].filter(
+            (child) => child.tagName === 'BUTTON' || child.tagName === 'A'
+          );
+          const buttonsLength = buttons.length;
+          const activeIndex = buttons.indexOf(
             buttonsEl.querySelector('.k-segmented-strong-button-active')
           );
 
@@ -177,6 +186,7 @@
         c,
         classes,
         highlightElRef,
+        outlineInnerElRef,
         highlightStyle,
         isOutline,
         isStrong,
