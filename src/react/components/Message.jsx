@@ -49,7 +49,16 @@ const Message = (props) => {
   });
 
   return (
-    <Component id={id} ref={elRef} className={classes} {...attrs}>
+    <Component
+      id={id}
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={classes}
+      {...attrs}
+    >
       {avatar && <div className={c.messageAvatar}>{avatar}</div>}
       <div className={c.messageContent}>
         {name && <div className={c.messageName}>{name}</div>}

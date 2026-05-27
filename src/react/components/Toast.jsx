@@ -41,7 +41,15 @@ const Toast = (props) => {
   const c = themeClasses(ToastClasses({ ...props }, colors), className);
 
   return (
-    <Component ref={elRef} className={c.base[position]} {...attrs}>
+    <Component
+      ref={(el) => {
+        elRef.current = el;
+        if (ref && typeof ref === 'function') ref(el);
+        else if (ref) ref.current = el;
+      }}
+      className={c.base[position]}
+      {...attrs}
+    >
       <Glass highlight={false} className={c.inner}>
         <div className={c.content}>
           {children}

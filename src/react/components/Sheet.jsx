@@ -47,7 +47,15 @@ const Sheet = (props) => {
       {backdrop && (
         <div className={c.backdrop[state]} onClick={onBackdropClick} />
       )}
-      <Component ref={elRef} className={c.base[state]} {...attrs}>
+      <Component
+        ref={(el) => {
+          elRef.current = el;
+          if (ref && typeof ref === 'function') ref(el);
+          else if (ref) ref.current = el;
+        }}
+        className={c.base[state]}
+        {...attrs}
+      >
         {children}
       </Component>
     </>
