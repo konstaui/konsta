@@ -137,6 +137,7 @@
             ...props,
             left: ctx.slots.left,
             right: ctx.slots.right,
+            subnavbar: ctx.slots.subnavbar,
             centerTitle:
               typeof props.centerTitle === 'undefined'
                 ? theme.value === 'ios'
