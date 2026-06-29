@@ -19,6 +19,7 @@ import kChip from './components/Chip.vue';
 import kDialog from './components/Dialog.vue';
 import kDialogButton from './components/DialogButton.vue';
 import kFab from './components/Fab.vue';
+import kGlass from './components/Glass.vue';
 import kIcon from './components/Icon.vue';
 import kLink from './components/Link.vue';
 import kList from './components/List.vue';
@@ -113,6 +114,8 @@ export {
   kDialogButton as DialogButton,
   kFab,
   kFab as Fab,
+  kGlass,
+  kGlass as Glass,
   kIcon,
   kIcon as Icon,
   kLink,

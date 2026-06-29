@@ -19,6 +19,7 @@ import Chip from './components/Chip.svelte';
 import Dialog from './components/Dialog.svelte';
 import DialogButton from './components/DialogButton.svelte';
 import Fab from './components/Fab.svelte';
+import Glass from './components/Glass.svelte';
 import Icon from './components/Icon.svelte';
 import Link from './components/Link.svelte';
 import List from './components/List.svelte';
@@ -89,6 +90,7 @@ export {
   Dialog,
   DialogButton,
   Fab,
+  Glass,
   Icon,
   Link,
   List,

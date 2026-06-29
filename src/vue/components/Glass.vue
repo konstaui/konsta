@@ -4,13 +4,14 @@
   </component>
 </template>
 <script>
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
+  import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
   import { themeClasses } from '../shared/use-theme-classes.js';
   import { useContext } from '../shared/use-context.js';
   import { useTheme } from '../shared/use-theme.js';
   import { darkClasses } from '../shared/use-dark-classes.js';
 
   import { GlassClasses } from '../../shared/classes/GlassClasses.js';
+  import { GlassColors } from '../../shared/colors/GlassColors.js';
   import { useIosHighlight } from '../../shared/use-ios-highlight.js';
   export default {
     name: 'k-glass',
@@ -18,6 +19,9 @@
       component: {
         type: String,
         default: 'div',
+      },
+      colors: {
+        type: Object,
       },
       ios: {
         type: Boolean,
@@ -36,6 +40,9 @@
       const context = useContext();
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
+      const colors = computed(() =>
+        GlassColors(props.colors || {}, useDarkClasses)
+      );
       const elRef = ref(null);
 
       const highlightData = ref({});
@@ -52,7 +59,7 @@
 
       const c = useThemeClasses(
         props,
-        () => GlassClasses(props, useDarkClasses),
+        () => GlassClasses(props, colors.value),
         ctx.attrs.class
       );
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useContext } from 'react';
 import { GlassClasses } from '../../shared/classes/GlassClasses.js';
+import { GlassColors } from '../../shared/colors/GlassColors.js';
 import { useThemeClasses } from '../shared/use-theme-classes.js';
 import { useTheme } from '../shared/use-theme.js';
 import { useDarkClasses } from '../shared/use-dark-classes.js';
@@ -9,6 +10,7 @@ import { KonstaContext } from '../shared/KonstaContext.js';
 const Glass = (props) => {
   const {
     component = 'div',
+    colors: colorsProp,
     className,
     highlight = true,
 
@@ -37,6 +39,8 @@ const Glass = (props) => {
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
 
+  const colors = GlassColors(colorsProp, dark);
+
   const { iosHoverHighlight } = useContext(KonstaContext);
 
   const highlightData = useRef({});
@@ -46,7 +50,7 @@ const Glass = (props) => {
     data: highlightData.current,
   });
 
-  const c = themeClasses(GlassClasses({ ...props }, dark), className);
+  const c = themeClasses(GlassClasses(props, colors), className);
 
   useEffect(() => {
     attachEvents();

@@ -1,5 +1,6 @@
 <script>
   import { GlassClasses } from '../../shared/classes/GlassClasses.js';
+  import { GlassColors } from '../../shared/colors/GlassColors.js';
   import { useThemeClasses } from '../shared/use-theme-classes.js';
   import { useDarkClasses } from '../shared/use-dark-classes.js';
   import { useIosHighlight } from '../../shared/use-ios-highlight.js';
@@ -8,6 +9,7 @@
   import { KonstaStore } from '../shared/KonstaStore.svelte.js';
   let {
     component = 'div',
+    colors: colorsProp,
     class: className,
     ios = undefined,
     material = undefined,
@@ -24,8 +26,10 @@
 
   const dark = useDarkClasses();
 
+  const colors = $derived(GlassColors(colorsProp, dark));
+
   const c = $derived(
-    useThemeClasses({ ios, material }, GlassClasses({}, dark), className)
+    useThemeClasses({ ios, material }, GlassClasses({}, colors), className)
   );
 
   const highlightData = { current: {} };

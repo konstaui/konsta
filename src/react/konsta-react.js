@@ -19,6 +19,7 @@ import Chip from './components/Chip.jsx';
 import Dialog from './components/Dialog.jsx';
 import DialogButton from './components/DialogButton.jsx';
 import Fab from './components/Fab.jsx';
+import Glass from './components/Glass.jsx';
 import Icon from './components/Icon.jsx';
 import Link from './components/Link.jsx';
 import List from './components/List.jsx';
@@ -91,6 +92,7 @@ export {
   Dialog,
   DialogButton,
   Fab,
+  Glass,
   Icon,
   Link,
   List,
