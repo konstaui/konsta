@@ -1,5 +1,6 @@
 <template>
-  <k-page>
+  <!-- Bottom padding clears the fixed Tabbar (incl. bottom safe area) -->
+  <k-page class="pb-safe-24">
     <k-navbar title="Tabbar">
       <template v-if="!isPreview" #left>
         <k-navbar-back-link @click="() => history.back()" />

@@ -25,7 +25,8 @@ export default function TabbarPage() {
   const [isTabbarLabels, setIsTabbarLabels] = useState(true);
   const [isTabbarIcons, setIsTabbarIcons] = useState(true);
   return (
-    <Page>
+    // Bottom padding clears the fixed Tabbar (incl. bottom safe area)
+    <Page className="pb-safe-24">
       <Navbar
         title="Tabbar"
         left={!isPreview && <NavbarBackLink onClick={() => history.back()} />}

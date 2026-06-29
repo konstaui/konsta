@@ -27,7 +27,8 @@
   let isTabbarIcons = $state(true);
 </script>
 
-<Page>
+<!-- Bottom padding clears the fixed Tabbar (incl. bottom safe area) -->
+<Page class="pb-safe-24">
   <Navbar title="Tabbar">
     {#snippet left()}
       {#if !isPreview}
