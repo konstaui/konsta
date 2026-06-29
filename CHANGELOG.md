@@ -1,5 +1,18 @@
 # Changelog
 
+# [5.2.0](https://github.com/konstaui/konsta/compare/v5.1.0...v5.2.0) (2026-06-29)
+
+### Bug Fixes
+
+* add missing .js extension to cls imports in Fab and Progressbar classes ([79ba3fe](https://github.com/konstaui/konsta/commit/79ba3fe60d723013a0106d57d6225ed3445e31cb)), closes [#240](https://github.com/konstaui/konsta/issues/240)
+* render Material list dividers edge-to-edge ([0cfa41f](https://github.com/konstaui/konsta/commit/0cfa41f856f96565ef9a901ea99f99a43e8c3d89)), closes [#248](https://github.com/konstaui/konsta/issues/248)
+
+
+### Features
+
+* export Glass component with customizable colors ([8df6811](https://github.com/konstaui/konsta/commit/8df68115826e4387a5ff242cecc6dfe0c81155d7)), closes [#238](https://github.com/konstaui/konsta/issues/238)
+
+
 # [5.1.0](https://github.com/konstaui/konsta/compare/v5.0.9...v5.1.0) (2026-05-27)
 
 
