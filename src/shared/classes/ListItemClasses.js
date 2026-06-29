@@ -51,7 +51,9 @@ export const ListItemClasses = (
           cls(
             colors.primaryTextMaterial,
             isMediaItem ? 'ml-safe-2 mr-safe-2 rounded-2xl ps-2' : 'ps-safe-4',
-            contacts && 'ml-10'
+            contacts && 'ml-10',
+            // Material: plain items use full-bleed (edge-to-edge) dividers
+            !isMediaItem && dividers && 'hairline-b'
           ),
         menuListItem && 'rounded-full min-h-[3.5rem] ml-safe-4 mr-safe-4 ps-4'
       ),
@@ -83,15 +85,15 @@ export const ListItemClasses = (
       material: cls('py-3', menuListItem ? 'me-3' : 'me-4'),
     },
     inner: {
-      common: cls(
-        'w-full relative',
-        !menuListItem && dividers && 'hairline-b',
-        innerClassName || innerClass
-      ),
-      ios: cls('py-3 pe-safe-4'),
+      common: cls('w-full relative', innerClassName || innerClass),
+      // iOS dividers are inset (start after media, aligned with content).
+      // Material media items also use inset dividers (M3); plain material items
+      // get full-bleed dividers placed on `itemContent` instead.
+      ios: cls('py-3 pe-safe-4', !menuListItem && dividers && 'hairline-b'),
       material: cls(
         'py-3',
-        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4'
+        isMediaItem && !menuListItem ? 'pe-2' : 'pe-safe-4',
+        !menuListItem && isMediaItem && dividers && 'hairline-b'
       ),
     },
     titleWrap: {

@@ -41,6 +41,13 @@
       <k-list-item title="Item 3" />
     </k-list>
 
+    <k-block-title>Strong List with Dividers</k-block-title>
+    <k-list strong dividers>
+      <k-list-item title="Item 1" />
+      <k-list-item title="Item 2" />
+      <k-list-item title="Item 3" />
+    </k-list>
+
     <k-block-title>Simple Links List</k-block-title>
     <k-list strong-ios outline-ios>
       <k-list-item title="Link 1" link />

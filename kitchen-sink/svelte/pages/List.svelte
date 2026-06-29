@@ -59,6 +59,13 @@
     <ListItem title="Item 3" />
   </List>
 
+  <BlockTitle>Strong List with Dividers</BlockTitle>
+  <List strong dividers>
+    <ListItem title="Item 1" />
+    <ListItem title="Item 2" />
+    <ListItem title="Item 3" />
+  </List>
+
   <BlockTitle>Simple Links List</BlockTitle>
   <List strongIos outlineIos>
     <ListItem title="Link 1" link />
