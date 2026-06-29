@@ -1,4 +1,4 @@
-import { cls } from '../cls';
+import { cls } from '../cls.js';
 
 export const ProgressbarClasses = (colors, baseClassName) => {
   return {
