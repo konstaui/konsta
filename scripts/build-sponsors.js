@@ -129,7 +129,19 @@ const buildSponsors = async () => {
   const sponsors = {};
 
   if (entries) {
-    const items = [...entries];
+    const items = [...entries].filter((entry) => {
+      if (
+        entry.ref &&
+        (entry.ref.includes('opencollective') || entry.ref.includes('patreon'))
+      ) {
+        const dt = new Date(entry.createdAt).getTime();
+        const targetDate = new Date(2026, 3, 1).getTime();
+        if (dt > targetDate) {
+          return false;
+        }
+      }
+      return true;
+    });
     items.sort((a, b) => {
       return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
     });
