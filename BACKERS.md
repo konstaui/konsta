@@ -11,6 +11,11 @@ Support Konsta UI development by [Becoming a Sponsor](https://sponsors.nolimits4
       </a>
     </td>
     <td align="center" valign="middle">
+      <a href="https://headshot.ltd" target="_blank">
+        <img src="https://cdn.sponsors.nolimits4web.com/JnLwciPllpHMcuYenhhG/mCthn2gwm65EEoMd9yZS/e3afa0f9c25ebc79.png" alt="headshot.ltd" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
       <a href="https://www.fun88vnplay.com/" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/sm02J44cATxUuyBCMATS/QLWPUy4BnhSJzMwwU1Cd/aaf341e68d3ab882.svg" alt="fun88" width="160">
       </a>
@@ -40,13 +45,13 @@ Support Konsta UI development by [Becoming a Sponsor](https://sponsors.nolimits4
         <img src="https://cdn.sponsors.nolimits4web.com/JlGRn0kkP4bf4P4uSXa0/kS5UoBmFcVj2dGy6LpAi/e0acafa1c64329c7.png" alt="Play 2048" width="160">
       </a>
     </td>
+  </tr>
+  <tr>
     <td align="center" valign="middle">
       <a href="https://transcript.you" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/JlGRn0kkP4bf4P4uSXa0/kS5UoBmFcVj2dGy6LpAi/8f6dbae4c07fd353.png" alt="Transcribe Youtube Videos" width="160">
       </a>
     </td>
-  </tr>
-  <tr>
     <td align="center" valign="middle">
       <a href="https://calculator.now" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/JlGRn0kkP4bf4P4uSXa0/kS5UoBmFcVj2dGy6LpAi/73e48dc1f143adc1.png" alt="Calculator" width="160">
@@ -82,13 +87,13 @@ Support Konsta UI development by [Becoming a Sponsor](https://sponsors.nolimits4
         <img src="https://konstaui.com/images/sponsors/educatransparenciacl.png" alt="Transparencia en Casinos Online" width="160">
       </a>
     </td>
+  </tr>
+  <tr>
     <td align="center" valign="middle">
       <a href="https://www.c19.cl/" target="_blank">
         <img src="https://konstaui.com/images/sponsors/c19-casinos-chile.png" alt="C19 - Casinos Online Chile" width="160">
       </a>
     </td>
-  </tr>
-  <tr>
     <td align="center" valign="middle">
       <a href="https://seoigaming.com/" target="_blank">
         <img src="https://konstaui.com/images/sponsors/seo-for-igaming-sites.png" alt="SEO for igaming sites" width="160">
@@ -99,7 +104,6 @@ Support Konsta UI development by [Becoming a Sponsor](https://sponsors.nolimits4
         <img src="https://konstaui.com/images/sponsors/leofame.png" alt="Buy Instagram Followers & Likes" width="160">
       </a>
     </td>
-    <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
@@ -122,6 +126,7 @@ Support Konsta UI development by [Becoming a Sponsor](https://sponsors.nolimits4
 ### \$50+ Sponsor
 
 <!-- SPONSOR -->
+- [headshot.ltd](https://headshot.ltd)
 - [fun88](https://www.fun88vnplay.com/)
 - [fun88](https://www.fun88asiath.com/)
 - [jbo](https://www.jbo579.com/th/)
