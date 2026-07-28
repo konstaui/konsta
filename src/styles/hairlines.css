@@ -1,5 +1,5 @@
 @utility hairline-* {
-  --k-hairline-color: --value(--color-*);
+  --k-hairline-color: --value(--color-*, [color], 'transparent');
 }
 
 .hairline-t::before,
