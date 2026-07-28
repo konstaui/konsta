@@ -5,7 +5,7 @@ export const PanelClasses = (props, colors) => {
   return {
     base: {
       common: cls(
-        'k-panel transition-transform transform duration-400 z-40 max-w-full overflow-hidden fixed',
+        'k-panel transition-[transform,translate,scale,rotate,visibility] transform duration-400 z-40 max-w-full overflow-hidden fixed',
         floating ? 'top-safe-2 bottom-safe-2 !h-auto' : 'top-0 max-h-full',
         'w-72 h-screen'
       ),
@@ -25,7 +25,7 @@ export const PanelClasses = (props, colors) => {
       ),
       material: cls(!floating ? 'rounded-r-2xl' : 'rounded-2xl'),
       opened: 'translate-x-full',
-      closed: '-translate-x-2',
+      closed: '-translate-x-2 invisible',
     },
     right: {
       common: cls(
@@ -34,12 +34,12 @@ export const PanelClasses = (props, colors) => {
       ),
       material: cls(!floating ? 'rounded-l-2xl' : 'rounded-2xl'),
       opened: '-translate-x-full',
-      closed: 'translate-x-2',
+      closed: 'translate-x-2 invisible',
     },
     backdrop: {
       common: 'fixed z-40 w-full h-full left-0 top-0 bg-black/50 duration-400',
       opened: '',
-      closed: 'opacity-0 pointer-events-none',
+      closed: 'opacity-0 invisible pointer-events-none',
     },
   };
 };
