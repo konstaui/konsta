@@ -1,5 +1,15 @@
 # Changelog
 
+# [5.3.0](https://github.com/konstaui/konsta/compare/v5.2.0...v5.3.0) (2026-07-28)
+
+### Bug Fixes
+
+* **hairlines:** support transparent and arbitrary colors in hairline-* utility ([39848c5](https://github.com/konstaui/konsta/commit/39848c53b1b03d9693f372c8ed81399c4078a7ae))
+* **overlays:** hide closed overlays so Safari restores its translucent address bar ([d5a89b4](https://github.com/konstaui/konsta/commit/d5a89b47065fe46c47a6c4df4fc6dbc8e54d2b0b)), closes [#280](https://github.com/konstaui/konsta/issues/280)
+* **react:** prevent form-inputs crash from null in cls() ([ab63e07](https://github.com/konstaui/konsta/commit/ab63e078ab17d3c49bd061d441db2a27ae72e48a))
+* **table:** render iOS hairlines on cells so they position correctly in Safari ([e8d1438](https://github.com/konstaui/konsta/commit/e8d1438c4e22b754047c10d8d12ee860fb1ccaaf)), closes [#279](https://github.com/konstaui/konsta/issues/279)
+
+
 # [5.2.0](https://github.com/konstaui/konsta/compare/v5.1.0...v5.2.0) (2026-06-29)
 
 ### Bug Fixes
