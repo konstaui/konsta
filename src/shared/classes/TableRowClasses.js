@@ -5,9 +5,9 @@ export const TableRowClasses = (props, colors) => {
   return {
     base: {
       common: 'align-middle relative',
-      ios: header
-        ? ''
-        : cls(colors.bgIos, 'hairline-b last:hairline-transparent'),
+      // hairline is set on table cells as Safari doesn't support
+      // `position: relative` on table rows and row groups
+      ios: header ? '' : cls(colors.bgIos, 'last:hairline-transparent'),
       material: header
         ? ''
         : cls(colors.bgMaterial, `border-t ${colors.dividerMaterial}`),
