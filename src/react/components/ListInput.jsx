@@ -233,7 +233,6 @@ const ListInput = (props) => {
       component={component}
       media={media}
       className={c.base}
-      title={null}
       mediaClassName={c.media}
       innerClassName={c.inner[labelStyle]}
       contentClassName={c.itemContent}
