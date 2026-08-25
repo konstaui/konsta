@@ -144,7 +144,7 @@
 
     const maxTranslate = titleContainerHeight;
     const scrollProgress = Math.max(Math.min(scrollTop / maxTranslate, 1), 0);
-    if (theme === 'material') {
+    if (theme === 'material' && bgElRef) {
       bgElRef.style.opacity = transparent ? -0.5 + scrollProgress * 1.5 : '';
       if (medium || large) {
         bgElRef.style.transform = `translateY(-${
