@@ -1,6 +1,6 @@
 {
   "name": "konsta",
-  "version": "5.3.0",
+  "version": "5.4.0",
   "description": "Mobile UI components made with Tailwind CSS",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   "engines": {
     "node": ">= 4.7.0"
   },
-  "releaseDate": "July 28, 2026",
+  "releaseDate": "August 25, 2026",
   "svelte": "./svelte/konsta-svelte.js",
   "dependencies": {
     "tailwind-merge": "^3.3.1"
