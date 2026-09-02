@@ -15,6 +15,21 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
       </a>
     </td>
     <td align="center" valign="middle">
+      <a href="https://global.fun88.com/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/fun88-official.png" alt="Fun88" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://watchthis.dev" target="_blank">
+        <img src="https://cdn.sponsors.nolimits4web.com/AOtukRJjnjUWelCb4n3I/ZNfwbFNKe8mRp5MWhfjO/e4ed15d4343efb5b.png" alt="WatchThis — JavaScript SEO Checker" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://prime-digital.ca/seo-canada/" target="_blank">
+        <img src="https://cdn.sponsors.nolimits4web.com/1E9ELxtpPRvHQHUMUXqW/344WbcksDQNHn5jJxozF/7b24bec557d3dd9a.png" alt="Local SEO Canada" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
       <a href="https://headshot.ltd" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/JnLwciPllpHMcuYenhhG/mCthn2gwm65EEoMd9yZS/e3afa0f9c25ebc79.png" alt="headshot.ltd" width="160">
       </a>
@@ -34,9 +49,41 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
         <img src="https://cdn.sponsors.nolimits4web.com/sm02J44cATxUuyBCMATS/mvoaoFi3V83RO6BdgPp7/ff82cb5d7a05fad7.png" alt="jbo" width="160">
       </a>
     </td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">
+      <a href="https://www.liceodiazce.it/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/siti-non-aams-sicuri-789de77a.png" alt="siti non aams sicuri" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://www.jbo88b.com/vn/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/jbo-vietnam.png" alt="JBO" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://www.fun88thf.com/th/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/fun88-thailand.png" alt="Fun88" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://www.kaliteraonlinecasino.eu.com/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/online-greek-casino.png" alt="online greek casino" width="160">
+      </a>
+    </td>
     <td align="center" valign="middle">
       <a href="https://cleverhumanizer.ai/" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/ax13DbzrBlYi6KxgD4aA/LGwYIYyaNy9addegbe9Q/899ac7659d2581d9.png" alt="AI Humanizer" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://pl.topkasynoonline.com/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/topkasynoonline-pl.png" alt="TopKasynoOnline PL" width="160">
+      </a>
+    </td>
+    <td align="center" valign="middle">
+      <a href="https://www.jazzonline.gr/" target="_blank">
+        <img src="https://konstaui.com/images/sponsors/kalytera-online-casino-stin-ellada.png" alt="καλύτερα online casino στην ελλάδα" width="160">
       </a>
     </td>
     <td align="center" valign="middle">
@@ -44,13 +91,13 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
         <img src="https://cdn.sponsors.nolimits4web.com/JlGRn0kkP4bf4P4uSXa0/kS5UoBmFcVj2dGy6LpAi/98e1e4d5e39a6b58.png" alt="Play Sudoku" width="160">
       </a>
     </td>
+  </tr>
+  <tr>
     <td align="center" valign="middle">
       <a href="https://2048.now" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/JlGRn0kkP4bf4P4uSXa0/kS5UoBmFcVj2dGy6LpAi/e0acafa1c64329c7.png" alt="Play 2048" width="160">
       </a>
     </td>
-  </tr>
-  <tr>
     <td align="center" valign="middle">
       <a href="https://transcript.you" target="_blank">
         <img src="https://cdn.sponsors.nolimits4web.com/JlGRn0kkP4bf4P4uSXa0/kS5UoBmFcVj2dGy6LpAi/8f6dbae4c07fd353.png" alt="Transcribe Youtube Videos" width="160">
@@ -72,11 +119,6 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
       </a>
     </td>
     <td align="center" valign="middle">
-      <a href="https://buy.fans/buy-tiktok-views/" target="_blank">
-        <img src="https://konstaui.com/images/sponsors/buy-tiktok-views-buyfans.png" alt="Buy Tiktok Views" width="160">
-      </a>
-    </td>
-    <td align="center" valign="middle">
       <a href="https://au.trustpilot.com/review/aussiepokies.net" target="_blank">
         <img src="https://konstaui.com/images/sponsors/online-pokies-au.png" alt="Best Online Pokies in Australia" width="160">
       </a>
@@ -87,17 +129,12 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
       </a>
     </td>
     <td align="center" valign="middle">
-      <a href="https://www.educatransparencia.cl/" target="_blank">
-        <img src="https://konstaui.com/images/sponsors/educatransparenciacl.png" alt="Transparencia en Casinos Online" width="160">
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="middle">
       <a href="https://www.c19.cl/" target="_blank">
         <img src="https://konstaui.com/images/sponsors/c19-casinos-chile.png" alt="C19 - Casinos Online Chile" width="160">
       </a>
     </td>
+  </tr>
+  <tr>
     <td align="center" valign="middle">
       <a href="https://seoigaming.com/" target="_blank">
         <img src="https://konstaui.com/images/sponsors/seo-for-igaming-sites.png" alt="SEO for igaming sites" width="160">
@@ -108,6 +145,7 @@ Konsta UI - Pixel perfect mobile UI components built with Tailwind CSS with iOS 
         <img src="https://konstaui.com/images/sponsors/leofame.png" alt="Buy Instagram Followers & Likes" width="160">
       </a>
     </td>
+    <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
     <td align="center" valign="middle"></td>
