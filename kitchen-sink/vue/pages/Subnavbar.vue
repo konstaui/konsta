@@ -6,9 +6,24 @@
       </template>
       <template #subnavbar>
         <k-segmented strong rounded>
-          <k-segmented-button active> Button </k-segmented-button>
-          <k-segmented-button> Button </k-segmented-button>
-          <k-segmented-button> Button </k-segmented-button>
+          <k-segmented-button
+            :active="activeSegmented === 1"
+            @click="() => (activeSegmented = 1)"
+          >
+            Button
+          </k-segmented-button>
+          <k-segmented-button
+            :active="activeSegmented === 2"
+            @click="() => (activeSegmented = 2)"
+          >
+            Button
+          </k-segmented-button>
+          <k-segmented-button
+            :active="activeSegmented === 3"
+            @click="() => (activeSegmented = 3)"
+          >
+            Button
+          </k-segmented-button>
         </k-segmented>
       </template>
     </k-navbar>
@@ -62,6 +77,7 @@
   </k-page>
 </template>
 <script>
+  import { ref } from 'vue';
   import {
     kPage,
     kNavbar,
@@ -82,7 +98,9 @@
       kSegmentedButton,
     },
     setup() {
+      const activeSegmented = ref(1);
       return {
+        activeSegmented,
         isPreview: document.location.href.includes('examplePreview'),
         history: window.history,
       };

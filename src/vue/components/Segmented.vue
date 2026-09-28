@@ -1,6 +1,7 @@
 <template>
   <component
     :is="theme === 'ios' && navbar ? 'k-glass' : component"
+    ref="elRef"
     :class="classes"
   >
     <span v-if="isOutline" ref="outlineInnerElRef" :class="c.outlineInner"
@@ -16,7 +17,15 @@
   </component>
 </template>
 <script>
-  import { computed, ref, onMounted, onUpdated, provide, inject } from 'vue';
+  import {
+    computed,
+    ref,
+    onMounted,
+    onUpdated,
+    onBeforeUnmount,
+    provide,
+    inject,
+  } from 'vue';
   import { useContext } from '../shared/use-context.js';
   import { cls } from '../../shared/cls.js';
   import { SegmentedClasses } from '../../shared/classes/SegmentedClasses.js';
@@ -65,12 +74,14 @@
       const context = useContext();
       const useDarkClasses = darkClasses(context);
       const useThemeClasses = themeClasses(context);
+      const elRef = ref(null);
       const highlightElRef = ref(null);
       const outlineInnerElRef = ref(null);
       const highlightStyle = ref({
         transform: '',
         width: '',
       });
+      const observer = ref(null);
       const theme = useTheme(props, context);
 
       const NavbarContext = inject('NavbarContext', { value: {} });
@@ -175,15 +186,51 @@
           }
         }
       };
+      // Buttons can be rendered by another component (e.g. k-glass in iOS
+      // Navbar), in which case onUpdated is not triggered on active change
+      const attachMutationObserver = () => {
+        const el = elRef.value && (elRef.value.$el || elRef.value);
+        if (!el) return;
+        observer.value = new MutationObserver((mutations) => {
+          const needUpdate = mutations.some(
+            (mutation) =>
+              mutation.type === 'childList' ||
+              (mutation.type === 'attributes' &&
+                (mutation.target.tagName === 'BUTTON' ||
+                  mutation.target.tagName === 'A'))
+          );
+          if (needUpdate) {
+            setHighlight();
+          }
+        });
+        observer.value.observe(el, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+      };
+      const detachMutationObserver = () => {
+        if (observer.value) {
+          observer.value.disconnect();
+          observer.value = null;
+        }
+      };
+
       onMounted(() => {
         setHighlight();
+        attachMutationObserver();
       });
       onUpdated(() => {
         setHighlight();
       });
+      onBeforeUnmount(() => {
+        detachMutationObserver();
+      });
 
       return {
         c,
+        elRef,
         classes,
         highlightElRef,
         outlineInnerElRef,
