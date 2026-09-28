@@ -1,5 +1,12 @@
 # Changelog
 
+# [5.5.0](https://github.com/konstaui/konsta/compare/v5.4.0...v5.5.0) (2026-09-28)
+
+### Bug Fixes
+
+* **vue:** update strong Segmented highlight when rendered inside iOS Navbar ([8d1175c](https://github.com/konstaui/konsta/commit/8d1175c4aeb766542d52a3f5bb95fd928a26867e)), closes [#284](https://github.com/konstaui/konsta/issues/284)
+
+
 # [5.4.0](https://github.com/konstaui/konsta/compare/v5.3.0...v5.4.0) (2026-08-25)
 
 ### Bug Fixes
