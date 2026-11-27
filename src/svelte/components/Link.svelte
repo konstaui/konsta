@@ -35,6 +35,11 @@
 
   const theme = $derived(useTheme({ ios, material }));
 
+  // Native <button> and <a href> already have the right role and focus
+  const needsLinkRole = $derived(
+    component !== 'button' && !(linkProps?.href || restProps.href)
+  );
+
   let NavbarContext =
     getContext('NavbarContext') || (() => ({ value: { navbar: false } }));
 
@@ -123,10 +128,10 @@
   this={component}
   bind:this={el}
   class={classes}
+  role={needsLinkRole ? 'link' : undefined}
+  tabindex={needsLinkRole ? 0 : undefined}
   {...restProps}
   {...linkProps}
-  role="link"
-  tabindex="0"
   onclick={onClick || onclick}
 >
   {@render children?.()}

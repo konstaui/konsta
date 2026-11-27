@@ -26,7 +26,9 @@
     inputStyle = undefined,
 
     disableButton = false,
+    disableButtonLabel = 'Cancel',
     clearButton = true,
+    clearButtonLabel = 'Clear',
 
     onInput = undefined,
     onChange = undefined,
@@ -148,7 +150,12 @@
       onblur={handleBlur}
     />
     {#if value && clearButton}
-      <button class={c.clearButton} onclick={onClear || onclear} type="button">
+      <button
+        class={c.clearButton}
+        onclick={onClear || onclear}
+        type="button"
+        aria-label={clearButtonLabel}
+      >
         <DeleteIcon {theme} class={c.deleteIcon} />
       </button>
     {/if}
@@ -160,6 +167,7 @@
         type="button"
         style={`margin-right: ${isEnabled ? 0 : `-${48 + 16}px`}; margin-left: ${isEnabled ? '16px' : 0};`}
         class={c.cancelButton}
+        aria-label={disableButtonLabel}
         onclick={handleDisableButton}
         onpointerdown={(e) => e.preventDefault()}
       >
@@ -178,6 +186,7 @@
     {:else}
       <button
         type="button"
+        aria-label={disableButtonLabel}
         onclick={handleDisableButton}
         onpointerdown={(e) => e.preventDefault()}
         class={cls(c.cancelButton)}

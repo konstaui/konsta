@@ -54,6 +54,12 @@ interface Props {
    * @default false
    */
   disableButton?: boolean;
+  /**
+   * Accessible label (`aria-label`) of the disable (cancel) button
+   *
+   * @default 'Cancel'
+   */
+  disableButtonLabel?: string;
 
   /**
    * Adds input clear button
@@ -61,6 +67,12 @@ interface Props {
    * @default true
    */
   clearButton?: boolean;
+  /**
+   * Accessible label (`aria-label`) of the input clear button
+   *
+   * @default 'Clear'
+   */
+  clearButtonLabel?: string;
   /**
    * `input` event handler
    */

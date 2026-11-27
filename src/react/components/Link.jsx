@@ -45,6 +45,9 @@ const Link = (props) => {
     ...rest,
   };
 
+  // Native <button> and <a href> already have the right role and focus
+  const needsLinkRole = component !== 'button' && !attrs.href;
+
   const theme = useTheme({ ios, material });
   const themeClasses = useThemeClasses({ ios, material });
   const dark = useDarkClasses();
@@ -97,9 +100,9 @@ const Link = (props) => {
         else if (ref) ref.current = el;
       }}
       className={classes}
+      role={needsLinkRole ? 'link' : undefined}
+      tabIndex={needsLinkRole ? 0 : undefined}
       {...attrs}
-      role="link"
-      tabIndex="0"
       onClick={onClick}
     >
       {children}

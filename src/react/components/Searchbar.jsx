@@ -25,7 +25,9 @@ const Searchbar = (props) => {
     inputStyle,
 
     disableButton = false,
+    disableButtonLabel = 'Cancel',
     clearButton = true,
+    clearButtonLabel = 'Clear',
 
     onInput,
     onChange,
@@ -106,18 +108,22 @@ const Searchbar = (props) => {
           marginLeft: isEnabled ? '16px' : 0,
         }}
         className={c.cancelButton}
+        aria-label={disableButtonLabel}
         onClick={handleDisableButton}
         onPointerDown={(e) => e.preventDefault()}
       >
         <SearchDisableIcon />
       </Glass>
     ) : (
-      <BackIcon
-        theme={theme}
+      <button
+        type="button"
+        aria-label={disableButtonLabel}
         onClick={handleDisableButton}
-        className={cls(c.cancelButton)}
         onPointerDown={(e) => e.preventDefault()}
-      />
+        className={cls(c.cancelButton)}
+      >
+        <BackIcon theme={theme} />
+      </button>
     );
   const Component = component;
 
@@ -156,7 +162,12 @@ const Searchbar = (props) => {
           onBlur={handleBlur}
         />
         {value && clearButton && (
-          <button className={c.clearButton} onClick={onClear} type="button">
+          <button
+            className={c.clearButton}
+            onClick={onClear}
+            type="button"
+            aria-label={clearButtonLabel}
+          >
             <DeleteIcon theme={theme} className={c.deleteIcon} />
           </button>
         )}

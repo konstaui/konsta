@@ -194,9 +194,9 @@
     bind:this={el}
     class={classes}
     {disabled}
-    {...attrs}
     role="button"
     tabindex="0"
+    {...attrs}
   >
     {@render children?.()}
   </svelte:element>

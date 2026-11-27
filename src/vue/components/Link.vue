@@ -3,9 +3,9 @@
     :is="component"
     ref="rippleElRef"
     :class="classes"
+    :role="needsLinkRole($attrs) ? 'link' : undefined"
+    :tabindex="needsLinkRole($attrs) ? 0 : undefined"
     v-bind="linkProps"
-    role="link"
-    tabindex="0"
   >
     <slot />
   </component>
@@ -119,9 +119,15 @@
         )
       );
 
+      // Native <button> and <a href> already have the right role and focus.
+      // Called from template, as $attrs is not reactive inside computed
+      const needsLinkRole = (attrs) =>
+        props.component !== 'button' && !(props.linkProps?.href || attrs.href);
+
       return {
         c,
         classes,
+        needsLinkRole,
         rippleElRef,
         theme,
         tabbarState,

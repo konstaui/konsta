@@ -28,6 +28,7 @@
         v-if="value && clearButton"
         :class="c.clearButton"
         type="button"
+        :aria-label="clearButtonLabel"
         @click="onClear"
       >
         <DeleteIcon :theme="theme" :class="c.deleteIcon" />
@@ -43,18 +44,22 @@
           marginLeft: isEnabled ? '16px' : 0,
         }"
         :class="c.cancelButton"
+        :aria-label="disableButtonLabel"
         @click="handleDisableButton"
         @pointerdown.prevent
       >
         <SearchDisableIcon />
       </k-glass>
-      <BackIcon
+      <button
         v-else
+        type="button"
         :class="cls(c.cancelButton)"
-        :theme="theme"
+        :aria-label="disableButtonLabel"
         @click="handleDisableButton"
         @pointerdown.prevent
-      />
+      >
+        <BackIcon :theme="theme" />
+      </button>
     </template>
   </component>
 </template>
@@ -104,9 +109,17 @@
         type: Boolean,
         default: false,
       },
+      disableButtonLabel: {
+        type: String,
+        default: 'Cancel',
+      },
       clearButton: {
         type: Boolean,
         default: true,
+      },
+      clearButtonLabel: {
+        type: String,
+        default: 'Clear',
       },
     },
     emits: [
