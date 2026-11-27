@@ -1,5 +1,13 @@
 # Changelog
 
+# [5.6.0](https://github.com/konstaui/konsta/compare/v5.5.0...v5.6.0) (2026-11-27)
+
+### Bug Fixes
+
+* **a11y:** Link role/tabindex for native buttons and links, Searchbar button labels ([67e6c10](https://github.com/konstaui/konsta/commit/67e6c1023882bf2d42b899f9051a3e919af0f05c)), closes [#285](https://github.com/konstaui/konsta/issues/285)
+
+
+
 # [5.5.0](https://github.com/konstaui/konsta/compare/v5.4.0...v5.5.0) (2026-09-28)
 
 ### Bug Fixes
